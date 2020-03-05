@@ -14,8 +14,6 @@ void NlFilt::Init()
 {
 	point_ = 0;  // Set delay pointer
     Set();
-	//dsy_nlfilt_set(p);  // Setup Delay
-	// For Now control pointers and i/o will be setup externally
 }
 
 
@@ -24,8 +22,6 @@ void NlFilt::Init()
 
 void NlFilt::ProcessBlock(float *in, float *out, size_t size)
 {
-	//uint32_t offset = _h.insdshead->ksmps_offset;
-	//uint32_t early  = _h.insdshead->ksmps_no_end;
 	uint32_t offset = 0;
 	uint32_t n, nsmps = size;
 	int32_t     point = point_;
@@ -38,9 +34,6 @@ void NlFilt::ProcessBlock(float *in, float *out, size_t size)
 	float   L = L_;
 	float   maxamp, dvmaxamp, maxampd2;
 
-	//if (UNLIKELY(fp == NULL)) goto err1;                   // RWD fix 
-	//if(fp == NULL) { return NOT_OK; }
-	//ar   = a_r;
 	/* L is k-rate so need to check */
 	if (L < FL(1.0f))
 		L = FL(1.0f);
@@ -55,19 +48,9 @@ void NlFilt::ProcessBlock(float *in, float *out, size_t size)
 	ynm2 = fp[nm2];
 	ynmL = fp[nmL];
 	nsmps = size;
-	//maxamp = csound->e0dbfs * FL(1.953125);     // 64000 with default 0dBFS 
-	//maxamp = 64000.0f; // Taken from comments above. Not sure how, though.
 	maxamp = 1.935125f;
 	dvmaxamp = FL(1.0f) / maxamp;
 	maxampd2 = maxamp * FL(0.5F);
-	// Not entirely sure if this will come into play since offset/early are hard-set to 0
-	/*
-	if (UNLIKELY(offset)) memset(ar, '\0', offset*sizeof(float));
-	if (UNLIKELY(early)) {
-	  nsmps -= early;
-	  memset(&ar[nsmps], '\0', early*sizeof(float));
-	}
-	*/
 	for(n = offset ; n < nsmps ; n++) {
 		float yn;
 		float outv;
