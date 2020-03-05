@@ -104,7 +104,6 @@ temp.txt
 windows_amd64/
 *.mov
 *.mp4
-hw/wmd/CI - Cursus Iteritas/CI_manual_jp.pdf
 sw/tables/
 Universal45/
 LLVM/
@@ -116,21 +115,7 @@ LLVM/
 *.user
 .ipynb_checkpoints/
 transcode report.txt
-/examples/verb/build
-/examples/bypass/build
-/examples/template/build
-/examples/ledplay/build
+/build
 /examples/*/build
-/example_projects/*/build
-/libdaisy/build
-/daisysp/build
-/libdaisy/examples/*/build
-/daisysp/examples/*/build
-hardware_platforms/*/examples/*/build
-hardware_platforms/*/examples/*/VisualGDB/
-hardware_platforms/*/*/*/build
-hardware_platforms/*/*/*/VisualGDB
-daisysp/doc/*.md
-libdaisy/doc/*.md
-core/build
+/doc/*.md
 
