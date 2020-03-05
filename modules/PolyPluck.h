@@ -39,7 +39,7 @@ class PolyPluck
         active_voice_ = 0;
         p_damp_       = 0.95f;
         p_decay_      = 0.75f;
-        for(int i = 0; i < num_voices; i++)
+        for(size_t i = 0; i < num_voices; i++)
         {
             plk_[i].Init(sample_rate, plkbuff_[i], 256, PLUCK_MODE_RECURSIVE);
             plk_[i].SetDamp(0.85f);
@@ -72,7 +72,7 @@ class PolyPluck
         }
         plk_[active_voice_].SetFreq(mtof(note));
 
-        for(int i = 0; i < num_voices; i++)
+        for(size_t i = 0; i < num_voices; i++)
         {
             tval = (trig > 0.0f && i == active_voice_) ? 1.0f : 0.0f;
             sig += plk_[i].Process(tval);
