@@ -5,10 +5,11 @@ TARGET = ex_adenv
 CPP_SOURCES = ex_adenv.cpp
 
 # Library Locations
-LIBDAISY_DIR = ../../../libdaisy
+LIBDAISY_DIR ?= $(LIBDAISY)/libdaisy/
 DAISYSP_DIR = ../../
 
 # Core location, and generic makefile.
-SYSTEM_FILES_DIR = ../../../core
+# Overwrite LIBDAISY Environment variable to the location of the lib on your machine.
+SYSTEM_FILES_DIR = $(LIBDAISY)/core
 include $(SYSTEM_FILES_DIR)/Makefile
 
