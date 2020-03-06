@@ -197,7 +197,7 @@ $endfor$
 
 %Windows force includes
 \usepackage{graphicx}
-\usepackage{fontspec}
+%\usepackage{fontspec}
 
 % Make command for posting diagram.
 \newcommand{\postmarkedshot}{
@@ -214,11 +214,11 @@ $endfor$
 \includegraphics[width=\textwidth]{#1}
 %\end{figure}
 }
-\setmainfont{HV.ttf}[
-Path = ./resources/fonts/,
-BoldFont = HVB.ttf,
-ItalicFont = helveticaneueltstd-it.otf
-]
+%\setmainfont{HV.ttf}[
+%Path = ./resources/fonts/,
+%BoldFont = HVB.ttf,
+%ItalicFont = helveticaneueltstd-it.otf
+%]
 $if(title)$
 \title{$title$$if(thanks)$\thanks{$thanks$}$endif$}
 $endif$
