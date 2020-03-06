@@ -1,4 +1,4 @@
-// # compressor
+// # Compressor
 // 
 // influenced by compressor in soundpipe (from faust).
 // 

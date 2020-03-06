@@ -46,7 +46,7 @@ namespace daisysp
 		CrossFade() {}
 		~CrossFade() {}
 
-        // ### init
+        // ### Init
         // Initializes CrossFade module
         //
         // Defaults
@@ -55,17 +55,17 @@ namespace daisysp
         // - curve = linear
         //
         // ~~~~
-        inline void init(int curve)
+        inline void Init(int curve)
 // ~~~~
         {
             pos_ = 0.5f;
             curve_ = curve < CROSSFADE_LAST ? curve : CROSSFADE_LIN;
         }
         // ~~~~
-		inline void init() 
+		inline void Init() 
 // ~~~~
 		{
-            init(CROSSFADE_LIN);
+            Init(CROSSFADE_LIN);
         }
         // ### Process
         // processes CrossFade and returns single sample

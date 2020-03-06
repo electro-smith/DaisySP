@@ -38,7 +38,7 @@ int main(void)
     daisy_seed_init(&seed);
 
     // set params for CrossFade object
-    cfade.init();
+    cfade.Init();
     cfade.SetCurve(CROSSFADE_LIN);
 
     // set parameters for sine oscillator object

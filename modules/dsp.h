@@ -1,5 +1,5 @@
-// # core dsp
-// helper defines, functions for use in/with daisysp modules.
+// # Core DSP
+// Helpful defines, functions, and other utilities for use in/with daisysp modules.
 #pragma once
 #ifndef DSY_CORE_DSP
 #define DSY_CORE_DSP
