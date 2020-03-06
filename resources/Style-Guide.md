@@ -1,8 +1,6 @@
 # Style Guide
 
 - [overview](#Overview)
-- [example](#Example-files)
-    - [daisysp module](#daisysp-module)
 - [general notes](#general-notes)
     - [underscore separators](#underscore-separators)
     - [tab size](#tab-size)
@@ -14,93 +12,13 @@
     - [circular dependency avoidance](#circular-dependency-avoidance)
     - [enum definitions\*](#enum-definitions)
 - [Misc.](#misc)
+- [Example](#Example-files)
+    - [daisysp module](#daisysp-module)
 
 \* still being discussed, not strictly followed yet.
 
 ## Overview
 
-## Example files
-
-### DaisySP module
-
-Header:
-```C++
-// # Markdown Title
-// Description
-//
-// Details
-
-#pragma once
-#ifndef DSY_MODULENAME_H
-#define DSY_MODULENAME_H
-
-namespace daisysp
-{
-
-enum state
-{
-    MODULENAME_STATE_A,
-    MODULENAME_STATE_B,
-    MODULENAME_LAST,
-};
-
-class ModuleName
-{
-    public:
-    ModuleName () {}
-    ~ModuleName () {}
-
-    void Init();
-
-    float Process(const float &in);
-
-    inline void SetParam(const float &param) { param_ = param; }
-
-    void SetComplexParam(const float &complex_param);
-
-    private:
-
-    float param_;
-    float foo_bar_;
-    float a_, b_;
-
-};
-
-} // namespace daisysp
-
-#endif // DSY_MODULENAME_H
-
-```
-
-Implementation:
-```C++
-#include <system_include.h>
-#include "modulename.h"
-
-using namespace daisysp;
-
-void ModuleName::Init()
-{
-    // Set private members to defaults
-    param_ = 0.0f;
-    a_ = 0.0f;
-    b_ = 1.0f;
-    // Do stuff
-}
-
-float ModuleName::Process(const float &in)
-{
-    // Do something and return the output.
-    return (in * param_) + a_ - b_;
-}
-
-void ModuleName::SetComplexParam(const float &complex_param)
-{
-    a_ = complex_param;
-    b_ = 1.0f - complex_param;
-}
-
-```
 
 # general notes
 
@@ -258,4 +176,87 @@ These should be used in all header files added to the libraries.
 
 Naming convention for the header guards should be:
 `DSY_MODULENAME_H` where `MODULENAME` is the file/class name.
+
+## Example files
+
+### DaisySP module
+
+Header:
+```C++
+// # Markdown Title
+// Description
+//
+// Details
+
+#pragma once
+#ifndef DSY_MODULENAME_H
+#define DSY_MODULENAME_H
+
+namespace daisysp
+{
+
+enum state
+{
+    MODULENAME_STATE_A,
+    MODULENAME_STATE_B,
+    MODULENAME_LAST,
+};
+
+class ModuleName
+{
+    public:
+    ModuleName () {}
+    ~ModuleName () {}
+
+    void Init();
+
+    float Process(const float &in);
+
+    inline void SetParam(const float &param) { param_ = param; }
+
+    void SetComplexParam(const float &complex_param);
+
+    private:
+
+    float param_;
+    float foo_bar_;
+    float a_, b_;
+
+};
+
+} // namespace daisysp
+
+#endif // DSY_MODULENAME_H
+
+```
+
+Implementation:
+```C++
+#include <system_include.h>
+#include "modulename.h"
+
+using namespace daisysp;
+
+void ModuleName::Init()
+{
+    // Set private members to defaults
+    param_ = 0.0f;
+    a_ = 0.0f;
+    b_ = 1.0f;
+    // Do stuff
+}
+
+float ModuleName::Process(const float &in)
+{
+    // Do something and return the output.
+    return (in * param_) + a_ - b_;
+}
+
+void ModuleName::SetComplexParam(const float &complex_param)
+{
+    a_ = complex_param;
+    b_ = 1.0f - complex_param;
+}
+
+```
 
