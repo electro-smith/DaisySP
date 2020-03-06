@@ -6,11 +6,17 @@
 #include <math.h>
 
 // ## Generic Defines
-// For now just PIs 
+// PIs
 // ~~~~
 #define PI_F 3.1415927410125732421875f
 #define TWOPI_F (2.0f * PI_F)
 #define HALFPI_F (PI_F * 0.5f)
+// ~~~~
+// ### Generic min/max/clamp
+// ~~~~
+#define DSY_MIN(in, mn) (in < mn ? in : mn)
+#define DSY_MAX(in, mx) (in > mx ? in : mx)
+#define DSY_CLAMP(in, mn, mx) (DSY_MIN(DSY_MAX(in, mn), mx))
 // ~~~~
 
 namespace daisysp
