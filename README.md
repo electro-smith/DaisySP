@@ -18,7 +18,7 @@ Here are ways that you can get involved:
 - Fix problems with existing modules. See issues labeled "bug" and/or "polish".
 - Test existing functionality and make issues.
 
-Before working on code, please check out our contribution guidelines Wiki page and StyleGuide.pdf in `/doc/`
+Before working on code, please check out our [Contribution Guidelines](https://github.com/andrewikenberry/DaisySP/wiki/Contribution-Guidelines) and `/doc/StyleGuide.pdf`
 
 ### License
 DaisySP is licensed with the permissive MIT open source license. 
