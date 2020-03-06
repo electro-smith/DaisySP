@@ -8,7 +8,7 @@ CPP_SOURCES = ex_bypass.cpp
 DAISYSP_DIR = ../../
 LIBDAISY_DIR ?= $(LIBDAISY)/libdaisy/
 
-# Core location, and generic makefile.
+# Core location, and generic Makefile.
 SYSTEM_FILES_DIR = $(LIBDAISY)/core
-include $(SYSTEM_FILES_DIR)/makefile
+include $(SYSTEM_FILES_DIR)/Makefile
 
