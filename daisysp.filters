@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{382fad4a-ca3d-4890-bee2-d825880d25f7}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{6c872c40-d658-4087-98b9-fd2ae951c15f}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{ae2d301b-2292-4695-a32e-4ba136962ede}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="VisualGDB settings">
+      <UniqueIdentifier>{0eee0579-17a8-4a07-802d-b4b837c97acf}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="libdsysp-Debug.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+    <None Include="libdsysp-Release.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+    <None Include="stm32.xml">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="daisysp.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="dsy_reverbsc.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="dsy_decimator.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="dsy_svf.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="dsy_nlfilt.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="dsy_whitenoise.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="dsy_adenv.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="dsy_oscillator.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="dsy_pstream.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dsy_reverbsc.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="dsy_decimator.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="dsy_svf.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="dsy_nlfilt.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="dsy_whitenoise.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="dsy_adenv.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="dsy_oscillator.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
