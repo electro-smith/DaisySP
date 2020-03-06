@@ -15,9 +15,9 @@ Here are ways that you can get involved:
 - Make new DSP modules. See issues labeled "feature".
 - Port existing DSP modules from other open source projects(MIT). See issues labeled "port".
 - Fix problems with existing modules. See issues labeled "bug".
-- Test existing functionality and make issues. Check out the Submitting an Issue Wiki page here. 
+- Test existing functionality and make issues.
 
-Before working on code, check out our contribution guidelines Wiki page and StyleGuide.pdf in /doc/
+Before working on code, please check out our contribution guidelines Wiki page and StyleGuide.pdf in /doc/
 
 ### License
 DaisySP is licensed with the permissive MIT open source license. 
