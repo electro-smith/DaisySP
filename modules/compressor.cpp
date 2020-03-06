@@ -42,7 +42,7 @@ void Compressor::Init(float sample_rate)
         f_rec1_[i] = 0.1f;
         f_rec2_[i] = 0.1f;
     }
-
+    recalculate_slopes();
 }
 
 //float compressor::process(const float &in)
