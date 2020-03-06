@@ -14,7 +14,7 @@ We'd love to have you become a contributor!
 
 Here are ways that you can get involved:
 - Make new DSP modules. See issues labeled "feature".
-- Port existing DSP modules from other open source projects(MIT). See issues labeled "port".
+- Port existing DSP modules from other open source projects (MIT). See issues labeled "port".
 - Fix problems with existing modules. See issues labeled "bug" and/or "polish".
 - Test existing functionality and make issues.
 
