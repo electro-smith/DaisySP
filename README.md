@@ -23,4 +23,4 @@ DaisySP is licensed with the permissive MIT open source license.
 This allows for modification and reuse in both commercial and personal projects. 
 It does not provide a warranty of any kind. 
 
-For the full license, read the license.txt file in the root directory. 
+For the full license, read the LICENSE file in the root directory. 
