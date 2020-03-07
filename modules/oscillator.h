@@ -96,7 +96,7 @@ class Oscillator
     //
     // Adds a value 0.0-1.0 (mapped to 0.0-TWO_PI) to the current phase. Useful for PM and "FM" synthesis.
     // ~~~~
-    void PhaseAdd(float _phase) { phase_ += (_phase * float(M_TWOPI)); }
+    void PhaseAdd(float _phase);
     // ~~~~
 
     // ### Reset

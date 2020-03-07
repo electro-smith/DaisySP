@@ -1,12 +1,15 @@
 #include <math.h>
+#include "dsp.h"
 #include "oscillator.h"
 
 // TODO: Fix Polyblep triangle... something bad happened to it.
 using namespace daisysp;
 static inline float Polyblep(float phase_inc, float t);
 
-constexpr float     TWO_PI_F     = (float)M_TWOPI;
-constexpr float     TWO_PI_RECIP = 1.0f / TWO_PI_F;
+//constexpr float     TWOPI_F     = (float)M_TWOPI;
+//constexpr float     TWO_PI_RECIP = 1.0f / TWOPI_F;
+//#define TWOPI_F ((float)M_TWOPI)
+#define TWO_PI_RECIP (1.0f / TWOPI_F)
 
 float               Oscillator::Process()
 {
@@ -48,16 +51,17 @@ float               Oscillator::Process()
         default: out = 0.0f; break;
     }
     phase_ += phase_inc_;
-    if(phase_ > TWO_PI_F)
+    if(phase_ > TWOPI_F)
     {
-        phase_ -= TWO_PI_F;
+        phase_ -= TWOPI_F;
     }
     return out * amp_;
 }
+void Oscillator::PhaseAdd(float _phase) { phase_ += (_phase * float(TWOPI_F)); }
 
 float Oscillator::CalcPhaseInc(float f)
 {
-    return (TWO_PI_F * f) * sr_recip_;
+    return (TWOPI_F * f) * sr_recip_;
 }
 
 static float Polyblep(float phase_inc, float t)
