@@ -62,12 +62,12 @@ void NlFilt::ProcessBlock(float *in, float *out, size_t size)
 		else if (outv < -maxamp)
 			outv = -maxampd2;
 		out[n] = outv;
-		if ((++point == MAX_DELAY)) {
+		if (++point == MAX_DELAY) {
 			point = 0;
 		}
 		yn = TANH(yn);
 		fp[point] = yn; /* and delay line */
-		if ((++nmL == MAX_DELAY)) {
+		if (++nmL == MAX_DELAY) {
 			nmL = 0;
 		}
 		ynm2 = ynm1; /* Shuffle along */

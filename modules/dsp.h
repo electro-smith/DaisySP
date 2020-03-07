@@ -160,8 +160,9 @@ inline float soft_saturate(float in, float thresh)
 {
 	bool  flip;
 	float val, out;
+	out = 0.0f;
 	//val = fabsf(in);
-	flip = val < 0.0f;
+	flip = in < 0.0f;
     val = flip ? -in : in;
 	if(val < thresh)
 	{

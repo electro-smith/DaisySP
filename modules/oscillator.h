@@ -111,7 +111,7 @@ class Oscillator
     uint8_t waveform_;
     float   amp_, freq_;
     float   sr_, sr_recip_, phase_, phase_inc_;
-    float   last_out_, last_freq_;
+    float   last_out_;
 };
 } // namespace daisysp
 #endif

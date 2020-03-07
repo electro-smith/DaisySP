@@ -159,7 +159,7 @@ namespace daisysp
 
 	private:
 		void Reinit();
-		float amp_, freq_, decay_, damp_, ifreq_;
+		float amp_, freq_, decay_, damp_;
 	    float sicps_;
 	    int32_t phs256_, npts_, maxpts_;
 	    float *buf_;
