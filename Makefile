@@ -1,4 +1,5 @@
 TARGET = libdaisysp
+COMPUTER = true
 
 MODULE_DIR = modules
 MODULES = \
@@ -26,7 +27,7 @@ tone \
 # whitenoise
 # polypluck
 
-# TODO: Consider making this work for PCs as well?
+# TODO: Consider making this work for COMPUTERs as well?
 
 CHIPSET = stm32f7x
 
@@ -60,7 +61,10 @@ CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(MODULES))
 #######################################
 # binaries
 #######################################
+ifdef COMPUTER
+else
 PREFIX = arm-none-eabi-
+endif
 # The gcc compiler bin path can be either defined in make command via GCC_PATH variable (> make GCC_PATH=xxx)
 # either it can be added to the PATH environment variable.
 ifdef GCC_PATH
@@ -87,6 +91,7 @@ BIN = $(CP) -O binary -S
 # CFLAGS
 #######################################
 # cpu
+ifndef COMPUTER
 CPU = -mcpu=cortex-m7
 
 # fpu
@@ -97,6 +102,7 @@ FLOAT-ABI = -mfloat-abi=hard
 
 # mcu
 MCU = $(CPU) -mthumb $(FPU) $(FLOAT-ABI)
+endif
 
 # macros for gcc
 # AS defines
@@ -157,11 +163,23 @@ vpath %.cpp $(sort $(dir $(CPP_SOURCES)))
 OBJECTS += $(addprefix $(BUILD_DIR)/,$(notdir $(ASM_SOURCES:.s=.o)))
 vpath %.s $(sort $(dir $(ASM_SOURCES)))
 
+ifdef COMPUTER
+
+$(BUILD_DIR)/%.o: %.c Makefile | $(BUILD_DIR)
+	$(CC) -c $(CFLAGS) -static $< -o $@
+
+$(BUILD_DIR)/%.o: %.cpp Makefile | $(BUILD_DIR)
+	$(CXX) -c $(CPPFLAGS) -static $< -o $@
+
+else
+
 $(BUILD_DIR)/%.o: %.c Makefile | $(BUILD_DIR)
 	$(CC) -c $(CFLAGS) -static -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
 
 $(BUILD_DIR)/%.o: %.cpp Makefile | $(BUILD_DIR)
 	$(CXX) -c $(CPPFLAGS) -static -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.cpp=.lst)) $< -o $@
+
+endif
 
 $(BUILD_DIR)/%.o: %.s Makefile | $(BUILD_DIR)
 	$(AS) -c $(CFLAGS) $< -o $@
