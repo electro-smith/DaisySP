@@ -1,5 +1,4 @@
 #!/bin/bash
-LIBDAISY ?= C:/Users/shensley/Documents/Mothership/electrosmith/libdaisy
 echo "rebuilding examples:"
 start_dir=$PWD
 example_dirs=( examples )
