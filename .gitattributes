@@ -1,1 +1,11 @@
-* text=false
+* text=auto
+*.c text
+*.cpp text
+*.h text
+*.py text
+*.sln text eol=crlf
+*.vcxproj text eol=crlf
+*.vgdbsettings text eol=crlf
+*.filters text eol=crlf
+*.props text eol=crlf
+*.xml text eol=crlf
