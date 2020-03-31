@@ -2,8 +2,9 @@
 #include "daisy_seed.h"
 
 using namespace daisysp;
+using namespace daisy;
 
-static daisy_handle seed;
+static DaisySeed seed;
 static WhiteNoise nse;
  
 static void AudioCallback(float *in, float *out, size_t size)
@@ -25,14 +26,11 @@ static void AudioCallback(float *in, float *out, size_t size)
 int main(void)
 {
     // initialize seed hardware and WhiteNoise daisysp module
-    daisy_seed_init(&seed);
+	seed.Init();
     nse.Init();
 
-    // define callback
-    dsy_audio_set_callback(DSY_AUDIO_INTERNAL, AudioCallback);
-
     // start callback
-    dsy_audio_start(DSY_AUDIO_INTERNAL);
+	seed.StartAudio(AudioCallback);
 
     while(1) {}
 }

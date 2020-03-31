@@ -2,8 +2,9 @@
 #include "daisy_seed.h"
 
 using namespace daisysp;
+using namespace daisy;
 
-static daisy_handle seed;
+static DaisySeed seed;
 static Oscillator osc;
 
 static void AudioCallback(float *in, float *out, size_t size)
@@ -24,19 +25,22 @@ static void AudioCallback(float *in, float *out, size_t size)
 int main(void)
 {
 	// initialize seed hardware and oscillator daisysp module
-    daisy_seed_init(&seed);
-    osc.Init(DSY_AUDIO_SAMPLE_RATE);
+    float sample_rate;
+	seed.Init();
+	sample_rate = seed.AudioSampleRate();
+    osc.Init(sample_rate);
 
     // Set parameters for oscillator
     osc.SetWaveform(osc.WAVE_SIN);
     osc.SetFreq(440);
     osc.SetAmp(0.5);
 
-    // define callback
-    dsy_audio_set_callback(DSY_AUDIO_INTERNAL, AudioCallback);
+    
+    
 
     // start callback
-    dsy_audio_start(DSY_AUDIO_INTERNAL);
+	seed.StartAudio(AudioCallback);
+
 
     while(1) {}
 }

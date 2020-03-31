@@ -2,8 +2,9 @@
 #include "daisy_seed.h"
 
 using namespace daisysp;
+using namespace daisy;
 
-static daisy_handle seed;
+static DaisySeed seed;
 static Tone flt;
 static Oscillator osc, lfo;
 
@@ -29,28 +30,31 @@ static void AudioCallback(float *in, float *out, size_t size)
 int main(void)
 {
 	// initialize seed hardware and daisysp modules
-    daisy_seed_init(&seed);
+    float sample_rate;
+	seed.Init();
+	sample_rate = seed.AudioSampleRate();
 
     // initialize Tone object
-    flt.Init(DSY_AUDIO_SAMPLE_RATE);
+    flt.Init(sample_rate);
 
     // set parameters for sine oscillator object
-    lfo.Init(DSY_AUDIO_SAMPLE_RATE);
+    lfo.Init(sample_rate);
     lfo.SetWaveform(Oscillator::WAVE_TRI);
     lfo.SetAmp(1);
     lfo.SetFreq(.4);
 
     // set parameters for sine oscillator object
-    osc.Init(DSY_AUDIO_SAMPLE_RATE);
+    osc.Init(sample_rate);
     osc.SetWaveform(Oscillator::WAVE_POLYBLEP_SAW);
     osc.SetFreq(100);
     osc.SetAmp(0.25);
 
-    // define callback
-    dsy_audio_set_callback(DSY_AUDIO_INTERNAL, AudioCallback);
+    
+    
 
     // start callback
-    dsy_audio_start(DSY_AUDIO_INTERNAL);
+	seed.StartAudio(AudioCallback);
+
 
     while(1) {}
 }

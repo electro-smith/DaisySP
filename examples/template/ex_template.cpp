@@ -1,9 +1,11 @@
 #include "daisy_seed.h"
 
-static daisy_handle seed;
+using namespace daisy;
+
+static DaisySeed seed;
 
 int main(void)
 {
-    daisy_seed_init(&seed);
+	seed.Init();
     while(1) {}
 }
