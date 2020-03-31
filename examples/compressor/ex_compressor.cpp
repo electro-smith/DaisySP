@@ -2,8 +2,8 @@
 #include "daisy_seed.h"
 
 // Shortening long macro for sample rate
-#ifndef SAMPLE_RATE
-#define SAMPLE_RATE DSY_AUDIO_SAMPLE_RATE
+#ifndef sample_rate
+
 #endif
 
 // Interleaved audio definitions
@@ -11,8 +11,9 @@
 #define RIGHT (i+1)
 
 using namespace daisysp;
+using namespace daisy;
 
-static daisy_handle seed;
+static DaisySeed seed;
 
 static Compressor comp;
 // Helper Modules
@@ -50,14 +51,17 @@ static void AudioCallback(float *in, float *out, size_t size)
 int main(void)
 {
     // initialize seed hardware and daisysp modules
-    daisy_seed_init(&seed);
-    comp.Init(SAMPLE_RATE);
-    env.Init(SAMPLE_RATE);
-    osc_a.Init(SAMPLE_RATE);
-    osc_b.Init(SAMPLE_RATE);
+    float sample_rate;
+	seed.Configure();
+	seed.Init();
+	sample_rate = seed.AudioSampleRate();
+    comp.Init(sample_rate);
+    env.Init(sample_rate);
+    osc_a.Init(sample_rate);
+    osc_b.Init(sample_rate);
 
     // Set up metro to pulse every second
-    tick.Init(1.0f, SAMPLE_RATE);    
+    tick.Init(1.0f, sample_rate);    
 
     // set compressor parameters
     comp.SetThreshold(-64.0f);
@@ -80,11 +84,12 @@ int main(void)
     osc_b.SetFreq(220);
     osc_b.SetAmp(0.25);
 
-    // define callback
-    dsy_audio_set_callback(DSY_AUDIO_INTERNAL, AudioCallback);
+    
+    
 
     // start callback
-    dsy_audio_start(DSY_AUDIO_INTERNAL);
+	seed.StartAudio(AudioCallback);
+
 
     while(1) {}
 }

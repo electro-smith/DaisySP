@@ -11,8 +11,9 @@
 #define RIGHT (i+1)
 
 using namespace daisysp;
+using namespace daisy;
 
-daisy_handle seed;
+DaisySeed seed;
 PitchShifter ps;
 
 static void AudioCallback(float *in, float *out, size_t size)
@@ -30,17 +31,18 @@ static void AudioCallback(float *in, float *out, size_t size)
 int main(void)
 {
 	// initialize seed hardware and daisysp modules
-    daisy_seed_init(&seed);
+    float sample_rate;
+	seed.Configure();
+	seed.Init();
+	sample_rate = seed.AudioSampleRate();
 
-    ps.Init(DSY_AUDIO_SAMPLE_RATE);
+    ps.Init(sample_rate);
     // set transposition 1 octave up (12 semitones)
     ps.SetTransposition(12.0f);
 
-    // define callback
-    dsy_audio_set_callback(DSY_AUDIO_INTERNAL, AudioCallback);
-
     // start callback
-    dsy_audio_start(DSY_AUDIO_INTERNAL);
+	seed.StartAudio(AudioCallback);
+
 
     while(1) {}
 }

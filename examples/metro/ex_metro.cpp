@@ -2,8 +2,9 @@
 #include "daisy_seed.h"
 
 using namespace daisysp;
+using namespace daisy;
 
-static daisy_handle seed;
+static DaisySeed seed;
 static Metro clock;
 static Oscillator osc_sine;
 
@@ -33,22 +34,26 @@ static void AudioCallback(float *in, float *out, size_t size)
 int main(void)
 {
 	// initialize seed hardware and daisysp modules
-    daisy_seed_init(&seed);
+    float sample_rate;
+	seed.Configure();
+	seed.Init();
+	sample_rate = seed.AudioSampleRate();
 
     // initialize Metro object at 2 hz
-    clock.Init(2, DSY_AUDIO_SAMPLE_RATE);
+    clock.Init(2, sample_rate);
 
     // set parameters for sine oscillator object
-    osc_sine.Init(DSY_AUDIO_SAMPLE_RATE);
+    osc_sine.Init(sample_rate);
     osc_sine.SetWaveform(Oscillator::WAVE_SIN);
     osc_sine.SetFreq(100);
     osc_sine.SetAmp(0.25);
 
-    // define callback
-    dsy_audio_set_callback(DSY_AUDIO_INTERNAL, AudioCallback);
+    
+    
 
     // start callback
-    dsy_audio_start(DSY_AUDIO_INTERNAL);
+	seed.StartAudio(AudioCallback);
+
 
     while(1) {}
 }

@@ -2,8 +2,8 @@
 #include "daisy_seed.h"
 
 // Shortening long macro for sample rate
-#ifndef SAMPLE_RATE
-#define SAMPLE_RATE DSY_AUDIO_SAMPLE_RATE
+#ifndef sample_rate
+
 #endif
 
 // Interleaved audio definitions
@@ -11,8 +11,9 @@
 #define RIGHT (i+1)
 
 using namespace daisysp;
+using namespace daisy;
 
-static daisy_handle seed;
+static DaisySeed seed;
 static Oscillator osc;
 static Decimator decim;
 static Phasor phs;
@@ -39,9 +40,12 @@ static void AudioCallback(float *in, float *out, size_t size)
 int main(void)
 {
     // initialize seed hardware and daisysp modules
-    daisy_seed_init(&seed);
-    osc.Init(SAMPLE_RATE);
-    phs.Init(SAMPLE_RATE, 0.5f);
+    float sample_rate;
+	seed.Configure();
+	seed.Init();
+	sample_rate = seed.AudioSampleRate();
+    osc.Init(sample_rate);
+    phs.Init(sample_rate, 0.5f);
     decim.Init();
 
     // Set parameters for oscillator
@@ -52,11 +56,12 @@ int main(void)
     decim.SetDownsampleFactor(0.4f);
     decim.SetBitsToCrush(8);
 
-    // define callback
-    dsy_audio_set_callback(DSY_AUDIO_INTERNAL, AudioCallback);
+    
+    
 
     // start callback
-    dsy_audio_start(DSY_AUDIO_INTERNAL);
+	seed.StartAudio(AudioCallback);
+
 
     while(1) {}
 }

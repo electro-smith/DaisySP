@@ -2,8 +2,8 @@
 #include "daisy_seed.h"
 
 // Shortening long macro for sample rate
-#ifndef SAMPLE_RATE
-#define SAMPLE_RATE DSY_AUDIO_SAMPLE_RATE
+#ifndef sample_rate
+
 #endif
 
 // Interleaved audio definitions
@@ -11,8 +11,9 @@
 #define RIGHT (i+1)
 
 using namespace daisysp;
+using namespace daisy;
 
-static daisy_handle seed;
+static DaisySeed seed;
 static AdEnv env;
 static Oscillator osc;
 static Metro tick;
@@ -41,12 +42,15 @@ static void AudioCallback(float *in, float *out, size_t size)
 int main(void)
 {
     // initialize seed hardware and daisysp modules
-    daisy_seed_init(&seed);
-    env.Init(SAMPLE_RATE);
-    osc.Init(SAMPLE_RATE);
+    float sample_rate;
+	seed.Configure();
+	seed.Init();
+	sample_rate = seed.AudioSampleRate();
+    env.Init(sample_rate);
+    osc.Init(sample_rate);
 
     // Set up metro to pulse every second
-    tick.Init(1.0f, SAMPLE_RATE);    
+    tick.Init(1.0f, sample_rate);    
 
     // set adenv parameters
     env.SetTime(ADENV_SEG_ATTACK, 0.15);
@@ -60,11 +64,12 @@ int main(void)
     osc.SetFreq(220);
     osc.SetAmp(0.25);
 
-    // define callback
-    dsy_audio_set_callback(DSY_AUDIO_INTERNAL, AudioCallback);
+    
+    
 
     // start callback
-    dsy_audio_start(DSY_AUDIO_INTERNAL);
+	seed.StartAudio(AudioCallback);
+
 
     while(1) {}
 }

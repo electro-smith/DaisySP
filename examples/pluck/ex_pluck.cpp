@@ -3,8 +3,8 @@
 #include <algorithm>
 
 // Shortening long macro for sample rate
-#ifndef SAMPLE_RATE
-#define SAMPLE_RATE DSY_AUDIO_SAMPLE_RATE
+#ifndef sample_rate
+
 #endif
 
 // Interleaved audio definitions
@@ -12,8 +12,9 @@
 #define RIGHT (i+1)
 
 using namespace daisysp;
+using namespace daisy;
 
-static daisy_handle seed;
+static DaisySeed seed;
 
 // Helper Modules
 static Metro tick;
@@ -50,23 +51,27 @@ int main(void)
     float init_buff[256]; // buffer for Pluck impulse
 
     // initialize seed hardware and daisysp modules
-    daisy_seed_init(&seed);
+    float sample_rate;
+	seed.Configure();
+	seed.Init();
+	sample_rate = seed.AudioSampleRate();
 
     // Set up Metro to pulse every second
-    tick.Init(1.0f, SAMPLE_RATE);    
+    tick.Init(1.0f, sample_rate);    
     // Set up Pluck algo
-    plk.Init(SAMPLE_RATE, init_buff, 256, PLUCK_MODE_RECURSIVE);
+    plk.Init(sample_rate, init_buff, 256, PLUCK_MODE_RECURSIVE);
     plk.SetDecay(0.95f);
     plk.SetDamp(0.9f);
     plk.SetAmp(0.3f);
 
     arp_idx = 0;
 
-    // define callback
-    dsy_audio_set_callback(DSY_AUDIO_INTERNAL, AudioCallback);
+    
+    
 
     // start callback
-    dsy_audio_start(DSY_AUDIO_INTERNAL);
+	seed.StartAudio(AudioCallback);
+
 
     while(1) {}
 }
