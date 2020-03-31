@@ -33,6 +33,7 @@ int main(void)
 {
 	// initialize seed hardware and daisysp modules
     float sample_rate;
+	seed.Configure();
 	seed.Init();
 	sample_rate = seed.AudioSampleRate();
 

@@ -32,6 +32,7 @@ int main(void)
 {
     // initialize seed hardware and Svf daisysp module
     float sample_rate;
+	seed.Configure();
 	seed.Init();
 	sample_rate = seed.AudioSampleRate();
     // Initialize Oscillator, and set parameters.

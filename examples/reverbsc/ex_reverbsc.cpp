@@ -20,6 +20,7 @@ int main(void)
 {
     // initialize seed hardware and whitenoise daisysp module
     float sample_rate;
+	seed.Configure();
 	seed.Init();
 	sample_rate = seed.AudioSampleRate();
     verb.Init(sample_rate);

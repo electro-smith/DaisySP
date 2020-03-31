@@ -26,6 +26,7 @@ static void AudioCallback(float *in, float *out, size_t size)
 int main(void)
 {
     // initialize seed hardware and WhiteNoise daisysp module
+	seed.Configure();
 	seed.Init();
     nse.Init();
 

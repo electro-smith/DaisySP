@@ -12,6 +12,7 @@ static void Callback(float *in, float *out, size_t size)
 
 int main(void)
 {
+	seed.Configure();
 	seed.Init();
     seed.StartAudio(Callback);
     while(1) 
