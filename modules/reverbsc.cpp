@@ -63,6 +63,8 @@ int ReverbSc::Init(float sr)
     n_bytes = 0;
     for(i = 0; i < 8; i++)
     {
+        if(n_bytes > DSY_REVERBSC_MAX_SIZE)
+            return 1;
         delay_lines_[i].buf = (aux_) + n_bytes;
         InitDelayLine(&delay_lines_[i], i);
         n_bytes += DelayLineBytesAlloc(sr, 1, i);

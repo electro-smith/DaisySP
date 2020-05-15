@@ -37,6 +37,9 @@ class ReverbSc
     ~ReverbSc() {}
     // ### Init
     // Initializes the reverb module, and sets the sample_rate at which the Process function will be called.
+	// 
+    // Returns 0 if all good, or 1 if it runs out of delay times exceed maximum allowed.
+	//
     // ~~~~
     int Init(float sample_rate);
     // ~~~~
