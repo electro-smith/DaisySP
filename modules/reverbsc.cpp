@@ -61,13 +61,13 @@ int ReverbSc::Init(float sr)
 	prv_lpfreq_ = 0.0;
 	init_done_ = 1;
 	int i, n_bytes = 0;
-	for (i = 0; i < 8; i++) {
-		n_bytes += DelayLineBytesAlloc(sr, 1, i);
-	}
+//	for (i = 0; i < 8; i++) {
+//		n_bytes += DelayLineBytesAlloc(sr, 1, i);
+//	}
 	//sp_auxdata_alloc(&aux_, n_bytes);
 	n_bytes = 0;
 	for (i = 0; i < 8; i++) {
-		delay_lines_[i].buf = (aux_) + n_bytes;
+        delay_lines_[i].buf = (aux_) + n_bytes;
 		InitDelayLine(&delay_lines_[i], i);
 		n_bytes += DelayLineBytesAlloc(sr, 1, i);
 	}

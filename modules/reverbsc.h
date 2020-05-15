@@ -12,7 +12,7 @@
 #ifndef DSYSP_REVERBSC_H
 #define DSYSP_REVERBSC_H
 
-#define DSY_REVERBSC_MAX_SIZE 32767
+#define DSY_REVERBSC_MAX_SIZE 98936
 
 namespace daisysp
 {
