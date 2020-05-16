@@ -1,9 +1,3 @@
-// Reverb SC -- Ported from csound/soundpipe
-// Original author(s):	Sean Costello, Istvan Varga
-// Year:				1999, 2005
-// Ported by:			Stephen Hensley
-//
-
 #include <math.h>
 #include <stdlib.h>
 #include <stdint.h>
