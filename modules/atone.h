@@ -1,7 +1,9 @@
 // # ATone
 //
 // A first-order recursive high-pass filter with variable frequency response.
-// 
+//
+// ## Credits  
+//   Csound / Soundpipe
 #pragma once
 #ifndef DSY_ATONE_H
 #define DSY_ATONE_H
