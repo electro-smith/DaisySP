@@ -13,7 +13,7 @@ static void AudioCallback(float *in, float *out, size_t size)
 	float saw, freq, output;
     for (size_t i = 0; i < size; i += 2)
     {
-        freq =  (lfo.Process()*7000 );
+        freq = 6000 + (lfo.Process()*6000 );
     	saw = osc.Process();
 
         flt.SetFreq(freq);

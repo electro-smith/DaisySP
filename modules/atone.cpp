@@ -16,7 +16,6 @@ float ATone::Process(float &in)
     float out;
 
     out = c2_ * (prevout_ + in);
-    //prev = out
     prevout_ = out - in;
     
     return out;
