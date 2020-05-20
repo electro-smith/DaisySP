@@ -6,6 +6,7 @@ adenv \
 adsr  \
 atone \
 blsaw \
+blsquare \
 compressor \
 crossfade \
 dcblock \
