@@ -7,6 +7,7 @@ adsr  \
 atone \
 blsaw \
 blsquare \
+bltriangle \
 compressor \
 crossfade \
 dcblock \

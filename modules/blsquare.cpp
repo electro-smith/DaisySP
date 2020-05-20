@@ -16,7 +16,12 @@ void BlSquare::Init(float sample_rate)
     
     for (int i = 0; i < 2; i ++)
     {
-        fRec0_[i] = fVec1_[i] = fVec2_[i] = 0.0;
+        fRec0_[i] = fVec1_[i] = 0.0;
+    }
+
+    for (int i = 0; i < 4096; i++)
+    {
+        fVec2_[i] = 0.0;
     }
 } 
 

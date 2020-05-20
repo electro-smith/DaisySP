@@ -25,7 +25,7 @@ float BlSaw::Process()
     float fSlow2  = (TwoOverSr_ * freq_);
     float fSlow3  = (Sampling_Freq_ / freq_);
 
-    fRec0_[0]    = fmod((1.0 + fRec0_[1]), fSlow3);
+    fRec0_[0]    = fmodf((1.0 + fRec0_[1]), fSlow3);
     float fTemp0 = fSlow2 * fRec0_[0] - 1.0;
     fTemp0      *= fTemp0;       //mult faster than fpow for squaring?
     fVec0_[0]    = fTemp0;

@@ -21,6 +21,7 @@
 #include "modules/atone.h"
 #include "modules/blsaw.h"
 #include "modules/blsquare.h"
+#include "modules/bltriangle.h"
 #include "modules/compressor.h"
 #include "modules/crossfade.h"
 #include "modules/dcblock.h"
