@@ -1,8 +1,8 @@
 # Project Name
-TARGET = ex_blsquare
+TARGET = ex_blosc
 
 # Sources
-CPP_SOURCES = ex_blsquare.cpp
+CPP_SOURCES = ex_blosc.cpp
 
 # Library Locations
 LIBDAISY_DIR ?= ../../../libdaisy
