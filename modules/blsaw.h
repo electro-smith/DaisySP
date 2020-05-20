@@ -21,17 +21,45 @@ namespace daisysp
         BlSaw() {}
 	~BlSaw() {}
 
-	inline void SetFreq(float freq) { freq_ = freq; };
+    // #Setters	
+    //
+    // ###SetFreq
+    //
+    // - Float freq: Set oscillator frequency in Hz.
+    //
+    // ~~~~
+        inline void SetFreq(float freq) { freq_ = freq; };
+    // ~~~~
 
+    // ###SetAmp
+    //
+    // - Float freq: Set oscillator amplitude, 0 to 1.
+    //
+    // ~~~~
 	inline void SetAmp(float amp)   { amp_ = amp;};
-	
-	void Init(float sample_rate);
+    // ~~~~
 
+    // ###Init
+    //
+    // -Initialize oscillator. Defaults to 440Hz, .5 amplitude.
+    //
+    // #Argument:  float sample_rate: audio engine sample rate.
+    //
+    // ~~~~
+	void Init(float sample_rate);
+    // ~~~~
+
+    // ###Process
+    //
+    // - Get next floating point oscillator sample.
+    //
+    // ~~~~
 	float Process();
-	
+    // ~~~~
+
     private:
 	float fRec0_[2], fVec0_[2], fVec1_[2],
-	      freq_, amp_, Sampling_Freq_, Nyquist_;
+	      freq_, amp_, Sampling_Freq_, TwoOverSr_;
     };
 } // namespace daisysp
 #endif

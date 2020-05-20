@@ -32,7 +32,7 @@ int main(void)
 	osc.Init(sample_rate);
 
     // Set parameters for oscillator;
-    osc.SetFreq(220);
+    osc.SetFreq(440);
     osc.SetAmp(0.5);
 
     
