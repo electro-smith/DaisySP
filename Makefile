@@ -6,10 +6,12 @@ adenv \
 adsr  \
 atone \
 blosc \
+bitcrush \
 compressor \
 crossfade \
 dcblock \
 decimator \
+fold \
 line \
 limiter \
 nlfilt \
