@@ -6,6 +6,7 @@ adenv \
 adsr  \
 autowah \
 atone \
+bal \
 blosc \
 compressor \
 crossfade \
