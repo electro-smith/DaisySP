@@ -5,6 +5,7 @@ MODULES = \
 adenv \
 adsr  \
 atone \
+allpass \
 blosc \
 compressor \
 crossfade \
