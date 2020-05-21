@@ -5,7 +5,7 @@ using namespace daisysp;
 
 float Adsr::Tau2Pole(float tau)
 {
-    return exp(-1.0 / (tau * sample_rate_));
+    return expf(-1.0f / (tau * sample_rate_));
 }
 
 float Adsr::AdsrFilter()
@@ -18,16 +18,16 @@ float Adsr::AdsrFilter()
 
 void Adsr::Init(float sample_rate)
 {
-    seg_time_[ADSR_SEG_ATTACK]  = 0.1;
-    seg_time_[ADSR_SEG_DECAY]   = 0.1;
-    sus_                        = 0.5;
-    seg_time_[ADSR_SEG_RELEASE] = 0.3;
+    seg_time_[ADSR_SEG_ATTACK]  = 0.1f;
+    seg_time_[ADSR_SEG_DECAY]   = 0.1f;
+    sus_                        = 0.5f;
+    seg_time_[ADSR_SEG_RELEASE] = 0.3f;
     //timer_ = 0;
-    a_ = 0;
-    b_ = 0;
-    x_ = 0;
-    y_ = 0;
-    prev_ = 0;
+    a_ = 0.0f;
+    b_ = 0.0f;
+    x_ = 0.0f;
+    y_ = 0.0f;
+    prev_ = 0.0f;
     atk_time_ = seg_time_[ADSR_SEG_ATTACK] * sample_rate;
     sample_rate_ = sample_rate;
 }
@@ -35,16 +35,16 @@ void Adsr::Init(float sample_rate)
 float Adsr::Process(bool gate)
 {
     float pole, out;
-    out = 0.0;
+    out = 0.0f;
     
     if (gate && mode_ != ADSR_SEG_DECAY)
     {
         mode_ = ADSR_SEG_ATTACK;
 	//timer_ = 0;
-	pole = Tau2Pole(seg_time_[ADSR_SEG_ATTACK] * 0.6);
+	pole = Tau2Pole(seg_time_[ADSR_SEG_ATTACK] * 0.6f);
 	atk_time_ = seg_time_[ADSR_SEG_ATTACK] * sample_rate_;
 	a_ = pole;
-	b_ = 1.0 - pole;
+	b_ = 1.0f - pole;
     }
     else if(!gate)
     {
@@ -58,17 +58,17 @@ float Adsr::Process(bool gate)
     switch(mode_)
     {
         case ADSR_SEG_IDLE:
-	    out = 0;
+	    out = 0.0f;
 	    break;
         case ADSR_SEG_ATTACK:
 	    out = AdsrFilter();
 
-	    if (out > .99)
+	    if (out > .99f)
 	    {
 	        mode_ = ADSR_SEG_DECAY;
 		pole = Tau2Pole(seg_time_[ADSR_SEG_DECAY]);
 		a_ = pole;
-		b_ = 1.0 - pole;
+		b_ = 1.0f - pole;
 	    }
 	    break;
         case ADSR_SEG_DECAY:

@@ -16,22 +16,24 @@
 
 namespace daisysp
 {
-    // Bl Waveforms
-    // ~~~~
-    enum
-    {
-        BL_WAVEFORM_TRIANGLE,
-        BL_WAVEFORM_SAW,
-        BL_WAVEFORM_SQUARE,
-    };
-    // ~~~~
-
+   
     class BlOsc
     {
     public:
         BlOsc() {}
 	~BlOsc() {}
 
+	// Bl Waveforms
+	// ~~~~
+	enum Waveforms
+	{
+	    WAVE_TRIANGLE,
+	    WAVE_SAW,
+	    WAVE_SQUARE,
+	    WAVE_OFF,
+	};
+	// ~~~~
+	
         // ###Init
 	//
         // -Initialize oscillator.
@@ -82,11 +84,11 @@ namespace daisysp
 	// ~~~~
 
     private:
-	float fRec0_[2], fRec1_[2], fVec0_[2], fVec1_[2], fVec2_[4096],
-	      freq_, amp_, pw_, Sampling_Freq_, HalfSr_, QuarterSr_,
-	      SecPerSample_, TwoOverSr_, FourOverSr_;
+	float rec0_[2], rec1_[2], vec0_[2], vec1_[2], vec2_[4096],
+	      freq_, amp_, pw_, sampling_freq_, half_sr_, quarter_sr_,
+	      sec_per_sample_, two_over_sr_, four_over_sr_;
 	uint8_t mode_;
-	int IOTA_;
+	int iota_;
 	
 	float ProcessSquare();
 	float ProcessTriangle();
