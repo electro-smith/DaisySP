@@ -7,28 +7,28 @@ void Allpass::Init(float sample_rate)
 {
     sample_rate_ = sample_rate;
     rev_time_ = 3.5;
-    loop_time_ = looptime;
-    buf_size_ = 0.5 + loop_time_ * sample_rate_;
-    //auxdata
+    loop_time_ = 0.5f; //maximum of .5 seconds at 192kHz (96000 samples)
+    buf_size_ = (int)(loop_time_ * sample_rate_);
     prvt_ = 0.0;
     coef_ = 0.0;
-    buff_pos_ = 0;
+    buf_pos_ = 0;
 }
 
 float Allpass::Process(float in)
 {
-  float y, z, out;
-    float coef = coef_;
+    float y, z, out;
     if (prvt_ != rev_time_)
     {
         prvt_ = rev_time_;
-	coef = coef_ = expf(-6.9078 * loop_time_ / prvt_);
+	coef_ = expf(-6.9078 * loop_time_ / prvt_);
     }
 
-    y = buf[bufpos_];
+    y = buf_[buf_pos_];
+    z = coef_ * y + in;
+    buf_[buf_pos_] = z;
     out = y - coef_ * z;
 
-    bufpos_++;
-    bufpos %= buf_size_;
+    buf_pos_++;
+    buf_pos_ %= buf_size_;
     return out;
 }
