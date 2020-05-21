@@ -36,7 +36,6 @@ int main(void)
 	osc2.Init(sample_rate);
 	bal.Init(sample_rate);
 
-	//bal.SetCutoff(5000);
 	
     // Set parameters for oscillator one
     osc1.SetWaveform(osc1.WAVE_SIN);

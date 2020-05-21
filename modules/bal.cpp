@@ -8,10 +8,10 @@ void Bal::Init(float sample_rate)
     float b;
     sample_rate_ = sample_rate;
     ihp_ = 10.0f;
-    b    = 2.0f - cosf(ihp_ * (2.0 * M_PI / sample_rate_));
+    b    = 2.0f - cosf(ihp_ * (2.0f * (float)M_PI / sample_rate_));
     c2_  = b - sqrtf(b*b - 1.0f);
     c1_  = 1.0f - c2_;
-    prvq_ = prvr_ = prva_ = 0.0;
+    prvq_ = prvr_ = prva_ = 0.0f;
 }
 
 float Bal::Process(float sig, float comp)
@@ -49,5 +49,7 @@ float Bal::Process(float sig, float comp)
         out = sig * a;
     }
 
+    prva_ = a;
+    
     return out;
 }

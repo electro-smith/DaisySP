@@ -1,5 +1,6 @@
 // #bal
-// balance module
+// Balances two sound sources. Sig is boosted to the level of comp.
+//
 // ## Credits
 // *Original author(s) : Barry Vercoe, john ffitch, Gabriel Maldonado
 // *Year: 1991
@@ -23,7 +24,7 @@ class Bal
   
     // ### Init
     //
-    // Initializes the xyz module.
+    // Initializes the bal module.
     //
     // sample_rate - The sample rate of the audio engine being run. 
     // 
