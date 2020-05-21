@@ -36,10 +36,28 @@ class Bitcrush
     // ~~~~
         float Process(float in);
     // ~~~~
-  
+
+    // #Setters
+    //
+    // ###SetBitdepth
+    //
+    // * int bitdepth : Sets bit depth.	
+    //
+    // ~~~~
+        inline void SetBitDepth(int bitdepth) { bit_depth_ = bitdepth; }
+    // ~~~~
+
+    // ###SetCrushRate
+    //
+    // * float crushrate : Sets rate to downsample to.	
+    //
+    // ~~~~
+        inline void SetCrushRate(float crushrate) { crush_rate_ = crushrate; }
+    // ~~~~
+	
     private:
-        float sample_rate_;
-	int crush_rate_, bit_depth_;
+        float sample_rate_, crush_rate_;
+	int  bit_depth_;
     };
 } // namespace daisysp
 #endif

@@ -16,14 +16,15 @@ void Bitcrush::Init(float sample_rate)
 
 float Bitcrush::Process(float in)
 {
-    float bits = pow(2, floor(bit_depth_));
+    float bits = pow(2, bit_depth_);
     float foldamt = sample_rate_ / crush_rate_;
     float out;
 
-    out = in * 65536.0;
+    out = in * 65536.0f;
     out += 32768;
-    out *= floor(out);
-    out *= (65536.0 / bits) - 32768;
+    out *= (bits / 65536.0f);
+    out = floor(out);
+    out *= (65536.0f / bits) - 32768;
 
     fold.SetIncrement(foldamt);
     out = fold.Process(out);
