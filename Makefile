@@ -4,6 +4,7 @@ MODULE_DIR = modules
 MODULES = \
 adenv \
 adsr  \
+autowah \
 atone \
 allpass \
 blosc \
