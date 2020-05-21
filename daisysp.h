@@ -19,6 +19,7 @@
 #include "modules/adenv.h"
 #include "modules/adsr.h"
 #include "modules/atone.h"
+#include "modules/autowah.h"
 #include "modules/blosc.h"
 #include "modules/bitcrush.h"
 #include "modules/compressor.h"
