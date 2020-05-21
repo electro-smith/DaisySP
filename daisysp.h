@@ -17,7 +17,9 @@
 // Listed in Alphabetical Order
 // Each of the below has/should have an example project.
 #include "modules/adenv.h"
+#include "modules/adsr.h"
 #include "modules/atone.h"
+#include "modules/blosc.h"
 #include "modules/compressor.h"
 #include "modules/crossfade.h"
 #include "modules/dcblock.h"

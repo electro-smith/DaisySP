@@ -3,7 +3,9 @@ TARGET = libdaisysp
 MODULE_DIR = modules
 MODULES = \
 adenv \
+adsr  \
 atone \
+blosc \
 compressor \
 crossfade \
 dcblock \
