@@ -7,7 +7,7 @@ void Allpass::Init(float sample_rate)
 {
     sample_rate_ = sample_rate;
     rev_time_ = 3.5;
-    loop_time_ = 0.5f; //maximum of .5 seconds at 192kHz (96000 samples)
+    loop_time_ = 0.01f; //maximum of .5 seconds at 192kHz (96000 samples)
     buf_size_ = (int)(loop_time_ * sample_rate_);
     prvt_ = 0.0;
     coef_ = 0.0;

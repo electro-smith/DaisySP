@@ -14,7 +14,7 @@ static void AudioCallback(float *in, float *out, size_t size)
     for (size_t i = 0; i < size; i += 2)
     {
     	sig = osc.Process();
-	float l = lfo.Process();
+	float l = .01 + lfo.Process();
 	allpass.SetLoopTime(l);
 	sig = allpass.Process(sig);
 	
@@ -44,7 +44,7 @@ int main(void)
 	// Set parameters for oscillator
 	lfo.SetWaveform(osc.WAVE_SIN);
 	lfo.SetFreq(1);
-	lfo.SetAmp(0.25);
+	lfo.SetAmp(0.01);
 
 	
 	// start callback
