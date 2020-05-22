@@ -7,6 +7,7 @@ adsr  \
 autowah \
 atone \
 blosc \
+comb \
 compressor \
 crossfade \
 dcblock \
