@@ -13,6 +13,7 @@ dcblock \
 decimator \
 line \
 limiter \
+moogladder \
 nlfilt \
 metro \
 mode \

@@ -31,6 +31,7 @@
 #include "modules/line.h"
 #include "modules/metro.h"
 #include "modules/mode.h"
+#include "modules/moogladder.h"
 #include "modules/nlfilt.h"
 #include "modules/oscillator.h"
 #include "modules/phasor.h"
