@@ -46,7 +46,7 @@ class Allpass
     //
     // 
     // ~~~~
-        inline void SetLoopTime(float looptime) { loop_time_ = fminf (0.5f, looptime); }
+        inline void SetLoopTime(float looptime) { loop_time_ = fminf (0.5f, looptime); buf_size_ = (int) (loop_time_ * sample_rate_); }
     // ~~~~
 
     // #Setters
