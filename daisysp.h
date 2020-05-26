@@ -20,7 +20,7 @@
 #include "modules/adsr.h"
 #include "modules/atone.h"
 #include "modules/autowah.h"
-#include "modules/bal.h"
+#include "modules/balance.h"
 #include "modules/blosc.h"
 #include "modules/compressor.h"
 #include "modules/crossfade.h"
