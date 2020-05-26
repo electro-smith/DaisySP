@@ -1,5 +1,5 @@
 #include "moogladder.h"
-#include <math.h>
+#include "dsp.h"
 
 using namespace daisysp;
 
@@ -12,11 +12,11 @@ float MoogLadder::my_tanh(float x)
 	x = -x;
 	return x * sign;
     }
-    else if (x >= 4.0)
+    else if (x >= 4.0f)
     {
         return sign;
     }
-    else if (x < 0.5)
+    else if (x < 0.5f)
     {
         return x * sign;
     }
@@ -26,9 +26,9 @@ float MoogLadder::my_tanh(float x)
 void MoogLadder::Init(float sample_rate)
 {
     sample_rate_ = sample_rate;
-    istor_ = 0.0;
-    res_ = 0.4;
-    freq_ = 1000;
+    istor_ = 0.0f;
+    res_ = 0.4f;
+    freq_ = 1000.0f;
     
     for (int i = 0; i < 6; i++)
     {
@@ -36,8 +36,8 @@ void MoogLadder::Init(float sample_rate)
 	tanhstg_[i%3] = 0.0;
     }
 
-    old_freq_ = 0.0;
-    old_res_ = -1.0;
+    old_freq_ = 0.0f;
+    old_res_ = -1.0f;
 }
 
 float MoogLadder::Process(float in)
@@ -59,13 +59,13 @@ float MoogLadder::Process(float in)
         float f, fc, fc2, fc3, fcr;
 	old_freq_ = freq;
 	fc = (freq / sample_rate_);
-	f = 0.5 * fc;
+	f = 0.5f * fc;
 	fc2 = fc * fc;
 	fc3 = fc2 * fc2;
 
-        fcr = 1.8730*fc3 + 0.4955*fc2 - 0.6490*fc + 0.9988;
-        acr = -3.9364*fc2 + 1.8409*fc + 0.9968;
-        tune = (1.0 - exp(-((2 * M_PI)*f*fcr))) / THERMAL;
+        fcr = 1.8730f * fc3 + 0.4955f * fc2 - 0.6490f * fc + 0.9988f;
+        acr = -3.9364f * fc2 + 1.8409f * fc + 0.9968f;
+        tune = (1.0f - expf(-((2 * PI_F)*f*fcr))) / THERMAL;
 
 	old_res_ = res;
 	old_acr_ = acr;
