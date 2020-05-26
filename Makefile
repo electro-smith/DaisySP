@@ -8,10 +8,12 @@ autowah \
 atone \
 biquad \
 blosc \
+bitcrush \
 compressor \
 crossfade \
 dcblock \
 decimator \
+fold \
 line \
 limiter \
 nlfilt \
