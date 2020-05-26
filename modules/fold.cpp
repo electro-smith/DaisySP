@@ -15,7 +15,7 @@ void Fold::Init()
 
 float Fold::Process(float in)
 {
-    float out;;
+    float out;
 
     if (index_ < sample_index_)
     {
