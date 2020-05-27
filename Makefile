@@ -8,6 +8,7 @@ autowah \
 atone \
 balance \
 biquad \
+allpass \
 blosc \
 bitcrush \
 compressor \
