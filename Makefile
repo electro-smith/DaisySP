@@ -16,6 +16,7 @@ decimator \
 fold \
 line \
 limiter \
+moogladder \
 nlfilt \
 metro \
 mode \
