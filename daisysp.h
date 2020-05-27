@@ -32,6 +32,7 @@
 #include "modules/fold.h"
 #include "modules/limiter.h"
 #include "modules/line.h"
+#include "modules/maytrig.h"
 #include "modules/metro.h"
 #include "modules/mode.h"
 #include "modules/moogladder.h"
