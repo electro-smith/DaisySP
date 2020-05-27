@@ -11,6 +11,7 @@ biquad \
 allpass \
 blosc \
 bitcrush \
+comb \
 compressor \
 crossfade \
 dcblock \
