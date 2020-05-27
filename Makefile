@@ -7,13 +7,17 @@ adsr  \
 autowah \
 atone \
 balance \
+biquad \
 blosc \
+bitcrush \
 compressor \
 crossfade \
 dcblock \
 decimator \
+fold \
 line \
 limiter \
+moogladder \
 nlfilt \
 metro \
 mode \
