@@ -46,14 +46,8 @@ int main(void)
     filt.SetRes(0.85);
     filt.SetDrive(0.8);
 
-    
-    
-
-    dsy_adc_start();
-
     // start callback
 	seed.StartAudio(AudioCallback);
-
 
     while(1) {}
 }
