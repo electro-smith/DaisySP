@@ -20,6 +20,7 @@
 #include "modules/adsr.h"
 #include "modules/atone.h"
 #include "modules/autowah.h"
+#include "modules/balance.h"
 #include "modules/biquad.h"
 #include "modules/blosc.h"
 #include "modules/bitcrush.h"

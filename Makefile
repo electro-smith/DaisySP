@@ -6,6 +6,7 @@ adenv \
 adsr  \
 autowah \
 atone \
+balance \
 biquad \
 blosc \
 bitcrush \
