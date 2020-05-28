@@ -18,6 +18,15 @@
 #define DSY_MAX(in, mx) (in > mx ? in : mx)
 #define DSY_CLAMP(in, mn, mx) (DSY_MIN(DSY_MAX(in, mn), mx))
 // ~~~~
+// ### Generic passable Buffer
+// ~~~~
+template <typename T, size_t size>
+struct Buffer
+{
+    T buff[size];
+    size_t size_;
+}
+// ~~~~
 
 namespace daisysp
 {

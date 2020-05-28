@@ -22,6 +22,7 @@
 #include "modules/autowah.h"
 #include "modules/blosc.h"
 #include "modules/comb.h"
+#include "modules/comb.cpp" //avoids linker error
 #include "modules/compressor.h"
 #include "modules/crossfade.h"
 #include "modules/dcblock.h"
