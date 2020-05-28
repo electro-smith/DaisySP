@@ -20,12 +20,12 @@
 #include "modules/adsr.h"
 #include "modules/atone.h"
 #include "modules/allpass.h"
+#include "modules/allpass.cpp" //avoids linker error
 #include "modules/autowah.h"
 #include "modules/balance.h"
 #include "modules/biquad.h"
 #include "modules/blosc.h"
 #include "modules/bitcrush.h"
-#include "modules/comb.h"
 #include "modules/compressor.h"
 #include "modules/crossfade.h"
 #include "modules/dcblock.h"

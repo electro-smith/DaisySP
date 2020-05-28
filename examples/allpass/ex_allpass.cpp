@@ -6,7 +6,7 @@ using namespace daisy;
 
 static DaisySeed seed;
 static Oscillator osc, lfo;
-static Allpass allpass;
+static Allpass <float, 9600> allpass;
 
 static void AudioCallback(float *in, float *out, size_t size)
 {
@@ -15,7 +15,7 @@ static void AudioCallback(float *in, float *out, size_t size)
     {
     	sig = osc.Process();
 	float l = .01 + lfo.Process();
-	allpass.SetLoopTime(l);
+	allpass.SetFreq(l);
 	sig = allpass.Process(sig);
 	
     	// left out
@@ -34,8 +34,16 @@ int main(void)
 	seed.Init();
 	sample_rate = seed.AudioSampleRate();
 	osc.Init(sample_rate);
-	allpass.Init(sample_rate);
-    
+       
+	Buffer <float, 9600> buf;
+	buf.size_ = 9600;
+	for (int i  = 0; i < 9600; i++)
+	{
+	  buf.buff[i] = 0.0f;
+	}
+
+	allpass.Init(sample_rate, buf);
+	
 	// Set parameters for oscillator
 	osc.SetWaveform(osc.WAVE_SIN);
 	osc.SetFreq(440);
