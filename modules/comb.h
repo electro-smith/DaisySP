@@ -12,12 +12,10 @@
 #ifdef __cplusplus
 
 #include <math.h>
-#include "dsp.h"
 
 namespace daisysp
 {
 
-template <typename T, size_t size>
 class Comb
 {
     public:
@@ -31,7 +29,7 @@ class Comb
     // sample_rate - The sample rate of the audio engine being run. 
     // 
     // ~~~~
-    void Init (float sample_rate, Buffer <T,size> buf);
+    void Init (float sample_rate, float* buff, size_t size);
     // ~~~~
 
     // ### Process
@@ -60,7 +58,7 @@ class Comb
 	
     private:
 	float sample_rate_, rev_time_, loop_time_, prvt_, coef_, max_loop_time_;
-	Buffer <T, size> buf_;
+	float* buf_;
 	int  buf_pos_, mod_;
     };
 } // namespace daisysp

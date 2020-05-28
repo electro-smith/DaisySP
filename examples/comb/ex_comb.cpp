@@ -5,7 +5,7 @@ using namespace daisysp;
 using namespace daisy;
 
 static DaisySeed seed;
-Comb <float,9600> flt;
+Comb flt;
 static WhiteNoise noise;
 
 static void AudioCallback(float *in, float *out, size_t size)
@@ -33,15 +33,14 @@ int main(void)
 	seed.Init();
 	sample_rate = seed.AudioSampleRate();
 	
-	Buffer <float, 9600> buf;
-	buf.size_ = 9600;
+	float buf[9600];
 	for (int i  = 0; i < 9600; i++)
 	{
-	  buf.buff[i] = 0.0f;
+	  buf[i] = 0.0f;
 	}
 	
 	// initialize Comb object
-	flt.Init(sample_rate, buf);
+	flt.Init(sample_rate, buf, 9600);
 	flt.SetFreq(.01);
 	
 	//initialize noise

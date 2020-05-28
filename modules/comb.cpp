@@ -5,22 +5,20 @@ using namespace daisysp;
 
 static float log001 = -6.9078f; // log .001
 
-template <typename T, size_t size>
-void Comb<T, size>::Init(float sample_rate, Buffer <T, size> buf)
+void Comb::Init(float sample_rate, float* buff, size_t size)
 {
     sample_rate_ = sample_rate;
     rev_time_  = 3.5;
-    max_loop_time_ = ((float) buf.size_ / sample_rate_) - .01;
+    max_loop_time_ = ((float) size / sample_rate_) - .01;
     loop_time_ = max_loop_time_;
     mod_ = sample_rate_ * loop_time_;
-    buf_ = buf;
+    buf_ = buff;
     prvt_ = 0.0f;
     coef_ = 0.0f;
     buf_pos_ = 0;
 }
 
-template <typename T, size_t size>
-float Comb<T, size>::Process(float in)
+float Comb::Process(float in)
 {
     float tmp = 0;
     float coef = coef_;
@@ -40,11 +38,11 @@ float Comb<T, size>::Process(float in)
 	}
     }
 
-    outsamp = buf_.buff[buf_pos_];
+    outsamp = buf_[buf_pos_];
     tmp = outsamp;
     tmp *= coef;
     tmp += in;
-    buf_.buff[buf_pos_] = tmp;
+    buf_[buf_pos_] = tmp;
 
     buf_pos_++;
     buf_pos_ %= mod_;
@@ -52,8 +50,7 @@ float Comb<T, size>::Process(float in)
     return outsamp;
 }
 
-template <typename T, size_t size>
-void Comb<T, size>::SetFreq(float freq)
+void Comb::SetFreq(float freq)
 {
     loop_time_ = fminf(freq, max_loop_time_);
     mod_ = loop_time_ * sample_rate_;
