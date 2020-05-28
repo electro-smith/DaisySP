@@ -20,7 +20,6 @@
 #include "modules/adsr.h"
 #include "modules/atone.h"
 #include "modules/allpass.h"
-#include "modules/allpass.cpp" //avoids linker error
 #include "modules/autowah.h"
 #include "modules/balance.h"
 #include "modules/biquad.h"
