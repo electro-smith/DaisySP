@@ -19,7 +19,6 @@
 #include "modules/adenv.h"
 #include "modules/adsr.h"
 #include "modules/atone.h"
-#include "modules/allpass.h"
 #include "modules/autowah.h"
 #include "modules/balance.h"
 #include "modules/biquad.h"
