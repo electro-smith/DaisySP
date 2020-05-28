@@ -8,14 +8,16 @@ autowah \
 atone \
 balance \
 biquad \
+allpass \
 blosc \
-comb \
 bitcrush \
+comb \
 compressor \
 crossfade \
 dcblock \
 decimator \
 fold \
+drip \
 line \
 limiter \
 moogladder \
