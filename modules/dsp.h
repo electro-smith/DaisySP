@@ -25,7 +25,7 @@ struct Buffer
 {
     T buff[size];
     size_t size_;
-}
+};
 // ~~~~
 
 namespace daisysp
