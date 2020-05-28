@@ -14,8 +14,7 @@ static void AudioCallback(float *in, float *out, size_t size)
     for (size_t i = 0; i < size; i += 2)
     {
         output = noise.Process();
-
-	//flt.SetLoopTime(time);
+	    
         output = 0.5 * flt.Process(output);
 
     	// left out
