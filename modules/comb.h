@@ -45,7 +45,7 @@ class Comb
     //
     // 
     // ~~~~
-	inline void SetFreq(float looptime);
+	void SetFreq(float looptime);
     // ~~~~
 
     // #Setters

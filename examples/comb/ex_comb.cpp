@@ -8,6 +8,8 @@ static DaisySeed seed;
 Comb flt;
 static WhiteNoise noise;
 
+float buf[9600];
+
 static void AudioCallback(float *in, float *out, size_t size)
 {
 	float output;
@@ -33,7 +35,6 @@ int main(void)
 	seed.Init();
 	sample_rate = seed.AudioSampleRate();
 	
-	float buf[9600];
 	for (int i  = 0; i < 9600; i++)
 	{
 	  buf[i] = 0.0f;
