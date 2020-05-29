@@ -10,6 +10,7 @@ balance \
 biquad \
 blosc \
 bitcrush \
+comb \
 compressor \
 crossfade \
 dcblock \

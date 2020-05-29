@@ -23,6 +23,7 @@
 #include "modules/balance.h"
 #include "modules/biquad.h"
 #include "modules/blosc.h"
+#include "modules/comb.h"
 #include "modules/bitcrush.h"
 #include "modules/compressor.h"
 #include "modules/crossfade.h"
