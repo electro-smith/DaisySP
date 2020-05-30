@@ -18,6 +18,23 @@ jobs:
           env:
               - CODESTYLE=1
               - CLANG_FORMAT=clang-format-10
+        # build
+        - os: linux
+          name: 'Build'
+          addons:
+              apt:
+                  packages:
+                      - build-essential
+          env:
+              - BUILD=1
+before_install:
+    - |
+        if [ "$BUILD" != "" ]; then
+          travis_wait 45 bash ./ci/travis_setup_gcc_arm.sh
+          export PATH="/tmp/gcc-arm/bin/:$PATH"
+          export GCC_PATH="/tmp/gcc-arm/bin"
+        fi
+
 before_script:
     - |
         if [ "$CODESTYLE" != "" ]; then
@@ -25,3 +42,9 @@ before_script:
           ./ci/run-clang-format.py -r modules examples --clang-format-executable $CLANG_FORMAT
         fi
 
+script:
+    - |
+        if [ "$BUILD" != "" ]; then
+          make clean
+          make
+        fi
