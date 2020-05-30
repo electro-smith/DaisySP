@@ -1,0 +1,27 @@
+# Blacklist
+branches:
+  #only:
+    #- master
+
+language: c++
+
+jobs:
+    include:
+        # check code style
+        - os: linux
+          name: Code Style
+          dist: focal # required for clang-format-10
+          addons:
+              apt:
+                  packages:
+                      - clang-format-10
+          env:
+              - CODESTYLE=1
+              - CLANG_FORMAT=clang-format-10
+before_script:
+    - |
+        if [ "$CODESTYLE" != "" ]; then
+          $CLANG_FORMAT -version
+          ./ci/run-clang-format.py -r modules examples --clang-format-executable $CLANG_FORMAT
+        fi
+
