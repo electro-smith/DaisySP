@@ -27,6 +27,30 @@ jobs:
                       - build-essential
           env:
               - BUILD=1
+        # build documentation
+        - os: linux
+          name: 'Build Documentation'
+          addons:
+              apt:
+                  packages:
+                      - doxygen
+                      - pandoc
+                      - texlive-fonts-recommended
+                      - texlive-latex-extra
+                      - texlive-fonts-extra
+                      - dvipng
+                      - texlive-latex-recommended
+                      - lmodern # needed for style guide pdf
+          env:
+              - BUILD_DOCS=1
+          deploy:
+              provider: pages
+              skip_cleanup: true
+              local_dir: doc/html
+              keep_history: true
+              github_token: $GH_REPO_TOKEN
+              on:
+                branch: master
 before_install:
     - |
         if [ "$BUILD" != "" ]; then
@@ -43,6 +67,10 @@ before_script:
         fi
 
 script:
+    - |
+        if [ "$BUILD_DOCS" != "" ]; then
+          ./rebuild_docs.sh
+        fi
     - |
         if [ "$BUILD" != "" ]; then
           make clean
