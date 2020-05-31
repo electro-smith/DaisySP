@@ -5,8 +5,7 @@
     {                                                     \
         float error = (in)-out;                           \
         out += (error > 0 ? positive : negative) * error; \
-    \
-}
+    }
 
 using namespace daisysp;
 
