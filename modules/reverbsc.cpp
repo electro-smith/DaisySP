@@ -38,7 +38,7 @@ static const float kReverbParams[8][4]
 
 static int DelayLineMaxSamples(float sr, float i_pitch_mod, int n);
 //static int InitDelayLine(dsy_reverbsc_dl *lp, int n);
-static int         DelayLineBytesAlloc(float sr, float i_pitch_mod, int n);
+static int DelayLineBytesAlloc(float sr, float i_pitch_mod, int n);
 static const float kOutputGain = 0.35;
 static const float kJpScale    = 0.25;
 

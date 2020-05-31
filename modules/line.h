@@ -14,19 +14,19 @@ class Line
     Line() {}
     ~Line() {}
     /** Initializes Line module.
-	*/
+    */
     void Init(float sample_rate);
 
     /** Processes Line segment. Returns one sample.
-		value of finished will be updated to a 1, upon completion of the Line's trajectory.
-	*/
+        value of finished will be updated to a 1, upon completion of the Line's trajectory.
+    */
     float Process(uint8_t *finished);
 
     /** Begin creation of Line. 
-		\param start - beginning value
-		\param end - ending value
-		\param dur - duration in seconds of Line segment
-	*/
+        \param start - beginning value
+        \param end - ending value
+        \param dur - duration in seconds of Line segment
+    */
     void Start(float start, float end, float dur);
 
   private:

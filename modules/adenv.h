@@ -33,7 +33,6 @@ class AdEnv
   public:
     AdEnv() {}
     ~AdEnv() {}
-
     /** Initializes the ad envelope.
 
         Defaults:
@@ -55,43 +54,29 @@ class AdEnv
 
     /** Starts or retriggers the envelope.*/
     inline void Trigger() { trigger_ = 1; }
-
     /** Sets the length of time (in seconds) for a specific segment. */
-    inline void SetTime(uint8_t seg, float time)
-    {
-        segment_time_[seg] = time;
-    }
-
+    inline void SetTime(uint8_t seg, float time) { segment_time_[seg] = time; }
     /** Sets the amount of curve applied. A positve value will create a log
         curve. Input range: -100 to 100.  (or more)
     */
     inline void SetCurve(float scalar) { curve_scalar_ = scalar; }
-
     /** Sets the minimum value of the envelope output.
         Input range: -FLTmax_, to FLTmax_
     */
     inline void SetMin(float min) { min_ = min; }
-
     /** Sets the maximum value of the envelope output.
         Input range: -FLTmax_, to FLTmax_
     */
     inline void SetMax(float max) { max_ = max; }
-
     /** Returns the current output value without processing the next sample */
     inline float GetValue() const { return (output_ * (max_ - min_)) + min_; }
-
     /** Returns the segment of the envelope that the phase is currently located
         in.
     */
     inline uint8_t GetCurrentSegment() { return current_segment_; }
-
     /** Returns true if the envelope is currently in any stage apart from idle.
     */
-    inline bool IsRunning() const
-    {
-        return current_segment_ != ADENV_SEG_IDLE;
-    }
-
+    inline bool IsRunning() const { return current_segment_ != ADENV_SEG_IDLE; }
   private:
     uint8_t  current_segment_, prev_segment_;
     float    segment_time_[ADENV_SEG_LAST];

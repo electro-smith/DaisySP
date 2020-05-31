@@ -15,11 +15,11 @@ class DcBlock
     ~DcBlock(){};
 
     /** Initializes DcBlock module
-	*/
+    */
     void Init(float sample_rate);
 
     /** performs DcBlock Process 
-	*/
+    */
     float Process(float in);
 
   private:

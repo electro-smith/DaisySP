@@ -45,11 +45,9 @@ float BlOsc::ProcessSquare()
     float fTemp1        = (fSlow6 * ((fTemp0 - vec1_[1])));
     vec2_[iota_ & 4095] = fTemp1;
 
-    out = amp_
-          * (0.0
-             - ((fSlow5 * vec2_[(iota_ - (int)fSlow2) & 4095]
-                 + fSlow8 * vec2_[(iota_ - ((int)fSlow2 + 1)) & 4095])
-                - fTemp1));
+    out = amp_ * (0.0 - ((fSlow5 * vec2_[(iota_ - (int)fSlow2) & 4095]
+                          + fSlow8 * vec2_[(iota_ - ((int)fSlow2 + 1)) & 4095])
+                         - fTemp1));
     rec0_[1] = rec0_[0];
     vec1_[1] = vec1_[0];
     iota_++;
@@ -76,10 +74,9 @@ float BlOsc::ProcessTriangle()
     vec1_[0]            = fTemp0;
     float fTemp1        = fSlow7 * (fTemp0 - vec1_[1]);
     vec2_[iota_ & 4095] = fTemp1;
-    rec0_[0]            = 0.0
-               - ((fSlow6 * vec2_[(iota_ - iSlow4) & 4095]
-                   + fSlow9 * vec2_[(iota_ - iSlow5) & 4095])
-                  - (.999 * rec0_[1] + fTemp1));
+    rec0_[0]            = 0.0 - ((fSlow6 * vec2_[(iota_ - iSlow4) & 4095]
+                       + fSlow9 * vec2_[(iota_ - iSlow5) & 4095])
+                      - (.999 * rec0_[1] + fTemp1));
 
     out      = (float)(fSlow1 * rec0_[0]);
     rec1_[1] = rec1_[0];

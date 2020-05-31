@@ -22,13 +22,11 @@ class DelayLine
   public:
     DelayLine() {}
     ~DelayLine() {}
-
     /** initializes the delay line by clearing the values within, and setting delay to 1 sample.
-	*/
+    */
     void Init() { Reset(); }
-
     /** clears buffer, sets write ptr to 0, and delay to 1 sample.
-	*/
+    */
     void Reset()
     {
         for(size_t i = 0; i < max_size; i++)
@@ -40,8 +38,8 @@ class DelayLine
     }
 
     /** sets the delay time in samples
-		If a float is passed in, a fractional component will be calculated for interpolating the delay line.
-	*/
+        If a float is passed in, a fractional component will be calculated for interpolating the delay line.
+    */
     inline void SetDelay(size_t delay)
     {
         frac_  = 0.0f;
@@ -49,8 +47,8 @@ class DelayLine
     }
 
     /** sets the delay time in samples
-		If a float is passed in, a fractional component will be calculated for interpolating the delay line.
-	*/
+        If a float is passed in, a fractional component will be calculated for interpolating the delay line.
+    */
     inline void SetDelay(float delay)
     {
         int32_t int_delay = static_cast<int32_t>(delay);
@@ -60,7 +58,7 @@ class DelayLine
     }
 
     /** writes the sample of type T to the delay line, and advances the write ptr
-	*/
+    */
     inline void Write(const T sample)
     {
         line_[write_ptr_] = sample;
@@ -68,7 +66,7 @@ class DelayLine
     }
 
     /** returns the next sample of type T in the delay line, interpolated if necessary.
-	*/
+    */
     inline const T Read() const
     {
         T a = line_[(write_ptr_ + delay_) % max_size];

@@ -16,27 +16,20 @@
 
 namespace daisysp
 {
-
 /** efficient floating point min/max
 c/o stephen mccaul 
 */
 inline float fmax(float a, float b)
 {
     float r;
-    asm("vmaxnm.f32 %[d], %[n], %[m]"
-        : [d] "=t"(r)
-        : [n] "t"(a), [m] "t"(b)
-        :);
+    asm("vmaxnm.f32 %[d], %[n], %[m]" : [d] "=t"(r) : [n] "t"(a), [m] "t"(b) :);
     return r;
 }
 
 inline float fmin(float a, float b)
 {
     float r;
-    asm("vminnm.f32 %[d], %[n], %[m]"
-        : [d] "=t"(r)
-        : [n] "t"(a), [m] "t"(b)
-        :);
+    asm("vminnm.f32 %[d], %[n], %[m]" : [d] "=t"(r) : [n] "t"(a), [m] "t"(b) :);
     return r;
 }
 
@@ -44,7 +37,7 @@ inline float fmin(float a, float b)
 */
 inline float fclamp(float in, float min, float max)
 {
-    return fmin(fmax(in, min), max);  
+    return fmin(fmax(in, min), max);
 }
 
 /** From Musicdsp.org "Fast power and root estimates for 32bit floats)
@@ -54,10 +47,10 @@ These are approximations
 inline float fastpower(float f, int n)
 {
     long *lp, l;
-    lp = (long*)(&f);
-    l = *lp;
+    lp = (long *)(&f);
+    l  = *lp;
     l -= 0x3F800000;
-    l <<= (n-1);
+    l <<= (n - 1);
     l += 0x3F800000;
     *lp = l;
     return f;
@@ -66,10 +59,10 @@ inline float fastpower(float f, int n)
 inline float fastroot(float f, int n)
 {
     long *lp, l;
-    lp = (long*)(&f); 
-    l = *lp;
+    lp = (long *)(&f);
+    l  = *lp;
     l -= 0x3F800000;
-    l >>= (n=1);
+    l >>= (n = 1);
     l += 0x3F800000;
     *lp = l;
     return f;
@@ -77,11 +70,10 @@ inline float fastroot(float f, int n)
 
 /** Midi to frequency helper
 */
-inline float mtof(float m) 
-{ 
-	return powf(2, (m - 69.0f) / 12.0f) * 440.0f; 
+inline float mtof(float m)
+{
+    return powf(2, (m - 69.0f) / 12.0f) * 440.0f;
 }
-
 
 
 /** one pole lpf
@@ -101,8 +93,8 @@ c/o stephen mccaul
 template <typename T>
 T median(T a, T b, T c)
 {
-    return (b < a) ? (b < c) ? (c < a) ? c : a : b
-            : (a < c) ? (c < b) ? c : b : a;
+    return (b < a) ? (b < c) ? (c < a) ? c : a : b : (a < c) ? (c < b) ? c : b
+                                                             : a;
 }
 
 
@@ -120,41 +112,41 @@ x > 1:
 */
 inline float soft_saturate(float in, float thresh)
 {
-	bool  flip;
-	float val, out;
-	//val = fabsf(in);
-	flip = val < 0.0f;
-    val = flip ? -in : in;
-	if(val < thresh)
-	{
-		out = in;
-	}
-	else if(val > 1.0f)
-	{
-		out = (thresh + 1.0f)/2.0f;
-		if(flip)
-			out *= -1.0f;
-	}
-	else if(val > thresh)
-	{
-		float temp;
-		temp = (val - thresh) / (1 - thresh);
-		out  = thresh + (val - thresh) / (1.0f + (temp * temp));
-		if(flip)
-			out *= -1.0f;
-	}
-	return out;
-	//	return val < thresh
-	//			   ? val
-	//			   : val > 1.0f
-	//					 ? (thresh + 1.0f) / 2.0f
-	//					 : thresh
-	//						   + (val - thresh)
-	//								 / (1.0f
-	//									+ (((val - thresh) / (1.0f - thresh))
-	//									   * ((val - thresh) / (1.0f - thresh))));
+    bool  flip;
+    float val, out;
+    //val = fabsf(in);
+    flip = val < 0.0f;
+    val  = flip ? -in : in;
+    if(val < thresh)
+    {
+        out = in;
+    }
+    else if(val > 1.0f)
+    {
+        out = (thresh + 1.0f) / 2.0f;
+        if(flip)
+            out *= -1.0f;
+    }
+    else if(val > thresh)
+    {
+        float temp;
+        temp = (val - thresh) / (1 - thresh);
+        out  = thresh + (val - thresh) / (1.0f + (temp * temp));
+        if(flip)
+            out *= -1.0f;
+    }
+    return out;
+    //    return val < thresh
+    //               ? val
+    //               : val > 1.0f
+    //                     ? (thresh + 1.0f) / 2.0f
+    //                     : thresh
+    //                           + (val - thresh)
+    //                                 / (1.0f
+    //                                    + (((val - thresh) / (1.0f - thresh))
+    //                                       * ((val - thresh) / (1.0f - thresh))));
 }
-    
+
 } // namespace daisysp
 
 #endif

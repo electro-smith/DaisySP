@@ -8,8 +8,8 @@
 namespace daisysp
 {
 /** Non-linear filter
-	
-	port by: Stephen Hensley, December 2019
+    
+    port by: Stephen Hensley, December 2019
     
     The four 5-coefficients: a, b, d, C, and L are used to configure different filter types.
 
@@ -53,26 +53,20 @@ class NlFilt
 
 
     /** Set Coefficient a
-		*/
+        */
     inline void SetA(float a) { a_ = a; }
-
     /** Set Coefficient b
-		*/
+        */
     inline void SetB(float b) { b_ = b; }
-
     /** Set Coefficient d
-		*/
+        */
     inline void SetD(float d) { d_ = d; }
-
     /** Set Coefficient C
-		*/
+        */
     inline void SetC(float C) { C_ = C; }
-
     /** Set Coefficient L
-		*/
+        */
     inline void SetL(float L) { L_ = L; }
-
-
   private:
     int32_t Set();
 

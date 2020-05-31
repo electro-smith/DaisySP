@@ -15,16 +15,15 @@ class Limiter
   public:
     Limiter() {}
     ~Limiter() {}
-
     /** Initializes the Limiter instance. 
-	*/
+    */
     void Init();
 
     /** Processes a block of audio through the limiter.
-		\param in - pointer to a block of audio samples to be processed. The buffer is operated on directly.
-		\param size - size of the buffer "in"
-		\param pre_gain - amount of pre_gain applied to the signal.
-	*/
+        \param in - pointer to a block of audio samples to be processed. The buffer is operated on directly.
+        \param size - size of the buffer "in"
+        \param pre_gain - amount of pre_gain applied to the signal.
+    */
     void ProcessBlock(float *in, size_t size, float pre_gain);
 
   private:

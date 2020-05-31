@@ -3,7 +3,7 @@
 
 // Interleaved audio definitions
 #define LEFT (i)
-#define RIGHT (i+1)
+#define RIGHT (i + 1)
 
 // Set max delay time to 0.75 of samplerate.
 #define MAX_DELAY static_cast<size_t>(48000 * 0.75f)
@@ -14,21 +14,21 @@ using namespace daisy;
 static DaisySeed seed;
 
 // Helper Modules
-static AdEnv env;
+static AdEnv      env;
 static Oscillator osc;
-static Metro tick;
+static Metro      tick;
 
 // Declare a DelayLine of MAX_DELAY number of floats.
 static DelayLine<float, MAX_DELAY> del;
 
 static void AudioCallback(float *in, float *out, size_t size)
 {
-	float osc_out, env_out, feedback, del_out, sig_out;
-    for (size_t i = 0; i < size; i += 2)
+    float osc_out, env_out, feedback, del_out, sig_out;
+    for(size_t i = 0; i < size; i += 2)
     {
-        // When the Metro ticks: 
+        // When the Metro ticks:
         // trigger the envelope to start, and change freq of oscillator.
-        if (tick.Process())
+        if(tick.Process())
         {
             float freq = rand() % 200;
             osc.SetFreq(freq + 100.0f);
@@ -38,19 +38,19 @@ static void AudioCallback(float *in, float *out, size_t size)
         // Use envelope to control the amplitude of the oscillator.
         env_out = env.Process();
         osc.SetAmp(env_out);
-    	osc_out = osc.Process();
+        osc_out = osc.Process();
 
         // Read from delay line
         del_out = del.Read();
         // Calculate output and feedback
-        sig_out = del_out + osc_out;
+        sig_out  = del_out + osc_out;
         feedback = (del_out * 0.75f) + osc_out;
 
         // Write to the delay
         del.Write(feedback);
 
         // Output
-        out[LEFT] = sig_out;
+        out[LEFT]  = sig_out;
         out[RIGHT] = sig_out;
     }
 }
@@ -59,15 +59,15 @@ int main(void)
 {
     // initialize seed hardware and daisysp modules
     float sample_rate;
-	seed.Configure();
-	seed.Init();
-	sample_rate = seed.AudioSampleRate();
+    seed.Configure();
+    seed.Init();
+    sample_rate = seed.AudioSampleRate();
     env.Init(sample_rate);
     osc.Init(sample_rate);
     del.Init();
 
     // Set up Metro to pulse every second
-    tick.Init(1.0f, sample_rate);    
+    tick.Init(1.0f, sample_rate);
 
     // set adenv parameters
     env.SetTime(ADENV_SEG_ATTACK, 0.001);
@@ -84,12 +84,12 @@ int main(void)
     // Set Delay time to 0.75 seconds
     del.SetDelay(sample_rate * 0.75f);
 
-    
-    
 
     // start callback
-	seed.StartAudio(AudioCallback);
+    seed.StartAudio(AudioCallback);
 
 
-    while(1) {}
+    while(1)
+    {
+    }
 }

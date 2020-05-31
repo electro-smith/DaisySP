@@ -4,16 +4,16 @@
 using namespace daisysp;
 using namespace daisy;
 
-static DaisySeed seed;
-static DcBlock block;
+static DaisySeed  seed;
+static DcBlock    block;
 static Oscillator osc_sine;
 
 static void AudioCallback(float *in, float *out, size_t size)
 {
-	float output;
-    for (size_t i = 0; i < size; i += 2)
+    float output;
+    for(size_t i = 0; i < size; i += 2)
     {
-    	output = osc_sine.Process();
+        output = osc_sine.Process();
 
         // add dc to signal
         output += 1;
@@ -21,21 +21,21 @@ static void AudioCallback(float *in, float *out, size_t size)
         // remove dc from signal
         output = block.Process(output);
 
-    	// left out
+        // left out
         out[i] = output;
 
         // right out
-        out[i+1] = output;
+        out[i + 1] = output;
     }
 }
 
 int main(void)
 {
-	// initialize seed hardware and daisysp modules
+    // initialize seed hardware and daisysp modules
     float sample_rate;
-	seed.Configure();
-	seed.Init();
-	sample_rate = seed.AudioSampleRate();
+    seed.Configure();
+    seed.Init();
+    sample_rate = seed.AudioSampleRate();
 
     block.Init(sample_rate);
 
@@ -45,12 +45,12 @@ int main(void)
     osc_sine.SetFreq(100);
     osc_sine.SetAmp(0.25);
 
-    
-    
 
     // start callback
-	seed.StartAudio(AudioCallback);
+    seed.StartAudio(AudioCallback);
 
 
-    while(1) {}
+    while(1)
+    {
+    }
 }

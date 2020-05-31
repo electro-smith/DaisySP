@@ -55,12 +55,8 @@ BraceWrapping:
   AfterObjCDeclaration: true
   AfterStruct:     true
   AfterUnion:      true
-  AfterExternBlock: true
   BeforeCatch:     true
   BeforeElse:      true
   IndentBraces:    false
-  SplitEmptyFunction: false
-  SplitEmptyNamespace: false
-  SplitEmptyRecord: false
 BreakBeforeBraces: Allman
 BreakBeforeBinaryOperators: All

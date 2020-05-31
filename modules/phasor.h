@@ -16,14 +16,13 @@ class Phasor
   public:
     Phasor() {}
     ~Phasor() {}
-
     /** Initializes the Phasor module
-	sample rate, and freq are in Hz
-	initial phase is in radians
-	Additional Init functions have defaults when arg is not specified:
-	- phs = 0.0f
-	- freq = 1.0f
-	*/
+    sample rate, and freq are in Hz
+    initial phase is in radians
+    Additional Init functions have defaults when arg is not specified:
+    - phs = 0.0f
+    - freq = 1.0f
+    */
     inline void Init(float sample_rate, float freq, float initial_phase)
     {
         sample_rate_ = sample_rate;
@@ -32,31 +31,28 @@ class Phasor
     }
 
     /** Initialize phasor with samplerate and freq
-	*/
+    */
     inline void Init(float sample_rate, float freq)
     {
         Init(sample_rate, freq, 0.0f);
     }
 
     /** Initialize phasor with samplerate
-	*/
+    */
     inline void Init(float sample_rate) { Init(sample_rate, 1.0f, 0.0f); }
-
-
     /** processes Phasor and returns current value
-	*/
+    */
     float Process();
 
 
     /** Sets frequency of the Phasor in Hz
-	*/
+    */
     void SetFreq(float freq);
 
 
     /** Returns current frequency value in Hz
-	*/
+    */
     inline float GetFreq() { return freq_; }
-
   private:
     float freq_;
     float sample_rate_, inc_, phs_;

@@ -66,10 +66,10 @@ void Svf::SetFreq(float f)
         fc_ = f;
     }
     // Set Internal Frequency for fc_
-    freq_ = 2.0f
-            * sinf((float)M_PI
-                   * MIN(0.25f,
-                         fc_ / (sr_ * 2.0f))); // fs*2 because double sampled
+    freq_
+        = 2.0f * sinf((float)M_PI
+                      * MIN(0.25f,
+                            fc_ / (sr_ * 2.0f))); // fs*2 because double sampled
     // recalculate damp
     //damp = (MIN(2.0f * powf(res_, 0.25f), MIN(2.0f, 2.0f / freq - freq * 0.5f)));
     damp_ = MIN(2.0f * (1.0f - powf(res_, 0.25f)),

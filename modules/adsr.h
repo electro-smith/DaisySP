@@ -12,7 +12,7 @@ namespace daisysp
 - ATTACK  = First segment of envelope where phase moves from 0 to 1
 - DECAY   = Second segment of envelope where phase moves from 1 to SUSTAIN value
 - SUSTAIN = Third segment of envelope, stays at SUSTAIN level until GATE is released
-- RELEASE = 	Fourth segment of envelop where phase moves from SUSTAIN to 0
+- RELEASE =     Fourth segment of envelop where phase moves from SUSTAIN to 0
 - LAST    =  Last segment, aka release
 */
 enum
@@ -37,47 +37,39 @@ class Adsr
   public:
     Adsr() {}
     ~Adsr() {}
-
-
     /** Initializes the ATone module.
-		\param sample_rate - The sample rate of the audio engine being run. 
-	*/
+        \param sample_rate - The sample rate of the audio engine being run. 
+    */
     void Init(float sample_rate);
 
 
     /** Processes one sample through the filter and returns one sample.
-		\param gate - trigger the envelope, hold it to sustain 
-	*/
+        \param gate - trigger the envelope, hold it to sustain 
+    */
     float Process(bool gate);
 
     /** Sets time
-		Set time per segment in seconds
-	*/
+        Set time per segment in seconds
+    */
     inline void SetTime(int seg, float time) { seg_time_[seg] = time; }
-
-
     /** Sustain level
-		\param sus_level - sets sustain level
-	*/
+        \param sus_level - sets sustain level
+    */
     inline void SetSustainLevel(float sus_level) { sus_ = sus_level; }
-
-
     /** get the current envelope segment
-		\return the segment of the envelope that the phase is currently located in.
-	*/
+        \return the segment of the envelope that the phase is currently located in.
+    */
     inline uint8_t GetCurrentSegment() { return mode_; }
-
     /** Tells whether envelope is active
-		\return true if the envelope is currently in any stage apart from idle.
-	*/
+        \return true if the envelope is currently in any stage apart from idle.
+    */
     inline bool IsRunning() const { return mode_ != ADSR_SEG_IDLE; }
-
   private:
     float   sus_, seg_time_[ADSR_SEG_LAST], a_, b_, y_, x_, prev_, atk_time_;
     int     sample_rate_;
     uint8_t mode_;
-    float   Tau2Pole(float tau);
-    float   AdsrFilter();
+    float Tau2Pole(float tau);
+    float AdsrFilter();
 };
 } // namespace daisysp
 #endif

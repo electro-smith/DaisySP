@@ -19,7 +19,6 @@
 
 namespace daisysp
 {
-
 static inline uint32_t hash_xs32(uint32_t x)
 {
     x ^= x << 13;
@@ -44,9 +43,9 @@ Based on "Pitch Shifting" from ucsd.edu
 t = 1 - ((s *f) / R)
 
 where:
-	s is the size of the delay
-	f is the frequency of the lfo
-	r is the sample_rate
+    s is the size of the delay
+    f is the frequency of the lfo
+    r is the sample_rate
 
 solving for t = 12.0
 f = (12 - 1) * 48000 / SHIFT_BUFFER_SIZE;
@@ -58,9 +57,8 @@ class PitchShifter
   public:
     PitchShifter() {}
     ~PitchShifter() {}
-
-	/** Initialize pitch shifter
-	*/
+    /** Initialize pitch shifter
+    */
     void Init(float sr)
     {
         force_recalc_ = false;
@@ -79,8 +77,8 @@ class PitchShifter
         fun_ = 0.0f;
     }
 
-	/** process pitch shifter
-	*/
+    /** process pitch shifter
+    */
     float Process(float &in)
     {
         float val, fade1, fade2;
@@ -135,8 +133,8 @@ class PitchShifter
         return val;
     }
 
-	/** sets transposition in semitones
-	*/
+    /** sets transposition in semitones
+    */
     void SetTransposition(const float &transpose)
     {
         float   ratio;
@@ -169,8 +167,8 @@ class PitchShifter
         }
     }
 
-	/** sets delay size changing the timbre of the pitchshifting 
-	*/
+    /** sets delay size changing the timbre of the pitchshifting 
+    */
     void SetDelSize(uint32_t size)
     {
         del_size_     = size < SHIFT_BUFFER_SIZE ? size : SHIFT_BUFFER_SIZE;
@@ -178,10 +176,9 @@ class PitchShifter
         SetTransposition(transpose_);
     }
 
-	/** sets an amount of internal random modulation, kind of sounds like tape-flutter
-	*/
+    /** sets an amount of internal random modulation, kind of sounds like tape-flutter
+    */
     inline void SetFun(float f) { fun_ = f; }
-
   private:
     inline void SetSemitones()
     {
@@ -191,9 +188,9 @@ class PitchShifter
         }
     }
     typedef DelayLine<float, SHIFT_BUFFER_SIZE> ShiftDelay;
-    ShiftDelay                                  d_[2];
-    float                                       pitch_shift_, mod_freq_;
-    uint32_t                                    del_size_;
+    ShiftDelay d_[2];
+    float      pitch_shift_, mod_freq_;
+    uint32_t   del_size_;
     /** lfo stuff
 */
     bool   force_recalc_;

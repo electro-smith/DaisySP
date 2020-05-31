@@ -14,9 +14,8 @@ class WhiteNoise
   public:
     WhiteNoise() {}
     ~WhiteNoise() {}
-
     /** Initializes the WhiteNoise object
-	*/
+    */
     void Init()
     {
         amp_      = 1.0f;
@@ -24,11 +23,10 @@ class WhiteNoise
     }
 
     /** sets the amplitude of the noise output
-	*/
+    */
     inline void SetAmp(float a) { amp_ = a; }
-
     /** returns a new sample of noise in the range of -amp_ to amp_
-	*/
+    */
     inline float Process()
     {
         randseed_ *= 16807;

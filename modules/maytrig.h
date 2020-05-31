@@ -18,13 +18,12 @@ class Maytrig
   public:
     Maytrig() {}
     ~Maytrig() {}
-
     /** probabilistically generates triggers
 
-		\param prob (1 always returns true, 0 always false)
+        \param prob (1 always returns true, 0 always false)
 
-		\return given a probability 0 to 1, returns true or false.
-	*/
+        \return given a probability 0 to 1, returns true or false.
+    */
     inline float Process(float prob)
     {
         return ((float)rand() / RAND_MAX) <= prob ? true : false;

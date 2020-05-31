@@ -1,15 +1,15 @@
-//	DaisySP is a DSP Library targeted at the Electrosmith Daisy Product Line.
+//    DaisySP is a DSP Library targeted at the Electrosmith Daisy Product Line.
 //  Author: Stephen Hensley, 2019
 //
-//	However, this is decoupled from the hardware in such a way that it
-//		should be useful outside of the ARM context with different build configurations.
+//    However, this is decoupled from the hardware in such a way that it
+//        should be useful outside of the ARM context with different build configurations.
 //
-//	A few general notes about the contents of the library:
-//		- all memory usage is static.
-//		- in cases of potentially large memory usage: the user will either supply a buffer and a size, or the class will be a template that can have size set at compile time.
-// 		- all modules will have an Init() function, and a Process() function.
-//		- all modules, unless otherwise noted, will process a single sample at a time.
-//		- all processing will be done with 'float' type unless otherwise noted.
+//    A few general notes about the contents of the library:
+//        - all memory usage is static.
+//        - in cases of potentially large memory usage: the user will either supply a buffer and a size, or the class will be a template that can have size set at compile time.
+//         - all modules will have an Init() function, and a Process() function.
+//        - all modules, unless otherwise noted, will process a single sample at a time.
+//        - all processing will be done with 'float' type unless otherwise noted.
 //
 #ifndef DSYSP_H
 #define DSYSP_H

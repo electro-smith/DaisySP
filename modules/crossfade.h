@@ -24,23 +24,22 @@ enum
 
 /** Performs a CrossFade between two signals
 
-	Original author: Paul Batchelor
+    Original author: Paul Batchelor
 
-	Ported from Soundpipe by Andrew Ikenberry
+    Ported from Soundpipe by Andrew Ikenberry
 
-	added curve option for constant power, etc.
+    added curve option for constant power, etc.
 */
 class CrossFade
 {
   public:
     CrossFade() {}
     ~CrossFade() {}
-
     /** Initializes CrossFade module
-		Defaults
-		- current position = .5
-		- curve = linear
-	*/
+        Defaults
+        - current position = .5
+        - curve = linear
+    */
     inline void Init(int curve)
     {
         pos_   = 0.5f;
@@ -48,32 +47,27 @@ class CrossFade
     }
 
     /** Initialize with default linear curve 
-	*/
+    */
     inline void Init() { Init(CROSSFADE_LIN); }
     /** processes CrossFade and returns single sample
-	*/
+    */
     float Process(float &in1, float &in2);
 
 
     /** Sets position of CrossFade between two input signals
-		Input range: 0 to 1
-	*/
+        Input range: 0 to 1
+    */
     inline void SetPos(float pos) { pos_ = pos; }
-
     /** Sets current curve applied to CrossFade 
-	Expected input: See [Curve Options](##curve-options)
-	*/
+    Expected input: See [Curve Options](##curve-options)
+    */
     inline void SetCurve(uint8_t curve) { curve_ = curve; }
-
-
     /** Returns current position
-	*/
+    */
     inline float GetPos(float pos) { return pos_; }
-
     /** Returns current curve
-	*/
+    */
     inline uint8_t GetCurve(uint8_t curve) { return curve_; }
-
   private:
     float   pos_;
     uint8_t curve_;

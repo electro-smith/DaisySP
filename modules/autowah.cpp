@@ -39,18 +39,16 @@ float Autowah::Process(float in)
     rec2_[0]     = (const2_ * rec2_[1]) + ((1.0f - const2_) * rec3_[0]);
     float fTemp2 = fminf(1.0f, rec2_[0]);
     float fTemp3 = powf(2.0f, (2.3f * fTemp2));
-    float fTemp4
-        = 1.0f
-          - (const1_ * fTemp3 / powf(2.0f, (1.0f + 2.0f * (1.0f - fTemp2))));
+    float fTemp4 = 1.0f - (const1_ * fTemp3
+                           / powf(2.0f, (1.0f + 2.0f * (1.0f - fTemp2))));
     rec1_[0]
         = ((0.999f * rec1_[1])
            + (0.001f
               * (0.0f - (2.0f * (fTemp4 * cosf((const1_ * 2 * fTemp3)))))));
     rec4_[0] = ((0.999f * rec4_[1]) + (0.001f * fTemp4 * fTemp4));
     rec5_[0] = ((0.999f * rec5_[1]) + (0.0001f * powf(4.0f, fTemp2)));
-    rec0_[0] = (0.0f
-                - (((rec1_[0] * rec0_[1]) + (rec4_[0] * rec0_[2]))
-                   - (fSlow2 * (rec5_[0] * in))));
+    rec0_[0] = (0.0f - (((rec1_[0] * rec0_[1]) + (rec4_[0] * rec0_[2]))
+                        - (fSlow2 * (rec5_[0] * in))));
 
     out      = ((wah_ * (rec0_[0] - rec0_[1])) + (fSlow3 * in));
     rec3_[1] = rec3_[0];

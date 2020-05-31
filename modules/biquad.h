@@ -9,34 +9,32 @@ namespace daisysp
 {
 /** Two pole recursive filter
 
-	Original author(s) : Hans Mikelson
+    Original author(s) : Hans Mikelson
 
-	Year: 1998
+    Year: 1998
 
-	Ported from soundpipe by Ben Sergentanis, May 2020
+    Ported from soundpipe by Ben Sergentanis, May 2020
 */
 class Biquad
 {
   public:
     Biquad() {}
     ~Biquad() {}
-
-
     /** Initializes the biquad module.
-		\param sample_rate - The sample rate of the audio engine being run. 
-	*/
+        \param sample_rate - The sample rate of the audio engine being run. 
+    */
     void Init(float sample_rate);
 
 
     /** Filters the input signal
-		\return filtered output
-	*/
+        \return filtered output
+    */
     float Process(float in);
 
 
     /** Sets resonance amount
-		\param res : Set filter resonance.
-	*/
+        \param res : Set filter resonance.
+    */
     inline void SetRes(float res)
     {
         res_ = res;
@@ -45,8 +43,8 @@ class Biquad
 
 
     /** Sets filter cutoff in Hz
-		\param cutoff : Set filter cutoff.
-	*/
+        \param cutoff : Set filter cutoff.
+    */
     inline void SetCutoff(float cutoff)
     {
         cutoff_ = cutoff;

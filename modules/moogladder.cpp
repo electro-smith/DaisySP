@@ -92,10 +92,9 @@ float MoogLadder::Process(float in)
         {
             in     = stg[k - 1];
             stg[k] = delay[k]
-                     + tune
-                           * ((tanhstg[k - 1] = my_tanh(in * THERMAL))
-                              - (k != 3 ? tanhstg[k]
-                                        : my_tanh(delay[k] * THERMAL)));
+                     + tune * ((tanhstg[k - 1] = my_tanh(in * THERMAL))
+                               - (k != 3 ? tanhstg[k]
+                                         : my_tanh(delay[k] * THERMAL)));
             delay[k] = stg[k];
         }
         delay[5] = (stg[3] + delay[4]) * 0.5f;

@@ -24,8 +24,8 @@ class PolyPluck
 {
   public:
     /** Initializes the PolyPluck instance.
-		\param sample_rate: rate in Hz that the Process() function will be called.
-	*/
+        \param sample_rate: rate in Hz that the Process() function will be called.
+    */
     void Init(float sample_rate)
     {
         active_voice_ = 0;
@@ -42,11 +42,11 @@ class PolyPluck
     }
 
     /** Process function, synthesizes and sums the output of all voices,
-		triggering a new voice with frequency of MIDI note number when trig > 0.
+        triggering a new voice with frequency of MIDI note number when trig > 0.
 
-		\param trig: value by reference of trig. When trig > 0 a the next voice will be triggered, and trig will be set to 0.
-		\param note: MIDI note number for the active_voice.
-	*/
+        \param trig: value by reference of trig. When trig > 0 a the next voice will be triggered, and trig will be set to 0.
+        \param note: MIDI note number for the active_voice.
+    */
     float Process(float &trig, float note)
     {
         float sig, tval;
@@ -73,11 +73,9 @@ class PolyPluck
     }
 
     /** Sets the decay coefficients of the pluck voices. 
-		\param p expects 0.0-1.0 input.
-	*/
+        \param p expects 0.0-1.0 input.
+    */
     void SetDecay(float p) { p_damp_ = p; }
-
-
   private:
     DcBlock blk_;
     Pluck   plk_[num_voices];

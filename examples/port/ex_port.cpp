@@ -4,21 +4,21 @@
 using namespace daisysp;
 using namespace daisy;
 
-static DaisySeed seed;
-static Port slew;
-static Metro clock;
+static DaisySeed  seed;
+static Port       slew;
+static Metro      clock;
 static Oscillator osc_sine;
 
 float freq;
 
 static void AudioCallback(float *in, float *out, size_t size)
 {
-    float sine, slewed_freq;
+    float   sine, slewed_freq;
     uint8_t tic;
-    for (size_t i = 0; i < size; i += 2)
-    {   
+    for(size_t i = 0; i < size; i += 2)
+    {
         tic = clock.Process();
-        if (tic)
+        if(tic)
         {
             freq = rand() % 500;
         }
@@ -32,7 +32,7 @@ static void AudioCallback(float *in, float *out, size_t size)
         out[i] = sine;
 
         // right out
-        out[i+1] = sine;
+        out[i + 1] = sine;
     }
 }
 
@@ -40,9 +40,9 @@ int main(void)
 {
     // initialize seed hardware and daisysp modules
     float sample_rate;
-	seed.Configure();
-	seed.Init();
-	sample_rate = seed.AudioSampleRate();
+    seed.Configure();
+    seed.Init();
+    sample_rate = seed.AudioSampleRate();
 
     // set params for Port object
     slew.Init(sample_rate, .09);
@@ -55,12 +55,12 @@ int main(void)
     osc_sine.SetFreq(100);
     osc_sine.SetAmp(0.25);
 
-    
-    
 
     // start callback
-	seed.StartAudio(AudioCallback);
+    seed.StartAudio(AudioCallback);
 
 
-    while(1) {}
+    while(1)
+    {
+    }
 }

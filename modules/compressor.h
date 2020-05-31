@@ -26,28 +26,26 @@ class Compressor
   public:
     Compressor() {}
     ~Compressor() {}
-
-
     /** Initializes compressor
-		sample_rate - rate at which samples will be produced by the audio engine.
-	*/
+        sample_rate - rate at which samples will be produced by the audio engine.
+    */
     void Init(float sample_rate);
 
     /** compresses the audio input signal, keyed by a secondary input.
-		\param in - audio input signal (to be compressed)
-		\param key - audio input that will be used to side-chain the compressor. 
-	*/
+        \param in - audio input signal (to be compressed)
+        \param key - audio input that will be used to side-chain the compressor. 
+    */
     float Process(float in, float key);
 
     /** compresses the audio input signal
-		\param in - audio input signal (to be compressed)
-	*/
+        \param in - audio input signal (to be compressed)
+    */
     float Process(float in);
 
 
     /** amount of gain reduction applied to compressed signals
-		Expects 1.0 -> 40. (untested with values < 1.0)
-	*/
+        Expects 1.0 -> 40. (untested with values < 1.0)
+    */
     inline void SetRatio(const float &ratio)
     {
         ratio_ = ratio;
@@ -55,8 +53,8 @@ class Compressor
     }
 
     /** threshold in dB at which compression will be applied
-		Expects 0.0 -> -80.
-	*/
+        Expects 0.0 -> -80.
+    */
     inline void SetThreshold(const float &thresh)
     {
         thresh_ = thresh;
@@ -64,8 +62,8 @@ class Compressor
     }
 
     /** envelope time for onset of compression for signals above the threshold.
-		Expects 0.001 -> 10
-	*/
+        Expects 0.001 -> 10
+    */
     inline void SetAttack(const float &atk)
     {
         atk_ = atk;
@@ -73,8 +71,8 @@ class Compressor
     }
 
     /** envelope time for release of compression as input signal falls below threshold.
-		Expects 0.001 -> 10
-	*/
+        Expects 0.001 -> 10
+    */
     inline void SetRelease(const float &rel)
     {
         rel_ = rel;
