@@ -5,10 +5,12 @@
 DSP Library for the Daisy product family...and elsewhere!
 
 DaisySP is an open source DSP library written in C++ and specifically tailored to embedded audio applications. 
+
+
  
 ### Getting Started
 - Check out our [Getting Started Wiki page.](https://github.com/electro-smith/DaisyWiki/wiki/1.-Getting-Started) 
-- Browse the reference documentation at `/doc/`
+- Browse the [reference documentation here](https://electro-smith.github.io/DaisySP/index.html) or take it with you in pdf form.
 - Make some sound!
 
 ### Contributing
