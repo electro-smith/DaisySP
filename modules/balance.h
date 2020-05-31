@@ -1,10 +1,3 @@
-// #balance
-// Balances two sound sources. Sig is boosted to the level of comp.
-//
-// ## Credits
-// *Original author(s) : Barry Vercoe, john ffitch, Gabriel Maldonado
-// *Year: 1991
-// *Ported from soundpipe by Ben Sergentanis, May 2020
 
 #pragma once
 #ifndef DSY_BALANCE_H
@@ -16,38 +9,34 @@
 namespace daisysp
 {
 
+/** Balances two sound sources. Sig is boosted to the level of comp.
+*Original author(s) : Barry Vercoe, john ffitch, Gabriel Maldonado
+*Year: 1991
+*Ported from soundpipe by Ben Sergentanis, May 2020
+*/
 class Balance
 {
     public:
     Balance() {}
     ~Balance() {}
   
-    // ### Init
-    //
-    // Initializes the balance module.
-    //
-    // sample_rate - The sample rate of the audio engine being run. 
-    // 
-    // ~~~~
+
+/** Initializes the balance module.
+sample_rate - The sample rate of the audio engine being run. 
+*/
         void Init(float sample_rate);
-    // ~~~~
 
-    // ### Process
-    //
-    // 
-    // ~~~~
+
+/** 
+*/
         float Process(float sig, float comp);
-    // ~~~~
 
-    // # Setters
-    //
-    // ### SetCutoff
-    //
-    // * float cutoff : Sets half power point of special internal cutoff filter.
+
+
+/** * float cutoff : Sets half power point of special internal cutoff filter.
+*/
     //defaults to 10
-    // ~~~~
 	inline void SetCutoff (float cutoff) { ihp_ = cutoff; }
-    // ~~~~
 	
     private:
 	float sample_rate_, ihp_, c2_, c1_, prvq_, prvr_, prva_;

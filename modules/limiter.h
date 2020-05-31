@@ -1,11 +1,7 @@
-// # Limiter
-// ## Description
-// Simple Peak Limiter
-// ## Credits
-// This was extracted from pichenettes/stmlib.
-//
-// Credit to pichenettes/Mutable Instruments
-//
+/** Simple Peak Limiter
+This was extracted from pichenettes/stmlib.
+Credit to pichenettes/Mutable Instruments
+*/
 #pragma once
 #ifndef LIMITER_H
 #define LIMITER_H
@@ -17,23 +13,15 @@ class Limiter
   public:
     Limiter() {}
     ~Limiter() {}
-	// ## Functions
-	// ### Init
-	// Initializes the Limiter instance. 
-	// ~~~~
+/** Initializes the Limiter instance. 
+*/
     void Init();
-	// ~~~~
-	// ### Process
-    // Processes a block of audio through the limiter.
-	//
-    // *in - pointer to a block of audio samples to be processed. The buffer is operated on directly.
-	// 
-    // size - size of the buffer "in"
-	//
-    // pre_gain - amount of pre_gain applied to the signal.
-	// ~~~~
+/** Processes a block of audio through the limiter.
+*in - pointer to a block of audio samples to be processed. The buffer is operated on directly.
+size - size of the buffer "in"
+pre_gain - amount of pre_gain applied to the signal.
+*/
     void ProcessBlock(float *in, size_t size, float pre_gain);
-	// ~~~~
   private:
     float peak_;
 };

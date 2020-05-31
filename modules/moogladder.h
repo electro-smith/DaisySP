@@ -1,8 +1,3 @@
-// #MoogLadder
-// Moog ladder filter module
-// ## Credits
-// *Original author(s) : Victor Lazzarini, John ffitch (fast tanh), Bob Moog
-
 #pragma once
 #ifndef DSY_MOOGLADDER_H
 #define DSY_MOOGLADDER_H
@@ -13,48 +8,37 @@
 namespace daisysp
 {
 
+/** Moog ladder filter module
+*Original author(s) : Victor Lazzarini, John ffitch (fast tanh), Bob Moog
+*/
 class MoogLadder
 {
     public:
     MoogLadder() {}
     ~MoogLadder() {}
   
-    // ### Init
-    //
-    // Initializes the MoogLadder module.
-    //
-    // sample_rate - The sample rate of the audio engine being run. 
-    // 
-    // ~~~~
+
+/** Initializes the MoogLadder module.
+sample_rate - The sample rate of the audio engine being run. 
+*/
         void Init(float sample_rate);
-    // ~~~~
 
-    // ### Process
-    //
-    // 
-    // ~~~~
+
+/** 
+*/
         float Process(float in);
-    // ~~~~
 
-    // ## Setters
-    // 
-    // ### SetFreq
-    // 
-    // Sets the cutoff frequency or half-way point of the filter.
-    // 
-    // Arguments
-    //
-    // - freq - frequency value in Hz. Range: Any positive value.
-    // ~~~~
+/** 
+Sets the cutoff frequency or half-way point of the filter.
+Arguments
+- freq - frequency value in Hz. Range: Any positive value.
+*/
 	inline void SetFreq(float freq) { freq_ = freq; }
-    // ~~~~
 
-    // ### SetRes
-    // 
-    // Sets the resonance of the filter.
-    // ~~~~
+/** 
+Sets the resonance of the filter.
+*/
 	inline void SetRes(float res) { res_ = res; }
-    // ~~~~
 	
 
 	

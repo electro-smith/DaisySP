@@ -1,52 +1,33 @@
 #!/bin/bash
 daisysp_dir=./
 
-# Generate MD
-
-## daisysp
-echo "creating daisysp markdown files. . . "
-for header in $daisysp_dir/modules/*.h; do
-    fname=${header##*/}
-    fname=${fname%.h}
-    ex=$daisysp_dir/examples/$fname/ex_$fname.cpp
-    outfile=$daisysp_dir/doc/$fname.md
-    echo "    "$fname
-    python makedoc.py $header > $outfile
-    # add example to the end of each doc.
-    echo $'\n## Example\n' >> $outfile
-    if [ -f "$ex" ]; then
-        echo $'```C++\n' >> $outfile
-        cat $ex >> $outfile
-        echo $'\n```' >> $outfile
-    else
-        echo "No example Provided for $fname"
-        echo "No example Provided" >> $outfile
-    fi
-done
-echo "done."
-
-
-# Generate PDFs
-
+# create folder
 mkdir -p doc
-## daisysp
-pdf_name=doc/daisysp_reference.pdf
-cat resources/preamble.md > temp.md
-echo "\pagebreak" >> temp.md
-for file in $daisysp_dir/doc/*.md; do
-    cat $file >> temp.md
-    echo "\pagebreak" >> temp.md
-done
-echo "Generating documenation for " $pdf_name
-#pandoc temp.md -s --template=./resources/template.tex --pdf-engine=xelatex --toc -o $pdf_name
-pandoc temp.md -s --template=./resources/template.tex --toc -o $pdf_name
-echo "Created $pdf_name"
-# remove temp file.
-rm temp.md
-echo "done."
+
+# Generate doxygen HTML
+echo "Creating doxygen documentation"
+doxygen Doxyfile > /dev/null
+
+# Generate reference manual PDF
+reference_manual_pdf_name=doc/daisysp_reference.pdf
+doxygen_latex_dir=doc/latex
+doxygen_latex_outfile=doc/latex/refman.pdf
+if ! [ -x "$(command -v pdflatex)" ]; then
+    echo 'Warning: no reference manual will be created. Please install pdflatex.' >&2
+else
+    echo "Generating reference manual PDF"
+    # remember current directory
+    cwd=$(pwd)
+    cd $doxygen_latex_dir
+    make pdf > /dev/null
+    # go back and move the complete pdf file
+    cd $cwd
+    mv $doxygen_latex_outfile $reference_manual_pdf_name
+fi
+
+# Generate Style Guide
 echo "Creating Style Guide PDF"
 pdf_name=doc/style_guide.pdf
 pandoc ./resources/Style-Guide.md  -s --template=./resources/template.tex --toc -o $pdf_name
+
 echo "finished."
-
-

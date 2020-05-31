@@ -3,22 +3,20 @@
 #define DSY_OSCILLATOR_H
 #include <stdint.h>
 #ifdef __cplusplus
-// # Oscillator
-//
-// Synthesis of several waveforms, including polyBLEP bandlimited waveforms.
-//
+
 namespace daisysp
 {
+/** Synthesis of several waveforms, including polyBLEP bandlimited waveforms.
+*/
 class Oscillator
 {
   public:
     Oscillator() {}
     ~Oscillator() {}
 
-    // ## Waveforms
-    //
-    // Choices for output waveforms, POLYBLEP are appropriately labeled. Others are naive forms.
-    // ~~~~
+
+/** Choices for output waveforms, POLYBLEP are appropriately labeled. Others are naive forms.
+*/
     enum
     {
         WAVE_SIN,
@@ -31,22 +29,16 @@ class Oscillator
         WAVE_POLYBLEP_SQUARE,
         WAVE_LAST,
     };
-    // ~~~~
 
-    // ### Init
-    //
-    // Initializes the Oscillator
-    //
-    // float sample_rate - sample rate of the audio engine being run, and the frequency that the Process function will be called.
-    //
-    // Defaults:
-    // - freq_ = 100 Hz
-    // - amp_ = 0.5
-    // - waveform_ = sine wave.
-    //
-    // ~~~~
+
+/** Initializes the Oscillator
+float sample_rate - sample rate of the audio engine being run, and the frequency that the Process function will be called.
+Defaults:
+- freq_ = 100 Hz
+- amp_ = 0.5
+- waveform_ = sine wave.
+*/
     void Init(float sample_rate)
-    // ~~~~
     {
         sr_        = sample_rate;
         sr_recip_  = 1.0f / sample_rate;
@@ -57,54 +49,42 @@ class Oscillator
         waveform_  = WAVE_SIN;
     }
 
-    // ### SetFreq
-    //
-    // Changes the frequency of the Oscillator, and recalculates phase increment.
-    // ~~~~
+
+/** Changes the frequency of the Oscillator, and recalculates phase increment.
+*/
     inline void SetFreq(const float f)
-    // ~~~~
     {
         freq_      = f;
         phase_inc_ = CalcPhaseInc(f);
     }
 
-    // ### SetAmp
-    //
-    // Sets the amplitude of the waveform.
-    // ~~~~
-    inline void SetAmp(const float a) { amp_ = a; }
-    // ~~~~
 
-    // ### SetWaveform
-    //
-    // Sets the waveform to be synthesized by the Process() function.
-    // ~~~~
+/** Sets the amplitude of the waveform.
+*/
+    inline void SetAmp(const float a) { amp_ = a; }
+
+
+/** Sets the waveform to be synthesized by the Process() function.
+*/
     inline void SetWaveform(const uint8_t wf)
     {
         waveform_ = wf < WAVE_LAST ? wf : WAVE_SIN;
     }
-    // ~~~~
 
-    // ### Process
-    //
-    // Processes the waveform to be generated, returning one sample. This should be called once per sample period.
-    // ~~~~
+
+/** Processes the waveform to be generated, returning one sample. This should be called once per sample period.
+*/
     float Process();
-    // ~~~~
 
-    // ### PhaseAdd
-    //
-    // Adds a value 0.0-1.0 (mapped to 0.0-TWO_PI) to the current phase. Useful for PM and "FM" synthesis.
-    // ~~~~
+
+/** Adds a value 0.0-1.0 (mapped to 0.0-TWO_PI) to the current phase. Useful for PM and "FM" synthesis.
+*/
     void PhaseAdd(float _phase) { phase_ += (_phase * float(M_TWOPI)); }
-    // ~~~~
 
-    // ### Reset
-    //
-    // Resets the phase to the input argument. If no argument is present, it will reset phase to 0.0;
-    // ~~~~
+
+/** Resets the phase to the input argument. If no argument is present, it will reset phase to 0.0;
+*/
     void Reset(float _phase = 0.0f) { phase_ = _phase; }
-    // ~~~~
 
   private:
     float   CalcPhaseInc(float f);

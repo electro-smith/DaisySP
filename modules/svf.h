@@ -1,95 +1,60 @@
-// # Svf
-//      Double Sampled, Stable State Variable Filter
-// 
-// Credit to Andrew Simper from musicdsp.org
-//
-// This is his "State Variable Filter (Double Sampled, Stable)"
-//
-// Additional thanks to Laurent de Soras for stability limit, and 
-// Stefan Diedrichsen for the correct notch output
-//
-// Ported by: Stephen Hensley
-//
-// example:
-// daisysp/examples/Svf/
 #pragma once
 #ifndef DSY_SVF_H
 #define DSY_SVF_H
 
 namespace daisysp
 {
+/**      Double Sampled, Stable State Variable Filter
+Credit to Andrew Simper from musicdsp.org
+This is his "State Variable Filter (Double Sampled, Stable)"
+Additional thanks to Laurent de Soras for stability limit, and 
+Stefan Diedrichsen for the correct notch output
+Ported by: Stephen Hensley
+example:
+daisysp/examples/Svf/
+*/
     class Svf
     {
         public:
             Svf() {}
             ~Svf() {}
 
-// ### Init
-// 
-// Initializes the filter
-// 
-// float sample_rate - sample rate of the audio engine being run, and the frequency that the Process function will be called.
-// ~~~~
+/** 
+Initializes the filter
+float sample_rate - sample rate of the audio engine being run, and the frequency that the Process function will be called.
+*/
             void Init(float sample_rate);
-// ~~~~
 
 
-// ### Process
-// 
-// Process the input signal, updating all of the outputs.
-// ~~~~
+/** 
+Process the input signal, updating all of the outputs.
+*/
             void Process(float in);
-// ~~~~
 
-// ## Setters
-//
-// ### SetFreq
-//
-// sets the frequency of the cutoff frequency. 
-// 
-// f must be between 0.0 and sample_rate / 2
-// ~~~~
+
+
+/** sets the frequency of the cutoff frequency. 
+f must be between 0.0 and sample_rate / 2
+*/
             void SetFreq(float f);
-// ~~~~
 
-// ### SetRes
-// 
-// sets the resonance of the filter.
-//
-// Must be between 0.0 and 1.0 to ensure stability.
-// ~~~~
+/** 
+sets the resonance of the filter.
+Must be between 0.0 and 1.0 to ensure stability.
+*/
             void SetRes(float r);
-// ~~~~
 
-// ### SetDrive
-// 
-// sets the drive of the filter, affecting the response of the resonance of
-// the filter..
-// ~~~~
+/** 
+sets the drive of the filter, affecting the response of the resonance of
+the filter..
+*/
             inline void SetDrive(float d) { drive_ = d; }
-// ~~~~
 
-// ## Filter Outputs
-// ## Lowpass Filter
-// ~~~~
             inline float Low() { return out_low_; }
-// ~~~~
-// ## Highpass Filter
-// ~~~~
             inline float High() { return out_high_; }
-// ~~~~
-// ## Bandpass Filter
-// ~~~~
             inline float Band() { return out_band_; }
-// ~~~~
-// ## Notch Filter
-// ~~~~
             inline float Notch() { return out_notch_; }
-// ~~~~
-// ## Peak Filter
-// ~~~~
             inline float Peak() { return out_peak_; }
-// ~~~~
 
         private:
             float sr_, fc_, res_, drive_, freq_, damp_;

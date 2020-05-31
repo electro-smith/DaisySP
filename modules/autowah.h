@@ -1,9 +1,3 @@
-// #Autowah
-// Autowah module
-// ## Credits
-// *Original author(s) :
-// *Ported from soundpipe by Ben Sergentanis, May 2020
-
 #pragma once
 #ifndef DSY_AUTOWAH_H
 #define DSY_AUTOWAH_H
@@ -14,51 +8,40 @@
 namespace daisysp
 {
 
+/** Autowah module
+*Original author(s) :
+*Ported from soundpipe by Ben Sergentanis, May 2020
+*/
 class Autowah
 {
     public:
     Autowah() {}
     ~Autowah() {}
   
-    // ### Init
-    //
-    // Initializes the Autowah module.
-    //
-    // sample_rate - The sample rate of the audio engine being run. 
-    // 
-    // ~~~~
+
+/** Initializes the Autowah module.
+sample_rate - The sample rate of the audio engine being run. 
+*/
         void Init(float sample_rate);
-    // ~~~~
 
-    // ### Process
-    //
-    // # float in - Process next sample.
-    // ~~~~
+
         float Process(float in);
-    // ~~~~
 
-    // # Setters
-    //
-    // ### SetWah
-    //
-    // * float wah : set wah amount
-    // ~~~~
+
+
+/** * float wah : set wah amount
+*/
 	inline void SetWah(float wah) { wah_ = wah; }
-    // ~~~~
 	
-    // ### SetDryWet
-    //
-    // * float drywet : set effect dry/wet
-    // ~~~~
-	inline void SetDryWet(float drywet) { wet_dry_ = drywet; }
-    // ~~~~
 
-    // ### SetLevel
-    //
-    // * float level : set wah level
-    // ~~~~
+/** * float drywet : set effect dry/wet
+*/
+	inline void SetDryWet(float drywet) { wet_dry_ = drywet; }
+
+
+/** * float level : set wah level
+*/
 	inline void SetLevel(float level) { level_ = level; }
-    // ~~~~	
     private:
 	float sampling_freq_, const1_, const2_, const4_,
 	      wah_, level_, wet_dry_,
