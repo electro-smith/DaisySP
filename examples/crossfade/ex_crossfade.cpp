@@ -4,17 +4,17 @@
 using namespace daisysp;
 using namespace daisy;
 
-static DaisySeed seed;
-static CrossFade cfade;
+static DaisySeed  seed;
+static CrossFade  cfade;
 static Oscillator osc_sine, osc_saw, lfo;
 
 static void AudioCallback(float *in, float *out, size_t size)
 {
-	float saw, sine, pos, output;
-    for (size_t i = 0; i < size; i += 2)
+    float saw, sine, pos, output;
+    for(size_t i = 0; i < size; i += 2)
     {
-    	sine = osc_sine.Process();
-        saw = osc_saw.Process();
+        sine = osc_sine.Process();
+        saw  = osc_saw.Process();
 
         // lfo output = -1 to 1
         pos = lfo.Process();
@@ -25,21 +25,21 @@ static void AudioCallback(float *in, float *out, size_t size)
         cfade.SetPos(pos);
         output = cfade.Process(sine, saw);
 
-    	// left out
+        // left out
         out[i] = output;
 
         // right out
-        out[i+1] = output;
+        out[i + 1] = output;
     }
 }
 
 int main(void)
 {
-	// initialize seed hardware and daisysp modules
+    // initialize seed hardware and daisysp modules
     float sample_rate;
-	seed.Configure();
-	seed.Init();
-	sample_rate = seed.AudioSampleRate();
+    seed.Configure();
+    seed.Init();
+    sample_rate = seed.AudioSampleRate();
 
     // set params for CrossFade object
     cfade.Init();
@@ -63,11 +63,9 @@ int main(void)
     lfo.SetFreq(.25);
     lfo.SetAmp(1);
 
-    
-    
 
     // start callback
-	seed.StartAudio(AudioCallback);
+    seed.StartAudio(AudioCallback);
 
 
     while(1) {}

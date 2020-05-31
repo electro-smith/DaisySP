@@ -6,7 +6,7 @@ static DaisySeed seed;
 
 int main(void)
 {
-	seed.Configure();
-	seed.Init();
+    seed.Configure();
+    seed.Init();
     while(1) {}
 }

@@ -4,42 +4,42 @@
 using namespace daisysp;
 using namespace daisy;
 
-static DaisySeed seed;
+static DaisySeed  seed;
 static Oscillator osc1, osc2, lfo;
-static Balance bal;
+static Balance    bal;
 
 static void AudioCallback(float *in, float *out, size_t size)
 {
-  float sig1, sig2, sig3;
-    for (size_t i = 0; i < size; i += 2)
+    float sig1, sig2, sig3;
+    for(size_t i = 0; i < size; i += 2)
     {
-    	sig1 = osc1.Process();
-	sig2 = osc2.Process();
-	sig3 = lfo.Process();
-	sig2 *= sig3;
-	sig1 = bal.Process(sig1, sig2);
-	
-    	// left out
+        sig1 = osc1.Process();
+        sig2 = osc2.Process();
+        sig3 = lfo.Process();
+        sig2 *= sig3;
+        sig1 = bal.Process(sig1, sig2);
+
+        // left out
         out[i] = sig1;
 
         // right out
-        out[i+1] = sig1;
+        out[i + 1] = sig1;
     }
 }
 
 int main(void)
 {
-	// initialize seed hardware and oscillator daisysp module
+    // initialize seed hardware and oscillator daisysp module
     float sample_rate;
-	seed.Configure();
-	seed.Init();
-	sample_rate = seed.AudioSampleRate();
-	osc1.Init(sample_rate);
-	osc2.Init(sample_rate);
-	lfo.Init(sample_rate);
-	bal.Init(sample_rate);
+    seed.Configure();
+    seed.Init();
+    sample_rate = seed.AudioSampleRate();
+    osc1.Init(sample_rate);
+    osc2.Init(sample_rate);
+    lfo.Init(sample_rate);
+    bal.Init(sample_rate);
 
-	
+
     // Set parameters for oscillator one
     osc1.SetWaveform(osc1.WAVE_SIN);
     osc1.SetFreq(440);
@@ -54,10 +54,10 @@ int main(void)
     lfo.SetWaveform(lfo.WAVE_TRI);
     lfo.SetFreq(0.4);
     lfo.SetAmp(0.5);
-    
-    
+
+
     // start callback
-	seed.StartAudio(AudioCallback);
+    seed.StartAudio(AudioCallback);
 
 
     while(1) {}

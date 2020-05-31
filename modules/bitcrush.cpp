@@ -8,15 +8,15 @@ static Fold fold;
 
 void Bitcrush::Init(float sample_rate)
 {
-    bit_depth_  = 8;
-    crush_rate_ = 10000;
+    bit_depth_   = 8;
+    crush_rate_  = 10000;
     sample_rate_ = sample_rate;
     fold.Init();
 }
 
 float Bitcrush::Process(float in)
 {
-    float bits = pow(2, bit_depth_);
+    float bits    = pow(2, bit_depth_);
     float foldamt = sample_rate_ / crush_rate_;
     float out;
 

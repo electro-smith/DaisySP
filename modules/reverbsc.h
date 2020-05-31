@@ -1,4 +1,3 @@
-
 #pragma once
 #ifndef DSYSP_REVERBSC_H
 #define DSYSP_REVERBSC_H
@@ -7,48 +6,55 @@
 
 namespace daisysp
 {
+/**Delay line for internal reverb use
+*/
 typedef struct
 {
-    int    write_pos;
-    int    buffer_size;
-    int    read_pos;
-    int    read_pos_frac;
-    int    read_pos_frac_inc;
-    int    dummy;
-    int    seed_val;
-    int    rand_line_cnt;
-    float  filter_state;
-    float *buf;
+    int    write_pos;         /**< write position */
+    int    buffer_size;       /**< buffer size */
+    int    read_pos;          /**< read position */
+    int    read_pos_frac;     /**< fractional component of read pos */
+    int    read_pos_frac_inc; /**< increment for fractional */
+    int    dummy;             /**<  dummy var */
+    int    seed_val;          /**< randseed */
+    int    rand_line_cnt;     /**< number of random lines */
+    float  filter_state;      /**< state of filter */
+    float *buf;               /**< buffer ptr */
 } ReverbScDl;
 
 /** Stereo Reverb
+
 Reverb SC:               Ported from csound/soundpipe
-Original author(s):	    Sean Costello, Istvan Varga
-Year:				    1999, 2005
+
+Original author(s):        Sean Costello, Istvan Varga
+
+Year:                    1999, 2005
+
 Ported to soundpipe by:  Paul Batchelor
-Ported by:			    Stephen Hensley
+
+Ported by:                Stephen Hensley
 */
 class ReverbSc
 {
   public:
     ReverbSc() {}
     ~ReverbSc() {}
-/** Initializes the reverb module, and sets the sample_rate at which the Process function will be called.
-Returns 0 if all good, or 1 if it runs out of delay times exceed maximum allowed.
-*/
+    /** Initializes the reverb module, and sets the sample_rate at which the Process function will be called.
+        Returns 0 if all good, or 1 if it runs out of delay times exceed maximum allowed.
+    */
     int Init(float sample_rate);
 
-/** Process the input through the reverb, and updates values of out1, and out2 with the new processed signal.
-*/
+    /** Process the input through the reverb, and updates values of out1, and out2 with the new processed signal.
+    */
     int Process(const float &in1, const float &in2, float *out1, float *out2);
 
-/** controls the reverb time. reverb tail becomes infinite when set to 1.0
-range: 0.0 to 1.0
-*/
+    /** controls the reverb time. reverb tail becomes infinite when set to 1.0
+        \param fb - sets reverb time. range: 0.0 to 1.0
+    */
     inline void SetFeedback(const float &fb) { feedback_ = fb; }
-/** controls the internal dampening filter's cutoff frequency.
-range: 0.0 to sample_rate / 2
-*/
+    /** controls the internal dampening filter's cutoff frequency.
+        \param freq - low pass frequency. range: 0.0 to sample_rate / 2
+    */
     inline void SetLpFreq(const float &freq) { lpfreq_ = freq; }
 
   private:

@@ -8,13 +8,13 @@ using namespace daisy;
 static DaisySeed seed;
 
 Oscillator osc;
-Svf filt;
+Svf        filt;
 
 static void AudioCallback(float *in, float *out, size_t size)
 {
     float sig;
 
-    for (size_t i = 0; i < size; i += 2)
+    for(size_t i = 0; i < size; i += 2)
     {
         sig = osc.Process();
 
@@ -32,9 +32,9 @@ int main(void)
 {
     // initialize seed hardware and Svf daisysp module
     float sample_rate;
-	seed.Configure();
-	seed.Init();
-	sample_rate = seed.AudioSampleRate();
+    seed.Configure();
+    seed.Init();
+    sample_rate = seed.AudioSampleRate();
     // Initialize Oscillator, and set parameters.
     osc.Init(sample_rate);
     osc.SetWaveform(osc.WAVE_POLYBLEP_SAW);
@@ -47,7 +47,7 @@ int main(void)
     filt.SetDrive(0.8);
 
     // start callback
-	seed.StartAudio(AudioCallback);
+    seed.StartAudio(AudioCallback);
 
     while(1) {}
 }
