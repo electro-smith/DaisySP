@@ -18,7 +18,7 @@ Here are ways that you can get involved:
 - Fix problems with existing modules. See issues labeled "bug" and/or "polish".
 - Test existing functionality and make issues.
 
-Before working on code, please check out our [Contribution Guidelines](https://github.com/andrewikenberry/DaisySP/wiki/2.-Contribution-Guidelines) and `/doc/StyleGuide.pdf`
+Before working on code, please check out our [Contribution Guidelines](https://github.com/electro-smith/DaisyWiki/wiki/2.-Contribution-Guidelines) and `/doc/StyleGuide.pdf`
 
 ### License
 DaisySP is licensed with the permissive MIT open source license. 
@@ -26,4 +26,4 @@ DaisySP is licensed with the permissive MIT open source license.
 This allows for modification and reuse in both commercial and personal projects. 
 It does not provide a warranty of any kind. 
 
-For the full license, read the [LICENSE](https://github.com/andrewikenberry/DaisySP/blob/master/LICENSE) file in the root directory. 
+For the full license, read the [LICENSE](https://github.com/electro-smith/DaisySP/blob/master/LICENSE) file in the root directory. 
