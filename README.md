@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/electro-smith/DaisySP.svg?branch=master)](https://travis-ci.org/electro-smith/DaisySP)
+
 ![](https://github.com/andrewikenberry/DaisySP/blob/master/resources/assets/banner.png)
 
 DSP Library for the Daisy product family...and elsewhere!
