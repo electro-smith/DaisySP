@@ -42,6 +42,7 @@ class Autowah
         \param level : set wah level
     */
     inline void SetLevel(float level) { level_ = level; }
+
   private:
     float sampling_freq_, const1_, const2_, const4_, wah_, level_, wet_dry_,
         rec0_[3], rec1_[2], rec2_[2], rec3_[2], rec4_[2], rec5_[2];

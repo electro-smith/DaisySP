@@ -37,6 +37,7 @@ class Bitcrush
         \param crushrate : Sets rate to downsample to.    
     */
     inline void SetCrushRate(float crushrate) { crush_rate_ = crushrate; }
+
   private:
     float sample_rate_, crush_rate_;
     int   bit_depth_;

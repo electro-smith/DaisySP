@@ -55,6 +55,7 @@ class BlOsc
         - i.e. SetWaveform(BL_WAVEFORM_SAW); to set waveform to saw
     */
     inline void SetWaveform(uint8_t waveform) { mode_ = waveform; }
+
   private:
     float rec0_[2], rec1_[2], vec0_[2], vec1_[2], vec2_[4096], freq_, amp_, pw_,
         sampling_freq_, half_sr_, quarter_sr_, sec_per_sample_, two_over_sr_,

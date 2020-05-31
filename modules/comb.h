@@ -41,6 +41,7 @@ class Comb
     /** Sets the decay time of the comb filter
     */
     inline void SetRevTime(float revtime) { rev_time_ = revtime; }
+
   private:
     float  sample_rate_, rev_time_, loop_time_, prvt_, coef_, max_loop_time_;
     float* buf_;

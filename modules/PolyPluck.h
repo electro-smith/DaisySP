@@ -76,6 +76,7 @@ class PolyPluck
         \param p expects 0.0-1.0 input.
     */
     void SetDecay(float p) { p_damp_ = p; }
+
   private:
     DcBlock blk_;
     Pluck   plk_[num_voices];

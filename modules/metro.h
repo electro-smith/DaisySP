@@ -36,6 +36,7 @@ class Metro
     /** Returns current value for frequency.
     */
     inline float GetFreq() { return freq_; }
+
   private:
     float freq_;
     float phs_, sample_rate_, phs_inc_;

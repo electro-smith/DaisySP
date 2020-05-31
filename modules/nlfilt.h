@@ -67,6 +67,7 @@ class NlFilt
     /** Set Coefficient L
         */
     inline void SetL(float L) { L_ = L; }
+
   private:
     int32_t Set();
 

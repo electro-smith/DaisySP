@@ -53,6 +53,7 @@ class Phasor
     /** Returns current frequency value in Hz
     */
     inline float GetFreq() { return freq_; }
+
   private:
     float freq_;
     float sample_rate_, inc_, phs_;

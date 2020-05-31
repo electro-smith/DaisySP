@@ -38,6 +38,7 @@ class Balance
         defaults to 10
     */
     inline void SetCutoff(float cutoff) { ihp_ = cutoff; }
+
   private:
     float sample_rate_, ihp_, c2_, c1_, prvq_, prvr_, prva_;
 };

@@ -45,6 +45,7 @@ class ATone
         \return the current value for the cutoff frequency or half-way point of the filter.
     */
     inline float GetFreq() { return freq_; }
+
   private:
     void  CalculateCoefficients();
     float out_, prevout_, in_, freq_, c2_, sample_rate_;

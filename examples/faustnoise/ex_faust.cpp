@@ -152,7 +152,7 @@ class mydsp : public dsp
         return rate;
     }
 
-    static void classInit(int sample_rate) {}
+    static void  classInit(int sample_rate) {}
     virtual void instanceConstants(int sample_rate)
     {
         fSampleRate = sample_rate;
@@ -186,7 +186,7 @@ class mydsp : public dsp
 
     virtual mydsp* clone() { return new mydsp(); }
     virtual int    getSampleRate() { return fSampleRate; }
-    virtual void buildUserInterface(UI* ui_interface)
+    virtual void   buildUserInterface(UI* ui_interface)
     {
         ui_interface->openVerticalBox("Noise");
         ui_interface->addHorizontalSlider(

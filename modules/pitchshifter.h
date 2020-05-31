@@ -179,6 +179,7 @@ class PitchShifter
     /** sets an amount of internal random modulation, kind of sounds like tape-flutter
     */
     inline void SetFun(float f) { fun_ = f; }
+
   private:
     inline void SetSemitones()
     {
@@ -188,9 +189,9 @@ class PitchShifter
         }
     }
     typedef DelayLine<float, SHIFT_BUFFER_SIZE> ShiftDelay;
-    ShiftDelay d_[2];
-    float      pitch_shift_, mod_freq_;
-    uint32_t   del_size_;
+    ShiftDelay                                  d_[2];
+    float                                       pitch_shift_, mod_freq_;
+    uint32_t                                    del_size_;
     /** lfo stuff
 */
     bool   force_recalc_;

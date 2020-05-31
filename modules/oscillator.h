@@ -81,8 +81,9 @@ class Oscillator
     /** Resets the phase to the input argument. If no argument is present, it will reset phase to 0.0;
     */
     void Reset(float _phase = 0.0f) { phase_ = _phase; }
+
   private:
-    float CalcPhaseInc(float f);
+    float   CalcPhaseInc(float f);
     uint8_t waveform_;
     float   amp_, freq_;
     float   sr_, sr_recip_, phase_, phase_inc_;

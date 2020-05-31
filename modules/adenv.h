@@ -77,6 +77,7 @@ class AdEnv
     /** Returns true if the envelope is currently in any stage apart from idle.
     */
     inline bool IsRunning() const { return current_segment_ != ADENV_SEG_IDLE; }
+
   private:
     uint8_t  current_segment_, prev_segment_;
     float    segment_time_[ADENV_SEG_LAST];

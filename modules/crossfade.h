@@ -68,6 +68,7 @@ class CrossFade
     /** Returns current curve
     */
     inline uint8_t GetCurve(uint8_t curve) { return curve_; }
+
   private:
     float   pos_;
     uint8_t curve_;

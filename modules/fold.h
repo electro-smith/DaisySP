@@ -34,6 +34,7 @@ class Fold
         \param incr : set fold increment
     */
     inline void SetIncrement(float incr) { incr_ = incr; }
+
   private:
     float incr_, index_, value_;
     int   sample_index_;

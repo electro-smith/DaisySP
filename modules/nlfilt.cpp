@@ -66,7 +66,7 @@ void NlFilt::ProcessBlock(float *in, float *out, size_t size)
             outv = maxampd2;
         else if(outv < -maxamp)
             outv = -maxampd2;
-        out[n]   = outv;
+        out[n] = outv;
         if((++point == MAX_DELAY))
         {
             point = 0;

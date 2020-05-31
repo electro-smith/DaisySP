@@ -56,9 +56,10 @@ class ReverbSc
         \param freq - low pass frequency. range: 0.0 to sample_rate / 2
     */
     inline void SetLpFreq(const float &freq) { lpfreq_ = freq; }
+
   private:
-    void NextRandomLineseg(ReverbScDl *lp, int n);
-    int InitDelayLine(ReverbScDl *lp, int n);
+    void       NextRandomLineseg(ReverbScDl *lp, int n);
+    int        InitDelayLine(ReverbScDl *lp, int n);
     float      feedback_, lpfreq_;
     float      i_sample_rate_, i_pitch_mod_, i_skip_init_;
     float      sample_rate_;

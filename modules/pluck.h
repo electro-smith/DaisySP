@@ -84,6 +84,7 @@ class Pluck
     /** Returns the current value for mode.
     */
     inline int32_t GetMode() { return mode_; }
+
   private:
     void    Reinit();
     float   amp_, freq_, decay_, damp_, ifreq_;

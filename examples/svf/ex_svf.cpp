@@ -49,7 +49,5 @@ int main(void)
     // start callback
     seed.StartAudio(AudioCallback);
 
-    while(1)
-    {
-    }
+    while(1) {}
 }

@@ -48,6 +48,7 @@ class Port
     /** returns current value of htime
     */
     inline float GetHtime() { return htime_; }
+
   private:
     float htime_;
     float c1_, c2_, yt1_, prvhtim_;

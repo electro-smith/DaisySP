@@ -15,7 +15,5 @@ int main(void)
     seed.Configure();
     seed.Init();
     seed.StartAudio(Callback);
-    while(1)
-    {
-    }
+    while(1) {}
 }

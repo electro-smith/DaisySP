@@ -64,12 +64,13 @@ class Adsr
         \return true if the envelope is currently in any stage apart from idle.
     */
     inline bool IsRunning() const { return mode_ != ADSR_SEG_IDLE; }
+
   private:
     float   sus_, seg_time_[ADSR_SEG_LAST], a_, b_, y_, x_, prev_, atk_time_;
     int     sample_rate_;
     uint8_t mode_;
-    float Tau2Pole(float tau);
-    float AdsrFilter();
+    float   Tau2Pole(float tau);
+    float   AdsrFilter();
 };
 } // namespace daisysp
 #endif

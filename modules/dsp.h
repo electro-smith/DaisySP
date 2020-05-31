@@ -93,8 +93,8 @@ c/o stephen mccaul
 template <typename T>
 T median(T a, T b, T c)
 {
-    return (b < a) ? (b < c) ? (c < a) ? c : a : b : (a < c) ? (c < b) ? c : b
-                                                             : a;
+    return (b < a) ? (b < c) ? (c < a) ? c : a : b
+                   : (a < c) ? (c < b) ? c : b : a;
 }
 
 

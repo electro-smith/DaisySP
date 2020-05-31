@@ -44,7 +44,5 @@ int main(void)
     seed.StartAudio(AudioCallback);
 
 
-    while(1)
-    {
-    }
+    while(1) {}
 }

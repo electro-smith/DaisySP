@@ -66,6 +66,7 @@ class Svf
         \return peak output of the filter
     */
     inline float Peak() { return out_peak_; }
+
   private:
     float sr_, fc_, res_, drive_, freq_, damp_;
     float notch_, low_, high_, band_, peak_;
