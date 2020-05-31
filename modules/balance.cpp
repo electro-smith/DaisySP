@@ -7,21 +7,21 @@ void Balance::Init(float sample_rate)
 {
     float b;
     sample_rate_ = sample_rate;
-    ihp_ = 10.0f;
-    b    = 2.0f - cosf(ihp_ * (2.0f * (float)M_PI / sample_rate_));
-    c2_  = b - sqrtf(b*b - 1.0f);
-    c1_  = 1.0f - c2_;
+    ihp_         = 10.0f;
+    b            = 2.0f - cosf(ihp_ * (2.0f * (float)M_PI / sample_rate_));
+    c2_          = b - sqrtf(b * b - 1.0f);
+    c1_          = 1.0f - c2_;
     prvq_ = prvr_ = prva_ = 0.0f;
 }
 
 float Balance::Process(float sig, float comp)
 {
-    float q,r,a, diff, out;
+    float q, r, a, diff, out;
     float c1 = c1_;
     float c2 = c2_;
-    
-    q = prvq_;
-    r = prvr_;
+
+    q        = prvq_;
+    r        = prvr_;
     float as = sig;
     float cs = comp;
 
@@ -31,16 +31,16 @@ float Balance::Process(float sig, float comp)
     prvq_ = q;
     prvr_ = r;
 
-    if (q != 0.0f)
+    if(q != 0.0f)
     {
-        a = sqrtf(r/q);
+        a = sqrtf(r / q);
     }
     else
     {
-      a = sqrtf(r);
+        a = sqrtf(r);
     }
 
-    if ((diff = a - prva_) != 0.0f)
+    if((diff = a - prva_) != 0.0f)
     {
         out = sig * prva_;
     }
@@ -50,6 +50,6 @@ float Balance::Process(float sig, float comp)
     }
 
     prva_ = a;
-    
+
     return out;
 }
