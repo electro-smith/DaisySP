@@ -1,7 +1,6 @@
-// # Metro 
-// 
-// Creates a clock signal at a specific frequency.
-// 
+/** 
+Creates a clock signal at a specific frequency.
+*/
 
 #pragma once
 #ifndef DSY_METRO_H
@@ -17,48 +16,35 @@ namespace daisysp
 		Metro() {}
 		~Metro() {}
 
-// ### Init
-// 
-// Initializes Metro module.
-// 
-// Arguments:
-// - freq: frequency at which new clock signals will be generated
-// 	Input Range: 
-// - sample_rate: sample rate of audio engine
-// 	Input range: 
+/** 
+Initializes Metro module.
+Arguments:
+- freq: frequency at which new clock signals will be generated
+	Input Range: 
+- sample_rate: sample rate of audio engine
+	Input range: 
+*/
 
-// ~~~~
 		void Init(float freq, float sample_rate);
-// ~~~~
 
-// ### Process
-// checks current state of Metro object and updates state if necesary.
+/** checks current state of Metro object and updates state if necesary.
+*/
 
-// ~~~~
 		uint8_t Process();
-// ~~~~
 
-// ### Reset
-// resets phase to 0
-// ~~~~
+/** resets phase to 0
+*/
 		inline void Reset() { phs_ = 0.0f; }
-// ~~~~
 
-// ## Setters
-// ### SetFreq
-// Sets frequency at which Metro module will run at.
+/** Sets frequency at which Metro module will run at.
+*/
 
-// ~~~~
 		void SetFreq(float freq);
-// ~~~~
 
-// ## Getters
-// ### GetFreq
-// Returns current value for frequency.
+/** Returns current value for frequency.
+*/
 
-// ~~~~
 		inline float GetFreq() { return freq_; }
-// ~~~~
 
 	private:
 		float freq_;

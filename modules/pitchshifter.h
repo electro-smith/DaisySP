@@ -1,12 +1,12 @@
-// # pitchshift
-// From ucsd.edu "Pitch Shifting"
-// t = 1 - ((s *f) / R)
-// where:
-// s is the size of the delay
-// f is the frequency of the lfo
-// r is the sample_rate
-// solving for t = 12.0
-// f = (12 - 1) * 48000 / SHIFT_BUFFER_SIZE;
+/** From ucsd.edu "Pitch Shifting"
+t = 1 - ((s *f) / R)
+where:
+s is the size of the delay
+f is the frequency of the lfo
+r is the sample_rate
+solving for t = 12.0
+f = (12 - 1) * 48000 / SHIFT_BUFFER_SIZE;
+*/
 #pragma once
 #ifndef DSY_PITCHSHIFTER_H
 #define DSY_PITCHSHIFTER_H
@@ -33,8 +33,9 @@ inline uint32_t myrand()
     return seed;
 }
 
-// Shift can be 30-100 ms lets just start with 50 for now.
-// 0.050 * SR = 2400 samples (at 48kHz)
+/** Shift can be 30-100 ms lets just start with 50 for now.
+0.050 * SR = 2400 samples (at 48kHz)
+*/
 //#define SHIFT_BUFFER_SIZE 4800
 //#define SHIFT_BUFFER_SIZE 8192
 #define SHIFT_BUFFER_SIZE 16384
@@ -68,7 +69,8 @@ class PitchShifter
     float Process(float &in)
     {
         float val, fade1, fade2;
-        // First Process delay mod/crossfade
+/** First Process delay mod/crossfade
+*/
         fade1 = phs_[0].Process();
         fade2 = phs_[1].Process();
         if(prev_phs_a_ > fade1)
@@ -102,13 +104,15 @@ class PitchShifter
         gain_[1] = sinf(fade2 * (float)M_PI);
 #endif
 
-        // Handle Delay Writing
+/** Handle Delay Writing
+*/
         d_[0].Write(in);
         d_[1].Write(in);
-        // Modulate Delay Lines
-        //            mod_a_amt = mod_b_amt = 0.0f;
-//        d_[0].SetDelay(mod_[0] + mod_a_amt_);
-//        d_[1].SetDelay(mod_[1] + mod_b_amt_);
+/** Modulate Delay Lines
+           mod_a_amt = mod_b_amt = 0.0f;
+       d_[0].SetDelay(mod_[0] + mod_a_amt_);
+       d_[1].SetDelay(mod_[1] + mod_b_amt_);
+*/
         d_[0].SetDelay(mod_[0] + slewed_mod_[0]);
         d_[1].SetDelay(mod_[1] + slewed_mod_[1]);
         val = 0.0f;
@@ -169,7 +173,8 @@ class PitchShifter
     ShiftDelay                                 d_[2];
     float                                       pitch_shift_, mod_freq_;
     uint32_t                                    del_size_;
-    // lfo stuff
+/** lfo stuff
+*/
     bool   force_recalc_;
     float  sr_;
     bool   shift_up_;
@@ -177,7 +182,8 @@ class PitchShifter
     float  gain_[2], mod_[2], transpose_;
     float  fun_, mod_a_amt_, mod_b_amt_, prev_phs_a_, prev_phs_b_;
     float  slewed_mod_[2], mod_coeff_[2];
-    // pitch stuff
+/** pitch stuff
+*/
     float semitone_ratios_[12];
 };
 } // namespace daisysp

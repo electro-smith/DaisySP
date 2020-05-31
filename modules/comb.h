@@ -1,8 +1,7 @@
-// #Comb
-// Comb filter module
-// ## Credits
-// *Original author(s) :
-// *Ported from soundpipe by Ben Sergentanis, May 2020
+/** Comb filter module
+*Original author(s) :
+*Ported from soundpipe by Ben Sergentanis, May 2020
+*/
 
 #pragma once
 #ifndef DSY_COMB_H
@@ -22,39 +21,26 @@ class Comb
     Comb() {}
     ~Comb() {}
   
-    // ### Init
-    //
-    // Initializes the Comb module.
-    //
-    // sample_rate - The sample rate of the audio engine being run. 
-    // 
-    // ~~~~
+
+/** Initializes the Comb module.
+sample_rate - The sample rate of the audio engine being run. 
+*/
     void Init (float sample_rate, float* buff, size_t size);
-    // ~~~~
 
-    // ### Process
-    //
-    // 
-    // ~~~~
+
+/** 
+*/
         float Process(float in);
-    // ~~~~
 
-    // #Setters
-    //
-    // ### SetFreq
-    //
-    // 
-    // ~~~~
+
+
+/** 
+*/
 	void SetFreq(float looptime);
-    // ~~~~
 
-    // #Setters
-    //
-    // ### SetRevTime
-    //
-    // ~~~~
+
+
         inline void SetRevTime(float revtime) { rev_time_ = revtime; }
-    // ~~~~
 	
     private:
 	float sample_rate_, rev_time_, loop_time_, prvt_, coef_, max_loop_time_;

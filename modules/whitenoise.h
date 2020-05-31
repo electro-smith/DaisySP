@@ -1,8 +1,7 @@
-// # WhiteNoise
-// 
-// fast white noise generator
-// I think this came from musicdsp.org at some point
-//
+/** 
+fast white noise generator
+I think this came from musicdsp.org at some point
+*/
 #pragma once
 #ifndef DSY_WHITENOISE_H
 #define DSY_WHITENOISE_H
@@ -16,27 +15,21 @@ namespace daisysp
 		WhiteNoise() {}
 		~WhiteNoise() {}
 
-// ### Init
-// Initializes the WhiteNoise object
-// ~~~~
+/** Initializes the WhiteNoise object
+*/
 		void Init()
-// ~~~~
 		{
 			amp_	  = 1.0f;
 			randseed_ = 1;
 		}
 
-// ### SetAmp
-// sets the amplitude of the noise output
-// ~~~~
+/** sets the amplitude of the noise output
+*/
 		inline void SetAmp(float a) { amp_ = a; }
-// ~~~~
 
-// ### Process
-// returns a new sample of noise in the range of -amp_ to amp_
-// ~~~~
+/** returns a new sample of noise in the range of -amp_ to amp_
+*/
 		inline float Process() 
-// ~~~~
 		{ 
 			randseed_ *= 16807;
 			return (randseed_ * coeff_) * amp_;

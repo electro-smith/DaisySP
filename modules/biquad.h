@@ -1,9 +1,8 @@
-// #biquad
-// Two pole recursive filter
-// ## Credits
-// *Original author(s) : Hans Mikelson
-// *Year: 1998
-// *Ported from soundpipe by Ben Sergentanis, May 2020
+/** Two pole recursive filter
+*Original author(s) : Hans Mikelson
+*Year: 1998
+*Ported from soundpipe by Ben Sergentanis, May 2020
+*/
 
 #pragma once
 #ifndef DSY_BIQUAD_H
@@ -21,38 +20,27 @@ class Biquad
     Biquad() {}
     ~Biquad() {}
   
-    // ### Init
-    //
-    // Initializes the biquad module.
-    //
-    // sample_rate - The sample rate of the audio engine being run. 
-    // 
-    // ~~~~
+
+/** Initializes the biquad module.
+sample_rate - The sample rate of the audio engine being run. 
+*/
         void Init(float sample_rate);
-    // ~~~~
 
-    // ### Process
-    //
-    // 
-    // ~~~~
+
+/** 
+*/
         float Process(float in);
-    // ~~~~
 
-    // # Setters
-    //
-    // ###SetRes
-    //
-    // * float res : Set filter resonance.
-    // ~~~~
+
+
+/** * float res : Set filter resonance.
+*/
 	inline void SetRes(float res) { res_ = res; Reset(); }
-    // ~~~~
 	
-    // ###SetCutoff
-    //
-    // * float cutoff : Set filter cutoff.
-    // ~~~~
+
+/** * float cutoff : Set filter cutoff.
+*/
 	inline void SetCutoff(float cutoff) { cutoff_ = cutoff; Reset(); }
-    // ~~~~
 
     private:
 	float sample_rate_, cutoff_, res_,
