@@ -11,26 +11,26 @@ const float kCrossLogMax = logf(1.0f);
 float CrossFade::Process(float &in1, float &in2)
 {
     float scalar_1, scalar_2;
-	switch (curve_)
-	{
-		case CROSSFADE_LIN: 
+    switch(curve_)
+    {
+        case CROSSFADE_LIN:
             scalar_1 = pos_;
-    		return (in1 * (1.0f - scalar_1)) + (in2 * scalar_1);
+            return (in1 * (1.0f - scalar_1)) + (in2 * scalar_1);
 
-    	case CROSSFADE_CPOW:
+        case CROSSFADE_CPOW:
             scalar_1 = sinf(pos_ * ((float)M_PI * 0.5f));
             scalar_2 = sinf((1.0f - pos_) * ((float)M_PI * 0.5f));
             return (in1 * scalar_2) + (in2 * scalar_1);
 
-    	case CROSSFADE_LOG:
-            scalar_1 = expf(pos_ * (kCrossLogMax - kCrossLogMin) + kCrossLogMin);
-    		return (in1 * (1.0f - scalar_1)) + (in2 * scalar_1);
+        case CROSSFADE_LOG:
+            scalar_1
+                = expf(pos_ * (kCrossLogMax - kCrossLogMin) + kCrossLogMin);
+            return (in1 * (1.0f - scalar_1)) + (in2 * scalar_1);
 
-    	case CROSSFADE_EXP:
+        case CROSSFADE_EXP:
             scalar_1 = pos_ * pos_;
-    		return (in1 * (1.0f - scalar_1)) + (in2 * scalar_1);
+            return (in1 * (1.0f - scalar_1)) + (in2 * scalar_1);
 
-    	default :
-    		return 0;
-	}
+        default: return 0;
+    }
 }

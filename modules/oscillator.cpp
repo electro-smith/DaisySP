@@ -5,10 +5,10 @@
 using namespace daisysp;
 static inline float Polyblep(float phase_inc, float t);
 
-constexpr float     TWO_PI_F     = (float)M_TWOPI;
-constexpr float     TWO_PI_RECIP = 1.0f / TWO_PI_F;
+constexpr float TWO_PI_F     = (float)M_TWOPI;
+constexpr float TWO_PI_RECIP = 1.0f / TWO_PI_F;
 
-float               Oscillator::Process()
+float Oscillator::Process()
 {
     float out, t;
     switch(waveform_)

@@ -6,25 +6,25 @@
 
 namespace daisysp
 {
-    /** Removes DC component of a signal
+/** Removes DC component of a signal
     */
-	class DcBlock
-	{
-	public: 
-		DcBlock() {};
-		~DcBlock() {};
+class DcBlock
+{
+  public:
+    DcBlock(){};
+    ~DcBlock(){};
 
-/** Initializes DcBlock module
-*/
-		void Init(float sample_rate);
+    /** Initializes DcBlock module
+	*/
+    void Init(float sample_rate);
 
-/** performs DcBlock Process 
-*/
-		float Process(float in);
+    /** performs DcBlock Process 
+	*/
+    float Process(float in);
 
-		private:
-			float input_, output_, gain_;
-	};
-}
+  private:
+    float input_, output_, gain_;
+};
+} // namespace daisysp
 #endif
 #endif

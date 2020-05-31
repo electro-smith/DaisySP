@@ -15,8 +15,8 @@ class Oscillator
     ~Oscillator() {}
 
 
-/** Choices for output waveforms, POLYBLEP are appropriately labeled. Others are naive forms.
-*/
+    /** Choices for output waveforms, POLYBLEP are appropriately labeled. Others are naive forms.
+	*/
     enum
     {
         WAVE_SIN,
@@ -31,13 +31,15 @@ class Oscillator
     };
 
 
-/** Initializes the Oscillator
-float sample_rate - sample rate of the audio engine being run, and the frequency that the Process function will be called.
-Defaults:
-- freq_ = 100 Hz
-- amp_ = 0.5
-- waveform_ = sine wave.
-*/
+    /** Initializes the Oscillator
+
+		\param sample_rate - sample rate of the audio engine being run, and the frequency that the Process function will be called.
+
+		Defaults:
+		- freq_ = 100 Hz
+		- amp_ = 0.5
+		- waveform_ = sine wave.
+	*/
     void Init(float sample_rate)
     {
         sr_        = sample_rate;
@@ -50,8 +52,8 @@ Defaults:
     }
 
 
-/** Changes the frequency of the Oscillator, and recalculates phase increment.
-*/
+    /** Changes the frequency of the Oscillator, and recalculates phase increment.
+	*/
     inline void SetFreq(const float f)
     {
         freq_      = f;
@@ -59,31 +61,31 @@ Defaults:
     }
 
 
-/** Sets the amplitude of the waveform.
-*/
+    /** Sets the amplitude of the waveform.
+	*/
     inline void SetAmp(const float a) { amp_ = a; }
 
 
-/** Sets the waveform to be synthesized by the Process() function.
-*/
+    /** Sets the waveform to be synthesized by the Process() function.
+	*/
     inline void SetWaveform(const uint8_t wf)
     {
         waveform_ = wf < WAVE_LAST ? wf : WAVE_SIN;
     }
 
 
-/** Processes the waveform to be generated, returning one sample. This should be called once per sample period.
-*/
+    /** Processes the waveform to be generated, returning one sample. This should be called once per sample period.
+	*/
     float Process();
 
 
-/** Adds a value 0.0-1.0 (mapped to 0.0-TWO_PI) to the current phase. Useful for PM and "FM" synthesis.
-*/
+    /** Adds a value 0.0-1.0 (mapped to 0.0-TWO_PI) to the current phase. Useful for PM and "FM" synthesis.
+	*/
     void PhaseAdd(float _phase) { phase_ += (_phase * float(M_TWOPI)); }
 
 
-/** Resets the phase to the input argument. If no argument is present, it will reset phase to 0.0;
-*/
+    /** Resets the phase to the input argument. If no argument is present, it will reset phase to 0.0;
+	*/
     void Reset(float _phase = 0.0f) { phase_ = _phase; }
 
   private:

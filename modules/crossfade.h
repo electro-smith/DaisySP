@@ -6,7 +6,6 @@
 
 namespace daisysp
 {
-
 /** Curve applied to the CrossFade
 - LIN = linear
 - CPOW = constant power
@@ -14,70 +13,71 @@ namespace daisysp
 - EXP  exponential
 - LAST = end of enum (used for array indexing)
 */
-	enum 
-	{
-		CROSSFADE_LIN,
-		CROSSFADE_CPOW,
-		CROSSFADE_LOG,
-		CROSSFADE_EXP,
-		CROSSFADE_LAST,
-	};
+enum
+{
+    CROSSFADE_LIN,
+    CROSSFADE_CPOW,
+    CROSSFADE_LOG,
+    CROSSFADE_EXP,
+    CROSSFADE_LAST,
+};
 
-/** 
-Performs a CrossFade between two signals
-Original author: Paul Batchelor
-Ported from Soundpipe by Andrew Ikenberry
-added curve option for constant power, etc.
+/** Performs a CrossFade between two signals
+
+	Original author: Paul Batchelor
+
+	Ported from Soundpipe by Andrew Ikenberry
+
+	added curve option for constant power, etc.
 */
-	class CrossFade
-	{
-	public:
-		CrossFade() {}
-		~CrossFade() {}
+class CrossFade
+{
+  public:
+    CrossFade() {}
+    ~CrossFade() {}
 
-/** Initializes CrossFade module
-Defaults
-- current position = .5
-- curve = linear
-*/
-        inline void Init(int curve)
-        {
-            pos_ = 0.5f;
-            curve_ = curve < CROSSFADE_LAST ? curve : CROSSFADE_LIN;
-        }
-		inline void Init() 
-		{
-            Init(CROSSFADE_LIN);
-        }
-/** processes CrossFade and returns single sample
-*/
-        float Process(float &in1, float &in2);
+    /** Initializes CrossFade module
+		Defaults
+		- current position = .5
+		- curve = linear
+	*/
+    inline void Init(int curve)
+    {
+        pos_   = 0.5f;
+        curve_ = curve < CROSSFADE_LAST ? curve : CROSSFADE_LIN;
+    }
 
-
-/** Sets position of CrossFade between two input signals
-Input range: 0 to 1
-*/
-		inline void SetPos(float pos) { pos_ = pos; }
-
-/** 
-Sets current curve applied to CrossFade 
-Expected input: See [Curve Options](##curve-options)
-*/
-		inline void SetCurve(uint8_t curve) { curve_ = curve; }
+    /** Initialize with default linear curve 
+	*/
+    inline void Init() { Init(CROSSFADE_LIN); }
+    /** processes CrossFade and returns single sample
+	*/
+    float Process(float &in1, float &in2);
 
 
-/** Returns current position
-*/
-		inline float GetPos(float pos) { return pos_; }
+    /** Sets position of CrossFade between two input signals
+		Input range: 0 to 1
+	*/
+    inline void SetPos(float pos) { pos_ = pos; }
 
-/** Returns current curve
-*/
-		inline uint8_t GetCurve(uint8_t curve) { return curve_; }
+    /** Sets current curve applied to CrossFade 
+	Expected input: See [Curve Options](##curve-options)
+	*/
+    inline void SetCurve(uint8_t curve) { curve_ = curve; }
 
-	private:
-		float pos_;
-		uint8_t curve_;
-	};
+
+    /** Returns current position
+	*/
+    inline float GetPos(float pos) { return pos_; }
+
+    /** Returns current curve
+	*/
+    inline uint8_t GetCurve(uint8_t curve) { return curve_; }
+
+  private:
+    float   pos_;
+    uint8_t curve_;
+};
 } // namespace daisysp
 #endif
 #endif

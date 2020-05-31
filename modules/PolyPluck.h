@@ -10,19 +10,22 @@
 namespace daisysp
 {
 /** Simplified Pseudo-Polyphonic Pluck Voice
+
 Template Based Pluck Voice, with configurable number of voices and simple pseudo-polyphony.
+
 DC Blocking included to prevent biases from causing unwanted saturation distortion.
+
 **Author**: shensley
+
 **Date Added**: March 2020
 */
 template <size_t num_voices>
 class PolyPluck
 {
   public:
-/** Initializes the PolyPluck instance.
-Arguments:
-- sample_rate: rate in Hz that the Process() function will be called.
-*/
+    /** Initializes the PolyPluck instance.
+		\param sample_rate: rate in Hz that the Process() function will be called.
+	*/
     void Init(float sample_rate)
     {
         active_voice_ = 0;
@@ -37,23 +40,22 @@ Arguments:
         }
         blk_.Init(sample_rate);
     }
-/** Process function, synthesizes and sums the output of all voices,
-triggering a new voice with frequency of MIDI note number when trig > 0.
-Arguments:
-- float &trig: value by reference of trig. When trig > 0 a the next voice will be triggered, and trig will be set to 0.
-- float note: MIDI note number for the active_voice.
-*/
+
+    /** Process function, synthesizes and sums the output of all voices,
+		triggering a new voice with frequency of MIDI note number when trig > 0.
+
+		\param trig: value by reference of trig. When trig > 0 a the next voice will be triggered, and trig will be set to 0.
+		\param note: MIDI note number for the active_voice.
+	*/
     float Process(float &trig, float note)
     {
         float sig, tval;
         sig = 0.0f;
         if(trig > 0.0f)
         {
-/** increment active voice
-*/
+            // increment active voice
             active_voice_ = (active_voice_ + 1) % num_voices;
-/** set new voice to new note
-*/
+            // set new voice to new note
             plk_[active_voice_].SetDamp(p_damp_);
             plk_[active_voice_].SetDecay(p_decay_);
             plk_[active_voice_].SetAmp(0.25f);
@@ -69,17 +71,14 @@ Arguments:
             trig = 0.0f;
         return blk_.Process(sig);
     }
-/** Sets the decay coefficients of the pluck voices. Expects 0.0-1.0 input.
-*/
-    void SetDecay(float p)
-    {
-        p_damp_ = p;
-    }
+
+    /** Sets the decay coefficients of the pluck voices. 
+		\param p expects 0.0-1.0 input.
+	*/
+    void SetDecay(float p) { p_damp_ = p; }
 
 
   private:
-/** Member Variables
-*/
     DcBlock blk_;
     Pluck   plk_[num_voices];
     float   plkbuff_[num_voices][256];
