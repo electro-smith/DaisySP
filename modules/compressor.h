@@ -1,17 +1,3 @@
-/** 
-influenced by compressor in soundpipe (from faust).
-Modifications made to do:
-- Less calculations during each process loop (coefficients recalculated on parameter change).
-- C++-ified
-- added sidechain support
-TODO:
-- With fixed controls this is relatively quick, but changing controls now costs a lot more
-- Still pretty expensive
-- Add soft/hard knee settings 
-- Maybe make stereo possible? (needing two for stereo is a bit silly, 
-and their gain shouldn't be totally unique.
-by: shensley
-*/
 #pragma once
 #ifndef DSY_COMPRESSOR_H
 #define DSY_COMPRESSOR_H
@@ -19,6 +5,20 @@ by: shensley
 namespace daisysp
 {
 
+/** 
+influenced by compressor in soundpipe (from faust).
+Modifications made to do:
+- Less calculations during each process loop (coefficients recalculated on parameter change).
+- C++-ified
+- added sidechain support
+by: shensley
+
+\todo With fixed controls this is relatively quick, but changing controls now costs a lot more
+\todo Still pretty expensive
+\todo Add soft/hard knee settings 
+\todo Maybe make stereo possible? (needing two for stereo is a bit silly, 
+    and their gain shouldn't be totally unique.
+*/
 class Compressor
 {
     public:

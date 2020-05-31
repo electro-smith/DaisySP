@@ -1,8 +1,3 @@
-/** adsr envelope module
-*Original author(s) : Paul Batchelor
-*Ported from Soundpipe by Ben Sergentanis, May 2020
-*/
-
 #pragma once
 #ifndef DSY_ADSR_H
 #define DSY_ADSR_H
@@ -33,6 +28,10 @@ enum
 };
 
 
+/** adsr envelope module
+*Original author(s) : Paul Batchelor
+*Ported from Soundpipe by Ben Sergentanis, May 2020
+*/
 class Adsr
 {
     public:

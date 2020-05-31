@@ -1,3 +1,10 @@
+#pragma once
+#ifndef DSY_DELAY_H
+#define DSY_DELAY_H
+#include <stdlib.h>
+#include <stdint.h>
+namespace daisysp
+{
 
 /** Simple Delay line.
 November 2019
@@ -8,13 +15,6 @@ DelayLine<float, SAMPLE_RATE> del;
 ```
 By: shensley
 */
-#pragma once
-#ifndef DSY_DELAY_H
-#define DSY_DELAY_H
-#include <stdlib.h>
-#include <stdint.h>
-namespace daisysp
-{
 template<typename T, size_t max_size>
 class DelayLine
 {

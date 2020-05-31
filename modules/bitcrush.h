@@ -1,8 +1,3 @@
-/** bitcrush module
-*Original author(s) : Paul Batchelor, 
-*Ported from soundpipe by Ben Sergentanis, May 2020
-*/
-
 #pragma once
 #ifndef DSY_BITCRUSH_H
 #define DSY_BITCRUSH_H
@@ -13,6 +8,10 @@
 namespace daisysp
 {
 
+/** bitcrush module
+*Original author(s) : Paul Batchelor, 
+*Ported from soundpipe by Ben Sergentanis, May 2020
+*/
 class Bitcrush
 {
     public:

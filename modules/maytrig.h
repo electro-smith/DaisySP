@@ -1,8 +1,3 @@
-/** Probabilistic trigger  module
-*Original author(s) : Paul Batchelor
-*Ported from soundpipe by Ben Sergentanis, May 2020
-*/
-
 #pragma once
 #ifndef DSY_MAYTRIG_H
 #define DSY_MAYTRIG_H
@@ -13,6 +8,10 @@
 namespace daisysp
 {
 
+/** Probabilistic trigger  module
+*Original author(s) : Paul Batchelor
+*Ported from soundpipe by Ben Sergentanis, May 2020
+*/
 class Maytrig
 {
     public:

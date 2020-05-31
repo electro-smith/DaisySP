@@ -1,9 +1,3 @@
-/** Simplified Pseudo-Polyphonic Pluck Voice
-Template Based Pluck Voice, with configurable number of voices and simple pseudo-polyphony.
-DC Blocking included to prevent biases from causing unwanted saturation distortion.
-**Author**: shensley
-**Date Added**: March 2020
-*/
 #pragma once
 #ifndef DSY_POLYPLUCK_H
 #define DSY_POLYPLUCK_H
@@ -15,6 +9,12 @@ DC Blocking included to prevent biases from causing unwanted saturation distorti
 
 namespace daisysp
 {
+/** Simplified Pseudo-Polyphonic Pluck Voice
+Template Based Pluck Voice, with configurable number of voices and simple pseudo-polyphony.
+DC Blocking included to prevent biases from causing unwanted saturation distortion.
+**Author**: shensley
+**Date Added**: March 2020
+*/
 template <size_t num_voices>
 class PolyPluck
 {

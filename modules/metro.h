@@ -1,7 +1,3 @@
-/** 
-Creates a clock signal at a specific frequency.
-*/
-
 #pragma once
 #ifndef DSY_METRO_H
 #define DSY_METRO_H
@@ -10,6 +6,9 @@ Creates a clock signal at a specific frequency.
 
 namespace daisysp
 {
+    /** 
+    Creates a clock signal at a specific frequency.
+    */
 	class Metro
 	{
 	public:

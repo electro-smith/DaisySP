@@ -1,12 +1,3 @@
-/** From ucsd.edu "Pitch Shifting"
-t = 1 - ((s *f) / R)
-where:
-s is the size of the delay
-f is the frequency of the lfo
-r is the sample_rate
-solving for t = 12.0
-f = (12 - 1) * 48000 / SHIFT_BUFFER_SIZE;
-*/
 #pragma once
 #ifndef DSY_PITCHSHIFTER_H
 #define DSY_PITCHSHIFTER_H
@@ -18,6 +9,8 @@ f = (12 - 1) * 48000 / SHIFT_BUFFER_SIZE;
 #include "delayline.h"
 #include "phasor.h"
 
+/** \todo move this to dsp.h
+*/
 static inline uint32_t hash_xs32(uint32_t x)
 {
     x ^= x << 13;
@@ -26,6 +19,8 @@ static inline uint32_t hash_xs32(uint32_t x)
     return x;
 }
 
+/** \todo move this to dsp.h and name more appropriately
+*/
 inline uint32_t myrand()
 {
     static uint32_t seed = 1;
@@ -43,6 +38,15 @@ inline uint32_t myrand()
 
 namespace daisysp
 {
+/** From ucsd.edu "Pitch Shifting"
+t = 1 - ((s *f) / R)
+where:
+s is the size of the delay
+f is the frequency of the lfo
+r is the sample_rate
+solving for t = 12.0
+f = (12 - 1) * 48000 / SHIFT_BUFFER_SIZE;
+*/
 class PitchShifter
 {
   public:

@@ -1,8 +1,3 @@
-/** Autowah module
-*Original author(s) :
-*Ported from soundpipe by Ben Sergentanis, May 2020
-*/
-
 #pragma once
 #ifndef DSY_AUTOWAH_H
 #define DSY_AUTOWAH_H
@@ -13,6 +8,10 @@
 namespace daisysp
 {
 
+/** Autowah module
+*Original author(s) :
+*Ported from soundpipe by Ben Sergentanis, May 2020
+*/
 class Autowah
 {
     public:

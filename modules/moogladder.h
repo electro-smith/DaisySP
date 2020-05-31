@@ -1,7 +1,3 @@
-/** Moog ladder filter module
-*Original author(s) : Victor Lazzarini, John ffitch (fast tanh), Bob Moog
-*/
-
 #pragma once
 #ifndef DSY_MOOGLADDER_H
 #define DSY_MOOGLADDER_H
@@ -12,6 +8,9 @@
 namespace daisysp
 {
 
+/** Moog ladder filter module
+*Original author(s) : Victor Lazzarini, John ffitch (fast tanh), Bob Moog
+*/
 class MoogLadder
 {
     public:

@@ -1,9 +1,3 @@
-/** Two pole recursive filter
-*Original author(s) : Hans Mikelson
-*Year: 1998
-*Ported from soundpipe by Ben Sergentanis, May 2020
-*/
-
 #pragma once
 #ifndef DSY_BIQUAD_H
 #define DSY_BIQUAD_H
@@ -14,6 +8,11 @@
 namespace daisysp
 {
   
+/** Two pole recursive filter
+*Original author(s) : Hans Mikelson
+*Year: 1998
+*Ported from soundpipe by Ben Sergentanis, May 2020
+*/
 class Biquad
 {
     public:

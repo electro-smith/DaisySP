@@ -1,4 +1,9 @@
+#pragma once
+#ifndef DAISY_MODE
+#define DAISY_MODE
 
+namespace daisysp
+{
 
 /** Resonant Modal Filter
 Extracted from soundpipe to work as a Daisy Module,
@@ -7,12 +12,6 @@ Original Author(s): Francois Blanc, Steven Yi
 Year: 2001
 Location: Opcodes/biquad.c (csound)
 */
-#pragma once
-#ifndef DAISY_MODE
-#define DAISY_MODE
-
-namespace daisysp
-{
 class Mode
 {
   public:

@@ -1,7 +1,3 @@
-/** 
-fast white noise generator
-I think this came from musicdsp.org at some point
-*/
 #pragma once
 #ifndef DSY_WHITENOISE_H
 #define DSY_WHITENOISE_H
@@ -9,6 +5,10 @@ I think this came from musicdsp.org at some point
 #ifdef __cplusplus
 namespace daisysp
 {
+    /** 
+    fast white noise generator
+    I think this came from musicdsp.org at some point
+    */
 	class WhiteNoise
 	{
 	  public:

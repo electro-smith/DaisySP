@@ -1,18 +1,3 @@
-
-/** port by: Stephen Hensley, December 2019
-Non-linear filter. 
-The four 5-coefficients: a, b, d, C, and L are used to configure different filter types.
-Structure for Dobson/Fitch nonlinear filter 
-Revised Formula from Risto Holopainen 12 Mar 2004
-`Y{n} =tanh(a Y{n-1} + b Y{n-2} + d Y^2{n-L} + X{n} - C)`
-Though traditional filter types can be made, 
-the effect will always respond differently to different input.
-This Source is a heavily modified version of the original
-source from Csound.
-TODO: 
-- make this work on a single sample instead of just on blocks at a time.
-*/
-
 #pragma once
 #ifndef DSY_NLFILT_H
 #define DSY_NLFILT_H
@@ -22,23 +7,36 @@ TODO:
 
 namespace daisysp 
 {
+    /** port by: Stephen Hensley, December 2019
+    Non-linear filter. 
+    The four 5-coefficients: a, b, d, C, and L are used to configure different filter types.
+    Structure for Dobson/Fitch nonlinear filter 
+    Revised Formula from Risto Holopainen 12 Mar 2004
+    `Y{n} =tanh(a Y{n-1} + b Y{n-2} + d Y^2{n-L} + X{n} - C)`
+    Though traditional filter types can be made, 
+    the effect will always respond differently to different input.
+    This Source is a heavily modified version of the original
+    source from Csound.
+
+    \todo make this work on a single sample instead of just on blocks at a time.
+    */
     class NlFilt
     {
         public:
 
-/** Initializes the NlFilt object.
-*/
+        /** Initializes the NlFilt object.
+        */
         void Init();
 
-/** Process the array pointed to by \*in and updates the output to \*out;
-This works on a block of audio at once, the size of which is set with the size. 
-*/
+        /** Process the array pointed to by \*in and updates the output to \*out;
+        This works on a block of audio at once, the size of which is set with the size. 
+        */
         void ProcessBlock(float *in, float *out, size_t size);
 
 
 
-/** inputs these are the five coefficients for the filter.
-*/
+        /** inputs these are the five coefficients for the filter.
+        */
         inline void SetCoefficients(float a, float b, float d, float C, float L)
         {
             a_ = a;

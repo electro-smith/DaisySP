@@ -1,3 +1,9 @@
+#pragma once
+#ifndef DSY_SVF_H
+#define DSY_SVF_H
+
+namespace daisysp
+{
 /**      Double Sampled, Stable State Variable Filter
 Credit to Andrew Simper from musicdsp.org
 This is his "State Variable Filter (Double Sampled, Stable)"
@@ -7,12 +13,6 @@ Ported by: Stephen Hensley
 example:
 daisysp/examples/Svf/
 */
-#pragma once
-#ifndef DSY_SVF_H
-#define DSY_SVF_H
-
-namespace daisysp
-{
     class Svf
     {
         public:

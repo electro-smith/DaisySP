@@ -1,13 +1,4 @@
 
-
-/** Produces a naturally decaying plucked string or drum sound based on the Karplus-Strong algorithms.
-This code has been extracted from the Csound opcode "pluck"
-It has been modified to work as a Daisy Soundpipe module.
-Original Author(s): Barry Vercoe, John ffitch
-Year: 1991
-Location: OOps/ugens4.c
-*/
-
 #pragma once
 #ifndef DSY_PLUCK_H
 #define DSY_PLUCK_H
@@ -29,6 +20,13 @@ namespace daisysp
         PLUCK_LAST,
 	};
 
+/** Produces a naturally decaying plucked string or drum sound based on the Karplus-Strong algorithms.
+This code has been extracted from the Csound opcode "pluck"
+It has been modified to work as a Daisy Soundpipe module.
+Original Author(s): Barry Vercoe, John ffitch
+Year: 1991
+Location: OOps/ugens4.c
+*/
 	class Pluck
 	{
 	public:

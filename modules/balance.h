@@ -1,8 +1,3 @@
-/** Balances two sound sources. Sig is boosted to the level of comp.
-*Original author(s) : Barry Vercoe, john ffitch, Gabriel Maldonado
-*Year: 1991
-*Ported from soundpipe by Ben Sergentanis, May 2020
-*/
 
 #pragma once
 #ifndef DSY_BALANCE_H
@@ -14,6 +9,11 @@
 namespace daisysp
 {
 
+/** Balances two sound sources. Sig is boosted to the level of comp.
+*Original author(s) : Barry Vercoe, john ffitch, Gabriel Maldonado
+*Year: 1991
+*Ported from soundpipe by Ben Sergentanis, May 2020
+*/
 class Balance
 {
     public:

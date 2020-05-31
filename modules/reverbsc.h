@@ -1,11 +1,4 @@
 
-/** Stereo Reverb
-Reverb SC:               Ported from csound/soundpipe
-Original author(s):	    Sean Costello, Istvan Varga
-Year:				    1999, 2005
-Ported to soundpipe by:  Paul Batchelor
-Ported by:			    Stephen Hensley
-*/
 #pragma once
 #ifndef DSYSP_REVERBSC_H
 #define DSYSP_REVERBSC_H
@@ -28,6 +21,13 @@ typedef struct
     float *buf;
 } ReverbScDl;
 
+/** Stereo Reverb
+Reverb SC:               Ported from csound/soundpipe
+Original author(s):	    Sean Costello, Istvan Varga
+Year:				    1999, 2005
+Ported to soundpipe by:  Paul Batchelor
+Ported by:			    Stephen Hensley
+*/
 class ReverbSc
 {
   public:

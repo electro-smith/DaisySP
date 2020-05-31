@@ -1,9 +1,3 @@
-/** fold module
-*Original author(s) : John FFitch, Gabriel Maldonado
-*Year : 1998
-*Ported from soundpipe by Ben Sergentanis, May 2020
-*/
-
 #pragma once
 #ifndef DSY_FOLD_H
 #define DSY_FOLD_H
@@ -14,6 +8,11 @@
 namespace daisysp
 {
 
+/** fold module
+*Original author(s) : John FFitch, Gabriel Maldonado
+*Year : 1998
+*Ported from soundpipe by Ben Sergentanis, May 2020
+*/
 class Fold
 {
     public:

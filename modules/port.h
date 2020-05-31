@@ -1,3 +1,11 @@
+
+#pragma once
+#ifndef DSY_PORT_H
+#define DSY_PORT_H
+#ifdef __cplusplus
+
+namespace daisysp
+{
 /** Applies portamento to an input signal. At each new step value, the input is low-pass filtered to 
 move towards that value at a rate determined by ihtim. ihtim is the half-time of the 
 function (in seconds), during which the curve will traverse half the distance towards the new value, 
@@ -8,14 +16,6 @@ Original Author(s): Robbin Whittle, John ffitch
 Year: 1995, 1998
 Location: Opcodes/biquad.c
 */
-
-#pragma once
-#ifndef DSY_PORT_H
-#define DSY_PORT_H
-#ifdef __cplusplus
-
-namespace daisysp
-{
 	class Port
 	{
 	public:

@@ -1,6 +1,3 @@
-/** creates a Line segment signal
-*/
-
 #pragma once
 #ifndef LINE_H
 #define LINE_H
@@ -9,6 +6,8 @@
 
 namespace daisysp
 {
+    /** creates a Line segment signal
+    */
 	class Line
 	{
 	public:

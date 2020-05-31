@@ -4,10 +4,10 @@
 #include <stdint.h>
 #ifdef __cplusplus
 
-/** Synthesis of several waveforms, including polyBLEP bandlimited waveforms.
-*/
 namespace daisysp
 {
+/** Synthesis of several waveforms, including polyBLEP bandlimited waveforms.
+*/
 class Oscillator
 {
   public:

@@ -1,10 +1,3 @@
-/** Generates a normalized signal moving from 0-1 at the specified frequency.
-TODO:
-I'd like to make the following things easily configurable:
-- Selecting which channels should be initialized/included in the sequence conversion.
-- Setup a similar start function for an external mux, but that seems outside the scope of this file.
-*/
-
 #pragma once
 #ifndef DSY_PHASOR_H
 #define DSY_PHASOR_H
@@ -12,6 +5,10 @@ I'd like to make the following things easily configurable:
 
 namespace daisysp
 {
+/** Generates a normalized signal moving from 0-1 at the specified frequency.
+\todo Selecting which channels should be initialized/included in the sequence conversion.
+\todo Setup a similar start function for an external mux, but that seems outside the scope of this file.
+*/
 	class Phasor
 	{
 	public:

@@ -1,13 +1,3 @@
-/** 
-Performs a CrossFade between two signals
-Original author: Paul Batchelor
-Ported from Soundpipe by Andrew Ikenberry
-added curve option for constant power, etc.
-TODO:
-- implement exponential curve Process
-- implement logarithmic curve Process
-*/
-
 #pragma once
 #ifndef DSY_CROSSFADE_H
 #define DSY_CROSSFADE_H
@@ -33,6 +23,12 @@ namespace daisysp
 		CROSSFADE_LAST,
 	};
 
+/** 
+Performs a CrossFade between two signals
+Original author: Paul Batchelor
+Ported from Soundpipe by Andrew Ikenberry
+added curve option for constant power, etc.
+*/
 	class CrossFade
 	{
 	public:

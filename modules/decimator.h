@@ -1,5 +1,3 @@
-/** Performs downsampling and bitcrush effects
-*/
 
 #pragma once
 #ifndef DECIMATOR_H
@@ -9,6 +7,8 @@
 
 namespace daisysp
 {
+/** Performs downsampling and bitcrush effects
+*/
 	class Decimator
 	{
 	public:

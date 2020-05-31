@@ -1,6 +1,3 @@
-/** 
-Removes DC component of a signal
-*/
 
 #pragma once
 #ifndef DSY_DCBLOCK_H
@@ -9,14 +6,15 @@ Removes DC component of a signal
 
 namespace daisysp
 {
+    /** Removes DC component of a signal
+    */
 	class DcBlock
 	{
 	public: 
 		DcBlock() {};
 		~DcBlock() {};
 
-/** 
-Initializes DcBlock module
+/** Initializes DcBlock module
 */
 		void Init(float sample_rate);
 

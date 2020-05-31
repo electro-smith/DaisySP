@@ -1,10 +1,3 @@
-
-/** Band Limited Oscillator
-* Based on bltriangle, blsaw, blsquare from soundpipe
-* Original Author(s): Paul Batchelor, saw2 Faust by Julius Smith
-* Ported by Ben Sergentanis, May 2020
-*/
-
 #pragma once
 #ifndef DSY_BLOSC_H
 #define DSY_BLOSC_H
@@ -14,7 +7,12 @@
 
 namespace daisysp
 {
-   
+
+/** Band Limited Oscillator
+* Based on bltriangle, blsaw, blsquare from soundpipe
+* Original Author(s): Paul Batchelor, saw2 Faust by Julius Smith
+* Ported by Ben Sergentanis, May 2020
+*/
     class BlOsc
     {
     public:

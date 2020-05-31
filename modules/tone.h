@@ -1,6 +1,3 @@
-
-/** A first-order recursive low-pass filter with variable frequency response.
-*/
 #pragma once
 #ifndef DSY_TONE_H
 #define DSY_TONE_H
@@ -10,6 +7,8 @@
 
 namespace daisysp
 {
+/** A first-order recursive low-pass filter with variable frequency response.
+*/
 	class Tone
 	{
 	public:
