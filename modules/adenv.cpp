@@ -4,9 +4,9 @@
 using namespace daisysp;
 
 //#define EXPF expf
-// This causes with infinity with certain curves, 
+// This causes with infinity with certain curves,
 // which then causes NaN erros...
-#define EXPF expf_fast 
+#define EXPF expf_fast
 
 // To resolve annoying bugs when using this you can:
 // if (val != val)
