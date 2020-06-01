@@ -26,7 +26,7 @@ class Drip
     /** Init
         Initializes the Drip module. 
         \param sample_rate The sample rate of the audio engine being run.
-	\param dettack The period of time over which all sound is stopped.
+    \param dettack The period of time over which all sound is stopped.
     */
     void Init(float sample_rate, float dettack);
 
