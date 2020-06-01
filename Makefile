@@ -15,6 +15,7 @@ compressor \
 crossfade \
 dcblock \
 decimator \
+drip \
 fold \
 line \
 limiter \
