@@ -31,11 +31,11 @@ class Allpass
         \param sample_rate  The sample rate of the audio engine being run.
     */
     void Init(float sample_rate, float* buff, size_t size);
-   
+
     /**  Process
-	 Returns next sample.
-	 \param in Input sample.
-	 \return Next floating point sample.
+     Returns next sample.
+     \param in Input sample.
+     \return Next floating point sample.
     */
     float Process(float in);
     // ~~~~
