@@ -18,6 +18,7 @@
 // Each of the below has/should have an example project.
 #include "modules/adenv.h"
 #include "modules/adsr.h"
+#include "modules/allpass.h"
 #include "modules/atone.h"
 #include "modules/autowah.h"
 #include "modules/balance.h"
