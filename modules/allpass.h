@@ -1,9 +1,12 @@
-// #Allpass
-// Allpass filter module
-// ## Credits
-// *Original author(s) : Barry Vercoe, John ffitch
-// *Year : 1991
-// *Ported from soundpipe by Ben Sergentanis, May 2020
+/*  Allpass
+    Allpass filter module
+  
+    Passes all frequencies at their original levels, with a phase shift.
+  
+    Original author(s) : Barry Vercoe, John ffitch
+    Year : 1991
+    Ported from soundpipe by Ben Sergentanis, May 2020
+*/
 
 #pragma once
 #ifndef DSY_ALLPASS_H
@@ -22,39 +25,32 @@ class Allpass
     Allpass() {}
     ~Allpass() {}
 
-    // ### Init
-    //
-    // Initializes the allpass module.
-    //
-    // sample_rate - The sample rate of the audio engine being run.
-    //
-    // ~~~~
+    /** Init
+        
+        Initializes the allpass module.
+        \param sample_rate  The sample rate of the audio engine being run.
+    */
     void Init(float sample_rate, float* buff, size_t size);
-    // ~~~~
-
-    // ### Process
-    //
-    //
-    // ~~~~
+   
+    /**  Process
+	 Returns next sample.
+	 \param in Input sample.
+	 \return Next floating point sample.
+    */
     float Process(float in);
     // ~~~~
 
-    // #Setters
-    //
-    // ### SetLoopTime
-    //
-    //
-    // ~~~~
+    /** SetFreq
+       Sets the filter frequency (Implemented by delay time).
+       \param looptime Filter looptime in seconds.
+    */
     void SetFreq(float looptime);
-    // ~~~~
 
-    // #Setters
-    //
-    // ### SetRevTime
-    //
-    // ~~~~
+    /** SetRevTime
+        Sets the reverberation time in seconds.
+        \param revtime Reverb time in seconds.
+    */
     inline void SetRevTime(float revtime) { rev_time_ = revtime; }
-    // ~~~~
 
 
   private:
