@@ -1,9 +1,12 @@
-// #Drip
-//
-// ## Credits
-// *Original author(s) : Perry Cook
-// * Year: 2000
-// *Ported from soundpipe by Ben Sergentanis, May 2020
+/* Drip
+ 
+   Imitates the sound of dripping water via Physical Modeling Synthesis.
+   
+   Credits
+   Original author(s) : Perry Cook
+   Year: 2000
+   Ported from soundpipe by Ben Sergentanis, May 2020
+*/
 
 #pragma once
 #ifndef DSY_DRIP_H
@@ -20,22 +23,19 @@ class Drip
     Drip() {}
     ~Drip() {}
 
-    // ### Init
-    //
-    // Initializes the Drip module.
-    //
-    // sample_rate - The sample rate of the audio engine being run.
-    //
-    // ~~~~
+    /** Init
+        Initializes the Drip module. 
+        \param sample_rate The sample rate of the audio engine being run.
+	\param dettack The period of time over which all sound is stopped.
+    */
     void Init(float sample_rate, float dettack);
-    // ~~~~
 
-    // ### Process
-    //
-    //
-    // ~~~~
+    /** Process
+        Process the next floating point sample.
+        \param trig If true, begins a new drip.
+        \return Next sample.
+    */
     float Process(bool trig);
-    // ~~~~
 
   private:
     float gains0_, gains1_, gains2_, kloop_, dettack_, num_tubes_, damp_,
