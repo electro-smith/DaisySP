@@ -145,17 +145,17 @@ float Drip::Process(bool trig)
         if(j == 0)
         {
             center_freqs0_ = res_freq1_ * (0.75f + (0.25f * noise_tick()));
-            gains0_        = fabs(noise_tick());
+            gains0_        = fabsf(noise_tick());
         }
         else if(j == 1)
         {
             center_freqs1_ = res_freq1_ * (1.0f + (0.25f * noise_tick()));
-            gains1_        = fabs(noise_tick());
+            gains1_        = fabsf(noise_tick());
         }
         else
         {
             center_freqs2_ = res_freq1_ * (1.25f + (0.25f * noise_tick()));
-            gains2_        = fabs(noise_tick());
+            gains2_        = fabsf(noise_tick());
         }
     }
 
