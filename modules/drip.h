@@ -1,13 +1,3 @@
-/* Drip
- 
-   Imitates the sound of dripping water via Physical Modeling Synthesis.
-   
-   Credits
-   Original author(s) : Perry Cook
-   Year: 2000
-   Ported from soundpipe by Ben Sergentanis, May 2020
-*/
-
 #pragma once
 #ifndef DSY_DRIP_H
 #define DSY_DRIP_H
@@ -17,6 +7,15 @@
 
 namespace daisysp
 {
+/* Drip
+ 
+   Imitates the sound of dripping water via Physical Modeling Synthesis.
+   
+   Credits
+   Original author(s) : Perry Cook
+   Year: 2000
+   Ported from soundpipe by Ben Sergentanis, May 2020
+*/
 class Drip
 {
   public:
