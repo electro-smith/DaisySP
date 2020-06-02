@@ -1,13 +1,3 @@
-/*  Allpass
-    Allpass filter module
-  
-    Passes all frequencies at their original levels, with a phase shift.
-  
-    Original author(s) : Barry Vercoe, John ffitch
-    Year : 1991
-    Ported from soundpipe by Ben Sergentanis, May 2020
-*/
-
 #pragma once
 #ifndef DSY_ALLPASS_H
 #define DSY_ALLPASS_H
@@ -19,6 +9,15 @@
 
 namespace daisysp
 {
+/**  
+       Allpass filter module
+       
+       Passes all frequencies at their original levels, with a phase shift.
+       
+       Original author(s) : Barry Vercoe, John ffitch
+       Year : 1991
+       Ported from soundpipe by Ben Sergentanis, May 2020
+  */
 class Allpass
 {
   public:

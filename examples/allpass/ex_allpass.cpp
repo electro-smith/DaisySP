@@ -34,6 +34,7 @@ int main(void)
     seed.Init();
     sample_rate = seed.AudioSampleRate();
     osc.Init(sample_rate);
+    lfo.Init(sample_rate);
 
     float buff[9600];
     for(int i = 0; i < 9600; i++)
