@@ -7,13 +7,11 @@
 
 namespace daisysp
 {
-/* Drip
- 
-   Imitates the sound of dripping water via Physical Modeling Synthesis.
-   
-   Credits
-   Original author(s) : Perry Cook
-   Year: 2000
+/** 
+   @file drip.h
+   @brief Imitates the sound of dripping water via Physical Modeling Synthesis. \n 
+   Author: Perry Cook \n 
+   Year: 2000 \n 
    Ported from soundpipe by Ben Sergentanis, May 2020
 */
 class Drip
@@ -22,14 +20,14 @@ class Drip
     Drip() {}
     ~Drip() {}
 
-    /** Init
+    /** 
         Initializes the Drip module. 
         \param sample_rate The sample rate of the audio engine being run.
     \param dettack The period of time over which all sound is stopped.
     */
     void Init(float sample_rate, float dettack);
 
-    /** Process
+    /** 
         Process the next floating point sample.
         \param trig If true, begins a new drip.
         \return Next sample.
