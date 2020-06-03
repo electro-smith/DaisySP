@@ -5,14 +5,15 @@
 #include <stdint.h>
 #ifdef __cplusplus
 
+/**  @file drip.h */
+
 namespace daisysp
 {
 /** 
-   @file drip.h
-   @brief Imitates the sound of dripping water via Physical Modeling Synthesis. \n 
-   Author: Perry Cook \n 
-   Year: 2000 \n 
-   Ported from soundpipe by Ben Sergentanis, May 2020
+    Imitates the sound of dripping water via Physical Modeling Synthesis. \n 
+    Ported from soundpipe by Ben Sergentanis, May 2020 
+    @author Perry Cook  
+    @date 2000  
 */
 class Drip
 {
