@@ -37,6 +37,6 @@ float Allpass::Process(float in)
 
 void Allpass::SetFreq(float freq)
 {
-    loop_time_ = fminf(freq, max_loop_time_);
-    mod_       = loop_time_ * sample_rate_;
+    loop_time_ = fmaxf(fminf(freq, max_loop_time_), .0001);
+    mod_       = fmaxf(loop_time_ * sample_rate_, 0);
 }
