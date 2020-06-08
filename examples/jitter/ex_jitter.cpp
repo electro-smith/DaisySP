@@ -49,7 +49,7 @@ int main(void)
     jitter.SetAmp(1);
     jitter.SetCpsMin(1);
     jitter.SetCpsMax(25);
-    
+
     // Set parameters for oscillator
     osc.SetWaveform(osc.WAVE_TRI);
     osc.SetFreq(440);
