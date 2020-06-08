@@ -34,6 +34,7 @@
 #include "modules/drip.h"
 #include "modules/dsp.h"
 #include "modules/fold.h"
+#include "modules/jitter.h"
 #include "modules/limiter.h"
 #include "modules/line.h"
 #include "modules/maytrig.h"

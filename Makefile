@@ -18,6 +18,7 @@ dcblock \
 decimator \
 drip \
 fold \
+jitter \
 line \
 limiter \
 moogladder \
