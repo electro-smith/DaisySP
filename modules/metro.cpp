@@ -20,10 +20,13 @@ void Metro::Init(float freq, float sample_rate)
 //Increments tap counter, forces tap if counter maxes out
 void Metro::TapTimer()
 {
-    tap_count_++;
-    if (tap_count_ == max_tap_)
+    if (tap_active_)
     {
-        Tap();
+        tap_count_++;
+	if (tap_count_ == max_tap_)
+	{
+	    Tap();
+	}
     }
 }
 
@@ -48,6 +51,10 @@ void Metro::SetFreq(float freq)
 
 void Metro::Tap()
 {
-    SetFreq(sample_rate_ / tap_count_);
-    tap_count_ = 0;
+    tap_active_ = ! tap_active_;
+    if (!tap_active_)
+    {
+        SetFreq(sample_rate_ / tap_count_);
+        tap_count_ = 0;
+    }
 }

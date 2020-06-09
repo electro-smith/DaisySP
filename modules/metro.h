@@ -45,6 +45,7 @@ class Metro
     float freq_;
     float phs_, sample_rate_, phs_inc_;
     uint32_t max_tap_, tap_count_;
+    bool tap_active_ = false;
     void TapTimer();
 };
 } // namespace daisysp
