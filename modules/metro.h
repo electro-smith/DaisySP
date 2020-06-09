@@ -40,13 +40,13 @@ class Metro
     /** To be called when the user taps the button. (or a trigger, etc.)
      */
     void Tap();
-    
+
   private:
-    float freq_;
-    float phs_, sample_rate_, phs_inc_;
+    float    freq_;
+    float    phs_, sample_rate_, phs_inc_;
     uint32_t max_tap_, tap_count_;
-    bool tap_active_ = false;
-    void TapTimer();
+    bool     tap_active_ = false;
+    void     TapTimer();
 };
 } // namespace daisysp
 #endif

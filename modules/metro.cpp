@@ -14,26 +14,26 @@ void Metro::Init(float freq, float sample_rate)
     sample_rate_ = sample_rate;
     phs_inc_     = (2.0f * M_PI * freq_) / sample_rate_;
 
-    max_tap_     = MAX_32; //about 25 hours at 48kHz
+    max_tap_ = MAX_32; //about 25 hours at 48kHz
 }
 
 //Increments tap counter, forces tap if counter maxes out
 void Metro::TapTimer()
 {
-    if (tap_active_)
+    if(tap_active_)
     {
         tap_count_++;
-	if (tap_count_ == max_tap_)
-	{
-	    Tap();
-	}
+        if(tap_count_ == max_tap_)
+        {
+            Tap();
+        }
     }
 }
 
 uint8_t Metro::Process()
 {
     TapTimer();
-  
+
     phs_ += phs_inc_;
     if(phs_ >= 2.0f * M_PI)
     {
@@ -51,8 +51,8 @@ void Metro::SetFreq(float freq)
 
 void Metro::Tap()
 {
-    tap_active_ = ! tap_active_;
-    if (!tap_active_)
+    tap_active_ = !tap_active_;
+    if(!tap_active_)
     {
         SetFreq(sample_rate_ / tap_count_);
         tap_count_ = 0;
