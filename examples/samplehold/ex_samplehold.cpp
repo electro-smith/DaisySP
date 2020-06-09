@@ -26,8 +26,8 @@ static void AudioCallback(float *in, float *out, size_t size)
         if(tick.Process())
         {
             env.Trigger();
-            osc.SetFreq(sh.Process(true, noise.Process() * 500 + 500));
-            tick.SetFreq(sh.Process(false, 0) / 100 + 1);
+            osc.SetFreq(sh.Sample(true, noise.Process() * 500 + 500));
+            tick.SetFreq(sh.Sample(false, 0) / 100 + 1);
         }
 
         // Use envelope to control the amplitude of the oscillator.
@@ -64,7 +64,6 @@ int main(void)
     osc.SetAmp(0.25);
 
     noise.Init();
-    sh.Process(1000, true);
 
     // start callback
     seed.StartAudio(AudioCallback);
