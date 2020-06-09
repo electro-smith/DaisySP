@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tone',['Tone',['../classdaisysp_1_1_tone.html',1,'daisysp']]]
+  ['svf',['Svf',['../classdaisysp_1_1_svf.html',1,'daisysp']]]
 ];

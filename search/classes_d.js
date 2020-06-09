@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['whitenoise',['WhiteNoise',['../classdaisysp_1_1_white_noise.html',1,'daisysp']]]
+  ['tone',['Tone',['../classdaisysp_1_1_tone.html',1,'daisysp']]]
 ];

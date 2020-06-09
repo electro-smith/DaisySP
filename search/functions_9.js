@@ -1,7 +1,7 @@
 var searchData=
 [
   ['seta',['SetA',['../classdaisysp_1_1_nl_filt.html#ac19f3fc6cfe9dcf65e84ebae77068032',1,'daisysp::NlFilt']]],
-  ['setamp',['SetAmp',['../classdaisysp_1_1_bl_osc.html#a41666784273a0454112c2fa23f66ff98',1,'daisysp::BlOsc::SetAmp()'],['../classdaisysp_1_1_oscillator.html#aed6238575aba5b4fb2468002e008dd5a',1,'daisysp::Oscillator::SetAmp()'],['../classdaisysp_1_1_pluck.html#a0dc174a312ee4e07211edd98d953d8fe',1,'daisysp::Pluck::SetAmp()'],['../classdaisysp_1_1_white_noise.html#ae9ec0a9e43a0eb81e1c5a1ff40960fb8',1,'daisysp::WhiteNoise::SetAmp()']]],
+  ['setamp',['SetAmp',['../classdaisysp_1_1_bl_osc.html#a41666784273a0454112c2fa23f66ff98',1,'daisysp::BlOsc::SetAmp()'],['../classdaisysp_1_1_jitter.html#a6b967c0ab7953f48585a7c2db4cb209b',1,'daisysp::Jitter::SetAmp()'],['../classdaisysp_1_1_oscillator.html#aed6238575aba5b4fb2468002e008dd5a',1,'daisysp::Oscillator::SetAmp()'],['../classdaisysp_1_1_pluck.html#a0dc174a312ee4e07211edd98d953d8fe',1,'daisysp::Pluck::SetAmp()'],['../classdaisysp_1_1_white_noise.html#ae9ec0a9e43a0eb81e1c5a1ff40960fb8',1,'daisysp::WhiteNoise::SetAmp()']]],
   ['setattack',['SetAttack',['../classdaisysp_1_1_compressor.html#a6105740feb9973b6cc789187cb767553',1,'daisysp::Compressor']]],
   ['setb',['SetB',['../classdaisysp_1_1_nl_filt.html#aff12b998638973e13e5ad7ea9fb3a067',1,'daisysp::NlFilt']]],
   ['setbitcrushfactor',['SetBitcrushFactor',['../classdaisysp_1_1_decimator.html#a7c65a49525331f32560f0bd80aa3f609',1,'daisysp::Decimator']]],
@@ -9,6 +9,8 @@ var searchData=
   ['setbitstocrush',['SetBitsToCrush',['../classdaisysp_1_1_decimator.html#a976298f886f85998e00d68ed79ebb272',1,'daisysp::Decimator']]],
   ['setc',['SetC',['../classdaisysp_1_1_nl_filt.html#a29bdfdbec0c33693273780879c4920eb',1,'daisysp::NlFilt']]],
   ['setcoefficients',['SetCoefficients',['../classdaisysp_1_1_nl_filt.html#a130fcb06fe72b11a272f4be54146244f',1,'daisysp::NlFilt']]],
+  ['setcpsmax',['SetCpsMax',['../classdaisysp_1_1_jitter.html#a0f79c3cb1bdf2d21291886f01928f8b0',1,'daisysp::Jitter']]],
+  ['setcpsmin',['SetCpsMin',['../classdaisysp_1_1_jitter.html#ac22ea443194a72f0055cb8206efefeb1',1,'daisysp::Jitter']]],
   ['setcrushrate',['SetCrushRate',['../classdaisysp_1_1_bitcrush.html#ac29aef750a39149eddaf9000944c2381',1,'daisysp::Bitcrush']]],
   ['setcurve',['SetCurve',['../classdaisysp_1_1_ad_env.html#afa02c721ad331717a76751859ec929c4',1,'daisysp::AdEnv::SetCurve()'],['../classdaisysp_1_1_cross_fade.html#a0cc741201286e48eebfc66b527bf1041',1,'daisysp::CrossFade::SetCurve()']]],
   ['setcutoff',['SetCutoff',['../classdaisysp_1_1_balance.html#a49659da9ec1ec49a134eaa508a9b7841',1,'daisysp::Balance::SetCutoff()'],['../classdaisysp_1_1_biquad.html#a93ccb0b22586b822fb93ea9b9f14d987',1,'daisysp::Biquad::SetCutoff()']]],
