@@ -37,9 +37,15 @@ class Metro
     */
     inline float GetFreq() { return freq_; }
 
+    /** To be called when the user taps the button. (or a trigger, etc.)
+     */
+    void Tap();
+    
   private:
     float freq_;
     float phs_, sample_rate_, phs_inc_;
+    uint32_t max_tap_, tap_count_;
+    void TapTimer();
 };
 } // namespace daisysp
 #endif
