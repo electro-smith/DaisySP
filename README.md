@@ -57,7 +57,7 @@ Here are some ways to get support and connect with other users and developers:
 
 - [Make an issue](https://github.com/electro-smith/DaisySP/issues) 
 
-- Slack channel - shoot us an email at hello(at)electro-smith(dot)com to receive an invitation
+- Slack Workspace - shoot us an email at hello(at)electro-smith(dot)com to receive an invitation
 
 - Tech Support - for the best response, please use our [contact form](https://www.electro-smith.com/contact)
 
