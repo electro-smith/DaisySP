@@ -141,7 +141,7 @@ float AdEnv::Process()
             current_segment_ = ADENV_SEG_IDLE;
         }
     }
-    if (current_segment_ == ADENV_SEG_IDLE) 
+    if(current_segment_ == ADENV_SEG_IDLE)
     {
         val = out = 0.0f;
     }
