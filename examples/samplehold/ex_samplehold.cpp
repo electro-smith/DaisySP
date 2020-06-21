@@ -22,17 +22,18 @@ static void AudioCallback(float *in, float *out, size_t size)
     float osc_out, env_out;
     for(size_t i = 0; i < size; i += 2)
     {
-        uint8_t trig = tick.Process();
-	float newsample = sh.Process(trig, noise.Process() * 500 + 500, sh.MODE_SAMPLE_HOLD);
+        uint8_t trig      = tick.Process();
+        float   newsample = sh.Process(
+            trig, noise.Process() * 500 + 500, sh.MODE_SAMPLE_HOLD);
 
-	// When the metro ticks, trigger the envelope to start.
-	if (trig)
-	{
-	    env.Trigger();
-	    tick.SetFreq(newsample / 100 + 1);
-	    osc.SetFreq(newsample);
-	}
-	
+        // When the metro ticks, trigger the envelope to start.
+        if(trig)
+        {
+            env.Trigger();
+            tick.SetFreq(newsample / 100 + 1);
+            osc.SetFreq(newsample);
+        }
+
         // Use envelope to control the amplitude of the oscillator.
         env_out = env.Process();
         osc.SetAmp(env_out);

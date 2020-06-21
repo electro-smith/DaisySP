@@ -20,20 +20,21 @@ class SampleHold
 
     enum Mode
     {
-	MODE_SAMPLE_HOLD,
-	MODE_TRACK_HOLD,
-	MODE_LAST,
+        MODE_SAMPLE_HOLD,
+        MODE_TRACK_HOLD,
+        MODE_LAST,
     };
-    
+
     /** Process the next sample. Both sample and track and hold are run in parallel
-	\param trigger Trigger the sample/track and hold
-	\param input   Signal to be sampled/tracked and held
-	\param mode    Whether to output the tracked or sampled values.
+    \param trigger Trigger the sample/track and hold
+    \param input   Signal to be sampled/tracked and held
+    \param mode    Whether to output the tracked or sampled values.
     */
-    inline float Process(bool trigger, float input, Mode mode=MODE_SAMPLE_HOLD)
+    inline float
+    Process(bool trigger, float input, Mode mode = MODE_SAMPLE_HOLD)
     {
-	Update(trigger, input);
-	return mode == MODE_SAMPLE_HOLD ? sample_ : track_;
+        Update(trigger, input);
+        return mode == MODE_SAMPLE_HOLD ? sample_ : track_;
     }
 
   private:
