@@ -18,28 +18,23 @@ class SampleHold
     SampleHold() {}
     ~SampleHold() {}
 
-    /** Track and hold circuit. Both circuits are updated in parallel.
-    \param gate Tracks new values as long as gate is true.
-    \param input Value to track.
-    \return Tracked and held value.
-    */
-    inline float Track(bool gate, float input)
+    enum Mode
     {
-        Update(gate, input);
-        return sample_;
-    }
-
-    /** Sample and hold. Both track and sample are updated in parallel.
-    \param trigger Samples input on rising edge. i.e. Once for each time trigger is true.
-    \param input Value to sample and hold.
-    \return Sampled and held value.
+	MODE_SAMPLE_HOLD,
+	MODE_TRACK_HOLD,
+	MODE_LAST,
+    };
+    
+    /** Process the next sample. Both sample and track and hold are run in parallel
+	\param trigger Trigger the sample/track and hold
+	\param input   Signal to be sampled/tracked and held
+	\param mode    Whether to output the tracked or sampled values.
     */
-    inline float Sample(bool trigger, float input)
+    inline float Process(bool trigger, float input, Mode mode=MODE_SAMPLE_HOLD)
     {
-        Update(trigger, input);
-        return track_;
+	Update(trigger, input);
+	return mode == MODE_SAMPLE_HOLD ? sample_ : track_;
     }
-
 
   private:
     float track_    = 0;
