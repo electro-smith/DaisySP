@@ -37,7 +37,7 @@ static void AudioCallback(float *in, float *out, size_t size)
 ```
 ### Getting Started
 - Browse the [online reference documentation,](https://electro-smith.github.io/DaisySP/index.html) or take it with you in [PDF form](https://github.com/electro-smith/DaisySP/blob/master/doc/daisysp_reference.pdf)
-- Check out our [Getting Started wiki page](https://github.com/electro-smith/DaisyWiki/wiki/1.-Getting-Started)
+- Check out our [Getting Started Wiki Page](https://github.com/electro-smith/DaisyWiki/wiki)
 - Make some sound!
 
 ### Contributing
@@ -55,11 +55,11 @@ Before working on code, please check out our [Contribution Guidelines](https://g
 
 Here are some ways to get support and connect with other users and developers:
 
-- [Join the Forum](https://forum.electro-smith.com/)
+- [Join the Daisy Forum](https://forum.electro-smith.com/)
 
-- [Make an issue](https://github.com/electro-smith/DaisySP/issues) 
+- [Make a GitHub Issue](https://github.com/electro-smith/DaisySP/issues) 
 
-- Slack Workspace - shoot us an email at hello(at)electro-smith(dot)com to receive an invitation
+- Join the Daisy Slack Workspace - shoot us an email at hello(at)electro-smith(dot)com to receive an invitation
 
 ### License
 DaisySP is licensed with the permissive MIT open source license. 
