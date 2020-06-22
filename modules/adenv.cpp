@@ -98,19 +98,21 @@ float AdEnv::Process()
 
     if(prev_segment_ != current_segment_)
     {
-        // Handle recalculating things and whatnot
+        //Reset at segment beginning
         curve_x_ = 0;
         phase_   = 0;
-        // This can happen only on transitions between curves
-        if(curve_scalar_ == 0.0f)
-        {
-            c_inc_ = (end - beg) / time_samps;
-        }
-        else
-        {
-            c_inc_ = (end - beg) / (1.0f - EXPF(curve_scalar_));
-        }
     }
+
+    //recalculate increment value
+    if(curve_scalar_ == 0.0f)
+    {
+        c_inc_ = (end - beg) / time_samps;
+    }
+    else
+    {
+        c_inc_ = (end - beg) / (1.0f - EXPF(curve_scalar_));
+    }
+
 
     // update output
     val = output_;
@@ -131,14 +133,18 @@ float AdEnv::Process()
     // Update Segment
     phase_ += 1;
     prev_segment_ = current_segment_;
-    if(phase_ > time_samps && current_segment_ != ADENV_SEG_IDLE)
+    if(current_segment_ != ADENV_SEG_IDLE)
     {
-        // Advance segment
-        current_segment_++;
-        // TODO: Add Cycling feature here.
-        if(current_segment_ > ADENV_SEG_DECAY)
+        if((out >= 1.f && current_segment_ == ADENV_SEG_ATTACK)
+           || (out <= 0.f && current_segment_ == ADENV_SEG_DECAY))
         {
-            current_segment_ = ADENV_SEG_IDLE;
+            // Advance segment
+            current_segment_++;
+            // TODO: Add Cycling feature here.
+            if(current_segment_ > ADENV_SEG_DECAY)
+            {
+                current_segment_ = ADENV_SEG_IDLE;
+            }
         }
     }
     if(current_segment_ == ADENV_SEG_IDLE)
