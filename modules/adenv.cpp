@@ -96,10 +96,14 @@ float AdEnv::Process()
             break;
     }
 
-    // Handle recalculating things and whatnot
-    curve_x_ = 0;
-    phase_   = 0;
-    // This can happen only on transitions between curves
+    if(prev_segment_ != current_segment_)
+    {
+        //Reset at segment beginning
+        curve_x_ = 0;
+        phase_   = 0;
+    }
+
+    //recalculate increment value
     if(curve_scalar_ == 0.0f)
     {
         c_inc_ = (end - beg) / time_samps;
@@ -108,6 +112,7 @@ float AdEnv::Process()
     {
         c_inc_ = (end - beg) / (1.0f - EXPF(curve_scalar_));
     }
+
 
     // update output
     val = output_;
