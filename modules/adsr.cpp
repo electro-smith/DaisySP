@@ -49,6 +49,8 @@ float Adsr::Process(bool gate)
     {
         mode_ = ADSR_SEG_RELEASE;
         pole  = Tau2Pole(seg_time_[ADSR_SEG_RELEASE]);
+        a_    = pole;
+        b_    = 1.0f - pole;
     }
 
     x_    = (int)gate;
