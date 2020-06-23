@@ -55,11 +55,11 @@ Before working on code, please check out our [Contribution Guidelines](https://g
 
 Here are some ways to get support and connect with other users and developers:
 
-- [Join the Daisy Forum](https://forum.electro-smith.com/)
+- Join the [Daisy Forum](https://forum.electro-smith.com/)
 
-- [Make a GitHub Issue](https://github.com/electro-smith/DaisySP/issues) 
+- Make a [GitHub Issue](https://github.com/electro-smith/DaisySP/issues) 
 
-- Join the Daisy Slack Workspace - shoot us an email at hello(at)electro-smith(dot)com to receive an invitation
+- Join the [Daisy Slack Workspace](https://es-daisy.slack.com/#/) - shoot us an email at hello(at)electro-smith(dot)com to receive an invitation
 
 ### License
 DaisySP is licensed with the permissive MIT open source license. 
