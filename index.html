@@ -94,7 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>### Code Example </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;{c++}</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;static void AudioCallback(float *in, float *out, size_t size)</div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;{</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    float saw, freq, output;</div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    for (size_t i = 0; i &lt; size; i += 2)</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    {</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        freq = 2500 + ( lfo.Process()*2500 );</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        saw = osc.Process();</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        flt.SetFreq(freq);</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        output = flt.Process(saw);</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        // left out</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        out[i] = output;</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        // right out</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        out[i+1] = output;</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    }</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div></div><!-- fragment --> <h3>Getting Started</h3>
 <ul>
 <li>Browse the <a href="https://electro-smith.github.io/DaisySP/index.html">online reference documentation,</a> or take it with you in <a href="https://github.com/electro-smith/DaisySP/blob/master/doc/daisysp_reference.pdf">PDF form</a></li>
-<li>Check out our <a href="https://github.com/electro-smith/DaisyWiki/wiki/1.-Getting-Started">Getting Started wiki page</a></li>
+<li>Check out our <a href="https://github.com/electro-smith/DaisyWiki/wiki">Getting Started Wiki Page</a></li>
 <li>Make some sound!</li>
 </ul>
 <h3>Contributing</h3>
@@ -109,9 +109,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h3>Support</h3>
 <p>Here are some ways to get support and connect with other users and developers:</p>
 <ul>
-<li><a href="https://forum.electro-smith.com/">Join the Forum</a></li>
-<li><a href="https://github.com/electro-smith/DaisySP/issues">Make an issue</a></li>
-<li>Slack Workspace - shoot us an email at hello(at)electro-smith(dot)com to receive an invitation</li>
+<li><a href="https://forum.electro-smith.com/">Join the Daisy Forum</a></li>
+<li><a href="https://github.com/electro-smith/DaisySP/issues">Make a GitHub Issue</a></li>
+<li>Join the Daisy Slack Workspace - shoot us an email at hello(at)electro-smith(dot)com to receive an invitation</li>
 </ul>
 <h3>License</h3>
 <p>DaisySP is licensed with the permissive MIT open source license.</p>
