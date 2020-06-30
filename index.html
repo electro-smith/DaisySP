@@ -85,19 +85,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <p>DaisySP is an open source DSP library written in C++ and specifically tailored to embedded audio applications.</p>
 <p>It was originally created for use with the <a href="https://www.electro-smith.com/daisy">Daisy Embedded Audio Platform</a>, however it can easily be used elsewhere.</p>
-<h3>Features</h3>
+<h2>Features</h2>
 <ul>
 <li>Synthesis blocks such as oscillators, filters, envelopes, etc.</li>
 <li>DSP helper functions optimized for embedded applications</li>
 <li>Effects algorithms including reverb, delay, pitch-shift</li>
 </ul>
-<p>### Code Example </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;{c++}</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;static void AudioCallback(float *in, float *out, size_t size)</div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;{</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    float saw, freq, output;</div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    for (size_t i = 0; i &lt; size; i += 2)</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    {</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        freq = 2500 + ( lfo.Process()*2500 );</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        saw = osc.Process();</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        flt.SetFreq(freq);</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        output = flt.Process(saw);</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        // left out</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        out[i] = output;</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        // right out</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        out[i+1] = output;</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    }</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div></div><!-- fragment --> <h3>Getting Started</h3>
+<p>## Code Example </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;{c++}</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;static void AudioCallback(float *in, float *out, size_t size)</div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;{</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    float saw, freq, output;</div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    for (size_t i = 0; i &lt; size; i += 2)</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    {</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        freq = 2500 + ( lfo.Process()*2500 );</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        saw = osc.Process();</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        flt.SetFreq(freq);</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        output = flt.Process(saw);</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        // left out</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        out[i] = output;</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        // right out</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        out[i+1] = output;</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    }</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div></div><!-- fragment --> <h2>Getting Started</h2>
 <ul>
 <li>Browse the <a href="https://electro-smith.github.io/DaisySP/index.html">online reference documentation,</a> or take it with you in <a href="https://github.com/electro-smith/DaisySP/blob/master/doc/daisysp_reference.pdf">PDF form</a></li>
 <li>Check out our <a href="https://github.com/electro-smith/DaisyWiki/wiki">Getting Started Wiki Page</a></li>
 <li>Make some sound!</li>
 </ul>
-<h3>Contributing</h3>
+<h2>Contributing</h2>
 <p>Here are some ways that you can get involved:</p><ul>
 <li>Proof read the documentation and suggest improvements</li>
 <li>Test existing functionality and make <a href="https://github.com/electro-smith/DaisySP/issues">issues</a></li>
@@ -106,14 +106,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>Fix problems with existing modules. See issues labeled "bug" and/or "polish"</li>
 </ul>
 <p>Before working on code, please check out our <a href="https://github.com/electro-smith/DaisyWiki/wiki/6.-Contribution-Guidelines">Contribution Guidelines</a> and <a href="https://github.com/electro-smith/DaisySP/blob/master/doc/style_guide.pdf">Style Guide.</a></p>
-<h3>Support</h3>
+<h2>Support</h2>
 <p>Here are some ways to get support and connect with other users and developers:</p>
 <ul>
 <li>Join the <a href="https://forum.electro-smith.com/">Daisy Forum</a></li>
 <li>Make a <a href="https://github.com/electro-smith/DaisySP/issues">GitHub Issue</a></li>
 <li>Join the <a href="https://es-daisy.slack.com/#/">Daisy Slack Workspace</a> - shoot us an email at hello(at)electro-smith(dot)com to receive an invitation</li>
 </ul>
-<h3>License</h3>
+<h2>License</h2>
 <p>DaisySP is licensed with the permissive MIT open source license.</p>
 <p>This allows for modification and reuse in both commercial and personal projects. It does not provide a warranty of any kind.</p>
 <p>For the full license, read the <a href="https://github.com/electro-smith/DaisySP/blob/master/LICENSE">LICENSE</a> file in the root directory. </p>
