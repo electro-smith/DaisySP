@@ -56,6 +56,10 @@ class BlOsc
     */
     inline void SetWaveform(uint8_t waveform) { mode_ = waveform; }
 
+    /** - reset the phase of the oscillator.
+    */
+    void Reset();
+
   private:
     float rec0_[2], rec1_[2], vec0_[2], vec1_[2], vec2_[4096], freq_, amp_, pw_,
         sampling_freq_, half_sr_, quarter_sr_, sec_per_sample_, two_over_sr_,
@@ -66,7 +70,6 @@ class BlOsc
     float ProcessSquare();
     float ProcessTriangle();
     float ProcessSaw();
-    void  Reset();
 };
 } // namespace daisysp
 #endif
