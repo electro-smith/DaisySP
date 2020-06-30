@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['samplehold',['SampleHold',['../classdaisysp_1_1_sample_hold.html',1,'daisysp']]],
   ['seed_5fval',['seed_val',['../structdaisysp_1_1_reverb_sc_dl.html#a792052fee9d4fdeb840fa4a38f378797',1,'daisysp::ReverbScDl']]],
   ['seta',['SetA',['../classdaisysp_1_1_nl_filt.html#ac19f3fc6cfe9dcf65e84ebae77068032',1,'daisysp::NlFilt']]],
   ['setamp',['SetAmp',['../classdaisysp_1_1_bl_osc.html#a41666784273a0454112c2fa23f66ff98',1,'daisysp::BlOsc::SetAmp()'],['../classdaisysp_1_1_jitter.html#a6b967c0ab7953f48585a7c2db4cb209b',1,'daisysp::Jitter::SetAmp()'],['../classdaisysp_1_1_oscillator.html#aed6238575aba5b4fb2468002e008dd5a',1,'daisysp::Oscillator::SetAmp()'],['../classdaisysp_1_1_pluck.html#a0dc174a312ee4e07211edd98d953d8fe',1,'daisysp::Pluck::SetAmp()'],['../classdaisysp_1_1_white_noise.html#ae9ec0a9e43a0eb81e1c5a1ff40960fb8',1,'daisysp::WhiteNoise::SetAmp()']]],
