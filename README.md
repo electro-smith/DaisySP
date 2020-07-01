@@ -1,8 +1,8 @@
-[![Build Status](https://travis-ci.org/electro-smith/DaisySP.svg?branch=master)](https://travis-ci.org/electro-smith/DaisySP)
-
 ![](https://github.com/electro-smith/DaisySP/blob/master/resources/assets/banner.png)
 
-DaisySP is an open source DSP library written in C++ and specifically tailored to embedded audio applications. 
+[![Build Status](https://travis-ci.org/electro-smith/DaisySP.svg?branch=master)](https://travis-ci.org/electro-smith/DaisySP)
+
+**DaisySP is an open source DSP library written in C++ and specifically tailored to embedded audio applications.**
 
 It was originally created for use with the [Daisy Embedded Audio Platform](https://www.electro-smith.com/daisy), however it can easily be used elsewhere. 
 
