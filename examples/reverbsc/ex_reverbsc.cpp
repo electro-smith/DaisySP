@@ -6,16 +6,16 @@ using namespace daisy;
 
 static DaisySeed seed;
 
-ReverbSc verb;
+ReverbSc   verb;
 Oscillator osc;
-AdEnv env;
-Metro tick;
+AdEnv      env;
+Metro      tick;
 
 static void AudioCallback(float *in, float *out, size_t size)
 {
     for(size_t i = 0; i < size; i += 2)
     {
-        if (tick.Process())
+        if(tick.Process())
         {
             env.Trigger();
         }
@@ -53,7 +53,7 @@ int main(void)
     osc.Init(sample_rate);
     osc.SetFreq(440.f);
     osc.SetWaveform(Oscillator::WAVE_TRI);
-    
+
     // start callback
     seed.StartAudio(AudioCallback);
     while(1) {}

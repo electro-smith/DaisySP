@@ -15,7 +15,7 @@ using namespace daisy;
 
 DaisySeed    seed;
 PitchShifter ps;
-Oscillator osc;
+Oscillator   osc;
 
 static void AudioCallback(float *in, float *out, size_t size)
 {
@@ -45,7 +45,7 @@ int main(void)
     osc.Init(sample_rate);
     osc.SetFreq(440.f);
     osc.SetWaveform(Oscillator::WAVE_TRI);
-    
+
     // start callback
     seed.StartAudio(AudioCallback);
 
