@@ -28,36 +28,37 @@ using namespace daisysp;
 
 void Compressor::Init(float sample_rate)
 {
-    sample_rate_ = min(192000.0f, max(1.0f, sample_rate));
-    sample_rate_inv_ = 1.0f / sample_rate_;
-    sample_rate_inv2 = 2.0f / sample_rate_;
-    // Skipped fHsliderN inits, but I'm going to init the 4 params
-    ratio_       = 2.0f;
-    thresh_      = -12.0f;
-    atk_         = 0.1f;
-    rel_         = 0.1f;
-    makeup_mul_ = 1.0f;
+    sample_rate_     = min(192000, max(1, sample_rate));
+    sample_rate_inv_ = 1.0f / (float)sample_rate_;
+    sample_rate_inv2 = 2.0f / (float)sample_rate_;
+    
+	// Initializing the params in this order to avoid dividing by zero
+
+    SetRatio(2.0f);
+	SetAttack(0.1f);
+    SetRelease(0.1f);
+    SetThreshold(-12.0f);
+    AutoMakeup(true);
+
     for(uint8_t i = 0; i < 2; i++)
     {
-        gain_rec_[i] = 0.1f;
+        gain_rec_[i]  = 0.1f;
         slope_rec_[i] = 0.1f;
     }
-    RecalculateSlopes();
 }
 
 float Compressor::Process(float in)
 {
-    float inAbs = fabsf(in);
+    float inAbs   = fabsf(in);
     float cur_slo = ((slope_rec_[1] > inAbs) ? rel_slo_ : atk_slo_);
-    slope_rec_[0]    = ((slope_rec_[1] * cur_slo) + ((1.0f - cur_slo) * inAbs));
-    gain_rec_[0]
-        = ((atk_slo2_ * gain_rec_[1])
-           + (ratio_mul_
-              * fmax(((20.f * log10(slope_rec_[0])) - thresh_), 0.f)));
-    gain_      = powf(10.0f, (0.05f * (gain_rec_[0] + makeup_gain_)));
+    slope_rec_[0] = ((slope_rec_[1] * cur_slo) + ((1.0f - cur_slo) * inAbs));
+    gain_rec_[0]  = ((atk_slo2_ * gain_rec_[1])
+                    + (ratio_mul_
+                       * fmax(((20.f * log10(slope_rec_[0])) - thresh_), 0.f)));
+    gain_         = powf(10.0f, (0.05f * (gain_rec_[0] + makeup_gain_)));
 
     slope_rec_[1] = slope_rec_[0];
-    gain_rec_[1] = gain_rec_[0];
+    gain_rec_[1]  = gain_rec_[0];
     return gain_ * in;
 }
 
@@ -85,16 +86,4 @@ void Compressor::ProcessBlock(float **in,
             out[c][i] = GetGain(in[c][i]);
         }
     }
-}
-
-void Compressor::RecalculateSlopes()
-{
-    makeup_gain_ = fabsf(thresh_ - thresh_ / ratio_) * 0.5f * makeup_mul_;
-
-    atk_slo_ = expf((-(sample_rate_inv_ / atk_)));
-
-    atk_slo2_  = expf(-(sample_rate_inv2 / atk_));
-    ratio_mul_ = ((1.0f - atk_slo2_) * ((1.0f / ratio_) - 1.0f));
-
-    rel_slo_ = expf(( - (sample_rate_inv_ / rel_)));
 }
