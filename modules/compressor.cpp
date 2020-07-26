@@ -1,6 +1,6 @@
 // # compressor
 //
-// Author: shensley
+// Author: shensley, AvAars
 //
 
 //#include <math.h>
@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include "compressor.h"
+#include "dsp.h"
 
 using namespace daisysp;
 
@@ -27,15 +28,15 @@ using namespace daisysp;
 
 void Compressor::Init(float sample_rate)
 {
-    sr_       = sample_rate;
-    i_const0_ = min(192000, max(1, sr_));
-    f_const1_ = 2.0f / (float)i_const0_;
-    f_const2_ = 1.0f / (float)i_const0_;
+    sample_rate_ = min(192000.0f, max(1.0f, sample_rate));
+    sample_rate_inv_ = 1.0f / sample_rate_;
+    sample_rate_inv2 = 2.0f / sample_rate_;
     // Skipped fHsliderN inits, but I'm going to init the 4 params
-    ratio_  = 2.0f;
-    thresh_ = -12.0f;
-    atk_    = 0.1f;
-    rel_    = 0.1f;
+    ratio_       = 2.0f;
+    thresh_      = -12.0f;
+    atk_         = 0.1f;
+    rel_         = 0.1f;
+    makeup_mul_ = 1.0f;
     for(uint8_t i = 0; i < 2; i++)
     {
         f_rec0_[i] = 0.1f;
@@ -45,38 +46,57 @@ void Compressor::Init(float sample_rate)
     RecalculateSlopes();
 }
 
-//float compressor::process(const float &in)
-float Compressor::Process(float in, float key)
+float Compressor::Process(float in)
 {
-    float out;
-    // Makeup gain may still be a little hot.
-    float f_temp1 = fabsf(key);
-    float f_temp2 = ((f_rec1_[1] > f_temp1) ? f_slow4_ : f_slow3_);
-    f_rec2_[0]    = ((f_rec2_[1] * f_temp2) + ((1.0f - f_temp2) * f_temp1));
+    float inAbs = fabsf(in);
+    float f_temp2 = ((f_rec1_[1] > inAbs) ? rel_exp_ : atk_exp_);
+    f_rec2_[0]    = ((f_rec2_[1] * f_temp2) + ((1.0f - f_temp2) * inAbs));
     f_rec1_[0]    = f_rec2_[0];
-    f_rec0_[0]    = ((f_slow1_ * f_rec0_[1])
-                  + (f_slow2_
-                     * max(((20.f * std::log10(f_rec1_[0])) - f_slow5_), 0.f)));
-    out = (powf(10.0f, (0.05f * f_rec0_[0] * (0.05f * makeup_gain_))) * in);
+    f_rec0_[0]
+        = ((atk_exp2_ * f_rec0_[1])
+           + (ratio_mul_
+              * fmax(((20.f * log10(f_rec1_[0])) - thresh_), 0.f)));
+    gain_      = powf(10.0f, (0.05f * (f_rec0_[0] + makeup_gain_)));
+
     f_rec2_[1] = f_rec2_[0];
     f_rec1_[1] = f_rec1_[0];
     f_rec0_[1] = f_rec0_[0];
-    return out;
+    return gain_ * in;
 }
 
-// Same without sidechain
-float Compressor::Process(float in)
+void Compressor::ProcessBlock(float *in, float *out, float *key, size_t size)
 {
-    return Process(in, in);
+    for(size_t i = 0; i < size; i++)
+    {
+        Process(key[i]);
+        out[i] = GetGain(in[i]);
+    }
+}
+
+// Multi-channel block processing
+void Compressor::ProcessBlock(float **in,
+                              float **out,
+                              float * key,
+                              size_t  channels,
+                              size_t  size)
+{
+    for(size_t i = 0; i < size; i++)
+    {
+        Process(key[i]);
+        for(size_t c = 0; c < channels; c++)
+        {
+            out[c][i] = GetGain(in[c][i]);
+        }
+    }
 }
 
 void Compressor::RecalculateSlopes()
 {
-    makeup_gain_ = fabsf(thresh_ / ratio_) / 2.0f;
-    f_slow0_     = (float)atk_; // probably need to scale
-    f_slow1_     = expf(0.0f - (f_const1_ / f_slow0_));
-    f_slow2_     = ((1.0f - f_slow1_) * ((1.0f / ratio_) - 1.0f));
-    f_slow3_     = expf((0.0f - (f_const2_ / f_slow0_)));
-    f_slow4_     = expf((0.0f - (f_const2_ / rel_)));
-    f_slow5_     = thresh_;
+    makeup_gain_ = fabsf(thresh_ - thresh_ / ratio_) * 0.5f * makeup_mul_;
+
+    atk_exp2_ = expf(-(sample_rate_inv2 / atk_));
+    ratio_mul_ = ((1.0f - atk_exp2_) * ((1.0f / ratio_) - 1.0f));
+
+    atk_exp_ = expf((-(sample_rate_inv_ / atk_)));
+    rel_exp_ = expf(( - (sample_rate_inv_ / rel_)));
 }
