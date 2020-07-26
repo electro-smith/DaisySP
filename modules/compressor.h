@@ -18,9 +18,9 @@ Modifications made to do:
 - improved readability
 - improved makeup-gain calculations
 - changing controls now costs a lot less
+- a lot less expensive
 
 by: shensley, improved upon by AvAars
-\todo Still pretty expensive
 \todo Add soft/hard knee settings
 */
 class Compressor
