@@ -114,8 +114,8 @@ class Compressor
     float gain_;
     /** internals from faust struct
 */
-    float f_rec2_[2], f_rec1_[2], f_rec0_[2];
-    float atk_exp2_, ratio_mul_, atk_exp_, rel_exp_;
+    float slope_rec_[2], f_rec1_[2], gain_rec_[2];
+    float atk_slo2_, ratio_mul_, atk_slo_, rel_slo_;
     int   sample_rate_;
     float f_const0_, sample_rate_inv2, sample_rate_inv_;
 };

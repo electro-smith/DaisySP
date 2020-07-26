@@ -39,9 +39,8 @@ void Compressor::Init(float sample_rate)
     makeup_mul_ = 1.0f;
     for(uint8_t i = 0; i < 2; i++)
     {
-        f_rec0_[i] = 0.1f;
-        f_rec1_[i] = 0.1f;
-        f_rec2_[i] = 0.1f;
+        gain_rec_[i] = 0.1f;
+        slope_rec_[i] = 0.1f;
     }
     RecalculateSlopes();
 }
@@ -49,18 +48,16 @@ void Compressor::Init(float sample_rate)
 float Compressor::Process(float in)
 {
     float inAbs = fabsf(in);
-    float f_temp2 = ((f_rec1_[1] > inAbs) ? rel_exp_ : atk_exp_);
-    f_rec2_[0]    = ((f_rec2_[1] * f_temp2) + ((1.0f - f_temp2) * inAbs));
-    f_rec1_[0]    = f_rec2_[0];
-    f_rec0_[0]
-        = ((atk_exp2_ * f_rec0_[1])
+    float cur_slo = ((slope_rec_[1] > inAbs) ? rel_slo_ : atk_slo_);
+    slope_rec_[0]    = ((slope_rec_[1] * cur_slo) + ((1.0f - cur_slo) * inAbs));
+    gain_rec_[0]
+        = ((atk_slo2_ * gain_rec_[1])
            + (ratio_mul_
-              * fmax(((20.f * log10(f_rec1_[0])) - thresh_), 0.f)));
-    gain_      = powf(10.0f, (0.05f * (f_rec0_[0] + makeup_gain_)));
+              * fmax(((20.f * log10(slope_rec_[0])) - thresh_), 0.f)));
+    gain_      = powf(10.0f, (0.05f * (gain_rec_[0] + makeup_gain_)));
 
-    f_rec2_[1] = f_rec2_[0];
-    f_rec1_[1] = f_rec1_[0];
-    f_rec0_[1] = f_rec0_[0];
+    slope_rec_[1] = slope_rec_[0];
+    gain_rec_[1] = gain_rec_[0];
     return gain_ * in;
 }
 
@@ -94,9 +91,10 @@ void Compressor::RecalculateSlopes()
 {
     makeup_gain_ = fabsf(thresh_ - thresh_ / ratio_) * 0.5f * makeup_mul_;
 
-    atk_exp2_ = expf(-(sample_rate_inv2 / atk_));
-    ratio_mul_ = ((1.0f - atk_exp2_) * ((1.0f / ratio_) - 1.0f));
+    atk_slo_ = expf((-(sample_rate_inv_ / atk_)));
 
-    atk_exp_ = expf((-(sample_rate_inv_ / atk_)));
-    rel_exp_ = expf(( - (sample_rate_inv_ / rel_)));
+    atk_slo2_  = expf(-(sample_rate_inv2 / atk_));
+    ratio_mul_ = ((1.0f - atk_slo2_) * ((1.0f / ratio_) - 1.0f));
+
+    rel_slo_ = expf(( - (sample_rate_inv_ / rel_)));
 }
