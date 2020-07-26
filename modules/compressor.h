@@ -96,6 +96,7 @@ class Compressor
     inline void SetRelease(float rel)
     {
         rel_     = rel;
+        RecalculateRelease();
     }
 
     inline void SetMakeup(float gain) { makeup_gain_ = gain; }
@@ -103,6 +104,7 @@ class Compressor
     inline void AutoMakeup(bool makeup)
     {
         makeup_auto_ = makeup;
+        makeup_gain_  = 0.0f;
         RecalculateMakeup();
     }
 
