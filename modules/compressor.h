@@ -27,11 +27,12 @@ class Compressor
     Compressor() {}
     ~Compressor() {}
     /** Initializes compressor
-        sample_rate - rate at which samples will be produced by the audio engine.
+        \param sample_rate rate at which samples will be produced by the audio engine.
     */
     void Init(float sample_rate);
 
-    /** calculate the gain of the compressor, based on the key 
+    /** compress the audio input signal
+	    \param in audio input signal
     */
     float Process(float in);
 
@@ -40,8 +41,8 @@ class Compressor
     inline float GetGain(float in = 1.0f) { return gain_ * in; }
 
     /** compresses the audio input signal, keyed by a secondary input.
-        \param in - audio input signal (to be compressed)
-        \param key - audio input that will be used to side-chain the compressor. 
+        \param in audio input signal (to be compressed)
+        \param key audio input that will be used to side-chain the compressor. 
     */
     inline float Process(float in, float key)
     {
@@ -63,8 +64,8 @@ class Compressor
                       size_t  size);
 
 
-    /** amount of gain reduction applied to compressed signals
-        Expects 1.0 -> 40. (untested with values < 1.0)
+    /** Sets the amount of gain reduction applied to compressed signals
+        \param ratio Expects 1.0 -> 40. (untested with values < 1.0)
     */
     inline void SetRatio(float ratio)
     {
@@ -72,39 +73,45 @@ class Compressor
         RecalculateRatio();
     }
 
-    /** threshold in dB at which compression will be applied
-        Expects 0.0 -> -80.
+    /** Sets the threshold in dB at which compression will be applied
+        \param threshold Expects 0.0 -> -80.
     */
-    inline void SetThreshold(float thresh)
+    inline void SetThreshold(float threshold)
     {
-        thresh_ = thresh;
+        thresh_ = threshold;
         RecalculateMakeup();
     }
 
-    /** envelope time for onset of compression for signals above the threshold.
-        Expects 0.001 -> 10
+    /** Sets the envelope time for onset of compression for signals above the threshold.
+        \param attack Expects 0.001 -> 10
     */
-    inline void SetAttack(float atk)
+    inline void SetAttack(float attack)
     {
-        atk_ = atk;
+        atk_ = attack;
         RecalculateAttack();
     }
 
-    /** envelope time for release of compression as input signal falls below threshold.
-        Expects 0.001 -> 10
+    /** Sets the envelope time for release of compression as input signal falls below threshold.
+        \param release Expects 0.001 -> 10
     */
-    inline void SetRelease(float rel)
+    inline void SetRelease(float release)
     {
-        rel_     = rel;
+        rel_ = release;
         RecalculateRelease();
     }
 
+    /** Manually sets the additional gain to make up for the compression
+        \param gain Expects 0.0 -> 80
+    */
     inline void SetMakeup(float gain) { makeup_gain_ = gain; }
 
-    inline void AutoMakeup(bool makeup)
+    /** Enables or disables the automatic makeup gain. Disabling sets the makeup gain to 0.0
+        \param enable enable or disable
+    */
+    inline void AutoMakeup(bool enable)
     {
-        makeup_auto_ = makeup;
-        makeup_gain_  = 0.0f;
+        makeup_auto_ = enable;
+        makeup_gain_ = 0.0f;
         RecalculateMakeup();
     }
 
