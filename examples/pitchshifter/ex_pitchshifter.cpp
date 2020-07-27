@@ -15,13 +15,14 @@ using namespace daisy;
 
 DaisySeed    seed;
 PitchShifter ps;
+Oscillator   osc;
 
 static void AudioCallback(float *in, float *out, size_t size)
 {
     float shifted, unshifted;
     for(size_t i = 0; i < size; i += 2)
     {
-        unshifted  = in[LEFT];
+        unshifted  = osc.Process();
         shifted    = ps.Process(unshifted);
         out[LEFT]  = shifted;
         out[RIGHT] = unshifted;
@@ -39,6 +40,11 @@ int main(void)
     ps.Init(sample_rate);
     // set transposition 1 octave up (12 semitones)
     ps.SetTransposition(12.0f);
+
+    //setup oscillator
+    osc.Init(sample_rate);
+    osc.SetFreq(440.f);
+    osc.SetWaveform(Oscillator::WAVE_TRI);
 
     // start callback
     seed.StartAudio(AudioCallback);
