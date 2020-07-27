@@ -42,7 +42,7 @@ class Compressor
         \param in audio input signal (to be compressed)
         \param key audio input that will be used to side-chain the compressor
     */
-    inline float Process(float in, float key)
+    float Process(float in, float key)
     {
         Process(key);
         return Apply(in);
@@ -51,14 +51,14 @@ class Compressor
     /** Apply compression to the audio signal, based on the previously calculated gain
 	    \param in audio input signal
     */
-    inline float Apply(float in) { return gain_ * in; }
+    float Apply(float in) { return gain_ * in; }
 
     /** Compresses a block of audio
         \param in audio input signal
         \param out audio output signal
         \param size the size of the block
     */
-    inline void ProcessBlock(float *in, float *out, size_t size)
+    void ProcessBlock(float *in, float *out, size_t size)
     {
         ProcessBlock(in, out, in, size);
     }
@@ -85,65 +85,65 @@ class Compressor
                       size_t  size);
 
     /** Gets the amount of gain reduction */
-    inline float GetRatio() { return ratio_; }
+    float GetRatio() { return ratio_; }
 
     /** Sets the amount of gain reduction applied to compressed signals
      \param ratio Expects 1.0 -> 40. (untested with values < 1.0)
     */
-    inline void SetRatio(float ratio)
+    void SetRatio(float ratio)
     {
         ratio_ = ratio;
         RecalculateRatio();
     }
 
     /** Gets the threshold in dB */
-    inline float GetThreshold() { return thresh_; }
+    float GetThreshold() { return thresh_; }
 
     /** Sets the threshold in dB at which compression will be applied
      \param threshold Expects 0.0 -> -80.
     */
-    inline void SetThreshold(float threshold)
+    void SetThreshold(float threshold)
     {
         thresh_ = threshold;
         RecalculateMakeup();
     }
 
     /** Gets the envelope time for onset of compression */
-    inline float GetAttack() { return atk_; }
+    float GetAttack() { return atk_; }
 
     /** Sets the envelope time for onset of compression for signals above the threshold.
         \param attack Expects 0.001 -> 10
     */
-    inline void SetAttack(float attack)
+    void SetAttack(float attack)
     {
         atk_ = attack;
         RecalculateAttack();
     }
 
     /** Gets the envelope time for release of compression */
-    inline float GetRelease() { return rel_; }
+    float GetRelease() { return rel_; }
 
     /** Sets the envelope time for release of compression as input signal falls below threshold.
         \param release Expects 0.001 -> 10
     */
-    inline void SetRelease(float release)
+    void SetRelease(float release)
     {
         rel_ = release;
         RecalculateRelease();
     }
 
     /** Gets the additional gain to make up for the compression */
-    inline float GetMakeup() { return makeup_gain_; }
+    float GetMakeup() { return makeup_gain_; }
 
     /** Manually sets the additional gain to make up for the compression
         \param gain Expects 0.0 -> 80
     */
-    inline void SetMakeup(float gain) { makeup_gain_ = gain; }
+    void SetMakeup(float gain) { makeup_gain_ = gain; }
 
     /** Enables or disables the automatic makeup gain. Disabling sets the makeup gain to 0.0
         \param enable true to enable, false to disable
     */
-    inline void AutoMakeup(bool enable)
+    void AutoMakeup(bool enable)
     {
         makeup_auto_ = enable;
         makeup_gain_ = 0.0f;
@@ -152,7 +152,7 @@ class Compressor
 
     /** Gets the gain reduction in dB
     */
-    inline float GetGain() { return fastlog10f(gain_) * 20.0f; }
+    float GetGain() { return fastlog10f(gain_) * 20.0f; }
 
   private:
     float ratio_, thresh_, atk_, rel_;
@@ -171,12 +171,13 @@ class Compressor
     // Auto makeup gain enable
     bool makeup_auto_;
 
-    inline void RecalculateRatio()
+    // Methods for recalculating internals
+    void RecalculateRatio()
     {
         ratio_mul_ = ((1.0f - atk_slo2_) * ((1.0f / ratio_) - 1.0f));
     }
 
-    inline void RecalculateAttack()
+    void RecalculateAttack()
     {
         atk_slo_  = expf(-(sample_rate_inv_ / atk_));
         atk_slo2_ = expf(-(sample_rate_inv2_ / atk_));
@@ -184,12 +185,9 @@ class Compressor
         RecalculateRatio();
     }
 
-    inline void RecalculateRelease()
-    {
-        rel_slo_ = expf((-(sample_rate_inv_ / rel_)));
-    }
+    void RecalculateRelease() { rel_slo_ = expf((-(sample_rate_inv_ / rel_))); }
 
-    inline void RecalculateMakeup()
+    void RecalculateMakeup()
     {
         if(makeup_auto_)
             makeup_gain_ = fabsf(thresh_ - thresh_ / ratio_) * 0.5f;
