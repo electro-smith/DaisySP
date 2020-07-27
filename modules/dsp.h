@@ -17,7 +17,7 @@
 namespace daisysp
 {
 /** efficient floating point min/max
-c/o stephen mccaul 
+c/o stephen mccaul
 */
 inline float fmax(float a, float b)
 {
@@ -68,6 +68,38 @@ inline float fastroot(float f, int n)
     return f;
 }
 
+/** From http://openaudio.blogspot.com/2017/02/faster-log10-and-pow.html
+No approximation, pow10f(x) gives a 90% speed increase over powf(10.f, x)
+*/
+inline float pow10f(float f)
+{
+    return expf(2.302585092994046f * f);
+}
+
+/* Original code for fastlog2f by Dr. Paul Beckmann from the ARM community forum, adapted from the CMSIS-DSP library
+About 25% performance increase over std::log10f
+*/
+inline float fastlog2f(float f)
+{
+    float frac;
+    int   exp;
+    frac = frexpf(fabsf(f), &exp);
+    f    = 1.23149591368684f;
+    f *= frac;
+    f += -4.11852516267426f;
+    f *= frac;
+    f += 6.02197014179219f;
+    f *= frac;
+    f += -3.13396450166353f;
+    f += exp;
+    return (f);
+}
+
+inline float fastlog10f(float f)
+{
+    return fastlog2f(f) * 0.3010299956639812f;
+}
+
 /** Midi to frequency helper
 */
 inline float mtof(float m)
@@ -77,7 +109,7 @@ inline float mtof(float m)
 
 
 /** one pole lpf
-out is passed by reference, and must be retained between 
+out is passed by reference, and must be retained between
 calls to properly filter the signal
 coeff can be calculated:
 coeff = 1.0 / (time * sample_rate) ; where time is in seconds
