@@ -14,6 +14,7 @@
 #include <math.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include "dsp.h"
 #define ROOT2 (1.4142135623730950488f)
 
 #ifndef M_PI
@@ -55,7 +56,7 @@ float Mode::Process(float in)
 
     if(lfq != kfq || lq != kq)
     {
-        float kfreq  = kfq * (2.0f * (float)M_PI);
+        float kfreq  = kfq * TWOPI_F;
         float kalpha = (sr_ / kfreq);
         float kbeta  = kalpha * kalpha;
         d            = 0.5f * kalpha;
