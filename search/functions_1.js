@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['clear',['Clear',['../classdaisysp_1_1_mode.html#a021a7739c22c3848f988cee7fd20f9ab',1,'daisysp::Mode']]]
+  ['band',['Band',['../classdaisysp_1_1_svf.html#a2d70a3aeac18acbd4f17d321fd79bf46',1,'daisysp::Svf']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['write',['Write',['../classdaisysp_1_1_delay_line.html#a67c4022fe5d1e280e8c0a1b1ec6e8282',1,'daisysp::DelayLine']]]
+  ['trigger',['Trigger',['../classdaisysp_1_1_ad_env.html#a95ad8aaf2512f349452af47d75e2fc22',1,'daisysp::AdEnv']]]
 ];
