@@ -1,5 +1,1 @@
-# ex_compressor
-
-Example of the compressor being used with a side-chain input.
-
-An enveloped synth tone (heard in the right output) keys the compressor for a steady tone on the left output.
+Left output is steady tone being keyed by right output. The comressed signal 'ducks' when the right signal is triggered.

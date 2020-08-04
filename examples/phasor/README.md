@@ -1,1 +1,1 @@
-# phasor Module Example
+Sets oscillator freq with generated ramp values

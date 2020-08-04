@@ -1,1 +1,1 @@
-# port Module Example
+Periodically slews oscillator between random notes.

@@ -1,0 +1,1 @@
+Pitchshifts triangle oscillator. Shifted output comes out of left output, and unshifted out of right output
