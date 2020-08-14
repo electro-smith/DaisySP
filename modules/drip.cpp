@@ -1,5 +1,6 @@
 #include "drip.h"
 #include <math.h>
+#include <cstdlib>
 #include "dsp.h"
 
 using namespace daisysp;
