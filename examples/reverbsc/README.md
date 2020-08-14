@@ -1,0 +1,1 @@
+Periodically triggers oscillator volume envelope, then runs it into reverb algorithm

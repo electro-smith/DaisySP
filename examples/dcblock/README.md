@@ -1,1 +1,1 @@
-# dcblock Module Example
+DC offset is removed from sine wave output signal

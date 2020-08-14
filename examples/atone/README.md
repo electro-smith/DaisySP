@@ -1,0 +1,1 @@
+Highpass filter frequency is swept by lfo with triangle wave oscillator as input

@@ -1,0 +1,1 @@
+Oscillator is periodically pinged, and has it's pitch set to a different value. This is fed through a delayline.

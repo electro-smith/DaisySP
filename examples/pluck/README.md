@@ -1,0 +1,1 @@
+Periodically plucks karplus strong string, and runs through arpeggio sequence

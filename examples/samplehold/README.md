@@ -1,0 +1,1 @@
+periodically triggers sample and hold on noise input. sample and hold is used to set oscillator frequency
