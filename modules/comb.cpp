@@ -52,7 +52,7 @@ float Comb::Process(float in)
 
 void Comb::SetPeriod(float looptime)
 {
-	if (looptime != 0)
+	if (looptime > 0)
 	{
 		loop_time_ = fminf(looptime, max_loop_time_);
 		mod_       = loop_time_ * sample_rate_;
