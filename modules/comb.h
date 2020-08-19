@@ -39,7 +39,13 @@ class Comb
 
     /** Sets the frequency of the comb filter in Hz
     */
-    inline void SetFreq(float freq) { if (freq > 0) { SetPeriod( 1.f / freq ); } }
+    inline void SetFreq(float freq)
+    {
+        if(freq > 0)
+        {
+            SetPeriod(1.f / freq);
+        }
+    }
 
     /** Sets the decay time of the comb filter
     */
