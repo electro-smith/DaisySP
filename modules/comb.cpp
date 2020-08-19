@@ -50,8 +50,11 @@ float Comb::Process(float in)
     return outsamp;
 }
 
-void Comb::SetFreq(float freq)
+void Comb::SetPeriod(float looptime)
 {
-    loop_time_ = fminf(freq, max_loop_time_);
-    mod_       = loop_time_ * sample_rate_;
+	if (looptime != 0)
+	{
+		loop_time_ = fminf(looptime, max_loop_time_);
+		mod_       = loop_time_ * sample_rate_;
+	}
 }
