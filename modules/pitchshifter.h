@@ -137,15 +137,13 @@ class PitchShifter
     */
     void SetTransposition(const float &transpose)
     {
-        float   ratio;
-        uint8_t idx;
         if(transpose_ != transpose || force_recalc_)
         {
             transpose_ = transpose;
-            idx        = fabsf(transpose);
-            ratio      = semitone_ratios_[idx % 12];
-            ratio *= (uint8_t)(fabsf(transpose) / 12) + 1;
-            if(transpose > 0.0f)
+            float idx        = fabsf(transpose);
+            float ratio      = powf(2.0f, (idx)  / 12.f);
+
+			if(transpose > 0.0f)
             {
                 shift_up_ = true;
             }
@@ -153,7 +151,7 @@ class PitchShifter
             {
                 shift_up_ = false;
             }
-            mod_freq_ = ((ratio - 1.0f) * sr_) / del_size_;
+            mod_freq_ = ((ratio - 1.f) * sr_) / del_size_;
             if(mod_freq_ < 0.0f)
             {
                 mod_freq_ = 0.0f;
