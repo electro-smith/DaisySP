@@ -33,10 +33,19 @@ class Comb
     float Process(float in);
 
 
-    /** Sets the frequency of the comb filter
+    /** Sets the period of the comb filter in seconds
     */
-    void SetFreq(float looptime);
+    void SetPeriod(float looptime);
 
+    /** Sets the frequency of the comb filter in Hz
+    */
+    inline void SetFreq(float freq)
+    {
+        if(freq > 0)
+        {
+            SetPeriod(1.f / freq);
+        }
+    }
 
     /** Sets the decay time of the comb filter
     */

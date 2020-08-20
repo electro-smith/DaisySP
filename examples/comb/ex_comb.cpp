@@ -42,7 +42,7 @@ int main(void)
 
     // initialize Comb object
     flt.Init(sample_rate, buf, 9600);
-    flt.SetFreq(.01);
+    flt.SetFreq(500);
 
     //initialize noise
     noise.Init();
