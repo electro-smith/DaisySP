@@ -19,20 +19,6 @@
 
 namespace daisysp
 {
-static inline uint32_t hash_xs32(uint32_t x)
-{
-    x ^= x << 13;
-    x ^= x >> 17;
-    x ^= x << 5;
-    return x;
-}
-
-inline uint32_t myrand()
-{
-    static uint32_t seed = 1;
-    seed                 = hash_xs32(seed);
-    return seed;
-}
 
 /**  time-domain pitchshifter
 
@@ -50,7 +36,6 @@ where:
 solving for t = 12.0
 f = (12 - 1) * 48000 / SHIFT_BUFFER_SIZE;
 
-\todo - move hash_xs32 and myrand to dsp.h and give appropriate names
 */
 class PitchShifter
 {
@@ -87,17 +72,17 @@ class PitchShifter
         fade2 = phs_[1].Process();
         if(prev_phs_a_ > fade1)
         {
-            mod_a_amt_ = fun_ * ((float)(myrand() % 255) / 255.0f)
+            mod_a_amt_ = fun_ * ((float)(dsy_rand() % 255) / 255.0f)
                          * (del_size_ * 0.5f);
             mod_coeff_[0]
-                = 0.0002f + (((float)(myrand() % 255) / 255.0f) * 0.001f);
+                = 0.0002f + (((float)(dsy_rand() % 255) / 255.0f) * 0.001f);
         }
         if(prev_phs_b_ > fade2)
         {
-            mod_b_amt_ = fun_ * ((float)(myrand() % 255) / 255.0f)
+            mod_b_amt_ = fun_ * ((float)(dsy_rand() % 255) / 255.0f)
                          * (del_size_ * 0.5f);
             mod_coeff_[1]
-                = 0.0002f + (((float)(myrand() % 255) / 255.0f) * 0.001f);
+                = 0.0002f + (((float)(dsy_rand() % 255) / 255.0f) * 0.001f);
         }
         slewed_mod_[0] += mod_coeff_[0] * (mod_a_amt_ - slewed_mod_[0]);
         slewed_mod_[1] += mod_coeff_[1] * (mod_b_amt_ - slewed_mod_[1]);

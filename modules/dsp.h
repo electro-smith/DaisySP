@@ -16,6 +16,25 @@
 
 namespace daisysp
 {
+
+/** an arbitrary 32-bit hashing function */
+inline uint32_t hash_xs32(uint32_t x)
+{
+    x ^= x << 13;
+    x ^= x >> 17;
+    x ^= x << 5;
+    return x;
+}
+
+/** returns a series of psuedo-random 32bit numbers based on the hash function */
+inline uint32_t dsy_rand()
+{
+    static uint32_t seed = 1;
+    seed                 = hash_xs32(seed);
+    return seed;
+}
+	
+	
 /** efficient floating point min/max
 c/o stephen mccaul
 */
