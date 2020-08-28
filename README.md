@@ -59,7 +59,7 @@ Here are some ways to get support and connect with other users and developers:
 
 - Make a [GitHub Issue](https://github.com/electro-smith/DaisySP/issues) 
 
-- Join the [Daisy Slack Workspace](https://es-daisy.slack.com/#/) - shoot us an email at hello(at)electro-smith(dot)com to receive an invitation
+- Join the [Daisy Slack Workspace](https://join.slack.com/t/es-daisy/shared_invite/zt-f9cfm1g4-DgdCok1h1Rj4fpX90~IOww)
 
 ## License
 DaisySP is licensed with the permissive MIT open source license. 
