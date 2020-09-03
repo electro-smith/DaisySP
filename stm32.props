@@ -9,8 +9,8 @@
 <!-- In order to build this project manually (outside VisualGDB), please provide TOOLCHAIN_ROOT, BSP_ROOT, EFP_BASE and TESTFW_BASE variables via Environment or Make command line -->
 	<ItemDefinitionGroup>
 		<ClCompile>
-			<PreprocessorDefinitions>ARM_MATH_CM7;flash_layout;CORE_CM7;STM32H750IB;STM32H750xx;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
-			<AdditionalIncludeDirectories>%(ClCompile.AdditionalIncludeDirectories);$(ProjectDir);$(BSP_ROOT)/STM32H7xxxx/STM32H7xx_HAL_Driver/Inc;$(BSP_ROOT)/STM32H7xxxx/STM32H7xx_HAL_Driver/Inc/Legacy;$(BSP_ROOT)/STM32H7xxxx/CMSIS_HAL/Device/ST/STM32H7xx/Include;$(BSP_ROOT)/STM32H7xxxx/CMSIS_HAL/Include;$(BSP_ROOT)/STM32H7xxxx/CMSIS_HAL/RTOS2/Include;$(BSP_ROOT)/STM32H7xxxx/CMSIS_HAL/Core/Include</AdditionalIncludeDirectories>
+			<PreprocessorDefinitions>ARM_MATH_CM7;flash_layout;CORE_CM7;STM32H750IB;STM32H750xx;USE_HAL_DRIVER;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+			<AdditionalIncludeDirectories>%(ClCompile.AdditionalIncludeDirectories);$(ProjectDir);$(BSP_ROOT)/STM32H7xxxx/STM32H7xx_HAL_Driver/Inc;$(BSP_ROOT)/STM32H7xxxx/STM32H7xx_HAL_Driver/Inc/Legacy;$(BSP_ROOT)/STM32H7xxxx/CMSIS_HAL/Core/Include;$(BSP_ROOT)/STM32H7xxxx/CMSIS_HAL/Device/ST/STM32H7xx/Include;$(BSP_ROOT)/STM32H7xxxx/CMSIS_HAL/Include;$(BSP_ROOT)/STM32H7xxxx/CMSIS_HAL/RTOS2/Include</AdditionalIncludeDirectories>
 		</ClCompile>
 	</ItemDefinitionGroup>
 	<ItemDefinitionGroup>
@@ -27,7 +27,7 @@
 		<ToolchainSettingsContainer>
 			<ARMCPU  Condition="'%(ToolchainSettingsContainer.ARMCPU)' == ''">cortex-m7</ARMCPU>
 			<InstructionSet  Condition="'%(ToolchainSettingsContainer.InstructionSet)' == ''">THUMB</InstructionSet>
-			<ARMFPU  Condition="'%(ToolchainSettingsContainer.ARMFPU)' == ''">fpv4-sp-d16</ARMFPU>
+			<ARMFPU  Condition="'%(ToolchainSettingsContainer.ARMFPU)' == ''">fpv5-d16</ARMFPU>
 			<FloatABI  Condition="'%(ToolchainSettingsContainer.FloatABI)' == ''">hard</FloatABI>
 		</ToolchainSettingsContainer>
 	</ItemDefinitionGroup>
