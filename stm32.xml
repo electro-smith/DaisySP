@@ -7,7 +7,7 @@
     <Revision>1</Revision>
   </ToolchainVersion>
   <BspID>com.sysprogs.arm.stm32</BspID>
-  <BspVersion>2019.06</BspVersion>
+  <BspVersion>2020.06</BspVersion>
   <McuID>STM32H750IB</McuID>
   <MCUDefinitionFile>STM32H7xxxx/DeviceDefinitions/stm32h750xx.xml</MCUDefinitionFile>
   <MCUProperties>
@@ -38,6 +38,7 @@
   <ReferencedFrameworks>
     <string>com.sysprogs.arm.stm32.hal</string>
     <string>com.sysprogs.arm.stm32.ll</string>
+    <string>com.sysprogs.arm.stm32.STM32H7_ll</string>
   </ReferencedFrameworks>
   <FrameworkProperties>
     <Entries>
