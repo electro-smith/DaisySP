@@ -19,8 +19,8 @@ void Adsr::Init(float sample_rate)
 {
     seg_time_[ADSR_SEG_ATTACK]  = 0.1f;
     seg_time_[ADSR_SEG_DECAY]   = 0.1f;
-    sus_                        = 0.5f;
-    seg_time_[ADSR_SEG_RELEASE] = 0.3f;
+    sus_                        = 0.7f;
+    seg_time_[ADSR_SEG_RELEASE] = 0.1f;
     //timer_ = 0;
     a_           = 0.0f;
     b_           = 0.0f;
@@ -45,7 +45,7 @@ float Adsr::Process(bool gate)
         a_        = pole;
         b_        = 1.0f - pole;
     }
-    else if(!gate)
+    else if(!gate && mode_ != ADSR_SEG_IDLE)
     {
         mode_ = ADSR_SEG_RELEASE;
         pole  = Tau2Pole(seg_time_[ADSR_SEG_RELEASE]);
@@ -71,7 +71,11 @@ float Adsr::Process(bool gate)
             }
             break;
         case ADSR_SEG_DECAY:
-        case ADSR_SEG_RELEASE: x_ *= sus_; out = AdsrFilter();
+        case ADSR_SEG_RELEASE:
+            x_ *= sus_;
+            out = AdsrFilter();
+            if(out <= 0.01f)
+                mode_ = ADSR_SEG_IDLE;
         default: break;
     }
     return out;
