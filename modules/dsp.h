@@ -22,14 +22,22 @@ c/o stephen mccaul
 inline float fmax(float a, float b)
 {
     float r;
+#ifdef __arm__
     asm("vmaxnm.f32 %[d], %[n], %[m]" : [d] "=t"(r) : [n] "t"(a), [m] "t"(b) :);
+#else
+    r = (a > b) ? a : b;
+#endif // __arm__
     return r;
 }
 
 inline float fmin(float a, float b)
 {
     float r;
+#ifdef __arm__
     asm("vminnm.f32 %[d], %[n], %[m]" : [d] "=t"(r) : [n] "t"(a), [m] "t"(b) :);
+#else
+    r = (a < b) ? a : b;
+#endif // __arm__
     return r;
 }
 

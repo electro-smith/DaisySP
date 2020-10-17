@@ -3,20 +3,22 @@
 
 using namespace daisysp;
 
+constexpr float TWO_PI_F = (float)(M_PI * 2.0);
+
 void Phasor::SetFreq(float freq)
 {
     freq_ = freq;
-    inc_  = ((float)M_TWOPI * freq_) / sample_rate_;
+    inc_  = (TWO_PI_F * freq_) / sample_rate_;
 }
 
 float Phasor::Process()
 {
     float out;
-    out = phs_ / ((float)M_TWOPI);
+    out = phs_ / TWO_PI_F;
     phs_ += inc_;
-    if(phs_ > (float)M_TWOPI)
+    if(phs_ > TWO_PI_F)
     {
-        phs_ -= (float)M_TWOPI;
+        phs_ -= TWO_PI_F;
     }
     if(phs_ < 0.0f)
     {
