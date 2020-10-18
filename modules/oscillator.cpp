@@ -30,7 +30,8 @@ float Oscillator::Process()
             out -= Polyblep(phase_inc_, fmodf(t + 0.5f, 1.0f));
             // Leaky Integrator:
             // y[n] = A + x[n] + (1 - A) * y[n-1]
-            out = phase_inc_ * out + (1.0f - phase_inc_) * last_out_;
+            out       = phase_inc_ * out + (1.0f - phase_inc_) * last_out_;
+            last_out_ = out;
             break;
         case WAVE_POLYBLEP_SAW:
             t   = phase_ * TWO_PI_RECIP;
