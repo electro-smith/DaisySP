@@ -2,6 +2,7 @@
 #ifndef DSY_OSCILLATOR_H
 #define DSY_OSCILLATOR_H
 #include <stdint.h>
+#include "dsp.h"
 #ifdef __cplusplus
 
 namespace daisysp
@@ -77,8 +78,8 @@ class Oscillator
 
     /** Adds a value 0.0-1.0 (mapped to 0.0-TWO_PI) to the current phase. Useful for PM and "FM" synthesis.
     */
-    void PhaseAdd(float _phase) { phase_ += (_phase * float(2.0 * M_PI)); }
-    /** Resets the phase to the input argument. If no argument is present, it will reset phase to 0.0;
+    void PhaseAdd(float _phase) { phase_ += (_phase * TWOPI_F); }
+    /** Resets the phase to the input argument. If no argumeNt is present, it will reset phase to 0.0;
     */
     void Reset(float _phase = 0.0f) { phase_ = _phase; }
 
