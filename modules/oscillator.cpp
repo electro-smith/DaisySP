@@ -50,7 +50,14 @@ float Oscillator::Process()
     if(phase_ > TWOPI_F)
     {
         phase_ -= TWOPI_F;
+        eoc_ = true;
     }
+    else
+    {
+        eoc_ = false;
+    }
+    eor_ = (phase_ - phase_inc_ < PI_F && phase_ >= PI_F);
+
     return out * amp_;
 }
 
