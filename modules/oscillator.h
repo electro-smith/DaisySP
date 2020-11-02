@@ -48,6 +48,8 @@ class Oscillator
         phase_     = 0.0f;
         phase_inc_ = CalcPhaseInc(freq_);
         waveform_  = WAVE_SIN;
+        eoc_       = true;
+        eor_       = true;
     }
 
 
@@ -70,6 +72,21 @@ class Oscillator
         waveform_ = wf < WAVE_LAST ? wf : WAVE_SIN;
     }
 
+    /** Returns true if cycle is at end of rise. Set during call to Process.
+    */
+    inline bool IsEOR() { return eor_; }
+
+    /** Returns true if cycle is at end of rise. Set during call to Process.
+    */
+    inline bool IsEOC() { return eoc_; }
+
+    /** Returns true if cycle rising.
+    */
+    inline bool IsRising() { return phase_ < PI_F; }
+
+    /** Returns true if cycle falling.
+    */
+    inline bool IsFalling() { return phase_ >= PI_F; }
 
     /** Processes the waveform to be generated, returning one sample. This should be called once per sample period.
     */
@@ -89,6 +106,7 @@ class Oscillator
     float   amp_, freq_;
     float   sr_, sr_recip_, phase_, phase_inc_;
     float   last_out_, last_freq_;
+    bool    eor_, eoc_;
 };
 } // namespace daisysp
 #endif
