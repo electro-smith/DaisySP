@@ -125,6 +125,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aed6238575aba5b4fb2468002e008dd5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a563be5480c4e9487414513e3d15d0498"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaisysp_1_1_oscillator.html#a563be5480c4e9487414513e3d15d0498">SetWaveform</a> (const uint8_t wf)</td></tr>
 <tr class="separator:a563be5480c4e9487414513e3d15d0498"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e8286ef2aca2e023f2ad0f7869fed76"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaisysp_1_1_oscillator.html#a0e8286ef2aca2e023f2ad0f7869fed76">IsEOR</a> ()</td></tr>
+<tr class="separator:a0e8286ef2aca2e023f2ad0f7869fed76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bdfebc82098cd1f4f9a4036c9f48568"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaisysp_1_1_oscillator.html#a5bdfebc82098cd1f4f9a4036c9f48568">IsEOC</a> ()</td></tr>
+<tr class="separator:a5bdfebc82098cd1f4f9a4036c9f48568"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5473a13e4211f64f169a0aed8d028c50"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaisysp_1_1_oscillator.html#a5473a13e4211f64f169a0aed8d028c50">IsRising</a> ()</td></tr>
+<tr class="separator:a5473a13e4211f64f169a0aed8d028c50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9a32df3fdd94e185408dda2bbf5237f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaisysp_1_1_oscillator.html#ab9a32df3fdd94e185408dda2bbf5237f">IsFalling</a> ()</td></tr>
+<tr class="separator:ab9a32df3fdd94e185408dda2bbf5237f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a932b95808f003f697d54abe90a9c1c73"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaisysp_1_1_oscillator.html#a932b95808f003f697d54abe90a9c1c73">Process</a> ()</td></tr>
 <tr class="separator:a932b95808f003f697d54abe90a9c1c73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a544fe59ddd47b7798ef15fc5672d3cb5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaisysp_1_1_oscillator.html#a544fe59ddd47b7798ef15fc5672d3cb5">PhaseAdd</a> (float _phase)</td></tr>
@@ -182,6 +190,102 @@ Public Member Functions</h2></td></tr>
 <li>amp_ = 0.5</li>
 <li>waveform_ = sine wave. </li>
 </ul>
+
+</div>
+</div>
+<a class="anchor" id="a5bdfebc82098cd1f4f9a4036c9f48568"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool daisysp::Oscillator::IsEOC </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns true if cycle is at end of rise. Set during call to Process. </p>
+
+</div>
+</div>
+<a class="anchor" id="a0e8286ef2aca2e023f2ad0f7869fed76"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool daisysp::Oscillator::IsEOR </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns true if cycle is at end of rise. Set during call to Process. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab9a32df3fdd94e185408dda2bbf5237f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool daisysp::Oscillator::IsFalling </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns true if cycle falling. </p>
+
+</div>
+</div>
+<a class="anchor" id="a5473a13e4211f64f169a0aed8d028c50"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool daisysp::Oscillator::IsRising </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns true if cycle rising. </p>
 
 </div>
 </div>
