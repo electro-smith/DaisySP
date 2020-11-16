@@ -130,7 +130,14 @@ class PitchShifter
         val = 0.0f;
         val += (d_[0].Read() * gain_[0]);
         val += (d_[1].Read() * gain_[1]);
-        return val;
+
+
+	if(transpose_ < .5f && transpose_ > -.5f){
+	  float abst = 2.f * fabsf(transpose_);
+	  val = (1.f - abst) * in + abst * val;
+	}
+
+	return val;
     }
 
     /** sets transposition in semitones
