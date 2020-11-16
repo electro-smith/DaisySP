@@ -80,7 +80,7 @@ class PitchShifter
     /** process pitch shifter
     */
     float Process(float &in)
-    {
+    {      
         float val, fade1, fade2;
         // First Process delay mod/crossfade
         fade1 = phs_[0].Process();
@@ -138,14 +138,11 @@ class PitchShifter
     void SetTransposition(const float &transpose)
     {
         float   ratio;
-        uint8_t idx;
         if(transpose_ != transpose || force_recalc_)
         {
-            transpose_ = transpose;
-            idx        = fabsf(transpose);
-            ratio      = semitone_ratios_[idx % 12];
-            ratio *= (uint8_t)(fabsf(transpose) / 12) + 1;
-            if(transpose > 0.0f)
+	    ratio = powf(2.0f, fabsf(transpose) / 12);
+	    
+	    if(transpose > 0.0f)
             {
                 shift_up_ = true;
             }
@@ -164,7 +161,10 @@ class PitchShifter
             {
                 force_recalc_ = false;
             }
-        }
+
+	    transpose_ = transpose;
+	}
+
     }
 
     /** sets delay size changing the timbre of the pitchshifting 
