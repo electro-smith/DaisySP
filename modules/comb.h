@@ -1,11 +1,9 @@
 #pragma once
 #ifndef DSY_COMB_H
 #define DSY_COMB_H
-
-#include <stdint.h>
 #ifdef __cplusplus
 
-#include <math.h>
+#include "dsp.h"
 
 namespace daisysp
 {
@@ -20,6 +18,7 @@ class Comb
   public:
     Comb() {}
     ~Comb() {}
+
     /** Initializes the Comb module.
         \param sample_rate - The sample rate of the audio engine being run. 
         \param buff - input buffer, kept in either main() or global space
@@ -54,7 +53,7 @@ class Comb
   private:
     float  sample_rate_, rev_time_, loop_time_, prvt_, coef_, max_loop_time_;
     float* buf_;
-    int    buf_pos_, mod_;
+    size_t buf_pos_, mod_, max_size_;
 };
 } // namespace daisysp
 
