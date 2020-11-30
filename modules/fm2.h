@@ -3,13 +3,14 @@
 #define DSY_FM2_H
 
 #include <stdint.h>
+#include "oscillator.h"
 #ifdef __cplusplus
 
 namespace daisysp
 {
 /** Simple 2 operator FM synth voice.
      
-	Date: November, 2020
+    Date: November, 2020
 
     Author: Ben Sergentanis
 */
@@ -21,9 +22,9 @@ class Fm2
     ~Fm2() {}
 	
     /** Initializes the FM2 module.
-        \param sample_rate - The sample rate of the audio engine being run. 
+        \param samplerate - The sample rate of the audio engine being run. 
     */
-    void Init(float sample_rate);
+    void Init(float samplerate);
 
 
     /**  Returns the next sample
@@ -31,22 +32,16 @@ class Fm2
     float Process();
 	
 	/** Carrier freq. setter
-		\param freq Carrier frequency in Hz
+	    \param freq Carrier frequency in Hz
 	*/
 	void SetCarrierFrequency(float freq);
-
-	/** Carrier freq. getter */
-	float GetCarrierFrequency();
 
 	/** Modulator freq. setter
 		\param freq Modulator frequency in Hz
 	*/
 	void SetModulatorFrequency(float freq);
-	
-	/** Modulator freq. getter */
-	float GetModulatorFrequency();
-	
-	/** Set modulator freq. relative to carrier
+
+        /** Set modulator freq. relative to carrier
 		\param ratio New modulator freq = carrier freq. * ratio
 	*/
 	void SetRatio(float ratio);
@@ -54,17 +49,28 @@ class Fm2
 	/** Setter for carrier waveform
 		\param wave New waveform
 	*/
-	void SetCarrierWaveform(Oscillator::Waveform wave);
+	void SetCarrierWaveform(uint8_t wave);
 
 	/** Setter for modulator waveform.
 		\param wave New waveform
 	*/
-	void SetModulatorWaveform(Oscillator::Waveform wave);
-	
-	
-	
+	void SetModulatorWaveform(uint8_t wave);
 
+  /** Index setter
+      \param FM depth, in Hz.
+  */
+  void SetIndex(float index);
+
+  /** Returns the current FM index. */
+  float GetIndex();
+
+  /** Resets both oscillators */
+  void Reset();
+  
   private:
+  Oscillator mod_, car_;
+  float car_freq_, idx_;
+  
 };
 } // namespace daisysp
 #endif
