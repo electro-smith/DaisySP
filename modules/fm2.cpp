@@ -9,7 +9,7 @@ void Fm2::Init(float samplerate)
   mod_.Init(samplerate);
 
   //set some reasonable values
-  car_.SetFreq(440.f);
+  SetCarrierFrequency(440.f);
   mod_.SetFreq(220.f);
 
   car_.SetAmp(1.f);
@@ -18,19 +18,19 @@ void Fm2::Init(float samplerate)
   car_.SetWaveform(Oscillator::WAVE_SIN);
   mod_.SetWaveform(Oscillator::WAVE_SIN);
   
-  idx_ = 30.f;  
+  idx_ = 50.f;  
 }
 
 float Fm2::Process()
 {
   float modval = mod_.Process();
-  car_.SetFreq(modval * idx_ + car_freq_);
+  car_.SetFreq(car_freq_ + modval * idx_);
   return car_.Process();
 }
 	
 void Fm2::SetCarrierFrequency(float freq)
 {
-  car_.SetFreq(freq);
+  car_freq_ = fabsf(freq);
 }
 
 void Fm2::SetModulatorFrequency(float freq)
