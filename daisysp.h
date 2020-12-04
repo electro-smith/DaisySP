@@ -32,7 +32,7 @@
 #include "modules/decimator.h"
 #include "modules/delayline.h"
 #include "modules/drip.h"
-#include "modules/dsp.h
+#include "modules/dsp.h"
 #include "modules/fm2.h"
 #include "modules/fold.h"
 #include "modules/jitter.h"
