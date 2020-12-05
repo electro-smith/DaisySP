@@ -35,6 +35,7 @@ void Fm2::SetCarrierFrequency(float freq)
 
 void Fm2::SetModulatorFrequency(float freq)
 {
+  freq = fabsf(freq);
   mod_.SetFreq(freq);
 }
 		
