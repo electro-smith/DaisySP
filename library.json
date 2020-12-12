@@ -2,8 +2,7 @@
     "name": "daisysp",
     "version": "0.0.1",
     "build": {
-        "srcDir" : "./",
-        "extraScript": "test.py",
+        "srcDir" : "./"
         "flags": [
             "-I.",
             "-std=gnu++14",
