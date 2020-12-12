@@ -1,0 +1,16 @@
+{
+    "name": "daisysp",
+    "version": "0.0.1",
+    "build": {
+        "srcDir" : "./",
+        "extraScript": "test.py",
+        "flags": [
+            "-I.",
+            "-std=gnu++14",
+            "-fno-exceptions",
+            "-finline-functions",
+            "-DUSE_HAL_DRIVER",
+            "-DSTM32H750xx"
+        ]
+    }
+  }
