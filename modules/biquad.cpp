@@ -1,5 +1,6 @@
 #include "biquad.h"
 #include <math.h>
+#include "dsp.h"
 
 using namespace daisysp;
 
@@ -25,7 +26,7 @@ void Biquad::Reset()
 void Biquad::Init(float sample_rate)
 {
     sample_rate_ = sample_rate;
-    two_pi_d_sr_ = 2.0f * M_PI / sample_rate_;
+    two_pi_d_sr_ = TWOPI_F / sample_rate_;
 
     cutoff_ = 500;
     res_    = 0.7;

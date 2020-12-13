@@ -8,6 +8,7 @@
 #endif
 #include "delayline.h"
 #include "phasor.h"
+#include "dsp.h"
 
 /** Shift can be 30-100 ms lets just start with 50 for now.
 0.050 * SR = 2400 samples (at 48kHz)
@@ -69,7 +70,7 @@ class PitchShifter
         {
             gain_[i] = 0.0f;
             d_[i].Init();
-            phs_[i].Init(sr, 50, i == 0 ? 0 : (float)M_PI);
+            phs_[i].Init(sr, 50, i == 0 ? 0 : PI_F);
         }
         shift_up_ = true;
         del_size_ = SHIFT_BUFFER_SIZE;
@@ -114,8 +115,8 @@ class PitchShifter
         gain_[0] = arm_sin_f32(fade1 * (float)M_PI);
         gain_[1] = arm_sin_f32(fade2 * (float)M_PI);
 #else
-        gain_[0] = sinf(fade1 * (float)M_PI);
-        gain_[1] = sinf(fade2 * (float)M_PI);
+        gain_[0] = sinf(fade1 * PI_F);
+        gain_[1] = sinf(fade2 * PI_F);
 #endif
 
         // Handle Delay Writing
@@ -142,7 +143,7 @@ class PitchShifter
         if(transpose_ != transpose || force_recalc_)
         {
             transpose_ = transpose;
-            idx        = fabsf(transpose);
+            idx        = (uint8_t)fabsf(transpose);
             ratio      = semitone_ratios_[idx % 12];
             ratio *= (uint8_t)(fabsf(transpose) / 12) + 1;
             if(transpose > 0.0f)
