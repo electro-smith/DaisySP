@@ -1,5 +1,6 @@
 #include <math.h>
 #include "crossfade.h"
+#include "dsp.h"
 
 #define REALLYSMALLFLOAT 0.000001f
 
@@ -18,8 +19,8 @@ float CrossFade::Process(float &in1, float &in2)
             return (in1 * (1.0f - scalar_1)) + (in2 * scalar_1);
 
         case CROSSFADE_CPOW:
-            scalar_1 = sinf(pos_ * ((float)M_PI * 0.5f));
-            scalar_2 = sinf((1.0f - pos_) * ((float)M_PI * 0.5f));
+            scalar_1 = sinf(pos_ * HALFPI_F);
+            scalar_2 = sinf((1.0f - pos_) * HALFPI_F);
             return (in1 * scalar_2) + (in2 * scalar_1);
 
         case CROSSFADE_LOG:

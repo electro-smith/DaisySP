@@ -1,5 +1,6 @@
 #include "balance.h"
 #include <math.h>
+#include "dsp.h"
 
 using namespace daisysp;
 
@@ -8,7 +9,7 @@ void Balance::Init(float sample_rate)
     float b;
     sample_rate_ = sample_rate;
     ihp_         = 10.0f;
-    b            = 2.0f - cosf(ihp_ * (2.0f * (float)M_PI / sample_rate_));
+    b            = 2.0f - cosf(ihp_ * (TWOPI_F / sample_rate_));
     c2_          = b - sqrtf(b * b - 1.0f);
     c1_          = 1.0f - c2_;
     prvq_ = prvr_ = prva_ = 0.0f;

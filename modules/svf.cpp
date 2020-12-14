@@ -1,6 +1,6 @@
 #include <math.h>
 #include "svf.h"
-
+#include "dsp.h"
 #define MIN(x, y) (((x) < (y)) ? (x) : (y))
 
 using namespace daisysp;
@@ -67,7 +67,7 @@ void Svf::SetFreq(float f)
     }
     // Set Internal Frequency for fc_
     freq_ = 2.0f
-            * sinf((float)M_PI
+            * sinf(PI_F
                    * MIN(0.25f,
                          fc_ / (sr_ * 2.0f))); // fs*2 because double sampled
     // recalculate damp

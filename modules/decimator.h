@@ -38,7 +38,7 @@ class Decimator
     inline void SetBitcrushFactor(float bitcrush_factor)
     {
         //            bitcrush_factor_ = bitcrush_factor;
-        bits_to_crush_ = bitcrush_factor * kMaxBitsToCrush;
+        bits_to_crush_ = (uint32_t)(bitcrush_factor * kMaxBitsToCrush);
     }
 
     /** Sets the exact number of bits to crush

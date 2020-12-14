@@ -1,5 +1,6 @@
 #include "tone.h"
 #include <math.h>
+#include "dsp.h"
 
 using namespace daisysp;
 
@@ -25,7 +26,7 @@ float Tone::Process(float &in)
 void Tone::CalculateCoefficients()
 {
     float b, c1, c2;
-    b   = 2.0f - cosf(2.0f * (float)M_PI * freq_ / sample_rate_);
+    b   = 2.0f - cosf(TWOPI_F * freq_ / sample_rate_);
     c2  = b - sqrtf(b * b - 1.0f);
     c1  = 1.0f - c2;
     c1_ = c1;

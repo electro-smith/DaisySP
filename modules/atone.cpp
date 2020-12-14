@@ -1,5 +1,6 @@
 #include "atone.h"
 #include <math.h>
+#include "dsp.h"
 
 using namespace daisysp;
 
@@ -25,7 +26,7 @@ void ATone::CalculateCoefficients()
 {
     float b, c2;
 
-    b   = 2.0f - cosf(2.0f * (float)M_PI * freq_ / sample_rate_);
+    b   = 2.0f - cosf(TWOPI_F * freq_ / sample_rate_);
     c2  = b - sqrtf(b * b - 1.0f);
     c2_ = c2;
 }
