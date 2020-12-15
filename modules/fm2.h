@@ -34,12 +34,7 @@ class Fm2
     /** Carrier freq. setter
 	    \param freq Carrier frequency in Hz
 	*/
-    void SetCarrierFrequency(float freq);
-
-    /** Modulator freq. setter
-		\param freq Modulator frequency in Hz
-	*/
-    void SetModulatorFrequency(float freq);
+    void SetFrequency(float freq);
 
     /** Set modulator freq. relative to carrier
 		\param ratio New modulator freq = carrier freq. * ratio
@@ -47,7 +42,7 @@ class Fm2
     void SetRatio(float ratio);
 
     /** Index setter
-      \param FM depth, 1 = mod phase by 2PI rads
+      \param FM depth, 5 = 2PI rads
   */
     void SetIndex(float index);
 
@@ -59,7 +54,7 @@ class Fm2
 
   private:
     Oscillator mod_, car_;
-    float      car_freq_, idx_;
+    float      car_freq_, idx_, ratio_;
 };
 } // namespace daisysp
 #endif

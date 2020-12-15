@@ -9,8 +9,8 @@ void Fm2::Init(float samplerate)
     mod_.Init(samplerate);
 
     //set some reasonable values
-    SetCarrierFrequency(440.f);
-    mod_.SetFreq(220.f);
+    SetFrequency(440.f);
+    SetRatio(.5f);
 
     car_.SetAmp(1.f);
     mod_.SetAmp(1.f);
@@ -28,27 +28,21 @@ float Fm2::Process()
     return car_.Process();
 }
 
-void Fm2::SetCarrierFrequency(float freq)
+void Fm2::SetFrequency(float freq)
 {
     freq = fabsf(freq);
     car_.SetFreq(freq);
-}
-
-void Fm2::SetModulatorFrequency(float freq)
-{
-    freq = fabsf(freq);
-    mod_.SetFreq(freq);
+    mod_.SetFreq(freq * ratio_);
 }
 
 void Fm2::SetRatio(float ratio)
 {
-    ratio = fabsf(ratio);
-    mod_.SetFreq(ratio * car_freq_);
+    ratio_ = fabsf(ratio);
 }
 
 void Fm2::SetIndex(float index)
 {
-    idx_ = index;
+    idx_ = index * 0.2f;
 }
 
 float Fm2::GetIndex()
