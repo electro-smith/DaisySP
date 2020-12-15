@@ -17,9 +17,9 @@ static void AudioCallback(float *in, float *out, size_t size)
         float lfo2out = lfo2.Process();
         float lfo3out = lfo3.Process();
 
-        Osc.SetIndex(lfo1out * 800.f);
-        Osc.SetModulatorFrequency(lfo2out * 400.f + 100);
-        Osc.SetCarrierFrequency(lfo3out * 200.f + 400.f);
+        Osc.SetIndex(lfo1out * .1);
+        Osc.SetModulatorFrequency(lfo2out * 10.f + 100);
+        Osc.SetCarrierFrequency(lfo3out * 200.f + 500.f);
 
         output = Osc.Process();
         out[i] = out[i + 1] = output;
@@ -39,12 +39,10 @@ int main(void)
     lfo2.Init(sample_rate);
     lfo3.Init(sample_rate);
 
-
-    lfo1.SetFreq(.25f);
-    lfo2.SetFreq(.1f);
+    lfo1.SetFreq(.05f);
+    lfo2.SetFreq(.005f);
     lfo3.SetFreq(.5f);
     lfo3.SetWaveform(Oscillator::WAVE_SQUARE);
-
 
     // start callback
     seed.StartAudio(AudioCallback);

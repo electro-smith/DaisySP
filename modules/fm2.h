@@ -46,18 +46,8 @@ class Fm2
 	*/
     void SetRatio(float ratio);
 
-    /** Setter for carrier waveform
-		\param wave New waveform
-	*/
-    void SetCarrierWaveform(uint8_t wave);
-
-    /** Setter for modulator waveform.
-		\param wave New waveform
-	*/
-    void SetModulatorWaveform(uint8_t wave);
-
     /** Index setter
-      \param FM depth, in Hz.
+      \param FM depth, 1 = mod phase by 2PI rads
   */
     void SetIndex(float index);
 

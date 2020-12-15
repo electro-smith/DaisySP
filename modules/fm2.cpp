@@ -18,19 +18,20 @@ void Fm2::Init(float samplerate)
     car_.SetWaveform(Oscillator::WAVE_SIN);
     mod_.SetWaveform(Oscillator::WAVE_SIN);
 
-    idx_ = 50.f;
+    idx_ = 1.f;
 }
 
 float Fm2::Process()
 {
     float modval = mod_.Process();
-    car_.SetFreq(car_freq_ + modval * idx_);
+    car_.PhaseAdd(modval * idx_);
     return car_.Process();
 }
 
 void Fm2::SetCarrierFrequency(float freq)
 {
-    car_freq_ = fabsf(freq);
+    freq = fabsf(freq);
+    car_.SetFreq(freq);
 }
 
 void Fm2::SetModulatorFrequency(float freq)
@@ -45,19 +46,9 @@ void Fm2::SetRatio(float ratio)
     mod_.SetFreq(ratio * car_freq_);
 }
 
-void Fm2::SetCarrierWaveform(uint8_t wave)
-{
-    car_.SetWaveform(wave);
-}
-
-void Fm2::SetModulatorWaveform(uint8_t wave)
-{
-    mod_.SetWaveform(wave);
-}
-
 void Fm2::SetIndex(float index)
 {
-    idx_ = fabsf(index);
+    idx_ = index;
 }
 
 float Fm2::GetIndex()
