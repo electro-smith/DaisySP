@@ -5,7 +5,8 @@
         "srcDir" : "./",
         "extraScript": "./extra_build_script.py",
         "flags" : [
-            "-O3"
+            "-O3",
+            "-static"
         ],
         "unflags": [
             "-Os"

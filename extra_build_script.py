@@ -24,5 +24,4 @@ env.Append(
 # print(env)
 # print(env.Dump())
 
-print("running supplimental link script")    
-
+print("running supplimental DaisySP compilation flag script")   
