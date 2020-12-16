@@ -11,6 +11,7 @@ var searchData=
   ['getfreq',['GetFreq',['../classdaisysp_1_1_a_tone.html#ae8bfd85e5f20977dead0e12ad884d6a1',1,'daisysp::ATone::GetFreq()'],['../classdaisysp_1_1_metro.html#a0ad8f0d693673b464412221f89218709',1,'daisysp::Metro::GetFreq()'],['../classdaisysp_1_1_phasor.html#adb5da507312fe5b5f4342067a44789a9',1,'daisysp::Phasor::GetFreq()'],['../classdaisysp_1_1_pluck.html#a308e0e1af8e65fe711c2c719c7438ee4',1,'daisysp::Pluck::GetFreq()'],['../classdaisysp_1_1_tone.html#aa2aaa42e5d6c89066e2bd9ed37a1acff',1,'daisysp::Tone::GetFreq()']]],
   ['getgain',['GetGain',['../classdaisysp_1_1_compressor.html#a204af81e9ebaaf430c2b9d4639440599',1,'daisysp::Compressor']]],
   ['gethtime',['GetHtime',['../classdaisysp_1_1_port.html#ad5f402b9c613975487a039cf0f42c1ce',1,'daisysp::Port']]],
+  ['getindex',['GetIndex',['../classdaisysp_1_1_fm2.html#a2b80f9662af7538bfec62ab4b45ab6b0',1,'daisysp::Fm2']]],
   ['getmakeup',['GetMakeup',['../classdaisysp_1_1_compressor.html#a8c833b63461f2aaaa86ed34e35343394',1,'daisysp::Compressor']]],
   ['getmode',['GetMode',['../classdaisysp_1_1_pluck.html#a6817009ba135c6d4aa9fff9edef3b91c',1,'daisysp::Pluck']]],
   ['getpos',['GetPos',['../classdaisysp_1_1_cross_fade.html#a16cda819b5ef80c0b73743e0d15df3ca',1,'daisysp::CrossFade']]],
