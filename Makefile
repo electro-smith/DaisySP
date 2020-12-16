@@ -17,6 +17,7 @@ crossfade \
 dcblock \
 decimator \
 drip \
+fm2 \
 fold \
 jitter \
 line \
