@@ -53,8 +53,11 @@ class Fm2
     void Reset();
 
   private:
+    static constexpr float kIdxScalar      = 0.2f;
+    static constexpr float kIdxScalarRecip = 1.f / kIdxScalar;
+
     Oscillator mod_, car_;
-    float      idx_, idxScalar_;
+    float      idx_;
     float      freq_, lfreq_, ratio_, lratio_;
 };
 } // namespace daisysp

@@ -9,10 +9,10 @@ void Fm2::Init(float samplerate)
     mod_.Init(samplerate);
 
     //set some reasonable values
-    SetFrequency(440.f);
-    SetRatio(2.f);
     lfreq_  = 440.f;
     lratio_ = 2.f;
+    SetFrequency(lfreq_);
+    SetRatio(lratio_);
 
     car_.SetAmp(1.f);
     mod_.SetAmp(1.f);
@@ -20,8 +20,7 @@ void Fm2::Init(float samplerate)
     car_.SetWaveform(Oscillator::WAVE_SIN);
     mod_.SetWaveform(Oscillator::WAVE_SIN);
 
-    idx_       = 1.f;
-    idxScalar_ = .2f;
+    idx_ = 1.f;
 }
 
 float Fm2::Process()
@@ -30,8 +29,8 @@ float Fm2::Process()
     {
         lratio_ = ratio_;
         lfreq_  = freq_;
-        car_.SetFreq(freq_);
-        mod_.SetFreq(freq_ * ratio_);
+        car_.SetFreq(lfreq_);
+        mod_.SetFreq(lfreq_ * lratio_);
     }
 
     float modval = mod_.Process();
@@ -51,12 +50,12 @@ void Fm2::SetRatio(float ratio)
 
 void Fm2::SetIndex(float index)
 {
-    idx_ = index * idxScalar_;
+    idx_ = index * kIdxScalar;
 }
 
 float Fm2::GetIndex()
 {
-    return idx_ / idxScalar_;
+    return idx_ * kIdxScalarRecip;
 }
 
 void Fm2::Reset()
