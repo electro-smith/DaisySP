@@ -10,7 +10,9 @@ void Fm2::Init(float samplerate)
 
     //set some reasonable values
     SetFrequency(440.f);
-    SetRatio(.5f);
+    SetRatio(2.f);
+    lfreq_  = 440.f;
+    lratio_ = 2.f;
 
     car_.SetAmp(1.f);
     mod_.SetAmp(1.f);
@@ -18,11 +20,20 @@ void Fm2::Init(float samplerate)
     car_.SetWaveform(Oscillator::WAVE_SIN);
     mod_.SetWaveform(Oscillator::WAVE_SIN);
 
-    idx_ = 1.f;
+    idx_       = 1.f;
+    idxScalar_ = .2f;
 }
 
 float Fm2::Process()
 {
+    if(lratio_ != ratio_ || lfreq_ != freq_)
+    {
+        lratio_ = ratio_;
+        lfreq_  = freq_;
+        car_.SetFreq(freq_);
+        mod_.SetFreq(freq_ * ratio_);
+    }
+
     float modval = mod_.Process();
     car_.PhaseAdd(modval * idx_);
     return car_.Process();
@@ -30,9 +41,7 @@ float Fm2::Process()
 
 void Fm2::SetFrequency(float freq)
 {
-    freq = fabsf(freq);
-    car_.SetFreq(freq);
-    mod_.SetFreq(freq * ratio_);
+    freq_ = fabsf(freq);
 }
 
 void Fm2::SetRatio(float ratio)
@@ -42,12 +51,12 @@ void Fm2::SetRatio(float ratio)
 
 void Fm2::SetIndex(float index)
 {
-    idx_ = index * 0.2f;
+    idx_ = index * idxScalar_;
 }
 
 float Fm2::GetIndex()
 {
-    return idx_;
+    return idx_ / idxScalar_;
 }
 
 void Fm2::Reset()

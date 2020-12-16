@@ -5,7 +5,7 @@ using namespace daisysp;
 using namespace daisy;
 
 static DaisySeed seed;
-Fm2              Osc;
+Fm2              osc;
 Oscillator       lfo1, lfo2, lfo3;
 
 static void AudioCallback(float *in, float *out, size_t size)
@@ -17,11 +17,11 @@ static void AudioCallback(float *in, float *out, size_t size)
         float lfo2out = lfo2.Process();
         float lfo3out = lfo3.Process();
 
-        Osc.SetIndex(lfo1out);
-        Osc.SetRatio(lfo2out + 3);
-        Osc.SetFrequency((lfo3out + 1) * 220.f + 220.f);
+        osc.SetIndex(lfo1out);
+        osc.SetRatio(lfo2out + 3);
+        osc.SetFrequency((lfo3out + 1) * 220.f + 440.f);
 
-        output = Osc.Process();
+        output = osc.Process();
         out[i] = out[i + 1] = output;
     }
 }
@@ -34,15 +34,18 @@ int main(void)
     seed.Init();
     sample_rate = seed.AudioSampleRate();
 
-    Osc.Init(sample_rate);
+    osc.Init(sample_rate);
     lfo1.Init(sample_rate);
     lfo2.Init(sample_rate);
     lfo3.Init(sample_rate);
 
     lfo1.SetFreq(.05f);
+
     lfo2.SetFreq(.01f);
-    lfo3.SetFreq(.5f);
     lfo2.SetWaveform(Oscillator::WAVE_SQUARE);
+
+    lfo3.SetFreq(.5f);
+    lfo3.SetAmp(1);
     lfo3.SetWaveform(Oscillator::WAVE_SQUARE);
 
     // start callback

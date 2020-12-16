@@ -32,13 +32,13 @@ class Fm2
     float Process();
 
     /** Carrier freq. setter
-	    \param freq Carrier frequency in Hz
-	*/
+        \param freq Carrier frequency in Hz
+    */
     void SetFrequency(float freq);
 
     /** Set modulator freq. relative to carrier
-		\param ratio New modulator freq = carrier freq. * ratio
-	*/
+        \param ratio New modulator freq = carrier freq. * ratio
+    */
     void SetRatio(float ratio);
 
     /** Index setter
@@ -54,7 +54,8 @@ class Fm2
 
   private:
     Oscillator mod_, car_;
-    float      car_freq_, idx_, ratio_;
+    float      idx_, idxScalar_;
+    float      freq_, lfreq_, ratio_, lratio_;
 };
 } // namespace daisysp
 #endif
