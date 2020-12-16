@@ -18,6 +18,7 @@ dcblock \
 decimator \
 drip \
 fold \
+formantosc \
 jitter \
 line \
 limiter \

@@ -14,6 +14,11 @@
 #define DSY_MAX(in, mx) (in > mx ? in : mx)
 #define DSY_CLAMP(in, mn, mx) (DSY_MIN(DSY_MAX(in, mn), mx))
 
+//Emilie Gillet, 2012 from stmlib/dsp.h
+#define MAKE_INTEGRAL_FRACTIONAL(x) \
+  int x ## _integral = static_cast<int>(x); \
+  float x ## _fractional = x - static_cast<float>(x ## _integral);
+
 namespace daisysp
 {
 /** efficient floating point min/max
@@ -185,6 +190,18 @@ inline float soft_saturate(float in, float thresh)
     //                                 / (1.0f
     //                                    + (((val - thresh) / (1.0f - thresh))
     //                                       * ((val - thresh) / (1.0f - thresh))));
+}
+
+/** Emilie Gillet, 2012
+    from stmlib/dsp.h
+*/
+inline float InterpolateWrap(const float* table, float index, float size) {
+  index -= static_cast<float>(static_cast<int>(index));
+  index *= size;
+  MAKE_INTEGRAL_FRACTIONAL(index)
+  float a = table[index_integral];
+  float b = table[index_integral + 1];
+  return a + (b - a) * index_fractional;
 }
 
 } // namespace daisysp
