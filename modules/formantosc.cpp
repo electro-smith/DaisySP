@@ -1,7 +1,7 @@
 #include "dsp.h"
 #include "paraminterp.h"
 #include "oscillator.h"
-//#include "plaits/resources.h"
+#include "resources.h"
 
 #include "formantosc.h"
 #include <math.h>
