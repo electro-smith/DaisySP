@@ -25,14 +25,14 @@
 // -----------------------------------------------------------------------------
 //
 // Resources definitions.
-//
-// Automatically generated with:
-// make resources
 
 /** @file resources.h */
-
+#pragma once
 #ifndef DSY_RESOURCES_H_
 #define DSY_RESOURCES_H_
+
+#include <stdint.h>
+#ifdef __cplusplus
 
 namespace daisysp {
 
@@ -90,4 +90,5 @@ extern const int16_t wav_integrated_waves[];
 
 } // namespace daisysp
 
-#endif // PLAITS_RESOURCES_H_
+#endif
+#endif

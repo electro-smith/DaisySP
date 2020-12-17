@@ -1,1 +1,1 @@
-Allpass filter frequency is swept with sine wave oscillator as input
+Formant oscillator voice from Emilie Gillet's Plaits module

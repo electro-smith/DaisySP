@@ -65,6 +65,7 @@ using namespace daisysp;
       next_sample += Sine(formant_phase_ + phase_shift);
 
       *out++ = this_sample;
+      //*out++ = this_sample;		
     }
     next_sample_ = next_sample;
   }
