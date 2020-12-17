@@ -1,6 +1,5 @@
 #include "dsp.h"
 #include "paraminterp.h"
-#include "oscillator.h"
 #include "resources.h"
 
 #include "formantosc.h"
@@ -18,26 +17,27 @@ using namespace daisysp;
     phase_shift_ = 0.0f;
   }
   
-  void FormantOscillator::Process(float carrier_frequency, float formant_frequency, float phase_shift, float* out, size_t size) {
-    /*if (carrier_frequency >= kMaxFrequency) {
+  float FormantOscillator::Process(float carrier_frequency, float formant_frequency, float phase_shift) {
+	float kMaxFrequency = .25f;
+	if (carrier_frequency >= kMaxFrequency) {
       carrier_frequency = kMaxFrequency;
     }
     if (formant_frequency >= kMaxFrequency) {
       formant_frequency = kMaxFrequency;
-    }*/
+    }
 
-    ParameterInterpolator carrier_fm( &carrier_frequency_, carrier_frequency, size);
-    ParameterInterpolator formant_fm( &formant_frequency_, formant_frequency, size);
-    ParameterInterpolator pm(&phase_shift_, phase_shift, size);
+    ParameterInterpolator carrier_fm( &carrier_frequency_, carrier_frequency, (size_t)1);
+    ParameterInterpolator formant_fm( &formant_frequency_, formant_frequency, (size_t)1);
+    ParameterInterpolator pm(&phase_shift_, phase_shift, (size_t)1);
 
     float next_sample = next_sample_;
     
-    while (size--) {
+    //while (size--) {
       float this_sample = next_sample;
       next_sample = 0.0f;
     
-      const float carrier_frequency = carrier_fm.Next();
-      const float formant_frequency = formant_fm.Next();
+      carrier_frequency = carrier_fm.Next();
+      formant_frequency = formant_fm.Next();
     
       carrier_phase_ += carrier_frequency;
       
@@ -59,15 +59,14 @@ using namespace daisysp;
         if (formant_phase_ >= 1.0f) {
           formant_phase_ -= 1.0f;
         }
-      }
+      //}
     
       const float phase_shift = pm.Next();
       next_sample += Sine(formant_phase_ + phase_shift);
 
-      *out++ = this_sample;
-      //*out++ = this_sample;		
     }
     next_sample_ = next_sample;
+	return this_sample;
   }
 
   inline float FormantOscillator::Sine(float phase) {

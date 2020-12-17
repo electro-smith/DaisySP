@@ -24,7 +24,7 @@ class FormantOscillator
 
   void Init();
   
-  void Process(float carrier_frequency, float formant_frequency, float phase_shift, float* out, size_t size);
+  float Process(float carrier_frequency, float formant_frequency, float phase_shift);
 
  private:
   inline float Sine(float phase);
