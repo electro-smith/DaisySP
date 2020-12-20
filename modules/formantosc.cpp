@@ -7,17 +7,23 @@
 
 using namespace daisysp;
 
-  void FormantOscillator::Init() {
+  void FormantOscillator::Init(float sample_rate) {
     carrier_phase_ = 0.0f;
     formant_phase_ = 0.0f;
     next_sample_ = 0.0f;
   
     carrier_frequency_ = 0.0f;
-    formant_frequency_ = 0.01f;
+    formant_frequency_ = 100.f;
     phase_shift_ = 0.0f;
+	
+	sample_rate_ = sample_rate;
   }
   
   float FormantOscillator::Process(float carrier_frequency, float formant_frequency, float phase_shift) {
+	//convert from Hz to phase_inc / sample
+	carrier_frequency = carrier_frequency / sample_rate_;
+	formant_frequency = formant_frequency / sample_rate_;
+	
 	float kMaxFrequency = .25f;
 	if (carrier_frequency >= kMaxFrequency) {
       carrier_frequency = kMaxFrequency;
@@ -32,7 +38,6 @@ using namespace daisysp;
 
     float next_sample = next_sample_;
     
-    //while (size--) {
       float this_sample = next_sample;
       next_sample = 0.0f;
     
@@ -54,19 +59,21 @@ using namespace daisysp;
         this_sample += discontinuity * ThisBlepSample(reset_time);
         next_sample += discontinuity * NextBlepSample(reset_time);
         formant_phase_ = reset_time * formant_frequency;
-      } else {
+      } 
+	  else {
         formant_phase_ += formant_frequency;
         if (formant_phase_ >= 1.0f) {
           formant_phase_ -= 1.0f;
-        }
-      //}
+      }
+     }
     
-      const float phase_shift = pm.Next();
+      phase_shift = pm.Next();
       next_sample += Sine(formant_phase_ + phase_shift);
-
-    }
+	
+    
     next_sample_ = next_sample;
 	return this_sample;
+  
   }
 
   inline float FormantOscillator::Sine(float phase) {
