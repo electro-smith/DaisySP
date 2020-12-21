@@ -22,9 +22,15 @@ class FormantOscillator
     FormantOscillator() {}
     ~FormantOscillator() {}
 
-  void Init();
+  void Init(float sample_rate);
   
-  float Process(float carrier_frequency, float formant_frequency, float phase_shift);
+  float Process();
+
+  void SetFormantFreq(float freq);
+
+  void SetCarrierFreq(float freq);
+
+  void SetPhaseShift(float ps);
 
  private:
   inline float Sine(float phase);
@@ -40,6 +46,9 @@ class FormantOscillator
   float carrier_frequency_;
   float formant_frequency_;
   float phase_shift_;
+  float ps_inc_;
+  
+  float sample_rate_;
   
   //DISALLOW_COPY_AND_ASSIGN(FormantOscillator);
 };

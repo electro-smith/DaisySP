@@ -18,62 +18,57 @@ using namespace daisysp;
 	
 	sample_rate_ = sample_rate;
   }
+    
+  float FormantOscillator::Process() {    
+    float this_sample = next_sample_;
+    float next_sample = 0.0f;
+    carrier_phase_ += carrier_frequency_;
   
-  float FormantOscillator::Process(float carrier_frequency, float formant_frequency, float phase_shift) {
-	//convert from Hz to phase_inc / sample
-	carrier_frequency = carrier_frequency / sample_rate_;
-	formant_frequency = formant_frequency / sample_rate_;
-	
-	float kMaxFrequency = .25f;
-	if (carrier_frequency >= kMaxFrequency) {
-      carrier_frequency = kMaxFrequency;
-    }
-    if (formant_frequency >= kMaxFrequency) {
-      formant_frequency = kMaxFrequency;
-    }
+    if (carrier_phase_ >= 1.0f) {
+	  carrier_phase_ -= 1.0f;
+	  float reset_time = carrier_phase_ / carrier_frequency_;
 
-    ParameterInterpolator carrier_fm( &carrier_frequency_, carrier_frequency, (size_t)1);
-    ParameterInterpolator formant_fm( &formant_frequency_, formant_frequency, (size_t)1);
-    ParameterInterpolator pm(&phase_shift_, phase_shift, (size_t)1);
-
-    float next_sample = next_sample_;
-    
-      float this_sample = next_sample;
-      next_sample = 0.0f;
-    
-      carrier_frequency = carrier_fm.Next();
-      formant_frequency = formant_fm.Next();
-    
-      carrier_phase_ += carrier_frequency;
-      
-      if (carrier_phase_ >= 1.0f) {
-        carrier_phase_ -= 1.0f;
-        float reset_time = carrier_phase_ / carrier_frequency;
-    
-        float formant_phase_at_reset = formant_phase_ + \
-            (1.0f - reset_time) * formant_frequency;
-        float before = Sine(
-            formant_phase_at_reset + pm.subsample(1.0f - reset_time));
-        float after = Sine(0.0f + pm.subsample(1.0f));
-        float discontinuity = after - before;
-        this_sample += discontinuity * ThisBlepSample(reset_time);
-        next_sample += discontinuity * NextBlepSample(reset_time);
-        formant_phase_ = reset_time * formant_frequency;
-      } 
-	  else {
-        formant_phase_ += formant_frequency;
-        if (formant_phase_ >= 1.0f) {
-          formant_phase_ -= 1.0f;
+      float formant_phase_at_reset = formant_phase_ + (1.0f - reset_time) * formant_frequency_;
+	  float before = Sine(formant_phase_at_reset + phase_shift_ + (ps_inc_ * (1.0f - reset_time)));
+	  float after = Sine(0.0f + phase_shift_ + ps_inc_);
+  	  float discontinuity = after - before;
+	  this_sample += discontinuity * ThisBlepSample(reset_time);
+	  next_sample += discontinuity * NextBlepSample(reset_time);
+	  formant_phase_ = reset_time * formant_frequency_;
+    } 
+    else {
+	  formant_phase_ += formant_frequency_;
+	  if (formant_phase_ >= 1.0f) {
+	   formant_phase_ -= 1.0f;
       }
-     }
-    
-      phase_shift = pm.Next();
-      next_sample += Sine(formant_phase_ + phase_shift);
+    }
+
+	phase_shift_ += ps_inc_;
+	ps_inc_ = 0.f;
 	
+    next_sample += Sine(formant_phase_ + phase_shift_);
     
     next_sample_ = next_sample;
 	return this_sample;
   
+  }
+
+  void FormantOscillator::SetFormantFreq(float freq){
+	//convert from Hz to phase_inc / sample
+	formant_frequency_ = freq / sample_rate_;
+	formant_frequency_ = formant_frequency_ >= .25f ? .25f : formant_frequency_;
+	formant_frequency_ = formant_frequency_ <= -.25f ? -.25f : formant_frequency_;
+  }
+
+  void FormantOscillator::SetCarrierFreq(float freq){
+	//convert from Hz to phase_inc / sample
+	carrier_frequency_ = freq / sample_rate_;
+	carrier_frequency_ = carrier_frequency_ >= .25f ? .25f : carrier_frequency_;
+	carrier_frequency_ = carrier_frequency_ <= -.25f ? -.25f : carrier_frequency_;
+  }
+
+  void FormantOscillator::SetPhaseShift(float ps){
+	ps_inc_ = ps - phase_shift_;
   }
 
   inline float FormantOscillator::Sine(float phase) {
