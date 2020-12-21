@@ -7,6 +7,7 @@ using namespace daisy;
 static DaisySeed  seed;
 static FormantOscillator  form;
 static Oscillator lfo;
+static Oscillator osc;
 
 static void AudioCallback(float *in, float *out, size_t size)
 {
@@ -14,6 +15,9 @@ static void AudioCallback(float *in, float *out, size_t size)
     {
 		float sig = 500.f * fabsf(lfo.Process());
 		form.SetFormantFreq(sig);
+		
+		float o = (osc.Process() + 1) * .5f;
+		form.SetPhaseShift(o * .4);
 		
 		out[i] = out[i + 1] = form.Process();
     }
@@ -34,9 +38,12 @@ int main(void)
 	lfo.SetAmp(1.f);
 	lfo.SetFreq(.25f);
 
+	osc.Init(sample_rate);
+	osc.SetAmp(1.f);
+	osc.SetFreq(100.f);
+
     // start callback
     seed.StartAudio(AudioCallback);
-
 
     while(1) {}
 }
