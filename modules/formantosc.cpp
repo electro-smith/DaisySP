@@ -1,7 +1,5 @@
 #include "dsp.h"
-#include "paraminterp.h"
 #include "resources.h"
-
 #include "formantosc.h"
 #include <math.h>
 
