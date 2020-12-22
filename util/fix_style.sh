@@ -4,5 +4,6 @@
 STARTDIR=`pwd`
 find $STARTDIR -iname '*.h' -type f -exec sed -i 's/\t/    /g' {} +
 find $STARTDIR -iname '*.cpp' -type f -exec sed -i 's/\t/    /g' {} +
-clang-format-6.0 -i $STARTDIR/modules/*.cpp $STARTDIR/modules/*.h
-clang-format-6.0 -i $STARTDIR/examples/*/*.cpp 
+clang-format -i $STARTDIR/modules/*.cpp $STARTDIR/modules/*.h
+clang-format -i $STARTDIR/examples/*/*.cpp
+

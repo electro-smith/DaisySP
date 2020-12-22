@@ -14,7 +14,7 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{44F4AEA3-A6B2-4F03-9C28-34B2336BDF57}</ProjectGuid>
     <BSP_ID>com.sysprogs.arm.stm32</BSP_ID>
-    <BSP_VERSION>2020.06</BSP_VERSION>
+    <BSP_VERSION>2020.10</BSP_VERSION>
     <InPlaceBSPSubdir />
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -91,7 +91,9 @@
     <ClCompile Include="modules\dcblock.cpp" />
     <ClCompile Include="modules\decimator.cpp" />
     <ClCompile Include="modules\drip.cpp" />
+    <ClCompile Include="modules\fm2.cpp" />
     <ClCompile Include="modules\fold.cpp" />
+    <ClCompile Include="modules\formantosc.cpp" />
     <ClCompile Include="modules\jitter.cpp" />
     <ClCompile Include="modules\limiter.cpp" />
     <ClCompile Include="modules\line.cpp" />
@@ -125,7 +127,9 @@
     <ClInclude Include="modules\delayline.h" />
     <ClInclude Include="modules\drip.h" />
     <ClInclude Include="modules\dsp.h" />
+    <ClInclude Include="modules\fm2.h" />
     <ClInclude Include="modules\fold.h" />
+    <ClInclude Include="modules\formantosc.h" />
     <ClInclude Include="modules\jitter.h" />
     <ClInclude Include="modules\limiter.h" />
     <ClInclude Include="modules\line.h" />
