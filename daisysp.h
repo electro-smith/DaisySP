@@ -44,7 +44,6 @@
 #include "modules/moogladder.h"
 #include "modules/nlfilt.h"
 #include "modules/oscillator.h"
-#include "modules/paraminterp.h"
 #include "modules/phasor.h"
 #include "modules/port.h"
 #include "modules/pitchshifter.h"

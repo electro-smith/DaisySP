@@ -191,19 +191,6 @@ inline float soft_saturate(float in, float thresh)
     //                                    + (((val - thresh) / (1.0f - thresh))
     //                                       * ((val - thresh) / (1.0f - thresh))));
 }
-
-/** Emilie Gillet, 2012
-    from stmlib/dsp.h
-*/
-inline float InterpolateWrap(const float* table, float index, float size) {
-  index -= static_cast<float>(static_cast<int>(index));
-  index *= size;
-  MAKE_INTEGRAL_FRACTIONAL(index)
-  float a = table[index_integral];
-  float b = table[index_integral + 1];
-  return a + (b - a) * index_fractional;
-}
-
 } // namespace daisysp
 
 #endif

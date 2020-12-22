@@ -70,7 +70,7 @@ using namespace daisysp;
   }
 
   inline float FormantOscillator::Sine(float phase) {
-    return InterpolateWrap(lut_sine, phase, 1024.0f);
+	return sinf(phase * TWOPI_F);
   }
   
   inline float FormantOscillator::ThisBlepSample(float t) {
