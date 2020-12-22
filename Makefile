@@ -19,6 +19,7 @@ decimator \
 drip \
 fm2 \
 fold \
+formantosc \
 jitter \
 line \
 limiter \
@@ -30,6 +31,7 @@ oscillator \
 phasor \
 pluck \
 port \
+resources \
 reverbsc \
 svf \
 tone \
