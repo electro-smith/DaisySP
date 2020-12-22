@@ -49,7 +49,6 @@
 #include "modules/pitchshifter.h"
 #include "modules/PolyPluck.h"
 #include "modules/pluck.h"
-#include "modules/resources.h"
 #include "modules/reverbsc.h"
 #include "modules/samplehold.h"
 #include "modules/svf.h"

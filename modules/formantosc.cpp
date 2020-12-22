@@ -1,5 +1,4 @@
 #include "dsp.h"
-#include "resources.h"
 #include "formantosc.h"
 #include <math.h>
 
