@@ -22,14 +22,28 @@ class FormantOscillator
     FormantOscillator() {}
     ~FormantOscillator() {}
 
+    /** Initializes the FormantOscillator module.
+        \param sample_rate - The sample rate of the audio engine being run. 
+    */
     void Init(float sample_rate);
 
+    /** Get the next sample
+    */
     float Process();
 
+    /** Set the formant frequency.
+        \param freq Frequency in Hz
+    */
     void SetFormantFreq(float freq);
 
+    /** Set the carrier frequency. This is the "main" frequency.
+        \param freq Frequency in Hz
+    */
     void SetCarrierFreq(float freq);
 
+    /** Set the amount of phase shift
+        \param ps Typically 0-1. Works with other values though, including negative.
+    */
     void SetPhaseShift(float ps);
 
   private:
