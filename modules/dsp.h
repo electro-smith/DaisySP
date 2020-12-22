@@ -14,11 +14,6 @@
 #define DSY_MAX(in, mx) (in > mx ? in : mx)
 #define DSY_CLAMP(in, mn, mx) (DSY_MIN(DSY_MAX(in, mn), mx))
 
-//Emilie Gillet, 2012 from stmlib/dsp.h
-#define MAKE_INTEGRAL_FRACTIONAL(x)             \
-    int   x##_integral   = static_cast<int>(x); \
-    float x##_fractional = x - static_cast<float>(x##_integral);
-
 namespace daisysp
 {
 /** efficient floating point min/max
