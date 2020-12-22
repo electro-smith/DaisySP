@@ -19,6 +19,7 @@ decimator \
 drip \
 fm2 \
 fold \
+formantosc \
 jitter \
 line \
 limiter \

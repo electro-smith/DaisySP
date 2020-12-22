@@ -186,7 +186,6 @@ inline float soft_saturate(float in, float thresh)
     //                                    + (((val - thresh) / (1.0f - thresh))
     //                                       * ((val - thresh) / (1.0f - thresh))));
 }
-
 } // namespace daisysp
 
 #endif
