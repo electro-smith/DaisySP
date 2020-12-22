@@ -22,35 +22,35 @@ class FormantOscillator
     FormantOscillator() {}
     ~FormantOscillator() {}
 
-  void Init(float sample_rate);
-  
-  float Process();
+    void Init(float sample_rate);
 
-  void SetFormantFreq(float freq);
+    float Process();
 
-  void SetCarrierFreq(float freq);
+    void SetFormantFreq(float freq);
 
-  void SetPhaseShift(float ps);
+    void SetCarrierFreq(float freq);
 
- private:
-  inline float Sine(float phase);
-  inline float ThisBlepSample(float t);
-  inline float NextBlepSample(float t);
+    void SetPhaseShift(float ps);
 
-  // Oscillator state.
-  float carrier_phase_;
-  float formant_phase_;
-  float next_sample_;
+  private:
+    inline float Sine(float phase);
+    inline float ThisBlepSample(float t);
+    inline float NextBlepSample(float t);
 
-  // For interpolation of parameters.
-  float carrier_frequency_;
-  float formant_frequency_;
-  float phase_shift_;
-  float ps_inc_;
-  
-  float sample_rate_;
-  
-  //DISALLOW_COPY_AND_ASSIGN(FormantOscillator);
+    // Oscillator state.
+    float carrier_phase_;
+    float formant_phase_;
+    float next_sample_;
+
+    // For interpolation of parameters.
+    float carrier_frequency_;
+    float formant_frequency_;
+    float phase_shift_;
+    float ps_inc_;
+
+    float sample_rate_;
+
+    //DISALLOW_COPY_AND_ASSIGN(FormantOscillator);
 };
 } //namespace daisysp
 #endif

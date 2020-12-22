@@ -31,7 +31,6 @@ oscillator \
 phasor \
 pluck \
 port \
-resources \
 reverbsc \
 svf \
 tone \
