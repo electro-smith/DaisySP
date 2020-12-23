@@ -7,7 +7,7 @@
     <Revision>1</Revision>
   </ToolchainVersion>
   <BspID>com.sysprogs.arm.stm32</BspID>
-  <BspVersion>2020.06</BspVersion>
+  <BspVersion>2020.10</BspVersion>
   <McuID>STM32H750IB</McuID>
   <MCUDefinitionFile>STM32H7xxxx/DeviceDefinitions/stm32h750xx.xml</MCUDefinitionFile>
   <MCUProperties>
