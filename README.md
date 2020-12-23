@@ -1,49 +1,72 @@
-![](https://github.com/electro-smith/DaisySP/blob/master/resources/assets/banner.png)
+<p align="center"><img width=15% src="https://github.com/andrewikenberry/badges/blob/main/banner.png"></p>
+<p align="center"><img width=23% src="https://github.com/andrewikenberry/badges/blob/main/daisysp.png"></p>
 
-[![Build Status](https://travis-ci.com/electro-smith/DaisySP.svg?branch=master)](https://travis-ci.com/electro-smith/DaisySP)
+<h3 align="center">A Powerful, Open Source DSP Library in C++</h3>
+<br>
 
-**DaisySP is an open source DSP library written in C++ and specifically tailored to embedded audio applications.**
+<p align="center">
+  <a href="https://travis-ci.com/electro-smith/DaisySP">
+    <img src="https://travis-ci.com/electro-smith/DaisySP.svg?branch=master">
+         </a>
+    <a href="https://opensource.org/licenses/MIT">
+      <img src="https://img.shields.io/badge/license-MIT-yellow"
+           </a>
+      <a href="https://join.slack.com/t/es-daisy/shared_invite/zt-f9cfm1g4-DgdCok1h1Rj4fpX90~IOww">
+        <img src="https://img.shields.io/badge/join-us%20on%20slack-gray.svg?longCache=true&logo=slack&colorB=purple"
+             </a>
+      <a href="https://electro-smith.github.io/DaisySP/index.html">
+        <img src="https://img.shields.io/badge/documentation-online-blue"
+             </a>
+      <a href="https://forum.electro-smith.com/">
+        <img src="https://img.shields.io/badge/chat-daisy%20forum-orange"
+             </a>
+        </p>
+      
+<p align="center">
+  <a href="#applications">Applications</a> •
+  <a href="#features">Features</a> •
+  <a href="https://github.com/electro-smith/DaisyExamples">Examples</a> •
+  <a href="#getting-started">Getting Started</a> •
+  <a href="#community">Community</a> •
+  <a href="#contributing">Contributing</a> •
+  <a href="#license">License</a> 
+</p>
 
-It was originally created for use with the [Daisy Embedded Audio Platform](https://www.electro-smith.com/daisy), however it can easily be used elsewhere. 
+---
+
+## Applications
+- Embedded hardware using the [Daisy Audio Platform](https://www.electro-smith.com/daisy)
+- Audio plug-ins (VST, AU, [JUCE](https://juce.com/))
+- Mobile apps (iOS, Android)
+- [VCV Rack](https://vcvrack.com/) modules
 
 ## Features
 
-- Synthesis blocks such as oscillators, filters, envelopes, etc.
-
-- DSP helper functions optimized for embedded applications
-
-- Effects algorithms including reverb, delay, pitch-shift
+- **Synthesis Methods:** [Subtractive](https://electro-smith.github.io/DaisySP/classdaisysp_1_1_moog_ladder.html), [Physical Modeling](https://electro-smith.github.io/DaisySP/classdaisysp_1_1_pluck.html), [FM](https://electro-smith.github.io/DaisySP/classdaisysp_1_1_fm2.html)
+- **Filters:** [Biquad](https://electro-smith.github.io/DaisySP/classdaisysp_1_1_biquad.html), [State-Variable](https://electro-smith.github.io/DaisySP/classdaisysp_1_1_svf.html), [Modal](https://electro-smith.github.io/DaisySP/classdaisysp_1_1_mode.html), [Comb](https://electro-smith.github.io/DaisySP/classdaisysp_1_1_comb.html)
+- **Effects Processors:** [Reverb](https://electro-smith.github.io/DaisySP/classdaisysp_1_1_reverb_sc.html), [Delay](https://electro-smith.github.io/DaisySP/classdaisysp_1_1_delay_line.html), [Decimate](https://electro-smith.github.io/DaisySP/classdaisysp_1_1_decimator.html), [Compressor](https://electro-smith.github.io/DaisySP/classdaisysp_1_1_compressor.html)
+- **Utilities:** [Math Functions](https://github.com/electro-smith/DaisySP/blob/master/modules/dsp.h), [Signal Conditioning](https://electro-smith.github.io/DaisySP/classdaisysp_1_1_port.html), [Aleatoric Generators](https://electro-smith.github.io/DaisySP/classdaisysp_1_1_maytrig.html)  
 
 ## Code Example
-```c++
-static void AudioCallback(float *in, float *out, size_t size)
-{
-    float saw, freq, output;
-    for (size_t i = 0; i < size; i += 2)
-    {
-        freq = 2500 + ( lfo.Process()*2500 );
-    	saw = osc.Process();
+![](https://github.com/andrewikenberry/badges/blob/main/code_example.PNG)
 
-        flt.SetFreq(freq);
-        output = flt.Process(saw);
-
-    	// left out
-        out[i] = output;
-
-        // right out
-        out[i+1] = output;
-    }
-}
-```
 ## Getting Started
-- Browse the [online reference documentation,](https://electro-smith.github.io/DaisySP/index.html) or take it with you in [PDF form](https://github.com/electro-smith/DaisySP/blob/master/doc/daisysp_reference.pdf)
-- Check out our [Getting Started Wiki Page](https://github.com/electro-smith/DaisyWiki/wiki)
-- Make some sound!
+- Get the source: `git clone https://github.com/electro-smith/DaisySP`
+- Navigate to the DaisySP repo: `cd DaisySP`
+- Build the library: `make`
+- Make some noise with the [example programs!](https://github.com/electro-smith/DaisyExamples)
+
+## Community
+
+Connect with other users and developers:
+
+- Join the [Daisy Forum](https://forum.electro-smith.com/)
+- Chat on the [Daisy Slack Workspace](https://join.slack.com/t/es-daisy/shared_invite/zt-f9cfm1g4-DgdCok1h1Rj4fpX90~IOww)
 
 ## Contributing
 
 Here are some ways that you can get involved:
-- Proof read the documentation and suggest improvements
+- Proof read the [documentation](https://electro-smith.github.io/DaisySP/index.html) and suggest improvements
 - Test existing functionality and make [issues](https://github.com/electro-smith/DaisySP/issues) 
 - Make new DSP modules. See issues labeled "feature"
 - Port existing DSP modules from other open source projects (MIT). See issues labeled "port"
@@ -51,20 +74,9 @@ Here are some ways that you can get involved:
 
 Before working on code, please check out our [Contribution Guidelines](https://github.com/electro-smith/DaisyWiki/wiki/6.-Contribution-Guidelines) and [Style Guide.](https://github.com/electro-smith/DaisySP/blob/master/doc/style_guide.pdf)
 
-## Support
-
-Here are some ways to get support and connect with other users and developers:
-
-- Join the [Daisy Forum](https://forum.electro-smith.com/)
-
-- Make a [GitHub Issue](https://github.com/electro-smith/DaisySP/issues) 
-
-- Join the [Daisy Slack Workspace](https://join.slack.com/t/es-daisy/shared_invite/zt-f9cfm1g4-DgdCok1h1Rj4fpX90~IOww)
-
 ## License
-DaisySP is licensed with the permissive MIT open source license. 
+DaisySP uses the MIT license.
 
-This allows for modification and reuse in both commercial and personal projects. 
-It does not provide a warranty of any kind. 
+It can be used in both closed source and commercial projects, and does not provide a warranty of any kind. 
 
 For the full license, read the [LICENSE](https://github.com/electro-smith/DaisySP/blob/master/LICENSE) file in the root directory. 
