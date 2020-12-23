@@ -1,1 +1,0 @@
-Formant oscillator voice from Emilie Gillet's Plaits module

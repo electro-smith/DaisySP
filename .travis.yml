@@ -64,7 +64,7 @@ before_script:
     - |
         if [ "$CODESTYLE" != "" ]; then
           $CLANG_FORMAT -version
-          ./ci/run-clang-format.py -r modules examples --clang-format-executable $CLANG_FORMAT
+          ./ci/run-clang-format.py -r modules --clang-format-executable $CLANG_FORMAT
         fi
 
 script:

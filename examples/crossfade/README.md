@@ -1,1 +1,0 @@
-Sine and sawtooth oscillators are faded between via lfo control
