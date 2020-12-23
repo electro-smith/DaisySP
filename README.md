@@ -26,7 +26,7 @@
   <a href="#applications">Applications</a> •
   <a href="#features">Features</a> •
   <a href="https://github.com/electro-smith/DaisyExamples">Examples</a> •
-  <a href="#installing">Installing</a> •
+  <a href="#getting-started">Getting Started</a> •
   <a href="#community">Community</a> •
   <a href="#contributing">Contributing</a> •
   <a href="#license">License</a> 
@@ -36,7 +36,7 @@
 
 ## Applications
 - Embedded hardware using the [Daisy Audio Platform](https://www.electro-smith.com/daisy)
-- Audio plug-ins (VST, AU, JUCE)
+- Audio plug-ins (VST, AU, [JUCE](https://juce.com/))
 - Mobile apps (iOS, Android)
 - [VCV Rack](https://vcvrack.com/) modules
 
@@ -50,11 +50,11 @@
 ## Code Example
 ![](https://github.com/andrewikenberry/badges/blob/main/code_example.PNG)
 
-## Installing
+## Getting Started
 - Get the source: `git clone https://github.com/electro-smith/DaisySP`
 - Navigate to the DaisySP repo: `cd DaisySP`
 - Build the library: `make`
-- Make some sound!
+- Make some noise with the [example programs!](https://github.com/electro-smith/DaisyExamples)
 
 ## Community
 
