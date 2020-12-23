@@ -79,4 +79,4 @@ DaisySP uses the MIT license.
 
 It can be used in both closed source and commercial projects, and does not provide a warranty of any kind. 
 
-For the full licenses, read the [LICENSE](https://github.com/electro-smith/DaisySP/blob/master/LICENSE) file in the root directory. 
+For the full license, read the [LICENSE](https://github.com/electro-smith/DaisySP/blob/master/LICENSE) file in the root directory. 
