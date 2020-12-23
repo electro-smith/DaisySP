@@ -1,15 +1,18 @@
-<p align="center"><img width=15% src="https://github.com/electro-smith/daisysp/blob/master/resources/assets/banner.png"></p>
-<p align="center"><img width=23% src="https://github.com/electro-smith/daisysp/blob/master/resources/assets/daisysp.png"></p>
+<p align="center"><img width=15% src="https://github.com/andrewikenberry/badges/blob/main/banner.png"></p>
+<p align="center"><img width=23% src="https://github.com/andrewikenberry/badges/blob/main/daisysp.png"></p>
 
 <p align="center">
   <a href="https://travis-ci.com/electro-smith/DaisySP">
     <img src="https://travis-ci.com/electro-smith/DaisySP.svg?branch=master">
          </a>
     <a href="https://opensource.org/licenses/MIT">
-      <img src="https://img.shields.io/badge/License-MIT-yellow.svg"
+      <img src="https://img.shields.io/badge/license-MIT-yellow"
            </a>
       <a href="https://join.slack.com/t/es-daisy/shared_invite/zt-f9cfm1g4-DgdCok1h1Rj4fpX90~IOww">
         <img src="https://img.shields.io/badge/join-us%20on%20slack-gray.svg?longCache=true&logo=slack&colorB=purple"
+             </a>
+      <a href="https://electro-smith.github.io/DaisySP/index.html">
+        <img src="https://img.shields.io/badge/documentation-online-blue"
              </a>
         </p>
       
@@ -37,11 +40,11 @@
 
 - **Synthesis Methods:** Wavetable, Physical modeling, FM, Additive
 - **Filters:** Biquad, Butterworth, Vocal, EQ
-- **Effects Processors:** Reverb, Delay, Granular, Pitch-Shift
-- **Optimized DSP Building Blocks:** FFT, Math Functions, Convolution
+- **Effects Processors:** Reverb, delay, granular, pitch-shift
+- **Optimized DSP Building Blocks:** FFT, Math functions, convolution
 
 ## Code Example
-![](https://github.com/electro-smith/daisysp/blob/master/resources/assets/code_example.PNG)
+![](https://github.com/andrewikenberry/badges/blob/main/code_example.PNG)
 
 ## Installing
 - Get the source: `git clone https://github.com/electro-smith/DaisySP`
@@ -68,9 +71,11 @@ Here are some ways that you can get involved:
 Before working on code, please check out our [Contribution Guidelines](https://github.com/electro-smith/DaisyWiki/wiki/6.-Contribution-Guidelines) and [Style Guide.](https://github.com/electro-smith/DaisySP/blob/master/doc/style_guide.pdf)
 
 ## License
+DaisySP uses various open source licenses including MIT, LGPL, GPL, and BSD.
 
-DaisySP is licensed with the MIT license.
+The entirety of DaisySP can be used in both open and closed source projects for personal or commercial use as long as the DaisySP library remains unmodified. 
+For a list of which modules use which license, see here. 
 
-It can be used in closed source and commercial projects, and does not provide a warranty of any kind.
+DaisySP does not provide a warranty of any kind. 
 
-For the full license, read the [LICENSE](https://github.com/electro-smith/DaisySP/blob/master/LICENSE) file in the root directory. 
+For the full licenses, read the [LICENSE](https://github.com/electro-smith/DaisySP/blob/master/LICENSE) file in the root directory. 
