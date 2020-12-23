@@ -1,6 +1,9 @@
 <p align="center"><img width=15% src="https://github.com/andrewikenberry/badges/blob/main/banner.png"></p>
 <p align="center"><img width=23% src="https://github.com/andrewikenberry/badges/blob/main/daisysp.png"></p>
 
+<h3 align="center">A Powerful, Open Source DSP Library in C++</h3>
+<br>
+
 <p align="center">
   <a href="https://travis-ci.com/electro-smith/DaisySP">
     <img src="https://travis-ci.com/electro-smith/DaisySP.svg?branch=master">
@@ -16,8 +19,6 @@
              </a>
         </p>
       
-<h3 align="center">A Powerful, Open Source DSP Library in C++ </h3>
-
 <p align="center">
   <a href="#applications">Applications</a> •
   <a href="#features">Features</a> •
