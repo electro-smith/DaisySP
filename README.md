@@ -17,6 +17,9 @@
       <a href="https://electro-smith.github.io/DaisySP/index.html">
         <img src="https://img.shields.io/badge/documentation-online-blue"
              </a>
+      <a href="https://forum.electro-smith.com/">
+        <img src="https://img.shields.io/badge/chat-daisy%20forum-orange"
+             </a>
         </p>
       
 <p align="center">
