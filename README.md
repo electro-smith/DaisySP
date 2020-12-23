@@ -25,7 +25,7 @@
 <p align="center">
   <a href="#applications">Applications</a> •
   <a href="#features">Features</a> •
-  <a href="#https://github.com/electro-smith/DaisyExamples">Examples</a> •
+  <a href="https://github.com/electro-smith/DaisyExamples">Examples</a> •
   <a href="#installing">Installing</a> •
   <a href="#community">Community</a> •
   <a href="#contributing">Contributing</a> •
