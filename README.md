@@ -36,7 +36,7 @@
 
 ## Applications
 - Embedded hardware using the [Daisy Audio Platform](https://www.electro-smith.com/daisy)
-- Audio plug-ins (VST, AU)
+- Audio plug-ins (VST, AU, JUCE)
 - Mobile apps (iOS, Android)
 - [VCV Rack](https://vcvrack.com/) modules
 
@@ -66,7 +66,7 @@ Connect with other users and developers:
 ## Contributing
 
 Here are some ways that you can get involved:
-- Proof read the documentation and suggest improvements
+- Proof read the [documentation](https://electro-smith.github.io/DaisySP/index.html) and suggest improvements
 - Test existing functionality and make [issues](https://github.com/electro-smith/DaisySP/issues) 
 - Make new DSP modules. See issues labeled "feature"
 - Port existing DSP modules from other open source projects (MIT). See issues labeled "port"
@@ -75,11 +75,8 @@ Here are some ways that you can get involved:
 Before working on code, please check out our [Contribution Guidelines](https://github.com/electro-smith/DaisyWiki/wiki/6.-Contribution-Guidelines) and [Style Guide.](https://github.com/electro-smith/DaisySP/blob/master/doc/style_guide.pdf)
 
 ## License
-DaisySP uses various open source licenses including MIT, LGPL, GPL, and BSD.
+DaisySP uses the MIT license.
 
-The entirety of DaisySP can be used in both open and closed source projects for personal or commercial use as long as the DaisySP library remains unmodified. 
-For a list of which modules use which license, see here. 
-
-DaisySP does not provide a warranty of any kind. 
+It can be used in both closed source and commercial projects, and does not provide a warranty of any kind. 
 
 For the full licenses, read the [LICENSE](https://github.com/electro-smith/DaisySP/blob/master/LICENSE) file in the root directory. 
