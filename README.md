@@ -42,10 +42,10 @@
 
 ## Features
 
-- **Synthesis Methods:** Wavetable, Physical modeling, FM, Additive
-- **Filters:** Biquad, Butterworth, Vocal, EQ
-- **Effects Processors:** Reverb, delay, granular, pitch-shift
-- **Optimized DSP Building Blocks:** FFT, Math functions, convolution
+- **Synthesis Methods:** Subtractive, Physical Modeling, FM
+- **Filters:** Biquad, State-Variable, Modal, Comb
+- **Effects Processors:** Reverb, Delay, Decimate, Compressor
+- **Utilities:** Math Functions, Signal Conditioning, Aleatoric Generators 
 
 ## Code Example
 ![](https://github.com/andrewikenberry/badges/blob/main/code_example.PNG)
