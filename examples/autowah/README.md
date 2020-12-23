@@ -1,1 +1,0 @@
-Envelope periodically pings envelope controlling oscillator amplitude. This is fed into autowah

@@ -1,1 +1,0 @@
-Oscillator one is made louder and quiter along with lfo. Oscillator 2 tracks oscillator 1's level with balance, and is then sent to output

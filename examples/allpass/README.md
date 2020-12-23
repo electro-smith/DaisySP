@@ -1,1 +1,0 @@
-Allpass filter frequency is swept with sine wave oscillator as input

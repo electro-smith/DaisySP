@@ -1,1 +1,0 @@
-Conrols amplitude of triangle wave oscillator with jitter effect

@@ -1,1 +1,0 @@
-Input is sent directly to output

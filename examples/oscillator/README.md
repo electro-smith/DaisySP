@@ -1,1 +1,0 @@
-Generates sine wave output

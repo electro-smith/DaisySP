@@ -1,1 +1,0 @@
-Whitenoise output

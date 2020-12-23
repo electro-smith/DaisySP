@@ -1,1 +1,0 @@
-Noise example ported from faust

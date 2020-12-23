@@ -1,1 +1,0 @@
-Band-limited oscillator plays while waveforms are periodically changed
