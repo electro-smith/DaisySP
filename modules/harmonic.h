@@ -5,6 +5,8 @@
 #include <stdint.h>
 #ifdef __cplusplus
 
+#define MAX_HARMS 32
+
 /** @file harmonic.h */
 namespace daisysp
 {
@@ -22,18 +24,23 @@ class HarmonicOscillator
     HarmonicOscillator() {}
     ~HarmonicOscillator() {}
 
-    void Init(int num_harmonics);
+    void Init(float sample_rate, int num_harmonics);
     float
-    Process(int first_harmonic_index, float frequency, const float* amplitudes);
+    Process();
+	void SetFreq(float freq);
+	void SetFirstHarmIdx(int idx);
+	void SetAmplitudes(const float* amplitudes);
 
   private:
-    int num_harmonics_;
-    // Oscillator state.
+	float sample_rate_;
     float phase_;
-
-    // For interpolation of parameters.
     float frequency_;
-    float amplitude_[32];
+    float amplitude_[MAX_HARMS];
+    float newamplitude_[MAX_HARMS];
+	bool  recalc_;
+
+    int num_harmonics_;
+	int first_harmonic_index_; 
 };
 } // namespace daisysp
 #endif
