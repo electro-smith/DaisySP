@@ -21,24 +21,20 @@ using namespace daisysp;
     if (frequency >= 0.5f) {
       frequency = 0.5f;
     }
-    
-    stmlib::ParameterInterpolator am[num_harmonics_];
-    stmlib::ParameterInterpolator fm(&frequency_, frequency, size);
-    
+        
     for (int i = 0; i < num_harmonics_; ++i) {
       float f = frequency * static_cast<float>(first_harmonic_index + i);
       if (f >= 0.5f) {
         f = 0.5f;
       }
-      am[i].Init(&amplitude_[i], amplitudes[i] * (1.0f - f * 2.0f), size);
+      amplitude_[i] = amplitudes[i] * (1.0f - f * 2.0f);
     }
 
-    while (size--) {
-      phase_ += fm.Next();
+      phase_ += frequency_;
       if (phase_ >= 1.0f) {
         phase_ -= 1.0f;
       }
-      const float two_x = 2.0f * sinf(phase_);
+      const float two_x = 2.0f * sinf(phase_ * TWOPI_F);
       float previous, current;
       if (first_harmonic_index == 1) {
         previous = 1.0f;
@@ -51,7 +47,7 @@ using namespace daisysp;
       
       float sum = 0.0f;
       for (int i = 0; i < num_harmonics_; ++i) {
-        sum += am[i].Next() * current;
+        sum += amplitude_[i] * current;
         float temp = current;
         current = two_x * current - previous;
         previous = temp;
@@ -61,5 +57,5 @@ using namespace daisysp;
       } else {
         *out++ += sum;
       }
-    }
-	  }
+	
+	}
