@@ -24,23 +24,22 @@ class HarmonicOscillator
     HarmonicOscillator() {}
     ~HarmonicOscillator() {}
 
-    void Init(float sample_rate, int num_harmonics);
-    float
-    Process();
-	void SetFreq(float freq);
-	void SetFirstHarmIdx(int idx);
-	void SetAmplitudes(const float* amplitudes);
+    void  Init(float sample_rate, int num_harmonics);
+    float Process();
+    void  SetFreq(float freq);
+    void  SetFirstHarmIdx(int idx);
+    void  SetAmplitudes(const float* amplitudes);
 
   private:
-	float sample_rate_;
+    float sample_rate_;
     float phase_;
     float frequency_;
     float amplitude_[MAX_HARMS];
     float newamplitude_[MAX_HARMS];
-	bool  recalc_;
+    bool  recalc_;
 
     int num_harmonics_;
-	int first_harmonic_index_; 
+    int first_harmonic_index_;
 };
 } // namespace daisysp
 #endif
