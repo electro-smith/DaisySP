@@ -36,6 +36,7 @@
 #include "modules/fm2.h"
 #include "modules/fold.h"
 #include "modules/formantosc.h"
+#include "modules/harmonic.h"
 #include "modules/jitter.h"
 #include "modules/limiter.h"
 #include "modules/line.h"
