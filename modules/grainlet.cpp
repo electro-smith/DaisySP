@@ -19,10 +19,8 @@ void GrainletOscillator::Init()
 float GrainletOscillator::Process(float  carrier_frequency,
                                   float  formant_frequency,
                                   float  carrier_shape,
-                                  float  carrier_bleed,
-                                  float* out,
-                                  size_t size)
-{
+                                  float  carrier_bleed)
+								 {
     float kMaxFrequency = .25f;
 
     if(carrier_frequency >= kMaxFrequency * 0.5f)

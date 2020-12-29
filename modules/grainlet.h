@@ -28,9 +28,7 @@ class GrainletOscillator
     float Process(float  carrier_frequency,
                   float  formant_frequency,
                   float  carrier_shape,
-                  float  carrier_bleed,
-                  float* out,
-                  size_t size);
+                  float  carrier_bleed);
 
   private:
     float Sine(float phase);
