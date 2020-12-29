@@ -23,12 +23,33 @@ class GrainletOscillator
     GrainletOscillator() {}
     ~GrainletOscillator() {}
 
-    void Init();
+    /** Initialize the oscillator
+		\param sample_rate Sample rate of audio engine
+	*/
+    void Init(float sample_rate);
 
-    float Process(float  carrier_frequency,
-                  float  formant_frequency,
-                  float  carrier_shape,
-                  float  carrier_bleed);
+    /** Get the next sample */
+    float Process();
+
+    /** Sets the carrier frequency
+		\param freq Frequency in Hz
+	*/
+    void SetCarrierFreq(float freq);
+
+    /** Sets the formant frequency
+		\param freq Frequency in Hz
+	*/
+    void SetFormantFreq(float freq);
+
+    /** Sets the carrier waveshape
+		\param shape Waveshape. Works best 0-1
+	*/
+    void SetShape(float shape);
+
+    /** Sets the amount of formant to bleed through
+		\param bleed Amount of bleed
+	*/
+    void SetBleed(float bleed);
 
   private:
     float Sine(float phase);
@@ -53,6 +74,11 @@ class GrainletOscillator
     float formant_frequency_;
     float carrier_shape_;
     float carrier_bleed_;
+
+    float new_carrier_shape_;
+    float new_carrier_bleed_;
+
+    float sample_rate_;
 };
 } // namespace daisysp
 #endif

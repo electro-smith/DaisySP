@@ -4,8 +4,10 @@
 
 using namespace daisysp;
 
-void GrainletOscillator::Init()
+void GrainletOscillator::Init(float sample_rate)
 {
+    sample_rate_ = sample_rate;
+
     carrier_phase_ = 0.0f;
     formant_phase_ = 0.0f;
     next_sample_   = 0.0f;
@@ -14,74 +16,77 @@ void GrainletOscillator::Init()
     formant_frequency_ = 0.0f;
     carrier_shape_     = 0.0f;
     carrier_bleed_     = 0.0f;
+
+    new_carrier_shape_ = 0.0f;
+    new_carrier_bleed_ = 0.0f;
 }
 
-float GrainletOscillator::Process(float  carrier_frequency,
-                                  float  formant_frequency,
-                                  float  carrier_shape,
-                                  float  carrier_bleed)
-								 {
-    float kMaxFrequency = .25f;
+float GrainletOscillator::Process()
+{
+    float this_sample = next_sample_;
+    float next_sample = 0.0f;
 
-    if(carrier_frequency >= kMaxFrequency * 0.5f)
-    {
-        carrier_frequency = kMaxFrequency * 0.5f;
-    }
-    if(formant_frequency >= kMaxFrequency)
-    {
-        formant_frequency = kMaxFrequency;
-    }
+    carrier_phase_ += carrier_frequency_;
 
-    float next_sample = next_sample_;
-
-    bool  reset      = false;
-    float reset_time = 0.0f;
-
-    float this_sample = next_sample;
-    next_sample       = 0.0f;
-
-    const float f0 = carrier_frequency;
-    const float f1 = formant_frequency;
-
-    carrier_phase_ += f0;
-    reset = carrier_phase_ >= 1.0f;
-
-    if(reset)
+    if(carrier_phase_ >= 1.0f)
     {
         carrier_phase_ -= 1.0f;
-        reset_time = carrier_phase_ / f0;
+        float reset_time = carrier_phase_ / carrier_frequency_;
 
-        float shape_inc = carrier_shape - carrier_shape_;
-        float bleed_inc = carrier_bleed - carrier_bleed_;
+        float shape_inc = new_carrier_shape_ - carrier_shape_;
+        float bleed_inc = new_carrier_bleed_ - carrier_bleed_;
 
-        float before
-            = Grainlet(1.0f,
-                       formant_phase_ + (1.0f - reset_time) * f1,
-                       carrier_shape + shape_inc * (1.0f - reset_time),
-                       carrier_bleed + bleed_inc * (1.0f - reset_time));
+        float before = Grainlet(
+            1.0f,
+            formant_phase_ + (1.0f - reset_time) * formant_frequency_,
+            new_carrier_shape_ + shape_inc * (1.0f - reset_time),
+            new_carrier_bleed_ + bleed_inc * (1.0f - reset_time));
 
-        float after = Grainlet(0.0f, 0.0f, carrier_shape, carrier_bleed);
+        float after
+            = Grainlet(0.0f, 0.0f, new_carrier_shape_, new_carrier_bleed_);
 
         float discontinuity = after - before;
         this_sample += discontinuity * ThisBlepSample(reset_time);
         next_sample += discontinuity * NextBlepSample(reset_time);
-        formant_phase_ = reset_time * f1;
+        formant_phase_ = reset_time * formant_frequency_;
     }
     else
     {
-        formant_phase_ += f1;
+        formant_phase_ += formant_frequency_;
         if(formant_phase_ >= 1.0f)
         {
             formant_phase_ -= 1.0f;
         }
     }
 
-    carrier_bleed_ = carrier_bleed;
-    carrier_shape_ = carrier_shape;
+    carrier_bleed_ = new_carrier_bleed_;
+    carrier_shape_ = new_carrier_shape_;
     next_sample += Grainlet(
         carrier_phase_, formant_phase_, carrier_shape_, carrier_bleed_);
     next_sample_ = next_sample;
     return this_sample;
+}
+
+void GrainletOscillator::SetCarrierFreq(float freq)
+{
+    carrier_frequency_ = freq / sample_rate_;
+    carrier_frequency_ = carrier_frequency_ > 0.5f ? 0.5f : carrier_frequency_;
+}
+
+void GrainletOscillator::SetFormantFreq(float freq)
+{
+    formant_frequency_ = freq / sample_rate_;
+    formant_frequency_ = formant_frequency_ > 0.5f ? 0.5f : formant_frequency_;
+}
+
+void GrainletOscillator::SetShape(float shape)
+{
+    new_carrier_shape_ = shape;
+}
+
+void GrainletOscillator::SetBleed(float bleed)
+{
+    new_carrier_bleed_ = bleed;
 }
 
 
