@@ -17,44 +17,45 @@ namespace daisysp
        @date 2016
 */
 
-class GrainletOscillator {
- public:
-  GrainletOscillator() {}
-  ~GrainletOscillator() {}
+class GrainletOscillator
+{
+  public:
+    GrainletOscillator() {}
+    ~GrainletOscillator() {}
 
-  void Init();
-  
-  void Render(
-      float carrier_frequency,
-      float formant_frequency,
-      float carrier_shape,
-      float carrier_bleed,
-      float* out,
-      size_t size);
-	  
- private:
-  float Sine(float phase);
-  
-  float Carrier(float phase, float shape);
-  
-  float Grainlet(
-      float carrier_phase,
-      float formant_phase,
-      float shape,
-      float bleed);
-	  
-  // Oscillator state.
-  float carrier_phase_;
-  float formant_phase_;
-  float next_sample_;
+    void Init();
 
-  // For interpolation of parameters.
-  float carrier_frequency_;
-  float formant_frequency_;
-  float carrier_shape_;
-  float carrier_bleed_;
-  
-};  
-}  // namespace daisysp
+    float Process(float  carrier_frequency,
+                  float  formant_frequency,
+                  float  carrier_shape,
+                  float  carrier_bleed,
+                  float* out,
+                  size_t size);
+
+  private:
+    float Sine(float phase);
+
+    float Carrier(float phase, float shape);
+
+    float Grainlet(float carrier_phase,
+                   float formant_phase,
+                   float shape,
+                   float bleed);
+
+    float ThisBlepSample(float t);
+    float NextBlepSample(float t);
+
+    // Oscillator state.
+    float carrier_phase_;
+    float formant_phase_;
+    float next_sample_;
+
+    // For interpolation of parameters.
+    float carrier_frequency_;
+    float formant_frequency_;
+    float carrier_shape_;
+    float carrier_bleed_;
+};
+} // namespace daisysp
 #endif
 #endif
