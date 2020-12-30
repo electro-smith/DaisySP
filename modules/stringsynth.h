@@ -28,33 +28,34 @@ namespace daisysp
        @date 2016
 */
 
-class StringSynthOscillator {
- public:
-  StringSynthOscillator() { }
-  ~StringSynthOscillator() { }
-  
-  inline void Init();
-  
-  inline void Process(
-      float frequency,
-      const float* unshifted_registration,
-      float gain,
-      float* out,
-      size_t size);
- 
- private:
-  // Oscillator state.
-  float phase_;
-  float next_sample_;
-  int segment_;
+class StringSynthOscillator
+{
+  public:
+    StringSynthOscillator() {}
+    ~StringSynthOscillator() {}
 
-  // For interpolation of parameters.
-  float frequency_;
-  float saw_8_gain_;
-  float saw_4_gain_;
-  float saw_2_gain_;
-  float saw_1_gain_;
+    void Init();
+
+    float
+    Process(float frequency, const float* unshifted_registration, float gain);
+
+  private:
+    // Oscillator state.
+    float phase_;
+    float next_sample_;
+    int   segment_;
+
+    // For interpolation of parameters.
+    float frequency_;
+    float saw_8_gain_;
+    float saw_4_gain_;
+    float saw_2_gain_;
+    float saw_1_gain_;
+	
+	inline float ThisBlepSample(float t);
+	inline float NextBlepSample(float t);
+
 };
-}  // namespace daisysp
+} // namespace daisysp
 #endif
 #endif
