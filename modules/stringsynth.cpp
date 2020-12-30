@@ -4,8 +4,10 @@
 
 using namespace daisysp;
 
-inline void StringSynthOscillator::Init()
+void StringSynthOscillator::Init(float sample_rate)
 {
+	sample_rate_ = sample_rate;
+	
     phase_       = 0.0f;
     next_sample_ = 0.0f;
     segment_     = 0.0f;
@@ -15,93 +17,106 @@ inline void StringSynthOscillator::Init()
     saw_4_gain_ = 0.0f;
     saw_2_gain_ = 0.0f;
     saw_1_gain_ = 0.0f;
+	
+	recalc_ = true;
+	
+	for(int i = 0; i < 7; i++){
+		registration_[i] = 0.f;
+		unshifted_registration_[i] = 0.f;
+	}
+
 }
 
-float StringSynthOscillator::Process(float        frequency,
-                                     const float* unshifted_registration,
-                                     float        gain)
+float StringSynthOscillator::Process()
 {
-    frequency *= 8.0f;
+	if(recalc_){
+		recalc_ = false;
+		frequency_ *= 8.0f;
 
-    // Deal with very high frequencies by shifting everything 1 or 2 octave
-    // down: Instead of playing the 1st harmonic of a 8kHz wave, we play the
-    // second harmonic of a 4kHz wave.
-    size_t shift = 0;
-    while(frequency > 0.5f)
-    {
-        shift += 2;
-        frequency *= 0.5f;
-    }
-    // Frequency is just too high.
-    if(shift >= 8)
-    {
-        return 0.f;
-    }
+		// Deal with very high frequencies by shifting everything 1 or 2 octave
+		// down: Instead of playing the 1st harmonic of a 8kHz wave, we play the
+		// second harmonic of a 4kHz wave.
+		size_t shift = 0;
+		while(frequency_ > 0.5f)
+		{
+			shift += 2;
+			frequency_ *= 0.5f;
+		}
+ 
+		for(int i = 0; i < 7; i++){
+			registration_[i] = 0.f;
+		}
 
-    float registration[7];
-	for(int i = 0; i < 7; i++){
-		registration[i] = 0.f;
+		for (size_t i = 0; i < 7 - shift; i++){
+			registration_[i + shift] = unshifted_registration_[i];
+		}
+
+		saw_8_gain_ = (registration_[0] + 2.0f * registration_[1]) * gain_;
+		saw_4_gain_ = (registration_[2] - registration_[1] + 2.0f * registration_[3]) * gain_;
+		saw_2_gain_ = (registration_[4] - registration_[3] + 2.0f * registration_[5]) * gain_;
+		saw_1_gain_ = (registration_[6] - registration_[5]) * gain_;
 	}
 
-	for (size_t i = 0; i < 7 - shift; i++){
-		registration[i + shift] = unshifted_registration[i];
-	}
 
-	frequency_ = frequency;
-	const float saw_8_gain = saw_8_gain_ = (registration[0] + 2.0f * registration[1]) * gain;
-	const float saw_4_gain = saw_4_gain_ = (registration[2] - registration[1] + 2.0f * registration[3]) * gain;
-	const float saw_2_gain = saw_2_gain_ = (registration[4] - registration[3] + 2.0f * registration[5]) * gain;
-	const float saw_1_gain = saw_1_gain_ = (registration[6] - registration[5]) * gain;
+	float this_sample_ = next_sample_;
+	next_sample_       = 0.0f;
 
-    float phase       = phase_;
-    float next_sample = next_sample_;
-    int   segment     = segment_;
-
-	//while
-	float this_sample = next_sample;
-	next_sample       = 0.0f;
-
-	phase += frequency;
-	int next_segment = static_cast<int>(phase);
-	if(next_segment != segment)
+	phase_ += frequency_;
+	int next_segment_ = static_cast<int>(phase_);
+	if(next_segment_ != segment_)
 	{
 		float discontinuity = 0.0f;
-		if(next_segment == 8)
+		if(next_segment_ == 8)
 		{
-			phase -= 8.0f;
-			next_segment -= 8;
-			discontinuity -= saw_8_gain;
+			phase_ -= 8.0f;
+			next_segment_ -= 8;
+			discontinuity -= saw_8_gain_;
 		}
-		if((next_segment & 3) == 0)
+		if((next_segment_ & 3) == 0)
 		{
-			discontinuity -= saw_4_gain;
+			discontinuity -= saw_4_gain_;
 		}
-		if((next_segment & 1) == 0)
+		if((next_segment_ & 1) == 0)
 		{
-			discontinuity -= saw_2_gain;
+			discontinuity -= saw_2_gain_;
 		}
-		discontinuity -= saw_1_gain;
+		discontinuity -= saw_1_gain_;
 		if(discontinuity != 0.0f)
 		{
-			float fraction = phase - static_cast<float>(next_segment);
-			float t        = fraction / frequency;
-			this_sample += ThisBlepSample(t) * discontinuity;
-			next_sample += NextBlepSample(t) * discontinuity;
+			float fraction = phase_ - static_cast<float>(next_segment_);
+			float t        = fraction / frequency_;
+			this_sample_ += ThisBlepSample(t) * discontinuity;
+			next_sample_ += NextBlepSample(t) * discontinuity;
 		}
 	}
-	segment = next_segment;
+	segment_ = next_segment_;
 
-	next_sample += (phase - 4.0f) * saw_8_gain * 0.125f;
-	next_sample += (phase - float(segment & 4) - 2.0f) * saw_4_gain * 0.25f;
-	next_sample += (phase - float(segment & 6) - 1.0f) * saw_2_gain * 0.5f;
-	next_sample += (phase - float(segment & 7) - 0.5f) * saw_1_gain;
-    //while
-	
-    next_sample_ = next_sample;
-    phase_       = phase;
-    segment_     = segment;
-	
-	return 2.0f * this_sample;
+	next_sample_ += (phase_ - 4.0f) * saw_8_gain_ * 0.125f;
+	next_sample_ += (phase_ - float(segment_ & 4) - 2.0f) * saw_4_gain_ * 0.25f;
+	next_sample_ += (phase_ - float(segment_ & 6) - 1.0f) * saw_2_gain_ * 0.5f;
+	next_sample_ += (phase_ - float(segment_ & 7) - 0.5f) * saw_1_gain_;
+		
+	return 2.0f * this_sample_;
+}
+
+void StringSynthOscillator::SetFreq(float freq){
+	recalc_ = true;
+	frequency_ = freq / sample_rate_;
+	frequency_ = frequency_ > 0.5f ?  0.5f : frequency_;
+}
+
+void StringSynthOscillator::SetAmplitudes(const float* amplitudes){
+	recalc_ = true;
+	for(int i = 0; i < 7; i++){
+		unshifted_registration_[i] = amplitudes[i];
+	}
+}
+
+void StringSynthOscillator::SetGain(float gain){
+	recalc_ = true;
+	gain_ = gain;
+	gain_ = gain_ > 1.f ? 1.f : gain_;
+	gain_ = gain_ < 0.f ? 0.f : gain_;
 }
 
 inline float StringSynthOscillator::ThisBlepSample(float t)

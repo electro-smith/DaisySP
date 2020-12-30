@@ -34,23 +34,30 @@ class StringSynthOscillator
     StringSynthOscillator() {}
     ~StringSynthOscillator() {}
 
-    void Init();
+    void Init(float sample_rate);
+    float Process();
 
-    float
-    Process(float frequency, const float* unshifted_registration, float gain);
+	void SetFreq(float freq);
+	void SetAmplitudes(const float* amplitudes);
+	void SetGain(float gain);
 
   private:
     // Oscillator state.
     float phase_;
     float next_sample_;
     int   segment_;
+	float gain_;
+	float registration_[7];
+	float unshifted_registration_[7];
 
-    // For interpolation of parameters.
     float frequency_;
     float saw_8_gain_;
     float saw_4_gain_;
     float saw_2_gain_;
     float saw_1_gain_;
+
+	float sample_rate_;
+	bool recalc_;
 	
 	inline float ThisBlepSample(float t);
 	inline float NextBlepSample(float t);
