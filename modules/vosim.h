@@ -24,10 +24,15 @@ class VOSIMOscillator
 
     void Init(float sample_rate);
 
-    float Process(float carrier_frequency,
-                  float formant_frequency_1,
-                  float formant_frequency_2,
-                  float carrier_shape);
+    float Process();
+
+    void SetCarrierFreq(float freq);
+
+    void SetForm1Freq(float freq);
+
+    void SetForm2Freq(float freq);
+
+    void SetShape(float shape);
 
   private:
     float Sine(float phase);
