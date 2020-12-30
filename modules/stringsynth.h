@@ -63,7 +63,7 @@ class StringSynthOscillator
     float saw_1_gain_;
 
     float sample_rate_;
-    bool  recalc_;
+    bool  recalc_, recalc_gain_;
 
     inline float ThisBlepSample(float t);
     inline float NextBlepSample(float t);

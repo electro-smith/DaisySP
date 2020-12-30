@@ -12,13 +12,15 @@ void StringSynthOscillator::Init(float sample_rate)
     next_sample_ = 0.0f;
     segment_     = 0.0f;
 
-    frequency_  = 0.001f;
+    frequency_  = 440.f;
     saw_8_gain_ = 0.0f;
     saw_4_gain_ = 0.0f;
     saw_2_gain_ = 0.0f;
     saw_1_gain_ = 0.0f;
 
-    recalc_ = true;
+    gain_ = 1.f;
+
+    recalc_ = recalc_gain_ = true;
 
     for(int i = 0; i < 7; i++)
     {
@@ -53,7 +55,10 @@ float StringSynthOscillator::Process()
         {
             registration_[i + shift] = unshifted_registration_[i];
         }
+    }
 
+    if(recalc_gain_ || recalc_)
+    {
         saw_8_gain_ = (registration_[0] + 2.0f * registration_[1]) * gain_;
         saw_4_gain_
             = (registration_[2] - registration_[1] + 2.0f * registration_[3])
@@ -63,7 +68,6 @@ float StringSynthOscillator::Process()
               * gain_;
         saw_1_gain_ = (registration_[6] - registration_[5]) * gain_;
     }
-
 
     float this_sample_ = next_sample_;
     next_sample_       = 0.0f;
@@ -124,10 +128,10 @@ void StringSynthOscillator::SetAmplitudes(const float* amplitudes)
 
 void StringSynthOscillator::SetGain(float gain)
 {
-    recalc_ = true;
-    gain_   = gain;
-    gain_   = gain_ > 1.f ? 1.f : gain_;
-    gain_   = gain_ < 0.f ? 0.f : gain_;
+    recalc_gain_ = true;
+    gain_        = gain;
+    gain_        = gain_ > 1.f ? 1.f : gain_;
+    gain_        = gain_ < 0.f ? 0.f : gain_;
 }
 
 inline float StringSynthOscillator::ThisBlepSample(float t)
