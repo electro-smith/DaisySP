@@ -22,16 +22,33 @@ class VOSIMOscillator
     VOSIMOscillator() {}
     ~VOSIMOscillator() {}
 
+    /** Initializes the FormantOscillator module.
+        \param sample_rate - The sample rate of the audio engine being run. 
+    */
     void Init(float sample_rate);
 
+    /** Get the next sample
+    */
     float Process();
 
+    /** Set carrier frequency.
+		\param freq Frequency in Hz.
+	*/
     void SetCarrierFreq(float freq);
 
+    /** Set formant 1 frequency.
+		\param freq Frequency in Hz.
+	*/
     void SetForm1Freq(float freq);
 
+    /** Set formant 2 frequency.
+		\param freq Frequency in Hz.
+	*/
     void SetForm2Freq(float freq);
 
+    /** Set carrier waveshape
+		\param shape Shape to set.
+	*/
     void SetShape(float shape);
 
   private:
