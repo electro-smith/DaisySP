@@ -32,6 +32,7 @@ phasor \
 pluck \
 port \
 reverbsc \
+stringsynth \
 svf \
 tone \
 

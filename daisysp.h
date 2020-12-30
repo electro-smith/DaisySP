@@ -52,6 +52,7 @@
 #include "modules/pluck.h"
 #include "modules/reverbsc.h"
 #include "modules/samplehold.h"
+#include "modules/stringsynth.h"
 #include "modules/svf.h"
 #include "modules/tone.h"
 #include "modules/whitenoise.h"
