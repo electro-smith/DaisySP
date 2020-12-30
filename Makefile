@@ -34,6 +34,7 @@ port \
 reverbsc \
 svf \
 tone \
+variableosc \
 
 # certain modules are only header files:
 # delayline 
