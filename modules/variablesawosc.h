@@ -15,16 +15,17 @@ namespace daisysp
        @author Emilie Gillet
        @date 2016
 */
-class VariableSawOscillator {
- public:
-  VariableSawOscillator() { }
-  ~VariableSawOscillator() { }
+class VariableSawOscillator
+{
+  public:
+    VariableSawOscillator() {}
+    ~VariableSawOscillator() {}
 
-  void Init(float sample_rate);
-  
-  float Process();
+    void Init(float sample_rate);
 
-	/** Set master freq.
+    float Process();
+
+    /** Set master freq.
 		\param frequency Freq in Hz.
 	*/
     void SetFreq(float frequency);
@@ -34,35 +35,34 @@ class VariableSawOscillator {
     void SetWaveshape(float waveshape);
 
 
- private:
-  float ComputeNaiveSample(
-      float phase,
-      float pw,
-      float slope_up,
-      float slope_down,
-      float triangle_amount,
-      float notch_amount);
-	  
- float ThisBlepSample(float t);
+  private:
+    float ComputeNaiveSample(float phase,
+                             float pw,
+                             float slope_up,
+                             float slope_down,
+                             float triangle_amount,
+                             float notch_amount);
+
+    float ThisBlepSample(float t);
     float NextBlepSample(float t);
     float NextIntegratedBlepSample(float t);
     float ThisIntegratedBlepSample(float t);
 
-	float sample_rate_;
+    float sample_rate_;
 
-  // Oscillator state.
-  float phase_;
-  float next_sample_;
-  float previous_pw_;
-  bool high_;
+    // Oscillator state.
+    float phase_;
+    float next_sample_;
+    float previous_pw_;
+    bool  high_;
 
-  const float kVariableSawNotchDepth = 0.2f;
+    const float kVariableSawNotchDepth = 0.2f;
 
-  // For interpolation of parameters.
-  float frequency_;
-  float pw_;
-  float waveshape_;
+    // For interpolation of parameters.
+    float frequency_;
+    float pw_;
+    float waveshape_;
 };
-}  // namespace daisysp
+} // namespace daisysp
 #endif
 #endif
