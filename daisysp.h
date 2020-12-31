@@ -55,5 +55,6 @@
 #include "modules/svf.h"
 #include "modules/tone.h"
 #include "modules/whitenoise.h"
+#include "modules/zoscillator.h"
 
 #endif
