@@ -24,16 +24,16 @@ class ZOscillator
     void Init(float sample_rate);
 
     float Process();
+	void SetFormantFreq(float freq);
+	void SetCarrierFreq(float freq);
+	void SetShape(float shape);
+	void SetMode(float mode);
 
   private:
     inline float Sine(float phase);
     inline float Z(float c, float d, float f, float shape, float mode);
     inline float ThisBlepSample(float t);
     inline float NextBlepSample(float t);
-	void SetFormantFreq(float freq);
-	void SetCarrierFreq(float freq);
-	void SetShape(float shape);
-	void SetMode(float mode);
 
     float sample_rate_;
 
