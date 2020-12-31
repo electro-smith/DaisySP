@@ -1,15 +1,11 @@
-// Continuously variable waveform: triangle > saw > square. Both square and
-// triangle have variable slope / pulse-width. Additionally, the phase resets
-// can be locked to a master frequency.
-
 #pragma once
-#ifndef DSY_VARIABLEOSCILLATOR_H
-#define DSY_VARIABLEOSCILLATOR_H
+#ifndef DSY_VARIABLESHAPEOSCILLATOR_H
+#define DSY_VARIABLESHAPEOSCILLATOR_H
 
 #include <stdint.h>
 #ifdef __cplusplus
 
-/** @file variableosc.h */
+/** @file variableshapeosc.h */
 
 namespace daisysp
 {
