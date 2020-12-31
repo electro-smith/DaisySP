@@ -28,9 +28,17 @@ class VariableShapeOscillator
 
     void Init(float sample_rate);
 
-    template <bool enable_sync>
-    float
-    Process(float master_frequency, float frequency, float pw, float waveshape);
+    float Process();
+
+    void SetSync(bool enable_sync);
+
+    void SetFreq(float frequency);
+
+    void SetSyncFreq(float frequency);
+
+    void SetPW(float pw);
+
+    void SetWaveshape(float waveshape);
 
   private:
     float ComputeNaiveSample(float phase,
@@ -49,6 +57,7 @@ class VariableShapeOscillator
     float ThisIntegratedBlepSample(float t);
 
     float sample_rate_;
+    bool  enable_sync_;
 
     // Oscillator state.
     float master_phase_;

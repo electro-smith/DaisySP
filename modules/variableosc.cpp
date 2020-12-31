@@ -20,32 +20,8 @@ void VariableShapeOscillator::Init(float sample_rate)
     waveshape_        = 0.0f;
 }
 
-template <bool enable_sync>
-float VariableShapeOscillator::Process(float master_frequency,
-                                       float frequency,
-                                       float pw,
-                                       float waveshape)
+float VariableShapeOscillator::Process()
 {
-    float kMaxFrequency = .25f;
-
-    if(master_frequency >= kMaxFrequency)
-    {
-        master_frequency = kMaxFrequency;
-    }
-    if(frequency >= kMaxFrequency)
-    {
-        frequency = kMaxFrequency;
-    }
-
-    if(frequency >= 0.25f)
-    {
-        pw = 0.5f;
-    }
-    else
-    {
-        pw = fclamp(pw, frequency * 2.0f, 1.0f - 2.0f * frequency);
-    }
-
     float next_sample = next_sample_;
 
     bool  reset                   = false;
@@ -55,22 +31,18 @@ float VariableShapeOscillator::Process(float master_frequency,
     float this_sample = next_sample;
     next_sample       = 0.0f;
 
-    master_frequency_           = master_frequency;
-    slave_frequency_            = frequency;
-    pw_                         = pw;
-    waveshape_                  = waveshape;
-    const float square_amount   = fmax(waveshape - 0.5f, 0.0f) * 2.0f;
-    const float triangle_amount = fmax(1.0f - waveshape * 2.0f, 0.0f);
-    const float slope_up        = 1.0f / (pw);
-    const float slope_down      = 1.0f / (1.0f - pw);
+    const float square_amount   = fmax(waveshape_ - 0.5f, 0.0f) * 2.0f;
+    const float triangle_amount = fmax(1.0f - waveshape_ * 2.0f, 0.0f);
+    const float slope_up        = 1.0f / (pw_);
+    const float slope_down      = 1.0f / (1.0f - pw_);
 
-    if(enable_sync)
+    if(enable_sync_)
     {
-        master_phase_ += master_frequency;
+        master_phase_ += master_frequency_;
         if(master_phase_ >= 1.0f)
         {
             master_phase_ -= 1.0f;
-            reset_time = master_phase_ / master_frequency;
+            reset_time = master_phase_ / master_frequency_;
 
             float slave_phase_at_reset
                 = slave_phase_ + (1.0f - reset_time) * slave_frequency_;
@@ -80,12 +52,12 @@ float VariableShapeOscillator::Process(float master_frequency,
                 slave_phase_at_reset -= 1.0f;
                 transition_during_reset = true;
             }
-            if(!high_ && slave_phase_at_reset >= pw)
+            if(!high_ && slave_phase_at_reset >= pw_)
             {
                 transition_during_reset = true;
             }
             float value = ComputeNaiveSample(slave_phase_at_reset,
-                                             pw,
+                                             pw_,
                                              slope_up,
                                              slope_down,
                                              triangle_amount,
@@ -100,12 +72,12 @@ float VariableShapeOscillator::Process(float master_frequency,
     {
         if(!high_)
         {
-            if(slave_phase_ < pw)
+            if(slave_phase_ < pw_)
             {
                 break;
             }
-            float t
-                = (slave_phase_ - pw) / (previous_pw_ - pw + slave_frequency_);
+            float t = (slave_phase_ - pw_)
+                      / (previous_pw_ - pw_ + slave_frequency_);
             float triangle_step = (slope_up + slope_down) * slave_frequency_;
             triangle_step *= triangle_amount;
 
@@ -135,21 +107,63 @@ float VariableShapeOscillator::Process(float master_frequency,
         }
     }
 
-    if(enable_sync && reset)
+    if(enable_sync_ && reset)
     {
         slave_phase_ = reset_time * slave_frequency_;
         high_        = false;
     }
 
-    next_sample += ComputeNaiveSample(
-        slave_phase_, pw, slope_up, slope_down, triangle_amount, square_amount);
-    previous_pw_ = pw;
+    next_sample += ComputeNaiveSample(slave_phase_,
+                                      pw_,
+                                      slope_up,
+                                      slope_down,
+                                      triangle_amount,
+                                      square_amount);
+    previous_pw_ = pw_;
 
 
     next_sample_ = next_sample;
     return (2.0f * this_sample - 1.0f);
 }
 
+void VariableShapeOscillator::SetSync(bool enable_sync)
+{
+    enable_sync_ = enable_sync;
+}
+
+void VariableShapeOscillator::SetFreq(float frequency)
+{
+    frequency         = frequency / sample_rate_;
+    frequency         = frequency >= .25f ? .25f : frequency;
+    master_frequency_ = frequency;
+}
+
+
+void VariableShapeOscillator::SetSyncFreq(float frequency)
+{
+    frequency        = frequency / sample_rate_;
+    pw_              = frequency >= .25f ? .5f : pw_;
+    frequency        = frequency >= .25f ? .25f : frequency;
+    slave_frequency_ = frequency;
+}
+
+void VariableShapeOscillator::SetPW(float pw)
+{
+    if(slave_frequency_ >= .25f)
+    {
+        pw_ = .5f;
+    }
+    else
+    {
+        pw_ = fclamp(
+            pw, slave_frequency_ * 2.0f, 1.0f - 2.0f * slave_frequency_);
+    }
+}
+
+void VariableShapeOscillator::SetWaveshape(float waveshape)
+{
+    waveshape_ = waveshape;
+}
 
 float VariableShapeOscillator::ComputeNaiveSample(float phase,
                                                   float pw,
