@@ -21,34 +21,34 @@ class ZOscillator
     ZOscillator() {}
     ~ZOscillator() {}
 
-	/** Init ZOscillator module
+    /** Init ZOscillator module
 		\param sample_rate Audio engine sample rate.
 	*/
     void Init(float sample_rate);
 
-	/** Get next sample
+    /** Get next sample
 	*/
     float Process();
-	
-	/** Set the formant osc. freq
+
+    /** Set the formant osc. freq
 		\param freq Frequency in Hz.
 	*/
-	void SetFormantFreq(float freq);
+    void SetFormantFreq(float freq);
 
-	/** Set the main frequency
+    /** Set the main frequency
 		\param freq Frequency in Hz.
 	*/
-	void SetCarrierFreq(float freq);
+    void SetCarrierFreq(float freq);
 
-	/** Set the waveshape
+    /** Set the waveshape
 		\param shape The waveshape to set
 	*/
-	void SetShape(float shape);
+    void SetShape(float shape);
 
-	/** Set the mode
+    /** Set the mode
 		\param mode Mode to set
 	*/
-	void SetMode(float mode);
+    void SetMode(float mode);
 
   private:
     inline float Sine(float phase);

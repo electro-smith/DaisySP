@@ -19,7 +19,8 @@ void ZOscillator::Init(float sample_rate)
     mode_              = 0.0f;
 }
 
-float ZOscillator::Process(){
+float ZOscillator::Process()
+{
     float next_sample = next_sample_;
 
     bool  reset      = false;
@@ -41,7 +42,8 @@ float ZOscillator::Process(){
         float carrier_phase_after  = carrier_phase_ >= 1.0f ? 0.0f : 0.5f;
 
         float mode_sub  = mode_ + (1.f - reset_time) * (mode_ - mode_new_);
-        float shape_sub = carrier_shape_ + (1.0f - reset_time) * (carrier_shape_ - shape_new_);
+        float shape_sub = carrier_shape_
+                          + (1.0f - reset_time) * (carrier_shape_ - shape_new_);
         float before
             = Z(carrier_phase_before,
                 1.0f,
@@ -106,12 +108,14 @@ void ZOscillator::SetCarrierFreq(float freq)
     carrier_frequency_ = carrier_frequency_ >= .25f ? .25f : carrier_frequency_;
 }
 
-void ZOscillator::SetShape(float shape){
-	shape_new_ = shape;
+void ZOscillator::SetShape(float shape)
+{
+    shape_new_ = shape;
 }
 
-void ZOscillator::SetMode(float mode){
-	mode_new_ = mode;
+void ZOscillator::SetMode(float mode)
+{
+    mode_new_ = mode;
 }
 
 inline float ZOscillator::ThisBlepSample(float t)
