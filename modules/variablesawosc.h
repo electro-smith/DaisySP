@@ -23,6 +23,8 @@ class VariableSawOscillator
 
     void Init(float sample_rate);
 
+    /** Get the next sample 
+*/
     float Process();
 
     /** Set master freq.
@@ -30,8 +32,14 @@ class VariableSawOscillator
 	*/
     void SetFreq(float frequency);
 
+    /** Adjust the wave depending on the shape
+		\param pw Notch or slope
+	*/
     void SetPW(float pw);
 
+    /** Slope or notch
+		\param waveshape 0 = notch, 1 = slope
+	*/
     void SetWaveshape(float waveshape);
 
 
