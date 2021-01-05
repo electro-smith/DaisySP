@@ -30,15 +30,15 @@ class ZOscillator
 	*/
     float Process();
 
+    /** Set the carrier frequency
+		\param freq Frequency in Hz.
+	*/
+    void SetFreq(float freq);
+
     /** Set the formant osc. freq
 		\param freq Frequency in Hz.
 	*/
     void SetFormantFreq(float freq);
-
-    /** Set the main frequency
-		\param freq Frequency in Hz.
-	*/
-    void SetCarrierFreq(float freq);
 
     /** Set the waveshape
 		\param shape The waveshape to set

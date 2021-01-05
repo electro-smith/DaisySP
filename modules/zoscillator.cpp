@@ -13,10 +13,10 @@ void ZOscillator::Init(float sample_rate)
     formant_phase_       = 0.0f;
     next_sample_         = 0.0f;
 
-    carrier_frequency_ = 0.0f;
-    formant_frequency_ = 0.0f;
-    carrier_shape_     = 0.0f;
-    mode_              = 0.0f;
+	SetFreq(440.f);
+	SetFormantFreq(600.f);
+	SetMode(.5f);
+	SetShape(1.f);
 }
 
 float ZOscillator::Process()
@@ -94,18 +94,18 @@ inline float ZOscillator::Sine(float phase)
     return sinf(phase * TWOPI_F);
 }
 
+void ZOscillator::SetFreq(float freq)
+{
+    //convert from Hz to phase_inc / sample
+    carrier_frequency_ = freq / sample_rate_;
+    carrier_frequency_ = carrier_frequency_ >= .25f ? .25f : carrier_frequency_;
+}
+
 void ZOscillator::SetFormantFreq(float freq)
 {
     //convert from Hz to phase_inc / sample
     formant_frequency_ = freq / sample_rate_;
     formant_frequency_ = formant_frequency_ >= .25f ? .25f : formant_frequency_;
-}
-
-void ZOscillator::SetCarrierFreq(float freq)
-{
-    //convert from Hz to phase_inc / sample
-    carrier_frequency_ = freq / sample_rate_;
-    carrier_frequency_ = carrier_frequency_ >= .25f ? .25f : carrier_frequency_;
 }
 
 void ZOscillator::SetShape(float shape)
