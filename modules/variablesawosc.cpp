@@ -13,9 +13,9 @@ void VariableSawOscillator::Init(float sample_rate)
     previous_pw_ = 0.5f;
     high_        = false;
 
-    frequency_ = 0.01f;
-    pw_        = 0.5f;
-    waveshape_ = 0.0f;
+    SetFreq(220.f);
+    SetPW(0.f);
+    SetWaveshape(1.f);
 }
 
 float VariableSawOscillator::Process()
