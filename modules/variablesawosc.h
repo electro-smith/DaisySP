@@ -50,11 +50,6 @@ class VariableSawOscillator
                              float triangle_amount,
                              float notch_amount);
 
-    float ThisBlepSample(float t);
-    float NextBlepSample(float t);
-    float NextIntegratedBlepSample(float t);
-    float ThisIntegratedBlepSample(float t);
-
     float sample_rate_;
 
     // Oscillator state.
