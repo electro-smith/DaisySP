@@ -46,8 +46,8 @@ class VosimOscillator
 	*/
     void SetForm2Freq(float freq);
 
-    /** Set carrier waveshape
-		\param shape Shape to set.
+    /** Waveshaping
+		\param shape Shape to set. Works -1 to 1
 	*/
     void SetShape(float shape);
 
