@@ -145,14 +145,3 @@ void StringSynthOscillator::SetGain(float gain)
     recalc_gain_ = cmp(gain, gain_) || recalc_gain_;
     gain_        = gain;
 }
-
-inline float StringSynthOscillator::ThisBlepSample(float t)
-{
-    return 0.5f * t * t;
-}
-
-inline float StringSynthOscillator::NextBlepSample(float t)
-{
-    t = 1.0f - t;
-    return -0.5f * t * t;
-}

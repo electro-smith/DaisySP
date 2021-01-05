@@ -10,7 +10,7 @@
 namespace daisysp
 {
 /**  
-       String Synth Oscillator Module \n 
+       Divide Osc \n 
 	   A mixture of 7 sawtooth and square waveforms in the style of divide-down organs \n
        Ported by Ben Sergentanis, Dec 2020 
        @author Emilie Gillet
@@ -71,8 +71,6 @@ class StringSynthOscillator
     float sample_rate_;
     bool  recalc_, recalc_gain_;
 
-    inline float ThisBlepSample(float t);
-    inline float NextBlepSample(float t);
     bool         cmp(float a, float b) { return fabsf(a - b) > .0000001; }
 };
 } // namespace daisysp
