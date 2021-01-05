@@ -13,10 +13,10 @@ void ZOscillator::Init(float sample_rate)
     formant_phase_       = 0.0f;
     next_sample_         = 0.0f;
 
-	SetFreq(440.f);
-	SetFormantFreq(600.f);
-	SetMode(.5f);
-	SetShape(1.f);
+    SetFreq(220.f);
+    SetFormantFreq(550.f);
+    SetMode(0.f);
+    SetShape(1.f);
 }
 
 float ZOscillator::Process()
@@ -129,7 +129,7 @@ inline float ZOscillator::NextBlepSample(float t)
     return -0.5f * t * t;
 }
 
-inline float ZOscillator::Z(float c, float d, float f, float shape, float mode)
+inline float ZOscillator::Z(float c, float d, float f, float shape, float F)
 {
     float ramp_down = 0.5f * (1.0f + Sine(0.5f * d + 0.25f));
 

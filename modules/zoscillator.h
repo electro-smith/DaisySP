@@ -40,13 +40,14 @@ class ZOscillator
 	*/
     void SetFormantFreq(float freq);
 
-    /** Set the waveshape
-		\param shape The waveshape to set
+    /** Adjust the contour of the waveform.
+		\param shape Waveshape to set. Works best 0-1.
 	*/
     void SetShape(float shape);
 
-    /** Set the mode
-		\param mode Mode to set
+    /** Set the offset amount and phase shift. \n
+		< 1/3 is just phase shift, > 2/3 is just offset, and between them is both. \n
+		\param mode Mode to set. Works best -1 to 1
 	*/
     void SetMode(float mode);
 
