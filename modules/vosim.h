@@ -16,11 +16,11 @@ namespace daisysp
        @author Emilie Gillet
        @date 2016
 */
-class VOSIMOscillator
+class VosimOscillator
 {
   public:
-    VOSIMOscillator() {}
-    ~VOSIMOscillator() {}
+    VosimOscillator() {}
+    ~VosimOscillator() {}
 
     /** Initializes the FormantOscillator module.
         \param sample_rate - The sample rate of the audio engine being run. 
