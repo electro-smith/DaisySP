@@ -54,9 +54,7 @@ class ZOscillator
   private:
     inline float Sine(float phase);
     inline float Z(float c, float d, float f, float shape, float mode);
-    inline float ThisBlepSample(float t);
-    inline float NextBlepSample(float t);
-
+	
     float sample_rate_;
 
     // Oscillator state.
