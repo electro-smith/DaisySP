@@ -26,7 +26,7 @@ void StringSynthOscillator::Init(float sample_rate)
         registration_[i]           = 0.f;
         unshifted_registration_[i] = 0.f;
     }
-    SetSingleAmp(1.f, 6);
+    SetSingleAmp(1.f, 0);
     SetFreq(440.f);
 }
 
