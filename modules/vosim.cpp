@@ -12,10 +12,10 @@ void VosimOscillator::Init(float sample_rate)
     formant_1_phase_ = 0.0f;
     formant_2_phase_ = 0.0f;
 
-    carrier_frequency_   = 0.0f;
-    formant_1_frequency_ = 0.0f;
-    formant_2_frequency_ = 0.0f;
-    carrier_shape_       = 0.0f;
+    SetFreq(105.f);
+    SetForm1Freq(1390.f);
+    SetForm2Freq(817.f);
+    SetShape(.5f);
 }
 
 float VosimOscillator::Process()
