@@ -50,7 +50,7 @@ float VOSIMOscillator::Process()
     return carrier * (formant_0 + formant_1) * 0.25f + reset_amplitude;
 }
 
-void VOSIMOscillator::SetCarrierFreq(float freq)
+void VOSIMOscillator::SetFreq(float freq)
 {
     carrier_frequency_ = freq / sample_rate_;
     carrier_frequency_ = carrier_frequency_ > .25f ? .25f : carrier_frequency_;

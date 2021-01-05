@@ -34,7 +34,7 @@ class VOSIMOscillator
     /** Set carrier frequency.
 		\param freq Frequency in Hz.
 	*/
-    void SetCarrierFreq(float freq);
+    void SetFreq(float freq);
 
     /** Set formant 1 frequency.
 		\param freq Frequency in Hz.
