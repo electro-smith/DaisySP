@@ -42,6 +42,12 @@ class StringSynthOscillator
 	*/
     void SetAmplitudes(const float* amplitudes);
 
+    /** Set a single amplitude
+		\param amp Amplitude to set.
+		\param idx Which wave's amp to set
+	*/
+    void SetSingleAmp(float amp, int idx);
+
     /** Set overall gain.
 		\param gain Gain to set. 0-1.
 	*/
@@ -67,6 +73,7 @@ class StringSynthOscillator
 
     inline float ThisBlepSample(float t);
     inline float NextBlepSample(float t);
+    bool         cmp(float a, float b) { return fabsf(a - b) > .0000001; }
 };
 } // namespace daisysp
 #endif
