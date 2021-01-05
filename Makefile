@@ -28,11 +28,11 @@ nlfilt \
 metro \
 mode \
 oscillator \
+oscillatorbank \
 phasor \
 pluck \
 port \
 reverbsc \
-stringsynth \
 svf \
 tone \
 
