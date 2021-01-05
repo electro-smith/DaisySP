@@ -64,14 +64,6 @@ class VariableShapeOscillator
                              float triangle_amount,
                              float square_amount);
 
-    float ThisBlepSample(float t);
-
-    float NextBlepSample(float t);
-
-    float NextIntegratedBlepSample(float t);
-
-    float ThisIntegratedBlepSample(float t);
-
     float sample_rate_;
     bool  enable_sync_;
 
