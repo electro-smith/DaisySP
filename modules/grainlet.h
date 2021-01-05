@@ -61,9 +61,6 @@ class GrainletOscillator
                    float shape,
                    float bleed);
 
-    float ThisBlepSample(float t);
-    float NextBlepSample(float t);
-
     // Oscillator state.
     float carrier_phase_;
     float formant_phase_;

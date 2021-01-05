@@ -144,14 +144,3 @@ float GrainletOscillator::Grainlet(float carrier_phase,
     float formant = Sine(formant_phase);
     return carrier * (formant + bleed) / (1.0f + bleed);
 }
-
-float GrainletOscillator::ThisBlepSample(float t)
-{
-    return 0.5f * t * t;
-}
-
-float GrainletOscillator::NextBlepSample(float t)
-{
-    t = 1.0f - t;
-    return -0.5f * t * t;
-}
