@@ -126,25 +126,11 @@ float VariableShapeOscillator::Process()
     return (2.0f * this_sample - 1.0f);
 }
 
-void VariableShapeOscillator::SetSync(bool enable_sync)
-{
-    enable_sync_ = enable_sync;
-}
-
 void VariableShapeOscillator::SetFreq(float frequency)
 {
     frequency         = frequency / sample_rate_;
     frequency         = frequency >= .25f ? .25f : frequency;
     master_frequency_ = frequency;
-}
-
-
-void VariableShapeOscillator::SetSyncFreq(float frequency)
-{
-    frequency        = frequency / sample_rate_;
-    pw_              = frequency >= .25f ? .5f : pw_;
-    frequency        = frequency >= .25f ? .25f : frequency;
-    slave_frequency_ = frequency;
 }
 
 void VariableShapeOscillator::SetPW(float pw)
@@ -163,6 +149,19 @@ void VariableShapeOscillator::SetPW(float pw)
 void VariableShapeOscillator::SetWaveshape(float waveshape)
 {
     waveshape_ = waveshape;
+}
+
+void VariableShapeOscillator::SetSync(bool enable_sync)
+{
+    enable_sync_ = enable_sync;
+}
+
+void VariableShapeOscillator::SetSyncFreq(float frequency)
+{
+    frequency        = frequency / sample_rate_;
+    pw_              = frequency >= .25f ? .5f : pw_;
+    frequency        = frequency >= .25f ? .25f : frequency;
+    slave_frequency_ = frequency;
 }
 
 float VariableShapeOscillator::ComputeNaiveSample(float phase,

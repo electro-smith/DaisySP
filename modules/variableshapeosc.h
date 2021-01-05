@@ -31,20 +31,10 @@ class VariableShapeOscillator
 	*/
     float Process();
 
-    /** Whether or not to sync to the sync oscillator
-		\param enable_sync True to turn sync on.
-	*/
-    void SetSync(bool enable_sync);
-
     /** Set master freq.
 		\param frequency Freq in Hz.
 	*/
     void SetFreq(float frequency);
-
-    /** Set sync oscillator freq.
-		\param frequency Freq in Hz.
-	*/
-    void SetSyncFreq(float frequency);
 
     /** Set pulse width / saw, ramp, tri.
 		\param pw PW when shape is square. Saw,ramp, tri otherwise.
@@ -55,6 +45,16 @@ class VariableShapeOscillator
 		\param waveshape 0 is saw/ramp/tri, 1 is square.
 	*/
     void SetWaveshape(float waveshape);
+
+    /** Whether or not to sync to the sync oscillator
+		\param enable_sync True to turn sync on.
+	*/
+    void SetSync(bool enable_sync);
+
+    /** Set sync oscillator freq.
+		\param frequency Freq in Hz.
+	*/
+    void SetSyncFreq(float frequency);
 
   private:
     float ComputeNaiveSample(float phase,
