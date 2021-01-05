@@ -41,13 +41,13 @@ class GrainletOscillator
 	*/
     void SetFormantFreq(float freq);
 
-    /** Sets the carrier waveshape
-		\param shape Waveshape. Works best 0-1
+    /** Waveshaping
+		\param shape Shapes differently from 0-1, 1-2, and > 2.
 	*/
     void SetShape(float shape);
 
     /** Sets the amount of formant to bleed through
-		\param bleed Amount of bleed
+		\param bleed Works best 0-1
 	*/
     void SetBleed(float bleed);
 
