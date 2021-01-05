@@ -129,7 +129,7 @@ inline float ZOscillator::NextBlepSample(float t)
     return -0.5f * t * t;
 }
 
-inline float ZOscillator::Z(float c, float d, float f, float shape, float F)
+inline float ZOscillator::Z(float c, float d, float f, float shape, float mode)
 {
     float ramp_down = 0.5f * (1.0f + Sine(0.5f * d + 0.25f));
 
