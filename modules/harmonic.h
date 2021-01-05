@@ -18,7 +18,7 @@ namespace daisysp
        @author Emilie Gillet
        @date 2016
 */
-template <int num_harmonics>
+template <int num_harmonics = 16>
 class HarmonicOscillator
 {
   public:
@@ -27,18 +27,23 @@ class HarmonicOscillator
 
     /** Initialize harmonic oscillator
 		\param sample_rate Audio engine samplerate
-		\param num_harmonics How many harmonics we'll use. Max of 32.
 	*/
     void Init(float sample_rate)
     {
         sample_rate_ = sample_rate;
         phase_       = 0.0f;
-        frequency_   = 0.0f;
+
         for(int i = 0; i < num_harmonics; ++i)
         {
             amplitude_[i]    = 0.0f;
             newamplitude_[i] = 0.f;
         }
+		amplitude_[0] = 1.f;
+		newamplitude_[0] = 1.f;
+
+		SetFirstHarmIdx(1);
+		SetFreq(440.f);
+
         recalc_ = false;
     }
 
@@ -96,31 +101,47 @@ class HarmonicOscillator
 	*/
     void SetFreq(float freq)
     {
-        recalc_ = true;
         //convert from Hz to phase_inc / sample
-        frequency_ = freq / sample_rate_;
-        frequency_ = frequency_ >= .5f ? .5f : frequency_;
-        frequency_ = frequency_ <= -.5f ? -.5f : frequency_;
+        freq = freq / sample_rate_;
+        freq = freq >= .5f ? .5f : freq;
+        freq = freq <= -.5f ? -.5f : freq;
+		recalc_ = freq != frequency_ || recalc_;
+		frequency_ = freq;
     }
-    /** Offset the set of harmonics. For example, passing in 3 would mean "harmonic 0" is actually the 3rd, 1 is the 4th, etc.
-		\param idx Which harmonic of the root will be the "first" harmonic.
+	
+    /** Offset the set of harmonics. Passing in 3 means "harmonic 0" is the 3rd harm., 1 is the 4th, etc.
+		\param idx Default behavior is 1. Values < 0 default to 1.
 	*/
     void SetFirstHarmIdx(int idx)
     {
-        recalc_               = true;
-        first_harmonic_index_ = idx;
+        idx = idx < 1 ? 1 : idx;
+		recalc_ = idx != first_harmonic_index_ || recalc_;
+		first_harmonic_index_ = idx;
     }
+	
     /** Set the amplitudes of each harmonic of the root. 
 		\param amplitudes Amplitudes to set. Sum of all amplitudes must be < 1. The array referenced must be at least as large as num_harmonics. 
 	*/
     void SetAmplitudes(const float* amplitudes)
     {
-        recalc_ = true;
         for(int i = 0; i < num_harmonics; i++)
         {
-            newamplitude_[i] = amplitudes[i];
-        }
+			recalc_ = newamplitude_[i] != amplitudes[i] || recalc_;
+			newamplitude_[i] = amplitudes[i];
+        }	
     }
+
+	/** Sets one amplitude. Does nothing if idx out of range.
+		\param amp Amplitude to set
+		\param idx Which harmonic to set.
+	*/
+	void SetSingleAmp(const float amp, int idx){
+		if(idx < 0 || idx > num_harmonics){
+			return;
+		}
+		recalc_ = amplitude_[idx] != amp || recalc_;
+		amplitude_[idx] = amp;
+	}
 
   private:
     float sample_rate_;
