@@ -1,27 +1,28 @@
 #pragma once
-#ifndef DSY_STRINGSYNTH_H
-#define DSY_STRINGSYNTH_H
+#ifndef DSY_OSCILLATORBANK_H
+#define DSY_OSCILLATORBANK_H
 
 #include <stdint.h>
 #ifdef __cplusplus
 
-/** @file stringsynth.h */
+/** @file oscillatorbank.h */
 
 namespace daisysp
 {
 /**  
-       Divide Osc \n 
+       Oscillator Bank module \n 
 	   A mixture of 7 sawtooth and square waveforms in the style of divide-down organs \n
+	   Originally StringSynth from Plaits. \n
        Ported by Ben Sergentanis, Dec 2020 
        @author Emilie Gillet
        @date 2016
 */
 
-class StringSynthOscillator
+class OscillatorBank
 {
   public:
-    StringSynthOscillator() {}
-    ~StringSynthOscillator() {}
+    OscillatorBank() {}
+    ~OscillatorBank() {}
 
     /** Init string synth module
 		\param sample_rate Audio engine sample rate

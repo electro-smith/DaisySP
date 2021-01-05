@@ -1,10 +1,10 @@
 #include "dsp.h"
-#include "stringsynth.h"
+#include "oscillatorbank.h"
 #include <math.h>
 
 using namespace daisysp;
 
-void StringSynthOscillator::Init(float sample_rate)
+void OscillatorBank::Init(float sample_rate)
 {
     sample_rate_ = sample_rate;
 
@@ -30,7 +30,7 @@ void StringSynthOscillator::Init(float sample_rate)
     SetFreq(440.f);
 }
 
-float StringSynthOscillator::Process()
+float OscillatorBank::Process()
 {
     if(recalc_)
     {
@@ -111,7 +111,7 @@ float StringSynthOscillator::Process()
     return 2.0f * this_sample_;
 }
 
-void StringSynthOscillator::SetFreq(float freq)
+void OscillatorBank::SetFreq(float freq)
 {
     freq       = freq / sample_rate_;
     freq       = freq > 0.5f ? 0.5f : freq;
@@ -119,7 +119,7 @@ void StringSynthOscillator::SetFreq(float freq)
     frequency_ = freq;
 }
 
-void StringSynthOscillator::SetAmplitudes(const float* amplitudes)
+void OscillatorBank::SetAmplitudes(const float* amplitudes)
 {
     for(int i = 0; i < 7; i++)
     {
@@ -128,7 +128,7 @@ void StringSynthOscillator::SetAmplitudes(const float* amplitudes)
     }
 }
 
-void StringSynthOscillator::SetSingleAmp(float amp, int idx)
+void OscillatorBank::SetSingleAmp(float amp, int idx)
 {
     if(idx < 0 || idx > 6)
     {
@@ -138,7 +138,7 @@ void StringSynthOscillator::SetSingleAmp(float amp, int idx)
     unshifted_registration_[idx] = amp;
 }
 
-void StringSynthOscillator::SetGain(float gain)
+void OscillatorBank::SetGain(float gain)
 {
     gain         = gain > 1.f ? 1.f : gain;
     gain         = gain < 0.f ? 0.f : gain;
