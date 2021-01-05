@@ -12,13 +12,13 @@ void GrainletOscillator::Init(float sample_rate)
     formant_phase_ = 0.0f;
     next_sample_   = 0.0f;
 
-    carrier_frequency_ = 0.0f;
-    formant_frequency_ = 0.0f;
-    carrier_shape_     = 0.0f;
-    carrier_bleed_     = 0.0f;
+    carrier_shape_ = 0.f;
+    carrier_bleed_ = 0.f;
 
-    new_carrier_shape_ = 0.0f;
-    new_carrier_bleed_ = 0.0f;
+    SetFreq(440.f);
+    SetFormantFreq(220.f);
+    SetShape(.5f);
+    SetBleed(.5f);
 }
 
 float GrainletOscillator::Process()
@@ -67,7 +67,7 @@ float GrainletOscillator::Process()
     return this_sample;
 }
 
-void GrainletOscillator::SetCarrierFreq(float freq)
+void GrainletOscillator::SetFreq(float freq)
 {
     carrier_frequency_ = freq / sample_rate_;
     carrier_frequency_ = carrier_frequency_ > 0.5f ? 0.5f : carrier_frequency_;

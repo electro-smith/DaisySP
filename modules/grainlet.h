@@ -34,7 +34,7 @@ class GrainletOscillator
     /** Sets the carrier frequency
 		\param freq Frequency in Hz
 	*/
-    void SetCarrierFreq(float freq);
+    void SetFreq(float freq);
 
     /** Sets the formant frequency
 		\param freq Frequency in Hz
