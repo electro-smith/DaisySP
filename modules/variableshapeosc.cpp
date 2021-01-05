@@ -14,11 +14,11 @@ void VariableShapeOscillator::Init(float sample_rate)
     previous_pw_  = 0.5f;
     high_         = false;
 
-	SetFreq(440.f);
-	SetWaveshape(0.f);
-	SetPW(0.f);
-	SetSync(false);
-	SetSyncFreq(220.f);
+    SetFreq(440.f);
+    SetWaveshape(0.f);
+    SetPW(0.f);
+    SetSync(false);
+    SetSyncFreq(220.f);
 }
 
 float VariableShapeOscillator::Process()

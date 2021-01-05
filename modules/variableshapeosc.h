@@ -37,7 +37,7 @@ class VariableShapeOscillator
     void SetFreq(float frequency);
 
     /** Set pulse width / saw, ramp, tri.
-		\param pw PW when shape is square. Saw,ramp, tri otherwise.
+		\param pw PW when shape is square. Saw, ramp, tri otherwise.
 	*/
     void SetPW(float pw);
 
