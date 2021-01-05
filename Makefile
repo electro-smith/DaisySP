@@ -20,7 +20,6 @@ drip \
 fm2 \
 fold \
 formantosc \
-harmonic \
 jitter \
 line \
 limiter \
