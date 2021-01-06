@@ -48,7 +48,7 @@
 - **Utilities:** [Math Functions](https://github.com/electro-smith/DaisySP/blob/master/modules/dsp.h), [Signal Conditioning](https://electro-smith.github.io/DaisySP/classdaisysp_1_1_port.html), [Aleatoric Generators](https://electro-smith.github.io/DaisySP/classdaisysp_1_1_maytrig.html)  
 
 ## Code Example
-![](https://github.com/andrewikenberry/badges/blob/main/code_example.PNG)
+![](https://github.com/electro-smith/daisysp/blob/master/resources/assets/code_example.PNG)
 
 ## Getting Started
 - Get the source: `git clone https://github.com/electro-smith/DaisySP`
