@@ -1,5 +1,5 @@
-<p align="center"><img width=15% src="https://github.com/andrewikenberry/badges/blob/main/banner.png"></p>
-<p align="center"><img width=23% src="https://github.com/andrewikenberry/badges/blob/main/daisysp.png"></p>
+<p align="center"><img width=15% src="https://github.com/electro-smith/daisysp/blob/master/resources/assets/banner.png"></p>
+<p align="center"><img width=23% src="https://github.com/electro-smith/daisysp/blob/master/resources/assets/daisysp.png"></p>
 
 <h3 align="center">A Powerful, Open Source DSP Library in C++</h3>
 <br>
