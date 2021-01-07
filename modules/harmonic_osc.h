@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 
 
-/** @file harmonic.h */
+/** @file harmonic_osc.h */
 namespace daisysp
 {
 /**  
@@ -145,9 +145,10 @@ class HarmonicOscillator
         newamplitude_[idx] = amp;
     }
 
-    bool cmp(float a, float b) { return fabsf(a - b) > .000001; }
 
   private:
+    bool cmp(float a, float b) { return fabsf(a - b) > .000001f; }
+
     float sample_rate_;
     float phase_;
     float frequency_;
