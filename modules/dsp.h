@@ -137,6 +137,35 @@ T median(T a, T b, T c)
                    : (a < c) ? (c < b) ? c : b : a;
 }
 
+/** From plaits oscillator.h
+*/
+inline float ThisBlepSample(float t)
+{
+    return 0.5f * t * t;
+}
+
+/** From plaits oscillator.h
+*/
+inline float NextBlepSample(float t)
+{
+    t = 1.0f - t;
+    return -0.5f * t * t;
+}
+
+/** From plaits oscillator.h
+*/
+inline float NextIntegratedBlepSample(float t) {
+  const float t1 = 0.5f * t;
+  const float t2 = t1 * t1;
+  const float t4 = t2 * t2;
+  return 0.1875f - t1 + 1.5f * t2 - t4;
+}
+
+/** From plaits oscillator.h
+*/
+inline float ThisIntegratedBlepSample(float t) {
+  return NextIntegratedBlepSample(1.0f - t);
+}
 
 /** Based on soft saturate from:
 [musicdsp.org](musicdsp.org/en/latest/Effects/42-soft-saturation.html)
@@ -187,5 +216,4 @@ inline float soft_saturate(float in, float thresh)
     //                                       * ((val - thresh) / (1.0f - thresh))));
 }
 } // namespace daisysp
-
 #endif
