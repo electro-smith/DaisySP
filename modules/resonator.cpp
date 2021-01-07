@@ -10,12 +10,9 @@ using namespace daisysp;
 
 void Resonator::Init(float position, int resolution) {
   resolution_ = fmin(resolution, kMaxNumModes);
-  
-  CosineOscillator amplitudes;
-  amplitudes.Init<COSINE_OSCILLATOR_APPROXIMATE>(position);
-  
+    
   for (int i = 0; i < resolution; ++i) {
-    mode_amplitude_[i] = amplitudes.Next() * 0.25f;
+    mode_amplitude_[i] = cos(position * TWOPI_F) * 0.25f;
   }
   
   for (int i = 0; i < kMaxNumModes / kModeBatchSize; ++i) {
