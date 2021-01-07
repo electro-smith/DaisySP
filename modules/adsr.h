@@ -37,7 +37,7 @@ class Adsr
   public:
     Adsr() {}
     ~Adsr() {}
-    /** Initializes the ATone module.
+    /** Initializes the Adsr module.
         \param sample_rate - The sample rate of the audio engine being run. 
     */
     void Init(float sample_rate);
