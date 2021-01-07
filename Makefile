@@ -36,6 +36,7 @@ port \
 reverbsc \
 svf \
 tone \
+variablesawosc \
 variableshapeosc \
 vosim \
 
