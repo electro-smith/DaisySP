@@ -36,6 +36,7 @@
 #include "modules/fm2.h"
 #include "modules/fold.h"
 #include "modules/formantosc.h"
+#include "modules/grainlet.h"
 #include "modules/jitter.h"
 #include "modules/limiter.h"
 #include "modules/line.h"
@@ -45,6 +46,7 @@
 #include "modules/moogladder.h"
 #include "modules/nlfilt.h"
 #include "modules/oscillator.h"
+#include "modules/oscillatorbank.h"
 #include "modules/phasor.h"
 #include "modules/port.h"
 #include "modules/pitchshifter.h"
@@ -55,6 +57,8 @@
 #include "modules/svf.h"
 #include "modules/tone.h"
 #include "modules/variablesawosc.h"
+#include "modules/variableshapeosc.h"
+#include "modules/vosim.h"
 #include "modules/whitenoise.h"
 
 #endif

@@ -94,5 +94,3 @@ inline float FormantOscillator::NextBlepSample(float t)
     t = 1.0f - t;
     return -0.5f * t * t;
 }
-
-//DISALLOW_COPY_AND_ASSIGN(FormantOscillator);

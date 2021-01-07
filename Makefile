@@ -20,6 +20,7 @@ drip \
 fm2 \
 fold \
 formantosc \
+grainlet \
 jitter \
 line \
 limiter \
@@ -28,6 +29,7 @@ nlfilt \
 metro \
 mode \
 oscillator \
+oscillatorbank \
 phasor \
 pluck \
 port \
@@ -35,6 +37,8 @@ reverbsc \
 svf \
 tone \
 variablesawosc \
+variableshapeosc \
+vosim \
 
 # certain modules are only header files:
 # delayline 
