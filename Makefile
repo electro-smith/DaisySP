@@ -29,6 +29,7 @@ nlfilt \
 metro \
 mode \
 oscillator \
+oscillatorbank \
 phasor \
 pluck \
 port \
