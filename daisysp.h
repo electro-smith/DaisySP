@@ -56,6 +56,7 @@
 #include "modules/samplehold.h"
 #include "modules/svf.h"
 #include "modules/tone.h"
+#include "modules/variableshapeosc.h"
 #include "modules/vosim.h"
 #include "modules/whitenoise.h"
 

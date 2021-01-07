@@ -36,6 +36,7 @@ port \
 reverbsc \
 svf \
 tone \
+variableshapeosc \
 vosim \
 
 # certain modules are only header files:
