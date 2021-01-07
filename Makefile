@@ -20,6 +20,7 @@ drip \
 fm2 \
 fold \
 formantosc \
+grainlet \
 jitter \
 line \
 limiter \
