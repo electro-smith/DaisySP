@@ -37,6 +37,7 @@
 #include "modules/fold.h"
 #include "modules/formantosc.h"
 #include "modules/grainlet.h"
+#include "modules/harmonic_osc.h"
 #include "modules/jitter.h"
 #include "modules/limiter.h"
 #include "modules/line.h"
