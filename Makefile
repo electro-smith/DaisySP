@@ -39,6 +39,7 @@ tone \
 variablesawosc \
 variableshapeosc \
 vosim \
+zoscillator \
 
 # certain modules are only header files:
 # delayline 

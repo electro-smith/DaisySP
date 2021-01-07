@@ -60,5 +60,6 @@
 #include "modules/variableshapeosc.h"
 #include "modules/vosim.h"
 #include "modules/whitenoise.h"
+#include "modules/zoscillator.h"
 
 #endif
