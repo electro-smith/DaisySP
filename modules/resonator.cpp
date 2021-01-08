@@ -52,11 +52,7 @@ float Resonator::Process(const float in) {
   float stretch_factor = 1.0f;
   
   float input = damping_ * 79.7f;
-  float ratio = powf(2.f, (float)(int)input * ratiofrac_);
-  input = input - (float)(int)input;
-  float semitone =  powf(2.f, (input * 256.f) * semitonefrac_);
-  float q_sqrt = ratio * semitone;
-  //float q_sqrt = SemitonesToRatio(damping * 79.7f);
+  float q_sqrt = powf(2.f, input * ratiofrac_);
   
   float q = 500.0f * q_sqrt * q_sqrt;
   brightness *= 1.0f - structure_ * 0.3f;
@@ -90,8 +86,7 @@ float Resonator::Process(const float in) {
           mode_q,
           mode_a,
           in,
-          &out,
-          1);
+          &out );
       ++batch_processor;
     }
     
@@ -136,7 +131,7 @@ float Resonator::CalcStiff(float sig){
 	}
 	else if(sig < .9f){
 		sig -= .3f;
-		sig *= 1.66666666f; // approx div by .6
+		sig *= stiff_frac_2;
 	}
 	else{
 		sig -= .9f;

@@ -51,8 +51,7 @@ class ResonatorSvf {
       const float* q,
       const float* gain,
       const float in,
-      float* out,
-      size_t size) {
+      float* out) {
     float g[batch_size];
     float r[batch_size];
     float r_plus_g[batch_size];
@@ -129,8 +128,8 @@ class Resonator {
   float frequency_, brightness_, structure_, damping_;
   
   const float ratiofrac_ = 1.f / 12.f;
-  const float semitonefrac_ = ratiofrac_ * (1.f / 256.f);
   const float stiff_frac_ = 1.f / 64.f;
+  const float stiff_frac_2 = 1.f / .6f;
   
   float sample_rate_;
   
