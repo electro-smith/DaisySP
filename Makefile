@@ -24,6 +24,7 @@ grainlet \
 jitter \
 line \
 limiter \
+lpg \
 moogladder \
 nlfilt \
 metro \

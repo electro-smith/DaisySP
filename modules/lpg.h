@@ -1,0 +1,57 @@
+#include <algorithm>
+
+//#include "stmlib/dsp/dsp.h"
+//#include "stmlib/dsp/filter.h"
+//#include "stmlib/dsp/parameter_interpolator.h"
+
+#pragma once
+#ifndef DSY_LOWPASSGATE_H
+#define DSY_LOWPASSGATE_H
+
+#include <stdint.h>
+#include "Svf.h"
+#ifdef __cplusplus
+
+/** @file lpg.h */
+
+namespace daisysp
+{
+/**    
+       Approximate Lowpass Gate \n
+       Ported by Ben Sergentanis, Jan 2021 \n
+       @author Emilie Gillet
+       @date 2016
+*/
+class LowPassGate {
+ public:
+  LowPassGate() { }
+  ~LowPassGate() { }
+  
+  void Init(float sample_rate); 
+  
+  void Process(
+      float gain,
+      float frequency,
+      float hf_bleed,
+      float* in_out,
+      size_t size);
+	  
+  void Process(
+      float gain,
+      float frequency,
+      float hf_bleed,
+      float* in,
+      short* out,
+      size_t size,
+      size_t stride);
+	  
+ private:
+  Svf filter_;
+  float sample_rate_;
+  
+  int Clip16(int input) { return std::min(std::max(0, input), 65535); };
+  
+};
+}
+#endif
+#endif
