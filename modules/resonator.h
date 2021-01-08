@@ -50,7 +50,7 @@ class ResonatorSvf {
       const float* f,
       const float* q,
       const float* gain,
-      const float* in,
+      const float in,
       float* out,
       size_t size) {
     float g[batch_size];
@@ -70,8 +70,7 @@ class ResonatorSvf {
       gains[i] = gain[i];
     }
     
-    while (size--) {
-      float s_in = *in++;
+      float s_in = in;
       float s_out = 0.0f;
       for (int i = 0; i < batch_size; ++i) {
         const float hp = (s_in - r_plus_g[i] * state_1[i] - state_2[i]) * h[i];
@@ -86,7 +85,7 @@ class ResonatorSvf {
       } else {
         *out++ = s_out;
       }
-    }
+
     for (int i = 0; i < batch_size; ++i) {
       state_1_[i] = state_1[i];
       state_2_[i] = state_2[i];

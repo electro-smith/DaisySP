@@ -92,7 +92,7 @@ float Resonator::Process(
           mode_f,
           mode_q,
           mode_a,
-          &in,
+          in,
           &out,
           1);
       ++batch_processor;
