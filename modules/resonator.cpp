@@ -42,13 +42,9 @@ void Resonator::Process(
     float* out,
     size_t size) {
 		
-		  index *= size;
-  MAKE_INTEGRAL_FRACTIONAL(index)
-  float a = table[index_integral];
-  float b = table[index_integral + 1];
-  return a + (b - a) * index_fractional;
   
-  float stiffness = Interpolate(lut_stiffness, structure, 64.0f);
+  //float stiffness = Interpolate(lut_stiffness, structure, 64.0f);
+  float stiffness = CalcStiff(structure);
   f0 *= NthHarmonicCompensation(3, stiffness);
   
   float harmonic = f0;
@@ -109,4 +105,25 @@ void Resonator::Process(
     harmonic += f0;
     q *= q_loss;
   }
+}
+
+float CalcStiff(float sig){
+	if(sig < .25f){
+		sig = .25 - sig;
+		sig = -sig * .25;
+	}
+	else if(sig < .3f){
+		sig = 0.f;
+	}
+	else if(sig < .9f){
+		sig -= .3f;
+		sig *= 1.66666666f; // approx div by .6
+	}
+	else{
+		sig -= .9f;
+		sig *= 10; // div by .1
+		sig *= sig;
+		sig = 1.5 - cos(sig * PI_F) * .5f;
+	}
+	return sig;
 }
