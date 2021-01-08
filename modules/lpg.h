@@ -29,21 +29,15 @@ class LowPassGate {
   
   void Init(float sample_rate); 
   
-  void Process(
+  float Process(
+      float gain,
+      float frequency,
+      float hf_bleed, float in);	  
+  float Process(
       float gain,
       float frequency,
       float hf_bleed,
-      float* in_out,
-      size_t size);
-	  
-  void Process(
-      float gain,
-      float frequency,
-      float hf_bleed,
-      float* in,
-      short* out,
-      size_t size,
-      size_t stride);
+      size_t stride, float in);
 	  
  private:
   Svf filter_;
