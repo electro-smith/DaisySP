@@ -117,15 +117,16 @@ class Resonator {
   ~Resonator() { }
   
   void Init(float position, int resolution, float sample_rate);
-  float Process(
-      float f0,
-      float structure,
-      float brightness,
-      float damping,
-      const float in);
+  float Process(const float in);
+  
+  void SetFreq(float freq);
+  void SetStructure(float structure);
+  void SetBrightness(float brightness);
+  void SetDamping(float damping);
   
  private:
   int resolution_;
+  float frequency_, brightness_, structure_, damping_;
   
   const float ratiofrac_ = 1.f / 12.f;
   const float semitonefrac_ = ratiofrac_ * (1.f / 256.f);

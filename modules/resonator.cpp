@@ -11,6 +11,11 @@ using namespace daisysp;
 void Resonator::Init(float position, int resolution, float sample_rate) {
 	sample_rate_ = sample_rate;
 
+	SetFreq(440.f);
+	SetStructure(.5f);
+	SetBrightness(.5f);
+	SetDamping(.5f);
+
   resolution_ = fmin(resolution, kMaxNumModes);
     
   for (int i = 0; i < resolution; ++i) {
@@ -35,26 +40,18 @@ inline float NthHarmonicCompensation(int n, float stiffness) {
   return 1.0f / stretch_factor;
 }
 
-float Resonator::Process(
-    float f0,
-    float structure,
-    float brightness,
-    float damping,
-	const float in
-	) {
-  //convert Hz to cycles / sample
-  f0 = f0 / sample_rate_;
-		
+float Resonator::Process(const float in) {
+  //convert Hz to cycles / sample		
   float out = 0.f;
-  
-  //float stiffness = Interpolate(lut_stiffness, structure, 64.0f);
-  float stiffness = CalcStiff(structure);
-  f0 *= NthHarmonicCompensation(3, stiffness);
-  
+
+  float stiffness = CalcStiff(structure_);  
+  float f0 = frequency_ * NthHarmonicCompensation(3, stiffness);
+  float brightness = brightness_;
+    
   float harmonic = f0;
   float stretch_factor = 1.0f;
   
-  float input = damping * 79.7f;
+  float input = damping_ * 79.7f;
   float ratio = powf(2.f, (float)(int)input * ratiofrac_);
   input = input - (float)(int)input;
   float semitone =  powf(2.f, (input * 256.f) * semitonefrac_);
@@ -62,8 +59,8 @@ float Resonator::Process(
   //float q_sqrt = SemitonesToRatio(damping * 79.7f);
   
   float q = 500.0f * q_sqrt * q_sqrt;
-  brightness *= 1.0f - structure * 0.3f;
-  brightness *= 1.0f - damping * 0.3f;
+  brightness *= 1.0f - structure_ * 0.3f;
+  brightness *= 1.0f - damping_ * 0.3f;
   float q_loss = brightness * (2.0f - brightness) * 0.85f + 0.15f;
   
   float mode_q[kModeBatchSize];
@@ -112,6 +109,22 @@ float Resonator::Process(
   
   	return out;
 }
+
+ void Resonator::SetFreq(float freq){
+	frequency_ = freq / sample_rate_;
+ }
+ 
+ void Resonator::SetStructure(float structure){
+	structure_ = structure;
+ }
+ 
+  void Resonator::SetBrightness(float brightness){
+	brightness_ = brightness;
+  }
+
+  void Resonator::SetDamping(float damping){
+	damping_ = damping;
+  }
 
 float Resonator::CalcStiff(float sig){
 	if(sig < .25f){
