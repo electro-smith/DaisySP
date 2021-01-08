@@ -7,8 +7,8 @@
 #include "dsp.h"
 #ifdef __cplusplus
 
-#define PI_POW_3 PI_F * PI_F * PI_F
-#define PI_POW_5 PI_POW_3 * PI_F * PI_F
+#define PI_POW_3 PI_F* PI_F* PI_F
+#define PI_POW_5 PI_POW_3* PI_F* PI_F
 
 #define kMaxNumModes 24
 #define kModeBatchSize 4
@@ -17,12 +17,12 @@
 
 namespace daisysp
 {
-
-enum FilterMode{
-  FILTER_MODE_LOW_PASS,
-  FILTER_MODE_BAND_PASS,
-  FILTER_MODE_BAND_PASS_NORMALIZED,
-  FILTER_MODE_HIGH_PASS
+enum FilterMode
+{
+    FILTER_MODE_LOW_PASS,
+    FILTER_MODE_BAND_PASS,
+    FILTER_MODE_BAND_PASS_NORMALIZED,
+    FILTER_MODE_HIGH_PASS
 };
 
 // We render 4 modes simultaneously since there are enough registers to hold
@@ -33,74 +33,85 @@ enum FilterMode{
        @author Emilie Gillet
        @date 2016
 */
-template<int batch_size>
-class ResonatorSvf {
- public:
-  ResonatorSvf() { }
-  ~ResonatorSvf() { }
-  
-  void Init() {
-    for (int i = 0; i < batch_size; ++i) {
-      state_1_[i] = state_2_[i] = 0.0f;
-    }
-  }
-  
-  template<FilterMode mode, bool add>
-  void Process(
-      const float* f,
-      const float* q,
-      const float* gain,
-      const float in,
-      float* out) {
-    float g[batch_size];
-    float r[batch_size];
-    float r_plus_g[batch_size];
-    float h[batch_size];
-    float state_1[batch_size];
-    float state_2[batch_size];
-    float gains[batch_size];
-    for (int i = 0; i < batch_size; ++i) {
-      g[i] = fasttan(f[i]);
-      r[i] = 1.0f / q[i];
-      h[i] = 1.0f / (1.0f + r[i] * g[i] + g[i] * g[i]);
-      r_plus_g[i] = r[i] + g[i];
-      state_1[i] = state_1_[i];
-      state_2[i] = state_2_[i];
-      gains[i] = gain[i];
-    }
-    
-      float s_in = in;
-      float s_out = 0.0f;
-      for (int i = 0; i < batch_size; ++i) {
-        const float hp = (s_in - r_plus_g[i] * state_1[i] - state_2[i]) * h[i];
-        const float bp = g[i] * hp + state_1[i];
-        state_1[i] = g[i] * hp + bp;
-        const float lp = g[i] * bp + state_2[i];
-        state_2[i] = g[i] * bp + lp;
-        s_out += gains[i] * ((mode == FILTER_MODE_LOW_PASS) ? lp : bp);
-      }
-      if (add) {
-        *out++ += s_out;
-      } else {
-        *out++ = s_out;
-      }
+template <int batch_size>
+class ResonatorSvf
+{
+  public:
+    ResonatorSvf() {}
+    ~ResonatorSvf() {}
 
-    for (int i = 0; i < batch_size; ++i) {
-      state_1_[i] = state_1[i];
-      state_2_[i] = state_2[i];
+    void Init()
+    {
+        for(int i = 0; i < batch_size; ++i)
+        {
+            state_1_[i] = state_2_[i] = 0.0f;
+        }
     }
-  }
-  
- private:
-	static inline float fasttan(float f){
-	  const float a = 3.260e-01 * PI_POW_3;
-      const float b = 1.823e-01 * PI_POW_5;
-      float f2 = f * f;
-      return f * (PI_F + f2 * (a + b * f2));
-	}
 
-  float state_1_[batch_size];
-  float state_2_[batch_size];
+    template <FilterMode mode, bool add>
+    void Process(const float* f,
+                 const float* q,
+                 const float* gain,
+                 const float  in,
+                 float*       out)
+    {
+        float g[batch_size];
+        float r[batch_size];
+        float r_plus_g[batch_size];
+        float h[batch_size];
+        float state_1[batch_size];
+        float state_2[batch_size];
+        float gains[batch_size];
+        for(int i = 0; i < batch_size; ++i)
+        {
+            g[i]        = fasttan(f[i]);
+            r[i]        = 1.0f / q[i];
+            h[i]        = 1.0f / (1.0f + r[i] * g[i] + g[i] * g[i]);
+            r_plus_g[i] = r[i] + g[i];
+            state_1[i]  = state_1_[i];
+            state_2[i]  = state_2_[i];
+            gains[i]    = gain[i];
+        }
+
+        float s_in  = in;
+        float s_out = 0.0f;
+        for(int i = 0; i < batch_size; ++i)
+        {
+            const float hp
+                = (s_in - r_plus_g[i] * state_1[i] - state_2[i]) * h[i];
+            const float bp = g[i] * hp + state_1[i];
+            state_1[i]     = g[i] * hp + bp;
+            const float lp = g[i] * bp + state_2[i];
+            state_2[i]     = g[i] * bp + lp;
+            s_out += gains[i] * ((mode == FILTER_MODE_LOW_PASS) ? lp : bp);
+        }
+        if(add)
+        {
+            *out++ += s_out;
+        }
+        else
+        {
+            *out++ = s_out;
+        }
+
+        for(int i = 0; i < batch_size; ++i)
+        {
+            state_1_[i] = state_1[i];
+            state_2_[i] = state_2[i];
+        }
+    }
+
+  private:
+    static inline float fasttan(float f)
+    {
+        const float a  = 3.260e-01 * PI_POW_3;
+        const float b  = 1.823e-01 * PI_POW_5;
+        float       f2 = f * f;
+        return f * (PI_F + f2 * (a + b * f2));
+    }
+
+    float state_1_[batch_size];
+    float state_2_[batch_size];
 };
 
 
@@ -110,35 +121,60 @@ class ResonatorSvf {
        @author Emilie Gillet
        @date 2016
 */
-class Resonator {
- public:
-  Resonator() { }
-  ~Resonator() { }
-  
-  void Init(float position, int resolution, float sample_rate);
-  float Process(const float in);
-  
-  void SetFreq(float freq);
-  void SetStructure(float structure);
-  void SetBrightness(float brightness);
-  void SetDamping(float damping);
-  
- private:
-  int resolution_;
-  float frequency_, brightness_, structure_, damping_;
-  
-  const float ratiofrac_ = 1.f / 12.f;
-  const float stiff_frac_ = 1.f / 64.f;
-  const float stiff_frac_2 = 1.f / .6f;
-  
-  float sample_rate_;
-  
-  float CalcStiff(float sig);
-  
-  float mode_amplitude_[kMaxNumModes];
-  ResonatorSvf<kModeBatchSize> mode_filters_[kMaxNumModes / kModeBatchSize];
+class Resonator
+{
+  public:
+    Resonator() {}
+    ~Resonator() {}
+
+    /** Initialize the module
+		\param position	Offset the phase of the amplitudes. 0-1
+		\param resolution Quality vs speed scalar
+		\param sample_rate Samplerate of the audio engine being run.
+	*/
+    void Init(float position, int resolution, float sample_rate);
+
+    /** Get the next sample_rate
+		\param in The signal to excited the resonant body
+	*/
+    float Process(const float in);
+
+    /** Resonator frequency.
+		\param freq Frequency in Hz.
+	*/
+    void SetFreq(float freq);
+
+    /** Changes the general charater of the resonator (stiffness, brightness)
+		\param structure Works best from 0-1
+	*/
+    void SetStructure(float structure);
+
+    /** Set the brighness of the resonator
+		\param brightness Works best 0-1
+	*/
+    void SetBrightness(float brightness);
+
+    /** How long the resonant body takes to decay.
+		\param damping Works best 0-1
+	*/
+    void SetDamping(float damping);
+
+  private:
+    int   resolution_;
+    float frequency_, brightness_, structure_, damping_;
+
+    const float ratiofrac_   = 1.f / 12.f;
+    const float stiff_frac_  = 1.f / 64.f;
+    const float stiff_frac_2 = 1.f / .6f;
+
+    float sample_rate_;
+
+    float CalcStiff(float sig);
+
+    float                        mode_amplitude_[kMaxNumModes];
+    ResonatorSvf<kModeBatchSize> mode_filters_[kMaxNumModes / kModeBatchSize];
 };
 
-}  // namespace daisysp
+} // namespace daisysp
 #endif
 #endif
