@@ -130,6 +130,9 @@ class Resonator {
  private:
   int resolution_;
   
+  float ratiofrac_ = 1.f / 12.f;
+  float semitonefrac_ = ratiofrac_ * (1.f / 256.f);
+  
   float mode_amplitude_[kMaxNumModes];
   ResonatorSvf<kModeBatchSize> mode_filters_[kMaxNumModes / kModeBatchSize];
 };

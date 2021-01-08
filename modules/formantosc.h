@@ -61,7 +61,7 @@ class FormantOscillator
     float formant_frequency_;
     float phase_shift_;
     float ps_inc_;
-
+	
     float sample_rate_;
 
     //DISALLOW_COPY_AND_ASSIGN(FormantOscillator);

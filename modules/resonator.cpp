@@ -41,12 +41,26 @@ void Resonator::Process(
     const float* in,
     float* out,
     size_t size) {
+		
+		  index *= size;
+  MAKE_INTEGRAL_FRACTIONAL(index)
+  float a = table[index_integral];
+  float b = table[index_integral + 1];
+  return a + (b - a) * index_fractional;
+  
   float stiffness = Interpolate(lut_stiffness, structure, 64.0f);
   f0 *= NthHarmonicCompensation(3, stiffness);
   
   float harmonic = f0;
   float stretch_factor = 1.0f;
-  float q_sqrt = SemitonesToRatio(damping * 79.7f);
+  
+  float input = damping * 79.7f;
+  float ratio = powf(2.f, (float)(int)input * ratiofrac_);
+  input = input - (float)(int)input;
+  float semitone =  powf(2.f, (input * 256.f) * semitonefrac_);
+  float q_sqrt = ratio * semitone;
+  //float q_sqrt = SemitonesToRatio(damping * 79.7f);
+  
   float q = 500.0f * q_sqrt * q_sqrt;
   brightness *= 1.0f - structure * 0.3f;
   brightness *= 1.0f - damping * 0.3f;
