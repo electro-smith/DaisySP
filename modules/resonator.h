@@ -28,7 +28,7 @@ enum FilterMode{
 // We render 4 modes simultaneously since there are enough registers to hold
 // all state variables.
 /**  
-       SVF for use in the Resonator module \n 
+       SVF for use in the Resonator Class \n 
        Ported by Ben Sergentanis, Dec 2020 
        @author Emilie Gillet
        @date 2016
@@ -118,14 +118,12 @@ class Resonator {
   ~Resonator() { }
   
   void Init(float position, int resolution);
-  void Process(
+  float Process(
       float f0,
       float structure,
       float brightness,
       float damping,
-      const float* in,
-      float* out,
-      size_t size);
+      const float in);
   
  private:
   int resolution_;

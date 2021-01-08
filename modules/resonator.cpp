@@ -33,15 +33,16 @@ inline float NthHarmonicCompensation(int n, float stiffness) {
   return 1.0f / stretch_factor;
 }
 
-void Resonator::Process(
+float Resonator::Process(
     float f0,
     float structure,
     float brightness,
     float damping,
-    const float* in,
-    float* out,
-    size_t size) {
+	const float in
+	) {
 		
+  
+  float out = 0.f;
   
   //float stiffness = Interpolate(lut_stiffness, structure, 64.0f);
   float stiffness = CalcStiff(structure);
@@ -88,9 +89,9 @@ void Resonator::Process(
           mode_f,
           mode_q,
           mode_a,
-          in,
-          out,
-          size);
+          &in,
+          &out,
+          1);
       ++batch_processor;
     }
     
@@ -103,8 +104,10 @@ void Resonator::Process(
       stiffness *= 0.98f;
     }
     harmonic += f0;
-    q *= q_loss;
+    q *= q_loss;	
   }
+  
+  	return out;
 }
 
 float CalcStiff(float sig){
