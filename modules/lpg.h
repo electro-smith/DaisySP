@@ -33,6 +33,9 @@ class LowPassGate {
       float gain,
       float frequency,
       float hf_bleed, float in);	  
+	  
+  //this is the one that actually gets used in plaits
+  //seems like stride always just defaults to 2
   float Process(
       float gain,
       float frequency,
