@@ -8,7 +8,9 @@
 
 using namespace daisysp;
 
-void Resonator::Init(float position, int resolution) {
+void Resonator::Init(float position, int resolution, float sample_rate) {
+	sample_rate_ = sample_rate;
+
   resolution_ = fmin(resolution, kMaxNumModes);
     
   for (int i = 0; i < resolution; ++i) {
@@ -40,8 +42,9 @@ float Resonator::Process(
     float damping,
 	const float in
 	) {
+  //convert Hz to cycles / sample
+  f0 = f0 / sample_rate_;
 		
-  
   float out = 0.f;
   
   //float stiffness = Interpolate(lut_stiffness, structure, 64.0f);
@@ -110,7 +113,7 @@ float Resonator::Process(
   	return out;
 }
 
-float CalcStiff(float sig){
+float Resonator::CalcStiff(float sig){
 	if(sig < .25f){
 		sig = .25 - sig;
 		sig = -sig * .25;

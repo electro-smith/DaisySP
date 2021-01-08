@@ -117,7 +117,7 @@ class Resonator {
   Resonator() { }
   ~Resonator() { }
   
-  void Init(float position, int resolution);
+  void Init(float position, int resolution, float sample_rate);
   float Process(
       float f0,
       float structure,
@@ -131,6 +131,8 @@ class Resonator {
   const float ratiofrac_ = 1.f / 12.f;
   const float semitonefrac_ = ratiofrac_ * (1.f / 256.f);
   const float stiff_frac_ = 1.f / 64.f;
+  
+  float sample_rate_;
   
   float CalcStiff(float sig);
   
