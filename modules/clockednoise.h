@@ -21,13 +21,21 @@ class ClockedNoise
     ClockedNoise() {}
     ~ClockedNoise() {}
 
+    /** Initialize module	
+		\param sample_rate Audio engine sample rate
+	*/
     void Init(float sample_rate);
 
+    /** Get the next floating point sample */
     float Process();
-	
-	void SetFreq(float freq);
 
-	void Sync();
+    /** Set the frequency at which the next sample is generated.
+		\param freq Frequency in Hz
+	*/
+    void SetFreq(float freq);
+
+    /** Calling this forces another random float to be generated */
+    void Sync();
 
   private:
     // Oscillator state.
@@ -37,8 +45,8 @@ class ClockedNoise
 
     // For interpolation of parameters.
     float frequency_;
-	
-	float sample_rate_;
+
+    float sample_rate_;
 
     //from stmlib random.h
     inline float GetFloat();
