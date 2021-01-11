@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['phasor',['Phasor',['../classdaisysp_1_1_phasor.html',1,'daisysp']]],
-  ['pitchshifter',['PitchShifter',['../classdaisysp_1_1_pitch_shifter.html',1,'daisysp']]],
-  ['pluck',['Pluck',['../classdaisysp_1_1_pluck.html',1,'daisysp']]],
-  ['polypluck',['PolyPluck',['../classdaisysp_1_1_poly_pluck.html',1,'daisysp']]],
-  ['port',['Port',['../classdaisysp_1_1_port.html',1,'daisysp']]]
+  ['maytrig_206',['Maytrig',['../classdaisysp_1_1_maytrig.html',1,'daisysp']]],
+  ['metro_207',['Metro',['../classdaisysp_1_1_metro.html',1,'daisysp']]],
+  ['mode_208',['Mode',['../classdaisysp_1_1_mode.html',1,'daisysp']]],
+  ['moogladder_209',['MoogLadder',['../classdaisysp_1_1_moog_ladder.html',1,'daisysp']]]
 ];

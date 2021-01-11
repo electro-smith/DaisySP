@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nlfilt',['NlFilt',['../classdaisysp_1_1_nl_filt.html',1,'daisysp']]]
+  ['jitter_203',['Jitter',['../classdaisysp_1_1_jitter.html',1,'daisysp']]]
 ];

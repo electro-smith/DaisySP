@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['samplehold',['SampleHold',['../classdaisysp_1_1_sample_hold.html',1,'daisysp']]],
-  ['svf',['Svf',['../classdaisysp_1_1_svf.html',1,'daisysp']]]
+  ['oscillator_211',['Oscillator',['../classdaisysp_1_1_oscillator.html',1,'daisysp']]],
+  ['oscillatorbank_212',['OscillatorBank',['../classdaisysp_1_1_oscillator_bank.html',1,'daisysp']]]
 ];
