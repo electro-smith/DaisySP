@@ -8,7 +8,14 @@ inline void Particle::Init(float sample_rate)
 {
     sample_rate_ = sample_rate;
     sync_        = false;
+	aux_ = 0.f;
+	SetFreq(sample_rate_ / 3.f);
+	resonance_ = .5f;
+	density_ = .5f;
+	gain_ = 1.f;
+	spread_ = .5f;
 
+	SetRandomFreq(48.f / sample_rate_); //48 is the default block size
     rand_phase_ = 0.f;
 
     pre_gain_ = 0.0f;

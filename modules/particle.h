@@ -44,7 +44,7 @@ class Particle
 
   private:
     float sample_rate_;
-    float aux_, frequency_, density_, gain_, freq_, spread_, resonance_;
+    float aux_, frequency_, density_, gain_, spread_, resonance_;
     bool  sync_;
 
     //from stmlib random.h
