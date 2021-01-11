@@ -1,26 +1,34 @@
-<p align="center"><img width=15% src="https://github.com/electro-smith/daisysp/blob/master/resources/assets/banner.png"></p>
-<p align="center"><img width=23% src="https://github.com/electro-smith/daisysp/blob/master/resources/assets/daisysp.png"></p>
+<p align="center">
+  <img width=15% src="https://raw.githubusercontent.com/electro-smith/daisysp/master/resources/assets/banner.png">
+</p>
+<p align="center">
+  <img width=23% src="https://raw.githubusercontent.com/electro-smith/daisysp/master/resources/assets/daisysp.png">
+</p>
 
 <h3 align="center">A Powerful, Open Source DSP Library in C++</h3>
 <br>
 
 <p align="center">
-  <a href="https://travis-ci.com/electro-smith/DaisySP">
-    <img src="https://travis-ci.com/electro-smith/DaisySP.svg?branch=master">
-         </a>
-    <a href="https://opensource.org/licenses/MIT">
-      <img src="https://img.shields.io/badge/license-MIT-yellow"
-           </a>
-      <a href="https://join.slack.com/t/es-daisy/shared_invite/zt-f9cfm1g4-DgdCok1h1Rj4fpX90~IOww">
-        <img src="https://img.shields.io/badge/join-us%20on%20slack-gray.svg?longCache=true&logo=slack&colorB=purple"
-             </a>
-      <a href="https://electro-smith.github.io/DaisySP/index.html">
-        <img src="https://img.shields.io/badge/documentation-online-blue"
-             </a>
-      <a href="https://forum.electro-smith.com/">
-        <img src="https://img.shields.io/badge/chat-daisy%20forum-orange"
-             </a>
-        </p>
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/license-MIT-yellow">
+  </a>
+  <a href="https://join.slack.com/t/es-daisy/shared_invite/zt-f9cfm1g4-DgdCok1h1Rj4fpX90~IOww">
+    <img src="https://img.shields.io/badge/join-us%20on%20slack-gray.svg?longCache=true&logo=slack&colorB=purple">
+  </a>
+  <a href="https://electro-smith.github.io/DaisySP/index.html">
+    <img src="https://img.shields.io/badge/documentation-online-blue">
+  </a>
+  <a href="https://forum.electro-smith.com/">
+    <img src="https://img.shields.io/badge/chat-daisy%20forum-orange">
+  </a>
+</p>
+
+<!--CI Badges-->
+<p align="center">
+    <img src="https://github.com/electro-smith/DaisySP/workflows/Build/badge.svg">
+    <img src="https://github.com/electro-smith/DaisySP/workflows/Style/badge.svg">
+    <img src="https://github.com/electro-smith/DaisySP/workflows/Documentation/badge.svg">
+</p>
       
 <p align="center">
   <a href="#applications">Applications</a> •
