@@ -10,7 +10,7 @@ namespace daisysp
 {
 /**  
        Variable Saw Oscillator \n 
-	   Saw with variable slope or notch. \n
+       Saw with variable slope or notch. \n
        Ported by Ben Sergentanis, Dec 2020 
        @author Emilie Gillet
        @date 2016
@@ -27,18 +27,18 @@ class VariableSawOscillator
     float Process();
 
     /** Set master freq.
-		\param frequency Freq in Hz.
-	*/
+        \param frequency Freq in Hz.
+    */
     void SetFreq(float frequency);
 
     /** Adjust the wave depending on the shape
-		\param pw Notch or slope. Works best -1 to 1.
-	*/
+        \param pw Notch or slope. Works best -1 to 1.
+    */
     void SetPW(float pw);
 
     /** Slope or notch
-		\param waveshape 0 = notch, 1 = slope
-	*/
+        \param waveshape 0 = notch, 1 = slope
+    */
     void SetWaveshape(float waveshape);
 
 
