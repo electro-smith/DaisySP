@@ -1,0 +1,36 @@
+name: Documentation
+
+on:
+  push:
+    branches: [ master ]
+  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build Documentation
+      uses: mattnotmitt/doxygen-action@v1.2.1
+    - name: Deploy Web
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./doc/html
+    # Build PDF currently doesn't work. So no need for Latex
+    #   with:
+    #     enable-latex: true
+    # - name: Build PDF
+    #   run: |
+    #     cwd=$(pwd)
+    #     cd ./doc/latex
+    #     make pdf > /dev/null
+    #     cd $cwd
+    #     mv doc/latex/refman.pdf doc/libdaisy_reference.pdf
+    # Since BulidPDF doesn't work yet, no need to try to add/commit/push
+    # - name: Deploy PDF
+    #   uses: EndBug/add-and-commit@v6
+    #   with: 
+    #     add: 'doc/libdaisy_reference.pdf'
+    #     message: 'automated: updated PDF documentation'
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

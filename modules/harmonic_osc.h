@@ -12,7 +12,7 @@ namespace daisysp
 {
 /**  
        Harmonic Oscillator Module based on Chebyshev polynomials \n 
-	   Works well for a small number of harmonics. For the higher order harmonics. \n
+       Works well for a small number of harmonics. For the higher order harmonics. \n
        We need to reinitialize the recurrence by computing two high harmonics. \n
        Ported by Ben Sergentanis, Dec 2020 
        @author Emilie Gillet
@@ -26,8 +26,8 @@ class HarmonicOscillator
     ~HarmonicOscillator() {}
 
     /** Initialize harmonic oscillator
-		\param sample_rate Audio engine samplerate
-	*/
+        \param sample_rate Audio engine samplerate
+    */
     void Init(float sample_rate)
     {
         sample_rate_ = sample_rate;
@@ -97,8 +97,8 @@ class HarmonicOscillator
     }
 
     /** Set the main frequency 
-		\param freq Freq to be set in Hz.
-	*/
+        \param freq Freq to be set in Hz.
+    */
     void SetFreq(float freq)
     {
         //convert from Hz to phase_inc / sample
@@ -110,8 +110,8 @@ class HarmonicOscillator
     }
 
     /** Offset the set of harmonics. Passing in 3 means "harmonic 0" is the 3rd harm., 1 is the 4th, etc.
-		\param idx Default behavior is 1. Values < 0 default to 1.
-	*/
+        \param idx Default behavior is 1. Values < 0 default to 1.
+    */
     void SetFirstHarmIdx(int idx)
     {
         idx                   = idx < 1 ? 1 : idx;
@@ -120,8 +120,8 @@ class HarmonicOscillator
     }
 
     /** Set the amplitudes of each harmonic of the root. 
-		\param amplitudes Amplitudes to set. Sum of all amplitudes must be < 1. The array referenced must be at least as large as num_harmonics. 
-	*/
+        \param amplitudes Amplitudes to set. Sum of all amplitudes must be < 1. The array referenced must be at least as large as num_harmonics. 
+    */
     void SetAmplitudes(const float* amplitudes)
     {
         for(int i = 0; i < num_harmonics; i++)
@@ -132,9 +132,9 @@ class HarmonicOscillator
     }
 
     /** Sets one amplitude. Does nothing if idx out of range.
-		\param amp Amplitude to set
-		\param idx Which harmonic to set.
-	*/
+        \param amp Amplitude to set
+        \param idx Which harmonic to set.
+    */
     void SetSingleAmp(const float amp, int idx)
     {
         if(idx < 0 || idx >= num_harmonics)
