@@ -4,9 +4,10 @@
 
 using namespace daisysp;
 
-inline void Particle::Init(float sample_rate)
+void Particle::Init(float sample_rate)
 {
     sample_rate_ = sample_rate;
+	
     sync_        = false;
 	aux_ = 0.f;
 	SetFreq(sample_rate_ / 3.f);
@@ -22,7 +23,7 @@ inline void Particle::Init(float sample_rate)
     filter_.Init(sample_rate_);
 }
 
-inline float Particle::Process()
+float Particle::Process()
 {
     float u = sync_ ? density_ : GetFloat();
     sync_   = false;

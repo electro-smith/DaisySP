@@ -22,9 +22,9 @@ class Particle
     Particle() {}
     ~Particle() {}
 
-    inline void Init(float sample_rate);
+    void Init(float sample_rate);
 
-    inline float Process();
+    float Process();
 
     float ProcessAux();
 
