@@ -36,6 +36,7 @@
 #include "modules/fm2.h"
 #include "modules/fold.h"
 #include "modules/formantosc.h"
+#include "modules/fractal_noise.h"
 #include "modules/grainlet.h"
 #include "modules/harmonic_osc.h"
 #include "modules/jitter.h"
