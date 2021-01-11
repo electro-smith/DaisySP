@@ -34,7 +34,7 @@ class Compressor
     void Init(float sample_rate);
 
     /** Compress the audio input signal, saves the calculated gain
-	    \param in audio input signal
+        \param in audio input signal
     */
     float Process(float in);
 
@@ -49,7 +49,7 @@ class Compressor
     }
 
     /** Apply compression to the audio signal, based on the previously calculated gain
-	    \param in audio input signal
+        \param in audio input signal
     */
     float Apply(float in) { return gain_ * in; }
 
@@ -64,10 +64,10 @@ class Compressor
     }
 
     /** Compresses a block of audio, keyed by a secondary input
-	    \param in audio input signal (to be compressed)
-	    \param out audio output signal
-	    \param key audio input that will be used to side-chain the compressor
-	    \param size the size of the block
+        \param in audio input signal (to be compressed)
+        \param out audio output signal
+        \param key audio input that will be used to side-chain the compressor
+        \param size the size of the block
     */
     void ProcessBlock(float *in, float *out, float *key, size_t size);
 

@@ -1,0 +1,13 @@
+name: Build Documentation
+
+on:
+  push:
+    branches: [ master ]
+  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build Documentation
+      uses: mattnotmitt/doxygen-action@v1.2.1
