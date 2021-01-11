@@ -30,6 +30,7 @@ metro \
 mode \
 oscillator \
 oscillatorbank \
+particle \
 phasor \
 pluck \
 port \
