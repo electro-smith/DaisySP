@@ -16,30 +16,36 @@ namespace daisysp
        @author Emilie Gillet
        @date 2016
 */
-class Particle {
- public:
-  Particle() { }
-  ~Particle() { }
+class Particle
+{
+  public:
+    Particle() {}
+    ~Particle() {}
 
-  inline void Init(float sample_rate);
-  
-  inline float Process(
-      bool sync,
-      float density,
-      float gain,
-      float frequency,
-      float spread,
-      float q,
-      float* out,
-      float* aux,
-      size_t size);
-	  
- private:
-	float sample_rate_;
+    inline void Init(float sample_rate);
 
- float pre_gain_;
-  Svf filter_;
+    inline float Process(bool   sync,
+                         float  density,
+                         float  gain,
+                         float  frequency,
+                         float  spread,
+                         float  q);
+						 
+	float ProcessAux();
+						 
+  private:
+    float sample_rate_;
+    float aux_;
+
+    //from stmlib random.h
+    inline float GetFloat();
+    int32_t      rng_state_ = 0x8D5A61A4; //default seed
+
+    const float ratiofrac_   = 1.f / 12.f;
+
+    float pre_gain_;
+    Svf   filter_;
 };
-}  // namespace daisysp
+} // namespace daisysp
 #endif
 #endif
