@@ -11,7 +11,7 @@ namespace daisysp
 {
 /**  
        Formant Oscillator Module \n 
-	   Sinewave with aliasing-free phase reset. \n
+       Sinewave with aliasing-free phase reset. \n
        Ported by Ben Sergentanis, Dec 2020 
        @author Emilie Gillet
        @date 2016
