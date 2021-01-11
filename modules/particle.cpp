@@ -7,53 +7,86 @@ using namespace daisysp;
 inline void Particle::Init(float sample_rate)
 {
     sample_rate_ = sample_rate;
+    sync_        = false;
+
+    rand_phase_ = 0.f;
 
     pre_gain_ = 0.0f;
     filter_.Init(sample_rate_);
 }
 
-inline float Particle::Process(bool  sync,
-                               float density,
-                               float gain,
-                               float frequency,
-                               float spread,
-                               float q)
+inline float Particle::Process()
 {
-    float u = GetFloat();
-    if(sync)
-    {
-        u = density;
-    }
-    bool can_radomize_frequency = true;
-    //    while (size--) {
-    float s = 0.0f;
-    if(u <= density)
-    {
-        s = u * gain;
-        if(can_radomize_frequency)
-        {
-            const float u = 2.0f * GetFloat() - 1.0f;
-            const float f = fmin(
-                    powf(2.f, ratiofrac_ * spread * u) * frequency, 0.25f);
-            pre_gain_ = 0.5f / fastroot(q * f * fastroot(density, 2), 2);
-            filter_.SetFreq(f);
-			filter_.SetRes(q);
+    float u = sync_ ? density_ : GetFloat();
+    sync_   = false;
 
-            // Keep the cutoff constant for this whole block.
-            can_radomize_frequency = false;
+    float s = 0.0f;
+
+    rand_phase_ += rand_freq_;
+
+    if(u <= density_)
+    {
+        s = u * gain_;
+        if(rand_phase_ >= 1.f)
+        {
+            rand_phase_ -= 1.f;
+
+            const float u = 2.0f * GetFloat() - 1.0f;
+            const float f
+                = fmin(powf(2.f, ratiofrac_ * spread_ * u) * frequency_, 0.25f);
+            pre_gain_
+                = 0.5f / fastroot(resonance_ * f * fastroot(density_, 2), 2);
+            filter_.SetFreq(f);
+            filter_.SetRes(resonance_);
         }
     }
     aux_ = s;
     u    = GetFloat();
-    //}
 
     filter_.Process(pre_gain_ * s);
-	return filter_.Band();
+    return filter_.Band();
 }
 
 float Particle::ProcessAux()
 {
     return aux_;
+}
+
+void Particle::SetFreq(float freq)
+{
+    freq /= sample_rate_;
+    frequency_ = fclamp(freq, 0.f, 1.f);
+}
+
+void Particle::SetResonance(float resonance)
+{
+    resonance_ = resonance;
+}
+
+void Particle::SetRandomFreq(float freq)
+{
+    freq /= sample_rate_;
+    rand_freq_ = fclamp(freq, 0.f, 1.f);
+}
+
+void Particle::SetDensity(float density)
+{
+    density_ = density;
+}
+
+void Particle::SetGain(float gain)
+{
+    gain_ = fclamp(gain, 0.f, 1.f);
+}
+
+void Particle::SetSpread(float spread)
+{
+    spread_ = spread;
+}
+
+void Particle::Sync()
+{
+    sync_ = true;
 }
 
 inline float Particle::GetFloat()
