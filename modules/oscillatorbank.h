@@ -11,8 +11,8 @@ namespace daisysp
 {
 /**  
        Oscillator Bank module \n 
-	   A mixture of 7 sawtooth and square waveforms in the style of divide-down organs \n
-	   Originally StringSynth from Plaits. \n
+       A mixture of 7 sawtooth and square waveforms in the style of divide-down organs \n
+       Originally StringSynth from Plaits. \n
        Ported by Ben Sergentanis, Dec 2020 
        @author Emilie Gillet
        @date 2016
@@ -25,33 +25,33 @@ class OscillatorBank
     ~OscillatorBank() {}
 
     /** Init string synth module
-		\param sample_rate Audio engine sample rate
-	*/
+        \param sample_rate Audio engine sample rate
+    */
     void Init(float sample_rate);
 
     /** Get next floating point sample 
-	*/
+    */
     float Process();
 
     /** Set oscillator frequency (8' oscillator)
-		\param freq Frequency in Hz
-	*/
+        \param freq Frequency in Hz
+    */
     void SetFreq(float freq);
 
     /** Set amplitudes of 7 oscillators. 0-6 are Saw 8', Square 8', Saw 4', Square 4', Saw 2', Square 2', Saw 1'
-		\param amplitudes array of 7 floating point amplitudes. Must sum to 1.
-	*/
+        \param amplitudes array of 7 floating point amplitudes. Must sum to 1.
+    */
     void SetAmplitudes(const float* amplitudes);
 
     /** Set a single amplitude
-		\param amp Amplitude to set.
-		\param idx Which wave's amp to set
-	*/
+        \param amp Amplitude to set.
+        \param idx Which wave's amp to set
+    */
     void SetSingleAmp(float amp, int idx);
 
     /** Set overall gain.
-		\param gain Gain to set. 0-1.
-	*/
+        \param gain Gain to set. 0-1.
+    */
     void SetGain(float gain);
 
   private:
@@ -72,7 +72,7 @@ class OscillatorBank
     float sample_rate_;
     bool  recalc_, recalc_gain_;
 
-    bool         cmp(float a, float b) { return fabsf(a - b) > .0000001; }
+    bool cmp(float a, float b) { return fabsf(a - b) > .0000001; }
 };
 } // namespace daisysp
 #endif
