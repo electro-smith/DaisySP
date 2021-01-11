@@ -24,13 +24,13 @@ class FractalRandomGenerator
     FractalRandomGenerator() {}
     ~FractalRandomGenerator() {}
 
-	/** Initialize the module
+    /** Initialize the module
 		\param sample_rate Audio engine sample rate.
 	*/
     void Init(float sample_rate)
     {
-		sample_rate_ = sample_rate;
-		
+        sample_rate_ = sample_rate;
+
         SetColor(.5f);
         SetFreq(440.f);
         for(int i = 0; i < order; ++i)
@@ -39,7 +39,7 @@ class FractalRandomGenerator
         }
     }
 
-	/** Get the next sample. */
+    /** Get the next sample. */
     float Process()
     {
         float gain      = 0.5f;
@@ -48,7 +48,7 @@ class FractalRandomGenerator
 
         for(int i = 0; i < order; ++i)
         {
-			generator_[i].SetFreq(frequency);
+            generator_[i].SetFreq(frequency);
             sum += generator_[i].Process() * gain;
             gain *= decay_;
             frequency *= 2.0f;
@@ -57,21 +57,18 @@ class FractalRandomGenerator
         return sum;
     }
 
-	/** Set the lowest noise frequency.
+    /** Set the lowest noise frequency.
 		\param freq Frequency of the lowest noise source in Hz.
 	*/
-    void SetFreq(float freq)
-    {
-        frequency_ = fclamp(freq, 0.f, sample_rate_);
-    }
+    void SetFreq(float freq) { frequency_ = fclamp(freq, 0.f, sample_rate_); }
 
-	/** Sets the amount of high frequency noise.
+    /** Sets the amount of high frequency noise.
 		\** Works 0-1. 1 is the brightest, and 0 is the darkest.
 	*/
     void SetColor(float color) { decay_ = fclamp(color, 0.f, 1.f); }
 
   private:
-	float sample_rate_;
+    float sample_rate_;
     float frequency_;
     float decay_;
 
