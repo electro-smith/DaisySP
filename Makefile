@@ -11,6 +11,7 @@ balance \
 biquad \
 blosc \
 bitcrush \
+clockednoise \
 comb \
 compressor \
 crossfade \
