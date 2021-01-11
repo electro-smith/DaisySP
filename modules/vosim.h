@@ -11,7 +11,7 @@ namespace daisysp
 {
 /**  
        Vosim Oscillator Module \n 
-	   Two sinewaves multiplied by and sync'ed to a carrier. \n
+       Two sinewaves multiplied by and sync'ed to a carrier. \n
        Ported by Ben Sergentanis, Dec 2020 
        @author Emilie Gillet
        @date 2016
@@ -32,23 +32,23 @@ class VosimOscillator
     float Process();
 
     /** Set carrier frequency.
-		\param freq Frequency in Hz.
-	*/
+        \param freq Frequency in Hz.
+    */
     void SetFreq(float freq);
 
     /** Set formant 1 frequency.
-		\param freq Frequency in Hz.
-	*/
+        \param freq Frequency in Hz.
+    */
     void SetForm1Freq(float freq);
 
     /** Set formant 2 frequency.
-		\param freq Frequency in Hz.
-	*/
+        \param freq Frequency in Hz.
+    */
     void SetForm2Freq(float freq);
 
     /** Waveshaping
-		\param shape Shape to set. Works -1 to 1
-	*/
+        \param shape Shape to set. Works -1 to 1
+    */
     void SetShape(float shape);
 
   private:
