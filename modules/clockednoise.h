@@ -21,9 +21,13 @@ class ClockedNoise
     ClockedNoise() {}
     ~ClockedNoise() {}
 
-    void Init();
+    void Init(float sample_rate);
 
-    float Process(bool sync, float frequency);
+    float Process();
+	
+	void SetFreq(float freq);
+
+	void Sync();
 
   private:
     // Oscillator state.
@@ -33,7 +37,8 @@ class ClockedNoise
 
     // For interpolation of parameters.
     float frequency_;
-
+	
+	float sample_rate_;
 
     //from stmlib random.h
     inline float GetFloat();
