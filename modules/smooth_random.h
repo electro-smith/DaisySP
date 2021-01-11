@@ -2,7 +2,7 @@
 #ifndef DSY_SMOOTHRANDOM_H
 #define DSY_SMOOTHRANDOM_H
 
-#include dsp.h
+#include "dsp.h"
 #include <stdint.h>
 #ifdef __cplusplus
 
@@ -47,7 +47,7 @@ class SmoothRandomGenerator {
 		frequency_ = fclamp(freq, 0.f, 1.f);
 	}
 
-	float Seed(uint32_t seed){
+	void Seed(uint32_t seed){
 		rng_state_ = seed;
 	}
   
@@ -60,7 +60,11 @@ class SmoothRandomGenerator {
   float sample_rate_;
   
   //from stmlib random.h
-  inline float GetFloat();
+inline float GetFloat()
+{
+    rng_state_ = rng_state_ * 1664525L + 1013904223L;
+    return static_cast<float>(rng_state_) / 4294967296.0f;
+}
   int32_t      rng_state_;
 };
 
