@@ -21,15 +21,15 @@ void Particle::Init(float sample_rate)
 
     pre_gain_ = 0.0f;
     filter_.Init(sample_rate_);
-	filter_.SetDrive(.3f);
+	filter_.SetDrive(.7f);
 }
 
 float Particle::Process()
 {
-    float u = GetFloat();
+    float u = sync_ ? density_ : GetFloat();
     float s = 0.0f;
 
-    if(u <= density_ || sync_)
+    if(u <= density_)
     {
         s = u * gain_;
 		rand_phase_ += rand_freq_;
@@ -39,29 +39,26 @@ float Particle::Process()
 
             const float u = 2.0f * GetFloat() - 1.0f;
             const float f
-                = fmin(powf(2.f, ratiofrac_ * spread_ * u) * frequency_, 12000.f); //.25
+                = fmin(powf(2.f, ratiofrac_ * spread_ * u) * frequency_, .25f);
             pre_gain_
                 = 0.5f / sqrtf(resonance_ * f * sqrtf(density_));
-            filter_.SetFreq(f);
+            filter_.SetFreq(f * sample_rate_);
             filter_.SetRes(resonance_);
         }
     }
     aux_ = s;
 
-   // filter_.Process(pre_gain_ * s);
-    filter_.Process(s);
+    filter_.Process(pre_gain_ * s);
     return filter_.Band();
 }
 
-float Particle::ProcessAux()
+float Particle::GetNoise()
 {
     return aux_;
 }
 
 void Particle::SetFreq(float freq)
 {
-	frequency_ = freq;
-	return;
     freq /= sample_rate_;
     frequency_ = fclamp(freq, 0.f, 1.f);
 }
@@ -92,7 +89,7 @@ void Particle::SetSpread(float spread)
     spread_ = spread;
 }
 
-void Particle::Sync(bool sync)
+void Particle::SetSync(bool sync)
 {
     sync_ = sync;
 }

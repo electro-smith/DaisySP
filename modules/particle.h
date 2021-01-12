@@ -29,7 +29,7 @@ class Particle
 
     float Process();
 
-    float ProcessAux();
+    float GetNoise();
 
     void SetFreq(float frequency);
 
@@ -43,7 +43,7 @@ class Particle
 
     void SetSpread(float spread);
 
-    void Sync(bool sync);
+    void SetSync(bool sync);
 
   private:
     float sample_rate_;
