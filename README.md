@@ -2,7 +2,7 @@
   <img width=15% src="https://raw.githubusercontent.com/electro-smith/daisysp/master/resources/assets/banner.png">
 </p>
 <h1 align="center"> DaisySP </h11>
-<h2 align="center">A Powerful, Open Source DSP Library in C++</h2>
+<h3 align="center">A Powerful, Open Source DSP Library in C++</h3>
 <br>
 
 <!--CI Badges-->
