@@ -23,10 +23,17 @@ class SampleRateReducer
     SampleRateReducer() {}
     ~SampleRateReducer() {}
 
+    /** Initialize the module */
     void Init();
 
+    /** Get the next floating point sample 
+		\param in Sample to be processed.
+	*/
     float Process(float in);
 
+    /** Set the new sample rate.
+		\param 0-1. 1 is full quality, .5 is half sample rate, etc.
+	*/
     void SetFreq(float frequency);
 
   private:
