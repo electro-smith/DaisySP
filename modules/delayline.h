@@ -79,11 +79,11 @@ class DelayLine
 		float delay_integral = (float)(int)delay;
 		float delay_fractional = delay - delay_integral;
 
-        int32_t     t     = (write_ptr_ + delay_integral + max_delay);
-        const T     xm1   = line_[(t - 1) % max_delay];
-        const T     x0    = line_[(t) % max_delay];
-        const T     x1    = line_[(t + 1) % max_delay];
-        const T     x2    = line_[(t + 2) % max_delay];
+        int32_t     t     = (write_ptr_ + delay_integral + max_size);
+        const T     xm1   = line_[(t - 1) % max_size];
+        const T     x0    = line_[(t) % max_size];
+        const T     x1    = line_[(t + 1) % max_size];
+        const T     x2    = line_[(t + 2) % max_size];
         const float c     = (x1 - xm1) * 0.5f;
         const float v     = x0 - x1;
         const float w     = c + v;
@@ -95,7 +95,7 @@ class DelayLine
 
     inline const T Allpass(const T sample, size_t delay, const T coefficient)
     {
-        T read  = line_[(write_ptr_ + delay) % max_delay];
+        T read  = line_[(write_ptr_ + delay) % max_size];
         T write = sample + coefficient * read;
         Write(write);
         return -write * coefficient + read;
