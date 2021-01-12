@@ -77,7 +77,7 @@ class DelayLine
     /** Read from a set location */
     inline const T Read(float delay) const
     {
-        int32_t   delay_integral   = static_cast<int32_t>()delay;
+        int32_t   delay_integral   = static_cast<int32_t>(delay);
         float   delay_fractional = delay - static_cast<float>(delay_integral);
         const T a = line_[(write_ptr_ + delay_integral) % max_size];
         const T b = line_[(write_ptr_ + delay_integral + 1) % max_size];
