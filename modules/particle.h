@@ -11,10 +11,13 @@
 namespace daisysp
 {
 /**  
-       Random impulse train processed by a resonant filter.
-       Ported by Ben Sergentanis, Jan 2021 
-       @author Emilie Gillet
-       @date 2016
+       @brief Random impulse train processed by a resonant filter.
+	   @author Ported by Ben Sergentanis 
+	   @date Jan 2021 
+	   Noise processed by a sample and hold running at a target frequency. \n \n
+	   Ported from pichenettes/eurorack/plaits/dsp/noise/clocked_noise.h \n
+	   to an independent module. \n
+	   Original code written by Emilie Gillet in 2016. \n
 */
 class Particle
 {
