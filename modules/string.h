@@ -3,12 +3,26 @@
 #define DSY_STRING_H
 
 #include <stdint.h>
+
+
+#include "modules/crossfade.h"
+#include "modules/dcblock.h"
+#include "modules/delayline.h"
+#include "modules/svf.h"
+
 #ifdef __cplusplus
 
 /** @file string.h */
 
 namespace daisysp
 {
+const size_t kDelayLineSize = 1024;
+
+enum StringNonLinearity
+{
+    STRING_NON_LINEARITY_CURVED_BRIDGE,
+    STRING_NON_LINEARITY_DISPERSION
+};
 
 /**  
        @brief Comb filter / KS string.
@@ -19,57 +33,53 @@ namespace daisysp
 	   to an independent module. \n
 	   Original code written by Emilie Gillet in 2016. \n
 */
-namespace daisysp {
+class String
+{
+  public:
+    String() {}
+    ~String() {}
 
-const size_t kDelayLineSize = 1024;
+    void Init(stmlib::BufferAllocator* allocator, float sample_rate);
+    void Reset();
+    float Process(float        f0,
+                 float        non_linearity_amount,
+                 float        brightness,
+                 float        damping,
+                 const float* in,
+                 float*       out,
+                 size_t       size);
 
-enum StringNonLinearity {
-  STRING_NON_LINEARITY_CURVED_BRIDGE,
-  STRING_NON_LINEARITY_DISPERSION
+  private:
+    template <StringNonLinearity non_linearity>
+    float ProcessInternal(float        f0,
+                         float        non_linearity_amount,
+                         float        brightness,
+                         float        damping,
+                         const float* in,
+                         float*       out,
+                         size_t       size);
+
+    DelayLine<float, kDelayLineSize>     string_;
+    DelayLine<float, kDelayLineSize / 4> stretch_;
+
+    float sample_rate_;
+    float rand_frac_  = 1.f / (float)RAND_MAX;
+    float ratio_frac_ = 1.f / 12.f;
+
+    Svf     iir_damping_filter_;
+    DcBlock dc_blocker_;
+
+	CrossFade crossfade_;
+
+    float delay_;
+    float dispersion_noise_;
+    float curved_bridge_;
+
+    // Very crappy linear interpolation upsampler used for low pitches that
+    // do not fit the delay line. Rarely used.
+    float src_phase_;
+    float out_sample_[2];
 };
-
-class String {
- public:
-  String() { }
-  ~String() { }
-  
-  void Init(stmlib::BufferAllocator* allocator);
-  void Reset();
-  void Process(
-      float f0,
-      float non_linearity_amount,
-      float brightness,
-      float damping,
-      const float* in,
-      float* out,
-      size_t size);
-
- private:
-  template<StringNonLinearity non_linearity>
-  void ProcessInternal(
-      float f0,
-      float non_linearity_amount,
-      float brightness,
-      float damping,
-      const float* in,
-      float* out,
-      size_t size);
-  
-  DelayLine<float, kDelayLineSize> string_;
-  DelayLine<float, kDelayLineSize / 4> stretch_;
-  
-  stmlib::Svf iir_damping_filter_;
-  stmlib::DCBlocker dc_blocker_;
-  
-  float delay_;
-  float dispersion_noise_;
-  float curved_bridge_;
-  
-  // Very crappy linear interpolation upsampler used for low pitches that
-  // do not fit the delay line. Rarely used.
-  float src_phase_;
-  float out_sample_[2];
-};
-}  // namespace daisysp
+} // namespace daisysp
 #endif
 #endif
