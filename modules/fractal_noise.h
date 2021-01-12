@@ -10,12 +10,15 @@
 namespace daisysp
 {
 /**  
-       Stack octaves of a noise source to generate a fractal noise. \n  
+	   @brief Fractal Noise, stacks octaves of a noise source.
+	   @author Ported by Ben Sergentanis 
+	   @date Jan 2021 
 	   T is the noise source to use. T must have SetFreq() and Init(sample_rate) functions. \n
-	   Order is the number of noise sources to stack. \n
-       Ported by Ben Sergentanis, Jan 2021 
-       @author Emilie Gillet
-       @date 2016
+	   Order is the number of noise sources to stack. \n \n
+	   Ported from pichenettes/eurorack/plaits/dsp/noise/fractal_random_generator.h \n
+	   to an independent module. \n
+	   Original code written by Emilie Gillet in 2016. \n
+	   
 */
 template <typename T, int order>
 class FractalRandomGenerator
