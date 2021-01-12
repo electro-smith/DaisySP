@@ -28,42 +28,48 @@ void String::Reset()
     src_phase_                      = 0.0f;
 }
 
-float String::Process(float        f0,
-                     float        non_linearity_amount,
-                     float        brightness,
-                     float        damping,
-                     const float* in,
-                     float*       out,
-                     size_t       size)
+float String::Process(const float in)
 {
-    if(non_linearity_amount <= 0.0f)
+    if(non_linearity_amount_ <= 0.0f)
     {
-        return ProcessInternal<STRING_NON_LINEARITY_CURVED_BRIDGE>(
-            f0, -non_linearity_amount, brightness, damping, in, out, size);
+		non_linearity_amount_ *= -1;
+		float ret = ProcessInternal<STRING_NON_LINEARITY_CURVED_BRIDGE>(in);
+		non_linearity_amount_ *= -1;
+		return ret;
     }
     else
     {
-        return ProcessInternal<STRING_NON_LINEARITY_DISPERSION>(
-            f0, non_linearity_amount, brightness, damping, in, out, size);
-    }
+        return ProcessInternal<STRING_NON_LINEARITY_DISPERSION>(in);
+	}
 }
 
+	void String::SetFreq(float freq){
+		freq /= sample_rate_;
+		frequency_ = fclamp(freq, 0.f, 15000.f);
+	}
+	
+	void String::SetNonLinearity(float non_linearity_amount){
+		non_linearity_amount_ = non_linearity_amount;
+	}
+	
+	void String::SetBrightness(float brightness){
+		brightness_ = brightness;
+	}
+	
+	void String::SetDamping(float damping){
+		damping_ = damping;
+	}
+
 template <StringNonLinearity non_linearity>
-float  String::ProcessInternal(float        f0,
-                             float        non_linearity_amount,
-                             float        brightness,
-                             float        damping,
-                             const float* in,
-                             float*       out,
-                             size_t       size)
+float  String::ProcessInternal(const float in)
 {
-    float delay = 1.0f / f0;
+    float delay = 1.0f / frequency_;
     delay       = fclamp(delay, 4.f, kDelayLineSize - 4.0f);
 
     // If there is not enough delay time in the delay line, we play at the
     // lowest possible note and we upsample on the fly with a shitty linear
-    // interpolator. We don't care because it's a corner case (f0 < 11.7Hz)
-    float src_ratio = delay * f0;
+    // interpolator. We don't care because it's a corner case (frequency_ < 11.7Hz)
+    float src_ratio = delay * frequency_;
     if(src_ratio >= 0.9999f)
     {
         // When we are above 11.7 Hz, we make sure that the linear interpolator
@@ -73,15 +79,15 @@ float  String::ProcessInternal(float        f0,
     }
 
     float damping_cutoff
-        = fmin(12.0f + damping * damping * 60.0f + brightness * 24.0f, 84.0f);
+        = fmin(12.0f + damping_ * damping_ * 60.0f + brightness_ * 24.0f, 84.0f);
     float damping_f
-        = fmin(f0 * powf(2.f, damping_cutoff * ratio_frac_), 0.499f);
+        = fmin(frequency_ * powf(2.f, damping_cutoff * ratio_frac_), 0.499f);
 
     // Crossfade to infinite decay.
-    if(damping >= 0.95f)
+    if(damping_ >= 0.95f)
     {
-        float to_infinite = 20.0f * (damping - 0.95f);
-        brightness += to_infinite * (1.0f - brightness);
+        float to_infinite = 20.0f * (damping_ - 0.95f);
+        brightness_ += to_infinite * (1.0f - brightness_);
         damping_f += to_infinite * (0.4999f - damping_f);
         damping_cutoff += to_infinite * (128.0f - damping_cutoff);
     }
@@ -93,27 +99,23 @@ float  String::ProcessInternal(float        f0,
 	float ratio = powf(2, damping_cutoff * ratio_frac_);
     float damping_compensation = 1.f - 2.f * atan(1.f / ratio) / (2.f * PI_F);
 
-    // Linearly interpolate delay time.
-    //ParameterInterpolator delay_modulation(&delay_, delay * damping_compensation, size);
-
     float stretch_point
-        = non_linearity_amount * (2.0f - non_linearity_amount) * 0.225f;
+        = non_linearity_amount_ * (2.0f - non_linearity_amount_) * 0.225f;
     float stretch_correction = (160.0f / sample_rate_) * delay;
     stretch_correction       = fclamp(stretch_correction, 1.f, 2.1f);
 
-    float noise_amount_sqrt = non_linearity_amount > 0.75f
-                                  ? 4.0f * (non_linearity_amount - 0.75f)
+    float noise_amount_sqrt = non_linearity_amount_ > 0.75f
+                                  ? 4.0f * (non_linearity_amount_ - 0.75f)
                                   : 0.0f;
     float noise_amount = noise_amount_sqrt * noise_amount_sqrt * 0.1f;
-    float noise_filter = 0.06f + 0.94f * brightness * brightness;
+    float noise_filter = 0.06f + 0.94f * brightness_ * brightness_;
 
-    float bridge_curving_sqrt = non_linearity_amount;
+    float bridge_curving_sqrt = non_linearity_amount_;
     float bridge_curving = bridge_curving_sqrt * bridge_curving_sqrt * 0.01f;
 
-    float ap_gain = -0.618f * non_linearity_amount
-                    / (0.15f + fabsf(non_linearity_amount));
+    float ap_gain = -0.618f * non_linearity_amount_
+                    / (0.15f + fabsf(non_linearity_amount_));
 
-	//while
         src_phase_ += src_ratio;
         if(src_phase_ > 1.0f)
         {
@@ -162,7 +164,7 @@ float  String::ProcessInternal(float        f0,
                 curved_bridge_ = (fabsf(value) + value) * sign;
             }
 
-            s += *in;
+            s += in;
             s = fclamp(s, -20.f, +20.f);
 
             dc_blocker_.Process(s);

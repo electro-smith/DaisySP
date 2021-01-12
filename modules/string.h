@@ -41,26 +41,22 @@ class String
 
     void Init(float sample_rate);
     void Reset();
-    float Process(float        f0,
-                 float        non_linearity_amount,
-                 float        brightness,
-                 float        damping,
-                 const float* in,
-                 float*       out,
-                 size_t       size);
+    float Process(const float in);
+				 
+	void SetFreq(float freq);
+	void SetNonLinearity(float non_linearity_amount);
+	void SetBrightness(float brightness);
+	void SetDamping(float damping);
+				 
 
   private:
     template <StringNonLinearity non_linearity>
-    float ProcessInternal(float        f0,
-                         float        non_linearity_amount,
-                         float        brightness,
-                         float        damping,
-                         const float* in,
-                         float*       out,
-                         size_t       size);
+    float ProcessInternal(const float in);
 
     DelayLine<float, kDelayLineSize>     string_;
     DelayLine<float, kDelayLineSize / 4> stretch_;
+
+	float frequency_, non_linearity_amount_, brightness_, damping_;
 
     float sample_rate_;
     float rand_frac_  = 1.f / (float)RAND_MAX;
