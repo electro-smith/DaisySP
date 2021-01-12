@@ -17,21 +17,25 @@ namespace daisysp
 	   to an independent module. \n
 	   Original code written by Emilie Gillet in 2014. \n
 */
-class SampleRateReducer {
- public:
-  SampleRateReducer() { }
-  ~SampleRateReducer() { }
-  
-  void Init();
-  
-  float Process(float frequency, float in);
-  
- private:
-  float phase_;
-  float sample_;
-  float previous_sample_;
-  float next_sample_;
-  };
-}  // namespace daisysp
+class SampleRateReducer
+{
+  public:
+    SampleRateReducer() {}
+    ~SampleRateReducer() {}
+
+    void Init();
+
+    float Process(float in);
+
+    void SetFreq(float frequency);
+
+  private:
+    float frequency_;
+    float phase_;
+    float sample_;
+    float previous_sample_;
+    float next_sample_;
+};
+} // namespace daisysp
 #endif
 #endif
