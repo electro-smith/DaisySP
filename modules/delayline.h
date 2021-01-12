@@ -74,10 +74,20 @@ class DelayLine
         return a + (b - a) * frac_;
     }
 
+    /** Read from a set location */
+    inline const T Read(float delay) const
+    {
+        float   delay_integral   = (float)(int)delay;
+        float   delay_fractional = delay - delay_integral;
+        const T a = line_[(write_ptr_ + delay_integral) % max_size];
+        const T b = line_[(write_ptr_ + delay_integral + 1) % max_size];
+        return a + (b - a) * delay_fractional;
+    }
+
     inline const T ReadHermite(float delay) const
     {
-		float delay_integral = (float)(int)delay;
-		float delay_fractional = delay - delay_integral;
+        float delay_integral   = (float)(int)delay;
+        float delay_fractional = delay - delay_integral;
 
         int32_t     t     = (write_ptr_ + delay_integral + max_size);
         const T     xm1   = line_[(t - 1) % max_size];
