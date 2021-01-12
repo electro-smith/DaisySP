@@ -8,6 +8,11 @@ void String::Init(float sample_rate)
 {
     sample_rate_ = sample_rate;
 
+	SetFreq(440.f);
+	non_linearity_amount_ = .5f;
+	brightness_ = .5f; 
+	damping_ = .5f;
+
     string_.Init();
     stretch_.Init();
     delay_ = 100.0f;
@@ -21,7 +26,8 @@ void String::Reset()
     string_.Reset();
     stretch_.Reset();
     iir_damping_filter_.Init(sample_rate_);
-    dc_blocker_.Init(1.0f - 20.0f / sample_rate_);
+    //dc_blocker_.Init(1.0f - 20.0f / sample_rate_);  what??
+    dc_blocker_.Init(sample_rate_);
     dispersion_noise_ = 0.0f;
     curved_bridge_    = 0.0f;
     out_sample_[0] = out_sample_[1] = 0.0f;
