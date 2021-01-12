@@ -34,6 +34,7 @@ phasor \
 pluck \
 port \
 reverbsc \
+string \
 svf \
 tone \
 variablesawosc \
