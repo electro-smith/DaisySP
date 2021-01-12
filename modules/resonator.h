@@ -28,10 +28,12 @@ enum FilterMode
 // We render 4 modes simultaneously since there are enough registers to hold
 // all state variables.
 /**  
-       SVF for use in the Resonator Class \n 
-       Ported by Ben Sergentanis, Dec 2020 
-       @author Emilie Gillet
-       @date 2016
+	   @brief SVF for use in the Resonator Class \n 
+	   @author Ported by Ben Sergentanis 
+	   @date Jan 2021 
+	   Ported from pichenettes/eurorack/plaits/dsp/physical_modelling/resonator.h \n
+	   to an independent module. \n
+	   Original code written by Emilie Gillet in 2016. \n
 */
 template <int batch_size>
 class ResonatorSvf
@@ -115,11 +117,13 @@ class ResonatorSvf
 };
 
 
-/**  
-       Resonant body simulation \n 
-       Ported by Ben Sergentanis, Dec 2020 
-       @author Emilie Gillet
-       @date 2016
+/**  	   
+	   @brief Resonant Body Simulation
+	   @author Ported by Ben Sergentanis 
+	   @date Jan 2021 
+	   Ported from pichenettes/eurorack/plaits/dsp/physical_modelling/resonator.h \n
+	   to an independent module. \n
+	   Original code written by Emilie Gillet in 2016. \n 
 */
 class Resonator
 {
