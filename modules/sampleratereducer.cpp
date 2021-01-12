@@ -15,10 +15,10 @@ void SampleRateReducer::Init()
 float SampleRateReducer::Process(float in)
 {
     float this_sample = next_sample_;
-	next_sample_ = 0.f;
+    next_sample_      = 0.f;
     phase_ += frequency_;
-	if(phase_ >= 1.0f)
-	{
+    if(phase_ >= 1.0f)
+    {
         phase_ -= 1.0f;
         float t = phase_ / frequency_;
         // t = 0: the transition occurred right at this sample.
@@ -29,7 +29,7 @@ float SampleRateReducer::Process(float in)
         float discontinuity = new_sample - sample_;
         this_sample += discontinuity * ThisBlepSample(t);
         next_sample_ = discontinuity * NextBlepSample(t);
-        sample_ = new_sample;
+        sample_      = new_sample;
     }
     next_sample_ += sample_;
     previous_sample_ = in;
