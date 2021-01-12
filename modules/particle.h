@@ -25,24 +25,50 @@ class Particle
     Particle() {}
     ~Particle() {}
 
+    /** Initialize the module
+		\param sample_rate Audio engine sample rate.
+	*/
     void Init(float sample_rate);
 
+    /** Get the next sample */
     float Process();
 
+    /** Get the raw noise output */
     float GetNoise();
 
+    /** Set the resonant filter frequency
+		\param freq Frequency in Hz
+	*/
     void SetFreq(float frequency);
 
+    /** Set the filter resonance
+		\param resonance Works 0-1
+	*/
     void SetResonance(float resonance);
 
+    /** How often to randomize filter frequency
+		\param freq Frequency in Hz.
+	*/
     void SetRandomFreq(float freq);
 
+    /** Noise density
+		\param Works 0-1.
+	*/
     void SetDensity(float density);
 
+    /** Overall module gain
+		\param Works 0-1.
+	*/
     void SetGain(float gain);
 
+    /** How much to randomize the set filter frequency.
+		\param spread Works over positive numbers.
+	*/
     void SetSpread(float spread);
 
+    /** Force randomize the frequency.
+		\param sync True to randomize freq.
+	*/
     void SetSync(bool sync);
 
   private:
@@ -53,7 +79,7 @@ class Particle
     //from stmlib random.h
     inline float GetFloat();
     int32_t      rng_state_ = 0x8D5A61A4; //default seed
-    float rand_frac_ = 1.f / RAND_MAX;
+    float        rand_frac_ = 1.f / RAND_MAX;
 
     float rand_phase_;
     float rand_freq_;
