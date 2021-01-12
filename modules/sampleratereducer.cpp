@@ -22,8 +22,8 @@ float SampleRateReducer::Process(float in)
     float this_sample = next_sample;
     next_sample       = 0.0f;
     phase += frequency_;
-    if(phase >= 1.0f)
-    {
+	if(phase >= 1.0f)
+	{
         phase -= 1.0f;
         float t = phase / frequency_;
         // t = 0: the transition occurred right at this sample.
@@ -49,5 +49,5 @@ float SampleRateReducer::Process(float in)
 
 void SampleRateReducer::SetFreq(float frequency)
 {
-    frequency_ = fclamp(frequency_, 0.f, 1.f);
+    frequency_ = fclamp(frequency, 0.f, 1.f);
 }
