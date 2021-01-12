@@ -13,7 +13,7 @@ void String::Init(float sample_rate)
     delay_ = 100.0f;
     Reset();
 
-	crossfade_.Init();
+    crossfade_.Init();
 }
 
 void String::Reset()
@@ -32,36 +32,40 @@ float String::Process(const float in)
 {
     if(non_linearity_amount_ <= 0.0f)
     {
-		non_linearity_amount_ *= -1;
-		float ret = ProcessInternal<STRING_NON_LINEARITY_CURVED_BRIDGE>(in);
-		non_linearity_amount_ *= -1;
-		return ret;
+        non_linearity_amount_ *= -1;
+        float ret = ProcessInternal<STRING_NON_LINEARITY_CURVED_BRIDGE>(in);
+        non_linearity_amount_ *= -1;
+        return ret;
     }
     else
     {
         return ProcessInternal<STRING_NON_LINEARITY_DISPERSION>(in);
-	}
+    }
 }
 
-	void String::SetFreq(float freq){
-		freq /= sample_rate_;
-		frequency_ = fclamp(freq, 0.f, 15000.f);
-	}
-	
-	void String::SetNonLinearity(float non_linearity_amount){
-		non_linearity_amount_ = non_linearity_amount;
-	}
-	
-	void String::SetBrightness(float brightness){
-		brightness_ = brightness;
-	}
-	
-	void String::SetDamping(float damping){
-		damping_ = damping;
-	}
+void String::SetFreq(float freq)
+{
+    freq /= sample_rate_;
+    frequency_ = fclamp(freq, 0.f, 15000.f);
+}
+
+void String::SetNonLinearity(float non_linearity_amount)
+{
+    non_linearity_amount_ = non_linearity_amount;
+}
+
+void String::SetBrightness(float brightness)
+{
+    brightness_ = brightness;
+}
+
+void String::SetDamping(float damping)
+{
+    damping_ = damping;
+}
 
 template <StringNonLinearity non_linearity>
-float  String::ProcessInternal(const float in)
+float String::ProcessInternal(const float in)
 {
     float delay = 1.0f / frequency_;
     delay       = fclamp(delay, 4.f, kDelayLineSize - 4.0f);
@@ -78,8 +82,8 @@ float  String::ProcessInternal(const float in)
         src_ratio  = 1.0f;
     }
 
-    float damping_cutoff
-        = fmin(12.0f + damping_ * damping_ * 60.0f + brightness_ * 24.0f, 84.0f);
+    float damping_cutoff = fmin(
+        12.0f + damping_ * damping_ * 60.0f + brightness_ * 24.0f, 84.0f);
     float damping_f
         = fmin(frequency_ * powf(2.f, damping_cutoff * ratio_frac_), 0.499f);
 
@@ -96,7 +100,7 @@ float  String::ProcessInternal(const float in)
     iir_damping_filter_.SetRes(0.5f);
 
 
-	float ratio = powf(2, damping_cutoff * ratio_frac_);
+    float ratio                = powf(2, damping_cutoff * ratio_frac_);
     float damping_compensation = 1.f - 2.f * atan(1.f / ratio) / (2.f * PI_F);
 
     float stretch_point
@@ -116,66 +120,65 @@ float  String::ProcessInternal(const float in)
     float ap_gain = -0.618f * non_linearity_amount_
                     / (0.15f + fabsf(non_linearity_amount_));
 
-        src_phase_ += src_ratio;
-        if(src_phase_ > 1.0f)
+    src_phase_ += src_ratio;
+    if(src_phase_ > 1.0f)
+    {
+        src_phase_ -= 1.0f;
+
+        delay   = delay * damping_compensation;
+        float s = 0.0f;
+
+        if(non_linearity == STRING_NON_LINEARITY_DISPERSION)
         {
-            src_phase_ -= 1.0f;
+            float noise = random() * rand_frac_ - 0.5f;
+            fonepole(dispersion_noise_, noise, noise_filter);
+            delay *= 1.0f + dispersion_noise_ * noise_amount;
+        }
+        else
+        {
+            delay *= 1.0f - curved_bridge_ * bridge_curving;
+        }
 
-            delay = delay * damping_compensation;
-            float s     = 0.0f;
-
-            if(non_linearity == STRING_NON_LINEARITY_DISPERSION)
+        if(non_linearity == STRING_NON_LINEARITY_DISPERSION)
+        {
+            float ap_delay   = delay * stretch_point;
+            float main_delay = delay
+                               - ap_delay * (0.408f - stretch_point * 0.308f)
+                                     * stretch_correction;
+            if(ap_delay >= 4.0f && main_delay >= 4.0f)
             {
-                float noise = random() * rand_frac_ - 0.5f;
-                fonepole(dispersion_noise_, noise, noise_filter);
-                delay *= 1.0f + dispersion_noise_ * noise_amount;
-            }
-            else
-            {
-                delay *= 1.0f - curved_bridge_ * bridge_curving;
-            }
-
-            if(non_linearity == STRING_NON_LINEARITY_DISPERSION)
-            {
-                float ap_delay   = delay * stretch_point;
-                float main_delay = delay
-                                   - ap_delay
-                                         * (0.408f - stretch_point * 0.308f)
-                                         * stretch_correction;
-                if(ap_delay >= 4.0f && main_delay >= 4.0f)
-                {
-                    s = string_.Read(main_delay);
-                    s = stretch_.Allpass(s, ap_delay, ap_gain);
-                }
-                else
-                {
-                    s = string_.ReadHermite(delay);
-                }
+                s = string_.Read(main_delay);
+                s = stretch_.Allpass(s, ap_delay, ap_gain);
             }
             else
             {
                 s = string_.ReadHermite(delay);
             }
-
-            if(non_linearity == STRING_NON_LINEARITY_CURVED_BRIDGE)
-            {
-                float value    = fabsf(s) - 0.025f;
-                float sign     = s > 0.0f ? 1.0f : -1.5f;
-                curved_bridge_ = (fabsf(value) + value) * sign;
-            }
-
-            s += in;
-            s = fclamp(s, -20.f, +20.f);
-
-            dc_blocker_.Process(s);
-			iir_damping_filter_.Process(s);
-            s = iir_damping_filter_.Low();
-            string_.Write(s);
-
-            out_sample_[1] = out_sample_[0];
-            out_sample_[0] = s;
         }
-    
-	crossfade_.SetPos(src_phase_);
-	return crossfade_.Process(out_sample_[1], out_sample_[0]);
+        else
+        {
+            s = string_.ReadHermite(delay);
+        }
+
+        if(non_linearity == STRING_NON_LINEARITY_CURVED_BRIDGE)
+        {
+            float value    = fabsf(s) - 0.025f;
+            float sign     = s > 0.0f ? 1.0f : -1.5f;
+            curved_bridge_ = (fabsf(value) + value) * sign;
+        }
+
+        s += in;
+        s = fclamp(s, -20.f, +20.f);
+
+        dc_blocker_.Process(s);
+        iir_damping_filter_.Process(s);
+        s = iir_damping_filter_.Low();
+        string_.Write(s);
+
+        out_sample_[1] = out_sample_[0];
+        out_sample_[0] = s;
+    }
+
+    crossfade_.SetPos(src_phase_);
+    return crossfade_.Process(out_sample_[1], out_sample_[0]);
 }
