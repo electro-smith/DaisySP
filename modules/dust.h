@@ -11,10 +11,14 @@
 namespace daisysp
 {
 /**  
-		Randomly Clocked Samples \n
-       Ported by Ben Sergentanis, Jan 2021
-       @author Emilie Gillet
-       @date 2016
+	   @brief Dust Module
+	   @author Ported by Ben Sergentanis 
+	   @date Jan 2021 
+	   Randomly Clocked Samples \n \n
+	   Ported from pichenettes/eurorack/plaits/dsp/noise/dust.h \n
+	   to an independent module. \n
+	   Original code written by Emilie Gillet in 2016. \n
+
 */
 class Dust
 {
