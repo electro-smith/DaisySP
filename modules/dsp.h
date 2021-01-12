@@ -137,14 +137,14 @@ T median(T a, T b, T c)
                    : (a < c) ? (c < b) ? c : b : a;
 }
 
-/** From plaits oscillator.h
+/** Ported from pichenettes/eurorack/plaits/dsp/oscillator/oscillator.h
 */
 inline float ThisBlepSample(float t)
 {
     return 0.5f * t * t;
 }
 
-/** From plaits oscillator.h
+/** Ported from pichenettes/eurorack/plaits/dsp/oscillator/oscillator.h
 */
 inline float NextBlepSample(float t)
 {
@@ -152,7 +152,7 @@ inline float NextBlepSample(float t)
     return -0.5f * t * t;
 }
 
-/** From plaits oscillator.h
+/** Ported from pichenettes/eurorack/plaits/dsp/oscillator/oscillator.h
 */
 inline float NextIntegratedBlepSample(float t)
 {
@@ -162,7 +162,7 @@ inline float NextIntegratedBlepSample(float t)
     return 0.1875f - t1 + 1.5f * t2 - t4;
 }
 
-/** From plaits oscillator.h
+/** Ported from pichenettes/eurorack/plaits/dsp/oscillator/oscillator.h
 */
 inline float ThisIntegratedBlepSample(float t)
 {
