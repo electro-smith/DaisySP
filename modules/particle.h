@@ -15,7 +15,7 @@ namespace daisysp
 	   @author Ported by Ben Sergentanis 
 	   @date Jan 2021 
 	   Noise processed by a sample and hold running at a target frequency. \n \n
-	   Ported from pichenettes/eurorack/plaits/dsp/noise/clocked_noise.h \n
+	   Ported from pichenettes/eurorack/plaits/dsp/noise/particle.h \n
 	   to an independent module. \n
 	   Original code written by Emilie Gillet in 2016. \n
 */
