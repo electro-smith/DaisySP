@@ -34,6 +34,7 @@ phasor \
 pluck \
 port \
 reverbsc \
+sampleratereducer \
 svf \
 tone \
 variablesawosc \
