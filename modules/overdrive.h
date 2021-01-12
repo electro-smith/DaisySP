@@ -10,10 +10,12 @@
 namespace daisysp
 {
 /**  
-	   Distortion / Overdrive \n
-       Ported by Ben Sergentanis, Jan 2021 
-       @author Emilie Gillet
-       @date 2014
+	   @brief Distortion / Overdrive Module
+	   @author Ported by Ben Sergentanis 
+	   @date Jan 2021 
+	   Ported from pichenettes/eurorack/plaits/dsp/fx/overdrive.h \n
+	   to an independent module. \n
+	   Original code written by Emilie Gillet in 2014. \n
 */
 class Overdrive
 {
