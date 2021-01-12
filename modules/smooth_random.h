@@ -24,10 +24,12 @@ class SmoothRandomGenerator
     SmoothRandomGenerator() {}
     ~SmoothRandomGenerator() {}
 
+    /** Initialize the module
+		\param sample_rate Audio engine sample rate.
+	*/
     void Init(float sample_rate)
     {
         sample_rate_ = sample_rate;
-        Seed(0x8D5A61A4);
 
         SetFreq(1.f);
         phase_    = 0.0f;
@@ -35,6 +37,7 @@ class SmoothRandomGenerator
         interval_ = 0.0f;
     }
 
+    /** Get the next float. Ranges from -1 to 1. */
     float Process()
     {
         phase_ += frequency_;
@@ -42,19 +45,20 @@ class SmoothRandomGenerator
         {
             phase_ -= 1.0f;
             from_ += interval_;
-            interval_ = GetFloat() * 2.0f - 1.0f - from_;
+            interval_ = random() * rand_frac_ * 2.0f - 1.0f - from_;
         }
         float t = phase_ * phase_ * (3.0f - 2.0f * phase_);
         return from_ + interval_ * t;
     }
 
+    /** How often to slew to a new random value
+		\param freq Rate in Hz
+	*/
     void SetFreq(float freq)
     {
         freq       = freq / sample_rate_;
         frequency_ = fclamp(freq, 0.f, 1.f);
     }
-
-    void Seed(uint32_t seed) { rng_state_ = seed; }
 
   private:
     float frequency_;
@@ -64,13 +68,7 @@ class SmoothRandomGenerator
 
     float sample_rate_;
 
-    //from stmlib random.h
-    inline float GetFloat()
-    {
-        rng_state_ = rng_state_ * 1664525L + 1013904223L;
-        return static_cast<float>(rng_state_) / 4294967296.0f;
-    }
-    int32_t rng_state_;
+    float rand_frac_ = 1.f / (float)RAND_MAX;
 };
 
 } // namespace daisysp
