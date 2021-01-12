@@ -10,11 +10,11 @@ void Particle::Init(float sample_rate)
 
     sync_ = false;
     aux_  = 0.f;
-    SetFreq(500.f);
-    resonance_ = .5f;
+    SetFreq(440.f);
+    resonance_ = .9f;
     density_   = .5f;
     gain_      = 1.f;
-    spread_    = .5f;
+    spread_    = 1.f;
 
     SetRandomFreq(sample_rate_ / 48.f); //48 is the default block size
     rand_phase_ = 0.f;
@@ -76,7 +76,7 @@ void Particle::SetRandomFreq(float freq)
 
 void Particle::SetDensity(float density)
 {
-    density_ = fclamp(density, 0.f, 1.f);
+    density_ = fclamp(density * .3f, 0.f, 1.f);
 }
 
 void Particle::SetGain(float gain)

@@ -33,7 +33,7 @@ class Particle
     /** Get the next sample */
     float Process();
 
-    /** Get the raw noise output */
+    /** Get the raw noise output. Must call Process() first. */
     float GetNoise();
 
     /** Set the resonant filter frequency
