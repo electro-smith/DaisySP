@@ -74,6 +74,33 @@ class DelayLine
         return a + (b - a) * frac_;
     }
 
+    inline const T ReadHermite(float delay) const
+    {
+		float delay_integral = (float)(int)delay;
+		float delay_fractional = delay - delay_integral;
+
+        int32_t     t     = (write_ptr_ + delay_integral + max_size);
+        const T     xm1   = line_[(t - 1) % max_size];
+        const T     x0    = line_[(t) % max_size];
+        const T     x1    = line_[(t + 1) % max_size];
+        const T     x2    = line_[(t + 2) % max_size];
+        const float c     = (x1 - xm1) * 0.5f;
+        const float v     = x0 - x1;
+        const float w     = c + v;
+        const float a     = w + v + (x2 - x0) * 0.5f;
+        const float b_neg = w + a;
+        const float f     = delay_fractional;
+        return (((a * f) - b_neg) * f + c) * f + x0;
+    }
+
+    inline const T Allpass(const T sample, size_t delay, const T coefficient)
+    {
+        T read  = line_[(write_ptr_ + delay) % max_size];
+        T write = sample + coefficient * read;
+        Write(write);
+        return -write * coefficient + read;
+    }
+
   private:
     float  frac_;
     size_t write_ptr_;
