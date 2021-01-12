@@ -90,8 +90,8 @@ float  String::ProcessInternal(float        f0,
     iir_damping_filter_.SetRes(0.5f);
 
 
-    float damping_compensation
-        = Interpolate(lut_svf_shift, damping_cutoff, 1.0f);
+	float ratio = powf(2, damping_cutoff * ratio_frac_);
+    float damping_compensation = 1.f - 2.f * atan(1.f / ratio) / (2.f * PI_F);
 
     // Linearly interpolate delay time.
     //ParameterInterpolator delay_modulation(&delay_, delay * damping_compensation, size);
@@ -119,7 +119,7 @@ float  String::ProcessInternal(float        f0,
         {
             src_phase_ -= 1.0f;
 
-            float delay = delay * damping_compensation;
+            delay = delay * damping_compensation;
             float s     = 0.0f;
 
             if(non_linearity == STRING_NON_LINEARITY_DISPERSION)
