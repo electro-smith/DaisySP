@@ -43,7 +43,7 @@ class Particle
 
     void SetSpread(float spread);
 
-    void Sync();
+    void Sync(bool sync);
 
   private:
     float sample_rate_;
@@ -53,6 +53,7 @@ class Particle
     //from stmlib random.h
     inline float GetFloat();
     int32_t      rng_state_ = 0x8D5A61A4; //default seed
+    float rand_frac_ = 1.f / RAND_MAX;
 
     float rand_phase_;
     float rand_freq_;
