@@ -10,7 +10,7 @@
 namespace daisysp
 {
 /**  
-       @brief Clocked Noise Module
+           @brief Clocked Noise Module
 	   @author Ported by Ben Sergentanis 
 	   @date Jan 2021 
 	   Noise processed by a sample and hold running at a target frequency. \n \n
