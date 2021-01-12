@@ -8,8 +8,8 @@ void String::Init(float sample_rate)
 {
     sample_rate_ = sample_rate;
 
-    string_.Init(sample_rate_);
-    stretch_.Init(sample_rate_);
+    string_.Init();
+    stretch_.Init();
     delay_ = 100.0f;
     Reset();
 
