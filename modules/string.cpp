@@ -4,12 +4,12 @@
 
 using namespace daisysp;
 
-void String::Init(BufferAllocator* allocator, float sample_rate)
+void String::Init(float sample_rate)
 {
     sample_rate_ = sample_rate;
 
-    string_.Init(allocator->Allocate<float>(kDelayLineSize));
-    stretch_.Init(allocator->Allocate<float>(kDelayLineSize / 4));
+    string_.Init(sample_rate_);
+    stretch_.Init(sample_rate_);
     delay_ = 100.0f;
     Reset();
 

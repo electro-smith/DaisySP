@@ -39,7 +39,7 @@ class String
     String() {}
     ~String() {}
 
-    void Init(stmlib::BufferAllocator* allocator, float sample_rate);
+    void Init(float sample_rate);
     void Reset();
     float Process(float        f0,
                  float        non_linearity_amount,
