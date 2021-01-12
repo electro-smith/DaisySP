@@ -26,7 +26,7 @@ void Particle::Init(float sample_rate)
 
 float Particle::Process()
 {
-    float u = GetFloat();
+    float u = random() * rand_frac_;
     float s = 0.0f;
 
     if(u <= density_ || sync_)
@@ -38,7 +38,7 @@ float Particle::Process()
         {
             rand_phase_ = rand_phase_ >= 1.f ? rand_phase_ - 1.f : rand_phase_;
 
-            const float u = 2.0f * GetFloat() - 1.0f;
+            const float u = 2.0f * random() * rand_frac_ - 1.0f;
             const float f
                 = fmin(powf(2.f, ratiofrac_ * spread_ * u) * frequency_, .25f);
             pre_gain_ = 0.5f / sqrtf(resonance_ * f * sqrtf(density_));
@@ -92,11 +92,4 @@ void Particle::SetSpread(float spread)
 void Particle::SetSync(bool sync)
 {
     sync_ = sync;
-}
-
-inline float Particle::GetFloat()
-{
-    return random() * rand_frac_;
-    rng_state_ = rng_state_ * 1664525L + 1013904223L;
-    return static_cast<float>(rng_state_) / 4294967296.0f;
 }
