@@ -17,10 +17,12 @@
 namespace daisysp
 {
 /**    
-       Approximate Lowpass Gate \n
-       Ported by Ben Sergentanis, Jan 2021 \n
-       @author Emilie Gillet
-       @date 2016
+       @brief Approximate Lowpass Gate \n
+	   @author Ported by Ben Sergentanis 
+	   @date Jan 2021 
+	   Ported from pichenettes/eurorack/plaits/dsp/fx/low_pass_gate.h \n
+	   to an independent module. \n
+	   Original code written by Emilie Gillet in 2016. \n
 */
 class LowPassGate
 {
