@@ -51,9 +51,7 @@ class ClockedNoise
 
     float sample_rate_;
 
-    //from stmlib random.h
-    inline float GetFloat();
-    int32_t      rng_state_ = 0x8D5A61A4; //default seed
+    float rand_frac_ = 1.f / (float)RAND_MAX;
 };
 } // namespace daisysp
 #endif
