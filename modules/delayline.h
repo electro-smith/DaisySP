@@ -76,8 +76,8 @@ class DelayLine
 
     inline const T ReadHermite(float delay) const
     {
-		delay_integral = (float)(int)delay;
-		delay_fractional = delay - delay_integral;
+		float delay_integral = (float)(int)delay;
+		float delay_fractional = delay - delay_integral;
 
         int32_t     t     = (write_ptr_ + delay_integral + max_delay);
         const T     xm1   = line_[(t - 1) % max_delay];
