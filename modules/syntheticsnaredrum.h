@@ -9,9 +9,9 @@
 
 /** @file syntheticsnaredrum.h */
 
-namespace daisysp{
-
-    /**  
+namespace daisysp
+{
+/**  
        @brief Naive snare drum model (two modulated oscillators + filtered noise).
 	   @author Ben Sergentanis
 	   @date Jan 2021
@@ -23,7 +23,7 @@ namespace daisysp{
 	   to an independent module. \n
 	   Original code written by Emilie Gillet in 2016. \n
 */
-    class SyntheticSnareDrum
+class SyntheticSnareDrum
 {
   public:
     SyntheticSnareDrum() {}
@@ -32,20 +32,18 @@ namespace daisysp{
     void Init(float sample_rate);
 
     inline float DistortedSine(float phase);
-	
-    void Process(bool   sustain,
-                bool   trigger,
-                float  accent,
-                float  f0,
-                float  fm_amount,
-                float  decay,
-                float  snappy,
-                float* out,
-                size_t size);
+
+    float Process(bool   sustain,
+                 bool   trigger,
+                 float  accent,
+                 float  f0,
+                 float  fm_amount,
+                 float  decay,
+                 float  snappy);
 
   private:
-	float sample_rate_;
-  
+    float sample_rate_;
+
     float phase_[2];
     float drum_amplitude_;
     float snare_amplitude_;
@@ -53,12 +51,12 @@ namespace daisysp{
     float sustain_gain_;
     int   hold_counter_;
 
-	float rand_frac_ = 1.f / (float)RAND_MAX;
-	float ratio_frac_ = 1.f / 12.f;
-	
+    float rand_frac_  = 1.f / (float)RAND_MAX;
+    float ratio_frac_ = 1.f / 12.f;
+
     Svf drum_lp_;
     Svf snare_hp_;
-    Svf     snare_lp_;
+    Svf snare_lp_;
 };
 } // namespace daisysp
 #endif
