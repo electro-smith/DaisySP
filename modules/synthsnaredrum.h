@@ -34,11 +34,6 @@ class SyntheticSnareDrum
 	*/
     void Init(float sample_rate);
 
-	/** Makes a distorted sine wave
-		\param phase Sine wave current phase.
-	*/
-    inline float DistortedSine(float phase);
-
 	/** Get the next sample.
 		\param trigger True = hit the drum.
 	*/
@@ -75,6 +70,8 @@ class SyntheticSnareDrum
     void SetSnappy(float snappy);
 
   private:
+    inline float DistortedSine(float phase);
+
     float sample_rate_;
 
     bool  sustain_;
