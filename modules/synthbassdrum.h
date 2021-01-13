@@ -110,9 +110,10 @@ class SyntheticBassDrum
 
     /** Sets the amount of accent.
 		\param accent Works 0-1.
+	*/
     void SetAccent(float accent);
 
-	/** Set the bass drum's root frequency.
+    /** Set the bass drum's root frequency.
 		\param Frequency in Hz.
 	*/
     void SetFreq(float freq);
