@@ -4,7 +4,7 @@
 
 using namespace daisysp;
 
-void Init()
+void SyntheticSnareDrum::Init()
 {
     phase_[0]        = 0.0f;
     phase_[1]        = 0.0f;
@@ -19,13 +19,13 @@ void Init()
     snare_lp_.Init();
 }
 
-inline float DistortedSine(float phase)
+inline float SyntheticSnareDrum::DistortedSine(float phase)
 {
     float triangle = (phase < 0.5f ? phase : 1.0f - phase) * 4.0f - 1.3f;
     return 2.0f * triangle / (1.0f + fabsf(triangle));
 }
 
-void Render(bool   sustain,
+void SyntheticSnareDrum::Process(bool   sustain,
             bool   trigger,
             float  accent,
             float  f0,
