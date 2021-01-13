@@ -21,6 +21,7 @@ fm2 \
 fold \
 formantosc \
 grainlet \
+hihat \
 jitter \
 line \
 limiter \
