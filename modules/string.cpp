@@ -52,7 +52,7 @@ float String::Process(const float in)
 void String::SetFreq(float freq)
 {
     freq /= sample_rate_;
-    frequency_ = fclamp(freq, 0.f, 15000.f);
+    frequency_ = fclamp(freq, 0.f, .25f);
 }
 
 void String::SetNonLinearity(float non_linearity_amount)
@@ -106,8 +106,8 @@ float String::ProcessInternal(const float in)
     iir_damping_filter_.SetRes(0.5f);
 
 
-    float ratio                = powf(2, damping_cutoff * ratio_frac_);
-    float damping_compensation = 1.f - 2.f * atan(1.f / ratio) / (2.f * PI_F);
+    float ratio                = powf(2.f, damping_cutoff * ratio_frac_);
+    float damping_compensation = 1.f - 2.f * atanf(1.f / ratio) / (TWOPI_F);
 
     float stretch_point
         = non_linearity_amount_ * (2.0f - non_linearity_amount_) * 0.225f;
