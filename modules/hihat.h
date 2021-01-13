@@ -28,8 +28,7 @@ class SquareNoise
 
     void Init();
 
-    void
-    Process(float f0, float* temp_1, float* temp_2, float* out, size_t size);
+    float Process(float f0);
 
   private:
     uint32_t phase_[6];
@@ -51,17 +50,13 @@ class RingModNoise
 
     void Init(float sample_rate);
 
-    void
-    Process(float f0, float* temp_1, float* temp_2, float* out, size_t size);
+    float
+    Process(float f0);
 
   private:
-    void       ProcessPair(Oscillator* osc,
+    float      ProcessPair(Oscillator* osc,
                            float       f1,
-                           float       f2,
-                           float*      temp_1,
-                           float*      temp_2,
-                           float*      out,
-                           size_t      size);
+                           float       f2);
     Oscillator oscillator_[6];
 
     float sample_rate_;
@@ -131,17 +126,13 @@ class HiHat
         hpf_.Init(sample_rate_);
     }
 
-    void Process(bool   sustain,
+    float Process(bool   sustain,
                  bool   trigger,
                  float  accent,
                  float  f0,
                  float  tone,
                  float  decay,
-                 float  noisiness,
-                 float* temp_1,
-                 float* temp_2,
-                 float* out,
-                 size_t size)
+                 float  noisiness)
     {
         const float envelope_decay
             = 1.0f - 0.003f * SemitonesToRatio(-decay * 84.0f);
@@ -154,7 +145,7 @@ class HiHat
         }
 
         // Process the metallic noise.
-        metallic_noise_.Process(2.0f * f0, temp_1, temp_2, out, size);
+        float out = metallic_noise_.Process(2.0f * f0);
 
         // Apply BPF on the metallic noise.
         float cutoff = 150.0f / sample_rate_ * SemitonesToRatio(tone * 72.0f);
@@ -165,8 +156,8 @@ class HiHat
         noise_coloration_svf_.SetFreq(cutoff * sample_rate_);
         noise_coloration_svf_.SetRes(resonance ? 3.0f + 6.0f * tone : 1.0f);
 
-        noise_coloration_svf_.Process(*out);
-        *out = noise_coloration_svf_.Band();
+        noise_coloration_svf_.Process(out);
+        out = noise_coloration_svf_.Band();
 
         // This is not at all part of the 808 circuit! But to add more variety, we
         // add a variable amount of clocked noise to the output of the 6 schmitt
@@ -175,31 +166,27 @@ class HiHat
         float noise_f = f0 * (16.0f + 16.0f * (1.0f - noisiness));
         noise_f       = fclamp(noise_f, 0.0f, 0.5f);
 
-        for(size_t i = 0; i < size; ++i)
-        {
             noise_clock_ += noise_f;
             if(noise_clock_ >= 1.0f)
             {
                 noise_clock_ -= 1.0f;
                 noise_sample_ = random() * rand_frac_ - 0.5f;
             }
-            out[i] += noisiness * (noise_sample_ - out[i]);
-        }
+            out += noisiness * (noise_sample_ - out);
 
         // Apply VCA.
         sustain_gain_ = accent * decay;
-        for(size_t i = 0; i < size; ++i)
-        {
             VCA vca;
             envelope_ *= envelope_ > 0.5f ? envelope_decay : cut_decay;
-            out[i] = vca(out[i], sustain ? sustain_gain_ : envelope_);
-        }
+            out = vca(out, sustain ? sustain_gain_ : envelope_);        
 
         hpf_.SetFreq(cutoff * sample_rate_);
         hpf_.SetRes(.5f);
-        hpf_.Process(*out);
-        *out = hpf_.High();
-    }
+        hpf_.Process(out);
+        out = hpf_.High();
+    
+		return out;
+	}
 
   private:
     float sample_rate_;

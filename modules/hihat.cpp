@@ -12,11 +12,7 @@ void SquareNoise::Init()
     }
 }
 
-void SquareNoise::Process(float  f0,
-                          float* temp_1,
-                          float* temp_2,
-                          float* out,
-                          size_t size)
+float SquareNoise::Process(float  f0)
 {
     const float ratios[6] = {// Nominal f0: 414 Hz
                              1.0f,
@@ -37,8 +33,6 @@ void SquareNoise::Process(float  f0,
         phase[i]     = phase_[i];
     }
 
-    while(size--)
-    {
         phase[0] += increment[0];
         phase[1] += increment[1];
         phase[2] += increment[2];
@@ -52,13 +46,13 @@ void SquareNoise::Process(float  f0,
         noise += (phase[3] >> 31);
         noise += (phase[4] >> 31);
         noise += (phase[5] >> 31);
-        *out++ = 0.33f * static_cast<float>(noise) - 1.0f;
-    }
 
     for(int i = 0; i < 6; ++i)
     {
         phase_[i] = phase[i];
     }
+
+	return 0.33f * static_cast<float>(noise) - 1.0f;
 }
 
 void RingModNoise::Init(float sample_rate)
@@ -71,11 +65,7 @@ void RingModNoise::Init(float sample_rate)
     }
 }
 
-void RingModNoise::Process(float  f0,
-                           float* temp_1,
-                           float* temp_2,
-                           float* out,
-                           size_t size)
+float RingModNoise::Process(float  f0)
 {
     const float ratio = f0 / (0.01f + f0);
     const float f1a   = 200.0f / sample_rate_ * ratio;
@@ -85,33 +75,24 @@ void RingModNoise::Process(float  f0,
     const float f3a   = 730.0f / sample_rate_ * ratio;
     const float f3b   = 10500.0f / sample_rate_ * ratio;
 
-    for(size_t i = 0; i < size; i++)
-    {
-        out[i] = 0.f;
-    }
-
-    ProcessPair(&oscillator_[0], f1a, f1b, temp_1, temp_2, out, size);
-    ProcessPair(&oscillator_[2], f2a, f2b, temp_1, temp_2, out, size);
-    ProcessPair(&oscillator_[4], f3a, f3b, temp_1, temp_2, out, size);
+    float out = ProcessPair(&oscillator_[0], f1a, f1b);
+    out += ProcessPair(&oscillator_[2], f2a, f2b);
+    out += ProcessPair(&oscillator_[4], f3a, f3b);
+	
+	return out;
 }
 
-void RingModNoise::ProcessPair(Oscillator* osc,
+float RingModNoise::ProcessPair(Oscillator* osc,
                                float       f1,
-                               float       f2,
-                               float*      temp_1,
-                               float*      temp_2,
-                               float*      out,
-                               size_t      size)
+                               float       f2)
 {
     osc[0].SetWaveform(Oscillator::WAVE_SQUARE);
     osc[0].SetFreq(f1 * sample_rate_);
-    *temp_1 = osc[0].Process();
+    float temp_1 = osc[0].Process();
 
     osc[1].SetWaveform(Oscillator::WAVE_SAW);
     osc[1].SetFreq(f2 * sample_rate_);
-    *temp_2 = osc[1].Process();
-    while(size--)
-    {
-        *out++ += *temp_1++ * *temp_2++;
-    }
+    float temp_2 = osc[1].Process();
+    
+	return temp_1 * temp_2;
 }
