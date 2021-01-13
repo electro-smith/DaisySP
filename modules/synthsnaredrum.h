@@ -7,7 +7,7 @@
 #include <stdint.h>
 #ifdef __cplusplus
 
-/** @file syntheticsnaredrum.h */
+/** @file synthsnaredrum.h */
 
 namespace daisysp
 {
@@ -33,16 +33,20 @@ class SyntheticSnareDrum
 
     inline float DistortedSine(float phase);
 
-    float Process(bool  sustain,
-                  bool  trigger,
-                  float accent,
-                  float f0,
-                  float fm_amount,
-                  float decay,
-                  float snappy);
+    float Process(bool trigger);
+
+	void SetSustain(bool  sustain);
+    void SetAccent(float accent);
+    void SetFreq(float f0);
+    void SetFmAmount(float fm_amount);
+    void SetDecay(float decay);
+    void SetSnappy(float snappy);
 
   private:
     float sample_rate_;
+
+	bool sustain_;
+	float accent_, f0_, fm_amount_, decay_, snappy_;
 
     float phase_[2];
     float drum_amplitude_;

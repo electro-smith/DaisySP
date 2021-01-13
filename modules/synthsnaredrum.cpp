@@ -1,5 +1,5 @@
 #include "dsp.h"
-#include "syntheticsnaredrum.h"
+#include "synthsnaredrum.h"
 #include <math.h>
 
 using namespace daisysp;
@@ -29,13 +29,7 @@ inline float SyntheticSnareDrum::DistortedSine(float phase)
 
 bool even = true;
 
-float SyntheticSnareDrum::Process(bool  sustain,
-                                  bool  trigger,
-                                  float accent,
-                                  float f0,
-                                  float fm_amount,
-                                  float decay,
-                                  float snappy)
+float SyntheticSnareDrum::Process(bool  trigger)
 {
     const float decay_xt = decay * (1.0f + decay * (decay - 1.0f));
     fm_amount *= fm_amount;
@@ -157,4 +151,28 @@ float SyntheticSnareDrum::Process(bool  sustain,
     snare = (snare + 0.1f) * (snare_amplitude_ + fm_) * snare_level;
 
     return snare + drum; // It's a snare, it's a drum, it's a snare drum.
+}
+
+void SyntheticSnareDrum::SetSustain(bool  sustain){
+	sustain_ = sustain;
+}
+
+void SyntheticSnareDrum::SetAccent(float accent){
+	accent_ = accent;
+}
+
+void SyntheticSnareDrum::SetFreq(float f0){
+	f0_ = f0;
+}
+
+void SyntheticSnareDrum::SetFmAmount(float fm_amount){
+	fm_amount_ = fm_amount;
+}
+
+void SyntheticSnareDrum::SetDecay(float decay){
+	decay_ = decay;
+}
+
+void SyntheticSnareDrum::SetSnappy(float snappy){
+	snappy_ = snappy;
 }
