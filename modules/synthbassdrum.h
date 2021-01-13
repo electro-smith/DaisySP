@@ -82,18 +82,22 @@ class SyntheticBassDrum
 
     inline float TransistorVCA(float s, float gain);
 
-    float  Process(bool   sustain,
-                bool   trigger,
-                float  accent,
-                float  f0,
-                float  tone,
-                float  decay,
-                float  dirtiness,
-                float  fm_envelope_amount,
-                float  fm_envelope_decay);
+    float  Process(bool trigger);
+				
+	void SetSustain(bool   sustain);
+    void SetAccent(float  accent);
+    void SetFreq(float  freq);
+    void SetTone(float  tone);
+    void SetDecay(float  decay);
+    void SetDirtiness(float  dirtiness);
+    void SetFmEnvelopeAmount(float  fm_envelope_amount);
+    void SetFmEnvelopeDecay(float  fm_envelope_decay);
 
   private:
 	float sample_rate_;
+  
+	float sustain_, accent_, new_f0_, tone_, decay_;
+		float dirtiness_, fm_envelope_amount_, fm_envelope_decay_;
   
     float f0_;
     float phase_;

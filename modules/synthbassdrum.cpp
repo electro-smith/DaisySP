@@ -53,6 +53,15 @@ void SyntheticBassDrum::Init(float sample_rate)
     tone_lp_              = 0.0f;
     sustain_gain_         = 0.0f;
 
+	SetFreq(100.f);
+	SetSustain(false);
+	SetAccent(.2f);
+	SetTone(.6f);
+	SetDecay(.7f);
+	SetDirtiness(.3f);
+	SetFmEnvelopeAmount(.6);
+	SetFmEnvelopeDecay(.3);
+	
     click_.Init(sample_rate);
     noise_.Init();
 }
@@ -80,50 +89,40 @@ inline float SyntheticBassDrum::TransistorVCA(float s, float gain)
     return 3.0f * s / (2.0f + fabsf(s)) + gain * 0.3f;
 }
 
-float SyntheticBassDrum::Process(bool   sustain,
-                               bool   trigger,
-                               float  accent,
-                               float  f0,
-                               float  tone,
-                               float  decay,
-                               float  dirtiness,
-                               float  fm_envelope_amount,
-                               float  fm_envelope_decay)
+float SyntheticBassDrum::Process(bool   trigger)
 {
-    decay *= decay;
-    fm_envelope_decay *= fm_envelope_decay;
-
-    dirtiness *= fmax(1.0f - 8.0f * f0, 0.0f);
+	float dirtiness = dirtiness_;
+    dirtiness *= fmax(1.0f - 8.0f * new_f0_, 0.0f);
 
     const float fm_decay
         = 1.0f
-          - 1.0f / (0.008f * (1.0f + fm_envelope_decay * 4.0f) * sample_rate_);
+          - 1.0f / (0.008f * (1.0f + fm_envelope_decay_ * 4.0f) * sample_rate_);
 
     const float body_env_decay
         = 1.0f
-          - 1.0f / (0.02f * sample_rate_) * powf(2.f, (-decay * 60.0f) * ratio_frac_);
+          - 1.0f / (0.02f * sample_rate_) * powf(2.f, (-decay_ * 60.0f) * ratio_frac_);
     const float transient_env_decay = 1.0f - 1.0f / (0.005f * sample_rate_);
     const float tone_f
-        = fmin(4.0f * f0 * powf(2.f, (tone * 108.0f) * ratio_frac_), 1.0f);
-    const float transient_level = tone;
+        = fmin(4.0f * new_f0_ * powf(2.f, (tone_ * 108.0f) * ratio_frac_), 1.0f);
+    const float transient_level = tone_;
 
     if(trigger)
     {
         fm_       = 1.0f;
-        body_env_ = transient_env_ = 0.3f + 0.7f * accent;
+        body_env_ = transient_env_ = 0.3f + 0.7f * accent_;
         body_env_pulse_width_      = sample_rate_ * 0.001f;
         fm_pulse_width_            = sample_rate_ * 0.0013f;
     }
 
-	sustain_gain_ = accent * decay;
+	sustain_gain_ = accent_ * decay_;
 
         fonepole(phase_noise_, random() * rand_frac_ - 0.5f, 0.002f);
 
         float mix = 0.0f;
 
-        if(sustain)
+        if(sustain_)
         {
-			f0_ = f0;
+			f0_ = new_f0_;
             phase_ += f0_;
             if(phase_ >= 1.0f)
             {
@@ -142,8 +141,8 @@ float SyntheticBassDrum::Process(bool   sustain,
             else
             {
                 fm_ *= fm_decay;
-                float fm = 1.0f + fm_envelope_amount * 3.5f * fm_lp_;
-				f0_ = f0;
+                float fm = 1.0f + fm_envelope_amount_ * 3.5f * fm_lp_;
+				f0_ = new_f0_;
                 phase_ += fmin(f0_ * fm, 0.5f);
                 if(phase_ >= 1.0f)
                 {
@@ -178,4 +177,37 @@ float SyntheticBassDrum::Process(bool   sustain,
         fonepole(tone_lp_, mix, tone_f);
         return tone_lp_;
     
+}
+
+void SyntheticBassDrum::SetSustain(bool   sustain){
+	sustain_= sustain;
+}
+
+void SyntheticBassDrum::SetAccent(float  accent){
+	accent_ = accent;
+}
+
+void SyntheticBassDrum::SetFreq(float  freq){
+	freq /= sample_rate_;
+	new_f0_ = fclamp(freq, 0.f, 1.f);
+}
+
+void SyntheticBassDrum::SetTone(float  tone){
+	tone_ = tone;
+}
+
+void SyntheticBassDrum::SetDecay(float  decay){
+	decay_ = decay * decay;
+}
+
+void SyntheticBassDrum::SetDirtiness(float  dirtiness){
+	dirtiness_ = dirtiness;
+}
+
+void SyntheticBassDrum::SetFmEnvelopeAmount(float  fm_envelope_amount){
+	fm_envelope_amount_ = fm_envelope_amount;
+}
+
+void SyntheticBassDrum::SetFmEnvelopeDecay(float  fm_envelope_decay){
+	fm_envelope_decay_ = fm_envelope_decay * fm_envelope_decay;
 }
