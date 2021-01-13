@@ -2,6 +2,9 @@
 #ifndef DSY_HIHAT_H
 #define DSY_HIHAT_H
 
+#include "modules/svf.h"
+#include "modules/oscillator.h"
+
 #include <stdint.h>
 #ifdef __cplusplus
 
@@ -46,7 +49,7 @@ class RingModNoise
     RingModNoise() {}
     ~RingModNoise() {}
 
-    void Init();
+    void Init(float sample_rate);
 
     void
     Process(float f0, float* temp_1, float* temp_2, float* out, size_t size);
@@ -60,6 +63,8 @@ class RingModNoise
                            float*      out,
                            size_t      size);
     Oscillator oscillator_[6];
+
+    float sample_rate_;
 };
 
 /**  
@@ -112,16 +117,18 @@ class HiHat
     HiHat() {}
     ~HiHat() {}
 
-    void Init()
+    void Init(float sample_rate)
     {
+        sample_rate_ = sample_rate;
+
         envelope_     = 0.0f;
         noise_clock_  = 0.0f;
         noise_sample_ = 0.0f;
         sustain_gain_ = 0.0f;
 
-        metallic_noise_.Init();
-        noise_coloration_svf_.Init();
-        hpf_.Init();
+        metallic_noise_.Init(sample_rate_);
+        noise_coloration_svf_.Init(sample_rate_);
+        hpf_.Init(sample_rate_);
     }
 
     void Process(bool   sustain,
@@ -137,9 +144,9 @@ class HiHat
                  size_t size)
     {
         const float envelope_decay
-            = 1.0f - 0.003f * stmlib::SemitonesToRatio(-decay * 84.0f);
+            = 1.0f - 0.003f * SemitonesToRatio(-decay * 84.0f);
         const float cut_decay
-            = 1.0f - 0.0025f * stmlib::SemitonesToRatio(-decay * 36.0f);
+            = 1.0f - 0.0025f * SemitonesToRatio(-decay * 36.0f);
 
         if(trigger)
         {
@@ -150,20 +157,23 @@ class HiHat
         metallic_noise_.Process(2.0f * f0, temp_1, temp_2, out, size);
 
         // Apply BPF on the metallic noise.
-        float cutoff
-            = 150.0f / kSampleRate * stmlib::SemitonesToRatio(tone * 72.0f);
-        CONSTRAIN(cutoff, 0.0f, 16000.0f / kSampleRate);
-        noise_coloration_svf_.set_f_q<stmlib::FREQUENCY_ACCURATE>(
-            cutoff, resonance ? 3.0f + 6.0f * tone : 1.0f);
-        noise_coloration_svf_.Process<stmlib::FILTER_MODE_BAND_PASS>(
-            out, out, size);
+        float cutoff = 150.0f / sample_rate_ * SemitonesToRatio(tone * 72.0f);
+
+        cutoff = fclamp(cutoff, 0.0f, 16000.0f / sample_rate_);
+
+
+        noise_coloration_svf_.SetFreq(cutoff * sample_rate_);
+        noise_coloration_svf_.SetRes(resonance ? 3.0f + 6.0f * tone : 1.0f);
+
+        noise_coloration_svf_.Process(*out);
+        *out = noise_coloration_svf_.Band();
 
         // This is not at all part of the 808 circuit! But to add more variety, we
         // add a variable amount of clocked noise to the output of the 6 schmitt
         // trigger oscillators.
         noisiness *= noisiness;
         float noise_f = f0 * (16.0f + 16.0f * (1.0f - noisiness));
-        CONSTRAIN(noise_f, 0.0f, 0.5f);
+        noise_f       = fclamp(noise_f, 0.0f, 0.5f);
 
         for(size_t i = 0; i < size; ++i)
         {
@@ -171,34 +181,42 @@ class HiHat
             if(noise_clock_ >= 1.0f)
             {
                 noise_clock_ -= 1.0f;
-                noise_sample_ = stmlib::Random::GetFloat() - 0.5f;
+                noise_sample_ = random() * rand_frac_ - 0.5f;
             }
             out[i] += noisiness * (noise_sample_ - out[i]);
         }
 
         // Apply VCA.
-        stmlib::ParameterInterpolator sustain_gain(
-            &sustain_gain_, accent * decay, size);
+        sustain_gain_ = accent * decay;
         for(size_t i = 0; i < size; ++i)
         {
             VCA vca;
             envelope_ *= envelope_ > 0.5f ? envelope_decay : cut_decay;
-            out[i] = vca(out[i], sustain ? sustain_gain.Next() : envelope_);
+            out[i] = vca(out[i], sustain ? sustain_gain_ : envelope_);
         }
 
-        hpf_.set_f_q<stmlib::FREQUENCY_ACCURATE>(cutoff, 0.5f);
-        hpf_.Process<stmlib::FILTER_MODE_HIGH_PASS>(out, out, size);
+        hpf_.SetFreq(cutoff * sample_rate_);
+        hpf_.SetRes(.5f);
+        hpf_.Process(*out);
+        *out = hpf_.High();
     }
 
   private:
+    float sample_rate_;
+
+    float ratio_frac_ = 1.f / 12.f;
+    float SemitonesToRatio(float in) { return powf(2.f, in * ratio_frac_); }
+
+    float rand_frac_ = 1.f / (float)RAND_MAX;
+
     float envelope_;
     float noise_clock_;
     float noise_sample_;
     float sustain_gain_;
 
     MetallicNoiseSource metallic_noise_;
-    stmlib::Svf         noise_coloration_svf_;
-    stmlib::Svf         hpf_;
+    Svf                 noise_coloration_svf_;
+    Svf                 hpf_;
 };
 } // namespace daisysp
 #endif

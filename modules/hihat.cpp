@@ -6,7 +6,10 @@ using namespace daisysp;
 
 void SquareNoise::Init()
 {
-    std::fill(&phase_[0], &phase_[6], 0);
+    for(int i = 0; i < 6; i++)
+    {
+        phase_[i] = 0;
+    }
 }
 
 void SquareNoise::Process(float  f0,
@@ -58,11 +61,13 @@ void SquareNoise::Process(float  f0,
     }
 }
 
-void RingModNoise::Init()
+void RingModNoise::Init(float sample_rate)
 {
+    sample_rate_ = sample_rate;
+
     for(int i = 0; i < 6; ++i)
     {
-        oscillator_[i].Init();
+        oscillator_[i].Init(sample_rate_);
     }
 }
 
@@ -73,14 +78,17 @@ void RingModNoise::Process(float  f0,
                            size_t size)
 {
     const float ratio = f0 / (0.01f + f0);
-    const float f1a   = 200.0f / kSampleRate * ratio;
-    const float f1b   = 7530.0f / kSampleRate * ratio;
-    const float f2a   = 510.0f / kSampleRate * ratio;
-    const float f2b   = 8075.0f / kSampleRate * ratio;
-    const float f3a   = 730.0f / kSampleRate * ratio;
-    const float f3b   = 10500.0f / kSampleRate * ratio;
+    const float f1a   = 200.0f / sample_rate_ * ratio;
+    const float f1b   = 7530.0f / sample_rate_ * ratio;
+    const float f2a   = 510.0f / sample_rate_ * ratio;
+    const float f2b   = 8075.0f / sample_rate_ * ratio;
+    const float f3a   = 730.0f / sample_rate_ * ratio;
+    const float f3b   = 10500.0f / sample_rate_ * ratio;
 
-    std::fill(&out[0], &out[size], 0.0f);
+    for(size_t i = 0; i < size; i++)
+    {
+        out[i] = 0.f;
+    }
 
     ProcessPair(&oscillator_[0], f1a, f1b, temp_1, temp_2, out, size);
     ProcessPair(&oscillator_[2], f2a, f2b, temp_1, temp_2, out, size);
@@ -95,8 +103,13 @@ void RingModNoise::ProcessPair(Oscillator* osc,
                                float*      out,
                                size_t      size)
 {
-    osc[0].Process<OSCILLATOR_SHAPE_SQUARE>(f1, 0.5f, temp_1, size);
-    osc[1].Process<OSCILLATOR_SHAPE_SAW>(f2, 0.5f, temp_2, size);
+    osc[0].SetWaveform(Oscillator::WAVE_SQUARE);
+    osc[0].SetFreq(f1 * sample_rate_);
+    *temp_1 = osc[0].Process();
+
+    osc[1].SetWaveform(Oscillator::WAVE_SAW);
+    osc[1].SetFreq(f2 * sample_rate_);
+    *temp_2 = osc[1].Process();
     while(size--)
     {
         *out++ += *temp_1++ * *temp_2++;
