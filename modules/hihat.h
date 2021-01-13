@@ -26,7 +26,7 @@ class SquareNoise
     SquareNoise() {}
     ~SquareNoise() {}
 
-    void Init();
+    void Init(float sample_rate);
 
     float Process(float f0);
 

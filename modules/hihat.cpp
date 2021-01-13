@@ -4,7 +4,7 @@
 
 using namespace daisysp;
 
-void SquareNoise::Init()
+void SquareNoise::Init(float sample_rate)
 {
     for(int i = 0; i < 6; i++)
     {
