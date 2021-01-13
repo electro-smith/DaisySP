@@ -183,7 +183,7 @@ void SyntheticSnareDrum::SetFmAmount(float fm_amount)
 
 void SyntheticSnareDrum::SetDecay(float decay)
 {
-    decay_ = fclamp(decay, 0.f, 1.f);
+    decay_ = fmax(decay, 0.f);
 }
 
 void SyntheticSnareDrum::SetSnappy(float snappy)
