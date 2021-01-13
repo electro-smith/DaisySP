@@ -52,7 +52,7 @@ class SyntheticBassDrumAttackNoise
 
     void Init();
 
-    float Render();
+    float Process();
 
   private:
   	float rand_frac_ = 1.f / (float)RAND_MAX;
@@ -82,7 +82,7 @@ class SyntheticBassDrum
 
     inline float TransistorVCA(float s, float gain);
 
-    void Render(bool   sustain,
+    float  Process(bool   sustain,
                 bool   trigger,
                 float  accent,
                 float  f0,
@@ -90,9 +90,7 @@ class SyntheticBassDrum
                 float  decay,
                 float  dirtiness,
                 float  fm_envelope_amount,
-                float  fm_envelope_decay,
-                float* out,
-                size_t size);
+                float  fm_envelope_decay);
 
   private:
 	float sample_rate_;

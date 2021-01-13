@@ -29,7 +29,7 @@ void SyntheticBassDrumAttackNoise::Init()
     hp_ = 0.0f;
 }
 
-float SyntheticBassDrumAttackNoise::Render()
+float SyntheticBassDrumAttackNoise::Process()
 {
     float sample = random() * rand_frac_;
     fonepole(lp_, sample, 0.05f);
@@ -80,7 +80,7 @@ inline float SyntheticBassDrum::TransistorVCA(float s, float gain)
     return 3.0f * s / (2.0f + fabsf(s)) + gain * 0.3f;
 }
 
-void SyntheticBassDrum::Render(bool   sustain,
+float SyntheticBassDrum::Process(bool   sustain,
                                bool   trigger,
                                float  accent,
                                float  f0,
@@ -88,9 +88,7 @@ void SyntheticBassDrum::Render(bool   sustain,
                                float  decay,
                                float  dirtiness,
                                float  fm_envelope_amount,
-                               float  fm_envelope_decay,
-                               float* out,
-                               size_t size)
+                               float  fm_envelope_decay)
 {
     decay *= decay;
     fm_envelope_decay *= fm_envelope_decay;
@@ -119,8 +117,6 @@ void SyntheticBassDrum::Render(bool   sustain,
 
 	sustain_gain_ = accent * decay;
 
-    while(size--)
-    {
         fonepole(phase_noise_, random() * rand_frac_ - 0.5f, 0.002f);
 
         float mix = 0.0f;
@@ -173,13 +169,13 @@ void SyntheticBassDrum::Render(bool   sustain,
             float body = DistortedSine(phase_, phase_noise_, dirtiness);
             float transient
                 = click_.Process(body_env_pulse_width_ ? 0.0f : 1.0f)
-                  + noise_.Render();
+                  + noise_.Process();
 
             mix -= TransistorVCA(body, body_env_lp_);
             mix -= transient * transient_env_lp_ * transient_level;
         }
 
         fonepole(tone_lp_, mix, tone_f);
-        *out++ = tone_lp_;
-    }
+        return tone_lp_;
+    
 }
