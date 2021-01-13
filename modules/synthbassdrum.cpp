@@ -201,7 +201,7 @@ void SyntheticBassDrum::SetTone(float tone)
 
 void SyntheticBassDrum::SetDecay(float decay)
 {
-	decay = fclamp(decay, 0.f, 1.f);
+    decay  = fclamp(decay, 0.f, 1.f);
     decay_ = decay * decay;
 }
 
@@ -217,6 +217,6 @@ void SyntheticBassDrum::SetFmEnvelopeAmount(float fm_envelope_amount)
 
 void SyntheticBassDrum::SetFmEnvelopeDecay(float fm_envelope_decay)
 {
-	fm_envelope_decay = fclamp(fm_envelope_decay, 0.f, 1.f);
+    fm_envelope_decay  = fclamp(fm_envelope_decay, 0.f, 1.f);
     fm_envelope_decay_ = fm_envelope_decay * fm_envelope_decay;
 }
