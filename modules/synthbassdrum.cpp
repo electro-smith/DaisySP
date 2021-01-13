@@ -39,8 +39,8 @@ float SyntheticBassDrumAttackNoise::Process()
 
 void SyntheticBassDrum::Init(float sample_rate)
 {
-	sample_rate_ = sample_rate;
-	
+    sample_rate_ = sample_rate;
+
     phase_                = 0.0f;
     phase_noise_          = 0.0f;
     f0_                   = 0.0f;
@@ -53,15 +53,15 @@ void SyntheticBassDrum::Init(float sample_rate)
     tone_lp_              = 0.0f;
     sustain_gain_         = 0.0f;
 
-	SetFreq(100.f);
-	SetSustain(false);
-	SetAccent(.2f);
-	SetTone(.6f);
-	SetDecay(.7f);
-	SetDirtiness(.3f);
-	SetFmEnvelopeAmount(.6);
-	SetFmEnvelopeDecay(.3);
-	
+    SetFreq(100.f);
+    SetSustain(false);
+    SetAccent(.2f);
+    SetTone(.6f);
+    SetDecay(.7f);
+    SetDirtiness(.3f);
+    SetFmEnvelopeAmount(.6);
+    SetFmEnvelopeDecay(.3);
+
     click_.Init(sample_rate);
     noise_.Init();
 }
@@ -76,9 +76,9 @@ inline float SyntheticBassDrum::DistortedSine(float phase,
     int32_t phase_integral   = static_cast<int32_t>(phase);
     float   phase_fractional = phase - static_cast<float>(phase_integral);
 
-    phase          = phase_fractional;
-    float triangle = (phase < 0.5f ? phase : 1.0f - phase) * 4.0f - 1.0f;
-    float sine     = 2.0f * triangle / (1.0f + fabsf(triangle));
+    phase            = phase_fractional;
+    float triangle   = (phase < 0.5f ? phase : 1.0f - phase) * 4.0f - 1.0f;
+    float sine       = 2.0f * triangle / (1.0f + fabsf(triangle));
     float clean_sine = sinf(TWOPI_F * (phase + 0.75f));
     return sine + (1.0f - dirtiness) * (clean_sine - sine);
 }
@@ -89,9 +89,9 @@ inline float SyntheticBassDrum::TransistorVCA(float s, float gain)
     return 3.0f * s / (2.0f + fabsf(s)) + gain * 0.3f;
 }
 
-float SyntheticBassDrum::Process(bool   trigger)
+float SyntheticBassDrum::Process(bool trigger)
 {
-	float dirtiness = dirtiness_;
+    float dirtiness = dirtiness_;
     dirtiness *= fmax(1.0f - 8.0f * new_f0_, 0.0f);
 
     const float fm_decay
@@ -100,10 +100,11 @@ float SyntheticBassDrum::Process(bool   trigger)
 
     const float body_env_decay
         = 1.0f
-          - 1.0f / (0.02f * sample_rate_) * powf(2.f, (-decay_ * 60.0f) * ratio_frac_);
+          - 1.0f / (0.02f * sample_rate_)
+                * powf(2.f, (-decay_ * 60.0f) * ratio_frac_);
     const float transient_env_decay = 1.0f - 1.0f / (0.005f * sample_rate_);
-    const float tone_f
-        = fmin(4.0f * new_f0_ * powf(2.f, (tone_ * 108.0f) * ratio_frac_), 1.0f);
+    const float tone_f              = fmin(
+        4.0f * new_f0_ * powf(2.f, (tone_ * 108.0f) * ratio_frac_), 1.0f);
     const float transient_level = tone_;
 
     if(trigger)
@@ -114,100 +115,108 @@ float SyntheticBassDrum::Process(bool   trigger)
         fm_pulse_width_            = sample_rate_ * 0.0013f;
     }
 
-	sustain_gain_ = accent_ * decay_;
+    sustain_gain_ = accent_ * decay_;
 
-        fonepole(phase_noise_, random() * rand_frac_ - 0.5f, 0.002f);
+    fonepole(phase_noise_, random() * rand_frac_ - 0.5f, 0.002f);
 
-        float mix = 0.0f;
+    float mix = 0.0f;
 
-        if(sustain_)
+    if(sustain_)
+    {
+        f0_ = new_f0_;
+        phase_ += f0_;
+        if(phase_ >= 1.0f)
         {
-			f0_ = new_f0_;
-            phase_ += f0_;
+            phase_ -= 1.0f;
+        }
+        float body = DistortedSine(phase_, phase_noise_, dirtiness);
+        mix -= TransistorVCA(body, sustain_gain_);
+    }
+    else
+    {
+        if(fm_pulse_width_)
+        {
+            --fm_pulse_width_;
+            phase_ = 0.25f;
+        }
+        else
+        {
+            fm_ *= fm_decay;
+            float fm = 1.0f + fm_envelope_amount_ * 3.5f * fm_lp_;
+            f0_      = new_f0_;
+            phase_ += fmin(f0_ * fm, 0.5f);
             if(phase_ >= 1.0f)
             {
                 phase_ -= 1.0f;
             }
-            float body = DistortedSine(phase_, phase_noise_, dirtiness);
-            mix -= TransistorVCA(body, sustain_gain_);
+        }
+
+        if(body_env_pulse_width_)
+        {
+            --body_env_pulse_width_;
         }
         else
         {
-            if(fm_pulse_width_)
-            {
-                --fm_pulse_width_;
-                phase_ = 0.25f;
-            }
-            else
-            {
-                fm_ *= fm_decay;
-                float fm = 1.0f + fm_envelope_amount_ * 3.5f * fm_lp_;
-				f0_ = new_f0_;
-                phase_ += fmin(f0_ * fm, 0.5f);
-                if(phase_ >= 1.0f)
-                {
-                    phase_ -= 1.0f;
-                }
-            }
-
-            if(body_env_pulse_width_)
-            {
-                --body_env_pulse_width_;
-            }
-            else
-            {
-                body_env_ *= body_env_decay;
-                transient_env_ *= transient_env_decay;
-            }
-
-            const float envelope_lp_f = 0.1f;
-            fonepole(body_env_lp_, body_env_, envelope_lp_f);
-            fonepole(transient_env_lp_, transient_env_, envelope_lp_f);
-            fonepole(fm_lp_, fm_, envelope_lp_f);
-
-            float body = DistortedSine(phase_, phase_noise_, dirtiness);
-            float transient
-                = click_.Process(body_env_pulse_width_ ? 0.0f : 1.0f)
-                  + noise_.Process();
-
-            mix -= TransistorVCA(body, body_env_lp_);
-            mix -= transient * transient_env_lp_ * transient_level;
+            body_env_ *= body_env_decay;
+            transient_env_ *= transient_env_decay;
         }
 
-        fonepole(tone_lp_, mix, tone_f);
-        return tone_lp_;
-    
+        const float envelope_lp_f = 0.1f;
+        fonepole(body_env_lp_, body_env_, envelope_lp_f);
+        fonepole(transient_env_lp_, transient_env_, envelope_lp_f);
+        fonepole(fm_lp_, fm_, envelope_lp_f);
+
+        float body      = DistortedSine(phase_, phase_noise_, dirtiness);
+        float transient = click_.Process(body_env_pulse_width_ ? 0.0f : 1.0f)
+                          + noise_.Process();
+
+        mix -= TransistorVCA(body, body_env_lp_);
+        mix -= transient * transient_env_lp_ * transient_level;
+    }
+
+    fonepole(tone_lp_, mix, tone_f);
+    return tone_lp_;
 }
 
-void SyntheticBassDrum::SetSustain(bool   sustain){
-	sustain_= sustain;
+void SyntheticBassDrum::SetSustain(bool sustain)
+{
+    sustain_ = sustain;
 }
 
-void SyntheticBassDrum::SetAccent(float  accent){
-	accent_ = accent;
+void SyntheticBassDrum::SetAccent(float accent)
+{
+    accent_ = fclamp(accent, 0.f, 1.f);
 }
 
-void SyntheticBassDrum::SetFreq(float  freq){
-	freq /= sample_rate_;
-	new_f0_ = fclamp(freq, 0.f, 1.f);
+void SyntheticBassDrum::SetFreq(float freq)
+{
+    freq /= sample_rate_;
+    new_f0_ = fclamp(freq, 0.f, 1.f);
 }
 
-void SyntheticBassDrum::SetTone(float  tone){
-	tone_ = tone;
+void SyntheticBassDrum::SetTone(float tone)
+{
+    tone_ = fclamp(tone, 0.f, 1.f);
 }
 
-void SyntheticBassDrum::SetDecay(float  decay){
-	decay_ = decay * decay;
+void SyntheticBassDrum::SetDecay(float decay)
+{
+	decay = fclamp(decay, 0.f, 1.f);
+    decay_ = decay * decay;
 }
 
-void SyntheticBassDrum::SetDirtiness(float  dirtiness){
-	dirtiness_ = dirtiness;
+void SyntheticBassDrum::SetDirtiness(float dirtiness)
+{
+    dirtiness_ = fclamp(dirtiness, 0.f, 1.f);
 }
 
-void SyntheticBassDrum::SetFmEnvelopeAmount(float  fm_envelope_amount){
-	fm_envelope_amount_ = fm_envelope_amount;
+void SyntheticBassDrum::SetFmEnvelopeAmount(float fm_envelope_amount)
+{
+    fm_envelope_amount_ = fclamp(fm_envelope_amount, 0.f, 1.f);
 }
 
-void SyntheticBassDrum::SetFmEnvelopeDecay(float  fm_envelope_decay){
-	fm_envelope_decay_ = fm_envelope_decay * fm_envelope_decay;
+void SyntheticBassDrum::SetFmEnvelopeDecay(float fm_envelope_decay)
+{
+	fm_envelope_decay = fclamp(fm_envelope_decay, 0.f, 1.f);
+    fm_envelope_decay_ = fm_envelope_decay * fm_envelope_decay;
 }

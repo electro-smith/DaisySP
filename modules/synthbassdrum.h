@@ -55,8 +55,8 @@ class SyntheticBassDrumAttackNoise
     float Process();
 
   private:
-  	float rand_frac_ = 1.f / (float)RAND_MAX;
-  
+    float rand_frac_ = 1.f / (float)RAND_MAX;
+
     float lp_;
     float hp_;
 };
@@ -82,23 +82,23 @@ class SyntheticBassDrum
 
     inline float TransistorVCA(float s, float gain);
 
-    float  Process(bool trigger);
-				
-	void SetSustain(bool   sustain);
-    void SetAccent(float  accent);
-    void SetFreq(float  freq);
-    void SetTone(float  tone);
-    void SetDecay(float  decay);
-    void SetDirtiness(float  dirtiness);
-    void SetFmEnvelopeAmount(float  fm_envelope_amount);
-    void SetFmEnvelopeDecay(float  fm_envelope_decay);
+    float Process(bool trigger);
+
+    void SetSustain(bool sustain);
+    void SetAccent(float accent);
+    void SetFreq(float freq);
+    void SetTone(float tone);
+    void SetDecay(float decay);
+    void SetDirtiness(float dirtiness);
+    void SetFmEnvelopeAmount(float fm_envelope_amount);
+    void SetFmEnvelopeDecay(float fm_envelope_decay);
 
   private:
-	float sample_rate_;
-  
-	float sustain_, accent_, new_f0_, tone_, decay_;
-		float dirtiness_, fm_envelope_amount_, fm_envelope_decay_;
-  
+    float sample_rate_;
+
+    float sustain_, accent_, new_f0_, tone_, decay_;
+    float dirtiness_, fm_envelope_amount_, fm_envelope_decay_;
+
     float f0_;
     float phase_;
     float phase_noise_;
@@ -114,8 +114,8 @@ class SyntheticBassDrum
 
     float tone_lp_;
 
-	float ratio_frac_ = 1.f / 12.f;
-	float rand_frac_ = 1.f / (float)RAND_MAX;
+    float ratio_frac_ = 1.f / 12.f;
+    float rand_frac_  = 1.f / (float)RAND_MAX;
 
     SyntheticBassDrumClick       click_;
     SyntheticBassDrumAttackNoise noise_;
