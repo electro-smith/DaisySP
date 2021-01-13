@@ -73,6 +73,8 @@ void String::SetDamping(float damping)
 template <StringNonLinearity non_linearity>
 float String::ProcessInternal(const float in)
 {
+	float brightness = brightness_;
+
     float delay = 1.0f / frequency_;
     delay       = fclamp(delay, 4.f, kDelayLineSize - 4.0f);
 
@@ -97,12 +99,12 @@ float String::ProcessInternal(const float in)
     if(damping_ >= 0.95f)
     {
         float to_infinite = 20.0f * (damping_ - 0.95f);
-        brightness_ += to_infinite * (1.0f - brightness_);
+        brightness += to_infinite * (1.0f - brightness);
         damping_f += to_infinite * (0.4999f - damping_f);
         damping_cutoff += to_infinite * (128.0f - damping_cutoff);
     }
 
-    iir_damping_filter_.SetFreq(damping_f);
+    iir_damping_filter_.SetFreq(damping_f * sample_rate_);
     iir_damping_filter_.SetRes(0.5f);
 
 
@@ -118,7 +120,7 @@ float String::ProcessInternal(const float in)
                                   ? 4.0f * (non_linearity_amount_ - 0.75f)
                                   : 0.0f;
     float noise_amount = noise_amount_sqrt * noise_amount_sqrt * 0.1f;
-    float noise_filter = 0.06f + 0.94f * brightness_ * brightness_;
+    float noise_filter = 0.06f + 0.94f * brightness * brightness;
 
     float bridge_curving_sqrt = non_linearity_amount_;
     float bridge_curving = bridge_curving_sqrt * bridge_curving_sqrt * 0.01f;
