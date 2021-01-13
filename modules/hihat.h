@@ -50,13 +50,10 @@ class RingModNoise
 
     void Init(float sample_rate);
 
-    float
-    Process(float f0);
+    float Process(float f0);
 
   private:
-    float      ProcessPair(Oscillator* osc,
-                           float       f1,
-                           float       f2);
+    float      ProcessPair(Oscillator* osc, float f1, float f2);
     Oscillator oscillator_[6];
 
     float sample_rate_;
@@ -105,7 +102,7 @@ class LinearVCA
 	   to an independent module. \n
 	   Original code written by Emilie Gillet in 2016. \n
 */
-template <typename MetallicNoiseSource, typename VCA, bool resonance>
+template <typename MetallicNoiseSource = SquareNoise, typename VCA = LinearVCA, bool resonance = true>
 class HiHat
 {
   public:
@@ -126,13 +123,13 @@ class HiHat
         hpf_.Init(sample_rate_);
     }
 
-    float Process(bool   sustain,
-                 bool   trigger,
-                 float  accent,
-                 float  f0,
-                 float  tone,
-                 float  decay,
-                 float  noisiness)
+    float Process(bool  sustain,
+                  bool  trigger,
+                  float accent,
+                  float f0,
+                  float tone,
+                  float decay,
+                  float noisiness)
     {
         const float envelope_decay
             = 1.0f - 0.003f * SemitonesToRatio(-decay * 84.0f);
@@ -166,27 +163,27 @@ class HiHat
         float noise_f = f0 * (16.0f + 16.0f * (1.0f - noisiness));
         noise_f       = fclamp(noise_f, 0.0f, 0.5f);
 
-            noise_clock_ += noise_f;
-            if(noise_clock_ >= 1.0f)
-            {
-                noise_clock_ -= 1.0f;
-                noise_sample_ = random() * rand_frac_ - 0.5f;
-            }
-            out += noisiness * (noise_sample_ - out);
+        noise_clock_ += noise_f;
+        if(noise_clock_ >= 1.0f)
+        {
+            noise_clock_ -= 1.0f;
+            noise_sample_ = random() * rand_frac_ - 0.5f;
+        }
+        out += noisiness * (noise_sample_ - out);
 
         // Apply VCA.
         sustain_gain_ = accent * decay;
-            VCA vca;
-            envelope_ *= envelope_ > 0.5f ? envelope_decay : cut_decay;
-            out = vca(out, sustain ? sustain_gain_ : envelope_);        
+        VCA vca;
+        envelope_ *= envelope_ > 0.5f ? envelope_decay : cut_decay;
+        out = vca(out, sustain ? sustain_gain_ : envelope_);
 
         hpf_.SetFreq(cutoff * sample_rate_);
         hpf_.SetRes(.5f);
         hpf_.Process(out);
         out = hpf_.High();
-    
-		return out;
-	}
+
+        return out;
+    }
 
   private:
     float sample_rate_;
