@@ -35,7 +35,7 @@ class SyntheticSnareDrum
 
     float Process(bool trigger);
 
-	void SetSustain(bool  sustain);
+    void SetSustain(bool sustain);
     void SetAccent(float accent);
     void SetFreq(float f0);
     void SetFmAmount(float fm_amount);
@@ -45,8 +45,8 @@ class SyntheticSnareDrum
   private:
     float sample_rate_;
 
-	bool sustain_;
-	float accent_, f0_, fm_amount_, decay_, snappy_;
+    bool  sustain_;
+    float accent_, f0_, fm_amount_, decay_, snappy_;
 
     float phase_[2];
     float drum_amplitude_;

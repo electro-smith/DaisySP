@@ -29,52 +29,51 @@ inline float SyntheticSnareDrum::DistortedSine(float phase)
 
 bool even = true;
 
-float SyntheticSnareDrum::Process(bool  trigger)
+float SyntheticSnareDrum::Process(bool trigger)
 {
-    const float decay_xt = decay * (1.0f + decay * (decay - 1.0f));
-    fm_amount *= fm_amount;
+    const float decay_xt = decay_ * (1.0f + decay_ * (decay_ - 1.0f));
     const float drum_decay
         = 1.0f
           - 1.0f / (0.015f * sample_rate_)
                 * powf(2.f,
                        ratio_frac_
-                           * (-decay_xt * 72.0f - fm_amount * 12.0f
-                              + snappy * 7.0f));
+                           * (-decay_xt * 72.0f - fm_amount_ * 12.0f
+                              + snappy_ * 7.0f));
 
     const float snare_decay
         = 1.0f
           - 1.0f / (0.01f * sample_rate_)
-                * powf(2.f, ratio_frac_ * (-decay * 60.0f - snappy * 7.0f));
+                * powf(2.f, ratio_frac_ * (-decay_ * 60.0f - snappy_ * 7.0f));
     const float fm_decay = 1.0f - 1.0f / (0.007f * sample_rate_);
 
-    snappy = snappy * 1.1f - 0.05f;
-    snappy = fclamp(snappy, 0.0f, 1.0f);
+    float snappy = snappy_ * 1.1f - 0.05f;
+    snappy       = fclamp(snappy, 0.0f, 1.0f);
 
     const float drum_level  = sqrtf(1.0f - snappy);
     const float snare_level = sqrtf(snappy);
 
-    const float snare_f_min = fmin(10.0f * f0, 0.5f);
-    const float snare_f_max = fmin(35.0f * f0, 0.5f);
+    const float snare_f_min = fmin(10.0f * f0_, 0.5f);
+    const float snare_f_max = fmin(35.0f * f0_, 0.5f);
 
     snare_hp_.SetFreq(snare_f_min * sample_rate_);
     snare_lp_.SetFreq(snare_f_max * sample_rate_);
     snare_lp_.SetRes(0.5f + 2.0f * snappy);
 
-    drum_lp_.SetFreq(3.0f * f0 * sample_rate_);
+    drum_lp_.SetFreq(3.0f * f0_ * sample_rate_);
 
     if(trigger)
     {
-        snare_amplitude_ = drum_amplitude_ = 0.3f + 0.7f * accent;
+        snare_amplitude_ = drum_amplitude_ = 0.3f + 0.7f * accent_;
         fm_                                = 1.0f;
         phase_[0] = phase_[1] = 0.0f;
         hold_counter_
-            = static_cast<int>((0.04f + decay * 0.03f) * sample_rate_);
+            = static_cast<int>((0.04f + decay_ * 0.03f) * sample_rate_);
     }
 
     even = !even;
-    if(sustain)
+    if(sustain_)
     {
-        sustain_gain_ = snare_amplitude_ = accent * decay;
+        sustain_gain_ = snare_amplitude_ = accent_ * decay_;
         drum_amplitude_                  = snare_amplitude_;
         fm_                              = 0.0f;
     }
@@ -101,15 +100,15 @@ float SyntheticSnareDrum::Process(bool  trigger)
     // leaving Q40's collector and resetting all oscillators allow some
     // intermodulation.
     float reset_noise        = 0.0f;
-    float reset_noise_amount = (0.125f - f0) * 8.0f;
+    float reset_noise_amount = (0.125f - f0_) * 8.0f;
     reset_noise_amount       = fclamp(reset_noise_amount, 0.0f, 1.0f);
     reset_noise_amount *= reset_noise_amount;
-    reset_noise_amount *= fm_amount;
+    reset_noise_amount *= fm_amount_;
     reset_noise += phase_[0] > 0.5f ? -1.0f : 1.0f;
     reset_noise += phase_[1] > 0.5f ? -1.0f : 1.0f;
     reset_noise *= reset_noise_amount * 0.025f;
 
-    float f = f0 * (1.0f + fm_amount * (4.0f * fm_));
+    float f = f0_ * (1.0f + fm_amount_ * (4.0f * fm_));
     phase_[0] += f;
     phase_[1] += f * 1.47f;
     if(reset_noise_amount > 0.1f)
@@ -153,26 +152,32 @@ float SyntheticSnareDrum::Process(bool  trigger)
     return snare + drum; // It's a snare, it's a drum, it's a snare drum.
 }
 
-void SyntheticSnareDrum::SetSustain(bool  sustain){
-	sustain_ = sustain;
+void SyntheticSnareDrum::SetSustain(bool sustain)
+{
+    sustain_ = sustain;
 }
 
-void SyntheticSnareDrum::SetAccent(float accent){
-	accent_ = accent;
+void SyntheticSnareDrum::SetAccent(float accent)
+{
+    accent_ = accent;
 }
 
-void SyntheticSnareDrum::SetFreq(float f0){
-	f0_ = f0;
+void SyntheticSnareDrum::SetFreq(float f0)
+{
+    f0_ = f0;
 }
 
-void SyntheticSnareDrum::SetFmAmount(float fm_amount){
-	fm_amount_ = fm_amount;
+void SyntheticSnareDrum::SetFmAmount(float fm_amount)
+{
+    fm_amount_ = fm_amount * fm_amount;
 }
 
-void SyntheticSnareDrum::SetDecay(float decay){
-	decay_ = decay;
+void SyntheticSnareDrum::SetDecay(float decay)
+{
+    decay_ = decay;
 }
 
-void SyntheticSnareDrum::SetSnappy(float snappy){
-	snappy_ = snappy;
+void SyntheticSnareDrum::SetSnappy(float snappy)
+{
+    snappy_ = snappy;
 }
