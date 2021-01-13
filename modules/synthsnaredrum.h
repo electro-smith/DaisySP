@@ -29,42 +29,42 @@ class SyntheticSnareDrum
     SyntheticSnareDrum() {}
     ~SyntheticSnareDrum() {}
 
-	/** Init the module
+    /** Init the module
 		\param sample_rate Audio engine sample rate
 	*/
     void Init(float sample_rate);
 
-	/** Get the next sample.
+    /** Get the next sample.
 		\param trigger True = hit the drum.
 	*/
     float Process(bool trigger);
 
-	/** Make the drum ring out infinitely.
+    /** Make the drum ring out infinitely.
 		\param sustain True = infinite sustain.
 	*/
     void SetSustain(bool sustain);
 
-	/** Set how much accent to use
+    /** Set how much accent to use
 		\param accent Works 0-1.
 	*/
     void SetAccent(float accent);
 
-	/** Set the drum's root frequency
+    /** Set the drum's root frequency
 		\param f0 Freq in Hz
 	*/
     void SetFreq(float f0);
-	
-	/** Set the amount of fm sweep.
+
+    /** Set the amount of fm sweep.
 		\param fm_amount Works from 0 - 1.
 	*/
-	void SetFmAmount(float fm_amount);
-	
-	/** Set the length of the drum decay
+    void SetFmAmount(float fm_amount);
+
+    /** Set the length of the drum decay
 		\param decay Works with positive numbers
 	*/
     void SetDecay(float decay);
-	
-	/** Sets the mix between snare and drum.
+
+    /** Sets the mix between snare and drum.
 		\param snappy 1 = just snare. 0 = just drum.
 	*/
     void SetSnappy(float snappy);
