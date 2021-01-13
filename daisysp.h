@@ -55,6 +55,7 @@
 #include "modules/pluck.h"
 #include "modules/reverbsc.h"
 #include "modules/samplehold.h"
+#include "modules/synthbassdrum.h"
 #include "modules/svf.h"
 #include "modules/tone.h"
 #include "modules/variablesawosc.h"
