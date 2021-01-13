@@ -31,9 +31,9 @@ class SyntheticBassDrumClick
     float Process(float in);
 
   private:
-    float       lp_;
-    float       hp_;
-    Svf filter_;
+    float lp_;
+    float hp_;
+    Svf   filter_;
 };
 
 /**  
@@ -55,6 +55,8 @@ class SyntheticBassDrumAttackNoise
     float Render();
 
   private:
+  	float rand_frac_ = 1.f / (float)RAND_MAX;
+  
     float lp_;
     float hp_;
 };
@@ -74,10 +76,10 @@ class SyntheticBassDrum
     SyntheticBassDrum() {}
     ~SyntheticBassDrum() {}
 
-    void Init();
+    void Init(float sample_rate);
 
     inline float DistortedSine(float phase, float phase_noise, float dirtiness);
-	
+
     inline float TransistorVCA(float s, float gain);
 
     void Render(bool   sustain,
@@ -93,6 +95,8 @@ class SyntheticBassDrum
                 size_t size);
 
   private:
+	float sample_rate_;
+  
     float f0_;
     float phase_;
     float phase_noise_;
@@ -107,6 +111,9 @@ class SyntheticBassDrum
     float sustain_gain_;
 
     float tone_lp_;
+
+	float ratio_frac_ = 1.f / 12.f;
+	float rand_frac_ = 1.f / (float)RAND_MAX;
 
     SyntheticBassDrumClick       click_;
     SyntheticBassDrumAttackNoise noise_;
