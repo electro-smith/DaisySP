@@ -120,6 +120,13 @@ class HiHat
         noise_sample_ = 0.0f;
         sustain_gain_ = 0.0f;
 
+        SetFreq(3000.f);
+        SetTone(.5f);
+        SetDecay(.2f);
+        SetNoisiness(.8f);
+        SetAccent(.4f);
+        SetSustain(false);
+
         metallic_noise_.Init(sample_rate_);
         noise_coloration_svf_.Init(sample_rate_);
         hpf_.Init(sample_rate_);
@@ -208,7 +215,7 @@ class HiHat
     /** Set the length of the hihat decay
 		\param decay Works with positive numbers
 	*/
-    void SetDecay(float decay) { decay_ = fclamp(decay, 0.f, 1.f); }
+    void SetDecay(float decay) { decay_ = fmin(decay, 0.f); }
 
     /** Sets the mix between tone and noise
 		\param snappy 1 = just noise. 0 = just tone.
