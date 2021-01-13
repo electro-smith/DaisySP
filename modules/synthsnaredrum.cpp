@@ -159,25 +159,27 @@ void SyntheticSnareDrum::SetSustain(bool sustain)
 
 void SyntheticSnareDrum::SetAccent(float accent)
 {
-    accent_ = accent;
+    accent_ = fclamp(accent, 0.f, 1.f);
 }
 
 void SyntheticSnareDrum::SetFreq(float f0)
 {
-    f0_ = f0;
+	f0 /= sample_rate_;
+    f0_ = fclamp(f0, 0.f, 1.f);
 }
 
 void SyntheticSnareDrum::SetFmAmount(float fm_amount)
 {
+	fm_amount = fclamp(fm_amount, 0.f, 1.f);
     fm_amount_ = fm_amount * fm_amount;
 }
 
 void SyntheticSnareDrum::SetDecay(float decay)
 {
-    decay_ = decay;
+    decay_ = fclamp(decay, 0.f, 1.f);
 }
 
 void SyntheticSnareDrum::SetSnappy(float snappy)
 {
-    snappy_ = snappy;
+    snappy_ = fclamp(snappy, 0.f, 1.f);
 }
