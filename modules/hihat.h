@@ -128,14 +128,14 @@ class HiHat
     float Process(bool trigger)
     {
         const float envelope_decay
-            = 1.0f - 0.003f * SemitonesToRatio(-decay * 84.0f);
+            = 1.0f - 0.003f * SemitonesToRatio(-decay_ * 84.0f);
         const float cut_decay
-            = 1.0f - 0.0025f * SemitonesToRatio(-decay * 36.0f);
+            = 1.0f - 0.0025f * SemitonesToRatio(-decay_ * 36.0f);
 
         if(trigger)
         {
             envelope_
-                = (1.5f + 0.5f * (1.0f - decay)) * (0.3f + 0.7f * accent_);
+                = (1.5f + 0.5f * (1.0f - decay_)) * (0.3f + 0.7f * accent_);
         }
 
         // Process the metallic noise.
@@ -168,7 +168,7 @@ class HiHat
         out += noisiness_ * (noise_sample_ - out);
 
         // Apply VCA.
-        sustain_gain_ = accent_ * decay;
+        sustain_gain_ = accent_ * decay_;
         VCA vca;
         envelope_ *= envelope_ > 0.5f ? envelope_decay : cut_decay;
         out = vca(out, sustain_ ? sustain_gain_ : envelope_);
@@ -208,19 +208,23 @@ class HiHat
     /** Set the length of the hihat decay
 		\param decay Works with positive numbers
 	*/
-    void SetDecay(float decay) { decay_ = fclamp(decay, 0.f, 1.f) }
+    void SetDecay(float decay) { decay_ = fclamp(decay, 0.f, 1.f); }
 
     /** Sets the mix between tone and noise
 		\param snappy 1 = just noise. 0 = just tone.
 	*/
     void SetNoisiness(float noisiness)
     {
-        noisiness_ = fclamp(noisiness, 0.f, 1.f) noisiness_ *= noisiness_;
+        noisiness_ = fclamp(noisiness, 0.f, 1.f);
+        noisiness_ *= noisiness_;
     }
 
 
   private:
     float sample_rate_;
+
+    float accent_, f0_, tone_, decay_, noisiness_;
+    bool  sustain_;
 
     float ratio_frac_ = 1.f / 12.f;
     float SemitonesToRatio(float in) { return powf(2.f, in * ratio_frac_); }
