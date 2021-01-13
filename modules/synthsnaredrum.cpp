@@ -16,6 +16,13 @@ void SyntheticSnareDrum::Init(float sample_rate)
     hold_counter_    = 0;
     sustain_gain_    = 0.0f;
 
+	SetSustain(false);
+    SetAccent(.6f);
+    SetFreq(200.f);
+    SetFmAmount(.1f);
+    SetDecay(.3f);
+    SetSnappy(.7f);
+
     drum_lp_.Init(sample_rate_);
     snare_hp_.Init(sample_rate_);
     snare_lp_.Init(sample_rate_);
