@@ -102,7 +102,9 @@ class LinearVCA
 	   to an independent module. \n
 	   Original code written by Emilie Gillet in 2016. \n
 */
-template <typename MetallicNoiseSource = SquareNoise, typename VCA = LinearVCA, bool resonance = true>
+template <typename MetallicNoiseSource = SquareNoise,
+          typename VCA                 = LinearVCA,
+          bool resonance               = true>
 class HiHat
 {
   public:
@@ -123,13 +125,7 @@ class HiHat
         hpf_.Init(sample_rate_);
     }
 
-    float Process(bool  sustain,
-                  bool  trigger,
-                  float accent,
-                  float f0,
-                  float tone,
-                  float decay,
-                  float noisiness)
+    float Process(bool trigger)
     {
         const float envelope_decay
             = 1.0f - 0.003f * SemitonesToRatio(-decay * 84.0f);
@@ -138,20 +134,21 @@ class HiHat
 
         if(trigger)
         {
-            envelope_ = (1.5f + 0.5f * (1.0f - decay)) * (0.3f + 0.7f * accent);
+            envelope_
+                = (1.5f + 0.5f * (1.0f - decay)) * (0.3f + 0.7f * accent_);
         }
 
         // Process the metallic noise.
-        float out = metallic_noise_.Process(2.0f * f0);
+        float out = metallic_noise_.Process(2.0f * f0_);
 
         // Apply BPF on the metallic noise.
-        float cutoff = 150.0f / sample_rate_ * SemitonesToRatio(tone * 72.0f);
+        float cutoff = 150.0f / sample_rate_ * SemitonesToRatio(tone_ * 72.0f);
 
         cutoff = fclamp(cutoff, 0.0f, 16000.0f / sample_rate_);
 
 
         noise_coloration_svf_.SetFreq(cutoff * sample_rate_);
-        noise_coloration_svf_.SetRes(resonance ? 3.0f + 6.0f * tone : 1.0f);
+        noise_coloration_svf_.SetRes(resonance ? 3.0f + 6.0f * tone_ : 1.0f);
 
         noise_coloration_svf_.Process(out);
         out = noise_coloration_svf_.Band();
@@ -159,8 +156,7 @@ class HiHat
         // This is not at all part of the 808 circuit! But to add more variety, we
         // add a variable amount of clocked noise to the output of the 6 schmitt
         // trigger oscillators.
-        noisiness *= noisiness;
-        float noise_f = f0 * (16.0f + 16.0f * (1.0f - noisiness));
+        float noise_f = f0_ * (16.0f + 16.0f * (1.0f - noisiness_));
         noise_f       = fclamp(noise_f, 0.0f, 0.5f);
 
         noise_clock_ += noise_f;
@@ -169,13 +165,13 @@ class HiHat
             noise_clock_ -= 1.0f;
             noise_sample_ = random() * rand_frac_ - 0.5f;
         }
-        out += noisiness * (noise_sample_ - out);
+        out += noisiness_ * (noise_sample_ - out);
 
         // Apply VCA.
-        sustain_gain_ = accent * decay;
+        sustain_gain_ = accent_ * decay;
         VCA vca;
         envelope_ *= envelope_ > 0.5f ? envelope_decay : cut_decay;
-        out = vca(out, sustain ? sustain_gain_ : envelope_);
+        out = vca(out, sustain_ ? sustain_gain_ : envelope_);
 
         hpf_.SetFreq(cutoff * sample_rate_);
         hpf_.SetRes(.5f);
@@ -184,6 +180,44 @@ class HiHat
 
         return out;
     }
+
+    /** Make the hihat ring out infinitely.
+		\param sustain True = infinite sustain.
+	*/
+    void SetSustain(bool sustain) { sustain_ = sustain; }
+
+    /** Set how much accent to use
+		\param accent Works 0-1.
+	*/
+    void SetAccent(float accent) { accent_ = fclamp(accent, 0.f, 1.f); }
+
+    /** Set the hihat tone's root frequency
+		\param f0 Freq in Hz
+	*/
+    void SetFreq(float f0)
+    {
+        f0 /= sample_rate_;
+        f0_ = fclamp(f0, 0.f, 1.f);
+    }
+
+    /** Set the overall brightness / darkness of the hihat.
+		\param tone Works from 0-1.
+	*/
+    void SetTone(float tone) { tone_ = fclamp(tone, 0.f, 1.f); }
+
+    /** Set the length of the hihat decay
+		\param decay Works with positive numbers
+	*/
+    void SetDecay(float decay) { decay_ = fclamp(decay, 0.f, 1.f) }
+
+    /** Sets the mix between tone and noise
+		\param snappy 1 = just noise. 0 = just tone.
+	*/
+    void SetNoisiness(float noisiness)
+    {
+        noisiness_ = fclamp(noisiness, 0.f, 1.f) noisiness_ *= noisiness_;
+    }
+
 
   private:
     float sample_rate_;
