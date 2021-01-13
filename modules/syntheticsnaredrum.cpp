@@ -4,8 +4,10 @@
 
 using namespace daisysp;
 
-void SyntheticSnareDrum::Init()
+void SyntheticSnareDrum::Init(float sample_rate)
 {
+	sample_rate_ = sample_rate;
+	
     phase_[0]        = 0.0f;
     phase_[1]        = 0.0f;
     drum_amplitude_  = 0.0f;
@@ -14,9 +16,9 @@ void SyntheticSnareDrum::Init()
     hold_counter_    = 0;
     sustain_gain_    = 0.0f;
 
-    drum_lp_.Init();
-    snare_hp_.Init();
-    snare_lp_.Init();
+    drum_lp_.Init(sample_rate_);
+    snare_hp_.Init(sample_rate_);
+    snare_lp_.Init(sample_rate_);
 }
 
 inline float SyntheticSnareDrum::DistortedSine(float phase)
@@ -39,44 +41,44 @@ void SyntheticSnareDrum::Process(bool   sustain,
     fm_amount *= fm_amount;
     const float drum_decay
         = 1.0f
-          - 1.0f / (0.015f * kSampleRate)
-                * stmlib::SemitonesToRatio(-decay_xt * 72.0f - fm_amount * 12.0f
-                                           + snappy * 7.0f);
+          - 1.0f / (0.015f * sample_rate_)
+                * powf(2.f, ratio_frac_ * (-decay_xt * 72.0f - fm_amount * 12.0f
+                                           + snappy * 7.0f));
+
     const float snare_decay
         = 1.0f
-          - 1.0f / (0.01f * kSampleRate)
-                * stmlib::SemitonesToRatio(-decay * 60.0f - snappy * 7.0f);
-    const float fm_decay = 1.0f - 1.0f / (0.007f * kSampleRate);
+          - 1.0f / (0.01f * sample_rate_)
+                * powf(2.f, ratio_frac_ * (-decay * 60.0f - snappy * 7.0f));
+    const float fm_decay = 1.0f - 1.0f / (0.007f * sample_rate_);
 
     snappy = snappy * 1.1f - 0.05f;
-    CONSTRAIN(snappy, 0.0f, 1.0f);
+	snappy = fclamp(snappy, 0.0f, 1.0f);
 
-    const float drum_level  = stmlib::Sqrt(1.0f - snappy);
-    const float snare_level = stmlib::Sqrt(snappy);
+    const float drum_level  = sqrtf(1.0f - snappy);
+    const float snare_level = sqrtf(snappy);
 
-    const float snare_f_min = std::min(10.0f * f0, 0.5f);
-    const float snare_f_max = std::min(35.0f * f0, 0.5f);
+    const float snare_f_min = fmin(10.0f * f0, 0.5f);
+    const float snare_f_max = fmin(35.0f * f0, 0.5f);
 
-    snare_hp_.set_f<stmlib::FREQUENCY_FAST>(snare_f_min);
-    snare_lp_.set_f_q<stmlib::FREQUENCY_FAST>(snare_f_max,
-                                              0.5f + 2.0f * snappy);
-    drum_lp_.set_f<stmlib::FREQUENCY_FAST>(3.0f * f0);
+    snare_hp_.SetFreq(snare_f_min * sample_rate_);
+	snare_lp_.SetFreq(snare_f_max * sample_rate_);
+	snare_lp_.SetRes(0.5f + 2.0f * snappy);
+
+    drum_lp_.SetFreq(3.0f * f0 * sample_rate_);
 
     if(trigger)
     {
         snare_amplitude_ = drum_amplitude_ = 0.3f + 0.7f * accent;
         fm_                                = 1.0f;
         phase_[0] = phase_[1] = 0.0f;
-        hold_counter_ = static_cast<int>((0.04f + decay * 0.03f) * kSampleRate);
+        hold_counter_ = static_cast<int>((0.04f + decay * 0.03f) * sample_rate_);
     }
 
-    stmlib::ParameterInterpolator sustain_gain(
-        &sustain_gain_, accent * decay, size);
     while(size--)
     {
         if(sustain)
         {
-            snare_amplitude_ = sustain_gain.Next();
+			sustain_gain_ =  snare_amplitude_ = accent * decay;
             drum_amplitude_  = snare_amplitude_;
             fm_              = 0.0f;
         }
@@ -104,7 +106,7 @@ void SyntheticSnareDrum::Process(bool   sustain,
         // intermodulation.
         float reset_noise        = 0.0f;
         float reset_noise_amount = (0.125f - f0) * 8.0f;
-        CONSTRAIN(reset_noise_amount, 0.0f, 1.0f);
+        reset_noise_amount = fclamp(reset_noise_amount, 0.0f, 1.0f);
         reset_noise_amount *= reset_noise_amount;
         reset_noise_amount *= fm_amount;
         reset_noise += phase_[0] > 0.5f ? -1.0f : 1.0f;
@@ -141,11 +143,15 @@ void SyntheticSnareDrum::Process(bool   sustain,
         drum += DistortedSine(phase_[0]) * 0.60f;
         drum += DistortedSine(phase_[1]) * 0.25f;
         drum *= drum_amplitude_ * drum_level;
-        drum = drum_lp_.Process<stmlib::FILTER_MODE_LOW_PASS>(drum);
 
-        float noise = stmlib::Random::GetFloat();
-        float snare = snare_lp_.Process<stmlib::FILTER_MODE_LOW_PASS>(noise);
-        snare       = snare_hp_.Process<stmlib::FILTER_MODE_HIGH_PASS>(snare);
+		drum_lp_.Process(drum);
+        drum = drum_lp_.Low();
+
+        float noise = random() * rand_frac_;
+		snare_lp_.Process(noise);
+        float snare = snare_lp_.Low();
+		snare_hp_.Process(snare);
+		snare = snare_hp_.High();
         snare       = (snare + 0.1f) * (snare_amplitude_ + fm_) * snare_level;
 
         *out++ = snare + drum; // It's a snare, it's a drum, it's a snare drum.

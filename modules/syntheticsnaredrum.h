@@ -2,6 +2,8 @@
 #ifndef DSY_SYNTHSD_H
 #define DSY_SYNTHSD_H
 
+#include "modules/svf.h"
+
 #include <stdint.h>
 #ifdef __cplusplus
 
@@ -27,7 +29,7 @@ namespace daisysp{
     SyntheticSnareDrum() {}
     ~SyntheticSnareDrum() {}
 
-    void Init();
+    void Init(float sample_rate);
 
     inline float DistortedSine(float phase);
 	
@@ -42,6 +44,8 @@ namespace daisysp{
                 size_t size);
 
   private:
+	float sample_rate_;
+  
     float phase_[2];
     float drum_amplitude_;
     float snare_amplitude_;
@@ -49,9 +53,12 @@ namespace daisysp{
     float sustain_gain_;
     int   hold_counter_;
 
-    stmlib::OnePole drum_lp_;
-    stmlib::OnePole snare_hp_;
-    stmlib::Svf     snare_lp_;
+	float rand_frac_ = 1.f / (float)RAND_MAX;
+	float ratio_frac_ = 1.f / 12.f;
+	
+    Svf drum_lp_;
+    Svf snare_hp_;
+    Svf     snare_lp_;
 };
 } // namespace daisysp
 #endif
