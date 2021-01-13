@@ -34,7 +34,7 @@ phasor \
 pluck \
 port \
 reverbsc \
-syntheticsnaredrum \
+synthsnaredrum \
 svf \
 tone \
 variablesawosc \
