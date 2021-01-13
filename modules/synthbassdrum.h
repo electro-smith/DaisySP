@@ -146,7 +146,7 @@ class SyntheticBassDrum
   private:
     float sample_rate_;
 
-	bool sustain_;
+    bool  sustain_;
     float accent_, new_f0_, tone_, decay_;
     float dirtiness_, fm_envelope_amount_, fm_envelope_decay_;
 
