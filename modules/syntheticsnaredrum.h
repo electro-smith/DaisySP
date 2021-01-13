@@ -33,13 +33,13 @@ class SyntheticSnareDrum
 
     inline float DistortedSine(float phase);
 
-    float Process(bool   sustain,
-                 bool   trigger,
-                 float  accent,
-                 float  f0,
-                 float  fm_amount,
-                 float  decay,
-                 float  snappy);
+    float Process(bool  sustain,
+                  bool  trigger,
+                  float accent,
+                  float f0,
+                  float fm_amount,
+                  float decay,
+                  float snappy);
 
   private:
     float sample_rate_;
