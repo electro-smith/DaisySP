@@ -8,10 +8,10 @@ void String::Init(float sample_rate)
 {
     sample_rate_ = sample_rate;
 
-	SetFreq(440.f);
-	non_linearity_amount_ = .5f;
-	brightness_ = .5f; 
-	damping_ = .5f;
+    SetFreq(440.f);
+    non_linearity_amount_ = .5f;
+    brightness_           = .5f;
+    damping_              = .5f;
 
     string_.Init();
     stretch_.Init();
@@ -26,8 +26,11 @@ void String::Reset()
     string_.Reset();
     stretch_.Reset();
     iir_damping_filter_.Init(sample_rate_);
-    //dc_blocker_.Init(1.0f - 20.0f / sample_rate_);  what??
+
+    //dc_blocker_.Init(1.0f - 20.0f / sample_rate_);  
     dc_blocker_.Init(sample_rate_);
+
+
     dispersion_noise_ = 0.0f;
     curved_bridge_    = 0.0f;
     out_sample_[0] = out_sample_[1] = 0.0f;
@@ -73,7 +76,7 @@ void String::SetDamping(float damping)
 template <StringNonLinearity non_linearity>
 float String::ProcessInternal(const float in)
 {
-	float brightness = brightness_;
+    float brightness = brightness_;
 
     float delay = 1.0f / frequency_;
     delay       = fclamp(delay, 4.f, kDelayLineSize - 4.0f);
@@ -91,7 +94,7 @@ float String::ProcessInternal(const float in)
     }
 
     float damping_cutoff = fmin(
-        12.0f + damping_ * damping_ * 60.0f + brightness_ * 24.0f, 84.0f);
+        12.0f + damping_ * damping_ * 60.0f + brightness * 24.0f, 84.0f);
     float damping_f
         = fmin(frequency_ * powf(2.f, damping_cutoff * ratio_frac_), 0.499f);
 
@@ -106,7 +109,6 @@ float String::ProcessInternal(const float in)
 
     iir_damping_filter_.SetFreq(damping_f * sample_rate_);
     iir_damping_filter_.SetRes(0.5f);
-
 
     float ratio                = powf(2.f, damping_cutoff * ratio_frac_);
     float damping_compensation = 1.f - 2.f * atanf(1.f / ratio) / (TWOPI_F);
@@ -174,11 +176,12 @@ float String::ProcessInternal(const float in)
             float sign     = s > 0.0f ? 1.0f : -1.5f;
             curved_bridge_ = (fabsf(value) + value) * sign;
         }
-
+		
         s += in;
         s = fclamp(s, -20.f, +20.f);
+		
+        s = dc_blocker_.Process(s);
 
-        dc_blocker_.Process(s);
         iir_damping_filter_.Process(s);
         s = iir_damping_filter_.Low();
         string_.Write(s);
