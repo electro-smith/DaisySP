@@ -36,16 +36,14 @@ inline float AnalogBassDrum::Diode(float x)
     }
 }
 
-void AnalogBassDrum::Process(bool   sustain,
+float AnalogBassDrum::Process(bool   sustain,
                              bool   trigger,
                              float  accent,
                              float  f0,
                              float  tone,
                              float  decay,
                              float  attack_fm_amount,
-                             float  self_fm_amount,
-                             float* out,
-                             size_t size)
+                             float  self_fm_amount)
 {
     const int   kTriggerPulseDuration = 1.0e-3 * sample_rate_;
     const int   kFMPulseDuration      = 6.0e-3 * sample_rate_;
@@ -68,8 +66,6 @@ void AnalogBassDrum::Process(bool   sustain,
         lp_out_                     = 0.0f;
     }
 
-    while(size--)
-    {
         // Q39 / Q40
         float pulse = 0.0f;
         if(pulse_remaining_samples_)
@@ -144,6 +140,6 @@ void AnalogBassDrum::Process(bool   sustain,
 
         fonepole(tone_lp_, pulse * exciter_leak + resonator_out, tone_f);
 
-        *out++ = tone_lp_;
-    }
+        return tone_lp_;
+    
 }

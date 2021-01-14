@@ -28,16 +28,14 @@ class AnalogBassDrum
 
     void Init(float sample_rate);
 
-    void Process(bool   sustain,
+    float Process(bool   sustain,
                  bool   trigger,
                  float  accent,
                  float  f0,
                  float  tone,
                  float  decay,
                  float  attack_fm_amount,
-                 float  self_fm_amount,
-                 float* out,
-                 size_t size);
+                 float  self_fm_amount);
 
   private:
     inline float Diode(float x);
