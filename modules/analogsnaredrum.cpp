@@ -17,6 +17,13 @@ void AnalogSnareDrum::Init(float sample_rate)
     noise_envelope_          = 0.0f;
     sustain_gain_            = 0.0f;
 
+    SetSustain(false);
+    SetAccent(.6f);
+    SetFreq(200.f);
+    SetFmAmount(.1f);
+    SetDecay(.3f);
+    SetSnappy(.7f);
+
     for(int i = 0; i < kNumModes; ++i)
     {
         resonator_[i].Init(sample_rate_);
