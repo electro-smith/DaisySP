@@ -26,16 +26,51 @@ class AnalogBassDrum
     AnalogBassDrum() {}
     ~AnalogBassDrum() {}
 
+    /** Initialize the module
+		\param sample_rate Audio engine sample rate
+	*/
     void Init(float sample_rate);
 
+    /** Get the next sample.
+		\param trigger True strikes the drum.
+	*/
     float Process(bool trigger);
 
+    /** Set the bassdrum to play infinitely
+		\param sustain True = infinite length
+	*/
     void SetSustain(bool sustain);
+    /** Set a small accent.
+		\param accent Works 0-1
+	*/
+    /** Set a small accent.
+		\param accent Works 0-1
+	*/
     void SetAccent(float accent);
+
+    /** Set the drum's root frequency
+		\param f0 Frequency in Hz
+	*/
     void SetFreq(float f0);
+
+    /** Set the amount of click.
+		\param tone Works 0-1.
+	*/
     void SetTone(float tone);
+
+    /** Set the decay length of the drum.
+		\param decay Works best 0-1.
+	*/
     void SetDecay(float decay);
+
+    /** Set the amount of fm attack. Works together with self fm.
+		\param attack_fm_amount Works best 0-1.
+	*/
     void SetAttackFmAmount(float attack_fm_amount);
+
+    /**Set the amount of self fm. Also affects fm attack, and volume decay.
+		\param self_fm_amount Works best 0-1.
+	*/
     void SetSelfFmAmount(float self_fm_amount);
 
   private:
@@ -45,8 +80,8 @@ class AnalogBassDrum
 
     float ratio_frac_ = 1.f / 12.f;
 
-	float sustain_, accent_, f0_, tone_, decay_;
-	float attack_fm_amount_, self_fm_amount_;
+    float sustain_, accent_, f0_, tone_, decay_;
+    float attack_fm_amount_, self_fm_amount_;
 
     int   pulse_remaining_samples_;
     int   fm_pulse_remaining_samples_;

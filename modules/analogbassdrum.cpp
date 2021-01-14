@@ -20,6 +20,14 @@ void AnalogBassDrum::Init(float sample_rate)
     sustain_gain_               = 0.0f;
     phase_                      = 0.f;
 
+    bd.SetSustain(false);
+    bd.SetAccent(.1f);
+    bd.SetFreq(50.f);
+    bd.SetTone(.1f);
+    bd.SetDecay(.3f);
+    bd.SetSelfFmAmount(1.f);
+    bd.SetAttackFmAmount(.5f);
+
     resonator_.Init(sample_rate_);
 }
 
@@ -36,7 +44,7 @@ inline float AnalogBassDrum::Diode(float x)
     }
 }
 
-float AnalogBassDrum::Process(bool  trigger)
+float AnalogBassDrum::Process(bool trigger)
 {
     const int   kTriggerPulseDuration = 1.0e-3 * sample_rate_;
     const int   kFMPulseDuration      = 6.0e-3 * sample_rate_;
@@ -136,31 +144,39 @@ float AnalogBassDrum::Process(bool  trigger)
     return tone_lp_;
 }
 
-void AnalogBassDrum::SetSustain(bool sustain) {
-	sustain_ = sustain;
+void AnalogBassDrum::SetSustain(bool sustain)
+{
+    sustain_ = sustain;
 }
 
-void AnalogBassDrum::SetAccent(float accent) {
-	accent_ = accent;
+void AnalogBassDrum::SetAccent(float accent)
+{
+    accent_ = fclamp(accent, 0.f, 1.f);
 }
 
-void AnalogBassDrum::SetFreq(float f0) {
-	f0 /= sample_rate_;
-	f0_ = f0;
+void AnalogBassDrum::SetFreq(float f0)
+{
+    f0 /= sample_rate_;
+    f0_ = fclamp(f0, 0.f, .5f);
 }
 
-void AnalogBassDrum::SetTone(float tone) {
-	tone_ = tone;
+void AnalogBassDrum::SetTone(float tone)
+{
+    tone_ = fclamp(tone, 0.f, 1.f);
 }
 
-void AnalogBassDrum::SetDecay(float decay) {
-	decay_ = decay;
+void AnalogBassDrum::SetDecay(float decay)
+{
+    decay_ = decay * .1f;
+    decay_ -= .1f;
 }
 
-void AnalogBassDrum::SetAttackFmAmount(float attack_fm_amount) {
-	attack_fm_amount_ = attack_fm_amount;
+void AnalogBassDrum::SetAttackFmAmount(float attack_fm_amount)
+{
+    attack_fm_amount_ = attack_fm_amount * 50.f;
 }
 
-void AnalogBassDrum::SetSelfFmAmount(float self_fm_amount) {
-	self_fm_amount_ = self_fm_amount;
+void AnalogBassDrum::SetSelfFmAmount(float self_fm_amount)
+{
+    self_fm_amount_ = self_fm_amount * 50.f;
 }
