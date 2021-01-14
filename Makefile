@@ -5,6 +5,7 @@ MODULES = \
 adenv \
 adsr  \
 allpass \
+analogsnaredrum \
 autowah \
 atone \
 balance \
