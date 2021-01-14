@@ -35,9 +35,7 @@ class AnalogSnareDrum
                  float  f0,
                  float  tone,
                  float  decay,
-                 float  snappy,
-                 float* out,
-                 size_t size);
+                 float  snappy);
 
   private:
     float sample_rate_;

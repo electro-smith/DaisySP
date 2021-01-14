@@ -31,9 +31,7 @@ void AnalogSnareDrum::Process(bool   sustain,
                               float  f0,
                               float  tone,
                               float  decay,
-                              float  snappy,
-                              float* out,
-                              size_t size)
+                              float  snappy)
 {
     const float decay_xt              = decay * (1.0f + decay * (decay - 1.0f));
     const int   kTriggerPulseDuration = 1.0e-3 * sample_rate_;
@@ -96,8 +94,6 @@ void AnalogSnareDrum::Process(bool   sustain,
     noise_filter_.SetFreq(f_noise * sample_rate_);
     noise_filter_.SetRes(1.0f + f_noise * 1.5f);
 	
-    while(size--)
-    {
         // Q45 / Q46
         float pulse = 0.0f;
         if(pulse_remaining_samples_)
@@ -144,8 +140,8 @@ void AnalogSnareDrum::Process(bool   sustain,
 		noise = noise_filter_.Band();
 
         // IC13
-        *out++ = noise + shell * (1.0f - snappy);
-    }
+        return noise + shell * (1.0f - snappy);
+    
 }
 
 inline float AnalogSnareDrum::SoftLimit(float x) {
