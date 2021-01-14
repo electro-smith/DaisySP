@@ -27,24 +27,57 @@ class AnalogSnareDrum
 
     static const int kNumModes = 5;
 
+    /** Init the module
+		\param sample_rate Audio engine sample rate
+	*/
     void Init(float sample_rate);
 
-    float Process(bool   sustain,
-                 bool   trigger,
-                 float  accent,
-                 float  f0,
-                 float  tone,
-                 float  decay,
-                 float  snappy);
+    /** Init the module
+		\param sample_rate Audio engine sample rate
+	*/
+    float Process(bool trigger);
+
+    /** Init the module
+		\param sample_rate Audio engine sample rate
+	*/
+    void SetSustain(bool sustain);
+
+    /** Set how much accent to use
+		\param accent Works 0-1.
+	*/
+    void SetAccent(float accent);
+
+    /** Set the drum's root frequency
+		\param f0 Freq in Hz
+	*/
+    void SetFreq(float f0);
+
+    /** Set the brightness of the drum.
+		\param tone Works 0-1. 1 = bright, 0 = dark.
+	*/
+    void SetTone(float tone);
+
+    /** Set the length of the drum decay
+		\param decay Works with positive numbers
+	*/
+    void SetDecay(float decay);
+
+    /** Sets the mix between snare and drum.
+		\param snappy 1 = just snare. 0 = just drum.
+	*/
+    void SetSnappy(float snappy);
 
   private:
     float sample_rate_;
 
-	float rand_frac_ = 1.f / (float)RAND_MAX;
-	float ratio_frac_ = 1.f / 12.f;
+    float rand_frac_  = 1.f / (float)RAND_MAX;
+    float ratio_frac_ = 1.f / 12.f;
 
-	inline float SoftLimit(float x);
-	inline float SoftClip(float x);
+    float f0_, tone_, accent_, snappy_, decay_;
+    bool  sustain_;
+
+    inline float SoftLimit(float x);
+    inline float SoftClip(float x);
 
     int   pulse_remaining_samples_;
     float pulse_;
@@ -57,7 +90,7 @@ class AnalogSnareDrum
     Svf noise_filter_;
 
     // Replace the resonators in "free running" (sustain) mode.
-	float phase_[kNumModes];
+    float phase_[kNumModes];
 };
 } // namespace daisysp
 #endif
