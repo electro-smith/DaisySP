@@ -40,9 +40,7 @@ class AnalogBassDrum
 		\param sustain True = infinite length
 	*/
     void SetSustain(bool sustain);
-    /** Set a small accent.
-		\param accent Works 0-1
-	*/
+
     /** Set a small accent.
 		\param accent Works 0-1
 	*/

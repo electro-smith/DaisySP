@@ -20,6 +20,7 @@ void AnalogBassDrum::Init(float sample_rate)
     sustain_gain_               = 0.0f;
     phase_                      = 0.f;
 
+
     SetSustain(false);
     SetAccent(.1f);
     SetFreq(50.f);
