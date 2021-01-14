@@ -28,14 +28,15 @@ class AnalogBassDrum
 
     void Init(float sample_rate);
 
-    float Process(bool   sustain,
-                 bool   trigger,
-                 float  accent,
-                 float  f0,
-                 float  tone,
-                 float  decay,
-                 float  attack_fm_amount,
-                 float  self_fm_amount);
+    float Process(bool trigger);
+
+    void SetSustain(bool sustain);
+    void SetAccent(float accent);
+    void SetFreq(float f0);
+    void SetTone(float tone);
+    void SetDecay(float decay);
+    void SetAttackFmAmount(float attack_fm_amount);
+    void SetSelfFmAmount(float self_fm_amount);
 
   private:
     inline float Diode(float x);
@@ -43,6 +44,9 @@ class AnalogBassDrum
     float sample_rate_;
 
     float ratio_frac_ = 1.f / 12.f;
+
+	float sustain_, accent_, f0_, tone_, decay_;
+	float attack_fm_amount_, self_fm_amount_;
 
     int   pulse_remaining_samples_;
     int   fm_pulse_remaining_samples_;
@@ -57,8 +61,8 @@ class AnalogBassDrum
 
     Svf resonator_;
 
-	//for use in sin + cos osc. in sustain mode
-	float phase_;
+    //for use in sin + cos osc. in sustain mode
+    float phase_;
 };
 } // namespace daisysp
 #endif
