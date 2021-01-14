@@ -29,7 +29,7 @@ class AnalogSnareDrum
 
     void Init(float sample_rate);
 
-    void Process(bool   sustain,
+    float Process(bool   sustain,
                  bool   trigger,
                  float  accent,
                  float  f0,

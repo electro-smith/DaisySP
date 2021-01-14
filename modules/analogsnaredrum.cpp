@@ -25,7 +25,7 @@ void AnalogSnareDrum::Init(float sample_rate)
     noise_filter_.Init(sample_rate_);
 }
 
-void AnalogSnareDrum::Process(bool   sustain,
+float AnalogSnareDrum::Process(bool   sustain,
                               bool   trigger,
                               float  accent,
                               float  f0,
