@@ -2,6 +2,8 @@
 #ifndef DSY_FORMANTOSCILLATOR_H
 #define DSY_FORMANTOSCILLATOR_H
 
+#include "modules/svf.h"
+
 #include <stdint.h>
 #ifdef __cplusplus
 
@@ -25,7 +27,7 @@ class AnalogSnareDrum
 
     static const int kNumModes = 5;
 
-    void Init();
+    void Init(float sample_rate);
 
     void Process(bool   sustain,
                  bool   trigger,
@@ -40,6 +42,12 @@ class AnalogSnareDrum
   private:
     float sample_rate_;
 
+	float rand_frac_ = 1.f / (float)RAND_MAX;
+	float ratio_frac_ = 1.f / 12.f;
+
+	inline float SoftLimit(float x);
+	inline float SoftClip(float x);
+
     int   pulse_remaining_samples_;
     float pulse_;
     float pulse_height_;
@@ -51,7 +59,7 @@ class AnalogSnareDrum
     Svf noise_filter_;
 
     // Replace the resonators in "free running" (sustain) mode.
-    SineOscillator oscillator_[kNumModes];
+	float phase_[kNumModes];
 };
 } // namespace daisysp
 #endif
