@@ -51,10 +51,13 @@ void AnalogSnareDrum::SetFreq(float f0)
 void AnalogSnareDrum::SetTone(float tone)
 {
     tone_ = fclamp(tone, 0.f, 1.f);
+    tone_ *= 2.f;
 }
 
 void AnalogSnareDrum::SetDecay(float decay)
 {
+    decay_ = decay;
+    return;
     decay_ = fmax(decay, 0.f);
 }
 
@@ -98,7 +101,8 @@ float AnalogSnareDrum::Process(bool trigger)
     {
         f[i] = fmin(f0_ * kModeFrequencies[i], 0.499f);
         resonator_[i].SetFreq(f[i] * sample_rate_);
-        resonator_[i].SetRes(1.0f + f[i] * (i == 0 ? q : q * 0.25f));
+        //        resonator_[i].SetRes(1.0f + f[i] * (i == 0 ? q : q * 0.25f));
+        resonator_[i].SetRes((f[i] * (i == 0 ? q : q * 0.25f)) * .2);
     }
 
     if(tone < 0.666667f)
@@ -128,7 +132,8 @@ float AnalogSnareDrum::Process(bool trigger)
     float f_noise = f0_ * 16.0f;
     fclamp(f_noise, 0.0f, 0.499f);
     noise_filter_.SetFreq(f_noise * sample_rate_);
-    noise_filter_.SetRes(1.0f + f_noise * 1.5f);
+    //noise_filter_.SetRes(1.0f + f_noise * 1.5f);
+    noise_filter_.SetRes(f_noise * 1.5f);
 
     // Q45 / Q46
     float pulse = 0.0f;

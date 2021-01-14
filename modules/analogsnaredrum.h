@@ -52,7 +52,7 @@ class AnalogSnareDrum
 	*/
     void SetFreq(float f0);
 
-    /** Set the brightness of the drum.
+    /** Set the brightness of the drum tone.
 		\param tone Works 0-1. 1 = bright, 0 = dark.
 	*/
     void SetTone(float tone);
