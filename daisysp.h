@@ -31,6 +31,7 @@
 #include "modules/dcblock.h"
 #include "modules/decimator.h"
 #include "modules/delayline.h"
+#include "modules/diffuser.h"
 #include "modules/drip.h"
 #include "modules/dsp.h"
 #include "modules/fm2.h"

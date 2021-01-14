@@ -16,6 +16,7 @@ compressor \
 crossfade \
 dcblock \
 decimator \
+diffuser \
 drip \
 fm2 \
 fold \
