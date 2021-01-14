@@ -20,13 +20,13 @@ void AnalogBassDrum::Init(float sample_rate)
     sustain_gain_               = 0.0f;
     phase_                      = 0.f;
 
-    bd.SetSustain(false);
-    bd.SetAccent(.1f);
-    bd.SetFreq(50.f);
-    bd.SetTone(.1f);
-    bd.SetDecay(.3f);
-    bd.SetSelfFmAmount(1.f);
-    bd.SetAttackFmAmount(.5f);
+    SetSustain(false);
+    SetAccent(.1f);
+    SetFreq(50.f);
+    SetTone(.1f);
+    SetDecay(.3f);
+    SetSelfFmAmount(1.f);
+    SetAttackFmAmount(.5f);
 
     resonator_.Init(sample_rate_);
 }
