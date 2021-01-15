@@ -18,6 +18,11 @@ void String::Init(float sample_rate)
     delay_ = 100.0f;
     Reset();
 
+    SetFreq(440.f);
+    SetDamping(.8f);
+    SetNonLinearity(.1f);
+    SetBrightness(.5f);
+
     crossfade_.Init();
 }
 
@@ -27,7 +32,6 @@ void String::Reset()
     stretch_.Reset();
     iir_damping_filter_.Init(sample_rate_);
 
-    //dc_blocker_.Init(1.0f - 20.0f / sample_rate_);
     dc_blocker_.Init(sample_rate_);
 
     dispersion_noise_ = 0.0f;
