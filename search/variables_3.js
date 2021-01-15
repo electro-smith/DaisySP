@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['rand_5fline_5fcnt_376',['rand_line_cnt',['../structdaisysp_1_1_reverb_sc_dl.html#a9c2b20bf40a03ac5e8045bc09a35c79f',1,'daisysp::ReverbScDl']]],
-  ['read_5fpos_377',['read_pos',['../structdaisysp_1_1_reverb_sc_dl.html#a182f5ab78a0832af510e1ed94c147711',1,'daisysp::ReverbScDl']]],
-  ['read_5fpos_5ffrac_378',['read_pos_frac',['../structdaisysp_1_1_reverb_sc_dl.html#a720c247395a4d03d2e1e6f128e9d2c74',1,'daisysp::ReverbScDl']]],
-  ['read_5fpos_5ffrac_5finc_379',['read_pos_frac_inc',['../structdaisysp_1_1_reverb_sc_dl.html#a75392f0563eb7f8653d098b2bf9d3709',1,'daisysp::ReverbScDl']]]
+  ['rand_5fline_5fcnt_382',['rand_line_cnt',['../structdaisysp_1_1_reverb_sc_dl.html#a9c2b20bf40a03ac5e8045bc09a35c79f',1,'daisysp::ReverbScDl']]],
+  ['read_5fpos_383',['read_pos',['../structdaisysp_1_1_reverb_sc_dl.html#a182f5ab78a0832af510e1ed94c147711',1,'daisysp::ReverbScDl']]],
+  ['read_5fpos_5ffrac_384',['read_pos_frac',['../structdaisysp_1_1_reverb_sc_dl.html#a720c247395a4d03d2e1e6f128e9d2c74',1,'daisysp::ReverbScDl']]],
+  ['read_5fpos_5ffrac_5finc_385',['read_pos_frac_inc',['../structdaisysp_1_1_reverb_sc_dl.html#a75392f0563eb7f8653d098b2bf9d3709',1,'daisysp::ReverbScDl']]]
 ];
