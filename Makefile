@@ -33,6 +33,7 @@ oscillatorbank \
 phasor \
 pluck \
 port \
+resonator \
 reverbsc \
 svf \
 tone \
