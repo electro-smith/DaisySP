@@ -52,6 +52,7 @@
 #include "modules/oscillator.h"
 #include "modules/oscillatorbank.h"
 #include "modules/overdrive.h"
+#include "modules/particle.h"
 #include "modules/phasor.h"
 #include "modules/port.h"
 #include "modules/pitchshifter.h"

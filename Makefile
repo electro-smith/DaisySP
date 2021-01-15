@@ -32,6 +32,7 @@ mode \
 oscillator \
 oscillatorbank \
 overdrive \
+particle \
 phasor \
 pluck \
 port \
