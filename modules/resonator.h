@@ -7,38 +7,33 @@
 #include "dsp.h"
 #ifdef __cplusplus
 
-#define PI_POW_3 PI_F* PI_F* PI_F
-#define PI_POW_5 PI_POW_3* PI_F* PI_F
-
-#define kMaxNumModes 24
-#define kModeBatchSize 4
 
 /** @file resonator.h */
 
 namespace daisysp
 {
-enum FilterMode
-{
-    FILTER_MODE_LOW_PASS,
-    FILTER_MODE_BAND_PASS,
-    FILTER_MODE_BAND_PASS_NORMALIZED,
-    FILTER_MODE_HIGH_PASS
-};
-
 // We render 4 modes simultaneously since there are enough registers to hold
 // all state variables.
 /**  
-	   @brief SVF for use in the Resonator Class \n 
-	   @author Ported by Ben Sergentanis 
-	   @date Jan 2021 
-	   Ported from pichenettes/eurorack/plaits/dsp/physical_modelling/resonator.h \n
-	   to an independent module. \n
-	   Original code written by Emilie Gillet in 2016. \n
+       @brief SVF for use in the Resonator Class \n 
+       @author Ported by Ben Sergentanis 
+       @date Jan 2021 
+       Ported from pichenettes/eurorack/plaits/dsp/physical_modelling/resonator.h \n
+       to an independent module. \n
+       Original code written by Emilie Gillet in 2016. \n
 */
 template <int batch_size>
 class ResonatorSvf
 {
   public:
+    enum FilterMode
+    {
+        LOW_PASS,
+        BAND_PASS,
+        BAND_PASS_NORMALIZED,
+        HIGH_PASS
+    };
+
     ResonatorSvf() {}
     ~ResonatorSvf() {}
 
@@ -85,7 +80,7 @@ class ResonatorSvf
             state_1[i]     = g[i] * hp + bp;
             const float lp = g[i] * bp + state_2[i];
             state_2[i]     = g[i] * bp + lp;
-            s_out += gains[i] * ((mode == FILTER_MODE_LOW_PASS) ? lp : bp);
+            s_out += gains[i] * ((mode == LOW_PASS) ? lp : bp);
         }
         if(add)
         {
@@ -104,10 +99,12 @@ class ResonatorSvf
     }
 
   private:
-    static inline float fasttan(float f)
+    static constexpr float kPiPow3 = PI_F * PI_F * PI_F;
+    static constexpr float kPiPow5 = kPiPow3 * PI_F * PI_F;
+    static inline float    fasttan(float f)
     {
-        const float a  = 3.260e-01 * PI_POW_3;
-        const float b  = 1.823e-01 * PI_POW_5;
+        const float a  = 3.260e-01 * kPiPow3;
+        const float b  = 1.823e-01 * kPiPow5;
         float       f2 = f * f;
         return f * (PI_F + f2 * (a + b * f2));
     }
@@ -117,13 +114,13 @@ class ResonatorSvf
 };
 
 
-/**  	   
-	   @brief Resonant Body Simulation
-	   @author Ported by Ben Sergentanis 
-	   @date Jan 2021 
-	   Ported from pichenettes/eurorack/plaits/dsp/physical_modelling/resonator.h \n
-	   to an independent module. \n
-	   Original code written by Emilie Gillet in 2016. \n 
+/**         
+       @brief Resonant Body Simulation
+       @author Ported by Ben Sergentanis 
+       @date Jan 2021 
+       Ported from pichenettes/eurorack/plaits/dsp/physical_modelling/resonator.h \n
+       to an independent module. \n
+       Original code written by Emilie Gillet in 2016. \n 
 */
 class Resonator
 {
@@ -132,44 +129,46 @@ class Resonator
     ~Resonator() {}
 
     /** Initialize the module
-		\param position	Offset the phase of the amplitudes. 0-1
-		\param resolution Quality vs speed scalar
-		\param sample_rate Samplerate of the audio engine being run.
-	*/
+        \param position    Offset the phase of the amplitudes. 0-1
+        \param resolution Quality vs speed scalar
+        \param sample_rate Samplerate of the audio engine being run.
+    */
     void Init(float position, int resolution, float sample_rate);
 
     /** Get the next sample_rate
-		\param in The signal to excited the resonant body
-	*/
+        \param in The signal to excited the resonant body
+    */
     float Process(const float in);
 
     /** Resonator frequency.
-		\param freq Frequency in Hz.
-	*/
+        \param freq Frequency in Hz.
+    */
     void SetFreq(float freq);
 
     /** Changes the general charater of the resonator (stiffness, brightness)
-		\param structure Works best from 0-1
-	*/
+        \param structure Works best from 0-1
+    */
     void SetStructure(float structure);
 
     /** Set the brighness of the resonator
-		\param brightness Works best 0-1
-	*/
+        \param brightness Works best 0-1
+    */
     void SetBrightness(float brightness);
 
     /** How long the resonant body takes to decay.
-		\param damping Works best 0-1
-	*/
+        \param damping Works best 0-1
+    */
     void SetDamping(float damping);
 
   private:
     int   resolution_;
     float frequency_, brightness_, structure_, damping_;
 
-    const float ratiofrac_   = 1.f / 12.f;
-    const float stiff_frac_  = 1.f / 64.f;
-    const float stiff_frac_2 = 1.f / .6f;
+    static constexpr int   kMaxNumModes   = 24;
+    static constexpr int   kModeBatchSize = 4;
+    static constexpr float ratiofrac_     = 1.f / 12.f;
+    static constexpr float stiff_frac_    = 1.f / 64.f;
+    static constexpr float stiff_frac_2   = 1.f / .6f;
 
     float sample_rate_;
 

@@ -1,8 +1,3 @@
-//#include "stmlib/dsp/cosine_oscillator.h"
-//#include <algorithm>
-//#include "stmlib/dsp/units.h"
-//#include "plaits/resources.h"
-
 #include "resonator.h"
 #include <math.h>
 
@@ -92,7 +87,7 @@ float Resonator::Process(const float in)
         if(batch_counter == kModeBatchSize)
         {
             batch_counter = 0;
-            batch_processor->Process<FILTER_MODE_BAND_PASS, true>(
+            batch_processor->Process<batch_processor->BAND_PASS, true>(
                 mode_f, mode_q, mode_a, in, &out);
             ++batch_processor;
         }
