@@ -57,5 +57,5 @@ float Diffuser::Process(float amount, float rt, float in)
 
     lp_decay_ = lp;
 
-    return amount * (wet - in);
+    return .1f * amount * (wet - in);
 }
