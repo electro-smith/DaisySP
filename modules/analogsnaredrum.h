@@ -32,10 +32,13 @@ class AnalogSnareDrum
 	*/
     void Init(float sample_rate);
 
-    /** Init the module
-		\param sample_rate Audio engine sample rate
+    /** Get the next sample
+		\param trigger Hit the drum with true. Defaults to false.
 	*/
-    float Process(bool trigger);
+    float Process(bool trigger = false);
+
+    /** Trigger the drum */
+    void Trig();
 
     /** Init the module
 		\param sample_rate Audio engine sample rate
@@ -75,6 +78,7 @@ class AnalogSnareDrum
 
     float f0_, tone_, accent_, snappy_, decay_;
     bool  sustain_;
+    bool  trig_;
 
     inline float SoftLimit(float x);
     inline float SoftClip(float x);

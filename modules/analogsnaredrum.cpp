@@ -10,6 +10,8 @@ void AnalogSnareDrum::Init(float sample_rate)
 {
     sample_rate_ = sample_rate;
 
+    trig_ = false;
+
     pulse_remaining_samples_ = 0;
     pulse_                   = 0.0f;
     pulse_height_            = 0.0f;
@@ -30,6 +32,12 @@ void AnalogSnareDrum::Init(float sample_rate)
         phase_[i] = 0.f;
     }
     noise_filter_.Init(sample_rate_);
+}
+
+/** Trigger the drum */
+void AnalogSnareDrum::Trig()
+{
+    trig_ = true;
 }
 
 void AnalogSnareDrum::SetSustain(bool sustain)
@@ -84,8 +92,9 @@ float AnalogSnareDrum::Process(bool trigger)
 
     float tone = tone_;
 
-    if(trigger)
+    if(trigger || trig_)
     {
+        trig_                    = false;
         pulse_remaining_samples_ = kTriggerPulseDuration;
         pulse_height_            = 3.0f + 7.0f * accent_;
         noise_envelope_          = 2.0f;
