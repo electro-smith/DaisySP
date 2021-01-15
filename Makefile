@@ -30,6 +30,7 @@ metro \
 mode \
 oscillator \
 oscillatorbank \
+overdrive \
 phasor \
 pluck \
 port \
