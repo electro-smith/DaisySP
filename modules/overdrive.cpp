@@ -2,8 +2,8 @@
 #include "overdrive.h"
 #include <algorithm>
 
-using namespace daisysp;
-
+namespace daisysp
+{
 void Overdrive::Init()
 {
     SetDrive(.5f);
@@ -29,23 +29,4 @@ void Overdrive::SetDrive(float drive)
     post_gain_ = 1.0f / SoftClip(0.33f + drive_squashed * (pre_gain_ - 0.33f));
 }
 
-inline float Overdrive::SoftLimit(float x)
-{
-    return x * (27.0f + x * x) / (27.0f + 9.0f * x * x);
-}
-
-inline float Overdrive::SoftClip(float x)
-{
-    if(x < -3.0f)
-    {
-        return -1.0f;
-    }
-    else if(x > 3.0f)
-    {
-        return 1.0f;
-    }
-    else
-    {
-        return SoftLimit(x);
-    }
-}
+} // namespace daisysp

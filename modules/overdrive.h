@@ -27,19 +27,16 @@ class Overdrive
     void Init();
 
     /** Get the next sample
-		\param in Input to be overdriven
-	*/
+      \param in Input to be overdriven
+    */
     float Process(float in);
 
     /** Set the amount of drive
-		\param drive Works from 0-1
-	*/
+		  \param drive Works from 0-1
+	  */
     void SetDrive(float drive);
 
   private:
-    inline float SoftClip(float x);
-    inline float SoftLimit(float x);
-
     float drive_;
     float pre_gain_;
     float post_gain_;

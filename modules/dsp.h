@@ -169,6 +169,23 @@ inline float ThisIntegratedBlepSample(float t)
     return NextIntegratedBlepSample(1.0f - t);
 }
 
+/** Soft Limiting function ported extracted from pichenettes/stmlib */
+inline float SoftLimit(float x)
+{
+    return x * (27.f + x * x) / (27.f + 9.f * x * x);
+}
+
+/** Soft Clipping function extracted from pichenettes/stmlib */
+inline float SoftClip(float x)
+{
+    if(x < -3.0f)
+        return -1.0f;
+    else if(x > 3.0f)
+        return 1.0f;
+    else
+        return SoftLimit(x);
+}
+
 /** Based on soft saturate from:
 [musicdsp.org](musicdsp.org/en/latest/Effects/42-soft-saturation.html)
 Bram de Jong (2002-01-17)
