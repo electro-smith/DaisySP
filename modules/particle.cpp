@@ -26,7 +26,7 @@ void Particle::Init(float sample_rate)
 
 float Particle::Process()
 {
-    float u = random() * rand_frac_;
+    float u = rand() * kRandFrac;
     float s = 0.0f;
 
     if(u <= density_ || sync_)
@@ -38,9 +38,9 @@ float Particle::Process()
         {
             rand_phase_ = rand_phase_ >= 1.f ? rand_phase_ - 1.f : rand_phase_;
 
-            const float u = 2.0f * random() * rand_frac_ - 1.0f;
+            const float u = 2.0f * rand() * kRandFrac - 1.0f;
             const float f
-                = fmin(powf(2.f, ratiofrac_ * spread_ * u) * frequency_, .25f);
+                = fmin(powf(2.f, kRatioFrac * spread_ * u) * frequency_, .25f);
             pre_gain_ = 0.5f / sqrtf(resonance_ * f * sqrtf(density_));
             filter_.SetFreq(f * sample_rate_);
             filter_.SetRes(resonance_);
