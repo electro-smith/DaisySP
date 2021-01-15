@@ -51,7 +51,7 @@ class ClockedNoise
 
     float sample_rate_;
 
-    float rand_frac_ = 1.f / (float)RAND_MAX;
+    static constexpr float kRandFrac = 1.f / (float)RAND_MAX;
 };
 } // namespace daisysp
 #endif

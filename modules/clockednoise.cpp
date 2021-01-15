@@ -1,3 +1,4 @@
+#include <random>
 #include "dsp.h"
 #include "clockednoise.h"
 
@@ -21,7 +22,7 @@ float ClockedNoise::Process()
     float this_sample = next_sample;
     next_sample       = 0.0f;
 
-    const float raw_sample = random() * rand_frac_ * 2.0f - 1.0f;
+    const float raw_sample = rand() * kRandFrac * 2.0f - 1.0f;
     float       raw_amount = 4.0f * (frequency_ - 0.25f);
     raw_amount             = fclamp(raw_amount, 0.0f, 1.0f);
 
