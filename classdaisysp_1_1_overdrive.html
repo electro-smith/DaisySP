@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>DaisySP: daisysp::Limiter Class Reference</title>
+<title>DaisySP: daisysp::Overdrive Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,86 +61,100 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>daisysp</b></li><li class="navelem"><a class="el" href="classdaisysp_1_1_limiter.html">Limiter</a></li>  </ul>
+<li class="navelem"><b>daisysp</b></li><li class="navelem"><a class="el" href="classdaisysp_1_1_overdrive.html">Overdrive</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="classdaisysp_1_1_limiter-members.html">List of all members</a>  </div>
+<a href="classdaisysp_1_1_overdrive-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">daisysp::Limiter Class Reference</div>  </div>
+<div class="title">daisysp::Overdrive Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="limiter_8h_source.html">limiter.h</a>&gt;</code></p>
+<p>Distortion / <a class="el" href="classdaisysp_1_1_overdrive.html" title="Distortion / Overdrive Module.">Overdrive</a> Module.  
+ <a href="classdaisysp_1_1_overdrive.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="overdrive_8h_source.html">overdrive.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa51e75e6696d7b97c981d51a46892c4b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaisysp_1_1_limiter.html#aa51e75e6696d7b97c981d51a46892c4b">Init</a> ()</td></tr>
-<tr class="separator:aa51e75e6696d7b97c981d51a46892c4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed8e88fab8d324e0a3dd1d20a7376f40"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaisysp_1_1_limiter.html#aed8e88fab8d324e0a3dd1d20a7376f40">ProcessBlock</a> (float *in, size_t size, float pre_gain)</td></tr>
-<tr class="separator:aed8e88fab8d324e0a3dd1d20a7376f40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa85459ed6b3d97d9775cdaa247d0cedd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaisysp_1_1_overdrive.html#aa85459ed6b3d97d9775cdaa247d0cedd">Init</a> ()</td></tr>
+<tr class="separator:aa85459ed6b3d97d9775cdaa247d0cedd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a563582cc8d885aec49786ddde6ff8649"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaisysp_1_1_overdrive.html#a563582cc8d885aec49786ddde6ff8649">Process</a> (float in)</td></tr>
+<tr class="separator:a563582cc8d885aec49786ddde6ff8649"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c4e20059d49e67488cb5e937ed207da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaisysp_1_1_overdrive.html#a3c4e20059d49e67488cb5e937ed207da">SetDrive</a> (float drive)</td></tr>
+<tr class="separator:a3c4e20059d49e67488cb5e937ed207da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Simple Peak <a class="el" href="classdaisysp_1_1_limiter.html">Limiter</a></p>
-<p>This was extracted from pichenettes/stmlib.</p>
-<p>Credit to pichenettes/Mutable Instruments </p>
+<div class="textblock"><p>Distortion / <a class="el" href="classdaisysp_1_1_overdrive.html" title="Distortion / Overdrive Module.">Overdrive</a> Module. </p>
+<dl class="section author"><dt>Author</dt><dd>Ported by Ben Sergentanis </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>Jan 2021 Ported from pichenettes/eurorack/plaits/dsp/fx/overdrive.h <br  />
+to an independent module. <br  />
+Original code written by Emilie Gillet in 2014. <br  />
+</dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa51e75e6696d7b97c981d51a46892c4b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa51e75e6696d7b97c981d51a46892c4b">&#9670;&nbsp;</a></span>Init()</h2>
+<a id="aa85459ed6b3d97d9775cdaa247d0cedd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa85459ed6b3d97d9775cdaa247d0cedd">&#9670;&nbsp;</a></span>Init()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void daisysp::Limiter::Init </td>
+          <td class="memname">void daisysp::Overdrive::Init </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Initializes the <a class="el" href="classdaisysp_1_1_limiter.html">Limiter</a> instance. </p>
+<p>Initializes the module with 0 gain </p>
 
 </div>
 </div>
-<a id="aed8e88fab8d324e0a3dd1d20a7376f40"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aed8e88fab8d324e0a3dd1d20a7376f40">&#9670;&nbsp;</a></span>ProcessBlock()</h2>
+<a id="a563582cc8d885aec49786ddde6ff8649"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a563582cc8d885aec49786ddde6ff8649">&#9670;&nbsp;</a></span>Process()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void daisysp::Limiter::ProcessBlock </td>
+          <td class="memname">float daisysp::Overdrive::Process </td>
           <td>(</td>
-          <td class="paramtype">float *&#160;</td>
-          <td class="paramname"><em>in</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>size</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>pre_gain</em>&#160;</td>
-        </tr>
-        <tr>
+          <td class="paramname"><em>in</em></td><td>)</td>
           <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Processes a block of audio through the limiter. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Get the next sample </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">in</td><td>- pointer to a block of audio samples to be processed. The buffer is operated on directly. </td></tr>
-    <tr><td class="paramname">size</td><td>- size of the buffer "in" </td></tr>
-    <tr><td class="paramname">pre_gain</td><td>- amount of pre_gain applied to the signal. </td></tr>
+    <tr><td class="paramname">in</td><td>Input to be overdriven </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3c4e20059d49e67488cb5e937ed207da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c4e20059d49e67488cb5e937ed207da">&#9670;&nbsp;</a></span>SetDrive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void daisysp::Overdrive::SetDrive </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>drive</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set the amount of drive </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">drive</td><td>Works from 0-1 </td></tr>
   </table>
   </dd>
 </dl>
@@ -148,8 +162,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>modules/<a class="el" href="limiter_8h_source.html">limiter.h</a></li>
-<li>modules/limiter.cpp</li>
+<li>modules/<a class="el" href="overdrive_8h_source.html">overdrive.h</a></li>
+<li>modules/overdrive.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
