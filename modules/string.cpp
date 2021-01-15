@@ -59,17 +59,17 @@ void String::SetFreq(float freq)
 
 void String::SetNonLinearity(float non_linearity_amount)
 {
-    non_linearity_amount_ = non_linearity_amount;
+    non_linearity_amount_ = fclamp(non_linearity_amount, 0.f, 1.f);
 }
 
 void String::SetBrightness(float brightness)
 {
-    brightness_ = brightness;
+    brightness_ = fclamp(brightness, 0.f, 1.f);
 }
 
 void String::SetDamping(float damping)
 {
-    damping_ = damping;
+    damping_ = fclamp(damping, 0.f, 1.f);
 }
 
 template <StringNonLinearity non_linearity>
@@ -106,7 +106,7 @@ float String::ProcessInternal(const float in)
         damping_cutoff += to_infinite * (128.0f - damping_cutoff);
     }
 
-    float temp_f = damping_f * sample_rate_ * .7f;
+    float temp_f = damping_f * sample_rate_;
     iir_damping_filter_.SetFreq(temp_f);
 
     float ratio                = powf(2.f, damping_cutoff * ratio_frac_);
