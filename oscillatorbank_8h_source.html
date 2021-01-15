@@ -78,48 +78,48 @@ $(function() {
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>daisysp</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_oscillator_bank.html">   21</a></span>&#160;<span class="keyword">class </span><a class="code" href="classdaisysp_1_1_oscillator_bank.html">OscillatorBank</a></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="classdaisysp_1_1_oscillator_bank.html">OscillatorBank</a>() {}</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    ~<a class="code" href="classdaisysp_1_1_oscillator_bank.html">OscillatorBank</a>() {}</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_oscillator_bank.html#ad575603470f4d36fbb9c0a8d6579b96a">Init</a>(<span class="keywordtype">float</span> sample_rate);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">float</span> <a class="code" href="classdaisysp_1_1_oscillator_bank.html#a87ec2181fbb736e9172e1f8acce762d8">Process</a>();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_oscillator_bank.html#aadb24e57edcc638d816272678e91fead">SetFreq</a>(<span class="keywordtype">float</span> freq);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_oscillator_bank.html#aa0642cb0ecc082e5787d21f0801188c1">SetAmplitudes</a>(<span class="keyword">const</span> <span class="keywordtype">float</span>* amplitudes);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_oscillator_bank.html#a95a2c7f849296877edd365b6de2d6c00">SetSingleAmp</a>(<span class="keywordtype">float</span> amp, <span class="keywordtype">int</span> idx);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_oscillator_bank.html#a068e508c8c6231504a88c54a8ea5e179">SetGain</a>(<span class="keywordtype">float</span> gain);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">// Oscillator state.</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">float</span> phase_;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">float</span> next_sample_;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">int</span>   segment_;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">float</span> gain_;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">float</span> registration_[7];</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">float</span> unshifted_registration_[7];</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">float</span> frequency_;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">float</span> saw_8_gain_;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">float</span> saw_4_gain_;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">float</span> saw_2_gain_;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">float</span> saw_1_gain_;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">float</span> sample_rate_;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">bool</span>  recalc_, recalc_gain_;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">bool</span> cmp(<span class="keywordtype">float</span> a, <span class="keywordtype">float</span> b) { <span class="keywordflow">return</span> fabsf(a - b) &gt; .0000001; }</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;};</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;} <span class="comment">// namespace daisysp</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_oscillator_bank.html">   22</a></span>&#160;<span class="keyword">class </span><a class="code" href="classdaisysp_1_1_oscillator_bank.html">OscillatorBank</a></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="classdaisysp_1_1_oscillator_bank.html">OscillatorBank</a>() {}</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    ~<a class="code" href="classdaisysp_1_1_oscillator_bank.html">OscillatorBank</a>() {}</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_oscillator_bank.html#ad575603470f4d36fbb9c0a8d6579b96a">Init</a>(<span class="keywordtype">float</span> sample_rate);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">float</span> <a class="code" href="classdaisysp_1_1_oscillator_bank.html#a87ec2181fbb736e9172e1f8acce762d8">Process</a>();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_oscillator_bank.html#aadb24e57edcc638d816272678e91fead">SetFreq</a>(<span class="keywordtype">float</span> freq);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_oscillator_bank.html#aa0642cb0ecc082e5787d21f0801188c1">SetAmplitudes</a>(<span class="keyword">const</span> <span class="keywordtype">float</span>* amplitudes);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_oscillator_bank.html#a95a2c7f849296877edd365b6de2d6c00">SetSingleAmp</a>(<span class="keywordtype">float</span> amp, <span class="keywordtype">int</span> idx);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_oscillator_bank.html#a068e508c8c6231504a88c54a8ea5e179">SetGain</a>(<span class="keywordtype">float</span> gain);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="comment">// Oscillator state.</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">float</span> phase_;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">float</span> next_sample_;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">int</span>   segment_;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">float</span> gain_;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">float</span> registration_[7];</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">float</span> unshifted_registration_[7];</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">float</span> frequency_;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">float</span> saw_8_gain_;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">float</span> saw_4_gain_;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">float</span> saw_2_gain_;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">float</span> saw_1_gain_;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">float</span> sample_rate_;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">bool</span>  recalc_, recalc_gain_;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">bool</span> cmp(<span class="keywordtype">float</span> a, <span class="keywordtype">float</span> b) { <span class="keywordflow">return</span> fabsf(a - b) &gt; .0000001; }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;};</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;} <span class="comment">// namespace daisysp</span></div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassdaisysp_1_1_oscillator_bank_html"><div class="ttname"><a href="classdaisysp_1_1_oscillator_bank.html">daisysp::OscillatorBank</a></div><div class="ttdef"><b>Definition:</b> oscillatorbank.h:22</div></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclassdaisysp_1_1_oscillator_bank_html"><div class="ttname"><a href="classdaisysp_1_1_oscillator_bank.html">daisysp::OscillatorBank</a></div><div class="ttdoc">Oscillator Bank module.</div><div class="ttdef"><b>Definition:</b> oscillatorbank.h:23</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_oscillator_bank_html_a068e508c8c6231504a88c54a8ea5e179"><div class="ttname"><a href="classdaisysp_1_1_oscillator_bank.html#a068e508c8c6231504a88c54a8ea5e179">daisysp::OscillatorBank::SetGain</a></div><div class="ttdeci">void SetGain(float gain)</div><div class="ttdef"><b>Definition:</b> oscillatorbank.cpp:141</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_oscillator_bank_html_a87ec2181fbb736e9172e1f8acce762d8"><div class="ttname"><a href="classdaisysp_1_1_oscillator_bank.html#a87ec2181fbb736e9172e1f8acce762d8">daisysp::OscillatorBank::Process</a></div><div class="ttdeci">float Process()</div><div class="ttdef"><b>Definition:</b> oscillatorbank.cpp:33</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_oscillator_bank_html_a95a2c7f849296877edd365b6de2d6c00"><div class="ttname"><a href="classdaisysp_1_1_oscillator_bank.html#a95a2c7f849296877edd365b6de2d6c00">daisysp::OscillatorBank::SetSingleAmp</a></div><div class="ttdeci">void SetSingleAmp(float amp, int idx)</div><div class="ttdef"><b>Definition:</b> oscillatorbank.cpp:131</div></div>
