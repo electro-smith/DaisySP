@@ -25,16 +25,32 @@ class Diffuser
     Diffuser() {}
     ~Diffuser() {}
 
-	/** Initialize the module
+    /** Initialize the module
 	*/
     void Init();
 
+    /** Reset the reverb */
     void Clear() { engine_.Clear(); }
 
-    float Process(float amount, float rt, float in);
+    /** Get the next sample
+		\param in Next sample to process
+	*/
+    float Process(float in);
+
+    /** Set the reverb tail length
+		\param rt Works 0-1.
+	*/
+    void SetTime(float rt) { rt_ = fclamp(rt, 0.f, 1.f); }
+
+    /** Set the amount of reverb.
+		\param amount Works 0-1.
+	*/
+    void SetAmount(float amount) { amount_ = fclamp(amount, 0.f, 1.f); };
 
   private:
-	uint16_t  buffer_[8192];
+    float rt_, amount_;
+
+    uint16_t                              buffer_[8192];
     typedef FxEngine<8192, FORMAT_12_BIT> E;
     E                                     engine_;
     float                                 lp_decay_;

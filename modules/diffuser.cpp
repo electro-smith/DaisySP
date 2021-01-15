@@ -11,7 +11,7 @@ void Diffuser::Init()
     lp_decay_ = 0.0f;
 }
 
-float Diffuser::Process(float amount, float rt, float in)
+float Diffuser::Process(float in)
 {
     typedef E::Reserve<
         126,
@@ -46,7 +46,7 @@ float Diffuser::Process(float amount, float rt, float in)
     c.WriteAllPass(ap3, -kap);
     c.Interpolate(ap4, 400.0f, LFO_1, 43.0f, kap);
     c.WriteAllPass(ap4, -kap);
-    c.Interpolate(del, 3070.0f, LFO_1, 340.0f, rt);
+    c.Interpolate(del, 3070.0f, LFO_1, 340.0f, rt_);
     c.Lp(lp, klp);
     c.Read(dapa TAIL, -kap);
     c.WriteAllPass(dapa, kap);
@@ -57,5 +57,5 @@ float Diffuser::Process(float amount, float rt, float in)
 
     lp_decay_ = lp;
 
-    return .1f * amount * (wet - in);
+    return .1f * amount_ * (wet - in);
 }
