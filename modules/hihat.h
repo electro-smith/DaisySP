@@ -111,9 +111,14 @@ class HiHat
     HiHat() {}
     ~HiHat() {}
 
+    /** Initialize the module
+		\param sample_rate Audio engine sample rate
+	*/
     void Init(float sample_rate)
     {
         sample_rate_ = sample_rate;
+
+        trig_ = false;
 
         envelope_     = 0.0f;
         noise_clock_  = 0.0f;
@@ -132,15 +137,20 @@ class HiHat
         hpf_.Init(sample_rate_);
     }
 
-    float Process(bool trigger)
+    /** Get the next sample
+		\param trigger Hit the hihat with true. Defaults to false.
+	*/
+    float Process(bool trigger = false)
     {
         const float envelope_decay
             = 1.0f - 0.003f * SemitonesToRatio(-decay_ * 84.0f);
         const float cut_decay
             = 1.0f - 0.0025f * SemitonesToRatio(-decay_ * 36.0f);
 
-        if(trigger)
+        if(trigger || trig_)
         {
+            trig_ = false;
+
             envelope_
                 = (1.5f + 0.5f * (1.0f - decay_)) * (0.3f + 0.7f * accent_);
         }
@@ -187,6 +197,9 @@ class HiHat
 
         return out;
     }
+
+    /** Trigger the hihat */
+    void Trig() { trig_ = true; }
 
     /** Make the hihat ring out infinitely.
 		\param sustain True = infinite sustain.
@@ -237,6 +250,7 @@ class HiHat
 
     float accent_, f0_, tone_, decay_, noisiness_;
     bool  sustain_;
+    bool  trig_;
 
     float ratio_frac_ = 1.f / 12.f;
     float SemitonesToRatio(float in) { return powf(2.f, in * ratio_frac_); }
