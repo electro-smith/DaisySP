@@ -32,9 +32,12 @@ class AnalogBassDrum
     void Init(float sample_rate);
 
     /** Get the next sample.
-		\param trigger True strikes the drum.
+		\param trigger True strikes the drum. Defaults to false.
 	*/
-    float Process(bool trigger);
+    float Process(bool trigger = false);
+
+    /** Strikes the drum. */
+    void Trig();
 
     /** Set the bassdrum to play infinitely
 		\param sustain True = infinite length
@@ -78,8 +81,10 @@ class AnalogBassDrum
 
     float ratio_frac_ = 1.f / 12.f;
 
-    float sustain_, accent_, f0_, tone_, decay_;
+    float accent_, f0_, tone_, decay_;
     float attack_fm_amount_, self_fm_amount_;
+
+    bool trig_, sustain_;
 
     int   pulse_remaining_samples_;
     int   fm_pulse_remaining_samples_;

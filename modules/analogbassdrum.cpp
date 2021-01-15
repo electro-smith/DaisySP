@@ -8,6 +8,8 @@ void AnalogBassDrum::Init(float sample_rate)
 {
     sample_rate_ = sample_rate;
 
+    trig_ = false;
+
     pulse_remaining_samples_    = 0;
     fm_pulse_remaining_samples_ = 0;
     pulse_                      = 0.0f;
@@ -60,8 +62,10 @@ float AnalogBassDrum::Process(bool trigger)
     const float exciter_leak = 0.08f * (tone_ + 0.25f);
 
 
-    if(trigger)
+    if(trigger || trig_)
     {
+        trig_ = false;
+
         pulse_remaining_samples_    = kTriggerPulseDuration;
         fm_pulse_remaining_samples_ = kFMPulseDuration;
         pulse_height_               = 3.0f + 7.0f * accent_;
@@ -143,6 +147,11 @@ float AnalogBassDrum::Process(bool trigger)
     fonepole(tone_lp_, pulse * exciter_leak + resonator_out, tone_f);
 
     return tone_lp_;
+}
+
+void AnalogBassDrum::Trig()
+{
+    trig_ = true;
 }
 
 void AnalogBassDrum::SetSustain(bool sustain)
