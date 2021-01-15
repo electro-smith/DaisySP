@@ -34,6 +34,7 @@
 #include "modules/delayline.h"
 #include "modules/drip.h"
 #include "modules/dsp.h"
+#include "modules/dust.h"
 #include "modules/fm2.h"
 #include "modules/fold.h"
 #include "modules/formantosc.h"
