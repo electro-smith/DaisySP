@@ -61,6 +61,7 @@
 #include "modules/resonator.h"
 #include "modules/reverbsc.h"
 #include "modules/samplehold.h"
+#include "modules/sampleratereducer.h"
 #include "modules/smooth_random.h"
 #include "modules/svf.h"
 #include "modules/tone.h"

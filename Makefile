@@ -38,6 +38,7 @@ pluck \
 port \
 resonator \
 reverbsc \
+sampleratereducer \
 svf \
 tone \
 variablesawosc \
