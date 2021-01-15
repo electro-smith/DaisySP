@@ -357,8 +357,8 @@ class FxEngine
         T*      buffer_;
         int32_t write_ptr_;
 
-        float lfo_phase_[2];
-        float lfo_freq_[2];
+        float* lfo_phase_;
+        float* lfo_freq_;
     };
 
     inline void SetLFOFrequency(LFOIndex index, float frequency)
@@ -378,10 +378,8 @@ class FxEngine
         c->buffer_        = buffer_;
         c->write_ptr_     = write_ptr_;
 
-        c->lfo_phase_[0] = lfo_phase_[0];
-        c->lfo_phase_[1] = lfo_phase_[1];
-        c->lfo_freq_[0]  = lfo_freq_[0];
-        c->lfo_freq_[1]  = lfo_freq_[1];
+        c->lfo_phase_ = lfo_phase_;
+        c->lfo_freq_  = lfo_freq_;
 
         if((write_ptr_ & 31) == 0)
         {
