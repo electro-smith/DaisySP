@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['resonator_2eh_249',['resonator.h',['../resonator_8h.html',1,'']]]
+  ['oscillatorbank_2eh_252',['oscillatorbank.h',['../oscillatorbank_8h.html',1,'']]],
+  ['overdrive_2eh_253',['overdrive.h',['../overdrive_8h.html',1,'']]]
 ];
