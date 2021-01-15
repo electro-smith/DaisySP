@@ -15,7 +15,6 @@ void String::Init(float sample_rate)
 
     string_.Init();
     stretch_.Init();
-    delay_ = 100.0f;
     Reset();
 
     SetFreq(440.f);

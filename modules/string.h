@@ -69,7 +69,6 @@ class String
 
     CrossFade crossfade_;
 
-    float delay_;
     float dispersion_noise_;
     float curved_bridge_;
 
