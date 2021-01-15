@@ -2,6 +2,8 @@
 #ifndef DSY_DIFFUSER_H
 #define DSY_DIFFUSER_H
 
+#include "modules/fx_engine.h"
+
 #include <stdint.h>
 #ifdef __cplusplus
 
