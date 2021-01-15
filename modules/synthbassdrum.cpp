@@ -41,6 +41,8 @@ void SyntheticBassDrum::Init(float sample_rate)
 {
     sample_rate_ = sample_rate;
 
+    trig_ = false;
+
     phase_                = 0.0f;
     phase_noise_          = 0.0f;
     f0_                   = 0.0f;
