@@ -99,9 +99,12 @@ class SyntheticBassDrum
     inline float TransistorVCA(float s, float gain);
 
     /** Get the next sample.
-		\param trigger True triggers the BD.
+		\param trigger True triggers the BD. This is optional.
 	*/
-    float Process(bool trigger);
+    float Process(bool trigger = false);
+
+    /** Trigger the drum */
+    void Trig();
 
     /** Allows the drum to play continuously
 		\param sustain True sets the drum on infinite sustain.
@@ -146,6 +149,7 @@ class SyntheticBassDrum
   private:
     float sample_rate_;
 
+    bool  trig_;
     bool  sustain_;
     float accent_, new_f0_, tone_, decay_;
     float dirtiness_, fm_envelope_amount_, fm_envelope_decay_;

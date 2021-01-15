@@ -107,8 +107,9 @@ float SyntheticBassDrum::Process(bool trigger)
         4.0f * new_f0_ * powf(2.f, (tone_ * 108.0f) * ratio_frac_), 1.0f);
     const float transient_level = tone_;
 
-    if(trigger)
+    if(trigger || trig_)
     {
+        trig_     = false;
         fm_       = 1.0f;
         body_env_ = transient_env_ = 0.3f + 0.7f * accent_;
         body_env_pulse_width_      = sample_rate_ * 0.001f;
@@ -176,6 +177,11 @@ float SyntheticBassDrum::Process(bool trigger)
 
     fonepole(tone_lp_, mix, tone_f);
     return tone_lp_;
+}
+
+void SyntheticBassDrum::Trig()
+{
+    trig_ = true;
 }
 
 void SyntheticBassDrum::SetSustain(bool sustain)
