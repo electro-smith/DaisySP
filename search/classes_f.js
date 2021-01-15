@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['samplehold_255',['SampleHold',['../classdaisysp_1_1_sample_hold.html',1,'daisysp']]],
-  ['smoothrandomgenerator_256',['SmoothRandomGenerator',['../classdaisysp_1_1_smooth_random_generator.html',1,'daisysp']]],
-  ['svf_257',['Svf',['../classdaisysp_1_1_svf.html',1,'daisysp']]]
+  ['samplehold_257',['SampleHold',['../classdaisysp_1_1_sample_hold.html',1,'daisysp']]],
+  ['sampleratereducer_258',['SampleRateReducer',['../classdaisysp_1_1_sample_rate_reducer.html',1,'daisysp']]],
+  ['smoothrandomgenerator_259',['SmoothRandomGenerator',['../classdaisysp_1_1_smooth_random_generator.html',1,'daisysp']]],
+  ['svf_260',['Svf',['../classdaisysp_1_1_svf.html',1,'daisysp']]]
 ];
