@@ -4,6 +4,7 @@
 
 #include "dsp.h"
 #include <stdint.h>
+#include <stdlib.h>
 #ifdef __cplusplus
 
 /** @file smooth_random.h */
@@ -45,7 +46,7 @@ class SmoothRandomGenerator
         {
             phase_ -= 1.0f;
             from_ += interval_;
-            interval_ = random() * rand_frac_ * 2.0f - 1.0f - from_;
+            interval_ = rand() * kRandFrac * 2.0f - 1.0f - from_;
         }
         float t = phase_ * phase_ * (3.0f - 2.0f * phase_);
         return from_ + interval_ * t;
@@ -68,7 +69,7 @@ class SmoothRandomGenerator
 
     float sample_rate_;
 
-    float rand_frac_ = 1.f / (float)RAND_MAX;
+    static constexpr float kRandFrac = 1.f / (float)RAND_MAX;
 };
 
 } // namespace daisysp
