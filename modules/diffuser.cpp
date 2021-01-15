@@ -11,7 +11,7 @@ void Diffuser::Init(uint16_t* buffer)
     lp_decay_ = 0.0f;
 }
 
-void Diffuser::Process(float amount, float rt, float* in_out, size_t size)
+float Diffuser::Process(float amount, float rt, float in)
 {
     typedef E::Reserve<
         126,
@@ -34,29 +34,28 @@ void Diffuser::Process(float amount, float rt, float* in_out, size_t size)
     const float             kap = 0.625f;
     const float             klp = 0.75f;
     float                   lp  = lp_decay_;
-    while(size--)
-    {
-        float wet;
-        engine_.Start(&c);
-        c.Read(*in_out);
-        c.Read(ap1 TAIL, kap);
-        c.WriteAllPass(ap1, -kap);
-        c.Read(ap2 TAIL, kap);
-        c.WriteAllPass(ap2, -kap);
-        c.Read(ap3 TAIL, kap);
-        c.WriteAllPass(ap3, -kap);
-        c.Interpolate(ap4, 400.0f, LFO_1, 43.0f, kap);
-        c.WriteAllPass(ap4, -kap);
-        c.Interpolate(del, 3070.0f, LFO_1, 340.0f, rt);
-        c.Lp(lp, klp);
-        c.Read(dapa TAIL, -kap);
-        c.WriteAllPass(dapa, kap);
-        c.Read(dapb TAIL, kap);
-        c.WriteAllPass(dapb, -kap);
-        c.Write(del, 2.0f);
-        c.Write(wet, 0.0f);
-        *in_out += amount * (wet - *in_out);
-        ++in_out;
-    }
+
+    float wet;
+    engine_.Start(&c);
+    c.Read(in);
+    c.Read(ap1 TAIL, kap);
+    c.WriteAllPass(ap1, -kap);
+    c.Read(ap2 TAIL, kap);
+    c.WriteAllPass(ap2, -kap);
+    c.Read(ap3 TAIL, kap);
+    c.WriteAllPass(ap3, -kap);
+    c.Interpolate(ap4, 400.0f, LFO_1, 43.0f, kap);
+    c.WriteAllPass(ap4, -kap);
+    c.Interpolate(del, 3070.0f, LFO_1, 340.0f, rt);
+    c.Lp(lp, klp);
+    c.Read(dapa TAIL, -kap);
+    c.WriteAllPass(dapa, kap);
+    c.Read(dapb TAIL, kap);
+    c.WriteAllPass(dapb, -kap);
+    c.Write(del, 2.0f);
+    c.Write(wet, 0.0f);
+
     lp_decay_ = lp;
+
+    return amount * (wet - in);
 }

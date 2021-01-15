@@ -29,7 +29,7 @@ class Diffuser
 
     void Clear() { engine_.Clear(); }
 
-    void Process(float amount, float rt, float* in_out, size_t size);
+    float Process(float amount, float rt, float in);
 
   private:
     typedef FxEngine<8192, FORMAT_12_BIT> E;
