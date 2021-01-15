@@ -35,9 +35,12 @@ class SyntheticSnareDrum
     void Init(float sample_rate);
 
     /** Get the next sample.
-		\param trigger True = hit the drum.
+		\param trigger True = hit the drum. This argument is optional.
 	*/
-    float Process(bool trigger);
+    float Process(bool trigger = false);
+
+    /** Trigger the drum */
+    void Trig();
 
     /** Make the drum ring out infinitely.
 		\param sustain True = infinite sustain.
@@ -74,6 +77,7 @@ class SyntheticSnareDrum
 
     float sample_rate_;
 
+    bool  trig_;
     bool  sustain_;
     float accent_, f0_, fm_amount_, decay_, snappy_;
 

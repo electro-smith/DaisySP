@@ -23,6 +23,8 @@ void SyntheticSnareDrum::Init(float sample_rate)
     SetDecay(.3f);
     SetSnappy(.7f);
 
+    trig_ = false;
+
     drum_lp_.Init(sample_rate_);
     snare_hp_.Init(sample_rate_);
     snare_lp_.Init(sample_rate_);
@@ -68,8 +70,9 @@ float SyntheticSnareDrum::Process(bool trigger)
 
     drum_lp_.SetFreq(3.0f * f0_ * sample_rate_);
 
-    if(trigger)
+    if(trigger || trig_)
     {
+        trig_            = false;
         snare_amplitude_ = drum_amplitude_ = 0.3f + 0.7f * accent_;
         fm_                                = 1.0f;
         phase_[0] = phase_[1] = 0.0f;
@@ -157,6 +160,11 @@ float SyntheticSnareDrum::Process(bool trigger)
     snare = (snare + 0.1f) * (snare_amplitude_ + fm_) * snare_level;
 
     return snare + drum; // It's a snare, it's a drum, it's a snare drum.
+}
+
+void SyntheticSnareDrum::Trig()
+{
+    trig_ = true;
 }
 
 void SyntheticSnareDrum::SetSustain(bool sustain)
