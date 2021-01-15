@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['jitter_66',['Jitter',['../classdaisysp_1_1_jitter.html',1,'daisysp']]]
+  ['jitter_68',['Jitter',['../classdaisysp_1_1_jitter.html',1,'daisysp']]]
 ];
