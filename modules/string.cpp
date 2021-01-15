@@ -27,9 +27,8 @@ void String::Reset()
     stretch_.Reset();
     iir_damping_filter_.Init(sample_rate_);
 
-    //dc_blocker_.Init(1.0f - 20.0f / sample_rate_);  
+    //dc_blocker_.Init(1.0f - 20.0f / sample_rate_);
     dc_blocker_.Init(sample_rate_);
-
 
     dispersion_noise_ = 0.0f;
     curved_bridge_    = 0.0f;
@@ -93,8 +92,8 @@ float String::ProcessInternal(const float in)
         src_ratio  = 1.0f;
     }
 
-    float damping_cutoff = fmin(
-        12.0f + damping_ * damping_ * 60.0f + brightness * 24.0f, 84.0f);
+    float damping_cutoff
+        = fmin(12.0f + damping_ * damping_ * 60.0f + brightness * 24.0f, 84.0f);
     float damping_f
         = fmin(frequency_ * powf(2.f, damping_cutoff * ratio_frac_), 0.499f);
 
@@ -107,8 +106,8 @@ float String::ProcessInternal(const float in)
         damping_cutoff += to_infinite * (128.0f - damping_cutoff);
     }
 
-    iir_damping_filter_.SetFreq(damping_f * sample_rate_);
-    iir_damping_filter_.SetRes(0.5f);
+    float temp_f = damping_f * sample_rate_ * .7f;
+    iir_damping_filter_.SetFreq(temp_f);
 
     float ratio                = powf(2.f, damping_cutoff * ratio_frac_);
     float damping_compensation = 1.f - 2.f * atanf(1.f / ratio) / (TWOPI_F);
@@ -176,14 +175,13 @@ float String::ProcessInternal(const float in)
             float sign     = s > 0.0f ? 1.0f : -1.5f;
             curved_bridge_ = (fabsf(value) + value) * sign;
         }
-		
+
         s += in;
         s = fclamp(s, -20.f, +20.f);
-		
+
         s = dc_blocker_.Process(s);
 
-        iir_damping_filter_.Process(s);
-        s = iir_damping_filter_.Low();
+        s = iir_damping_filter_.Process(s);
         string_.Write(s);
 
         out_sample_[1] = out_sample_[0];

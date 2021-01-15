@@ -9,6 +9,7 @@
 #include "modules/dcblock.h"
 #include "modules/delayline.h"
 #include "modules/svf.h"
+#include "modules/tone.h"
 
 #ifdef __cplusplus
 
@@ -62,7 +63,8 @@ class String
     float rand_frac_  = 1.f / (float)RAND_MAX;
     float ratio_frac_ = 1.f / 12.f;
 
-    Svf     iir_damping_filter_;
+    Tone iir_damping_filter_;
+
     DcBlock dc_blocker_;
 
     CrossFade crossfade_;
