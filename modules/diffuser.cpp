@@ -11,14 +11,18 @@ void Diffuser::Init(uint16_t* buffer)
     lp_decay_ = 0.0f;
 }
 
-void Diffuser::Clear()
-{
-    engine_.Clear();
-}
-
 void Diffuser::Process(float amount, float rt, float* in_out, size_t size)
 {
-    typedef E::Reserve<126, E::Reserve<180, E::Reserve<269, E::Reserve<444,E::Reserve<1653, E::Reserve<2010, E::Reserve<3411>>>>>>> Memory;
+    typedef E::Reserve<
+        126,
+        E::Reserve<
+            180,
+            E::Reserve<
+                269,
+                E::Reserve<
+                    444,
+                    E::Reserve<1653, E::Reserve<2010, E::Reserve<3411>>>>>>>
+                            Memory;
     E::DelayLine<Memory, 0> ap1;
     E::DelayLine<Memory, 1> ap2;
     E::DelayLine<Memory, 2> ap3;
