@@ -1,8 +1,9 @@
 #pragma once
 #ifndef DSY_DUST_H
 #define DSY_DUST_H
-
-#include <stdint.h>
+#include <cstdlib>
+#include <random>
+#include "dsp.h"
 #ifdef __cplusplus
 
 /** @file dust.h */
@@ -10,13 +11,13 @@
 namespace daisysp
 {
 /**  
-	   @brief Dust Module
-	   @author Ported by Ben Sergentanis 
-	   @date Jan 2021 
-	   Randomly Clocked Samples \n \n
-	   Ported from pichenettes/eurorack/plaits/dsp/noise/dust.h \n
-	   to an independent module. \n
-	   Original code written by Emilie Gillet in 2016. \n
+       @brief Dust Module
+       @author Ported by Ben Sergentanis 
+       @date Jan 2021 
+       Randomly Clocked Samples \n \n
+       Ported from pichenettes/eurorack/plaits/dsp/noise/dust.h \n
+       to an independent module. \n
+       Original code written by Emilie Gillet in 2016. \n
 
 */
 class Dust
@@ -30,7 +31,7 @@ class Dust
     float Process()
     {
         float inv_density = 1.0f / density_;
-        float u           = rand() * frac_;
+        float u           = rand() * kRandFrac;
         if(u < density_)
         {
             return u * inv_density;
@@ -45,8 +46,8 @@ class Dust
     }
 
   private:
-    float density_;
-    float frac_ = 1.f / RAND_MAX;
+    float                  density_;
+    static constexpr float kRandFrac = 1.f / RAND_MAX;
 };
 } // namespace daisysp
 #endif
