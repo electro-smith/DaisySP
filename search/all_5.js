@@ -14,11 +14,12 @@ var searchData=
   ['getindex_50',['GetIndex',['../classdaisysp_1_1_fm2.html#a2b80f9662af7538bfec62ab4b45ab6b0',1,'daisysp::Fm2']]],
   ['getmakeup_51',['GetMakeup',['../classdaisysp_1_1_compressor.html#a8c833b63461f2aaaa86ed34e35343394',1,'daisysp::Compressor']]],
   ['getmode_52',['GetMode',['../classdaisysp_1_1_pluck.html#a6817009ba135c6d4aa9fff9edef3b91c',1,'daisysp::Pluck']]],
-  ['getpos_53',['GetPos',['../classdaisysp_1_1_cross_fade.html#a16cda819b5ef80c0b73743e0d15df3ca',1,'daisysp::CrossFade']]],
-  ['getratio_54',['GetRatio',['../classdaisysp_1_1_compressor.html#a045f3b6e43eff6534f983d6d162d58ae',1,'daisysp::Compressor']]],
-  ['getrelease_55',['GetRelease',['../classdaisysp_1_1_compressor.html#a31a25cca409fa27e18baa705674b07aa',1,'daisysp::Compressor']]],
-  ['getthreshold_56',['GetThreshold',['../classdaisysp_1_1_compressor.html#a5de29ca1a67b8b7994f52bebace517c1',1,'daisysp::Compressor']]],
-  ['getvalue_57',['GetValue',['../classdaisysp_1_1_ad_env.html#a66ac7b5f2537c74cc8cbe24314b171c6',1,'daisysp::AdEnv']]],
-  ['grainlet_2eh_58',['grainlet.h',['../grainlet_8h.html',1,'']]],
-  ['grainletoscillator_59',['GrainletOscillator',['../classdaisysp_1_1_grainlet_oscillator.html',1,'daisysp']]]
+  ['getnoise_53',['GetNoise',['../classdaisysp_1_1_particle.html#a9579601e16a45b74211651ac73886ac4',1,'daisysp::Particle']]],
+  ['getpos_54',['GetPos',['../classdaisysp_1_1_cross_fade.html#a16cda819b5ef80c0b73743e0d15df3ca',1,'daisysp::CrossFade']]],
+  ['getratio_55',['GetRatio',['../classdaisysp_1_1_compressor.html#a045f3b6e43eff6534f983d6d162d58ae',1,'daisysp::Compressor']]],
+  ['getrelease_56',['GetRelease',['../classdaisysp_1_1_compressor.html#a31a25cca409fa27e18baa705674b07aa',1,'daisysp::Compressor']]],
+  ['getthreshold_57',['GetThreshold',['../classdaisysp_1_1_compressor.html#a5de29ca1a67b8b7994f52bebace517c1',1,'daisysp::Compressor']]],
+  ['getvalue_58',['GetValue',['../classdaisysp_1_1_ad_env.html#a66ac7b5f2537c74cc8cbe24314b171c6',1,'daisysp::AdEnv']]],
+  ['grainlet_2eh_59',['grainlet.h',['../grainlet_8h.html',1,'']]],
+  ['grainletoscillator_60',['GrainletOscillator',['../classdaisysp_1_1_grainlet_oscillator.html',1,'daisysp']]]
 ];
