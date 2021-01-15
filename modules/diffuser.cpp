@@ -4,9 +4,9 @@
 
 using namespace daisysp;
 
-void Diffuser::Init(uint16_t* buffer)
+void Diffuser::Init()
 {
-    engine_.Init(buffer);
+    engine_.Init(buffer_);
     engine_.SetLFOFrequency(LFO_1, 0.3f / 48000.0f);
     lp_decay_ = 0.0f;
 }

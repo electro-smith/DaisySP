@@ -25,13 +25,16 @@ class Diffuser
     Diffuser() {}
     ~Diffuser() {}
 
-    void Init(uint16_t* buffer);
+	/** Initialize the module
+	*/
+    void Init();
 
     void Clear() { engine_.Clear(); }
 
     float Process(float amount, float rt, float in);
 
   private:
+	uint16_t  buffer_[8192];
     typedef FxEngine<8192, FORMAT_12_BIT> E;
     E                                     engine_;
     float                                 lp_decay_;
