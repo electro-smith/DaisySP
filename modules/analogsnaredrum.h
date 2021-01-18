@@ -1,6 +1,6 @@
 #pragma once
-#ifndef DSY_FORMANTOSCILLATOR_H
-#define DSY_FORMANTOSCILLATOR_H
+#ifndef DSY_ANALOG_SNARE_H
+#define DSY_ANALOG_SNARE_H
 
 #include "modules/svf.h"
 
