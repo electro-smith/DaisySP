@@ -12,6 +12,13 @@ void StringVoice::Init(float sample_rate)
     string_.Init(sample_rate_);
     dust_.Init();
     remaining_noise_samples_ = 0;
+
+    SetSustain(false);
+    SetFreq(440.f);
+    SetAccent(.2f);
+    SetStructure(.7f);
+    SetBrightness(.2f);
+    SetDamping(.7f);
 }
 
 void StringVoice::Reset()
