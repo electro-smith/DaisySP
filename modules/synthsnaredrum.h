@@ -88,9 +88,6 @@ class SyntheticSnareDrum
     float sustain_gain_;
     int   hold_counter_;
 
-    float rand_frac_  = 1.f / (float)RAND_MAX;
-    float ratio_frac_ = 1.f / 12.f;
-
     Svf drum_lp_;
     Svf snare_hp_;
     Svf snare_lp_;

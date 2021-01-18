@@ -1,6 +1,7 @@
 #include "dsp.h"
 #include "synthsnaredrum.h"
 #include <math.h>
+#include <stdlib.h>
 
 using namespace daisysp;
 
@@ -45,14 +46,14 @@ float SyntheticSnareDrum::Process(bool trigger)
         = 1.0f
           - 1.0f / (0.015f * sample_rate_)
                 * powf(2.f,
-                       ratio_frac_
+                       kOneTwelfth
                            * (-decay_xt * 72.0f - fm_amount_ * 12.0f
                               + snappy_ * 7.0f));
 
     const float snare_decay
         = 1.0f
           - 1.0f / (0.01f * sample_rate_)
-                * powf(2.f, ratio_frac_ * (-decay_ * 60.0f - snappy_ * 7.0f));
+                * powf(2.f, kOneTwelfth * (-decay_ * 60.0f - snappy_ * 7.0f));
     const float fm_decay = 1.0f - 1.0f / (0.007f * sample_rate_);
 
     float snappy = snappy_ * 1.1f - 0.05f;
@@ -152,7 +153,7 @@ float SyntheticSnareDrum::Process(bool trigger)
     drum_lp_.Process(drum);
     drum = drum_lp_.Low();
 
-    float noise = random() * rand_frac_;
+    float noise = rand() * kRandFrac;
     snare_lp_.Process(noise);
     float snare = snare_lp_.Low();
     snare_hp_.Process(snare);
