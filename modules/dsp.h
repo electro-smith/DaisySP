@@ -137,14 +137,14 @@ T median(T a, T b, T c)
                    : (a < c) ? (c < b) ? c : b : a;
 }
 
-/** From plaits oscillator.h
+/** Ported from pichenettes/eurorack/plaits/dsp/oscillator/oscillator.h
 */
 inline float ThisBlepSample(float t)
 {
     return 0.5f * t * t;
 }
 
-/** From plaits oscillator.h
+/** Ported from pichenettes/eurorack/plaits/dsp/oscillator/oscillator.h
 */
 inline float NextBlepSample(float t)
 {
@@ -152,7 +152,7 @@ inline float NextBlepSample(float t)
     return -0.5f * t * t;
 }
 
-/** From plaits oscillator.h
+/** Ported from pichenettes/eurorack/plaits/dsp/oscillator/oscillator.h
 */
 inline float NextIntegratedBlepSample(float t)
 {
@@ -162,11 +162,28 @@ inline float NextIntegratedBlepSample(float t)
     return 0.1875f - t1 + 1.5f * t2 - t4;
 }
 
-/** From plaits oscillator.h
+/** Ported from pichenettes/eurorack/plaits/dsp/oscillator/oscillator.h
 */
 inline float ThisIntegratedBlepSample(float t)
 {
     return NextIntegratedBlepSample(1.0f - t);
+}
+
+/** Soft Limiting function ported extracted from pichenettes/stmlib */
+inline float SoftLimit(float x)
+{
+    return x * (27.f + x * x) / (27.f + 9.f * x * x);
+}
+
+/** Soft Clipping function extracted from pichenettes/stmlib */
+inline float SoftClip(float x)
+{
+    if(x < -3.0f)
+        return -1.0f;
+    else if(x > 3.0f)
+        return 1.0f;
+    else
+        return SoftLimit(x);
 }
 
 /** Based on soft saturate from:
