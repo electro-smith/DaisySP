@@ -20,6 +20,7 @@
 #include "modules/adsr.h"
 #include "modules/allpass.h"
 #include "modules/analogbassdrum.h"
+#include "modules/analogsnaredrum.h"
 #include "modules/atone.h"
 #include "modules/autowah.h"
 #include "modules/balance.h"

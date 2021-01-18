@@ -6,6 +6,7 @@ adenv \
 adsr  \
 allpass \
 analogbassdrum \
+analogsnaredrum \
 autowah \
 atone \
 balance \
