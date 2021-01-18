@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['notch_317',['Notch',['../classdaisysp_1_1_svf.html#ac21096bb09e2e01eb223986cbb293a49',1,'daisysp::Svf']]]
+  ['low_334',['Low',['../classdaisysp_1_1_svf.html#a3fbe38989b49fba12a3a7a37f291b33c',1,'daisysp::Svf']]]
 ];
