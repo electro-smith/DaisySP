@@ -12,13 +12,13 @@ void ModalVoice::Init(float sample_rate)
     resonator_.Init(0.015f, 24, sample_rate_);
     excitation_filter_.Init();
     dust_.Init();
-	
-	SetSustain(false);
-	SetFreq(440.f);
-	SetAccent(.3f);
-	SetStructure(.6f);
-	SetBrightness(.8f);
-	SetDamping(.6f);
+
+    SetSustain(false);
+    SetFreq(440.f);
+    SetAccent(.3f);
+    SetStructure(.6f);
+    SetBrightness(.8f);
+    SetDamping(.6f);
 }
 
 void ModalVoice::SetSustain(bool sustain)
