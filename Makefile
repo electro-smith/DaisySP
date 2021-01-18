@@ -11,6 +11,7 @@ balance \
 biquad \
 blosc \
 bitcrush \
+clockednoise \
 comb \
 compressor \
 crossfade \
@@ -31,10 +32,14 @@ metro \
 mode \
 oscillator \
 oscillatorbank \
+overdrive \
+particle \
 phasor \
 pluck \
 port \
+resonator \
 reverbsc \
+sampleratereducer \
 svf \
 tone \
 variablesawosc \
