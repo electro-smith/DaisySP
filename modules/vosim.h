@@ -10,11 +10,13 @@
 namespace daisysp
 {
 /**  
-       Vosim Oscillator Module \n 
-       Two sinewaves multiplied by and sync'ed to a carrier. \n
-       Ported by Ben Sergentanis, Dec 2020 
-       @author Emilie Gillet
-       @date 2016
+  	   @brief Vosim Oscillator Module \n 
+	   @author Ben Sergentanis
+	   @date Dec 2020 
+       Two sinewaves multiplied by and sync'ed to a carrier. \n \n
+	   Ported from pichenettes/eurorack/plaits/dsp/oscillator/vosim_oscillator.h \n 
+	   \n to an independent module. \n
+	   Original code written by Emilie Gillet in 2016. \n
 */
 class VosimOscillator
 {
