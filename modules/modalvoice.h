@@ -29,20 +29,25 @@ class ModalVoice
     ~ModalVoice() {}
 
     void Init(float sample_rate);
-    void Process(bool   sustain,
-                 bool   trigger,
-                 float  accent,
-                 float  f0,
-                 float  structure,
-                 float  brightness,
-                 float  damping,
-                 float* temp,
-                 float* out,
-                 float* aux,
-                 size_t size);
+
+    float Process(bool trigger = false);
+
+    void  SetSustain(bool sustain);
+    void  Trig();
+    void  SetFreq(float freq);
+    void  SetAccent(float accent);
+    void  SetStructure(float structure);
+    void  SetBrightness(float brightness);
+    void  SetDamping(float damping);
+    float GetAux();
 
   private:
     float sample_rate_;
+
+    bool  sustain_, trig_;
+    float f0_, structure_, brightness_, damping_;
+    float density_, accent_;
+    float aux_;
 
     ResonatorSvf<1> excitation_filter_;
     Resonator       resonator_;
