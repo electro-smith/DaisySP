@@ -27,22 +27,62 @@ class StringVoice
     StringVoice() {}
     ~StringVoice() {}
 
+    /** Initialize the module
+		\param sample_rate Audio engine sample rate
+	*/
     void Init(float sample_rate);
-    void Reset();
-    void Render(bool   sustain,
-                bool   trigger,
-                float  accent,
-                float  f0,
-                float  structure,
-                float  brightness,
-                float  damping,
-                float* temp,
-                float* out,
-                float* aux,
-                size_t size);
+    
+	/** Reset the string oscillator */
+	void Reset();
+	
+	/** Get the next sample
+		\param trigger Strike the resonator. Defaults to false.
+	*/
+    float Process(bool   trigger = false);
+
+    /** Continually excite the resonator with noise.
+		\param sustain True turns on the noise.
+	*/
+    void SetSustain(bool sustain);
+
+    /** Strike the resonator. */
+    void Trig();
+
+    /** Set the resonator root frequency.
+		\param freq Frequency in Hz.
+	*/
+    void SetFreq(float freq);
+
+    /** Hit the resonator a bit harder.
+		\param accent Works 0-1.
+	*/
+    void SetAccent(float accent);
+
+    /** Changes the general charater of the resonator (stiffness, brightness)
+        \param structure Works best from 0-1
+    */
+    void SetStructure(float structure);
+
+    /** Set the brighness of the resonator, and the noise density.
+        \param brightness Works best 0-1
+    */
+    void SetBrightness(float brightness);
+
+    /** How long the resonant body takes to decay.
+        \param damping Works best 0-1
+    */
+    void SetDamping(float damping);
+
+    /** Get the raw excitation signal. Must call Process() first. */
+    float GetAux();
 
   private:
     float sample_rate_;
+
+	bool  sustain_, trig_;
+    float f0_, brightness_, damping_;
+    float density_, accent_;
+    float aux_;
 
     Dust   dust_;
     Svf    excitation_filter_;

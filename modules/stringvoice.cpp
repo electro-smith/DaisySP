@@ -19,48 +19,85 @@ void StringVoice::Reset()
     string_.Reset();
 }
 
-void StringVoice::Render(bool   sustain,
-                         bool   trigger,
-                         float  accent,
-                         float  f0,
-                         float  structure,
-                         float  brightness,
-                         float  damping,
-                         float* temp,
-                         float* out,
-                         float* aux,
-                         size_t size)
+void StringVoice::SetSustain(bool sustain)
 {
-    const float density = brightness * brightness;
+    sustain_ = sustain;
+}
 
-    brightness += 0.25f * accent * (1.0f - brightness);
-    damping += 0.25f * accent * (1.0f - damping);
+void StringVoice::Trig()
+{
+    trig_ = true;
+}
+
+void StringVoice::SetFreq(float freq)
+{
+    resonator_.SetFreq(freq);
+    f0_ = freq / sample_rate_;
+    f0_ = fclamp(f0_, 0.f, .25f);
+}
+
+void StringVoice::SetAccent(float accent)
+{
+    accent_ = fclamp(accent, 0.f, 1.f);
+}
+
+void StringVoice::SetStructure(float structure)
+{
+	structure = fclamp(structure, 0.f, 1.f);
+	const float non_linearity
+        = structure < 0.24f
+              ? (structure - 0.24f) * 4.166f
+              : (structure > 0.26f ? (structure - 0.26f) * 1.35135f : 0.0f);
+	string_.SetNonLinearity(non_linearity);
+
+}
+
+void StringVoice::SetBrightness(float brightness)
+{
+    brightness_ = fclamp(brightness, 0.f, 1.f);
+    density_    = brightness_ * brightness_;
+}
+
+void StringVoice::SetDamping(float damping)
+{
+    damping_ = fclamp(damping, 0.f, 1.f);
+}
+
+float StringVoice::GetAux()
+{
+    return aux_;
+}
+
+float StringVoice::Process(bool trigger)
+{
+    const float brightness = 0.25f * accent_ * (1.0f - brightness_);
+    const float damping = 0.25f * accent_ * (1.0f - damping_);
 
     // Synthesize excitation signal.
-    if(trigger || sustain)
+    if(trigger || trig_ || sustain_)
     {
+		trig_ = false;
         const float range  = 72.0f;
-        const float f      = 4.0f * f0;
+        const float f      = 4.0f * f0_;
         const float cutoff = fmin(
             f
                 * powf(2.f,
                        kOneTwelfth * (brightness * (2.0f - brightness) - 0.5f)
                            * range),
             0.499f);
-        const float q            = sustain ? 1.0f : 0.5f;
-        remaining_noise_samples_ = static_cast<size_t>(1.0f / f0);
+        const float q            = sustain_ ? 1.0f : 0.5f;
+        remaining_noise_samples_ = static_cast<size_t>(1.0f / f0_);
         excitation_filter_.SetFreq(cutoff * sample_rate_);
         excitation_filter_.SetRes(q);
     }
 
-    if(sustain)
+	float temp = 0.f;
+
+    if(sustain_)
     {
-        const float dust_f = 0.00005f + 0.99995f * density * density;
+        const float dust_f = 0.00005f + 0.99995f * density_ * density_;
 		dust_.SetDensity(dust_f);
-        for(size_t i = 0; i < size; ++i)
-        {
-            temp[i] = dust_.Process() * (8.0f - dust_f * 6.0f) * accent;
-        }
+        temp = dust_.Process() * (8.0f - dust_f * 6.0f) * accent_;
     }
     else if(remaining_noise_samples_)
     {
@@ -77,30 +114,15 @@ void StringVoice::Render(bool   sustain,
             *start++ = 0.0f;
         }
     }
-    else
-    {
-		for(size_t i = 0 ; i < size; i++){
-			temp[i] = 0.f;
-		}
-    }
 
-    excitation_filter_.Process(temp[0]);
-	temp[0] = excitation_filter_.Low();
+    excitation_filter_.Process(temp);
+	temp = excitation_filter_.Low();
 
-    for(size_t i = 0; i < size; ++i)
-    {
-        aux[i] += temp[i];
-    }
-
-    float non_linearity
-        = structure < 0.24f
-              ? (structure - 0.24f) * 4.166f
-              : (structure > 0.26f ? (structure - 0.26f) * 1.35135f : 0.0f);
+    aux_ = temp;
 			  
-	string_.SetFreq(f0);
-	string_.SetNonLinearity(non_linearity);
+	string_.SetFreq(f0_);
 	string_.SetBrightness(brightness);
 	string_.SetDamping(damping);
 	
-    *out++ = string_.Process(temp[0]);
+    return string_.Process(temp);
 }
