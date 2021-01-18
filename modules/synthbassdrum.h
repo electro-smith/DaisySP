@@ -63,8 +63,6 @@ class SyntheticBassDrumAttackNoise
     float Process();
 
   private:
-    float rand_frac_ = 1.f / (float)RAND_MAX;
-
     float lp_;
     float hp_;
 };
@@ -168,9 +166,6 @@ class SyntheticBassDrum
     float sustain_gain_;
 
     float tone_lp_;
-
-    float ratio_frac_ = 1.f / 12.f;
-    float rand_frac_  = 1.f / (float)RAND_MAX;
 
     SyntheticBassDrumClick       click_;
     SyntheticBassDrumAttackNoise noise_;

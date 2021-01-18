@@ -1,5 +1,6 @@
 #include "synthbassdrum.h"
 #include <math.h>
+#include <stdlib.h>
 
 using namespace daisysp;
 
@@ -31,7 +32,7 @@ void SyntheticBassDrumAttackNoise::Init()
 
 float SyntheticBassDrumAttackNoise::Process()
 {
-    float sample = random() * rand_frac_;
+    float sample = rand() * kRandFrac;
     fonepole(lp_, sample, 0.05f);
     fonepole(hp_, lp_, 0.005f);
     return lp_ - hp_;
@@ -103,10 +104,10 @@ float SyntheticBassDrum::Process(bool trigger)
     const float body_env_decay
         = 1.0f
           - 1.0f / (0.02f * sample_rate_)
-                * powf(2.f, (-decay_ * 60.0f) * ratio_frac_);
+                * powf(2.f, (-decay_ * 60.0f) * kOneTwelfth);
     const float transient_env_decay = 1.0f - 1.0f / (0.005f * sample_rate_);
     const float tone_f              = fmin(
-        4.0f * new_f0_ * powf(2.f, (tone_ * 108.0f) * ratio_frac_), 1.0f);
+        4.0f * new_f0_ * powf(2.f, (tone_ * 108.0f) * kOneTwelfth), 1.0f);
     const float transient_level = tone_;
 
     if(trigger || trig_)
@@ -120,7 +121,7 @@ float SyntheticBassDrum::Process(bool trigger)
 
     sustain_gain_ = accent_ * decay_;
 
-    fonepole(phase_noise_, random() * rand_frac_ - 0.5f, 0.002f);
+    fonepole(phase_noise_, rand() * kRandFrac - 0.5f, 0.002f);
 
     float mix = 0.0f;
 
