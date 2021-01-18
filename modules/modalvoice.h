@@ -28,17 +28,50 @@ class ModalVoice
     ModalVoice() {}
     ~ModalVoice() {}
 
+    /** Initialize the module
+		\param sample_rate Audio engine sample rate
+	*/
     void Init(float sample_rate);
 
+    /** Get the next sample
+		\param trigger Strike the resonator. Defaults to false.
+	*/
     float Process(bool trigger = false);
 
-    void  SetSustain(bool sustain);
-    void  Trig();
-    void  SetFreq(float freq);
-    void  SetAccent(float accent);
-    void  SetStructure(float structure);
-    void  SetBrightness(float brightness);
-    void  SetDamping(float damping);
+    /** Continually excite the resonator with noise.
+		\param sustain True turns on the noise.
+	*/
+    void SetSustain(bool sustain);
+
+    /** Strike the resonator. */
+    void Trig();
+
+    /** Set the resonator root frequency.
+		\param freq Frequency in Hz.
+	*/
+    void SetFreq(float freq);
+
+    /** Hit the resonator a bit harder.
+		\param accent Works 0-1.
+	*/
+    void SetAccent(float accent);
+
+    /** Changes the general charater of the resonator (stiffness, brightness)
+        \param structure Works best from 0-1
+    */
+    void SetStructure(float structure);
+
+    /** Set the brighness of the resonator
+        \param brightness Works best 0-1
+    */
+    void SetBrightness(float brightness);
+
+    /** How long the resonant body takes to decay.
+        \param damping Works best 0-1
+    */
+    void SetDamping(float damping);
+
+    /** Get the raw excitation signal. Must call Process() first. */
     float GetAux();
 
   private:
