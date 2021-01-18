@@ -41,6 +41,7 @@ reverbsc \
 sampleratereducer \
 svf \
 synthbassdrum \
+synthsnaredrum \
 tone \
 variablesawosc \
 variableshapeosc \
