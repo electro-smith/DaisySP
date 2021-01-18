@@ -79,8 +79,6 @@ class AnalogBassDrum
 
     float sample_rate_;
 
-    float ratio_frac_ = 1.f / 12.f;
-
     float accent_, f0_, tone_, decay_;
     float attack_fm_amount_, self_fm_amount_;
 

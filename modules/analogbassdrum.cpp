@@ -56,9 +56,9 @@ float AnalogBassDrum::Process(bool trigger)
     const float kRetrigPulseDuration  = 0.05f * sample_rate_;
 
     const float scale = 0.001f / f0_;
-    const float q     = 1500.0f * powf(2.f, ratio_frac_ * decay_ * 80.0f);
+    const float q     = 1500.0f * powf(2.f, kOneTwelfth * decay_ * 80.0f);
     const float tone_f
-        = fmin(4.0f * f0_ * powf(2.f, ratio_frac_ * tone_ * 108.0f), 1.0f);
+        = fmin(4.0f * f0_ * powf(2.f, kOneTwelfth * tone_ * 108.0f), 1.0f);
     const float exciter_leak = 0.08f * (tone_ + 0.25f);
 
 
