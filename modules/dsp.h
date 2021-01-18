@@ -16,6 +16,12 @@
 
 namespace daisysp
 {
+//Avoids division for random floats. e.g. rand() * kRandFrac
+static constexpr float kRandFrac = 1.f / (float)RAND_MAX;
+
+//Convert from semitones to other units. e.g. 2 ^ (kOneTwelfth * x)
+static constexpr float kOneTwelfth = 1.f / 12.f;
+
 /** efficient floating point min/max
 c/o stephen mccaul
 */
