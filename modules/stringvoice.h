@@ -1,47 +1,31 @@
-// Copyright 2016 Emilie Gillet.
-//
-// Author: Emilie Gillet (emilie.o.gillet@gmail.com)
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-// 
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-// 
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
-// 
-// See http://creativecommons.org/licenses/MIT/ for more information.
-//
-// -----------------------------------------------------------------------------
-//
-// Extended Karplus-Strong, with all the niceties from Rings.
+#pragma once
+#ifndef DSY_STRINGVOICE_H
+#define DSY_STRINGVOICE_H
 
-#ifndef PLAITS_DSP_PHYSICAL_STRING_VOICE_H_
-#define PLAITS_DSP_PHYSICAL_STRING_VOICE_H_
+#include "modules/svf.h"
+#include "modules/string.h"
+#include <stdint.h>
+#ifdef __cplusplus
 
-#include "stmlib/dsp/filter.h"
-#include "stmlib/utils/buffer_allocator.h"
+/** @file stringvoice.h */
 
-#include "plaits/dsp/physical_modelling/string.h"
-
-namespace plaits {
-
+namespace daisysp
+{
+/**  
+       @brief Extended Karplus-Strong, with all the niceties from Rings 
+	   @author Ben Sergentanis
+	   @date Jan 2021
+	   Ported from pichenettes/eurorack/plaits/dsp/physical_modelling/string_voice.h \n
+	   and pichenettes/eurorack/plaits/dsp/physical_modelling/string_voice.cc \n
+	   to an independent module. \n
+	   Original code written by Emilie Gillet in 2016. \n
+*/
 class StringVoice {
  public:
   StringVoice() { }
   ~StringVoice() { }
   
-  void Init(stmlib::BufferAllocator* allocator);
+  void Init(float sample_rate);
   void Reset();
   void Render(
       bool sustain,
@@ -57,13 +41,13 @@ class StringVoice {
       size_t size);
   
  private:
-  stmlib::Svf excitation_filter_;
+	float sample_rate_;
+ 
+  Svf excitation_filter_;
   String string_;
   size_t remaining_noise_samples_;
   
-  DISALLOW_COPY_AND_ASSIGN(StringVoice);
 };
-
-}  // namespace plaits
-
-#endif  // PLAITS_DSP_PHYSICAL_STRING_VOICE_H_
+}  // namespace daisysp
+#endif
+#endif

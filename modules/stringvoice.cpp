@@ -1,48 +1,15 @@
-// Copyright 2016 Emilie Gillet.
-//
-// Author: Emilie Gillet (emilie.o.gillet@gmail.com)
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-// 
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-// 
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
-// 
-// See http://creativecommons.org/licenses/MIT/ for more information.
-//
-// -----------------------------------------------------------------------------
-//
-// Extended Karplus-Strong, with all the niceties from Rings.
-
-#include "plaits/dsp/physical_modelling/string_voice.h"
-
+#include "modules/stringvoice.h"
 #include <algorithm>
+#include "modules/dust.h"
+#include "modules/dsp.h"
 
-#include "stmlib/dsp/units.h"
-#include "stmlib/utils/random.h"
+using namespace daisysp;
 
-#include "plaits/dsp/noise/dust.h"
+void StringVoice::Init(float sample_rate) {
+	sample_rate_ = sample_rate;
 
-namespace plaits {
-
-using namespace std;
-using namespace stmlib;
-
-void StringVoice::Init(BufferAllocator* allocator) {
-  excitation_filter_.Init();
-  string_.Init(allocator);
+  excitation_filter_.Init(sample_rate);
+  string_.Init(sample_rate_);
   remaining_noise_samples_ = 0;
 }
 
@@ -71,7 +38,7 @@ void StringVoice::Render(
   if (trigger || sustain) {
     const float range = 72.0f;
     const float f = 4.0f * f0;
-    const float cutoff = min(
+    const float cutoff = fmin(
         f * SemitonesToRatio((brightness * (2.0f - brightness) - 0.5f) * range),
         0.499f);
     const float q = sustain ? 1.0f : 0.5f;
@@ -85,12 +52,12 @@ void StringVoice::Render(
       temp[i] = Dust(dust_f) * (8.0f - dust_f * 6.0f) * accent;
     }
   } else if (remaining_noise_samples_) {
-    size_t noise_samples = min(remaining_noise_samples_, size);
+    size_t noise_samples = fmin(remaining_noise_samples_, size);
     remaining_noise_samples_ -= noise_samples;
     size_t tail = size - noise_samples;
     float* start = temp;
     while (noise_samples--) {
-      *start++ = 2.0f * Random::GetFloat() - 1.0f;
+      *start++ = 2.0f * rand() * kRandFrac - 1.0f;
     }
     while (tail--) {
       *start++ = 0.0f;
@@ -109,5 +76,3 @@ void StringVoice::Render(
       : (structure > 0.26f ? (structure - 0.26f) * 1.35135f : 0.0f);
   string_.Process(f0, non_linearity, brightness, damping, temp, out, size);
 }
-
-}  // namespace plaits
