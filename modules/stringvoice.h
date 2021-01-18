@@ -4,6 +4,7 @@
 
 #include "modules/svf.h"
 #include "modules/string.h"
+#include "modules/dust.h"
 #include <stdint.h>
 #ifdef __cplusplus
 
@@ -20,34 +21,34 @@ namespace daisysp
 	   to an independent module. \n
 	   Original code written by Emilie Gillet in 2016. \n
 */
-class StringVoice {
- public:
-  StringVoice() { }
-  ~StringVoice() { }
-  
-  void Init(float sample_rate);
-  void Reset();
-  void Render(
-      bool sustain,
-      bool trigger,
-      float accent,
-      float f0,
-      float structure,
-      float brightness,
-      float damping,
-      float* temp,
-      float* out,
-      float* aux,
-      size_t size);
-  
- private:
-	float sample_rate_;
- 
-  Svf excitation_filter_;
-  String string_;
-  size_t remaining_noise_samples_;
-  
+class StringVoice
+{
+  public:
+    StringVoice() {}
+    ~StringVoice() {}
+
+    void Init(float sample_rate);
+    void Reset();
+    void Render(bool   sustain,
+                bool   trigger,
+                float  accent,
+                float  f0,
+                float  structure,
+                float  brightness,
+                float  damping,
+                float* temp,
+                float* out,
+                float* aux,
+                size_t size);
+
+  private:
+    float sample_rate_;
+
+    Dust   dust_;
+    Svf    excitation_filter_;
+    String string_;
+    size_t remaining_noise_samples_;
 };
-}  // namespace daisysp
+} // namespace daisysp
 #endif
 #endif
