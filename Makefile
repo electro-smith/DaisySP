@@ -42,6 +42,7 @@ port \
 resonator \
 reverbsc \
 sampleratereducer \
+string \
 svf \
 synthbassdrum \
 synthsnaredrum \
