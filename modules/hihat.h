@@ -180,7 +180,7 @@ class HiHat
         if(noise_clock_ >= 1.0f)
         {
             noise_clock_ -= 1.0f;
-            noise_sample_ = random() * rand_frac_ - 0.5f;
+            noise_sample_ = rand() * kRandFrac - 0.5f;
         }
         out += noisiness_ * (noise_sample_ - out);
 
@@ -252,10 +252,7 @@ class HiHat
     bool  sustain_;
     bool  trig_;
 
-    float ratio_frac_ = 1.f / 12.f;
-    float SemitonesToRatio(float in) { return powf(2.f, in * ratio_frac_); }
-
-    float rand_frac_ = 1.f / (float)RAND_MAX;
+    float SemitonesToRatio(float in) { return powf(2.f, in * kOneTwelfth); }
 
     float envelope_;
     float noise_clock_;
