@@ -6,6 +6,7 @@
 #include "modules/oscillator.h"
 
 #include <stdint.h>
+#include <stdlib.h>
 #ifdef __cplusplus
 
 /** @file hihat.h */
