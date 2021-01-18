@@ -31,14 +31,14 @@ class StringVoice
 		\param sample_rate Audio engine sample rate
 	*/
     void Init(float sample_rate);
-    
-	/** Reset the string oscillator */
-	void Reset();
-	
-	/** Get the next sample
+
+    /** Reset the string oscillator */
+    void Reset();
+
+    /** Get the next sample
 		\param trigger Strike the resonator. Defaults to false.
 	*/
-    float Process(bool   trigger = false);
+    float Process(bool trigger = false);
 
     /** Continually excite the resonator with noise.
 		\param sustain True turns on the noise.
@@ -79,7 +79,7 @@ class StringVoice
   private:
     float sample_rate_;
 
-	bool  sustain_, trig_;
+    bool  sustain_, trig_;
     float f0_, brightness_, damping_;
     float density_, accent_;
     float aux_;

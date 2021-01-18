@@ -10,7 +10,7 @@ void StringVoice::Init(float sample_rate)
 
     excitation_filter_.Init(sample_rate);
     string_.Init(sample_rate_);
-	dust_.Init();
+    dust_.Init();
     remaining_noise_samples_ = 0;
 }
 
@@ -31,7 +31,7 @@ void StringVoice::Trig()
 
 void StringVoice::SetFreq(float freq)
 {
-    resonator_.SetFreq(freq);
+    string_.SetFreq(freq);
     f0_ = freq / sample_rate_;
     f0_ = fclamp(f0_, 0.f, .25f);
 }
@@ -43,13 +43,12 @@ void StringVoice::SetAccent(float accent)
 
 void StringVoice::SetStructure(float structure)
 {
-	structure = fclamp(structure, 0.f, 1.f);
-	const float non_linearity
+    structure = fclamp(structure, 0.f, 1.f);
+    const float non_linearity
         = structure < 0.24f
               ? (structure - 0.24f) * 4.166f
               : (structure > 0.26f ? (structure - 0.26f) * 1.35135f : 0.0f);
-	string_.SetNonLinearity(non_linearity);
-
+    string_.SetNonLinearity(non_linearity);
 }
 
 void StringVoice::SetBrightness(float brightness)
@@ -71,12 +70,12 @@ float StringVoice::GetAux()
 float StringVoice::Process(bool trigger)
 {
     const float brightness = 0.25f * accent_ * (1.0f - brightness_);
-    const float damping = 0.25f * accent_ * (1.0f - damping_);
+    const float damping    = 0.25f * accent_ * (1.0f - damping_);
 
     // Synthesize excitation signal.
     if(trigger || trig_ || sustain_)
     {
-		trig_ = false;
+        trig_              = false;
         const float range  = 72.0f;
         const float f      = 4.0f * f0_;
         const float cutoff = fmin(
@@ -91,38 +90,28 @@ float StringVoice::Process(bool trigger)
         excitation_filter_.SetRes(q);
     }
 
-	float temp = 0.f;
+    float temp = 0.f;
 
     if(sustain_)
     {
         const float dust_f = 0.00005f + 0.99995f * density_ * density_;
-		dust_.SetDensity(dust_f);
+        dust_.SetDensity(dust_f);
         temp = dust_.Process() * (8.0f - dust_f * 6.0f) * accent_;
     }
     else if(remaining_noise_samples_)
     {
-        size_t noise_samples = fmin(remaining_noise_samples_, size);
-        remaining_noise_samples_ -= noise_samples;
-        size_t tail  = size - noise_samples;
-        float* start = temp;
-        while(noise_samples--)
-        {
-            *start++ = 2.0f * rand() * kRandFrac - 1.0f;
-        }
-        while(tail--)
-        {
-            *start++ = 0.0f;
-        }
+        temp = 2.0f * rand() * kRandFrac - 1.0f;
+        remaining_noise_samples_--;
+        remaining_noise_samples_ = DSY_MAX(remaining_noise_samples_, 0.f);
     }
 
     excitation_filter_.Process(temp);
-	temp = excitation_filter_.Low();
+    temp = excitation_filter_.Low();
 
     aux_ = temp;
-			  
-	string_.SetFreq(f0_);
-	string_.SetBrightness(brightness);
-	string_.SetDamping(damping);
-	
+
+    string_.SetBrightness(brightness);
+    string_.SetDamping(damping);
+
     return string_.Process(temp);
 }
