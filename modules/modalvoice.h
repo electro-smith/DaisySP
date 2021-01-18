@@ -61,7 +61,7 @@ class ModalVoice
     */
     void SetStructure(float structure);
 
-    /** Set the brighness of the resonator
+    /** Set the brighness of the resonator, and the noise density.
         \param brightness Works best 0-1
     */
     void SetBrightness(float brightness);
