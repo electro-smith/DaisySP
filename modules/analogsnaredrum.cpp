@@ -1,6 +1,7 @@
 #include "dsp.h"
 #include "analogsnaredrum.h"
 #include <math.h>
+#include <stdlib.h>
 
 using namespace daisysp;
 
@@ -79,12 +80,12 @@ float AnalogSnareDrum::Process(bool trigger)
     const float decay_xt = decay_ * (1.0f + decay_ * (decay_ - 1.0f));
     const int   kTriggerPulseDuration = 1.0e-3 * sample_rate_;
     const float kPulseDecayTime       = 0.1e-3 * sample_rate_;
-    const float q = 2000.0f * powf(2.f, ratio_frac_ * decay_xt * 84.0f);
+    const float q = 2000.0f * powf(2.f, kOneTwelfth * decay_xt * 84.0f);
     const float noise_envelope_decay
         = 1.0f
           - 0.0017f
                 * powf(2.f,
-                       ratio_frac_ * (-decay_ * (50.0f + snappy_ * 10.0f)));
+                       kOneTwelfth * (-decay_ * (50.0f + snappy_ * 10.0f)));
     const float exciter_leak = snappy_ * (2.0f - snappy_) * 0.1f;
 
     float snappy = snappy_ * 1.1f - 0.05f;
@@ -182,7 +183,7 @@ float AnalogSnareDrum::Process(bool trigger)
     shell = SoftClip(shell);
 
     // C56 / R194 / Q48 / C54 / R188 / D54
-    float noise = 2.0f * random() * rand_frac_ - 1.0f;
+    float noise = 2.0f * rand() * kRandFrac - 1.0f;
     if(noise < 0.0f)
         noise = 0.0f;
     noise_envelope_ *= noise_envelope_decay;

@@ -73,9 +73,6 @@ class AnalogSnareDrum
   private:
     float sample_rate_;
 
-    float rand_frac_  = 1.f / (float)RAND_MAX;
-    float ratio_frac_ = 1.f / 12.f;
-
     float f0_, tone_, accent_, snappy_, decay_;
     bool  sustain_;
     bool  trig_;
