@@ -46,6 +46,7 @@
 #include "modules/line.h"
 #include "modules/maytrig.h"
 #include "modules/metro.h"
+#include "modules/modalvoice.h"
 #include "modules/mode.h"
 #include "modules/moogladder.h"
 #include "modules/nlfilt.h"
