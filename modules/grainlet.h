@@ -9,12 +9,14 @@
 namespace daisysp
 {
 /**  
-       Granular Oscillator Module \n 
+       @brief Granular Oscillator Module. 
+	   @author Ben Sergentanis
+	   @date Dec 2020 
        A phase-distorted single cycle sine * another continuously running sine, \n
-       the whole thing synced to a main oscillator. \n
-       Ported by Ben Sergentanis, Dec 2020 
-       @author Emilie Gillet
-       @date 2016
+       the whole thing synced to a main oscillator. \n \n
+	   Ported from pichenettes/eurorack/plaits/dsp/oscillator/grainlet_oscillator.h \n 
+	   to an independent module. \n
+	   Original code written by Emilie Gillet in 2016. \n
 */
 
 class GrainletOscillator
