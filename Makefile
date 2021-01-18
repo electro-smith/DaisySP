@@ -40,6 +40,7 @@ resonator \
 reverbsc \
 sampleratereducer \
 svf \
+synthbassdrum \
 synthsnaredrum \
 tone \
 variablesawosc \
