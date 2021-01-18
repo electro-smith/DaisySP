@@ -36,34 +36,34 @@ class StringVoice
     void Reset();
 
     /** Get the next sample
-		\param trigger Strike the resonator. Defaults to false.
+		\param trigger Strike the string. Defaults to false.
 	*/
     float Process(bool trigger = false);
 
-    /** Continually excite the resonator with noise.
+    /** Continually excite the string with noise.
 		\param sustain True turns on the noise.
 	*/
     void SetSustain(bool sustain);
 
-    /** Strike the resonator. */
+    /** Strike the string. */
     void Trig();
 
-    /** Set the resonator root frequency.
+    /** Set the string root frequency.
 		\param freq Frequency in Hz.
 	*/
     void SetFreq(float freq);
 
-    /** Hit the resonator a bit harder.
+    /** Hit the string a bit harder.
 		\param accent Works 0-1.
 	*/
     void SetAccent(float accent);
 
-    /** Changes the general charater of the resonator (stiffness, brightness)
-        \param structure Works best from 0-1
+    /** Changes the string's nonlinearity (string type).
+        \param structure Works 0-1. 0-.26 is curved bridge, .26-1 is dispersion.
     */
     void SetStructure(float structure);
 
-    /** Set the brighness of the resonator, and the noise density.
+    /** Set the brighness of the string, and the noise density.
         \param brightness Works best 0-1
     */
     void SetBrightness(float brightness);
