@@ -1,6 +1,7 @@
 #include <cmath>
 #include "modules/dsp.h"
 #include "modules/string.h"
+#include <stdlib.h>
 
 using namespace daisysp;
 
@@ -98,7 +99,7 @@ float String::ProcessInternal(const float in)
     float damping_cutoff
         = fmin(12.0f + damping_ * damping_ * 60.0f + brightness * 24.0f, 84.0f);
     float damping_f
-        = fmin(frequency_ * powf(2.f, damping_cutoff * ratio_frac_), 0.499f);
+        = fmin(frequency_ * powf(2.f, damping_cutoff * kOneTwelfth), 0.499f);
 
     // Crossfade to infinite decay.
     if(damping_ >= 0.95f)
@@ -112,7 +113,7 @@ float String::ProcessInternal(const float in)
     float temp_f = damping_f * sample_rate_;
     iir_damping_filter_.SetFreq(temp_f);
 
-    float ratio                = powf(2.f, damping_cutoff * ratio_frac_);
+    float ratio                = powf(2.f, damping_cutoff * kOneTwelfth);
     float damping_compensation = 1.f - 2.f * atanf(1.f / ratio) / (TWOPI_F);
 
     float stretch_point
@@ -142,7 +143,7 @@ float String::ProcessInternal(const float in)
 
         if(non_linearity == STRING_NON_LINEARITY_DISPERSION)
         {
-            float noise = random() * rand_frac_ - 0.5f;
+            float noise = rand() * kRandFrac - 0.5f;
             fonepole(dispersion_noise_, noise, noise_filter);
             delay *= 1.0f + dispersion_noise_ * noise_amount;
         }

@@ -84,8 +84,6 @@ class String
     float frequency_, non_linearity_amount_, brightness_, damping_;
 
     float sample_rate_;
-    float rand_frac_  = 1.f / (float)RAND_MAX;
-    float ratio_frac_ = 1.f / 12.f;
 
     Tone iir_damping_filter_;
 
