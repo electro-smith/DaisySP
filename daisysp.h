@@ -64,6 +64,7 @@
 #include "modules/sampleratereducer.h"
 #include "modules/smooth_random.h"
 #include "modules/svf.h"
+#include "modules/synthbassdrum.h"
 #include "modules/tone.h"
 #include "modules/variablesawosc.h"
 #include "modules/variableshapeosc.h"
