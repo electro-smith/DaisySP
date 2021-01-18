@@ -40,6 +40,7 @@ resonator \
 reverbsc \
 sampleratereducer \
 string \
+stringvoice \
 svf \
 tone \
 variablesawosc \
