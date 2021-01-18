@@ -120,18 +120,55 @@ $(function() {
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">return</span> a + (b - a) * frac_;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">float</span>  frac_;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">size_t</span> write_ptr_;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">size_t</span> delay_;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    T      line_[max_size];</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;};</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;} <span class="comment">// namespace daisysp</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_delay_line.html#a4cc892cc423c27580d95c97e68872870">   78</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> T <a class="code" href="classdaisysp_1_1_delay_line.html#a4cc892cc423c27580d95c97e68872870">Read</a>(<span class="keywordtype">float</span> delay)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        int32_t delay_integral   = <span class="keyword">static_cast&lt;</span>int32_t<span class="keyword">&gt;</span>(delay);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordtype">float</span>   delay_fractional = delay - <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(delay_integral);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keyword">const</span> T a = line_[(write_ptr_ + delay_integral) % max_size];</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keyword">const</span> T b = line_[(write_ptr_ + delay_integral + 1) % max_size];</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">return</span> a + (b - a) * delay_fractional;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> T ReadHermite(<span class="keywordtype">float</span> delay)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        int32_t delay_integral   = <span class="keyword">static_cast&lt;</span>int32_t<span class="keyword">&gt;</span>(delay);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordtype">float</span>   delay_fractional = delay - <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(delay_integral);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        int32_t     t     = (write_ptr_ + delay_integral + max_size);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keyword">const</span> T     xm1   = line_[(t - 1) % max_size];</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keyword">const</span> T     x0    = line_[(t) % max_size];</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keyword">const</span> T     x1    = line_[(t + 1) % max_size];</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keyword">const</span> T     x2    = line_[(t + 2) % max_size];</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">float</span> c     = (x1 - xm1) * 0.5f;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">float</span> v     = x0 - x1;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">float</span> w     = c + v;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">float</span> a     = w + v + (x2 - x0) * 0.5f;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">float</span> b_neg = w + a;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">float</span> f     = delay_fractional;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">return</span> (((a * f) - b_neg) * f + c) * f + x0;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> T Allpass(<span class="keyword">const</span> T sample, <span class="keywordtype">size_t</span> delay, <span class="keyword">const</span> T coefficient)</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        T read  = line_[(write_ptr_ + delay) % max_size];</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        T write = sample + coefficient * read;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <a class="code" href="classdaisysp_1_1_delay_line.html#a67c4022fe5d1e280e8c0a1b1ec6e8282">Write</a>(write);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordflow">return</span> -write * coefficient + read;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordtype">float</span>  frac_;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordtype">size_t</span> write_ptr_;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordtype">size_t</span> delay_;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    T      line_[max_size];</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;};</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;} <span class="comment">// namespace daisysp</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassdaisysp_1_1_delay_line_html"><div class="ttname"><a href="classdaisysp_1_1_delay_line.html">daisysp::DelayLine</a></div><div class="ttdef"><b>Definition:</b> delayline.h:21</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_delay_line_html_a0f718aee22b00c11bb88c50ac26b9f7c"><div class="ttname"><a href="classdaisysp_1_1_delay_line.html#a0f718aee22b00c11bb88c50ac26b9f7c">daisysp::DelayLine::SetDelay</a></div><div class="ttdeci">void SetDelay(size_t delay)</div><div class="ttdef"><b>Definition:</b> delayline.h:43</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_delay_line_html_a3b62b2d3ce68171af175cc8341de0ee4"><div class="ttname"><a href="classdaisysp_1_1_delay_line.html#a3b62b2d3ce68171af175cc8341de0ee4">daisysp::DelayLine::Read</a></div><div class="ttdeci">const T Read() const</div><div class="ttdef"><b>Definition:</b> delayline.h:70</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_delay_line_html_a402dd75c6ac9bdad7d588c3c09f620a9"><div class="ttname"><a href="classdaisysp_1_1_delay_line.html#a402dd75c6ac9bdad7d588c3c09f620a9">daisysp::DelayLine::SetDelay</a></div><div class="ttdeci">void SetDelay(float delay)</div><div class="ttdef"><b>Definition:</b> delayline.h:52</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_delay_line_html_a4cc892cc423c27580d95c97e68872870"><div class="ttname"><a href="classdaisysp_1_1_delay_line.html#a4cc892cc423c27580d95c97e68872870">daisysp::DelayLine::Read</a></div><div class="ttdeci">const T Read(float delay) const</div><div class="ttdef"><b>Definition:</b> delayline.h:78</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_delay_line_html_a67c4022fe5d1e280e8c0a1b1ec6e8282"><div class="ttname"><a href="classdaisysp_1_1_delay_line.html#a67c4022fe5d1e280e8c0a1b1ec6e8282">daisysp::DelayLine::Write</a></div><div class="ttdeci">void Write(const T sample)</div><div class="ttdef"><b>Definition:</b> delayline.h:62</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_delay_line_html_a94bd211eb28ec2bf7cc4a3b1aa12816a"><div class="ttname"><a href="classdaisysp_1_1_delay_line.html#a94bd211eb28ec2bf7cc4a3b1aa12816a">daisysp::DelayLine::Reset</a></div><div class="ttdeci">void Reset()</div><div class="ttdef"><b>Definition:</b> delayline.h:30</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_delay_line_html_ade89517e0b4bbbcc477e9a23f79d12f1"><div class="ttname"><a href="classdaisysp_1_1_delay_line.html#ade89517e0b4bbbcc477e9a23f79d12f1">daisysp::DelayLine::Init</a></div><div class="ttdeci">void Init()</div><div class="ttdef"><b>Definition:</b> delayline.h:27</div></div>
