@@ -46,6 +46,7 @@ void StringVoice::SetFreq(float freq)
 void StringVoice::SetAccent(float accent)
 {
     accent_ = fclamp(accent, 0.f, 1.f);
+    accent_ *= 4.f;
 }
 
 void StringVoice::SetStructure(float structure)
