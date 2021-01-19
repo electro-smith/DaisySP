@@ -1,56 +1,68 @@
 TARGET = libdaisysp
 
 MODULE_DIR = modules
+
 MODULES = \
-adenv \
-adsr  \
-allpass \
-analogbassdrum \
-analogsnaredrum \
-autowah \
-atone \
-balance \
-biquad \
-blosc \
-bitcrush \
-clockednoise \
-comb \
-compressor \
-crossfade \
-dcblock \
-decimator \
-drip \
-fm2 \
-fold \
-formantosc \
-grainlet \
-hihat \
-jitter \
-line \
-limiter \
-moogladder \
-nlfilt \
-metro \
-mode \
-oscillator \
-oscillatorbank \
-overdrive \
-particle \
-phasor \
-pluck \
-port \
-resonator \
-reverbsc \
-sampleratereducer \
-string \
-svf \
-synthbassdrum \
-synthsnaredrum \
-tone \
-variablesawosc \
-variableshapeosc \
-vosim \
-zoscillator \
+Control/adenv \
+Control/adsr \
+Filters/allpass \
+Drums/analogbassdrum \
+Drums/analogsnaredrum \
+Filters/atone \
+Effects/autowah \
+Dynamics/balance \
+Filters/biquad \
+Synthesis/blosc \
+Filters/comb \
+Effects/bitcrush \
+Noise/clockednoise \
+Dynamics/compressor \
+Dynamics/crossfade \
+Utility/dcblock \
+Effects/decimator \
+Utility/delayline \
+Physical Modeling/drip \
+Utility/dsp \
+Noise/dust \
+Synthesis/fm2 \
+Effects/fold \
+Synthesis/formantosc \
+Noise/fractal_noise \
+Noise/grainlet \
+Synthesis/harmonic_osc \
+Drums/hihat \
+Utility/jitter \
+Dynamics/limiter \
+Control/line \
+Utility/maytrig \
+Utility/metro \
+Filters/mode \
+Filters/moogladder \
+Filters/nlfilt \
+Synthesis/oscillator \
+Synthesis/oscillatorbank \
+Effects/overdrive \
+Noise/particle \
+Synthesis/phasor \
+Utility/port \
+Effects/pitchshifter \
+Physical Modeling/pluck \
+Physical Modeling/PolyPluck \
+Physical Modeling/resonator \
+Effects/reverbsc \
+Utility/samplehold \
+Effects/sampleratereducer \
+Utility/smooth_random \
+Physical Modeling/string \
+Filters/svf \
+Drums/synthbassdrum \
+Drums/synthsnaredrum \
+Filters/tone \
+Synthesis/variablesawosc \
+Synthesis/variableshapeosc \
+Synthesis/vosim \
+Noise/whitenoise \
+Synthesis/zoscillator \
 
 # certain modules are only header files:
 # delayline 
