@@ -53,7 +53,7 @@ class StringVoice
 	*/
     void SetFreq(float freq);
 
-    /** Hit the string a bit harder.
+    /** Hit the string a bit harder. Strongly influences decay time.
 		\param accent Works 0-1.
 	*/
     void SetAccent(float accent);
@@ -68,8 +68,8 @@ class StringVoice
     */
     void SetBrightness(float brightness);
 
-    /** How long the resonant body takes to decay.
-        \param damping Works best 0-1
+    /** How long the resonant body takes to decay relative to the accent level.
+        \param damping Works best 0-1. Full damp is only achieved with full accent.
     */
     void SetDamping(float damping);
 
