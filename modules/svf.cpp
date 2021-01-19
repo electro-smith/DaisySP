@@ -78,15 +78,9 @@ void Svf::SetFreq(float f)
 
 void Svf::SetRes(float r)
 {
-    if(r < 0.0f)
-    {
-        r = 0.0f;
-    }
-    else if(r > 1.0f)
-    {
-        r = 1.0f;
-    }
-    res_ = r;
+    res_ = fclamp(r, 0.f, 1.f);
+    res_ = res_ * .95f + .05f;
+
     // recalculate damp
     //damp = (MIN(2.0f * powf(res_, 0.25f), MIN(2.0f, 2.0f / freq - freq * 0.5f)));
     damp_ = MIN(2.0f * (1.0f - powf(res_, 0.25f)),
