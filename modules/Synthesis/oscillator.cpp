@@ -1,5 +1,5 @@
-#include "dsp.h"
-#include "oscillator.h"
+#include "modules/Utility/dsp.h"
+#include "modules/Synthesis/oscillator.h"
 
 using namespace daisysp;
 static inline float Polyblep(float phase_inc, float t);

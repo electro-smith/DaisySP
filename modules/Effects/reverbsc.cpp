@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
-#include "reverbsc.h"
+#include "modules/Effects/reverbsc.h"
 
 #define REVSC_OK 0
 #define REVSC_NOT_OK 1

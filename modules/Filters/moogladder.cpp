@@ -1,5 +1,5 @@
-#include "moogladder.h"
-#include "dsp.h"
+#include "modules/Filters/moogladder.h"
+#include "modules/Utility/dsp.h"
 
 using namespace daisysp;
 

@@ -2,7 +2,7 @@
 #ifndef DSY_OSCILLATOR_H
 #define DSY_OSCILLATOR_H
 #include <stdint.h>
-#include "dsp.h"
+#include "modules/Utility/dsp.h"
 #ifdef __cplusplus
 
 namespace daisysp

@@ -1,4 +1,4 @@
-#include "autowah.h"
+#include "modules/Effects/autowah.h"
 #include <math.h>
 
 using namespace daisysp;

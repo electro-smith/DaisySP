@@ -1,5 +1,5 @@
-#include "bitcrush.h"
-#include "fold.h"
+#include "modules/Effects/bitcrush.h"
+#include "modules/Effects/fold.h"
 #include <math.h>
 
 using namespace daisysp;

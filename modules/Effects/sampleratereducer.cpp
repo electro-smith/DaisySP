@@ -1,5 +1,5 @@
-#include "dsp.h"
-#include "sampleratereducer.h"
+#include "modules/Utility/dsp.h"
+#include "modules/Effects/sampleratereducer.h"
 #include <math.h>
 
 using namespace daisysp;

@@ -1,5 +1,5 @@
-#include "dsp.h"
-#include "formantosc.h"
+#include "modules/Utility/dsp.h"
+#include "modules/Synthesis/formantosc.h"
 #include <math.h>
 
 using namespace daisysp;

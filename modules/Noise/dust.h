@@ -3,7 +3,7 @@
 #define DSY_DUST_H
 #include <cstdlib>
 #include <random>
-#include "dsp.h"
+#include "modules/Utility/dsp.h"
 #ifdef __cplusplus
 
 /** @file dust.h */

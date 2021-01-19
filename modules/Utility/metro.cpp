@@ -1,6 +1,6 @@
 #include <math.h>
-#include "metro.h"
-#include "dsp.h"
+#include "modules/Utility/metro.h"
+#include "modules/Utility/dsp.h"
 
 using namespace daisysp;
 

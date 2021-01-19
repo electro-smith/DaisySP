@@ -1,6 +1,6 @@
-#include "atone.h"
+#include "modules/Filters/atone.h"
 #include <math.h>
-#include "dsp.h"
+#include "modules/Utility/dsp.h"
 
 using namespace daisysp;
 

@@ -1,6 +1,6 @@
 #include <math.h>
-#include "svf.h"
-#include "dsp.h"
+#include "modules/Filters/svf.h"
+#include "modules/Utility/dsp.h"
 #define MIN(x, y) (((x) < (y)) ? (x) : (y))
 
 using namespace daisysp;

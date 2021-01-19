@@ -1,5 +1,5 @@
-#include "dsp.h"
-#include "limiter.h"
+#include "modules/Utility/dsp.h"
+#include "modules/Dynamics/limiter.h"
 
 #define SLOPE(out, in, positive, negative)                \
     {                                                     \

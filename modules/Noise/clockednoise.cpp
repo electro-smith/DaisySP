@@ -1,6 +1,6 @@
 #include <random>
-#include "dsp.h"
-#include "clockednoise.h"
+#include "modules/Utility/dsp.h"
+#include "modules/Noise/clockednoise.h"
 
 using namespace daisysp;
 

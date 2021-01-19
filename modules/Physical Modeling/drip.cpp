@@ -1,7 +1,7 @@
-#include "drip.h"
+#include "modules/Physical Modeling/drip.h"
 #include <math.h>
 #include <cstdlib>
-#include "dsp.h"
+#include "modules/Utility/dsp.h"
 
 using namespace daisysp;
 

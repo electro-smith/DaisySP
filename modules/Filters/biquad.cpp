@@ -1,6 +1,6 @@
-#include "biquad.h"
+#include "modules/Filters/biquad.h"
 #include <math.h>
-#include "dsp.h"
+#include "modules/Utility/dsp.h"
 
 using namespace daisysp;
 

@@ -1,5 +1,5 @@
-#include "dsp.h"
-#include "particle.h"
+#include "modules/Utility/dsp.h"
+#include "modules/Noise/particle.h"
 #include <math.h>
 
 using namespace daisysp;

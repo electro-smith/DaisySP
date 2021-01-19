@@ -1,5 +1,5 @@
-#include "dsp.h"
-#include "grainlet.h"
+#include "modules/Utility/dsp.h"
+#include "modules/Noise/grainlet.h"
 #include <math.h>
 
 using namespace daisysp;
