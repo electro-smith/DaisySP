@@ -76,8 +76,8 @@ float StringVoice::GetAux()
 
 float StringVoice::Process(bool trigger)
 {
-    const float brightness = accent_ * brightness_;
-    const float damping    = accent_ * damping_;
+    const float brightness = brightness_ + .25 * accent_ * (1.f - brightness_);
+    const float damping    = damping_ + .25 * accent_ * (1.f - damping_);
 
     // Synthesize excitation signal.
     if(trigger || trig_ || sustain_)

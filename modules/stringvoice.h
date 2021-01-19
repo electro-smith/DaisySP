@@ -53,7 +53,7 @@ class StringVoice
 	*/
     void SetFreq(float freq);
 
-    /** Hit the string a bit harder. Strongly influences decay time.
+    /** Hit the string a bit harder. Influences brightness and decay.
 		\param accent Works 0-1.
 	*/
     void SetAccent(float accent);
