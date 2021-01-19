@@ -15,7 +15,7 @@ void StringVoice::Init(float sample_rate)
 
     SetSustain(false);
     SetFreq(440.f);
-    SetAccent(.2f);
+    SetAccent(.8f);
     SetStructure(.7f);
     SetBrightness(.2f);
     SetDamping(.7f);
@@ -77,8 +77,8 @@ float StringVoice::GetAux()
 
 float StringVoice::Process(bool trigger)
 {
-    const float brightness = 0.25f * accent_ * (1.0f - brightness_);
-    const float damping    = 0.25f * accent_ * (1.0f - damping_);
+    const float brightness = 0.25f * accent_ * brightness_;
+    const float damping    = 0.25f * accent_ * damping_;
 
     // Synthesize excitation signal.
     if(trigger || trig_ || sustain_)
