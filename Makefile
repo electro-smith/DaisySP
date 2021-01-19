@@ -31,6 +31,7 @@ limiter \
 moogladder \
 nlfilt \
 metro \
+modalvoice \
 mode \
 oscillator \
 oscillatorbank \
