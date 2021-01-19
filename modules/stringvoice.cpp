@@ -46,7 +46,6 @@ void StringVoice::SetFreq(float freq)
 void StringVoice::SetAccent(float accent)
 {
     accent_ = fclamp(accent, 0.f, 1.f);
-    accent_ *= 4.f;
 }
 
 void StringVoice::SetStructure(float structure)
@@ -77,8 +76,8 @@ float StringVoice::GetAux()
 
 float StringVoice::Process(bool trigger)
 {
-    const float brightness = 0.25f * accent_ * brightness_;
-    const float damping    = 0.25f * accent_ * damping_;
+    const float brightness = accent_ * brightness_;
+    const float damping    = accent_ * damping_;
 
     // Synthesize excitation signal.
     if(trigger || trig_ || sustain_)
