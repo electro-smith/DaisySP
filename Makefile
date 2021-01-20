@@ -40,6 +40,7 @@ jitter \
 limiter \
 line \
 metro \
+modalvoice \
 mode \
 moogladder \
 nlfilt \
