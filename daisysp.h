@@ -49,6 +49,7 @@
 #include "modules/Control/line.h"
 #include "modules/Utility/maytrig.h"
 #include "modules/Utility/metro.h"
+#include "modules/PhysicalModeling/modalvoice.h"
 #include "modules/Filters/mode.h"
 #include "modules/Filters/moogladder.h"
 #include "modules/Filters/nlfilt.h"
