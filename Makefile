@@ -1,6 +1,16 @@
 TARGET = libdaisysp
 
 MODULE_DIR = modules
+VPATH = \
+modules/Control \
+modules/Drums \
+modules/Dynamics \
+modules/Effects \
+modules/Filters \
+modules/Noise \
+modules/'Physical Modeling' \
+modules/Synthesis \
+modules/Utility \
 
 MODULES = \
 Control/adenv \
@@ -20,16 +30,11 @@ Dynamics/compressor \
 Dynamics/crossfade \
 Utility/dcblock \
 Effects/decimator \
-Utility/delayline \
-Physical Modeling/drip \
-Utility/dsp \
-Noise/dust \
+'Physical Modeling'/drip \
 Synthesis/fm2 \
 Effects/fold \
 Synthesis/formantosc \
-Noise/fractal_noise \
 Noise/grainlet \
-Synthesis/harmonic_osc \
 Drums/hihat \
 Utility/jitter \
 Dynamics/limiter \
@@ -45,15 +50,11 @@ Effects/overdrive \
 Noise/particle \
 Synthesis/phasor \
 Utility/port \
-Effects/pitchshifter \
-Physical Modeling/pluck \
-Physical Modeling/PolyPluck \
-Physical Modeling/resonator \
+'Physical Modeling'/pluck \
+'Physical Modeling'/resonator \
 Effects/reverbsc \
-Utility/samplehold \
 Effects/sampleratereducer \
-Utility/smooth_random \
-Physical Modeling/string \
+'Physical Modeling'/string \
 Filters/svf \
 Drums/synthbassdrum \
 Drums/synthsnaredrum \
@@ -61,7 +62,6 @@ Filters/tone \
 Synthesis/variablesawosc \
 Synthesis/variableshapeosc \
 Synthesis/vosim \
-Noise/whitenoise \
 Synthesis/zoscillator \
 
 # certain modules are only header files:
@@ -160,6 +160,15 @@ C_DEFS =  \
 
 C_INCLUDES = \
 -I. \
+-Imodules/Control \
+-Imodules/Drums \
+-Imodules/Dynamics \
+-Imodules/Effects \
+-Imodules/Filters \
+-Imodules/Noise \
+-Imodules/'Physical Modeling' \
+-Imodules/Synthesis \
+-Imodules/Utility \
 
 # compile gcc flags
 ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections

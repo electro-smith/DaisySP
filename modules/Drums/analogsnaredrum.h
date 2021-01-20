@@ -2,7 +2,7 @@
 #ifndef DSY_ANALOG_SNARE_H
 #define DSY_ANALOG_SNARE_H
 
-#include "modules/svf.h"
+#include "modules/Filters/svf.h"
 
 #include <stdint.h>
 #ifdef __cplusplus
