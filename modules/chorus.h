@@ -30,7 +30,29 @@ class Chorus
 	
 	float Process(float in);
 	
-	void SetDryWet(float wet);
+	/** How much the lfo will move its delayline in ms. */
+	void SetLfoAmp(float amp, int idx = 0){
+		if(idx < 0 || idx >= NUM_DEL){
+			return;
+		}
+		
+		lfo_amp_[idx] = fclamp(amp, 0.f, 1.f);
+	}
+	
+	/** How fast the lfo will cycle in Hz */
+	void SetLfoFreq(float freq, int idx = 0){
+		if(idx < 0 || idx >= NUM_DEL){
+			return;
+		}
+		
+		freq /= sample_rate_;
+		lfo_freq_[idx] = fclamp(freq, 0.f, .25f);
+	}
+	
+	/** This delayline's base delay in ms */
+	void SetDelay(float delay, int idx = 0){
+		
+	}
 	
   private:
 	float sample_rate_;
@@ -42,7 +64,7 @@ class Chorus
 	float lfo_freq_[NUM_DEL];
 	float lfo_amp_[NUM_DEL];
 
-	float max_del_;
+	float delay_[NUM_DEL];
 	float pre_gain_;
 		
 	DelayLine<float, DEL_LEN> del_[NUM_DEL];
