@@ -5,6 +5,8 @@ MODULES = \
 adenv \
 adsr  \
 allpass \
+analogbassdrum \
+analogsnaredrum \
 autowah \
 atone \
 balance \
@@ -22,12 +24,14 @@ fm2 \
 fold \
 formantosc \
 grainlet \
+hihat \
 jitter \
 line \
 limiter \
 moogladder \
 nlfilt \
 metro \
+modalvoice \
 mode \
 oscillator \
 oscillatorbank \
@@ -42,6 +46,8 @@ sampleratereducer \
 string \
 stringvoice \
 svf \
+synthbassdrum \
+synthsnaredrum \
 tone \
 variablesawosc \
 variableshapeosc \
