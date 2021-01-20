@@ -8,7 +8,8 @@ void Tremolo::Init(float sample_rate)
     sample_rate_ = sample_rate;
 
     osc_.Init(sample_rate_);
-    osc_.SetAmp(1.f);
+    SetDepth(1.f);
+    SetFreq(1.f);
 }
 
 float Tremolo::Process(float in)
