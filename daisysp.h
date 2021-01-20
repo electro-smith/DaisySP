@@ -72,6 +72,7 @@
 #include "modules/synthbassdrum.h"
 #include "modules/synthsnaredrum.h"
 #include "modules/tone.h"
+#include "modules/tremolo.h"
 #include "modules/variablesawosc.h"
 #include "modules/variableshapeosc.h"
 #include "modules/vosim.h"
