@@ -45,7 +45,7 @@ class Chorus
 	float max_del_;
 	float pre_gain_;
 		
-	static DelayLine<float, DEL_LEN> del_[NUM_DEL];
+	DelayLine<float, DEL_LEN> del_[NUM_DEL];
 };
 } //namespace daisysp
 #endif

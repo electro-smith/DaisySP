@@ -1,5 +1,5 @@
-#include "dsp.h"
-#include "chorus.h"
+#include "modules/dsp.h"
+#include "modules/chorus.h"
 #include <math.h>
 
 using namespace daisysp;
