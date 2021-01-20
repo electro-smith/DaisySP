@@ -46,7 +46,7 @@ class Chorus
 			return;
 		}
 		
-		freq /= sample_rate_;
+		freq = 2.f * freq / sample_rate_;
 		lfo_freq_[idx] = fclamp(freq, 0.f, .25f);
 	}
 	
