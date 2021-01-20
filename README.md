@@ -46,7 +46,7 @@
 ## Applications
 
 - Embedded hardware using the [Daisy Audio Platform](https://www.electro-smith.com/daisy)
-- Audio plug-ins (VST, AU, [JUCE](https://juce.com/))
+- Audio plug-ins (VST, AU, [JUCE](https://github.com/electro-smith/Daisy-Juce-Example))
 - Mobile apps (iOS, Android)
 - [VCV Rack](https://vcvrack.com/) modules
 
