@@ -8,7 +8,7 @@ modules/Dynamics \
 modules/Effects \
 modules/Filters \
 modules/Noise \
-modules/'Physical Modeling' \
+modules/PhysicalModeling \
 modules/Synthesis \
 modules/Utility \
 
@@ -30,7 +30,7 @@ Dynamics/compressor \
 Dynamics/crossfade \
 Utility/dcblock \
 Effects/decimator \
-'Physical Modeling'/drip \
+PhysicalModeling/drip \
 Synthesis/fm2 \
 Effects/fold \
 Synthesis/formantosc \
@@ -39,7 +39,6 @@ Drums/hihat \
 Utility/jitter \
 Dynamics/limiter \
 Control/line \
-Utility/maytrig \
 Utility/metro \
 Filters/mode \
 Filters/moogladder \
@@ -50,11 +49,11 @@ Effects/overdrive \
 Noise/particle \
 Synthesis/phasor \
 Utility/port \
-'Physical Modeling'/pluck \
-'Physical Modeling'/resonator \
+PhysicalModeling/pluck \
+PhysicalModeling/resonator \
 Effects/reverbsc \
 Effects/sampleratereducer \
-'Physical Modeling'/string \
+PhysicalModeling/string \
 Filters/svf \
 Drums/synthbassdrum \
 Drums/synthsnaredrum \
@@ -160,15 +159,6 @@ C_DEFS =  \
 
 C_INCLUDES = \
 -I. \
--Imodules/Control \
--Imodules/Drums \
--Imodules/Dynamics \
--Imodules/Effects \
--Imodules/Filters \
--Imodules/Noise \
--Imodules/'Physical Modeling' \
--Imodules/Synthesis \
--Imodules/Utility \
 
 # compile gcc flags
 ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections

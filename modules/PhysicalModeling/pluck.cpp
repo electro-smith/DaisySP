@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-#include "modules/Physical Modeling/pluck.h"
+#include "modules/PhysicalModeling/pluck.h"
 
 #define PLUKMIN 64
 #define INTERPFACTOR 256.0f

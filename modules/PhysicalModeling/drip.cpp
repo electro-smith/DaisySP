@@ -1,4 +1,4 @@
-#include "modules/Physical Modeling/drip.h"
+#include "modules/PhysicalModeling/drip.h"
 #include <math.h>
 #include <cstdlib>
 #include "modules/Utility/dsp.h"

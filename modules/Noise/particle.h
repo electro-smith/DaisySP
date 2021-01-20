@@ -2,7 +2,7 @@
 #ifndef DSY_PARTICLE_H
 #define DSY_PARTICLE_H
 
-#include "modules/svf.h"
+#include "modules/Filters/svf.h"
 #include <stdint.h>
 #include <cstdlib>
 #ifdef __cplusplus

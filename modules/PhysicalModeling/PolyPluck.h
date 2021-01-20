@@ -4,7 +4,7 @@
 
 #include <stdlib.h>
 #include "modules/Utility/dsp.h"
-#include "modules/Physical Modeling/pluck.h"
+#include "modules/PhysicalModeling/pluck.h"
 #include "modules/Utility/dcblock.h"
 
 namespace daisysp
