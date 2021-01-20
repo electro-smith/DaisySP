@@ -1,6 +1,6 @@
 #pragma once
-#ifndef DSY_ALLPASS_H
-#define DSY_ALLPASS_H
+#ifndef DSY_TREMOLO_H
+#define DSY_TREMOLO_H
 
 #include <stdint.h>
 #ifdef __cplusplus
