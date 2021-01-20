@@ -28,6 +28,7 @@
 #include "modules/blosc.h"
 #include "modules/comb.h"
 #include "modules/bitcrush.h"
+#include "modules/chorus.h"
 #include "modules/clockednoise.h"
 #include "modules/compressor.h"
 #include "modules/crossfade.h"
