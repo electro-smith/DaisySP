@@ -11,11 +11,12 @@ void Chorus::Init(float sample_rate){
 	
 	for(int i = 0; i < NUM_DEL; i++){
 		del_[i].Init();
-		SetDelay(20 + 15 * i, i);
+		lfo_amp_[i] = 0.f;
+		SetDelay(2 + 2 * i, i);
 		
 		lfo_phase_[i] = 0.f;
-		SetLfoFreq(.1 + .1 * i, i);
-		SetLfoDepth(20, i);
+		SetLfoFreq(.5 + .05 * i, i);
+		SetLfoDepth(2, i);
 	}
 }
 
