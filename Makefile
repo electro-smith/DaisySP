@@ -13,7 +13,6 @@ balance \
 biquad \
 blosc \
 bitcrush \
-chorus \
 clockednoise \
 comb \
 compressor \
