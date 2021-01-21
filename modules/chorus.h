@@ -6,7 +6,7 @@
 #include <stdint.h>
 #include "modules/delayline.h"
 
-#define NUM_DEL 1
+#define NUM_DEL 2
 #define DEL_LEN 48000 
 
 /** @file chorus.h */
@@ -46,8 +46,9 @@ class Chorus
 			return;
 		}
 		
-		freq = 2.f * freq / sample_rate_;
-		lfo_freq_[idx] = fclamp(freq, 0.f, .25f);
+		freq = 4.f * freq / sample_rate_;
+		freq *= lfo_freq_[idx] < 0.f ? -1.f : 1.f; //if we're headed down, keep going
+		lfo_freq_[idx] = fclamp(freq, -.25f, .25f); //clip at +/- .125 * sr
 	}
 	
 	/** This delayline's base delay in ms */
@@ -57,7 +58,7 @@ class Chorus
 		}
 		
 		ms *= .001f * sample_rate_;
-		delay_[idx] = fmax(ms, 0.f);
+		delay_[idx] = fmax(ms, 0.0001f * sample_rate_);
 		
 		lfo_amp_[idx] = fmin(lfo_amp_[idx], delay_[idx]); //clip this if needed
 	}

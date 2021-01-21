@@ -24,7 +24,7 @@ float Chorus::ProcessLfo(int idx){
 
 	//wrap around and flip direction
 	if(lfo_phase_[idx] > 1.f){
-		lfo_phase_[idx] -= 1.f;
+		lfo_phase_[idx] = 1.f - (lfo_phase_[idx] - 1.f);
 		lfo_freq_[idx] *= -1.f;
 	}	
 	else if(lfo_phase_[idx] < -1.f){
@@ -39,7 +39,7 @@ float Chorus::Process(float in){
 	float ret = 0.f;
 
 	for(int i = 0; i < NUM_DEL; i++){
-		float lfo_sig = ProcessLfo(i) + delay_[i];
+		float lfo_sig = ProcessLfo(i);
 		del_[i].SetDelay(lfo_sig + delay_[i]);
 		
 		ret += del_[i].Read();
