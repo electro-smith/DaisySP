@@ -121,8 +121,8 @@ class Chorus
     }
 
   private:
-    float sample_rate_;
-	static constexpr int32_t kDelayLength = 384; // 8 ms at 48kHz = .008 * 48000
+    float                    sample_rate_;
+    static constexpr int32_t kDelayLength = 384; // 8 ms at 48kHz = .008 * 48000
 
     //triangle lfos
     float lfo_phase_[NUM_DEL];
