@@ -6,8 +6,6 @@
 #include <stdint.h>
 #include "modules/delayline.h"
 
-#define DEL_LEN 48000
-
 /** @file chorus.h */
 
 namespace daisysp
@@ -124,6 +122,7 @@ class Chorus
 
   private:
     float sample_rate_;
+	static constexpr int32_t kDelayLength = 384; // 8 ms at 48kHz = .008 * 48000
 
     //triangle lfos
     float lfo_phase_[NUM_DEL];
@@ -133,7 +132,7 @@ class Chorus
     float delay_[NUM_DEL];
     float pre_gain_;
 
-    DelayLine<float, DEL_LEN> del_[NUM_DEL];
+    DelayLine<float, kDelayLength> del_[NUM_DEL];
 
     float ProcessLfo(int idx)
     {
