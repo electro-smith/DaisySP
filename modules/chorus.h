@@ -10,22 +10,12 @@
 
 namespace daisysp
 {
-/**  
-    @brief Chorus Effect.
-	@author Ben Sergentanis
-	@date Jan 2021
-	Based on https://www.izotope.com/en/learn/understanding-chorus-flangers-and-phasers-in-audio-production.html \n
-	and https://www.researchgate.net/publication/236629475_Implementing_Professional_Audio_Effects_with_DSPs \n
-*/
-template <int NUM_DEL = 2>
-class Chorus
-{
-  public:
-    Chorus() {}
-    ~Chorus() {}
 
-
-    void Init(float sample_rate)
+//does the hevy lifting
+template <int NUM_DEL>
+class ChorusEngine {
+	public: 
+	void Init(float sample_rate)
     {
         sample_rate_ = sample_rate;
 
@@ -152,6 +142,73 @@ class Chorus
 
         return lfo_phase_[idx] * lfo_amp_[idx];
     }
+};
+
+//wraps up all of the chorus engines
+/**  
+    @brief Chorus Effect.
+	@author Ben Sergentanis
+	@date Jan 2021
+	Based on https://www.izotope.com/en/learn/understanding-chorus-flangers-and-phasers-in-audio-production.html \n
+	and https://www.researchgate.net/publication/236629475_Implementing_Professional_Audio_Effects_with_DSPs \n
+*/
+template <int NUM_DEL = 2, int NUM_CHANNELS = 2>
+class Chorus
+{
+  public:
+    Chorus() {}
+    ~Chorus() {}
+
+    void Init(float sample_rate)
+    {
+		for(int i = 0; i < NUM_CHANNELS; i++){
+			engines_[i].Init(sample_rate);
+		}
+	}
+
+    float Process(float in, int channel = 0)
+    {
+		return engines_[channel].Process(in);
+	}
+
+    void SetLfoDepth(float depth, int idx = 0, int channel = 0)
+    {
+		engines_[channel].SetLfoDepth(depth, idx);
+    }
+
+    void SetLfoFreq(float freq, int idx = 0, int channel = 0)
+    {
+		engines_[channel].SetLfoFreq(freq, idx);
+    }
+
+    void SetDelay(float ms, int idx = 0, int channel = 0)
+    {
+		engines_[channel].SetDelay(ms, idx);
+    }
+
+    void SetLfoDepthAll(float depth)
+    {
+		for(int i = 0; i < NUM_CHANNELS; i++){
+			engines_[i].SetLfoDepthAll(depth);
+		}
+    }
+
+    void SetLfoFreqAll(float freq)
+    {
+		for(int i = 0; i < NUM_CHANNELS; i++){
+			engines_[i].SetLfoFreqAll(freq);
+		}
+    }
+
+    void SetDelayAll(float ms)
+    {
+		for(int i = 0; i < NUM_CHANNELS; i++){
+			engines_[i].SetDelayAll(ms);
+		}
+    }
+
+  private:
+	ChorusEngine<NUM_DEL> engines_[NUM_CHANNELS];
 };
 } //namespace daisysp
 #endif
