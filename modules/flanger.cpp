@@ -25,7 +25,7 @@ float Flanger::Process(float in)
 	del_.SetDelay(lfo_sig + delay_);
 
 	float out = del_.Read();
-	del_.Write(in + (out - in) * feedback_); //fast crossfade
+	del_.Write(in + out * feedback_);
 
 	return (in + out) * .5f; //equal mix
 }
