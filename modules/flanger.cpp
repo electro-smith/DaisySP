@@ -8,6 +8,8 @@ void Flanger::Init(float sample_rate)
 {
 	sample_rate_ = sample_rate;
 
+	SetFeedback(.2f);
+
 	del_.Init();
 	lfo_amp_ = 0.f;
 	SetDelay(.75);
@@ -22,10 +24,14 @@ float Flanger::Process(float in)
 	float lfo_sig = ProcessLfo();
 	del_.SetDelay(lfo_sig + delay_);
 
-	float ret = del_.Read();
-	del_.Write(in);
+	float out = del_.Read();
+	del_.Write(in + (out - in) * feedback_); //fast crossfade
 
-	return in * .5f + ret * .5f;
+	return (in + out) * .5f; //equal mix
+}
+
+void Flanger::SetFeedback(float feedback){
+	feedback_ = fclamp(feedback_, 0.f, 1.f);
 }
 
 void Flanger::SetLfoDepth(float depth)

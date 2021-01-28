@@ -17,10 +17,10 @@ class Flanger
 	
     float Process(float in);
 	
-    void SetLfoDepth(float depth);
-    
-	void SetLfoDepthMs(float depth);
+    void SetFeedback(float feedback);
 	
+	void SetLfoDepth(float depth);
+    	
     void SetLfoFreq(float freq);
 	
     void SetDelay(float ms);
@@ -30,6 +30,8 @@ class Flanger
   private:
     float                    sample_rate_;
     static constexpr int32_t kDelayLength = 960; // 20 ms at 48kHz = .02 * 48000
+
+	float feedback_;
 
     //triangle lfos
     float lfo_phase_;
