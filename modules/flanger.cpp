@@ -31,7 +31,7 @@ float Flanger::Process(float in)
 }
 
 void Flanger::SetFeedback(float feedback){
-	feedback_ = fclamp(feedback_, 0.f, 1.f);
+	feedback_ = fclamp(feedback, 0.f, 1.f);
 }
 
 void Flanger::SetLfoDepth(float depth)
