@@ -10,8 +10,7 @@
 
 namespace daisysp
 {
-<int NUM_DEL = 2>
-class Flanger
+<int NUM_DEL = 2> class Flanger
 {
   public:
     void Init(float sample_rate)
