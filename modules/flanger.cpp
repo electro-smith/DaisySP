@@ -13,8 +13,8 @@ void Flanger::Init(float sample_rate)
 	SetDelay(.75);
 
 	lfo_phase_ = 0.f;
-	SetLfoFreq(.75);
-	SetLfoDepth(.2);
+	SetLfoFreq(.3);
+	SetLfoDepth(.9);
 }
 
 float Flanger::Process(float in)
@@ -30,15 +30,8 @@ float Flanger::Process(float in)
 
 void Flanger::SetLfoDepth(float depth)
 {
-	depth = (depth * 3.45 + .05); // +/-.05 to 3.5 ms
-	SetLfoDepthMs(depth);
-}
-
-void Flanger::SetLfoDepthMs(float ms)
-{
-	ms = fmax(0.f, ms);
-	ms *= sample_rate_ * .001f;
-	lfo_amp_ = fclamp(ms, 0.f, delay_);
+	depth = fclamp(depth, 0.f, 1.f);
+	lfo_amp_ = depth * delay_;
 }
 
 void Flanger::SetLfoFreq(float freq)
