@@ -13,46 +13,46 @@ namespace daisysp
 class Flanger
 {
   public:
-	/** Initialize the modules
+    /** Initialize the modules
 		\param sample_rate Audio engine sample rate.
 	*/
     void Init(float sample_rate);
-	
-	/** Get the next sample
+
+    /** Get the next sample
 		\param in Sample to process
 	*/
     float Process(float in);
-	
-	/** How much of the signal to feedback into the delay line.
+
+    /** How much of the signal to feedback into the delay line.
 		\param feedback Works 0-1.
 	*/
     void SetFeedback(float feedback);
-	
-	/** How much to modulate the delay by.
+
+    /** How much to modulate the delay by.
 		\param depth Works 0-1.
 	*/
-	void SetLfoDepth(float depth);
-    	
-	/** Set lfo frequency.
+    void SetLfoDepth(float depth);
+
+    /** Set lfo frequency.
 		\param freq Frequency in Hz
 	*/
     void SetLfoFreq(float freq);
-	
-	/** Set the internal delay rate. 
+
+    /** Set the internal delay rate. 
 		\param delay Tuned for 0-1. Maps to .1 to 7 ms.
 	*/
     void SetDelay(float delay);
-	
-	/** Set the delay time in ms.
+
+    /** Set the delay time in ms.
 		\param ms Delay time in ms.
 	*/
     void SetDelayMs(float ms);
-		
+
   private:
     float                    sample_rate_;
     static constexpr int32_t kDelayLength = 960; // 20 ms at 48kHz = .02 * 48000
 
-	float feedback_;
+    float feedback_;
 
     //triangle lfos
     float lfo_phase_;
@@ -60,7 +60,7 @@ class Flanger
     float lfo_amp_;
 
     float delay_;
-	
+
     DelayLine<float, kDelayLength> del_;
 
     float ProcessLfo();
