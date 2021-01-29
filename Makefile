@@ -2,16 +2,15 @@ TARGET = libdaisysp
 
 MODULE_DIR = modules
 VPATH = \
-modules/Control \
-modules/Drums \
-modules/Dynamics \
-modules/Effects \
-modules/Filters \
-modules/Noise \
-modules/PhysicalModeling \
-modules/Synthesis \
-modules/Utility \
-
+modules/Control\
+modules/Drums\
+modules/Dynamics\
+modules/Effects\
+modules/Filters\
+modules/Noise\
+modules/PhysicalModeling\
+modules/Synthesis\
+modules/Utility\
 
 MODULES = \
 adenv \
@@ -160,16 +159,16 @@ C_DEFS =  \
 -DSTM32H750xx
 
 C_INCLUDES = \
--I. \
--I modules/Control \
--I modules/Drums \
--I modules/Dynamics \
--I modules/Effects \
--I modules/Filters \
--I modules/Noise \
--I modules/PhysicalModeling \
--I modules/Synthesis \
--I modules/Utility \
+-I.\
+-Imodules/Control\
+-Imodules/Drums\
+-Imodules/Dynamics\
+-Imodules/Effects\
+-Imodules/Filters\
+-Imodules/Noise\
+-Imodules/PhysicalModeling\
+-Imodules/Synthesis\
+-Imodules/Utility\
 
 # compile gcc flags
 ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
