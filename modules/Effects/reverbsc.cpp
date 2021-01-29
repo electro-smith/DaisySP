@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
-#include "modules/Effects/reverbsc.h"
+#include "reverbsc.h"
 
 #define REVSC_OK 0
 #define REVSC_NOT_OK 1
@@ -132,8 +132,12 @@ int ReverbSc::InitDelayLine(ReverbScDl *lp, int n)
     NextRandomLineseg(lp, n);
     /* clear delay line to zero */
     lp->filter_state = 0.0;
-    memset(lp->buf, 0, sizeof(float) * lp->buffer_size);
-    return REVSC_OK;
+    
+	for(int i = 0; i < lp->buffer_size; i++){
+		lp->buf[i] = 0;
+	}
+    
+	return REVSC_OK;
 }
 
 int ReverbSc::Process(const float &in1,

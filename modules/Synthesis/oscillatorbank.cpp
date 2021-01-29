@@ -1,5 +1,5 @@
-#include "modules/Utility/dsp.h"
-#include "modules/Synthesis/oscillatorbank.h"
+#include "dsp.h"
+#include "oscillatorbank.h"
 #include <math.h>
 
 using namespace daisysp;

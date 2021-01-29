@@ -1,4 +1,4 @@
-#include "modules/Filters/comb.h"
+#include "comb.h"
 #include <math.h>
 
 using namespace daisysp;

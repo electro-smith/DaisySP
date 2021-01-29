@@ -1,5 +1,5 @@
-#include "modules/Utility/dsp.h"
-#include "modules/Drums/analogbassdrum.h"
+#include "dsp.h"
+#include "analogbassdrum.h"
 #include <math.h>
 
 using namespace daisysp;

@@ -2,7 +2,7 @@
 #ifndef DSY_SMOOTHRANDOM_H
 #define DSY_SMOOTHRANDOM_H
 
-#include "modules/Utility/dsp.h"
+#include "dsp.h"
 #include <stdint.h>
 #include <stdlib.h>
 #ifdef __cplusplus

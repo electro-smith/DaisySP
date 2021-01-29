@@ -1,5 +1,5 @@
-#include "modules/Utility/dsp.h"
-#include "modules/Synthesis/variableshapeosc.h"
+#include "dsp.h"
+#include "variableshapeosc.h"
 #include <math.h>
 
 using namespace daisysp;

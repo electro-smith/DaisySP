@@ -5,8 +5,8 @@
 #include <stdint.h>
 #ifdef __cplusplus
 
-#include "modules/Synthesis/oscillator.h"
-#include "modules/Filters/svf.h"
+#include "oscillator.h"
+#include "svf.h"
 
 /** @file analogbassdrum.h */
 

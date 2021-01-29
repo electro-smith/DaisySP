@@ -1,6 +1,6 @@
-#include "modules/Filters/tone.h"
+#include "tone.h"
 #include <math.h>
-#include "modules/Utility/dsp.h"
+#include "dsp.h"
 
 using namespace daisysp;
 

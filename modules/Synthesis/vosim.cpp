@@ -1,5 +1,5 @@
-#include "modules/Utility/dsp.h"
-#include "modules/Synthesis/vosim.h"
+#include "dsp.h"
+#include "vosim.h"
 #include <math.h>
 
 using namespace daisysp;

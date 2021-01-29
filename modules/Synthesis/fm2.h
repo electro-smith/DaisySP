@@ -3,7 +3,7 @@
 #define DSY_FM2_H
 
 #include <stdint.h>
-#include "modules/Synthesis/oscillator.h"
+#include "oscillator.h"
 #ifdef __cplusplus
 
 namespace daisysp

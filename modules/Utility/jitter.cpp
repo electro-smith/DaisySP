@@ -1,7 +1,7 @@
 #include <math.h>
 #include <stdint.h>
 #include <stdlib.h>
-#include "modules/Utility/jitter.h"
+#include "jitter.h"
 
 #ifndef FT_MAXLEN
 #define FT_MAXLEN 0x1000000L

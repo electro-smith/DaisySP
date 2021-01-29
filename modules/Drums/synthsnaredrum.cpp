@@ -1,5 +1,5 @@
-#include "modules/Utility/dsp.h"
-#include "modules/Drums/synthsnaredrum.h"
+#include "dsp.h"
+#include "synthsnaredrum.h"
 #include <math.h>
 #include <stdlib.h>
 

@@ -4,11 +4,11 @@
 
 #include <stdint.h>
 
-#include "modules/Dynamics/crossfade.h"
-#include "modules/Utility/dcblock.h"
-#include "modules/Utility/delayline.h"
-#include "modules/Filters/svf.h"
-#include "modules/Filters/tone.h"
+#include "crossfade.h"
+#include "dcblock.h"
+#include "delayline.h"
+#include "svf.h"
+#include "tone.h"
 
 #ifdef __cplusplus
 

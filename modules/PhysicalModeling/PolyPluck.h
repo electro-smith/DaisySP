@@ -3,9 +3,9 @@
 #define DSY_POLYPLUCK_H
 
 #include <stdlib.h>
-#include "modules/Utility/dsp.h"
-#include "modules/PhysicalModeling/pluck.h"
-#include "modules/Utility/dcblock.h"
+#include "dsp.h"
+#include "pluck.h"
+#include "dcblock.h"
 
 namespace daisysp
 {

@@ -1,4 +1,4 @@
-#include "modules/Synthesis/fm2.h"
+#include "fm2.h"
 
 using namespace daisysp;
 

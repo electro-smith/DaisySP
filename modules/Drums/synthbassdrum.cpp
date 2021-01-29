@@ -1,4 +1,4 @@
-#include "modules/Drums/synthbassdrum.h"
+#include "synthbassdrum.h"
 #include <math.h>
 #include <stdlib.h>
 

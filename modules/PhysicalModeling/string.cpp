@@ -1,6 +1,6 @@
 #include <cmath>
-#include "modules/Utility/dsp.h"
-#include "modules/PhysicalModeling/string.h"
+#include "dsp.h"
+#include "string.h"
 #include <stdlib.h>
 
 using namespace daisysp;

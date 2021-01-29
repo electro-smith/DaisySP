@@ -3,7 +3,7 @@
 #define DSY_HARMONIC_H
 
 #include <stdint.h>
-#include "modules/Utility/dsp.h"
+#include "dsp.h"
 #ifdef __cplusplus
 
 

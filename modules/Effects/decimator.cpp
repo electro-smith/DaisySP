@@ -1,4 +1,4 @@
-#include "modules/Effects/decimator.h"
+#include "decimator.h"
 
 using namespace daisysp;
 

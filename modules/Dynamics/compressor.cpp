@@ -6,7 +6,7 @@
 #include <cmath>
 #include <stdlib.h>
 #include <stdint.h>
-#include "modules/Dynamics/compressor.h"
+#include "compressor.h"
 
 using namespace daisysp;
 

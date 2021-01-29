@@ -1,4 +1,4 @@
-#include "modules/Control/adsr.h"
+#include "adsr.h"
 #include <math.h>
 
 using namespace daisysp;

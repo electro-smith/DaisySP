@@ -1,4 +1,4 @@
-#include "modules/Synthesis/blosc.h"
+#include "blosc.h"
 #include <math.h>
 
 using namespace daisysp;

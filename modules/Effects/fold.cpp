@@ -1,4 +1,4 @@
-#include "modules/Effects/fold.h"
+#include "fold.h"
 #include <math.h>
 
 using namespace daisysp;

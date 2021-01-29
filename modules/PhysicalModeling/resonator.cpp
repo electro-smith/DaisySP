@@ -1,4 +1,4 @@
-#include "modules/PhysicalModeling/resonator.h"
+#include "resonator.h"
 #include <math.h>
 
 using namespace daisysp;

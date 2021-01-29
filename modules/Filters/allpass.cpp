@@ -1,4 +1,4 @@
-#include "modules/Filters/allpass.h"
+#include "allpass.h"
 #include <math.h>
 
 using namespace daisysp;

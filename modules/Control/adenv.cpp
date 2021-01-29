@@ -1,5 +1,5 @@
 #include <math.h>
-#include "modules/Control/adenv.h"
+#include "adenv.h"
 
 using namespace daisysp;
 

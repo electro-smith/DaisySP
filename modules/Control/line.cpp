@@ -1,4 +1,4 @@
-#include "modules/Control/line.h"
+#include "line.h"
 
 using namespace daisysp;
 

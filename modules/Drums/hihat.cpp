@@ -1,5 +1,5 @@
-#include "modules/Utility/dsp.h"
-#include "modules/Drums/hihat.h"
+#include "dsp.h"
+#include "hihat.h"
 #include <math.h>
 
 using namespace daisysp;
