@@ -34,7 +34,7 @@ var searchData=
   ['setdensity_152',['SetDensity',['../classdaisysp_1_1_particle.html#a8d2596106b6781ae1c5cc9d42b9de2b5',1,'daisysp::Particle']]],
   ['setdirtiness_153',['SetDirtiness',['../classdaisysp_1_1_synthetic_bass_drum.html#a9a743b2e2ae2c96cfaf337a54a115db6',1,'daisysp::SyntheticBassDrum']]],
   ['setdownsamplefactor_154',['SetDownsampleFactor',['../classdaisysp_1_1_decimator.html#a3905e7edf777dd18e06b50c036329b80',1,'daisysp::Decimator']]],
-  ['setdrive_155',['SetDrive',['../classdaisysp_1_1_overdrive.html#a3c4e20059d49e67488cb5e937ed207da',1,'daisysp::Overdrive::SetDrive()'],['../classdaisysp_1_1_svf.html#af8774a56a4095dd6cd2b9686c3ec0292',1,'daisysp::Svf::SetDrive()']]],
+  ['setdrive_155',['SetDrive',['../classdaisysp_1_1_overdrive.html#a3c4e20059d49e67488cb5e937ed207da',1,'daisysp::Overdrive::SetDrive()'],['../classdaisysp_1_1_svf.html#adbab90bfde6724331fb268c2082811a4',1,'daisysp::Svf::SetDrive()']]],
   ['setdrywet_156',['SetDryWet',['../classdaisysp_1_1_autowah.html#ab891eb05498637cd93b1913958c8bb56',1,'daisysp::Autowah']]],
   ['setfeedback_157',['SetFeedback',['../classdaisysp_1_1_reverb_sc.html#af4fff51d1ab475fedb4c5110c2a6f075',1,'daisysp::ReverbSc']]],
   ['setfirstharmidx_158',['SetFirstHarmIdx',['../classdaisysp_1_1_harmonic_oscillator.html#ad11b1cde863c2a5d9ee903e613873668',1,'daisysp::HarmonicOscillator']]],
