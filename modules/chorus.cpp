@@ -43,7 +43,7 @@ void ChorusEngine::SetLfoFreq(float freq)
 
 void ChorusEngine::SetDelay(float delay)
 {
-    delay = (1.f + delay * 49); //1 to 50 ms
+    delay = (.1f + delay * 7.9f); //.1 to 8 ms
     SetDelayMs(delay);
 }
 
