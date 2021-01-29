@@ -45,7 +45,7 @@ class Svf
     /** sets the drive of the filter 
         affects the response of the resonance of the filter
     */
-    inline void SetDrive(float d) { drive_ = d; }
+    void SetDrive(float d);
     /** lowpass output
         \return low pass output of the filter
     */
@@ -72,6 +72,7 @@ class Svf
     float notch_, low_, high_, band_, peak_;
     float input_;
     float out_low_, out_high_, out_band_, out_peak_, out_notch_;
+    float pre_drive_, fc_max_;
 };
 } // namespace daisysp
 
