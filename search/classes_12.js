@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['whitenoise_320',['WhiteNoise',['../classdaisysp_1_1_white_noise.html',1,'daisysp']]]
+  ['zoscillator_317',['ZOscillator',['../classdaisysp_1_1_z_oscillator.html',1,'daisysp']]]
 ];

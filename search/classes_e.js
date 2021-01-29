@@ -1,11 +1,15 @@
 var searchData=
 [
-  ['resonator_297',['Resonator',['../classdaisysp_1_1_resonator.html',1,'daisysp']]],
-  ['resonatorsvf_298',['ResonatorSvf',['../classdaisysp_1_1_resonator_svf.html',1,'daisysp']]],
-  ['resonatorsvf_3c_201_20_3e_299',['ResonatorSvf&lt; 1 &gt;',['../classdaisysp_1_1_resonator_svf.html',1,'daisysp']]],
-  ['resonatorsvf_3c_20kmodebatchsize_20_3e_300',['ResonatorSvf&lt; kModeBatchSize &gt;',['../classdaisysp_1_1_resonator_svf.html',1,'daisysp']]],
-  ['reverbsc_301',['ReverbSc',['../classdaisysp_1_1_reverb_sc.html',1,'daisysp']]],
-  ['reverbscdl_302',['ReverbScDl',['../structdaisysp_1_1_reverb_sc_dl.html',1,'daisysp']]],
-  ['reverse_5fiterator_303',['reverse_iterator',['../classbasic__string_3_01char_01_4_1_1reverse__iterator.html',1,'std::basic_string&lt; char &gt;::reverse_iterator'],['../classbasic__string_3_01char16__t_01_4_1_1reverse__iterator.html',1,'std::basic_string&lt; char16_t &gt;::reverse_iterator'],['../classbasic__string_3_01char32__t_01_4_1_1reverse__iterator.html',1,'std::basic_string&lt; char32_t &gt;::reverse_iterator'],['../classbasic__string_3_01char8__t_01_4_1_1reverse__iterator.html',1,'std::basic_string&lt; char8_t &gt;::reverse_iterator'],['../classbasic__string_3_01wchar__t_01_4_1_1reverse__iterator.html',1,'std::basic_string&lt; wchar_t &gt;::reverse_iterator'],['../classbasic__string__view_3_01char_01_4_1_1reverse__iterator.html',1,'std::basic_string_view&lt; char &gt;::reverse_iterator'],['../classbasic__string__view_3_01char16__t_01_4_1_1reverse__iterator.html',1,'std::basic_string_view&lt; char16_t &gt;::reverse_iterator'],['../classbasic__string__view_3_01char32__t_01_4_1_1reverse__iterator.html',1,'std::basic_string_view&lt; char32_t &gt;::reverse_iterator'],['../classbasic__string__view_3_01char8__t_01_4_1_1reverse__iterator.html',1,'std::basic_string_view&lt; char8_t &gt;::reverse_iterator'],['../classbasic__string__view_3_01wchar__t_01_4_1_1reverse__iterator.html',1,'std::basic_string_view&lt; wchar_t &gt;::reverse_iterator']]],
-  ['ringmodnoise_304',['RingModNoise',['../classdaisysp_1_1_ring_mod_noise.html',1,'daisysp']]]
+  ['samplehold_300',['SampleHold',['../classdaisysp_1_1_sample_hold.html',1,'daisysp']]],
+  ['sampleratereducer_301',['SampleRateReducer',['../classdaisysp_1_1_sample_rate_reducer.html',1,'daisysp']]],
+  ['smoothrandomgenerator_302',['SmoothRandomGenerator',['../classdaisysp_1_1_smooth_random_generator.html',1,'daisysp']]],
+  ['squarenoise_303',['SquareNoise',['../classdaisysp_1_1_square_noise.html',1,'daisysp']]],
+  ['string_304',['String',['../classdaisysp_1_1_string.html',1,'daisysp']]],
+  ['stringvoice_305',['StringVoice',['../classdaisysp_1_1_string_voice.html',1,'daisysp']]],
+  ['svf_306',['Svf',['../classdaisysp_1_1_svf.html',1,'daisysp']]],
+  ['swingvca_307',['SwingVCA',['../classdaisysp_1_1_swing_v_c_a.html',1,'daisysp']]],
+  ['syntheticbassdrum_308',['SyntheticBassDrum',['../classdaisysp_1_1_synthetic_bass_drum.html',1,'daisysp']]],
+  ['syntheticbassdrumattacknoise_309',['SyntheticBassDrumAttackNoise',['../classdaisysp_1_1_synthetic_bass_drum_attack_noise.html',1,'daisysp']]],
+  ['syntheticbassdrumclick_310',['SyntheticBassDrumClick',['../classdaisysp_1_1_synthetic_bass_drum_click.html',1,'daisysp']]],
+  ['syntheticsnaredrum_311',['SyntheticSnareDrum',['../classdaisysp_1_1_synthetic_snare_drum.html',1,'daisysp']]]
 ];
