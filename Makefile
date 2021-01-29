@@ -12,6 +12,7 @@ modules/PhysicalModeling \
 modules/Synthesis \
 modules/Utility \
 
+
 MODULES = \
 adenv \
 adsr \
@@ -160,6 +161,15 @@ C_DEFS =  \
 
 C_INCLUDES = \
 -I. \
+-I modules/Control \
+-I modules/Drums \
+-I modules/Dynamics \
+-I modules/Effects \
+-I modules/Filters \
+-I modules/Noise \
+-I modules/PhysicalModeling \
+-I modules/Synthesis \
+-I modules/Utility \
 
 # compile gcc flags
 ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
@@ -176,7 +186,7 @@ CFLAGS += -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"
 CPPFLAGS = $(CFLAGS)
 CPPFLAGS += \
 -fno-exceptions \
--finline-functions
+-finline-functions \
 
 #######################################
 # LDFLAGS # Not Used 
