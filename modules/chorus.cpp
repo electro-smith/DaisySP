@@ -8,8 +8,6 @@ void ChorusEngine::Init(float sample_rate)
 {
     sample_rate_ = sample_rate;
 
-    SetFeedback(.2f);
-
     del_.Init();
     lfo_amp_ = 0.f;
     SetDelay(.75);
@@ -25,15 +23,9 @@ float ChorusEngine::Process(float in)
     del_.SetDelay(lfo_sig + delay_);
 
     float out = del_.Read();
-    del_.Write(in + out * feedback_);
+    del_.Write(in);
 
     return (in + out) * .5f; //equal mix
-}
-
-void ChorusEngine::SetFeedback(float feedback)
-{
-    feedback_ = fclamp(feedback, 0.f, 1.f);
-    feedback_ *= .97f;
 }
 
 void ChorusEngine::SetLfoDepth(float depth)
@@ -51,7 +43,7 @@ void ChorusEngine::SetLfoFreq(float freq)
 
 void ChorusEngine::SetDelay(float delay)
 {
-    delay = (.1f + delay * 6.9); //.1 to 7 ms
+    delay = (1.f + delay * 49); //1 to 50 ms
     SetDelayMs(delay);
 }
 

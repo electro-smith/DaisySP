@@ -13,11 +13,11 @@ namespace daisysp
 //does the heavy lifting
 class ChorusEngine
 {
-	public:
-	ChorusEngine() {}
-	~ChorusEngine() {}
-    
-	/** Initialize the module
+  public:
+    ChorusEngine() {}
+    ~ChorusEngine() {}
+
+    /** Initialize the module
 		\param sample_rate Audio engine sample rate.
 	*/
     void Init(float sample_rate);
@@ -26,11 +26,6 @@ class ChorusEngine
 		\param in Sample to process
 	*/
     float Process(float in);
-
-    /** How much of the signal to feedback into the delay line.
-		\param feedback Works 0-1.
-	*/
-    void SetFeedback(float feedback);
 
     /** How much to modulate the delay by.
 		\param depth Works 0-1.
@@ -54,9 +49,8 @@ class ChorusEngine
 
   private:
     float                    sample_rate_;
-    static constexpr int32_t kDelayLength = 2400; // 50 ms at 48kHz = .05 * 48000
-
-    float feedback_;
+    static constexpr int32_t kDelayLength
+        = 2400; // 50 ms at 48kHz = .05 * 48000
 
     //triangle lfos
     float lfo_phase_;
@@ -87,42 +81,47 @@ class Chorus
 
     void Init(float sample_rate)
     {
-		float f = .5f;
-		if(NUM_DELS > 1){
-			f = 1.f / (float)(NUM_DELS - 1);
+        float f = .5f;
+        if(NUM_DELS > 1)
+        {
+            f = 1.f / (float)(NUM_DELS - 1);
         }
-		
-		for(int i = 0; i < NUM_DELS; i++)
+
+        for(int i = 0; i < NUM_DELS; i++)
         {
             engines_[i].Init(sample_rate);
-			SetPan(i * f, i);
+            SetPan(i * f, i);
         }
-				
-		gain_frac_ = 1.f / (float)NUM_DELS;
+
+        gain_frac_ = 1.f / (float)NUM_DELS;
     }
 
-	void Process(float in, float& outl, float& outr){
-		float l = 0.f;
-		float r = 0.f;
+    void Process(float in, float& outl, float& outr)
+    {
+        float l = 0.f;
+        float r = 0.f;
 
-		for(int i = 0; i < NUM_DELS; i++){
-			float sig = engines_[i].Process(in);
-			l += (1.f - pan_[i]) * sig;
-			r += pan_[i] * sig;
-		}
-		
-		outl = l * gain_frac_;
-		outr = r * gain_frac_;
-	}
+        for(int i = 0; i < NUM_DELS; i++)
+        {
+            float sig = engines_[i].Process(in);
+            l += (1.f - pan_[i]) * sig;
+            r += pan_[i] * sig;
+        }
+
+        outl = l * gain_frac_;
+        outr = r * gain_frac_;
+    }
 
     float ProcessSingle(float in, int delnum = 0)
     {
         return engines_[delnum].Process(in);
     }
-	
-	void SetPan(float pan, int delnum = 0){
-		pan_[delnum] = fclamp(pan, 0.f, 1.f);;
-	}
+
+    void SetPan(float pan, int delnum = 0)
+    {
+        pan_[delnum] = fclamp(pan, 0.f, 1.f);
+        ;
+    }
 
     void SetLfoDepth(float depth, int delnum = 0)
     {
@@ -134,10 +133,7 @@ class Chorus
         engines_[delnum].SetLfoFreq(freq);
     }
 
-    void SetDelay(float ms, int delnum = 0)
-    {
-        engines_[delnum].SetDelay(ms);
-    }
+    void SetDelay(float ms, int delnum = 0) { engines_[delnum].SetDelay(ms); }
 
     void SetLfoDepthAll(float depth)
     {
@@ -165,8 +161,8 @@ class Chorus
 
   private:
     ChorusEngine engines_[NUM_DELS];
-	float gain_frac_;
-	float pan_[NUM_DELS];
+    float        gain_frac_;
+    float        pan_[NUM_DELS];
 };
 } //namespace daisysp
 #endif
