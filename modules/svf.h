@@ -33,7 +33,7 @@ class Svf
 
 
     /** sets the frequency of the cutoff frequency. 
-        f must be between 0.0 and sample_rate / 2
+        f must be between 0.0 and sample_rate / 3
     */
     void SetFreq(float f);
 

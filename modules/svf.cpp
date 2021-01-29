@@ -31,22 +31,22 @@ void Svf::Process(float in)
 {
     input_ = in;
     // first pass
-    notch_     = input_ - damp_ * band_;
-    low_       = low_ + freq_ * band_;
-    high_      = notch_ - low_;
-    band_      = freq_ * high_ + band_ - drive_ * band_ * band_ * band_;
+    notch_ = input_ - damp_ * band_;
+    low_   = low_ + freq_ * band_;
+    high_  = notch_ - low_;
+    band_  = freq_ * high_ + band_ - drive_ * band_ * band_ * band_;
     // take first sample of output
     out_low_   = 0.5f * low_;
     out_high_  = 0.5f * high_;
     out_band_  = 0.5f * band_;
     out_peak_  = 0.5f * (low_ - high_);
     out_notch_ = 0.5f * notch_;
-    // second pass 
+    // second pass
     notch_ = input_ - damp_ * band_;
     low_   = low_ + freq_ * band_;
     high_  = notch_ - low_;
     band_  = freq_ * high_ + band_ - drive_ * band_ * band_ * band_;
-    // average second pass outputs 
+    // average second pass outputs
     out_low_ += 0.5f * low_;
     out_high_ += 0.5f * high_;
     out_band_ += 0.5f * band_;
