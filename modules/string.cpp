@@ -45,13 +45,13 @@ float String::Process(const float in)
     if(non_linearity_amount_ <= 0.0f)
     {
         non_linearity_amount_ *= -1;
-        float ret = ProcessInternal<STRING_NON_LINEARITY_CURVED_BRIDGE>(in);
+        float ret = ProcessInternal<NON_LINEARITY_CURVED_BRIDGE>(in);
         non_linearity_amount_ *= -1;
         return ret;
     }
     else
     {
-        return ProcessInternal<STRING_NON_LINEARITY_DISPERSION>(in);
+        return ProcessInternal<NON_LINEARITY_DISPERSION>(in);
     }
 }
 
@@ -76,7 +76,7 @@ void String::SetDamping(float damping)
     damping_ = fclamp(damping, 0.f, 1.f);
 }
 
-template <StringNonLinearity non_linearity>
+template <String::StringNonLinearity non_linearity>
 float String::ProcessInternal(const float in)
 {
     float brightness = brightness_;
@@ -141,7 +141,7 @@ float String::ProcessInternal(const float in)
         delay   = delay * damping_compensation;
         float s = 0.0f;
 
-        if(non_linearity == STRING_NON_LINEARITY_DISPERSION)
+        if(non_linearity == NON_LINEARITY_DISPERSION)
         {
             float noise = rand() * kRandFrac - 0.5f;
             fonepole(dispersion_noise_, noise, noise_filter);
@@ -152,7 +152,7 @@ float String::ProcessInternal(const float in)
             delay *= 1.0f - curved_bridge_ * bridge_curving;
         }
 
-        if(non_linearity == STRING_NON_LINEARITY_DISPERSION)
+        if(non_linearity == NON_LINEARITY_DISPERSION)
         {
             float ap_delay   = delay * stretch_point;
             float main_delay = delay
@@ -173,7 +173,7 @@ float String::ProcessInternal(const float in)
             s = string_.ReadHermite(delay);
         }
 
-        if(non_linearity == STRING_NON_LINEARITY_CURVED_BRIDGE)
+        if(non_linearity == NON_LINEARITY_CURVED_BRIDGE)
         {
             float value    = fabsf(s) - 0.025f;
             float sign     = s > 0.0f ? 1.0f : -1.5f;

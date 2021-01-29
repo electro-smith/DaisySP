@@ -68,6 +68,7 @@
 #include "modules/sampleratereducer.h"
 #include "modules/smooth_random.h"
 #include "modules/string.h"
+#include "modules/stringvoice.h"
 #include "modules/svf.h"
 #include "modules/synthbassdrum.h"
 #include "modules/synthsnaredrum.h"

@@ -44,6 +44,7 @@ resonator \
 reverbsc \
 sampleratereducer \
 string \
+stringvoice \
 svf \
 synthbassdrum \
 synthsnaredrum \
