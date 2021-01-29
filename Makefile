@@ -21,7 +21,6 @@ crossfade \
 dcblock \
 decimator \
 drip \
-flanger \
 fm2 \
 fold \
 formantosc \
