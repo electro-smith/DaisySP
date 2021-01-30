@@ -132,7 +132,10 @@ int ReverbSc::InitDelayLine(ReverbScDl *lp, int n)
     NextRandomLineseg(lp, n);
     /* clear delay line to zero */
     lp->filter_state = 0.0;
-    memset(lp->buf, 0, sizeof(float) * lp->buffer_size);
+    for(int i = 0; i < lp->buffer_size; i++)
+    {
+        lp->buf[i] = 0;
+    }
     return REVSC_OK;
 }
 

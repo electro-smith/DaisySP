@@ -87,6 +87,9 @@ void NlFilt::ProcessBlock(float *in, float *out, size_t size)
 int32_t NlFilt::Set()
 {
     // Initializes delay buffer.
-    memset(delay_, 0, MAX_DELAY * sizeof(float)); // Memset
+    for(size_t i = 0; i < MAX_DELAY; i++)
+    {
+        delay_[i] = 0;
+    }
     return OK;
 }
