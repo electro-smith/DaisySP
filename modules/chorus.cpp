@@ -144,6 +144,12 @@ void Chorus::SetDelay(float delayl, float delayr)
     engines_[1].SetDelay(delayr);
 }
 
+void Chorus::SetDelayMs(float msl, float msr)
+{
+    engines_[0].SetDelayMs(msl);
+    engines_[1].SetDelayMs(msr);
+}
+
 void Chorus::SetFeedback(float feedbackl, float feedbackr)
 {
     engines_[0].SetFeedback(feedbackl);

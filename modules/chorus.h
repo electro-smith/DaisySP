@@ -127,6 +127,12 @@ class Chorus
 		\param depthr Right channel delay amount. Defaults to 0.
 	*/
     void SetDelay(float delayl, float delayr = 0.f);
+	
+	/** Set both channel delay amounts (or just one).
+		\param depthl Left channel delay amount. Works 0-1.
+		\param depthr Right channel delay amount. Defaults to 0.
+	*/
+    void SetDelayMs(float msl, float msr = 0.f);
 
 	/** Set both channels feedback (or just one).
 		\param depthl Left channel feedback. Works 0-1.
