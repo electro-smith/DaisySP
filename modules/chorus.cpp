@@ -10,7 +10,8 @@ void ChorusEngine::Init(float sample_rate)
     sample_rate_ = sample_rate;
 
     del_.Init();
-    lfo_amp_ = 0.f;
+    lfo_amp_  = 0.f;
+    feedback_ = 0.f;
     SetDelay(.75);
 
     lfo_phase_ = 0.f;
@@ -56,6 +57,11 @@ void ChorusEngine::SetDelayMs(float ms)
     lfo_amp_ = fmin(lfo_amp_, delay_); //clip this if needed
 }
 
+void ChorusEngine::SetFeedback(float feedback)
+{
+    feedback_ = fclamp(feedback, 0.f, 1.f);
+}
+
 float ChorusEngine::ProcessLfo()
 {
     lfo_phase_ += lfo_freq_;
@@ -80,7 +86,7 @@ void Chorus::Init(float sample_rate)
 {
     engines_[0].Init(sample_rate);
     engines_[1].Init(sample_rate);
-    SetPanBoth(.25f, .75f);
+    SetPan(.25f, .75f);
 
     gain_frac_ = .5f;
     sigl_ = sigr_ = 0.f;
@@ -114,46 +120,32 @@ float Chorus::GetRight()
     return sigr_;
 }
 
-void Chorus::SetPan(float pan, int delnum)
+void Chorus::SetPan(float panl, float panr)
 {
-    pan_[delnum] = fclamp(pan, 0.f, 1.f);
+    pan_[0] = fclamp(panl, 0.f, 1.f);
+    pan_[1] = fclamp(panr, 0.f, 1.f);
 }
 
-void Chorus::SetPanBoth(float panl, float panr)
+void Chorus::SetLfoDepth(float depthl, float depthr)
 {
-    SetPan(panl, 0);
-    SetPan(panr, 1);
+    engines_[0].SetLfoDepth(depthl);
+    engines_[1].SetLfoDepth(depthr);
 }
 
-void Chorus::SetLfoDepth(float depth, int delnum)
+void Chorus::SetLfoFreq(float freql, float freqr)
 {
-    engines_[delnum].SetLfoDepth(depth);
+    engines_[0].SetLfoFreq(freql);
+    engines_[1].SetLfoFreq(freqr);
 }
 
-void Chorus::SetLfoFreq(float freq, int delnum)
+void Chorus::SetDelay(float delayl, float delayr)
 {
-    engines_[delnum].SetLfoFreq(freq);
+    engines_[0].SetDelay(delayl);
+    engines_[1].SetDelay(delayr);
 }
 
-void Chorus::SetDelay(float ms, int delnum)
+void Chorus::SetFeedback(float feedbackl, float feedbackr)
 {
-    engines_[delnum].SetDelay(ms);
-}
-
-void Chorus::SetLfoDepthAll(float depth)
-{
-    engines_[0].SetLfoDepth(depth);
-    engines_[1].SetLfoDepth(depth);
-}
-
-void Chorus::SetLfoFreqAll(float freq)
-{
-    engines_[0].SetLfoFreq(freq);
-    engines_[1].SetLfoFreq(freq);
-}
-
-void Chorus::SetDelayAll(float ms)
-{
-    engines_[0].SetDelay(ms);
-    engines_[1].SetDelay(ms);
+    engines_[0].SetFeedback(feedbackl);
+    engines_[1].SetFeedback(feedbackr);
 }

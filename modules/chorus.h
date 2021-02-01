@@ -65,6 +65,8 @@ class ChorusEngine
     float lfo_freq_;
     float lfo_amp_;
 
+    float feedback_;
+
     float delay_;
 
     DelayLine<float, kDelayLength> del_;
@@ -94,21 +96,15 @@ class Chorus
 
     float GetRight();
 
-    void SetPan(float pan, int delnum = 0);
+    void SetPan(float panl, float panr = 0.f);
 
-    void SetPanBoth(float panl, float panr);
+    void SetLfoDepth(float depthl, float depthr = 0.f);
 
-    void SetLfoDepth(float depth, int delnum = 0);
+    void SetLfoFreq(float freql, float freqr = 0.f);
 
-    void SetLfoFreq(float freq, int delnum = 0);
+    void SetDelay(float delayl, float delayr = 0.f);
 
-    void SetDelay(float ms, int delnum = 0);
-
-    void SetLfoDepthAll(float depth);
-
-    void SetLfoFreqAll(float freq);
-
-    void SetDelayAll(float ms);
+    void SetFeedback(float feedbackl, float feedbackr = 0.f);
 
   private:
     ChorusEngine engines_[2];
