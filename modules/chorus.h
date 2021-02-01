@@ -10,7 +10,10 @@
 
 namespace daisysp
 {
-//does the heavy lifting
+/**  
+    @brief Single Chorus engine. Used in Chorus.
+	@author Ben Sergentanis
+*/
 class ChorusEngine
 {
   public:
@@ -47,6 +50,11 @@ class ChorusEngine
 	*/
     void SetDelayMs(float ms);
 
+    /** Set the feedback amount.
+		\param feedback Amount from 0-1.
+	*/
+    void SetFeedback(float feedback);
+
   private:
     float                    sample_rate_;
     static constexpr int32_t kDelayLength
@@ -72,97 +80,42 @@ class ChorusEngine
 	Based on https://www.izotope.com/en/learn/understanding-chorus-flangers-and-phasers-in-audio-production.html \n
 	and https://www.researchgate.net/publication/236629475_Implementing_Professional_Audio_Effects_with_DSPs \n
 */
-template <int NUM_DELS = 2>
 class Chorus
 {
   public:
     Chorus() {}
     ~Chorus() {}
 
-    void Init(float sample_rate)
-    {
-        float f = .5f;
-        if(NUM_DELS > 1)
-        {
-            f = 1.f / (float)(NUM_DELS - 1);
-        }
+    void Init(float sample_rate);
 
-        for(int i = 0; i < NUM_DELS; i++)
-        {
-            engines_[i].Init(sample_rate);
-            SetPan(i * f, i);
-        }
+    float Process(float in);
 
-        gain_frac_ = 1.f / (float)NUM_DELS;
-    }
+    float GetLeft();
 
-    void Process(float in, float& outl, float& outr)
-    {
-        float l = 0.f;
-        float r = 0.f;
+    float GetRight();
 
-        for(int i = 0; i < NUM_DELS; i++)
-        {
-            float sig = engines_[i].Process(in);
-            l += (1.f - pan_[i]) * sig;
-            r += pan_[i] * sig;
-        }
+    void SetPan(float pan, int delnum = 0);
 
-        outl = l * gain_frac_;
-        outr = r * gain_frac_;
-    }
+    void SetPanBoth(float panl, float panr);
 
-    float ProcessSingle(float in, int delnum = 0)
-    {
-        return engines_[delnum].Process(in);
-    }
+    void SetLfoDepth(float depth, int delnum = 0);
 
-    void SetPan(float pan, int delnum = 0)
-    {
-        pan_[delnum] = fclamp(pan, 0.f, 1.f);
-        ;
-    }
+    void SetLfoFreq(float freq, int delnum = 0);
 
-    void SetLfoDepth(float depth, int delnum = 0)
-    {
-        engines_[delnum].SetLfoDepth(depth);
-    }
+    void SetDelay(float ms, int delnum = 0);
 
-    void SetLfoFreq(float freq, int delnum = 0)
-    {
-        engines_[delnum].SetLfoFreq(freq);
-    }
+    void SetLfoDepthAll(float depth);
 
-    void SetDelay(float ms, int delnum = 0) { engines_[delnum].SetDelay(ms); }
+    void SetLfoFreqAll(float freq);
 
-    void SetLfoDepthAll(float depth)
-    {
-        for(int i = 0; i < NUM_DELS; i++)
-        {
-            engines_[i].SetLfoDepth(depth);
-        }
-    }
-
-    void SetLfoFreqAll(float freq)
-    {
-        for(int i = 0; i < NUM_DELS; i++)
-        {
-            engines_[i].SetLfoFreq(freq);
-        }
-    }
-
-    void SetDelayAll(float ms)
-    {
-        for(int i = 0; i < NUM_DELS; i++)
-        {
-            engines_[i].SetDelay(ms);
-        }
-    }
+    void SetDelayAll(float ms);
 
   private:
-    ChorusEngine engines_[NUM_DELS];
+    ChorusEngine engines_[2];
     float        gain_frac_;
-    float        pan_[NUM_DELS];
+    float        pan_[2];
+
+    float sigl_, sigr_;
 };
 } //namespace daisysp
 #endif

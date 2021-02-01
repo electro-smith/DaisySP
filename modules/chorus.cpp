@@ -4,6 +4,7 @@
 
 using namespace daisysp;
 
+//ChorusEngine stuff
 void ChorusEngine::Init(float sample_rate)
 {
     sample_rate_ = sample_rate;
@@ -72,4 +73,87 @@ float ChorusEngine::ProcessLfo()
     }
 
     return lfo_phase_ * lfo_amp_;
+}
+
+//Chorus Stuff
+void Chorus::Init(float sample_rate)
+{
+    engines_[0].Init(sample_rate);
+    engines_[1].Init(sample_rate);
+    SetPanBoth(.25f, .75f);
+
+    gain_frac_ = .5f;
+    sigl_ = sigr_ = 0.f;
+}
+
+float Chorus::Process(float in)
+{
+    sigl_ = 0.f;
+    sigr_ = 0.f;
+
+    for(int i = 0; i < 2; i++)
+    {
+        float sig = engines_[i].Process(in);
+        sigl_ += (1.f - pan_[i]) * sig;
+        sigr_ += pan_[i] * sig;
+    }
+
+    sigl_ *= gain_frac_;
+    sigr_ *= gain_frac_;
+
+    return sigl_;
+}
+
+float Chorus::GetLeft()
+{
+    return sigl_;
+}
+
+float Chorus::GetRight()
+{
+    return sigr_;
+}
+
+void Chorus::SetPan(float pan, int delnum)
+{
+    pan_[delnum] = fclamp(pan, 0.f, 1.f);
+}
+
+void Chorus::SetPanBoth(float panl, float panr)
+{
+    SetPan(panl, 0);
+    SetPan(panr, 1);
+}
+
+void Chorus::SetLfoDepth(float depth, int delnum)
+{
+    engines_[delnum].SetLfoDepth(depth);
+}
+
+void Chorus::SetLfoFreq(float freq, int delnum)
+{
+    engines_[delnum].SetLfoFreq(freq);
+}
+
+void Chorus::SetDelay(float ms, int delnum)
+{
+    engines_[delnum].SetDelay(ms);
+}
+
+void Chorus::SetLfoDepthAll(float depth)
+{
+    engines_[0].SetLfoDepth(depth);
+    engines_[1].SetLfoDepth(depth);
+}
+
+void Chorus::SetLfoFreqAll(float freq)
+{
+    engines_[0].SetLfoFreq(freq);
+    engines_[1].SetLfoFreq(freq);
+}
+
+void Chorus::SetDelayAll(float ms)
+{
+    engines_[0].SetDelay(ms);
+    engines_[1].SetDelay(ms);
 }
