@@ -88,53 +88,53 @@ class Chorus
     Chorus() {}
     ~Chorus() {}
 
-	/** Initialize the module
+    /** Initialize the module
 		\param sample_rate Audio engine sample rate
 	*/
     void Init(float sample_rate);
 
-	/** Get the net floating point sample. Defaults to left channel.
+    /** Get the net floating point sample. Defaults to left channel.
 		\param in Sample to process
 	*/
     float Process(float in);
 
-	/** Get the left channel's last sample */
+    /** Get the left channel's last sample */
     float GetLeft();
 
-	/** Get the right channel's last sample */
+    /** Get the right channel's last sample */
     float GetRight();
 
-	/** Pan both channels (or just one).
+    /** Pan both channels (or just one).
 		\param panl Pan the left channel. 0 is left, 1 is right.
 		\param panr Pan the right channel. Defaults to 0.
 	*/
     void SetPan(float panl, float panr = 0.f);
 
-	/** Set both lfo depths (or just one).
+    /** Set both lfo depths (or just one).
 		\param depthl Left channel lfo depth. Works 0-1.
 		\param depthr Right channel lfo depth. Defaults to 0.
 	*/
     void SetLfoDepth(float depthl, float depthr = 0.f);
 
-	/** Set both lfo frequencies (or just one).
+    /** Set both lfo frequencies (or just one).
 		\param depthl Left channel lfo freq in Hz.
 		\param depthr Right channel lfo freq in Hz. Defaults to 0.
 	*/
     void SetLfoFreq(float freql, float freqr = 0.f);
 
-	/** Set both channel delay amounts (or just one).
+    /** Set both channel delay amounts (or just one).
 		\param depthl Left channel delay amount. Works 0-1.
 		\param depthr Right channel delay amount. Defaults to 0.
 	*/
     void SetDelay(float delayl, float delayr = 0.f);
-	
-	/** Set both channel delay amounts (or just one).
+
+    /** Set both channel delay amounts (or just one).
 		\param depthl Left channel delay amount. Works 0-1.
 		\param depthr Right channel delay amount. Defaults to 0.
 	*/
     void SetDelayMs(float msl, float msr = 0.f);
 
-	/** Set both channels feedback (or just one).
+    /** Set both channels feedback (or just one).
 		\param depthl Left channel feedback. Works 0-1.
 		\param depthr Right channel feedback. Defaults to 0.
 	*/
