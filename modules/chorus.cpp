@@ -126,10 +126,20 @@ void Chorus::SetPan(float panl, float panr)
     pan_[1] = fclamp(panr, 0.f, 1.f);
 }
 
+void Chorus::SetPan(float pan)
+{
+    SetPan(pan, pan);
+}
+
 void Chorus::SetLfoDepth(float depthl, float depthr)
 {
     engines_[0].SetLfoDepth(depthl);
     engines_[1].SetLfoDepth(depthr);
+}
+
+void Chorus::SetLfoDepth(float depth)
+{
+    SetLfoDepth(depth, depth);
 }
 
 void Chorus::SetLfoFreq(float freql, float freqr)
@@ -138,10 +148,20 @@ void Chorus::SetLfoFreq(float freql, float freqr)
     engines_[1].SetLfoFreq(freqr);
 }
 
+void Chorus::SetLfoFreq(float freq)
+{
+    SetLfoFreq(freq, freq);
+}
+
 void Chorus::SetDelay(float delayl, float delayr)
 {
     engines_[0].SetDelay(delayl);
     engines_[1].SetDelay(delayr);
+}
+
+void Chorus::SetDelay(float delay)
+{
+    SetDelay(delay, delay);
 }
 
 void Chorus::SetDelayMs(float msl, float msr)
@@ -150,8 +170,18 @@ void Chorus::SetDelayMs(float msl, float msr)
     engines_[1].SetDelayMs(msr);
 }
 
+void Chorus::SetDelayMs(float ms)
+{
+    SetDelayMs(ms, ms);
+}
+
 void Chorus::SetFeedback(float feedbackl, float feedbackr)
 {
     engines_[0].SetFeedback(feedbackl);
     engines_[1].SetFeedback(feedbackr);
+}
+
+void Chorus::SetFeedback(float feedback)
+{
+    SetFeedback(feedback, feedback);
 }

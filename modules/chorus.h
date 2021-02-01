@@ -104,41 +104,71 @@ class Chorus
     /** Get the right channel's last sample */
     float GetRight();
 
-    /** Pan both channels (or just one).
+    /** Pan both channels individually.
 		\param panl Pan the left channel. 0 is left, 1 is right.
-		\param panr Pan the right channel. Defaults to 0.
+		\param panr Pan the right channel.
 	*/
-    void SetPan(float panl, float panr = 0.f);
+    void SetPan(float panl, float panr);
 
-    /** Set both lfo depths (or just one).
+    /** Pan both channels.
+		\param pan Where to pan both channels to. 0 is left, 1 is right.
+	*/
+    void SetPan(float pan);
+
+    /** Set both lfo depths individually.
 		\param depthl Left channel lfo depth. Works 0-1.
-		\param depthr Right channel lfo depth. Defaults to 0.
+		\param depthr Right channel lfo depth.
 	*/
-    void SetLfoDepth(float depthl, float depthr = 0.f);
+    void SetLfoDepth(float depthl, float depthr);
 
-    /** Set both lfo frequencies (or just one).
+    /** Set both lfo depths.
+		\param depth Both channels lfo depth. Works 0-1.
+	*/
+    void SetLfoDepth(float depth);
+
+    /** Set both lfo frequencies individually.
 		\param depthl Left channel lfo freq in Hz.
-		\param depthr Right channel lfo freq in Hz. Defaults to 0.
+		\param depthr Right channel lfo freq in Hz.
 	*/
-    void SetLfoFreq(float freql, float freqr = 0.f);
+    void SetLfoFreq(float freql, float freqr);
 
-    /** Set both channel delay amounts (or just one).
-		\param depthl Left channel delay amount. Works 0-1.
-		\param depthr Right channel delay amount. Defaults to 0.
+    /** Set both lfo frequencies.
+		\param depth Both channel lfo freqs in Hz.
 	*/
-    void SetDelay(float delayl, float delayr = 0.f);
+    void SetLfoFreq(float freq);
 
-    /** Set both channel delay amounts (or just one).
-		\param depthl Left channel delay amount. Works 0-1.
-		\param depthr Right channel delay amount. Defaults to 0.
+    /** Set both channel delay amounts individually.
+		\param delayl Left channel delay amount. Works 0-1.
+		\param delayr Right channel delay amount.
 	*/
-    void SetDelayMs(float msl, float msr = 0.f);
+    void SetDelay(float delayl, float delayr);
 
-    /** Set both channels feedback (or just one).
-		\param depthl Left channel feedback. Works 0-1.
-		\param depthr Right channel feedback. Defaults to 0.
+    /** Set both channel delay amounts.
+		\param delay Both channel delay amount. Works 0-1.
 	*/
-    void SetFeedback(float feedbackl, float feedbackr = 0.f);
+    void SetDelay(float delay);
+
+    /** Set both channel delay individually.
+		\param msl Left channel delay in ms.
+		\param msr Right channel delay in ms.
+	*/
+    void SetDelayMs(float msl, float msr);
+
+    /** Set both channel delay in ms.
+		\param ms Both channel delay amounts in ms.
+	*/
+    void SetDelayMs(float ms);
+
+    /** Set both channels feedback individually.
+		\param feedbackl Left channel feedback. Works 0-1.
+		\param feedbackr Right channel feedback.
+	*/
+    void SetFeedback(float feedbackl, float feedbackr);
+
+    /** Set both channels feedback.
+		\param feedback Both channel feedback. Works 0-1.
+	*/
+    void SetFeedback(float feedback);
 
   private:
     ChorusEngine engines_[2];
