@@ -11,7 +11,7 @@ void ChorusEngine::Init(float sample_rate)
 
     del_.Init();
     lfo_amp_  = 0.f;
-    feedback_ = 0.f;
+    feedback_ = .2f;
     SetDelay(.75);
 
     lfo_phase_ = 0.f;
@@ -25,7 +25,7 @@ float ChorusEngine::Process(float in)
     del_.SetDelay(lfo_sig + delay_);
 
     float out = del_.Read();
-    del_.Write(in);
+    del_.Write(in + out * feedback_);
 
     return (in + out) * .5f; //equal mix
 }
