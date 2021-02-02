@@ -13,6 +13,7 @@ balance \
 biquad \
 blosc \
 bitcrush \
+chorus \
 clockednoise \
 comb \
 compressor \
@@ -20,7 +21,6 @@ crossfade \
 dcblock \
 decimator \
 drip \
-flanger \
 fm2 \
 fold \
 formantosc \
