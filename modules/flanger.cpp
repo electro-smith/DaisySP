@@ -22,7 +22,7 @@ void Flanger::Init(float sample_rate)
 float Flanger::Process(float in)
 {
     float lfo_sig = ProcessLfo();
-    del_.SetDelay(lfo_sig + delay_);
+    del_.SetDelay(1.f + lfo_sig + delay_);
 
     float out = del_.Read();
     del_.Write(in + out * feedback_);
@@ -38,7 +38,7 @@ void Flanger::SetFeedback(float feedback)
 
 void Flanger::SetLfoDepth(float depth)
 {
-    depth    = fclamp(depth, 0.f, 1.f);
+    depth    = fclamp(depth, 0.f, .93f);
     lfo_amp_ = depth * delay_;
 }
 
