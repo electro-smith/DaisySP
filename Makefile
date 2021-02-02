@@ -46,10 +46,12 @@ resonator \
 reverbsc \
 sampleratereducer \
 string \
+stringvoice \
 svf \
 synthbassdrum \
 synthsnaredrum \
 tone \
+tremolo \
 variablesawosc \
 variableshapeosc \
 vosim \
