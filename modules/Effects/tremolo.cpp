@@ -1,4 +1,4 @@
-#include "modules/tremolo.h"
+#include "tremolo.h"
 #include <math.h>
 
 using namespace daisysp;

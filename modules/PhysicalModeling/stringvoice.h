@@ -2,9 +2,9 @@
 #ifndef DSY_STRINGVOICE_H
 #define DSY_STRINGVOICE_H
 
-#include "modules/svf.h"
-#include "modules/string.h"
-#include "modules/dust.h"
+#include "svf.h"
+#include "string.h"
+#include "dust.h"
 #include <stdint.h>
 #ifdef __cplusplus
 
