@@ -16,14 +16,6 @@
 
 namespace daisysp
 {
-const size_t kDelayLineSize = 1024;
-
-enum StringNonLinearity
-{
-    STRING_NON_LINEARITY_CURVED_BRIDGE,
-    STRING_NON_LINEARITY_DISPERSION
-};
-
 /**  
        @brief Comb filter / KS string.
 	   @author Ben Sergentanis
@@ -74,7 +66,15 @@ class String
 
 
   private:
-    template <StringNonLinearity non_linearity>
+    static constexpr size_t kDelayLineSize = 1024;
+
+    enum StringNonLinearity
+    {
+        NON_LINEARITY_CURVED_BRIDGE,
+        NON_LINEARITY_DISPERSION
+    };
+
+    template <String::StringNonLinearity non_linearity>
     float ProcessInternal(const float in);
 
     DelayLine<float, kDelayLineSize>     string_;

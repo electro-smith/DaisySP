@@ -192,6 +192,24 @@ inline float SoftClip(float x)
         return SoftLimit(x);
 }
 
+/** Quick check for Invalid float values (NaN, Inf, out of range) 
+ ** \param x value passed by reference, replaced by y if invalid. 
+ ** \param y value to replace x if invalidity is found. 
+ ** 
+ ** When DEBUG is true in the build, this will halt 
+ ** execution for tracing the reason for the invalidity. */
+inline void TestFloat(float &x, float y = 0.f)
+{
+    if(!isnormal(x) && x != 0)
+    {
+#ifdef DEBUG
+        asm("bkpt 255");
+#else
+        x = y;
+#endif
+    }
+}
+
 /** Based on soft saturate from:
 [musicdsp.org](musicdsp.org/en/latest/Effects/42-soft-saturation.html)
 Bram de Jong (2002-01-17)

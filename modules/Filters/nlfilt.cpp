@@ -91,6 +91,5 @@ int32_t NlFilt::Set()
     {
         delay_[i] = 0;
     }
-
     return OK;
 }
