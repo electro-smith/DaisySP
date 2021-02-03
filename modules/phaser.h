@@ -65,6 +65,8 @@ class PhaserEngine
     float feedback_;
 	float ap_del_;
 
+	float last_sample_;
+
     DelayLine<float, kDelayLength> del_;
 
     float ProcessLfo();
