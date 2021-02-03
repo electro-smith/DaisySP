@@ -25,9 +25,8 @@ void PhaserEngine::Init(float sample_rate)
 float PhaserEngine::Process(float in)
 {
     float lfo_sig = ProcessLfo();
-	float out = del_.Allpass(in + feedback_ * last_sample_, lfo_sig + ap_del_, .3f);
-    last_sample_ = out;
-	return (in + out) * .5f; //equal mix
+    last_sample_ = del_.Allpass(in + feedback_ * last_sample_, lfo_sig + ap_del_, .3f);
+	return (in + last_sample_) * .5f; //equal mix
 }
 
 void PhaserEngine::SetLfoDepth(float depth)
@@ -45,7 +44,7 @@ void PhaserEngine::SetLfoFreq(float lfo_freq)
 
 void PhaserEngine::SetFreq(float ap_freq)
 {
-	ap_del_ = fmax(50.f, sample_rate_ / ap_freq); //clip and convert
+	ap_del_ = fmax(960.f, sample_rate_ / ap_freq); //clip and convert
 }
 
 void PhaserEngine::SetFeedback(float feedback)
