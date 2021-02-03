@@ -63,7 +63,7 @@ class PhaserEngine
     float lfo_amp_;
 
     float feedback_;
-	float ap_freq_;
+	float ap_del_;
 
     DelayLine<float, kDelayLength> del_;
 
