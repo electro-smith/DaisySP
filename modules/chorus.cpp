@@ -32,7 +32,7 @@ float ChorusEngine::Process(float in)
 
 void ChorusEngine::SetLfoDepth(float depth)
 {
-    depth    = fclamp(depth, 0.f, 1.f);
+    depth    = fclamp(depth, 0.f, .93f);
     lfo_amp_ = depth * delay_;
 }
 
