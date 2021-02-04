@@ -2,7 +2,7 @@ TARGET = libdaisysp
 
 MODULE_DIR = modules
 
-# Each Module is listed below with it's modules.
+# Each Module Directory is listed below with it's modules.
 # Header only modules are listed commented out 
 # below the others.
 
@@ -97,7 +97,10 @@ port
 #samplehold 
 #smooth_random
 
-# CPP sources
+######################################
+# source
+######################################
+
 CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(CONTROL_MOD_DIR)/$(CONTROL_MODULES))
 CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(DRUM_MOD_DIR)/$(DRUM_MODULES))
 CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(DYNAMICS_MOD_DIR)/$(DYNAMICS_MODULES))
@@ -107,16 +110,6 @@ CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(NOISE_MOD_DIR)/$(NOISE_MODULES)
 CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(PHYSICAL_MODELING_MOD_DIR)/$(PHYSICAL_MODELING_MODULES))
 CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(SYNTHESIS_MOD_DIR)/$(SYNTHESIS_MODULES))
 CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(UTILITY_MOD_DIR)/$(UTILITY_MODULES))
-
-# certain modules are only header files:
-# delayline 
-# pitchshifter
-# whitenoise
-# polypluck
-
-# TODO: Consider making this work for PCs as well?
-
-CHIPSET = stm32f7x
 
 ######################################
 # building variables
@@ -130,20 +123,9 @@ OPT = -O3
 #######################################
 # paths
 #######################################
-# source path
-SOURCES_DIR =  \
 
 # Build path
 BUILD_DIR = build
-
-######################################
-# source
-######################################
-
-# C sources
-#C_SOURCES += $(addsuffix .c, $(MODULE_DIR)/$(MODULES))
-# CPP sources
-#CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(MODULES))
 
 #######################################
 # binaries
@@ -197,13 +179,9 @@ AS_DEFS =
 
 # C defines
 C_DEFS =  \
--DUSE_HAL_DRIVER \
--DSTM32H750xx \
--DUSE_HAL_DRIVER \
--DSTM32H750xx
+-DSTM32H750xx 
 
 C_INCLUDES = \
--I.\
 -I$(MODULE_DIR) \
 -I$(MODULE_DIR)/$(CONTROL_MOD_DIR) \
 -I$(MODULE_DIR)/$(DRUM_MOD_DIR) \
@@ -230,19 +208,7 @@ CFLAGS += -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"
 CPPFLAGS = $(CFLAGS)
 CPPFLAGS += \
 -fno-exceptions \
--finline-functions \
-
-#######################################
-# LDFLAGS # Not Used 
-# TODO: Clean this up.
-#######################################
-# link script
-#LDSCRIPT = STM32H750IB_FLASH.lds
-
-# libraries
-#LIBS = lc -lm -lnosys 
-#LIBDIR = 
-#LDFLAGS = $(MCU) -specs=nano.specs -T$(LDSCRIPT) $(LIBDIR) $(LIBS) -Wl,-Map=$(BUILD_DIR)/$(TARGET).map,--cref -Wl,--gc-sections
+-finline-functions 
 
 # default action: build all
 all: $(BUILD_DIR)/$(TARGET).a 
