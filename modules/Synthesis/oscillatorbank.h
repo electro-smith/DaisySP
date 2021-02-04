@@ -11,12 +11,12 @@ namespace daisysp
 {
 /**  
        @brief Oscillator Bank module.
-	   @author Ben Sergentanis
-	   @date Dec 2020 
+       @author Ben Sergentanis
+       @date Dec 2020 
        A mixture of 7 sawtooth and square waveforms in the style of divide-down organs \n \n
-	   Ported from pichenettes/eurorack/plaits/dsp/oscillator/string_synth_oscillator.h \n 
-	   \n to an independent module. \n
-	   Original code written by Emilie Gillet in 2016. \n
+       Ported from pichenettes/eurorack/plaits/dsp/oscillator/string_synth_oscillator.h \n 
+       \n to an independent module. \n
+       Original code written by Emilie Gillet in 2016. \n
 */
 
 class OscillatorBank

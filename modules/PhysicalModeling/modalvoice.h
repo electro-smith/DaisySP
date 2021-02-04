@@ -14,13 +14,13 @@ namespace daisysp
 {
 /**  
        @brief Simple modal synthesis voice with a mallet exciter: click -> LPF -> resonator.
-	   @author Ben Sergentanis
-	   @date Jan 2021
-	   The click can be replaced by continuous white noise. \n \n 
-	   Ported from pichenettes/eurorack/plaits/dsp/physical_modelling/modal_voice.h \n
-	   and pichenettes/eurorack/plaits/dsp/physical_modelling/modal_voice.cc \n 
-	   to an independent module. \n
-	   Original code written by Emilie Gillet in 2016. \n
+       @author Ben Sergentanis
+       @date Jan 2021
+       The click can be replaced by continuous white noise. \n \n 
+       Ported from pichenettes/eurorack/plaits/dsp/physical_modelling/modal_voice.h \n
+       and pichenettes/eurorack/plaits/dsp/physical_modelling/modal_voice.cc \n 
+       to an independent module. \n
+       Original code written by Emilie Gillet in 2016. \n
 */
 class ModalVoice
 {
@@ -29,31 +29,31 @@ class ModalVoice
     ~ModalVoice() {}
 
     /** Initialize the module
-		\param sample_rate Audio engine sample rate
-	*/
+        \param sample_rate Audio engine sample rate
+    */
     void Init(float sample_rate);
 
     /** Get the next sample
-		\param trigger Strike the resonator. Defaults to false.
-	*/
+        \param trigger Strike the resonator. Defaults to false.
+    */
     float Process(bool trigger = false);
 
     /** Continually excite the resonator with noise.
-		\param sustain True turns on the noise.
-	*/
+        \param sustain True turns on the noise.
+    */
     void SetSustain(bool sustain);
 
     /** Strike the resonator. */
     void Trig();
 
     /** Set the resonator root frequency.
-		\param freq Frequency in Hz.
-	*/
+        \param freq Frequency in Hz.
+    */
     void SetFreq(float freq);
 
     /** Hit the resonator a bit harder.
-		\param accent Works 0-1.
-	*/
+        \param accent Works 0-1.
+    */
     void SetAccent(float accent);
 
     /** Changes the general charater of the resonator (stiffness, brightness)

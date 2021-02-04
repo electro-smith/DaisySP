@@ -11,12 +11,12 @@ namespace daisysp
 {
 /**  
            @brief Clocked Noise Module
-	   @author Ported by Ben Sergentanis 
-	   @date Jan 2021 
-	   Noise processed by a sample and hold running at a target frequency. \n \n
-	   Ported from pichenettes/eurorack/plaits/dsp/noise/clocked_noise.h \n
-	   to an independent module. \n
-	   Original code written by Emilie Gillet in 2016. \n
+       @author Ported by Ben Sergentanis 
+       @date Jan 2021 
+       Noise processed by a sample and hold running at a target frequency. \n \n
+       Ported from pichenettes/eurorack/plaits/dsp/noise/clocked_noise.h \n
+       to an independent module. \n
+       Original code written by Emilie Gillet in 2016. \n
 */
 class ClockedNoise
 {
@@ -24,17 +24,17 @@ class ClockedNoise
     ClockedNoise() {}
     ~ClockedNoise() {}
 
-    /** Initialize module	
-		\param sample_rate Audio engine sample rate
-	*/
+    /** Initialize module    
+        \param sample_rate Audio engine sample rate
+    */
     void Init(float sample_rate);
 
     /** Get the next floating point sample */
     float Process();
 
     /** Set the frequency at which the next sample is generated.
-		\param freq Frequency in Hz
-	*/
+        \param freq Frequency in Hz
+    */
     void SetFreq(float freq);
 
     /** Calling this forces another random float to be generated */

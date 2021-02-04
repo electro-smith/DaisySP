@@ -12,12 +12,12 @@
 namespace daisysp
 {
 /**  
-	   @brief Smooth random generator for internal modulation. \n
-	   @author Ported by Ben Sergentanis 
-	   @date Jan 2021 
-	   Ported from pichenettes/eurorack/plaits/dsp/noise/smooth_random_generator.h \n
-	   to an independent module. \n
-	   Original code written by Emilie Gillet in 2016. \n
+       @brief Smooth random generator for internal modulation. \n
+       @author Ported by Ben Sergentanis 
+       @date Jan 2021 
+       Ported from pichenettes/eurorack/plaits/dsp/noise/smooth_random_generator.h \n
+       to an independent module. \n
+       Original code written by Emilie Gillet in 2016. \n
 */
 class SmoothRandomGenerator
 {
@@ -26,8 +26,8 @@ class SmoothRandomGenerator
     ~SmoothRandomGenerator() {}
 
     /** Initialize the module
-		\param sample_rate Audio engine sample rate.
-	*/
+        \param sample_rate Audio engine sample rate.
+    */
     void Init(float sample_rate)
     {
         sample_rate_ = sample_rate;
@@ -53,8 +53,8 @@ class SmoothRandomGenerator
     }
 
     /** How often to slew to a new random value
-		\param freq Rate in Hz
-	*/
+        \param freq Rate in Hz
+    */
     void SetFreq(float freq)
     {
         freq       = freq / sample_rate_;

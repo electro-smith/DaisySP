@@ -11,11 +11,11 @@ namespace daisysp
 {
 /** 
        @brief Sample rate reducer.
-	   @author Ben Sergentanis
-	   @date Jan 2021
-	   Ported from pichenettes/eurorack/plaits/dsp/fx/sample_rate_reducer.h \n
-	   to an independent module. \n
-	   Original code written by Emilie Gillet in 2014. \n
+       @author Ben Sergentanis
+       @date Jan 2021
+       Ported from pichenettes/eurorack/plaits/dsp/fx/sample_rate_reducer.h \n
+       to an independent module. \n
+       Original code written by Emilie Gillet in 2014. \n
 */
 class SampleRateReducer
 {
@@ -27,13 +27,13 @@ class SampleRateReducer
     void Init();
 
     /** Get the next floating point sample 
-		\param in Sample to be processed.
-	*/
+        \param in Sample to be processed.
+    */
     float Process(float in);
 
     /** Set the new sample rate.
-		\param Works over 0-1. 1 is full quality, .5 is half sample rate, etc.
-	*/
+        \param Works over 0-1. 1 is full quality, .5 is half sample rate, etc.
+    */
     void SetFreq(float frequency);
 
   private:

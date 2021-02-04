@@ -13,11 +13,11 @@ namespace daisysp
 {
 /**  
        @brief 808 snare drum model, revisited.
-	   @author Ben Sergentanis
-	   @date Jan 2021
-	   Ported from pichenettes/eurorack/plaits/dsp/drums/analog_snare_drum.h \n
-	   to an independent module. \n
-	   Original code written by Emilie Gillet in 2016. \n
+       @author Ben Sergentanis
+       @date Jan 2021
+       Ported from pichenettes/eurorack/plaits/dsp/drums/analog_snare_drum.h \n
+       to an independent module. \n
+       Original code written by Emilie Gillet in 2016. \n
 */
 class AnalogSnareDrum
 {
@@ -28,46 +28,46 @@ class AnalogSnareDrum
     static const int kNumModes = 5;
 
     /** Init the module
-		\param sample_rate Audio engine sample rate
-	*/
+        \param sample_rate Audio engine sample rate
+    */
     void Init(float sample_rate);
 
     /** Get the next sample
-		\param trigger Hit the drum with true. Defaults to false.
-	*/
+        \param trigger Hit the drum with true. Defaults to false.
+    */
     float Process(bool trigger = false);
 
     /** Trigger the drum */
     void Trig();
 
     /** Init the module
-		\param sample_rate Audio engine sample rate
-	*/
+        \param sample_rate Audio engine sample rate
+    */
     void SetSustain(bool sustain);
 
     /** Set how much accent to use
-		\param accent Works 0-1.
-	*/
+        \param accent Works 0-1.
+    */
     void SetAccent(float accent);
 
     /** Set the drum's root frequency
-		\param f0 Freq in Hz
-	*/
+        \param f0 Freq in Hz
+    */
     void SetFreq(float f0);
 
     /** Set the brightness of the drum tone.
-		\param tone Works 0-1. 1 = bright, 0 = dark.
-	*/
+        \param tone Works 0-1. 1 = bright, 0 = dark.
+    */
     void SetTone(float tone);
 
     /** Set the length of the drum decay
-		\param decay Works with positive numbers
-	*/
+        \param decay Works with positive numbers
+    */
     void SetDecay(float decay);
 
     /** Sets the mix between snare and drum.
-		\param snappy 1 = just snare. 0 = just drum.
-	*/
+        \param snappy 1 = just snare. 0 = just drum.
+    */
     void SetSnappy(float snappy);
 
   private:

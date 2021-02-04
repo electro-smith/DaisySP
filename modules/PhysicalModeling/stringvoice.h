@@ -14,12 +14,12 @@ namespace daisysp
 {
 /**  
        @brief Extended Karplus-Strong, with all the niceties from Rings 
-	   @author Ben Sergentanis
-	   @date Jan 2021
-	   Ported from pichenettes/eurorack/plaits/dsp/physical_modelling/string_voice.h \n
-	   and pichenettes/eurorack/plaits/dsp/physical_modelling/string_voice.cc \n
-	   to an independent module. \n
-	   Original code written by Emilie Gillet in 2016. \n
+       @author Ben Sergentanis
+       @date Jan 2021
+       Ported from pichenettes/eurorack/plaits/dsp/physical_modelling/string_voice.h \n
+       and pichenettes/eurorack/plaits/dsp/physical_modelling/string_voice.cc \n
+       to an independent module. \n
+       Original code written by Emilie Gillet in 2016. \n
 */
 class StringVoice
 {
@@ -28,34 +28,34 @@ class StringVoice
     ~StringVoice() {}
 
     /** Initialize the module
-		\param sample_rate Audio engine sample rate
-	*/
+        \param sample_rate Audio engine sample rate
+    */
     void Init(float sample_rate);
 
     /** Reset the string oscillator */
     void Reset();
 
     /** Get the next sample
-		\param trigger Strike the string. Defaults to false.
-	*/
+        \param trigger Strike the string. Defaults to false.
+    */
     float Process(bool trigger = false);
 
     /** Continually excite the string with noise.
-		\param sustain True turns on the noise.
-	*/
+        \param sustain True turns on the noise.
+    */
     void SetSustain(bool sustain);
 
     /** Strike the string. */
     void Trig();
 
     /** Set the string root frequency.
-		\param freq Frequency in Hz.
-	*/
+        \param freq Frequency in Hz.
+    */
     void SetFreq(float freq);
 
     /** Hit the string a bit harder. Influences brightness and decay.
-		\param accent Works 0-1.
-	*/
+        \param accent Works 0-1.
+    */
     void SetAccent(float accent);
 
     /** Changes the string's nonlinearity (string type).

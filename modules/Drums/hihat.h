@@ -15,11 +15,11 @@ namespace daisysp
 {
 /**  
        @brief 808 style "metallic noise" with 6 square oscillators.
-	   @author Ben Sergentanis
-	   @date Jan 2021
-	   Ported from pichenettes/eurorack/plaits/dsp/drums/hihat.h \n
-	   to an independent module. \n
-	   Original code written by Emilie Gillet in 2016. \n
+       @author Ben Sergentanis
+       @date Jan 2021
+       Ported from pichenettes/eurorack/plaits/dsp/drums/hihat.h \n
+       to an independent module. \n
+       Original code written by Emilie Gillet in 2016. \n
 */
 class SquareNoise
 {
@@ -37,11 +37,11 @@ class SquareNoise
 
 /**  
        @brief Ring mod style metallic noise generator.
-	   @author Ben Sergentanis
-	   @date Jan 2021
-	   Ported from pichenettes/eurorack/plaits/dsp/drums/hihat.h \n
-	   to an independent module. \n
-	   Original code written by Emilie Gillet in 2016. \n
+       @author Ben Sergentanis
+       @date Jan 2021
+       Ported from pichenettes/eurorack/plaits/dsp/drums/hihat.h \n
+       to an independent module. \n
+       Original code written by Emilie Gillet in 2016. \n
 */
 class RingModNoise
 {
@@ -62,11 +62,11 @@ class RingModNoise
 
 /**  
        @brief Swing type VCA
-	   @author Ben Sergentanis
-	   @date Jan 2021
-	   Ported from pichenettes/eurorack/plaits/dsp/drums/hihat.h \n
-	   to an independent module. \n
-	   Original code written by Emilie Gillet in 2016. \n
+       @author Ben Sergentanis
+       @date Jan 2021
+       Ported from pichenettes/eurorack/plaits/dsp/drums/hihat.h \n
+       to an independent module. \n
+       Original code written by Emilie Gillet in 2016. \n
 */
 class SwingVCA
 {
@@ -81,11 +81,11 @@ class SwingVCA
 
 /**  
        @brief Linear type VCA
-	   @author Ben Sergentanis
-	   @date Jan 2021
-	   Ported from pichenettes/eurorack/plaits/dsp/drums/hihat.h \n
-	   to an independent module. \n
-	   Original code written by Emilie Gillet in 2016. \n
+       @author Ben Sergentanis
+       @date Jan 2021
+       Ported from pichenettes/eurorack/plaits/dsp/drums/hihat.h \n
+       to an independent module. \n
+       Original code written by Emilie Gillet in 2016. \n
 */
 class LinearVCA
 {
@@ -95,13 +95,13 @@ class LinearVCA
 
 /**  
        @brief 808 HH, with a few extra parameters to push things to the CY territory...
-	   @author Ben Sergentanis
-	   @date Jan 2021
-	   The template parameter MetallicNoiseSource allows another kind of "metallic \n
-	   noise" to be used, for results which are more similar to KR-55 or FM hi-hats. \n \n 
-	   Ported from pichenettes/eurorack/plaits/dsp/drums/hihat.h \n
-	   to an independent module. \n
-	   Original code written by Emilie Gillet in 2016. \n
+       @author Ben Sergentanis
+       @date Jan 2021
+       The template parameter MetallicNoiseSource allows another kind of "metallic \n
+       noise" to be used, for results which are more similar to KR-55 or FM hi-hats. \n \n 
+       Ported from pichenettes/eurorack/plaits/dsp/drums/hihat.h \n
+       to an independent module. \n
+       Original code written by Emilie Gillet in 2016. \n
 */
 template <typename MetallicNoiseSource = SquareNoise,
           typename VCA                 = LinearVCA,
@@ -113,8 +113,8 @@ class HiHat
     ~HiHat() {}
 
     /** Initialize the module
-		\param sample_rate Audio engine sample rate
-	*/
+        \param sample_rate Audio engine sample rate
+    */
     void Init(float sample_rate)
     {
         sample_rate_ = sample_rate;
@@ -139,8 +139,8 @@ class HiHat
     }
 
     /** Get the next sample
-		\param trigger Hit the hihat with true. Defaults to false.
-	*/
+        \param trigger Hit the hihat with true. Defaults to false.
+    */
     float Process(bool trigger = false)
     {
         const float envelope_decay
@@ -203,18 +203,18 @@ class HiHat
     void Trig() { trig_ = true; }
 
     /** Make the hihat ring out infinitely.
-		\param sustain True = infinite sustain.
-	*/
+        \param sustain True = infinite sustain.
+    */
     void SetSustain(bool sustain) { sustain_ = sustain; }
 
     /** Set how much accent to use
-		\param accent Works 0-1.
-	*/
+        \param accent Works 0-1.
+    */
     void SetAccent(float accent) { accent_ = fclamp(accent, 0.f, 1.f); }
 
     /** Set the hihat tone's root frequency
-		\param f0 Freq in Hz
-	*/
+        \param f0 Freq in Hz
+    */
     void SetFreq(float f0)
     {
         f0 /= sample_rate_;
@@ -222,13 +222,13 @@ class HiHat
     }
 
     /** Set the overall brightness / darkness of the hihat.
-		\param tone Works from 0-1.
-	*/
+        \param tone Works from 0-1.
+    */
     void SetTone(float tone) { tone_ = fclamp(tone, 0.f, 1.f); }
 
     /** Set the length of the hihat decay
-		\param decay Works > 0. Tuned for 0-1.
-	*/
+        \param decay Works > 0. Tuned for 0-1.
+    */
     void SetDecay(float decay)
     {
         decay_ = fmax(decay, 0.f);
@@ -237,8 +237,8 @@ class HiHat
     }
 
     /** Sets the mix between tone and noise
-		\param snappy 1 = just noise. 0 = just tone.
-	*/
+        \param snappy 1 = just noise. 0 = just tone.
+    */
     void SetNoisiness(float noisiness)
     {
         noisiness_ = fclamp(noisiness, 0.f, 1.f);

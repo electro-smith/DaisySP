@@ -12,14 +12,14 @@ namespace daisysp
 {
 /**  
        @brief Harmonic Oscillator Module based on Chebyshev polynomials. 
-	   @author Ben Sergentanis
-	   @date Dec 2020 
+       @author Ben Sergentanis
+       @date Dec 2020 
        Harmonic Oscillator Module based on Chebyshev polynomials \n 
        Works well for a small number of harmonics. For the higher order harmonics. \n
        We need to reinitialize the recurrence by computing two high harmonics. \n \n
-	   Ported from pichenettes/eurorack/plaits/dsp/oscillator/harmonic_oscillator.h \n
-	   to an independent module. \n
-	   Original code written by Emilie Gillet in 2016. \n
+       Ported from pichenettes/eurorack/plaits/dsp/oscillator/harmonic_oscillator.h \n
+       to an independent module. \n
+       Original code written by Emilie Gillet in 2016. \n
 */
 template <int num_harmonics = 16>
 class HarmonicOscillator

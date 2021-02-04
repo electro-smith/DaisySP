@@ -9,13 +9,13 @@
 namespace daisysp
 {
 /**  
-	@brief     ZOscillator Module \n 
-	@author Ben Sergentanis
-	@date Dec 2020 
+    @brief     ZOscillator Module \n 
+    @author Ben Sergentanis
+    @date Dec 2020 
     Sinewave multiplied by and sync'ed to a carrier. \n \n
     Ported from pichenettes/eurorack/plaits/dsp/oscillator/z_oscillator.h \n 
-	\n to an independent module. \n
-	Original code written by Emilie Gillet in 2016. \n
+    \n to an independent module. \n
+    Original code written by Emilie Gillet in 2016. \n
 */
 class ZOscillator
 {

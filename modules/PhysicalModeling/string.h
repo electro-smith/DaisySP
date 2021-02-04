@@ -18,12 +18,12 @@ namespace daisysp
 {
 /**  
        @brief Comb filter / KS string.
-	   @author Ben Sergentanis
-	   @date Jan 2021 
-	   "Lite" version of the implementation used in Rings \n \n 
-	   Ported from pichenettes/eurorack/plaits/dsp/oscillator/formant_oscillator.h \n
-	   to an independent module. \n
-	   Original code written by Emilie Gillet in 2016. \n
+       @author Ben Sergentanis
+       @date Jan 2021 
+       "Lite" version of the implementation used in Rings \n \n 
+       Ported from pichenettes/eurorack/plaits/dsp/oscillator/formant_oscillator.h \n
+       to an independent module. \n
+       Original code written by Emilie Gillet in 2016. \n
 */
 class String
 {
@@ -32,36 +32,36 @@ class String
     ~String() {}
 
     /** Initialize the module.
-		\param sample_rate Audio engine sample rate
-	*/
+        \param sample_rate Audio engine sample rate
+    */
     void Init(float sample_rate);
 
     /** Clear the delay line */
     void Reset();
 
     /** Get the next floating point sample
-		\param in Signal to excite the string.
-	*/
+        \param in Signal to excite the string.
+    */
     float Process(const float in);
 
     /** Set the string frequency.
-		\param freq Frequency in Hz
-	*/
+        \param freq Frequency in Hz
+    */
     void SetFreq(float freq);
 
     /** Set the string's behavior.
-		\param -1 to 0 is curved bridge, 0 to 1 is dispersion.
-	*/
+        \param -1 to 0 is curved bridge, 0 to 1 is dispersion.
+    */
     void SetNonLinearity(float non_linearity_amount);
 
     /** Set the string's overall brightness
-		\param Works 0-1.
-	*/
+        \param Works 0-1.
+    */
     void SetBrightness(float brightness);
 
     /** Set the string's decay time.
-		\param damping Works 0-1.
-	*/
+        \param damping Works 0-1.
+    */
     void SetDamping(float damping);
 
 

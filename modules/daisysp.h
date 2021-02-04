@@ -10,7 +10,7 @@
 //        - all modules will have an Init() function, and a Process() function.
 //        - all modules, unless otherwise noted, will process a single sample at a time.
 //        - all processing will be done with 'float' type unless otherwise noted.
-//        
+//
 #pragma once
 #ifndef DSYSP_H
 #define DSYSP_H

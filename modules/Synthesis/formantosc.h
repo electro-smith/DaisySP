@@ -11,12 +11,12 @@ namespace daisysp
 {
 /**  
        @brief Formant Oscillator Module. 
-	   @author Ben Sergentanis
-	   @date Dec 2020 
+       @author Ben Sergentanis
+       @date Dec 2020 
        Sinewave with aliasing-free phase reset. \n \n
-	   Ported from pichenettes/eurorack/plaits/dsp/oscillator/formant_oscillator.h \n
-	   to an independent module. \n
-	   Original code written by Emilie Gillet in 2016. \n
+       Ported from pichenettes/eurorack/plaits/dsp/oscillator/formant_oscillator.h \n
+       to an independent module. \n
+       Original code written by Emilie Gillet in 2016. \n
 */
 class FormantOscillator
 {

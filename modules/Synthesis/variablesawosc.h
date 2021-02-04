@@ -10,12 +10,12 @@ namespace daisysp
 {
 /**  
        @brief Variable Saw Oscillator. 
-	   @author Ben Sergentanis
-	   @date Dec 2020 
+       @author Ben Sergentanis
+       @date Dec 2020 
        Saw with variable slope or notch. \n \n
-	   Ported from pichenettes/eurorack/plaits/dsp/oscillator/variable_saw_oscillator.h \n 
-	   \n to an independent module. \n
-	   Original code written by Emilie Gillet in 2016. \n
+       Ported from pichenettes/eurorack/plaits/dsp/oscillator/variable_saw_oscillator.h \n 
+       \n to an independent module. \n
+       Original code written by Emilie Gillet in 2016. \n
 */
 class VariableSawOscillator
 {

@@ -14,9 +14,9 @@ namespace daisysp
 {
 /**  
     @brief Tremolo effect.
-	@author Ben Sergentanis
-	@date Jan 2021
-	Based on https://christianfloisand.wordpress.com/2012/04/18/coding-some-tremolo/ \n
+    @author Ben Sergentanis
+    @date Jan 2021
+    Based on https://christianfloisand.wordpress.com/2012/04/18/coding-some-tremolo/ \n
 */
 class Tremolo
 {
@@ -41,13 +41,13 @@ class Tremolo
     void SetFreq(float freq);
 
     /** Shape of the modulating lfo 
-		\param waveform Oscillator waveform. Use Oscillator::WAVE_SIN for example.
-	*/
+        \param waveform Oscillator waveform. Use Oscillator::WAVE_SIN for example.
+    */
     void SetWaveform(int waveform);
 
     /** How much to modulate your volume.
-		\param depth Works 0-1.
-	*/
+        \param depth Works 0-1.
+    */
     void SetDepth(float depth);
 
 

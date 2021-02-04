@@ -9,14 +9,14 @@
 
 namespace daisysp
 {
-/**  	   
-	   @brief Variable Waveshape Oscillator. 
-	   @author Ben Sergentanis
-	   @date Dec 2020 
+/**         
+       @brief Variable Waveshape Oscillator. 
+       @author Ben Sergentanis
+       @date Dec 2020 
        Continuously variable waveform. \n \n
-	   Ported from pichenettes/eurorack/plaits/dsp/oscillator/variable_shape_oscillator.h \n 
-	   \n to an independent module. \n
-	   Original code written by Emilie Gillet in 2016. \n
+       Ported from pichenettes/eurorack/plaits/dsp/oscillator/variable_shape_oscillator.h \n 
+       \n to an independent module. \n
+       Original code written by Emilie Gillet in 2016. \n
 */
 class VariableShapeOscillator
 {

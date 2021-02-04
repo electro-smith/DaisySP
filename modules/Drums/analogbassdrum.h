@@ -14,11 +14,11 @@ namespace daisysp
 {
 /**  
        @brief 808 bass drum model, revisited.
-	   @author Ben Sergentanis
-	   @date Jan 2021 
-	   Ported from pichenettes/eurorack/plaits/dsp/drums/analog_bass_drum.h \n
-	   to an independent module. \n
-	   Original code written by Emilie Gillet in 2016. \n
+       @author Ben Sergentanis
+       @date Jan 2021 
+       Ported from pichenettes/eurorack/plaits/dsp/drums/analog_bass_drum.h \n
+       to an independent module. \n
+       Original code written by Emilie Gillet in 2016. \n
 */
 class AnalogBassDrum
 {
@@ -27,51 +27,51 @@ class AnalogBassDrum
     ~AnalogBassDrum() {}
 
     /** Initialize the module
-		\param sample_rate Audio engine sample rate
-	*/
+        \param sample_rate Audio engine sample rate
+    */
     void Init(float sample_rate);
 
     /** Get the next sample.
-		\param trigger True strikes the drum. Defaults to false.
-	*/
+        \param trigger True strikes the drum. Defaults to false.
+    */
     float Process(bool trigger = false);
 
     /** Strikes the drum. */
     void Trig();
 
     /** Set the bassdrum to play infinitely
-		\param sustain True = infinite length
-	*/
+        \param sustain True = infinite length
+    */
     void SetSustain(bool sustain);
 
     /** Set a small accent.
-		\param accent Works 0-1
-	*/
+        \param accent Works 0-1
+    */
     void SetAccent(float accent);
 
     /** Set the drum's root frequency
-		\param f0 Frequency in Hz
-	*/
+        \param f0 Frequency in Hz
+    */
     void SetFreq(float f0);
 
     /** Set the amount of click.
-		\param tone Works 0-1.
-	*/
+        \param tone Works 0-1.
+    */
     void SetTone(float tone);
 
     /** Set the decay length of the drum.
-		\param decay Works best 0-1.
-	*/
+        \param decay Works best 0-1.
+    */
     void SetDecay(float decay);
 
     /** Set the amount of fm attack. Works together with self fm.
-		\param attack_fm_amount Works best 0-1.
-	*/
+        \param attack_fm_amount Works best 0-1.
+    */
     void SetAttackFmAmount(float attack_fm_amount);
 
     /**Set the amount of self fm. Also affects fm attack, and volume decay.
-		\param self_fm_amount Works best 0-1.
-	*/
+        \param self_fm_amount Works best 0-1.
+    */
     void SetSelfFmAmount(float self_fm_amount);
 
   private:
