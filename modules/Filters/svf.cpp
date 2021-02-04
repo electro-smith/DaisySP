@@ -11,6 +11,7 @@ void Svf::Init(float sample_rate)
     fc_        = 200.0f;
     res_       = 0.5f;
     drive_     = 0.5f;
+    pre_drive_ = 0.5f;
     freq_      = 0.25f;
     damp_      = 0.0f;
     notch_     = 0.0f;
@@ -63,7 +64,7 @@ void Svf::SetFreq(float f)
                    * MIN(0.25f,
                          fc_ / (sr_ * 2.0f))); // fs*2 because double sampled
     // recalculate damp
-    damp_ = MIN(2.0f * (1.0f - pow(res_, 0.25f)),
+    damp_ = MIN(2.0f * (1.0f - powf(res_, 0.25f)),
                 MIN(2.0f, 2.0f / freq_ - freq_ * 0.5f));
 }
 
@@ -72,7 +73,7 @@ void Svf::SetRes(float r)
     float res = fclamp(r, 0.f, 1.f);
     res_      = res;
     // recalculate damp
-    damp_  = MIN(2.0f * (1.0f - pow(res_, 0.25f)),
+    damp_  = MIN(2.0f * (1.0f - powf(res_, 0.25f)),
                 MIN(2.0f, 2.0f / freq_ - freq_ * 0.5f));
     drive_ = pre_drive_ * res_;
 }
