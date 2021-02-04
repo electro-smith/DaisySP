@@ -37,7 +37,9 @@
 /** Effects Modules */
 #include "Effects/autowah.h"
 #include "Effects/bitcrush.h"
+#include "Effects/chorus.h"
 #include "Effects/decimator.h"
+#include "Effects/flanger.h"
 #include "Effects/fold.h"
 #include "Effects/overdrive.h"
 #include "Effects/reverbsc.h"

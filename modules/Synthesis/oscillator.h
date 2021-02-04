@@ -76,7 +76,7 @@ class Oscillator
     */
     inline bool IsEOR() { return eor_; }
 
-    /** Returns true if cycle is at end of rise. Set during call to Process.
+    /** Returns true if cycle is at end of cycle. Set during call to Process.
     */
     inline bool IsEOC() { return eoc_; }
 
