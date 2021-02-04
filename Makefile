@@ -1,6 +1,6 @@
 TARGET = libdaisysp
 
-MODULE_DIR = modules
+MODULE_DIR = Source
 
 # Each Module Directory is listed below with it's modules.
 # Header only modules are listed commented out 
