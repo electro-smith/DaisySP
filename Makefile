@@ -20,6 +20,7 @@ compressor \
 crossfade \
 dcblock \
 decimator \
+diffuser \
 drip \
 flanger \
 fm2 \
