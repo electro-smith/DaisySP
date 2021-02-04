@@ -2,8 +2,8 @@
 #ifndef DSY_SYNTHBD_H
 #define DSY_SYNTHBD_H
 
-#include "svf.h"
-#include "dsp.h"
+#include "Filters/svf.h"
+#include "Utility/dsp.h"
 
 #include <stdint.h>
 #ifdef __cplusplus

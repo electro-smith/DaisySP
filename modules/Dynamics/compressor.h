@@ -2,7 +2,7 @@
 #ifndef DSY_COMPRESSOR_H
 #define DSY_COMPRESSOR_H
 
-#include "dsp.h"
+#include "Utility/dsp.h"
 
 namespace daisysp
 {

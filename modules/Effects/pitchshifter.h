@@ -6,9 +6,9 @@
 #ifdef USE_ARM_DSP
 #include "arm_math.h"
 #endif
-#include "delayline.h"
-#include "phasor.h"
-#include "dsp.h"
+#include "Utility/dsp.h"
+#include "Utility/delayline.h"
+#include "Control/phasor.h"
 
 /** Shift can be 30-100 ms lets just start with 50 for now.
 0.050 * SR = 2400 samples (at 48kHz)

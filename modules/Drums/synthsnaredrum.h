@@ -2,7 +2,7 @@
 #ifndef DSY_SYNTHSD_H
 #define DSY_SYNTHSD_H
 
-#include "svf.h"
+#include "Filters/svf.h"
 
 #include <stdint.h>
 #ifdef __cplusplus

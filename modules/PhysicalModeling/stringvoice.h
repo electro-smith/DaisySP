@@ -2,9 +2,9 @@
 #ifndef DSY_STRINGVOICE_H
 #define DSY_STRINGVOICE_H
 
-#include "svf.h"
-#include "string.h"
-#include "dust.h"
+#include "Filters/svf.h"
+#include "PhysicalModeling/string.h"
+#include "Noise/dust.h"
 #include <stdint.h>
 #ifdef __cplusplus
 

@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 
 #include <math.h>
-#include "oscillator.h"
+#include "Synthesis/oscillator.h"
 
 /** @file tremolo.h */
 

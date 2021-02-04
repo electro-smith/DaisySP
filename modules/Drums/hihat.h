@@ -2,8 +2,8 @@
 #ifndef DSY_HIHAT_H
 #define DSY_HIHAT_H
 
-#include "svf.h"
-#include "oscillator.h"
+#include "Filters/svf.h"
+#include "Synthesis/oscillator.h"
 
 #include <stdint.h>
 #include <stdlib.h>
