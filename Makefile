@@ -1,70 +1,112 @@
 TARGET = libdaisysp
 
 MODULE_DIR = modules
-VPATH = \
-modules/Control\
-modules/Drums\
-modules/Dynamics\
-modules/Effects\
-modules/Filters\
-modules/Noise\
-modules/PhysicalModeling\
-modules/Synthesis\
-modules/Utility\
 
-MODULES = \
+# Each Module is listed below with it's modules.
+# Header only modules are listed commented out 
+# below the others.
+
+CONTROL_MOD_DIR = Control
+CONTROL_MODULES = \
 adenv \
 adsr \
-allpass \
+line \
+phasor
+
+DRUM_MOD_DIR = Drums
+DRUM_MODULES = \
 analogbassdrum \
 analogsnaredrum \
-atone \
-autowah \
+hihat \
+synthbassdrum \
+synthsnaredrum
+
+DYNAMICS_MOD_DIR = Dynamics
+DYNAMICS_MODULES = \
 balance \
-biquad \
-blosc \
-comb \
-bitcrush \
-clockednoise \
 compressor \
 crossfade \
-dcblock \
+limiter 
+
+EFFECTS_MOD_DIR = Effects
+EFFECTS_MODULES = \
+autowah \
+bitcrush \
 decimator \
-drip \
-fm2 \
 fold \
-formantosc \
-grainlet \
-hihat \
-jitter \
-limiter \
-line \
-metro \
-modalvoice \
+overdrive \
+reverbsc \
+sampleratereducer \
+tremolo 
+#pitchshifter 
+
+FILTER_MOD_DIR = Filters
+FILTER_MODULES = \
+allpass \
+atone \
+biquad \
+comb \
 mode \
 moogladder \
 nlfilt \
-oscillator \
-oscillatorbank \
-overdrive \
-particle \
-phasor \
-port \
+svf \
+tone 
+
+NOISE_MOD_DIR = Noise
+NOISE_MODULES = \
+clockednoise \
+grainlet \
+particle 
+#dust 
+#fractal_noise 
+#whitenoise
+
+
+PHYSICAL_MODELING_MOD_DIR = PhysicalModeling
+PHYSICAL_MODELING_MODULES = \
+drip \
+modalvoice \
 pluck \
 resonator \
-reverbsc \
-sampleratereducer \
 string \
-stringvoice \
-svf \
-synthbassdrum \
-synthsnaredrum \
-tone \
-tremolo \
+stringvoice 
+#PolyPluck 
+
+SYNTHESIS_MOD_DIR = Synthesis
+SYNTHESIS_MODULES = \
+blosc \
+fm2 \
+formantosc \
+oscillator \
+oscillatorbank \
 variablesawosc \
 variableshapeosc \
 vosim \
-zoscillator \
+zoscillator 
+#harmonic_osc 
+
+UTILITY_MOD_DIR = Utility
+UTILITY_MODULES = \
+dcblock \
+jitter \
+metro \
+port 
+#delayline 
+#dsp 
+#maytrig 
+#samplehold 
+#smooth_random
+
+# CPP sources
+CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(CONTROL_MOD_DIR)/$(CONTROL_MODULES))
+CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(DRUM_MOD_DIR)/$(DRUM_MODULES))
+CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(DYNAMICS_MOD_DIR)/$(DYNAMICS_MODULES))
+CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(EFFECTS_MOD_DIR)/$(EFFECTS_MODULES))
+CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(FILTER_MOD_DIR)/$(FILTER_MODULES))
+CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(NOISE_MOD_DIR)/$(NOISE_MODULES))
+CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(PHYSICAL_MODELING_MOD_DIR)/$(PHYSICAL_MODELING_MODULES))
+CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(SYNTHESIS_MOD_DIR)/$(SYNTHESIS_MODULES))
+CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(UTILITY_MOD_DIR)/$(UTILITY_MODULES))
 
 # certain modules are only header files:
 # delayline 
@@ -99,9 +141,9 @@ BUILD_DIR = build
 ######################################
 
 # C sources
-C_SOURCES += $(addsuffix .c, $(MODULE_DIR)/$(MODULES))
+#C_SOURCES += $(addsuffix .c, $(MODULE_DIR)/$(MODULES))
 # CPP sources
-CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(MODULES))
+#CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(MODULES))
 
 #######################################
 # binaries
@@ -162,15 +204,16 @@ C_DEFS =  \
 
 C_INCLUDES = \
 -I.\
--Imodules/Control\
--Imodules/Drums\
--Imodules/Dynamics\
--Imodules/Effects\
--Imodules/Filters\
--Imodules/Noise\
--Imodules/PhysicalModeling\
--Imodules/Synthesis\
--Imodules/Utility\
+-I$(MODULE_DIR) \
+-I$(MODULE_DIR)/$(CONTROL_MOD_DIR) \
+-I$(MODULE_DIR)/$(DRUM_MOD_DIR) \
+-I$(MODULE_DIR)/$(DYNAMICS_MOD_DIR) \
+-I$(MODULE_DIR)/$(EFFECTS_MOD_DIR) \
+-I$(MODULE_DIR)/$(FILTER_MOD_DIR) \
+-I$(MODULE_DIR)/$(NOISE_MOD_DIR) \
+-I$(MODULE_DIR)/$(PHYSICAL_MODELING_MOD_DIR) \
+-I$(MODULE_DIR)/$(SYNTHESIS_MOD_DIR) \
+-I$(MODULE_DIR)/$(UTILITY_MOD_DIR) 
 
 # compile gcc flags
 ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
