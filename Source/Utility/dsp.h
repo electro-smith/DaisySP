@@ -260,3 +260,7 @@ inline float soft_saturate(float in, float thresh)
 }
 } // namespace daisysp
 #endif
+
+#ifdef DSY_CUSTOM_DSP
+#include "custom_dsp.h"
+#endif
