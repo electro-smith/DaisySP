@@ -1,71 +1,116 @@
 TARGET = libdaisysp
 
-MODULE_DIR = modules
-MODULES = \
+MODULE_DIR = Source
+
+# Each Module Directory is listed below with it's modules.
+# Header only modules are listed commented out 
+# below the others.
+
+CONTROL_MOD_DIR = Control
+CONTROL_MODULES = \
 adenv \
-adsr  \
-allpass \
+adsr \
+line \
+phasor
+
+DRUM_MOD_DIR = Drums
+DRUM_MODULES = \
 analogbassdrum \
 analogsnaredrum \
-autowah \
-atone \
+hihat \
+synthbassdrum \
+synthsnaredrum
+
+DYNAMICS_MOD_DIR = Dynamics
+DYNAMICS_MODULES = \
 balance \
-biquad \
-blosc \
-bitcrush \
-chorus \
-clockednoise \
-comb \
 compressor \
 crossfade \
-dcblock \
+limiter 
+
+EFFECTS_MOD_DIR = Effects
+EFFECTS_MODULES = \
+autowah \
+bitcrush \
+chorus \
 decimator \
-drip \
 flanger \
-fm2 \
 fold \
-formantosc \
-grainlet \
-hihat \
-jitter \
-line \
-limiter \
-moogladder \
-nlfilt \
-metro \
-modalvoice \
-mode \
-oscillator \
-oscillatorbank \
 overdrive \
-particle \
-phasor \
-pluck \
-port \
-resonator \
 reverbsc \
 sampleratereducer \
-string \
-stringvoice \
+tremolo 
+#pitchshifter 
+
+FILTER_MOD_DIR = Filters
+FILTER_MODULES = \
+allpass \
+atone \
+biquad \
+comb \
+mode \
+moogladder \
+nlfilt \
 svf \
-synthbassdrum \
-synthsnaredrum \
-tone \
-tremolo \
+tone 
+
+NOISE_MOD_DIR = Noise
+NOISE_MODULES = \
+clockednoise \
+grainlet \
+particle 
+#dust 
+#fractal_noise 
+#whitenoise
+
+PHYSICAL_MODELING_MOD_DIR = PhysicalModeling
+PHYSICAL_MODELING_MODULES = \
+drip \
+modalvoice \
+pluck \
+resonator \
+string \
+stringvoice 
+#PolyPluck 
+
+SYNTHESIS_MOD_DIR = Synthesis
+SYNTHESIS_MODULES = \
+blosc \
+fm2 \
+formantosc \
+oscillator \
+oscillatorbank \
 variablesawosc \
 variableshapeosc \
 vosim \
-zoscillator \
+zoscillator 
+#harmonic_osc 
 
-# certain modules are only header files:
-# delayline 
-# pitchshifter
-# whitenoise
-# polypluck
+UTILITY_MOD_DIR = Utility
+UTILITY_MODULES = \
+dcblock \
+jitter \
+metro \
+port 
+#delayline 
+#dsp 
+#maytrig 
+#samplehold 
+#smooth_random
 
-# TODO: Consider making this work for PCs as well?
+######################################
+# source
+######################################
 
-CHIPSET = stm32f7x
+CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(CONTROL_MOD_DIR)/$(CONTROL_MODULES))
+CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(DRUM_MOD_DIR)/$(DRUM_MODULES))
+CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(DYNAMICS_MOD_DIR)/$(DYNAMICS_MODULES))
+CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(EFFECTS_MOD_DIR)/$(EFFECTS_MODULES))
+CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(FILTER_MOD_DIR)/$(FILTER_MODULES))
+CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(NOISE_MOD_DIR)/$(NOISE_MODULES))
+CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(PHYSICAL_MODELING_MOD_DIR)/$(PHYSICAL_MODELING_MODULES))
+CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(SYNTHESIS_MOD_DIR)/$(SYNTHESIS_MODULES))
+CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(UTILITY_MOD_DIR)/$(UTILITY_MODULES))
 
 ######################################
 # building variables
@@ -79,20 +124,9 @@ OPT = -O3
 #######################################
 # paths
 #######################################
-# source path
-SOURCES_DIR =  \
 
 # Build path
 BUILD_DIR = build
-
-######################################
-# source
-######################################
-
-# C sources
-C_SOURCES += $(addsuffix .c, $(MODULE_DIR)/$(MODULES))
-# CPP sources
-CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(MODULES))
 
 #######################################
 # binaries
@@ -146,13 +180,19 @@ AS_DEFS =
 
 # C defines
 C_DEFS =  \
--DUSE_HAL_DRIVER \
--DSTM32H750xx \
--DUSE_HAL_DRIVER \
--DSTM32H750xx
+-DSTM32H750xx 
 
 C_INCLUDES = \
--I. \
+-I$(MODULE_DIR) \
+-I$(MODULE_DIR)/$(CONTROL_MOD_DIR) \
+-I$(MODULE_DIR)/$(DRUM_MOD_DIR) \
+-I$(MODULE_DIR)/$(DYNAMICS_MOD_DIR) \
+-I$(MODULE_DIR)/$(EFFECTS_MOD_DIR) \
+-I$(MODULE_DIR)/$(FILTER_MOD_DIR) \
+-I$(MODULE_DIR)/$(NOISE_MOD_DIR) \
+-I$(MODULE_DIR)/$(PHYSICAL_MODELING_MOD_DIR) \
+-I$(MODULE_DIR)/$(SYNTHESIS_MOD_DIR) \
+-I$(MODULE_DIR)/$(UTILITY_MOD_DIR) 
 
 # compile gcc flags
 ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
@@ -169,19 +209,7 @@ CFLAGS += -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"
 CPPFLAGS = $(CFLAGS)
 CPPFLAGS += \
 -fno-exceptions \
--finline-functions
-
-#######################################
-# LDFLAGS # Not Used 
-# TODO: Clean this up.
-#######################################
-# link script
-#LDSCRIPT = STM32H750IB_FLASH.lds
-
-# libraries
-#LIBS = lc -lm -lnosys 
-#LIBDIR = 
-#LDFLAGS = $(MCU) -specs=nano.specs -T$(LDSCRIPT) $(LIBDIR) $(LIBS) -Wl,-Map=$(BUILD_DIR)/$(TARGET).map,--cref -Wl,--gc-sections
+-finline-functions 
 
 # default action: build all
 all: $(BUILD_DIR)/$(TARGET).a 
