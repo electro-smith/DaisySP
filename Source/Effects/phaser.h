@@ -4,7 +4,7 @@
 #ifdef __cplusplus
 
 #include <stdint.h>
-#include "modules/delayline.h"
+#include "delayline.h"
 
 #define MAX_POLES 8
 

@@ -43,6 +43,7 @@
 #include "Effects/fold.h"
 #include "Effects/overdrive.h"
 #include "Effects/reverbsc.h"
+#include "Effects/phaser.h"
 #include "Effects/pitchshifter.h"
 #include "Effects/sampleratereducer.h"
 #include "Effects/tremolo.h"
