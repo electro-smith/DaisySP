@@ -45,7 +45,8 @@ void PhaserEngine::SetLfoFreq(float lfo_freq)
 
 void PhaserEngine::SetFreq(float ap_freq)
 {
-    ap_del_ = fmax(960.f, sample_rate_ / ap_freq); //clip and convert
+	ap_freq = fclamp(ap_freq, 0.f, 20000.f); //0 - 20kHz
+    ap_del_ = sample_rate_ / ap_freq;
 }
 
 void PhaserEngine::SetFeedback(float feedback)
