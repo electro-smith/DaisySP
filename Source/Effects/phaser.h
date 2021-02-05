@@ -63,9 +63,9 @@ class PhaserEngine
     float lfo_amp_;
 
     float feedback_;
-	float ap_del_;
+    float ap_del_;
 
-	float last_sample_;
+    float last_sample_;
 
     DelayLine<float, kDelayLength> del_;
 
@@ -94,10 +94,10 @@ class Phaser
 	*/
     float Process(float in);
 
-	/** Number of allpass stages.
+    /** Number of allpass stages.
 		\param poles Works 1 to 8.
 	*/
-	void SetPoles(int poles);
+    void SetPoles(int poles);
 
     /** Set all lfo depths
 		\param depth Works 0-1.
@@ -122,7 +122,7 @@ class Phaser
   private:
     PhaserEngine engines_[MAX_POLES];
     float        gain_frac_;
-	int poles_;
+    int          poles_;
 };
 } //namespace daisysp
 #endif
