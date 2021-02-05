@@ -17,6 +17,7 @@ void PhaserEngine::Init(float sample_rate)
     del_.SetDelay(0.f);
 
 	os_ = 30.f; //30 hertz frequency offset, lower than this introduces crunch
+	deltime_ = 0.f;
 
     last_sample_ = 0.f;
     lfo_phase_   = 0.f;
@@ -27,9 +28,9 @@ void PhaserEngine::Init(float sample_rate)
 float PhaserEngine::Process(float in)
 {
     float lfo_sig = ProcessLfo();
-	float deltime = sample_rate_ / (lfo_sig + ap_freq_ + os_);
+	fonepole(deltime_, sample_rate_ / (lfo_sig + ap_freq_ + os_), .0001f);
 
-	last_sample_ = del_.Allpass(in + feedback_ * last_sample_, deltime, .3f);
+	last_sample_ = del_.Allpass(in + feedback_ * last_sample_, deltime_, .3f);
 
     return (in + last_sample_) * .5f; //equal mix
 }
