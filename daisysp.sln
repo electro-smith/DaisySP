@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "daisysp", "daisysp.vcxproj", "{44F4AEA3-A6B2-4F03-9C28-34B2336BDF57}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "daisysp", "vs\daisysp.vcxproj", "{44F4AEA3-A6B2-4F03-9C28-34B2336BDF57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

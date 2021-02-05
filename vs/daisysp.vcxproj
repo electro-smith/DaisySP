@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|VisualGDB">
+      <Configuration>Debug</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|VisualGDB">
+      <Configuration>Release</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{44F4AEA3-A6B2-4F03-9C28-34B2336BDF57}</ProjectGuid>
+    <BSP_ID>com.sysprogs.arm.stm32</BSP_ID>
+    <BSP_VERSION>2020.10</BSP_VERSION>
+    <InPlaceBSPSubdir />
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <GNUConfigurationType>Debug</GNUConfigurationType>
+    <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
+    <ToolchainVersion>9.3.1/9.2.0/r2</ToolchainVersion>
+    <GNUTargetType>StaticLibrary</GNUTargetType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ToolchainID>com.sysprogs.gnuarm.arm-eabi</ToolchainID>
+    <ToolchainVersion>8.3.1/8.0/r1</ToolchainVersion>
+    <GNUTargetType>StaticLibrary</GNUTargetType>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <ClCompile>
+      <Optimization>O3</Optimization>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <ClCompile>
+      <InlineFunctions>true</InlineFunctions>
+      <AdditionalIncludeDirectories>../Source;../Source/Control;../Source/Drums;../Source/Dynamics;../Source/Effects;../Source/Filters;../Source/Noise;../Source/PhysicalModeling;../Source/Synthesis;../Source/Utility;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <LinkerScript>../libdaisy/core/STM32H750IB_flash.lds</LinkerScript>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ClCompile>
+      <InlineFunctions>true</InlineFunctions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="stm32.props" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ItemGroup>
+    <None Include="stm32.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Source\Control\adenv.cpp" />
+    <ClCompile Include="..\Source\Control\adsr.cpp" />
+    <ClCompile Include="..\Source\Control\line.cpp" />
+    <ClCompile Include="..\Source\Control\phasor.cpp" />
+    <ClCompile Include="..\Source\Drums\analogbassdrum.cpp" />
+    <ClCompile Include="..\Source\Drums\analogsnaredrum.cpp" />
+    <ClCompile Include="..\Source\Drums\hihat.cpp" />
+    <ClCompile Include="..\Source\Drums\synthbassdrum.cpp" />
+    <ClCompile Include="..\Source\Drums\synthsnaredrum.cpp" />
+    <ClCompile Include="..\Source\Dynamics\balance.cpp" />
+    <ClCompile Include="..\Source\Dynamics\compressor.cpp" />
+    <ClCompile Include="..\Source\Dynamics\crossfade.cpp" />
+    <ClCompile Include="..\Source\Dynamics\limiter.cpp" />
+    <ClCompile Include="..\Source\Effects\autowah.cpp" />
+    <ClCompile Include="..\Source\Effects\bitcrush.cpp" />
+    <ClCompile Include="..\Source\Effects\chorus.cpp" />
+    <ClCompile Include="..\Source\Effects\decimator.cpp" />
+    <ClCompile Include="..\Source\Effects\flanger.cpp" />
+    <ClCompile Include="..\Source\Effects\fold.cpp" />
+    <ClCompile Include="..\Source\Effects\overdrive.cpp" />
+    <ClCompile Include="..\Source\Effects\reverbsc.cpp" />
+    <ClCompile Include="..\Source\Effects\sampleratereducer.cpp" />
+    <ClCompile Include="..\Source\Effects\tremolo.cpp" />
+    <ClCompile Include="..\Source\Filters\allpass.cpp" />
+    <ClCompile Include="..\Source\Filters\atone.cpp" />
+    <ClCompile Include="..\Source\Filters\biquad.cpp" />
+    <ClCompile Include="..\Source\Filters\comb.cpp" />
+    <ClCompile Include="..\Source\Filters\mode.cpp" />
+    <ClCompile Include="..\Source\Filters\moogladder.cpp" />
+    <ClCompile Include="..\Source\Filters\nlfilt.cpp" />
+    <ClCompile Include="..\Source\Filters\svf.cpp" />
+    <ClCompile Include="..\Source\Filters\tone.cpp" />
+    <ClCompile Include="..\Source\Noise\clockednoise.cpp" />
+    <ClCompile Include="..\Source\Noise\grainlet.cpp" />
+    <ClCompile Include="..\Source\Noise\particle.cpp" />
+    <ClCompile Include="..\Source\PhysicalModeling\drip.cpp" />
+    <ClCompile Include="..\Source\PhysicalModeling\modalvoice.cpp" />
+    <ClCompile Include="..\Source\PhysicalModeling\pluck.cpp" />
+    <ClCompile Include="..\Source\PhysicalModeling\resonator.cpp" />
+    <ClCompile Include="..\Source\PhysicalModeling\string.cpp" />
+    <ClCompile Include="..\Source\PhysicalModeling\stringvoice.cpp" />
+    <ClCompile Include="..\Source\Synthesis\blosc.cpp" />
+    <ClCompile Include="..\Source\Synthesis\fm2.cpp" />
+    <ClCompile Include="..\Source\Synthesis\formantosc.cpp" />
+    <ClCompile Include="..\Source\Synthesis\oscillator.cpp" />
+    <ClCompile Include="..\Source\Synthesis\oscillatorbank.cpp" />
+    <ClCompile Include="..\Source\Synthesis\variablesawosc.cpp" />
+    <ClCompile Include="..\Source\Synthesis\variableshapeosc.cpp" />
+    <ClCompile Include="..\Source\Synthesis\vosim.cpp" />
+    <ClCompile Include="..\Source\Synthesis\zoscillator.cpp" />
+    <ClCompile Include="..\Source\Utility\dcblock.cpp" />
+    <ClCompile Include="..\Source\Utility\jitter.cpp" />
+    <ClCompile Include="..\Source\Utility\metro.cpp" />
+    <ClCompile Include="..\Source\Utility\port.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Source\Control\adenv.h" />
+    <ClInclude Include="..\Source\Control\adsr.h" />
+    <ClInclude Include="..\Source\Control\line.h" />
+    <ClInclude Include="..\Source\Control\phasor.h" />
+    <ClInclude Include="..\Source\daisysp.h" />
+    <ClInclude Include="..\Source\Drums\analogbassdrum.h" />
+    <ClInclude Include="..\Source\Drums\analogsnaredrum.h" />
+    <ClInclude Include="..\Source\Drums\hihat.h" />
+    <ClInclude Include="..\Source\Drums\synthbassdrum.h" />
+    <ClInclude Include="..\Source\Drums\synthsnaredrum.h" />
+    <ClInclude Include="..\Source\Dynamics\balance.h" />
+    <ClInclude Include="..\Source\Dynamics\compressor.h" />
+    <ClInclude Include="..\Source\Dynamics\crossfade.h" />
+    <ClInclude Include="..\Source\Dynamics\limiter.h" />
+    <ClInclude Include="..\Source\Effects\autowah.h" />
+    <ClInclude Include="..\Source\Effects\bitcrush.h" />
+    <ClInclude Include="..\Source\Effects\chorus.h" />
+    <ClInclude Include="..\Source\Effects\decimator.h" />
+    <ClInclude Include="..\Source\Effects\flanger.h" />
+    <ClInclude Include="..\Source\Effects\fold.h" />
+    <ClInclude Include="..\Source\Effects\overdrive.h" />
+    <ClInclude Include="..\Source\Effects\pitchshifter.h" />
+    <ClInclude Include="..\Source\Effects\reverbsc.h" />
+    <ClInclude Include="..\Source\Effects\sampleratereducer.h" />
+    <ClInclude Include="..\Source\Effects\tremolo.h" />
+    <ClInclude Include="..\Source\Filters\allpass.h" />
+    <ClInclude Include="..\Source\Filters\atone.h" />
+    <ClInclude Include="..\Source\Filters\biquad.h" />
+    <ClInclude Include="..\Source\Filters\comb.h" />
+    <ClInclude Include="..\Source\Filters\mode.h" />
+    <ClInclude Include="..\Source\Filters\moogladder.h" />
+    <ClInclude Include="..\Source\Filters\nlfilt.h" />
+    <ClInclude Include="..\Source\Filters\svf.h" />
+    <ClInclude Include="..\Source\Filters\tone.h" />
+    <ClInclude Include="..\Source\Noise\clockednoise.h" />
+    <ClInclude Include="..\Source\Noise\dust.h" />
+    <ClInclude Include="..\Source\Noise\fractal_noise.h" />
+    <ClInclude Include="..\Source\Noise\grainlet.h" />
+    <ClInclude Include="..\Source\Noise\particle.h" />
+    <ClInclude Include="..\Source\Noise\whitenoise.h" />
+    <ClInclude Include="..\Source\PhysicalModeling\drip.h" />
+    <ClInclude Include="..\Source\PhysicalModeling\modalvoice.h" />
+    <ClInclude Include="..\Source\PhysicalModeling\pluck.h" />
+    <ClInclude Include="..\Source\PhysicalModeling\PolyPluck.h" />
+    <ClInclude Include="..\Source\PhysicalModeling\resonator.h" />
+    <ClInclude Include="..\Source\PhysicalModeling\string.h" />
+    <ClInclude Include="..\Source\PhysicalModeling\stringvoice.h" />
+    <ClInclude Include="..\Source\Synthesis\blosc.h" />
+    <ClInclude Include="..\Source\Synthesis\fm2.h" />
+    <ClInclude Include="..\Source\Synthesis\formantosc.h" />
+    <ClInclude Include="..\Source\Synthesis\harmonic_osc.h" />
+    <ClInclude Include="..\Source\Synthesis\oscillator.h" />
+    <ClInclude Include="..\Source\Synthesis\oscillatorbank.h" />
+    <ClInclude Include="..\Source\Synthesis\variablesawosc.h" />
+    <ClInclude Include="..\Source\Synthesis\variableshapeosc.h" />
+    <ClInclude Include="..\Source\Synthesis\vosim.h" />
+    <ClInclude Include="..\Source\Synthesis\zoscillator.h" />
+    <ClInclude Include="..\Source\Utility\dcblock.h" />
+    <ClInclude Include="..\Source\Utility\delayline.h" />
+    <ClInclude Include="..\Source\Utility\dsp.h" />
+    <ClInclude Include="..\Source\Utility\jitter.h" />
+    <ClInclude Include="..\Source\Utility\maytrig.h" />
+    <ClInclude Include="..\Source\Utility\metro.h" />
+    <ClInclude Include="..\Source\Utility\port.h" />
+    <ClInclude Include="..\Source\Utility\samplehold.h" />
+    <ClInclude Include="..\Source\Utility\smooth_random.h" />
+  </ItemGroup>
+</Project>
