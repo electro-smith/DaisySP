@@ -14,7 +14,9 @@ void PhaserEngine::Init(float sample_rate)
     feedback_ = .2f;
     SetFreq(200.f);
 
-    del_.SetDelay(1.f);
+    del_.SetDelay(0.f);
+
+	os_ = 30.f; //30 hertz frequency offset, lower than this introduces crunch
 
     last_sample_ = 0.f;
     lfo_phase_   = 0.f;
@@ -25,15 +27,16 @@ void PhaserEngine::Init(float sample_rate)
 float PhaserEngine::Process(float in)
 {
     float lfo_sig = ProcessLfo();
-    last_sample_
-        = del_.Allpass(in + feedback_ * last_sample_, lfo_sig + ap_del_, .3f);
+	float deltime = sample_rate_ / (lfo_sig + ap_freq_ + os_);
+
+	last_sample_ = del_.Allpass(in + feedback_ * last_sample_, deltime, .3f);
+
     return (in + last_sample_) * .5f; //equal mix
 }
 
 void PhaserEngine::SetLfoDepth(float depth)
 {
-    depth    = fclamp(depth, 0.f, .93f);
-    lfo_amp_ = depth * ap_del_;
+    lfo_amp_ = fclamp(depth, 0.f, 1.f);
 }
 
 void PhaserEngine::SetLfoFreq(float lfo_freq)
@@ -45,8 +48,7 @@ void PhaserEngine::SetLfoFreq(float lfo_freq)
 
 void PhaserEngine::SetFreq(float ap_freq)
 {
-	ap_freq = fclamp(ap_freq, 0.f, 20000.f); //0 - 20kHz
-    ap_del_ = sample_rate_ / ap_freq;
+	ap_freq_ = fclamp(ap_freq, 0.f, 20000.f); //0 - 20kHz
 }
 
 void PhaserEngine::SetFeedback(float feedback)
@@ -70,7 +72,7 @@ float PhaserEngine::ProcessLfo()
         lfo_freq_ *= -1.f;
     }
 
-    return lfo_phase_ * lfo_amp_;
+    return lfo_phase_ * lfo_amp_ * ap_freq_;
 }
 
 //Phaser Stuff

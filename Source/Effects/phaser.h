@@ -62,8 +62,10 @@ class PhaserEngine
     float lfo_freq_;
     float lfo_amp_;
 
+	float os_;
+
     float feedback_;
-    float ap_del_;
+    float ap_freq_;
 
     float last_sample_;
 
