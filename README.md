@@ -52,10 +52,10 @@
 
 ## Features
 
-- **Synthesis Methods:** [Subtractive](https://electro-smith.github.io/DaisySP/classdaisysp_1_1_moog_ladder.html), [Physical Modeling](https://electro-smith.github.io/DaisySP/classdaisysp_1_1_pluck.html), [FM](https://electro-smith.github.io/DaisySP/classdaisysp_1_1_fm2.html)
-- **Filters:** [Biquad](https://electro-smith.github.io/DaisySP/classdaisysp_1_1_biquad.html), [State-Variable](https://electro-smith.github.io/DaisySP/classdaisysp_1_1_svf.html), [Modal](https://electro-smith.github.io/DaisySP/classdaisysp_1_1_mode.html), [Comb](https://electro-smith.github.io/DaisySP/classdaisysp_1_1_comb.html)
-- **Effects Processors:** [Reverb](https://electro-smith.github.io/DaisySP/classdaisysp_1_1_reverb_sc.html), [Delay](https://electro-smith.github.io/DaisySP/classdaisysp_1_1_delay_line.html), [Decimate](https://electro-smith.github.io/DaisySP/classdaisysp_1_1_decimator.html), [Compressor](https://electro-smith.github.io/DaisySP/classdaisysp_1_1_compressor.html)
-- **Utilities:** [Math Functions](https://github.com/electro-smith/DaisySP/blob/master/modules/dsp.h), [Signal Conditioning](https://electro-smith.github.io/DaisySP/classdaisysp_1_1_port.html), [Aleatoric Generators](https://electro-smith.github.io/DaisySP/classdaisysp_1_1_maytrig.html)  
+- [**Synthesis Methods:**](https://github.com/electro-smith/DaisySP/tree/master/Source/Synthesis) Subtractive, Physical Modeling, FM
+- [**Filters:**](https://github.com/electro-smith/DaisySP/tree/master/Source/Filters) Biquad, State-Variable, Modal, Comb
+- [**Effects Processors:**](https://github.com/electro-smith/DaisySP/tree/master/Source/Effects) Reverb, Delay, Decimate, Compressor
+- [**Utilities:**](https://github.com/electro-smith/DaisySP/tree/master/Source/Utility) Math Functions, Signal Conditioning, Aleatoric Generators
 
 ## Code Example
 
