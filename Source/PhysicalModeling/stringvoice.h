@@ -3,7 +3,7 @@
 #define DSY_STRINGVOICE_H
 
 #include "Filters/svf.h"
-#include "PhysicalModeling/string.h"
+#include "PhysicalModeling/KarplusString.h"
 #include "Noise/dust.h"
 #include <stdint.h>
 #ifdef __cplusplus

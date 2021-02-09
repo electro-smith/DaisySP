@@ -72,7 +72,7 @@
 #include "PhysicalModeling/pluck.h"
 #include "PhysicalModeling/PolyPluck.h"
 #include "PhysicalModeling/resonator.h"
-#include "PhysicalModeling/string.h"
+#include "PhysicalModeling/KarplusString.h"
 #include "PhysicalModeling/stringvoice.h"
 
 /** Synthesis Modules */

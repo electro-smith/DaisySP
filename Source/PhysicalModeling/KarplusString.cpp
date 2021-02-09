@@ -1,6 +1,6 @@
 #include <cmath>
 #include "dsp.h"
-#include "string.h"
+#include "KarplusString.h"
 #include <stdlib.h>
 
 using namespace daisysp;

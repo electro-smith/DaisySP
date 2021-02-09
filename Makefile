@@ -68,8 +68,8 @@ PHYSICAL_MODELING_MODULES = \
 drip \
 modalvoice \
 pluck \
+KarplusString \
 resonator \
-string \
 stringvoice 
 #PolyPluck 
 
