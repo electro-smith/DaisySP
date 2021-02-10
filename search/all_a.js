@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['maytrig_91',['Maytrig',['../classdaisysp_1_1_maytrig.html',1,'daisysp']]],
-  ['metro_92',['Metro',['../classdaisysp_1_1_metro.html',1,'daisysp']]],
-  ['modalvoice_93',['ModalVoice',['../classdaisysp_1_1_modal_voice.html',1,'daisysp']]],
-  ['modalvoice_2eh_94',['modalvoice.h',['../modalvoice_8h.html',1,'']]],
-  ['mode_95',['Mode',['../classdaisysp_1_1_mode.html',1,'daisysp']]],
-  ['moogladder_96',['MoogLadder',['../classdaisysp_1_1_moog_ladder.html',1,'daisysp']]]
+  ['limiter_88',['Limiter',['../classdaisysp_1_1_limiter.html',1,'daisysp']]],
+  ['line_89',['Line',['../classdaisysp_1_1_line.html',1,'daisysp']]],
+  ['linearvca_90',['LinearVCA',['../classdaisysp_1_1_linear_v_c_a.html',1,'daisysp']]],
+  ['low_91',['Low',['../classdaisysp_1_1_svf.html#a3fbe38989b49fba12a3a7a37f291b33c',1,'daisysp::Svf']]]
 ];

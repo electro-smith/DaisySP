@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['distortedsine_369',['DistortedSine',['../classdaisysp_1_1_synthetic_bass_drum.html#a99ddb04ad279b32c54aca8760c3548a2',1,'daisysp::SyntheticBassDrum']]]
+  ['distortedsine_371',['DistortedSine',['../classdaisysp_1_1_synthetic_bass_drum.html#a99ddb04ad279b32c54aca8760c3548a2',1,'daisysp::SyntheticBassDrum']]]
 ];

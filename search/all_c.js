@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['oscillator_99',['Oscillator',['../classdaisysp_1_1_oscillator.html',1,'daisysp']]],
-  ['oscillatorbank_100',['OscillatorBank',['../classdaisysp_1_1_oscillator_bank.html',1,'daisysp']]],
-  ['oscillatorbank_2eh_101',['oscillatorbank.h',['../oscillatorbank_8h.html',1,'']]],
-  ['overdrive_102',['Overdrive',['../classdaisysp_1_1_overdrive.html',1,'daisysp']]],
-  ['overdrive_2eh_103',['overdrive.h',['../overdrive_8h.html',1,'']]]
+  ['nlfilt_98',['NlFilt',['../classdaisysp_1_1_nl_filt.html',1,'daisysp']]],
+  ['notch_99',['Notch',['../classdaisysp_1_1_svf.html#ac21096bb09e2e01eb223986cbb293a49',1,'daisysp::Svf']]]
 ];

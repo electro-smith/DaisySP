@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['waveforms_252',['Waveforms',['../classdaisysp_1_1_bl_osc.html#abd190108d777a64e9aec2b5508a89b1a',1,'daisysp::BlOsc']]],
-  ['whitenoise_253',['WhiteNoise',['../classdaisysp_1_1_white_noise.html',1,'daisysp']]],
-  ['write_254',['Write',['../classdaisysp_1_1_delay_line.html#a67c4022fe5d1e280e8c0a1b1ec6e8282',1,'daisysp::DelayLine']]],
-  ['write_5fpos_255',['write_pos',['../structdaisysp_1_1_reverb_sc_dl.html#acafadbe36ffcdf81389c196c6486684e',1,'daisysp::ReverbScDl']]]
+  ['variablesawosc_2eh_247',['variablesawosc.h',['../variablesawosc_8h.html',1,'']]],
+  ['variablesawoscillator_248',['VariableSawOscillator',['../classdaisysp_1_1_variable_saw_oscillator.html',1,'daisysp']]],
+  ['variableshapeosc_2eh_249',['variableshapeosc.h',['../variableshapeosc_8h.html',1,'']]],
+  ['variableshapeoscillator_250',['VariableShapeOscillator',['../classdaisysp_1_1_variable_shape_oscillator.html',1,'daisysp']]],
+  ['vosim_2eh_251',['vosim.h',['../vosim_8h.html',1,'']]],
+  ['vosimoscillator_252',['VosimOscillator',['../classdaisysp_1_1_vosim_oscillator.html',1,'daisysp']]]
 ];
