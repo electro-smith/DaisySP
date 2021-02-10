@@ -87,8 +87,9 @@ float Resonator::Process(const float in)
         if(batch_counter == kModeBatchSize)
         {
             batch_counter = 0;
-            batch_processor->Process<batch_processor->BAND_PASS, true>(
-                mode_f, mode_q, mode_a, in, &out);
+            batch_processor
+                ->Process<ResonatorSvf<kModeBatchSize>::BAND_PASS, true>(
+                    mode_f, mode_q, mode_a, in, &out);
             ++batch_processor;
         }
 

@@ -47,7 +47,7 @@ class Dust
 
   private:
     float                  density_;
-    static constexpr float kRandFrac = 1.f / RAND_MAX;
+    static constexpr float kRandFrac = 1.f / (float)RAND_MAX;
 };
 } // namespace daisysp
 #endif
