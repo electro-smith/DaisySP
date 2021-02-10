@@ -10,6 +10,11 @@
 
 namespace daisysp
 {
+/** @brief Flanging Audio Effect 
+ *
+ * Generates a modulating phase shifted copy of a signal, and recombines
+ * with the original to create a 'flanging' sound effect.
+ */
 class Flanger
 {
   public:

@@ -12,7 +12,7 @@
 
 #ifdef __cplusplus
 
-/** @file string.h */
+/** @file KarplusString.h */
 
 namespace daisysp
 {
