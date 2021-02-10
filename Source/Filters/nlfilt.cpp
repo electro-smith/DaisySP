@@ -42,11 +42,11 @@ void NlFilt::ProcessBlock(float *in, float *out, size_t size)
         L = (float)MAX_DELAY;
     }
     nmL = point - (int32_t)(L)-1;
-    if((nm1 < 0))
+    if(nm1 < 0)
         nm1 += MAX_DELAY; /* Deal with the wrapping */
-    if((nm2 < 0))
+    if(nm2 < 0)
         nm2 += MAX_DELAY;
-    if((nmL < 0))
+    if(nmL < 0)
         nmL += MAX_DELAY;
     ynm1     = fp[nm1]; /* Pick up running values */
     ynm2     = fp[nm2];
@@ -67,13 +67,13 @@ void NlFilt::ProcessBlock(float *in, float *out, size_t size)
         else if(outv < -maxamp)
             outv = -maxampd2;
         out[n] = outv;
-        if((++point == MAX_DELAY))
+        if(++point == MAX_DELAY)
         {
             point = 0;
         }
         yn        = TANH(yn);
         fp[point] = yn; /* and delay line */
-        if((++nmL == MAX_DELAY))
+        if(++nmL == MAX_DELAY)
         {
             nmL = 0;
         }

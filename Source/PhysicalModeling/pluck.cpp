@@ -20,7 +20,7 @@ void Pluck::Reinit()
     sicps_ = ((float)npts_ * 256.0f + 128.0f) * (1.0f / sample_rate_);
     for(n = npts_; n--;)
     {
-        val   = (float)((float)rand() / RAND_MAX);
+        val   = (float)((float)rand() / (float)RAND_MAX);
         *ap++ = (val * 2.0f) - 1.0f;
     }
     phs256_ = 0;
