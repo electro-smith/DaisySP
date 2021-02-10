@@ -73,7 +73,7 @@ class Particle
     void SetSync(bool sync);
 
   private:
-    static constexpr float kRandFrac  = 1.f / RAND_MAX;
+    static constexpr float kRandFrac  = 1.f / (float)RAND_MAX;
     static constexpr float kRatioFrac = 1.f / 12.f;
     float                  sample_rate_;
     float aux_, frequency_, density_, gain_, spread_, resonance_;

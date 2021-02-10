@@ -26,7 +26,7 @@ class Maytrig
     */
     inline float Process(float prob)
     {
-        return ((float)rand() / RAND_MAX) <= prob ? true : false;
+        return ((float)rand() / (float)RAND_MAX) <= prob ? true : false;
     }
 
   private:
