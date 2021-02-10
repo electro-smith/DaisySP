@@ -107,7 +107,7 @@ $(function() {
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_particle.html#a5dd06618be3d7454d05d16aae4b7c645">SetSync</a>(<span class="keywordtype">bool</span> sync);</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">static</span> constexpr <span class="keywordtype">float</span> kRandFrac  = 1.f / RAND_MAX;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">static</span> constexpr <span class="keywordtype">float</span> kRandFrac  = 1.f / (float)RAND_MAX;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">static</span> constexpr <span class="keywordtype">float</span> kRatioFrac = 1.f / 12.f;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">float</span>                  sample_rate_;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">float</span> aux_, frequency_, density_, gain_, spread_, resonance_;</div>

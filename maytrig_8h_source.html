@@ -85,7 +85,7 @@ $(function() {
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    ~<a class="code" href="classdaisysp_1_1_maytrig.html">Maytrig</a>() {}</div>
 <div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_maytrig.html#aef2f0efe02f395fcdc9cdf7ba470ad6a">   27</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code" href="classdaisysp_1_1_maytrig.html#aef2f0efe02f395fcdc9cdf7ba470ad6a">Process</a>(<span class="keywordtype">float</span> prob)</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">return</span> ((<span class="keywordtype">float</span>)rand() / RAND_MAX) &lt;= prob ? true : <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">return</span> ((<span class="keywordtype">float</span>)rand() / (<span class="keywordtype">float</span>)RAND_MAX) &lt;= prob ? true : <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keyword">private</span>:</div>
