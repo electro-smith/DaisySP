@@ -2,7 +2,27 @@
 #include "phaser.h"
 #include <math.h>
 
+// Shensley WIP notes:
+// started hacking on a zero-delay implementation:
+// This equation fro getting the coeff comes from:
+// https://www.kvraudio.com/forum/viewtopic.php?f=33&t=245056&start=15
+// and a related thread:
+// https://www.kvraudio.com/forum/viewtopic.php?t=300850
+//
+// Equation corroborated and implementation mostly based on the concepts discussed
+// here:
+// https://ccrma.stanford.edu/realsimple/DelayVar/Phasing_First_Order_Allpass_Filters.html
+//
+// rTheta = rFreq * krPi * rInvSmplRate;
+// rD = tan(rTheta);
+// rG = (1.0 - rD) / (1.0 + rD);
+
 using namespace daisysp;
+
+static float cot(float x)
+{
+    return cos(x) / sin(x);
+}
 
 //PhaserEngine stuff
 void PhaserEngine::Init(float sample_rate)
@@ -79,21 +99,40 @@ float PhaserEngine::ProcessLfo()
 //Phaser Stuff
 void Phaser::Init(float sample_rate)
 {
-    engines_[0].Init(sample_rate);
-    engines_[1].Init(sample_rate);
+    //    engines_[0].Init(sample_rate);
+    //    engines_[1].Init(sample_rate);
+
+    for(size_t i = 0; i < kMaxPoles; i++)
+        apf_[i].Init();
+    //        engines_[i].Init(sample_rate);
 
     poles_     = 4;
     gain_frac_ = .5f;
+    sr_        = sample_rate;
+    rsr_       = 1.f / sr_;
 }
 
 float Phaser::Process(float in)
 {
-    float sig = 0.f;
-
-    for(int i = 0; i < poles_; i++)
+    float sig       = 0.f;
+    float base_freq = freq_;
+    for(size_t i = 0; i < poles_; i++)
     {
-        sig += engines_[i].Process(in);
+        float s;
+        float freq = base_freq * (float)(i + 1);
+        //float c = freq * cot(freq * 48000.f / 2);
+        float c;
+        float x;
+        x = (PI_F * freq) * rsr_;
+        c = (1 - tan(x)) / (1 + tan(x));
+
+        sig += apf_[i].Allpass(s, 1, c);
     }
+
+    //    for(int i = 0; i < poles_; i++)
+    //    {
+    //        sig += engines_[i].Process(in);
+    //    }
 
     return sig;
 }
@@ -105,32 +144,33 @@ void Phaser::SetPoles(int poles)
 
 void Phaser::SetLfoDepth(float depth)
 {
-    for(int i = 0; i < MAX_POLES; i++)
-    {
-        engines_[i].SetLfoDepth(depth);
-    }
+    //    for(int i = 0; i < kMaxPoles; i++)
+    //    {
+    //        engines_[i].SetLfoDepth(depth);
+    //    }
 }
 
 void Phaser::SetLfoFreq(float lfo_freq)
 {
-    for(int i = 0; i < MAX_POLES; i++)
-    {
-        engines_[i].SetLfoFreq(lfo_freq);
-    }
+    //    for(int i = 0; i < kMaxPoles; i++)
+    //    {
+    //        engines_[i].SetLfoFreq(lfo_freq);
+    //    }
 }
 
 void Phaser::SetFreq(float ap_freq)
 {
-    for(int i = 0; i < MAX_POLES; i++)
-    {
-        engines_[i].SetFreq(ap_freq);
-    }
+    //    for(int i = 0; i < kMaxPoles; i++)
+    //    {
+    //        engines_[i].SetFreq(ap_freq);
+    //    }
+    freq_ = ap_freq;
 }
 
 void Phaser::SetFeedback(float feedback)
 {
-    for(int i = 0; i < MAX_POLES; i++)
-    {
-        engines_[i].SetFeedback(feedback);
-    }
+    //    for(int i = 0; i < kMaxPoles; i++)
+    //    {
+    //        engines_[i].SetFeedback(feedback);
+    //    }
 }

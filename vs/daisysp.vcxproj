@@ -43,7 +43,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
-      <Optimization>O3</Optimization>
+      <Optimization>Og</Optimization>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
@@ -94,6 +94,7 @@
     <ClCompile Include="..\Source\Effects\flanger.cpp" />
     <ClCompile Include="..\Source\Effects\fold.cpp" />
     <ClCompile Include="..\Source\Effects\overdrive.cpp" />
+    <ClCompile Include="..\Source\Effects\phaser.cpp" />
     <ClCompile Include="..\Source\Effects\reverbsc.cpp" />
     <ClCompile Include="..\Source\Effects\sampleratereducer.cpp" />
     <ClCompile Include="..\Source\Effects\tremolo.cpp" />
@@ -151,6 +152,7 @@
     <ClInclude Include="..\Source\Effects\flanger.h" />
     <ClInclude Include="..\Source\Effects\fold.h" />
     <ClInclude Include="..\Source\Effects\overdrive.h" />
+    <ClInclude Include="..\Source\Effects\phaser.h" />
     <ClInclude Include="..\Source\Effects\pitchshifter.h" />
     <ClInclude Include="..\Source\Effects\reverbsc.h" />
     <ClInclude Include="..\Source\Effects\sampleratereducer.h" />

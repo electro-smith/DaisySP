@@ -196,6 +196,9 @@
     <ClCompile Include="..\Source\Effects\flanger.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Effects\phaser.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Control\adenv.h">
@@ -392,6 +395,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Effects\flanger.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Effects\phaser.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

@@ -6,7 +6,7 @@
 #include <stdint.h>
 #include "Utility/delayline.h"
 
-#define MAX_POLES 8
+//#define MAX_POLES 8
 
 /** @file phaser.h */
 
@@ -53,10 +53,10 @@ class PhaserEngine
     void SetFeedback(float feedback);
 
   private:
-    float                    sample_rate_;
     static constexpr int32_t kDelayLength
         = 2400; // 50 ms at 48kHz = .05 * 48000
 
+    float sample_rate_;
     //triangle lfo
     float lfo_phase_;
     float lfo_freq_;
@@ -123,9 +123,13 @@ class Phaser
     void SetFeedback(float feedback);
 
   private:
-    PhaserEngine engines_[MAX_POLES];
+    static constexpr int     kMaxPoles = 8;
+    DelayLine<float, 2>      apf_[kMaxPoles];
+    //    PhaserEngine engines_[kMaxPoles];
     float        gain_frac_;
-    int          poles_;
+    float        freq_;
+    float        rsr_, sr_;
+    size_t poles_;
 };
 } //namespace daisysp
 #endif
