@@ -3,7 +3,7 @@
 #pragma once
 #ifndef DSY_CORE_DSP
 #define DSY_CORE_DSP
-#include <math.h>
+#include <cmath>
 
 /** PIs
 */
@@ -13,6 +13,9 @@
 #define DSY_MIN(in, mn) (in < mn ? in : mn)
 #define DSY_MAX(in, mx) (in > mx ? in : mx)
 #define DSY_CLAMP(in, mn, mx) (DSY_MIN(DSY_MAX(in, mn), mx))
+#ifndef RAND_MAX
+#define RAND_MAX 32767
+#endif
 
 namespace daisysp
 {
@@ -227,7 +230,8 @@ inline float soft_saturate(float in, float thresh)
     bool  flip;
     float val, out;
     //val = fabsf(in);
-    flip = val < 0.0f;
+    out  = 0.f;
+    flip = in < 0.0f;
     val  = flip ? -in : in;
     if(val < thresh)
     {
