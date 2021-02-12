@@ -5,6 +5,7 @@
 
 #include <stdint.h>
 #include "Utility/delayline.h"
+#include "Utility/dsp.h"
 
 //#define MAX_POLES 8
 
@@ -75,6 +76,48 @@ class PhaserEngine
     float ProcessLfo();
 };
 
+class AllPassFilter
+{
+  public:
+    AllPassFilter() {}
+    ~AllPassFilter() {}
+
+    inline void Init(float samplerate)
+    {
+        sr_    = samplerate;
+        isr_   = 1.f / sr_;
+        coeff_ = 1.f;
+        b_     = 0.f;
+    }
+
+    inline void SetFreq(float freq)
+    {
+        if(lfreq_ != freq)
+        {
+            lfreq_ = freq;
+            // Recompute coeff
+            float theta, d;
+            theta  = PI_F * freq * isr_;
+            d      = tan(theta);
+            coeff_ = fclamp((1.f - d) / (1.f + d), -1.f, 1.f);
+        }
+    }
+
+    inline float Process(float in)
+    {
+        last_ = in + coeff_ * last_;
+        return -in * coeff_ + last_;
+    }
+
+    inline float GetCoeff() { return coeff_; }
+
+  private:
+    float sr_, isr_;
+    float lfreq_, coeff_;
+    float b_;
+    float last_;
+};
+
 //wraps up all of the phaser engines
 /**  
     @brief Phaser Effect.
@@ -123,12 +166,16 @@ class Phaser
     void SetFeedback(float feedback);
 
   private:
-    static constexpr int     kMaxPoles = 8;
-    DelayLine<float, 2>      apf_[kMaxPoles];
+    static constexpr int kMaxPoles = 8;
+    //    DelayLine<float, 2>  apf_[kMaxPoles];
+    AllPassFilter apf_[kMaxPoles];
     //    PhaserEngine engines_[kMaxPoles];
-    float        gain_frac_;
-    float        freq_;
-    float        rsr_, sr_;
+    float  gain_frac_;
+    float  freq_;
+    float  rsr_, sr_;
+    float  last_, feedback_;
+    float  c_[kMaxPoles];
+    float  pfreq_[kMaxPoles];
     size_t poles_;
 };
 } //namespace daisysp

@@ -3,7 +3,7 @@
 #pragma once
 #ifndef DSY_CORE_DSP
 #define DSY_CORE_DSP
-#include <math.h>
+#include <cmath>
 
 /** PIs
 */
@@ -200,7 +200,7 @@ inline float SoftClip(float x)
  ** execution for tracing the reason for the invalidity. */
 inline void TestFloat(float &x, float y = 0.f)
 {
-    if(!isnormal(x) && x != 0)
+    if(!std::isnormal(x) && x != 0)
     {
 #ifdef DEBUG
         asm("bkpt 255");

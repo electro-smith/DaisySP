@@ -103,7 +103,7 @@ void Phaser::Init(float sample_rate)
     //    engines_[1].Init(sample_rate);
 
     for(size_t i = 0; i < kMaxPoles; i++)
-        apf_[i].Init();
+        apf_[i].Init(sample_rate);
     //        engines_[i].Init(sample_rate);
 
     poles_     = 4;
@@ -114,27 +114,40 @@ void Phaser::Init(float sample_rate)
 
 float Phaser::Process(float in)
 {
-    float sig       = 0.f;
+    float s;
     float base_freq = freq_;
+    float sig;
+    sig = 0.f;
     for(size_t i = 0; i < poles_; i++)
     {
-        float s;
         float freq = base_freq * (float)(i + 1);
-        //float c = freq * cot(freq * 48000.f / 2);
-        float c;
-        float x;
-        x = (PI_F * freq) * rsr_;
-        c = (1 - tan(x)) / (1 + tan(x));
+        if(i == 0)
+            s = in + last_ * feedback_;
+        else
+            s = sig;
+        //        //float c = freq * cot(freq * 48000.f / 2);
+        //        float c, d;
+        //        float theta;
+        //        theta = (PI_F * freq) * rsr_;
+        //        d     = tan(theta);
+        //        c     = (1.f - d) / (1 + d);
+        //        //        c = (1 - tan(x)) / (1 + tan(x));
+        //        c_[i] = c;
 
-        sig += apf_[i].Allpass(s, 1, c);
+        //sig += apf_[i].Allpass(s, 1, c_[i]);
+        apf_[i].SetFreq(freq);
+        c_[i] = apf_[i].GetCoeff();
+        pfreq_[i] = freq;
+        sig = apf_[i].Process(s);
     }
 
     //    for(int i = 0; i < poles_; i++)
     //    {
     //        sig += engines_[i].Process(in);
     //    }
+    last_ = sig;
 
-    return sig;
+    return sig + in;
 }
 
 void Phaser::SetPoles(int poles)
@@ -173,4 +186,5 @@ void Phaser::SetFeedback(float feedback)
     //    {
     //        engines_[i].SetFeedback(feedback);
     //    }
+    feedback_ = feedback;
 }
