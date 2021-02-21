@@ -42,7 +42,7 @@ static int         DelayLineBytesAlloc(float sr, float i_pitch_mod, int n);
 static const float kOutputGain = 0.35;
 static const float kJpScale    = 0.25;
 
-int ReverbSc::Init(float sr, float* buffer, size_t size)
+int ReverbSc::Init(float sr, float *buffer, size_t size)
 {
     buffer_        = buffer;
     size_          = size;
