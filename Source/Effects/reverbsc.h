@@ -67,7 +67,7 @@ class ReverbSc
     float      prv_lpfreq_;
     int        init_done_;
     ReverbScDl delay_lines_[8];
-    float*     buffer_;
+    float *    buffer_;
     size_t     size_;
 };
 
