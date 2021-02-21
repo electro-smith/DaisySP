@@ -42,7 +42,7 @@ class ReverbSc
     /** Initializes the reverb module, and sets the sample_rate at which the Process function will be called.
         Returns 0 if all good, or 1 if it runs out of delay times exceed maximum allowed.
     */
-    int Init(float sample_rate);
+    int Init(float sample_rate, float* buffer, size_t size);
 
     /** Process the input through the reverb, and updates values of out1, and out2 with the new processed signal.
     */
@@ -67,7 +67,8 @@ class ReverbSc
     float      prv_lpfreq_;
     int        init_done_;
     ReverbScDl delay_lines_[8];
-    float      aux_[DSY_REVERBSC_MAX_SIZE];
+    float*     buffer_;
+    size_t     size_;
 };
 
 

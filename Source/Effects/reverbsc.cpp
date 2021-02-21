@@ -42,8 +42,10 @@ static int         DelayLineBytesAlloc(float sr, float i_pitch_mod, int n);
 static const float kOutputGain = 0.35;
 static const float kJpScale    = 0.25;
 
-int ReverbSc::Init(float sr)
+int ReverbSc::Init(float sr, float* buffer, size_t size)
 {
+    buffer_        = buffer;
+    size_          = size;
     i_sample_rate_ = sr;
     sample_rate_   = sr;
     feedback_      = 0.97;
@@ -53,13 +55,13 @@ int ReverbSc::Init(float sr)
     damp_fact_     = 1.0;
     prv_lpfreq_    = 0.0;
     init_done_     = 1;
-    int i, n_bytes = 0;
+    size_t i, n_bytes = 0;
     n_bytes = 0;
     for(i = 0; i < 8; i++)
     {
-        if(n_bytes > DSY_REVERBSC_MAX_SIZE)
+        if(n_bytes > size_)
             return 1;
-        delay_lines_[i].buf = (aux_) + n_bytes;
+        delay_lines_[i].buf = (buffer_) + n_bytes;
         InitDelayLine(&delay_lines_[i], i);
         n_bytes += DelayLineBytesAlloc(sr, 1, i);
     }
