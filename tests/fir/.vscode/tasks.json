@@ -1,0 +1,106 @@
+{
+  "tasks": [
+    {
+      "command": "make clean; make",
+      "group": {
+        "isDefault": true,
+        "kind": "build"
+      },
+      "label": "build",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "type": "shell"
+    },
+    {
+      "command": "make clean; make; make program",
+      "label": "build_and_program",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "type": "shell"
+    },
+    {
+      "command": "make clean; make; make program-dfu",
+      "label": "build_and_program_dfu",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "type": "shell"
+    },
+    {
+      "command": "make clean;make",
+      "dependsOn": [
+        "build_libdaisy",
+        "build_daisysp"
+      ],
+      "label": "build_all",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "type": "shell"
+    },
+    {
+      "command": "make clean;DEBUG=1 make",
+      "dependsOn": [
+        "build_libdaisy",
+        "build_daisysp"
+      ],
+      "label": "build_all_debug",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "type": "shell"
+    },
+    {
+      "command": "make program-dfu",
+      "label": "program-dfu",
+      "problemMatcher": [],
+      "type": "shell"
+    },
+    {
+      "command": "make program",
+      "label": "program",
+      "problemMatcher": [],
+      "type": "shell"
+    },
+    {
+      "command": "make",
+      "label": "build_libdaisy",
+      "options": {
+        "cwd": "${workspaceFolder}/../../libDaisy/"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "type": "shell"
+    },
+    {
+      "command": "make",
+      "label": "build_daisysp",
+      "options": {
+        "cwd": "${workspaceFolder}/../../DaisySP/"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "type": "shell"
+    }
+  ],
+  "version": "2.0.0"
+}

@@ -53,6 +53,7 @@ moogladder \
 nlfilt \
 svf \
 tone 
+#fir
 
 NOISE_MOD_DIR = Noise
 NOISE_MODULES = \
