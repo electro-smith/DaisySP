@@ -49,11 +49,11 @@ inline float AnalogBassDrum::Diode(float x)
 
 float AnalogBassDrum::Process(bool trigger)
 {
-    const int   kTriggerPulseDuration = static_cast<int>(1.0e-3f * sample_rate_);
-    const int   kFMPulseDuration      = static_cast<int>(6.0e-3f * sample_rate_);
-    const float kPulseDecayTime       = 0.2e-3f * sample_rate_;
-    const float kPulseFilterTime      = 0.1e-3f * sample_rate_;
-    const float kRetrigPulseDuration  = 0.05f * sample_rate_;
+    const int kTriggerPulseDuration  = static_cast<int>(1.0e-3f * sample_rate_);
+    const int kFMPulseDuration       = static_cast<int>(6.0e-3f * sample_rate_);
+    const float kPulseDecayTime      = 0.2e-3f * sample_rate_;
+    const float kPulseFilterTime     = 0.1e-3f * sample_rate_;
+    const float kRetrigPulseDuration = 0.05f * sample_rate_;
 
     const float scale = 0.001f / f0_;
     const float q     = 1500.0f * powf(2.f, kOneTwelfth * decay_ * 80.0f);
