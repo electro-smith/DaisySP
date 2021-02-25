@@ -23,6 +23,7 @@ Source/Effects/chorus.cpp
 Source/Effects/decimator.cpp
 Source/Effects/flanger.cpp
 Source/Effects/fold.cpp
+Source/Effects/Freeverb.cpp
 Source/Effects/overdrive.cpp
 Source/Effects/reverbsc.cpp
 Source/Effects/sampleratereducer.cpp
@@ -79,6 +80,9 @@ Source/Effects/bitcrush.h
 Source/Effects/chorus.h
 Source/Effects/decimator.h
 Source/Effects/flanger.h
+Source/Effects/Freeverb.h
+Source/Effects/FvAllpass.h
+Source/Effects/FvComb.h
 Source/Effects/fold.h
 Source/Effects/overdrive.h
 Source/Effects/reverbsc.h

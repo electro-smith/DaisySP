@@ -40,6 +40,7 @@
 #include "Effects/chorus.h"
 #include "Effects/decimator.h"
 #include "Effects/flanger.h"
+#include "Effects/Freeverb.h"
 #include "Effects/fold.h"
 #include "Effects/overdrive.h"
 #include "Effects/reverbsc.h"

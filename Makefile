@@ -35,11 +35,14 @@ bitcrush \
 chorus \
 decimator \
 flanger \
+Freeverb \
 fold \
 overdrive \
 reverbsc \
 sampleratereducer \
 tremolo 
+#FvComb
+#FvAllpass
 #pitchshifter 
 
 FILTER_MOD_DIR = Filters
