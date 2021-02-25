@@ -69,7 +69,7 @@ void Freeverb::Process(float *inl, float *inr, float *outl, float *outr)
     float left, right, input;
 
     left = right = 0.f;
-    input   = (*inl + *inr) * gain_;
+    input        = (*inl + *inr) * gain_;
 
     // Parallel comb accumulation
     for(int i = 0; i < kNumCombs; i++)
@@ -80,12 +80,12 @@ void Freeverb::Process(float *inl, float *inr, float *outl, float *outr)
     // Series allpass
     for(int i = 0; i < kNumAllpass; i++)
     {
-        left = allpassL[i].Process(left);
+        left  = allpassL[i].Process(left);
         right = allpassR[i].Process(right);
     }
     // Calc replacement
-    *outl = left * wet1_ + right *wet2_ + *inl * dry_;
-    *outr = right *wet1_ + left * wet2_ + *inr * dry_;
+    *outl = left * wet1_ + right * wet2_ + *inl * dry_;
+    *outr = right * wet1_ + left * wet2_ + *inr * dry_;
 }
 void Freeverb::ProcessBlockReplace(float *inl,
                                    float *inr,
@@ -98,7 +98,7 @@ void Freeverb::ProcessBlockReplace(float *inl,
     while(size--)
     {
         left = right = 0.f;
-        input   = (*inl + *inr) * gain_;
+        input        = (*inl + *inr) * gain_;
 
         // Parallel comb accumulation
         for(int i = 0; i < kNumCombs; i++)
@@ -109,12 +109,12 @@ void Freeverb::ProcessBlockReplace(float *inl,
         // Series allpass
         for(int i = 0; i < kNumAllpass; i++)
         {
-            left = allpassL[i].Process(left);
+            left  = allpassL[i].Process(left);
             right = allpassR[i].Process(right);
         }
         // Calc replacement
-        *outl = left * wet1_ + right *wet2_ + *inl * dry_;
-        *outr = right *wet1_ + left * wet2_ + *inr * dry_;
+        *outl = left * wet1_ + right * wet2_ + *inl * dry_;
+        *outr = right * wet1_ + left * wet2_ + *inr * dry_;
         // Increment buffers
         *inl += skip;
         *inr += skip;
@@ -133,7 +133,7 @@ void Freeverb::ProcessBlockMix(float *inl,
     while(size--)
     {
         left = right = 0.f;
-        input   = (*inl + *inr) * gain_;
+        input        = (*inl + *inr) * gain_;
 
         // Parallel comb accumulation
         for(int i = 0; i < kNumCombs; i++)
@@ -144,12 +144,12 @@ void Freeverb::ProcessBlockMix(float *inl,
         // Series allpass
         for(int i = 0; i < kNumAllpass; i++)
         {
-            left = allpassL[i].Process(left);
+            left  = allpassL[i].Process(left);
             right = allpassR[i].Process(right);
         }
         // Calcmixin
-        *outl = left * wet1_ + right *wet2_ + *inl * dry_;
-        *outr = right *wet1_ + left * wet2_ + *inr * dry_;
+        *outl = left * wet1_ + right * wet2_ + *inl * dry_;
+        *outr = right * wet1_ + left * wet2_ + *inr * dry_;
         // Increment buffers
         *inl += skip;
         *inr += skip;
