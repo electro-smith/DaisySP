@@ -15,8 +15,8 @@ void ChorusEngine::Init(float sample_rate)
     SetDelay(.75);
 
     lfo_phase_ = 0.f;
-    SetLfoFreq(.3);
-    SetLfoDepth(.9);
+    SetLfoFreq(.3f);
+    SetLfoDepth(.9f);
 }
 
 float ChorusEngine::Process(float in)
@@ -51,7 +51,7 @@ void ChorusEngine::SetDelay(float delay)
 
 void ChorusEngine::SetDelayMs(float ms)
 {
-    ms     = fmax(.1, ms);
+    ms     = fmax(.1f, ms);
     delay_ = ms * .001f * sample_rate_; //ms to samples
 
     lfo_amp_ = fmin(lfo_amp_, delay_); //clip this if needed

@@ -1,5 +1,5 @@
 
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.14)
 
 project(DAISYSP VERSION 0.0.1)
 
@@ -43,7 +43,7 @@ Source/PhysicalModeling/drip.cpp
 Source/PhysicalModeling/modalvoice.cpp
 Source/PhysicalModeling/pluck.cpp
 Source/PhysicalModeling/resonator.cpp
-Source/PhysicalModeling/string.cpp
+Source/PhysicalModeling/KarplusString.cpp
 Source/PhysicalModeling/stringvoice.cpp
 Source/Synthesis/blosc.cpp
 Source/Synthesis/fm2.cpp
@@ -105,7 +105,7 @@ Source/PhysicalModeling/modalvoice.h
 Source/PhysicalModeling/pluck.h
 Source/PhysicalModeling/PolyPluck.h
 Source/PhysicalModeling/resonator.h
-Source/PhysicalModeling/string.h
+Source/PhysicalModeling/KarplusString.h
 Source/PhysicalModeling/stringvoice.h
 Source/Synthesis/blosc.h
 Source/Synthesis/fm2.h
@@ -128,16 +128,16 @@ Source/Utility/samplehold.h
 Source/Utility/smooth_random.h
 )
 
-include_directories(${CMAKE_SOURCE_DIR}/Source)
-include_directories(${CMAKE_SOURCE_DIR}/Source/Control)
-include_directories(${CMAKE_SOURCE_DIR}/Source/Drums)
-include_directories(${CMAKE_SOURCE_DIR}/Source/Dynamics)
-include_directories(${CMAKE_SOURCE_DIR}/Source/Effects)
-include_directories(${CMAKE_SOURCE_DIR}/Source/Filters)
-include_directories(${CMAKE_SOURCE_DIR}/Source/Noise)
-include_directories(${CMAKE_SOURCE_DIR}/Source/PhysicalModeling)
-include_directories(${CMAKE_SOURCE_DIR}/Source/Synthesis)
-include_directories(${CMAKE_SOURCE_DIR}/Source/Utility)
+include_directories(Source)
+include_directories(Source/Control)
+include_directories(Source/Drums)
+include_directories(Source/Dynamics)
+include_directories(Source/Effects)
+include_directories(Source/Filters)
+include_directories(Source/Noise)
+include_directories(Source/PhysicalModeling)
+include_directories(Source/Synthesis)
+include_directories(Source/Utility)
 
 set(CMAKE_CXX_STANDARD 14)
 
@@ -145,4 +145,5 @@ ADD_LIBRARY( DaisySP STATIC
     ${SOURCE_FILES} 
     ${HEADER_FILES} 
     Source/daisysp.h )
+TARGET_INCLUDE_DIRECTORIES(DaisySP PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Source>" "$<INSTALL_INTERFACE:Source>")
 

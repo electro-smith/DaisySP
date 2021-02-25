@@ -1,6 +1,6 @@
 #include "dsp.h"
 #include "analogbassdrum.h"
-#include <math.h>
+#include <cmath>
 
 using namespace daisysp;
 
@@ -49,11 +49,11 @@ inline float AnalogBassDrum::Diode(float x)
 
 float AnalogBassDrum::Process(bool trigger)
 {
-    const int   kTriggerPulseDuration = 1.0e-3 * sample_rate_;
-    const int   kFMPulseDuration      = 6.0e-3 * sample_rate_;
-    const float kPulseDecayTime       = 0.2e-3 * sample_rate_;
-    const float kPulseFilterTime      = 0.1e-3 * sample_rate_;
-    const float kRetrigPulseDuration  = 0.05f * sample_rate_;
+    const int kTriggerPulseDuration  = static_cast<int>(1.0e-3f * sample_rate_);
+    const int kFMPulseDuration       = static_cast<int>(6.0e-3f * sample_rate_);
+    const float kPulseDecayTime      = 0.2e-3f * sample_rate_;
+    const float kPulseFilterTime     = 0.1e-3f * sample_rate_;
+    const float kRetrigPulseDuration = 0.05f * sample_rate_;
 
     const float scale = 0.001f / f0_;
     const float q     = 1500.0f * powf(2.f, kOneTwelfth * decay_ * 80.0f);
@@ -137,7 +137,7 @@ float AnalogBassDrum::Process(bool trigger)
     {
         resonator_.SetFreq(f * sample_rate_);
         //resonator_.SetRes(1.0f + q * f);
-        resonator_.SetRes(.4 * q * f);
+        resonator_.SetRes(.4f * q * f);
 
         resonator_.Process((pulse - retrig_pulse_ * 0.2f) * scale);
         resonator_out = resonator_.Band();
