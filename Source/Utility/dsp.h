@@ -3,10 +3,11 @@
 #pragma once
 #ifndef DSY_CORE_DSP
 #define DSY_CORE_DSP
-#include <math.h>
 #include <cassert>
 #include <cstdint>
 #include <random>
+#include <cmath>
+
 /** PIs
 */
 #define PI_F 3.1415927410125732421875f
@@ -203,7 +204,7 @@ inline float SoftClip(float x)
  ** execution for tracing the reason for the invalidity. */
 inline void TestFloat(float &x, float y = 0.f)
 {
-    if(!isnormal(x) && x != 0)
+    if(!std::isnormal(x) && x != 0)
     {
 #ifdef DEBUG
         asm("bkpt 255");
@@ -230,7 +231,8 @@ inline float soft_saturate(float in, float thresh)
     bool  flip;
     float val, out;
     //val = fabsf(in);
-    flip = val < 0.0f;
+    out  = 0.f;
+    flip = in < 0.0f;
     val  = flip ? -in : in;
     if(val < thresh)
     {
