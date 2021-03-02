@@ -37,6 +37,7 @@ decimator \
 flanger \
 fold \
 overdrive \
+phaser \
 reverbsc \
 sampleratereducer \
 tremolo 
