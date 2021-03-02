@@ -6,15 +6,13 @@
 #include <stdint.h>
 #include "Utility/delayline.h"
 
-#define MAX_POLES 8
-
 /** @file phaser.h */
 
 namespace daisysp
 {
 /**  
     @brief Single Phaser engine. Used in Phaser.
-	@author Ben Sergentanis
+    @author Ben Sergentanis
 */
 class PhaserEngine
 {
@@ -23,33 +21,33 @@ class PhaserEngine
     ~PhaserEngine() {}
 
     /** Initialize the module
-		\param sample_rate Audio engine sample rate.
-	*/
+        \param sample_rate Audio engine sample rate.
+    */
     void Init(float sample_rate);
 
     /** Get the next sample
-		\param in Sample to process
-	*/
+        \param in Sample to process
+    */
     float Process(float in);
 
     /** How much to modulate the allpass filter by.
-		\param depth Works 0-1.
-	*/
+        \param depth Works 0-1.
+    */
     void SetLfoDepth(float depth);
 
     /** Set lfo frequency.
-		\param lfo_freq Frequency in Hz
-	*/
+        \param lfo_freq Frequency in Hz
+    */
     void SetLfoFreq(float lfo_freq);
 
     /** Set the allpass frequency
-		\param ap_freq Frequency in Hz.
-	*/
+        \param ap_freq Frequency in Hz.
+    */
     void SetFreq(float ap_freq);
 
     /** Set the feedback amount.
-		\param feedback Amount from 0-1.
-	*/
+        \param feedback Amount from 0-1.
+    */
     void SetFeedback(float feedback);
 
   private:
@@ -78,8 +76,8 @@ class PhaserEngine
 //wraps up all of the phaser engines
 /**  
     @brief Phaser Effect.
-	@author Ben Sergentanis
-	@date Jan 2021
+    @author Ben Sergentanis
+    @date Jan 2021
 */
 class Phaser
 {
@@ -88,44 +86,45 @@ class Phaser
     ~Phaser() {}
 
     /** Initialize the module
-		\param sample_rate Audio engine sample rate
-	*/
+        \param sample_rate Audio engine sample rate
+    */
     void Init(float sample_rate);
 
     /** Get the next floating point sample.
-		\param in Sample to process
-	*/
+        \param in Sample to process
+    */
     float Process(float in);
 
     /** Number of allpass stages.
-		\param poles Works 1 to 8.
-	*/
+        \param poles Works 1 to 8.
+    */
     void SetPoles(int poles);
 
     /** Set all lfo depths
-		\param depth Works 0-1.
-	*/
+        \param depth Works 0-1.
+    */
     void SetLfoDepth(float depth);
 
     /** Set all lfo frequencies.
-		\param lfo_freq Lfo freq in Hz.
-	*/
+        \param lfo_freq Lfo freq in Hz.
+    */
     void SetLfoFreq(float lfo_freq);
 
     /** Set all channel allpass freq in Hz.
-		\param ap_freq Frequency in Hz.
-	*/
+        \param ap_freq Frequency in Hz.
+    */
     void SetFreq(float ap_freq);
 
     /** Set all channels feedback.
-		\param feedback Works 0-1.
-	*/
+        \param feedback Works 0-1.
+    */
     void SetFeedback(float feedback);
 
   private:
-    PhaserEngine engines_[MAX_POLES];
-    float        gain_frac_;
-    int          poles_;
+    static constexpr int kMaxPoles = 8;
+    PhaserEngine         engines_[kMaxPoles];
+    float                gain_frac_;
+    int                  poles_;
 };
 } //namespace daisysp
 #endif

@@ -79,8 +79,10 @@ float PhaserEngine::ProcessLfo()
 //Phaser Stuff
 void Phaser::Init(float sample_rate)
 {
-    engines_[0].Init(sample_rate);
-    engines_[1].Init(sample_rate);
+    for(size_t i = 0; i < kMaxPoles; i++)
+    {
+        engines_[i].Init(sample_rate);
+    }
 
     poles_     = 4;
     gain_frac_ = .5f;
@@ -105,7 +107,7 @@ void Phaser::SetPoles(int poles)
 
 void Phaser::SetLfoDepth(float depth)
 {
-    for(int i = 0; i < MAX_POLES; i++)
+    for(int i = 0; i < kMaxPoles; i++)
     {
         engines_[i].SetLfoDepth(depth);
     }
@@ -113,7 +115,7 @@ void Phaser::SetLfoDepth(float depth)
 
 void Phaser::SetLfoFreq(float lfo_freq)
 {
-    for(int i = 0; i < MAX_POLES; i++)
+    for(int i = 0; i < kMaxPoles; i++)
     {
         engines_[i].SetLfoFreq(lfo_freq);
     }
@@ -121,7 +123,7 @@ void Phaser::SetLfoFreq(float lfo_freq)
 
 void Phaser::SetFreq(float ap_freq)
 {
-    for(int i = 0; i < MAX_POLES; i++)
+    for(int i = 0; i < kMaxPoles; i++)
     {
         engines_[i].SetFreq(ap_freq);
     }
@@ -129,7 +131,7 @@ void Phaser::SetFreq(float ap_freq)
 
 void Phaser::SetFeedback(float feedback)
 {
-    for(int i = 0; i < MAX_POLES; i++)
+    for(int i = 0; i < kMaxPoles; i++)
     {
         engines_[i].SetFeedback(feedback);
     }
