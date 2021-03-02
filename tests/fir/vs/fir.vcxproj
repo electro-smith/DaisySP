@@ -61,7 +61,7 @@
     <ClCompile>
       <AdditionalIncludeDirectories>$(DaisySpDir)/Source;$(LibDaisyDir)/src;$(LibDaisyDir)/src/sys;$(LibDaisyDir)/src/usbd;$(CmsisDir)/Include;$(CmsisDir)/DSP/Include;$(CmsisDir)/Device/ST/STM32H7xx/Include;../../util;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>USE_ARM_DSP;DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ForcedIncludeFiles>stm32h7xx.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>$(CmsisDir)/Device/ST/STM32H7xx/Include/stm32h7xx.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
@@ -77,7 +77,7 @@
       <AdditionalOptions />
       <CLanguageStandard />
       <CPPLanguageStandard />
-      <ForcedIncludeFiles>stm32h7xx.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>$(CmsisDir)/Device/ST/STM32H7xx/Include/stm32h7xx.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
