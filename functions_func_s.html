@@ -171,7 +171,7 @@ $(function() {
 , <a class="el" href="classdaisysp_1_1_flanger.html#a8047be86bb5c74222a2d760d53dd8094">daisysp::Flanger</a>
 </li>
 <li>SetDelayMs()
-: <a class="el" href="classdaisysp_1_1_chorus.html#a22827aaac4ac70b89f2dc17fcd691787">daisysp::Chorus</a>
+: <a class="el" href="classdaisysp_1_1_chorus.html#a139141637d77a0f9e9f2c62968c363ad">daisysp::Chorus</a>
 , <a class="el" href="classdaisysp_1_1_chorus_engine.html#a91bcc7abfc899cb294c9a3b7a8046fe0">daisysp::ChorusEngine</a>
 , <a class="el" href="classdaisysp_1_1_flanger.html#a55db625ecb8fd9f280b8fe7feeec24e5">daisysp::Flanger</a>
 </li>
@@ -201,6 +201,8 @@ $(function() {
 : <a class="el" href="classdaisysp_1_1_chorus.html#a41ba8088a69cc3c441781f9c7b31ab43">daisysp::Chorus</a>
 , <a class="el" href="classdaisysp_1_1_chorus_engine.html#ad507ce2ad736270dce033a8ff9190e69">daisysp::ChorusEngine</a>
 , <a class="el" href="classdaisysp_1_1_flanger.html#ae38ca713b372733a95f6cde5dee2809c">daisysp::Flanger</a>
+, <a class="el" href="classdaisysp_1_1_phaser.html#a4ea60a457ff032dd64d86499dad7732d">daisysp::Phaser</a>
+, <a class="el" href="classdaisysp_1_1_phaser_engine.html#a6580c203c16fbe2a978477c35038ff29">daisysp::PhaserEngine</a>
 , <a class="el" href="classdaisysp_1_1_reverb_sc.html#af4fff51d1ab475fedb4c5110c2a6f075">daisysp::ReverbSc</a>
 </li>
 <li>SetFirstHarmIdx()
@@ -245,6 +247,8 @@ $(function() {
 , <a class="el" href="classdaisysp_1_1_oscillator.html#a769da8528017a99e6f6c653e258d2c81">daisysp::Oscillator</a>
 , <a class="el" href="classdaisysp_1_1_oscillator_bank.html#aadb24e57edcc638d816272678e91fead">daisysp::OscillatorBank</a>
 , <a class="el" href="classdaisysp_1_1_particle.html#aff4201375e3afc8d9787582df24d302c">daisysp::Particle</a>
+, <a class="el" href="classdaisysp_1_1_phaser.html#a3dc0c15cd8cbc6e74ed382e6cebe2baa">daisysp::Phaser</a>
+, <a class="el" href="classdaisysp_1_1_phaser_engine.html#acc6cd69789943bc55583726d64bc0827">daisysp::PhaserEngine</a>
 , <a class="el" href="classdaisysp_1_1_phasor.html#a8a1c7cdcd91f3e57206fb875c0441a73">daisysp::Phasor</a>
 , <a class="el" href="classdaisysp_1_1_pluck.html#a6a515db657a3d4a2a04779c728ba56c4">daisysp::Pluck</a>
 , <a class="el" href="classdaisysp_1_1_resonator.html#ac86debfbf09cf5acf01982a89ebf32e1">daisysp::Resonator</a>
@@ -291,11 +295,15 @@ $(function() {
 : <a class="el" href="classdaisysp_1_1_chorus.html#a95395d461aea21f2a1111fc1da643e86">daisysp::Chorus</a>
 , <a class="el" href="classdaisysp_1_1_chorus_engine.html#a17605ba0ecc6b28f0248e21ba5db240d">daisysp::ChorusEngine</a>
 , <a class="el" href="classdaisysp_1_1_flanger.html#a7962fab0fcbd8ca5580dc24f2a6ebf03">daisysp::Flanger</a>
+, <a class="el" href="classdaisysp_1_1_phaser.html#a5246955a7efcd8bef9ff0cc92fa6d97f">daisysp::Phaser</a>
+, <a class="el" href="classdaisysp_1_1_phaser_engine.html#a0b9ea71b09364b05611e8e0c5367d9ca">daisysp::PhaserEngine</a>
 </li>
 <li>SetLfoFreq()
 : <a class="el" href="classdaisysp_1_1_chorus.html#a24c2f240945e5e51e435b13ebd689fa7">daisysp::Chorus</a>
 , <a class="el" href="classdaisysp_1_1_chorus_engine.html#a317b9f3cc8fc2c8f3a0f807e7d50d42a">daisysp::ChorusEngine</a>
 , <a class="el" href="classdaisysp_1_1_flanger.html#ac6a4ec907eae00f7792a06c0a8cf8b7c">daisysp::Flanger</a>
+, <a class="el" href="classdaisysp_1_1_phaser.html#ab76c6d6e4bba79cf0a88685b64dbba81">daisysp::Phaser</a>
+, <a class="el" href="classdaisysp_1_1_phaser_engine.html#aa3e419646a30bd74315cb2370739d078">daisysp::PhaserEngine</a>
 </li>
 <li>SetLpFreq()
 : <a class="el" href="classdaisysp_1_1_reverb_sc.html#a3111510ebe3d256672b8d70afaacb96c">daisysp::ReverbSc</a>
@@ -327,6 +335,9 @@ $(function() {
 </li>
 <li>SetPhaseShift()
 : <a class="el" href="classdaisysp_1_1_formant_oscillator.html#a8618a695aa35bee36462ab184c91ac13">daisysp::FormantOscillator</a>
+</li>
+<li>SetPoles()
+: <a class="el" href="classdaisysp_1_1_phaser.html#ad57038e29dbaa780632a492cb90100a5">daisysp::Phaser</a>
 </li>
 <li>SetPos()
 : <a class="el" href="classdaisysp_1_1_cross_fade.html#a9d72dc8fe9095705f2573c4ab4c9574d">daisysp::CrossFade</a>
