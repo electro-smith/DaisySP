@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <VisualGDBProjectSettings2 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <ConfigurationName>Debug</ConfigurationName>
+  <ConfigurationName>Release</ConfigurationName>
   <Project xsi:type="com.visualgdb.project.embedded">
     <CustomSourceDirectories>
       <Directories />
@@ -23,7 +23,7 @@
         <Revision>2</Revision>
       </Version>
     </ToolchainID>
-    <ProjectFile>daisysp.vcxproj</ProjectFile>
+    <ProjectFile>fir.vcxproj</ProjectFile>
     <RemoteBuildEnvironment>
       <Records />
     </RemoteBuildEnvironment>
@@ -55,7 +55,7 @@
     <ExtraSettings>
       <HideErrorsInSystemHeaders>true</HideErrorsInSystemHeaders>
       <SupportLightweightReferenceAnalysis>true</SupportLightweightReferenceAnalysis>
-      <CheckForClangFormatFiles xsi:nil="true" />
+      <CheckForClangFormatFiles>true</CheckForClangFormatFiles>
       <FormattingEngine xsi:nil="true" />
     </ExtraSettings>
     <CodeAnalyzerSettings>

@@ -32,6 +32,12 @@
     <Filter Include="Utility">
       <UniqueIdentifier>{9bfd143b-4d91-410d-b99a-3c99131a56fc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Device-specific files">
+      <UniqueIdentifier>{5802c0f8-7f89-43cf-b8b9-87bf82413da3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VisualGDB settings">
+      <UniqueIdentifier>{dcaa4877-93c2-45a8-ba04-3674acdee9e6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Control\adenv.cpp">
@@ -145,7 +151,7 @@
     <ClCompile Include="..\Source\PhysicalModeling\resonator.cpp">
       <Filter>PhysicalModeling</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\PhysicalModeling\string.cpp">
+    <ClCompile Include="..\Source\PhysicalModeling\KarplusString.cpp">
       <Filter>PhysicalModeling</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\PhysicalModeling\stringvoice.cpp">
@@ -195,6 +201,9 @@
     </ClCompile>
     <ClCompile Include="..\Source\Effects\flanger.cpp">
       <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="$(BSP_ROOT)\STM32H7xxxx\StartupFiles\startup_stm32h750xx.c">
+      <Filter>Device-specific files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

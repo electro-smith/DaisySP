@@ -1,0 +1,35 @@
+{
+  "configurations": [
+    {
+      "configFiles": [
+        "interface/stlink.cfg",
+        "target/stm32h7x.cfg"
+      ],
+      "cwd": "${workspaceFolder}",
+      "debuggerArgs": [
+        "-d",
+        "${workspaceRoot}"
+      ],
+      "executable": "${workspaceRoot}/build/fir.elf",
+      "interface": "swd",
+      "name": "Cortex Debug",
+      "openOCDLaunchCommands": [
+        "init",
+        "reset init"
+      ],
+      "preLaunchTask": "build_all_debug",
+      "preRestartCommands": [
+        "load",
+        "enable breakpoint",
+        "monitor reset"
+      ],
+      "request": "launch",
+      "runToMain": true,
+      "servertype": "openocd",
+      "showDevDebugOutput": true,
+      "svdFile": "${workspaceRoot}/.vscode/STM32H750x.svd",
+      "type": "cortex-debug"
+    }
+  ],
+  "version": "0.2.0"
+}

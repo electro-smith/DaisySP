@@ -58,6 +58,7 @@
 #include "Filters/nlfilt.h"
 #include "Filters/svf.h"
 #include "Filters/tone.h"
+#include "Filters/fir.h"
 
 /** Noise Modules */
 #include "Noise/clockednoise.h"

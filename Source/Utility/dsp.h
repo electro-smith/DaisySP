@@ -3,6 +3,9 @@
 #pragma once
 #ifndef DSY_CORE_DSP
 #define DSY_CORE_DSP
+#include <cassert>
+#include <cstdint>
+#include <random>
 #include <cmath>
 
 /** PIs
@@ -13,6 +16,7 @@
 #define DSY_MIN(in, mn) (in < mn ? in : mn)
 #define DSY_MAX(in, mx) (in > mx ? in : mx)
 #define DSY_CLAMP(in, mn, mx) (DSY_MIN(DSY_MAX(in, mn), mx))
+#define DSY_COUNTOF(_arr) (sizeof(_arr) / sizeof(_arr[0]))
 
 namespace daisysp
 {
@@ -259,6 +263,24 @@ inline float soft_saturate(float in, float thresh)
     //                                    + (((val - thresh) / (1.0f - thresh))
     //                                       * ((val - thresh) / (1.0f - thresh))));
 }
+constexpr bool is_power2(uint32_t x)
+{
+    return ((x - 1) & x) == 0;
+}
+constexpr uint32_t get_next_power2(uint32_t x)
+{
+    x--;
+    x |= x >> 1;
+    x |= x >> 2;
+    x |= x >> 4;
+    x |= x >> 8;
+    x |= x >> 16;
+    x++;
+
+    assert(is_power2(x));
+    return x;
+}
+
 } // namespace daisysp
 #endif
 

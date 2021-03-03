@@ -5,9 +5,17 @@
       <Configuration>Debug</Configuration>
       <Platform>VisualGDB</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|VisualGDB">
       <Configuration>Release</Configuration>
       <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -24,6 +32,12 @@
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
     <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
@@ -37,8 +51,8 @@
     <GNUTargetType>StaticLibrary</GNUTargetType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
-    <ToolchainID>com.sysprogs.gnuarm.arm-eabi</ToolchainID>
-    <ToolchainVersion>8.3.1/8.0/r1</ToolchainVersion>
+    <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
+    <ToolchainVersion>9.3.1/9.2.0/r2</ToolchainVersion>
     <GNUTargetType>StaticLibrary</GNUTargetType>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
@@ -62,7 +76,19 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
     <ClCompile>
       <InlineFunctions>true</InlineFunctions>
+      <AdditionalIncludeDirectories>../Source;../Source/Control;../Source/Drums;../Source/Dynamics;../Source/Effects;../Source/Filters;../Source/Noise;../Source/PhysicalModeling;../Source/Synthesis;../Source/Utility;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG=1;RELEASE=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions />
+      <CLanguageStandard />
+      <CPPLanguageStandard />
     </ClCompile>
+    <Link>
+      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LinkerScript />
+      <AdditionalOptions />
+    </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="stm32.props" />
@@ -113,7 +139,7 @@
     <ClCompile Include="..\Source\PhysicalModeling\modalvoice.cpp" />
     <ClCompile Include="..\Source\PhysicalModeling\pluck.cpp" />
     <ClCompile Include="..\Source\PhysicalModeling\resonator.cpp" />
-    <ClCompile Include="..\Source\PhysicalModeling\string.cpp" />
+    <ClCompile Include="..\Source\PhysicalModeling\KarplusString.cpp" />
     <ClCompile Include="..\Source\PhysicalModeling\stringvoice.cpp" />
     <ClCompile Include="..\Source\Synthesis\blosc.cpp" />
     <ClCompile Include="..\Source\Synthesis\fm2.cpp" />
@@ -128,6 +154,7 @@
     <ClCompile Include="..\Source\Utility\jitter.cpp" />
     <ClCompile Include="..\Source\Utility\metro.cpp" />
     <ClCompile Include="..\Source\Utility\port.cpp" />
+    <ClCompile Include="$(BSP_ROOT)\STM32H7xxxx\StartupFiles\startup_stm32h750xx.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Control\adenv.h" />

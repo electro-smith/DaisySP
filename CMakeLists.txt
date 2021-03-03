@@ -94,6 +94,7 @@ Source/Filters/moogladder.h
 Source/Filters/nlfilt.h
 Source/Filters/svf.h
 Source/Filters/tone.h
+Source/Filters/fir.h
 Source/Noise/clockednoise.h
 Source/Noise/dust.h
 Source/Noise/fractal_noise.h

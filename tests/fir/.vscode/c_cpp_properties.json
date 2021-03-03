@@ -1,0 +1,38 @@
+{
+  "configurations": [
+    {
+      "cStandard": "c11",
+      "compilerPath": "arm-none-eabi-g++.exe",
+      "cppStandard": "c++17",
+      "defines": [
+        "_DEBUG",
+        "UNICODE",
+        "_UNICODE"
+      ],
+      "includePath": [
+        "${workspaceFolder}/**",
+        "${workspaceFolder}/../../libdaisy/**",
+        "${workspaceFolder}/../../DaisySP/**"
+      ],
+      "name": "Win32",
+      "windowsSdkVersion": "10.0.17763.0"
+    },
+    {
+      "cStandard": "c11",
+      "compilerPath": "/usr/local/bin/arm-none-eabi-g++",
+      "cppStandard": "c++17",
+      "defines": [
+        "_DEBUG",
+        "UNICODE",
+        "_UNICODE"
+      ],
+      "includePath": [
+        "${workspaceFolder}/**",
+        "${workspaceFolder}/../../libDaisy/**",
+        "${workspaceFolder}/../../DaisySP/**"
+      ],
+      "name": "macOS"
+    }
+  ],
+  "version": 4
+}
