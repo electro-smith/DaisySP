@@ -80,7 +80,7 @@ $(function() {
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span>daisysp</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacedaisysp.html">daisysp</a></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
 <div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_square_noise.html">   24</a></span>&#160;<span class="keyword">class </span><a class="code" href="classdaisysp_1_1_square_noise.html">SquareNoise</a></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
@@ -183,7 +183,7 @@ $(function() {
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <span class="comment">// Apply BPF on the metallic noise.</span></div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="keywordtype">float</span> cutoff = 150.0f / sample_rate_ * SemitonesToRatio(tone_ * 72.0f);</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        cutoff = fclamp(cutoff, 0.0f, 16000.0f / sample_rate_);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        cutoff = <a class="code" href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">fclamp</a>(cutoff, 0.0f, 16000.0f / sample_rate_);</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        noise_coloration_svf_.<a class="code" href="classdaisysp_1_1_svf.html#aa33ba83743431cb02c5fe7bc59b84864">SetFreq</a>(cutoff * sample_rate_);</div>
@@ -196,7 +196,7 @@ $(function() {
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="comment">// add a variable amount of clocked noise to the output of the 6 schmitt</span></div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="comment">// trigger oscillators.</span></div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="keywordtype">float</span> noise_f = f0_ * (16.0f + 16.0f * (1.0f - noisiness_));</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        noise_f       = fclamp(noise_f, 0.0f, 0.5f);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        noise_f       = <a class="code" href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">fclamp</a>(noise_f, 0.0f, 0.5f);</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        noise_clock_ += noise_f;</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        <span class="keywordflow">if</span>(noise_clock_ &gt;= 1.0f)</div>
@@ -224,26 +224,26 @@ $(function() {
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
 <div class="line"><a name="l00208"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_hi_hat.html#ac67041f11b580caa5527705817859bd2">  208</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_hi_hat.html#ac67041f11b580caa5527705817859bd2">SetSustain</a>(<span class="keywordtype">bool</span> sustain) { sustain_ = sustain; }</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
-<div class="line"><a name="l00213"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_hi_hat.html#a26ec219bd240c2ba7e127c40301d8ae7">  213</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_hi_hat.html#a26ec219bd240c2ba7e127c40301d8ae7">SetAccent</a>(<span class="keywordtype">float</span> accent) { accent_ = fclamp(accent, 0.f, 1.f); }</div>
+<div class="line"><a name="l00213"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_hi_hat.html#a26ec219bd240c2ba7e127c40301d8ae7">  213</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_hi_hat.html#a26ec219bd240c2ba7e127c40301d8ae7">SetAccent</a>(<span class="keywordtype">float</span> accent) { accent_ = <a class="code" href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">fclamp</a>(accent, 0.f, 1.f); }</div>
 <div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
 <div class="line"><a name="l00218"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_hi_hat.html#af59896aa8f95b913dad194b60684a94d">  218</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_hi_hat.html#af59896aa8f95b913dad194b60684a94d">SetFreq</a>(<span class="keywordtype">float</span> f0)</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    {</div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        f0 /= sample_rate_;</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        f0_ = fclamp(f0, 0.f, 1.f);</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        f0_ = <a class="code" href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">fclamp</a>(f0, 0.f, 1.f);</div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    }</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
-<div class="line"><a name="l00227"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_hi_hat.html#a9b79a381c43aa9a68f5dda4a7aad7ca2">  227</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_hi_hat.html#a9b79a381c43aa9a68f5dda4a7aad7ca2">SetTone</a>(<span class="keywordtype">float</span> tone) { tone_ = fclamp(tone, 0.f, 1.f); }</div>
+<div class="line"><a name="l00227"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_hi_hat.html#a9b79a381c43aa9a68f5dda4a7aad7ca2">  227</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_hi_hat.html#a9b79a381c43aa9a68f5dda4a7aad7ca2">SetTone</a>(<span class="keywordtype">float</span> tone) { tone_ = <a class="code" href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">fclamp</a>(tone, 0.f, 1.f); }</div>
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
 <div class="line"><a name="l00232"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_hi_hat.html#ad2d05ba5d665007e851cdb91bff7e57c">  232</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_hi_hat.html#ad2d05ba5d665007e851cdb91bff7e57c">SetDecay</a>(<span class="keywordtype">float</span> decay)</div>
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    {</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        decay_ = fmax(decay, 0.f);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        decay_ = <a class="code" href="namespacedaisysp.html#a9385ec4090ae8925d3e3794312db9396">fmax</a>(decay, 0.f);</div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        decay_ *= 1.7;</div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        decay_ -= 1.2;</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    }</div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160; </div>
 <div class="line"><a name="l00242"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_hi_hat.html#a417142b98d9067bdbc1b889e6e54fac2">  242</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_hi_hat.html#a417142b98d9067bdbc1b889e6e54fac2">SetNoisiness</a>(<span class="keywordtype">float</span> noisiness)</div>
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    {</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        noisiness_ = fclamp(noisiness, 0.f, 1.f);</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        noisiness_ = <a class="code" href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">fclamp</a>(noisiness, 0.f, 1.f);</div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        noisiness_ *= noisiness_;</div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    }</div>
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
@@ -290,6 +290,9 @@ $(function() {
 <div class="ttc" id="aclassdaisysp_1_1_svf_html_a77691a23c400bde9ad49702213e5f7af"><div class="ttname"><a href="classdaisysp_1_1_svf.html#a77691a23c400bde9ad49702213e5f7af">daisysp::Svf::High</a></div><div class="ttdeci">float High()</div><div class="ttdef"><b>Definition:</b> svf.h:56</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_svf_html_aa33ba83743431cb02c5fe7bc59b84864"><div class="ttname"><a href="classdaisysp_1_1_svf.html#aa33ba83743431cb02c5fe7bc59b84864">daisysp::Svf::SetFreq</a></div><div class="ttdeci">void SetFreq(float f)</div><div class="ttdef"><b>Definition:</b> svf.cpp:58</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_swing_v_c_a_html"><div class="ttname"><a href="classdaisysp_1_1_swing_v_c_a.html">daisysp::SwingVCA</a></div><div class="ttdoc">Swing type VCA.</div><div class="ttdef"><b>Definition:</b> hihat.h:72</div></div>
+<div class="ttc" id="anamespacedaisysp_html"><div class="ttname"><a href="namespacedaisysp.html">daisysp</a></div><div class="ttdoc">FIR Filter implementation, generic and ARM CMSIS DSP based.</div><div class="ttdef"><b>Definition:</b> adenv.h:8</div></div>
+<div class="ttc" id="anamespacedaisysp_html_a74b876c19ad43dcddf78e89199ecc5ef"><div class="ttname"><a href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">daisysp::fclamp</a></div><div class="ttdeci">float fclamp(float in, float min, float max)</div><div class="ttdef"><b>Definition:</b> dsp.h:56</div></div>
+<div class="ttc" id="anamespacedaisysp_html_a9385ec4090ae8925d3e3794312db9396"><div class="ttname"><a href="namespacedaisysp.html#a9385ec4090ae8925d3e3794312db9396">daisysp::fmax</a></div><div class="ttdeci">float fmax(float a, float b)</div><div class="ttdef"><b>Definition:</b> dsp.h:32</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

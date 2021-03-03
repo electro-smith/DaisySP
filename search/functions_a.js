@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['read_415',['Read',['../classdaisysp_1_1_delay_line.html#a3b62b2d3ce68171af175cc8341de0ee4',1,'daisysp::DelayLine::Read() const'],['../classdaisysp_1_1_delay_line.html#a4cc892cc423c27580d95c97e68872870',1,'daisysp::DelayLine::Read(float delay) const']]],
-  ['reset_416',['Reset',['../classdaisysp_1_1_string.html#aff74c81c76a411af96ae223a01c31a1a',1,'daisysp::String::Reset()'],['../classdaisysp_1_1_string_voice.html#a18b1edf0410ce1bd3369c2196cdbdc47',1,'daisysp::StringVoice::Reset()'],['../classdaisysp_1_1_bl_osc.html#a52531ea2a4258980106074359043803c',1,'daisysp::BlOsc::Reset()'],['../classdaisysp_1_1_fm2.html#a75de7cf49af12822586a27140ad34d78',1,'daisysp::Fm2::Reset()'],['../classdaisysp_1_1_oscillator.html#a7e15e57ee6ade915737273329c9216ff',1,'daisysp::Oscillator::Reset()'],['../classdaisysp_1_1_delay_line.html#a94bd211eb28ec2bf7cc4a3b1aa12816a',1,'daisysp::DelayLine::Reset()'],['../classdaisysp_1_1_metro.html#a8771aabed09f231ba97cf7a4f7736a53',1,'daisysp::Metro::Reset()']]]
+  ['nextblepsample_447',['NextBlepSample',['../namespacedaisysp.html#ac0603ebc575fdb61fe84185ba61226df',1,'daisysp']]],
+  ['nextintegratedblepsample_448',['NextIntegratedBlepSample',['../namespacedaisysp.html#a7652b10e090527e3830f89ade7bd2e20',1,'daisysp']]],
+  ['notch_449',['Notch',['../classdaisysp_1_1_svf.html#ac21096bb09e2e01eb223986cbb293a49',1,'daisysp::Svf']]]
 ];

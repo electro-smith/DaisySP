@@ -77,7 +77,7 @@ $(function() {
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;Utility/dsp.h&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span>daisysp</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacedaisysp.html">daisysp</a></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
 <div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_dust.html">   23</a></span>&#160;<span class="keyword">class </span><a class="code" href="classdaisysp_1_1_dust.html">Dust</a></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
@@ -100,7 +100,7 @@ $(function() {
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> SetDensity(<span class="keywordtype">float</span> density)</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        density_ = fclamp(density, 0.f, 1.f);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        density_ = <a class="code" href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">fclamp</a>(density, 0.f, 1.f);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        density_ = density_ * .3f;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
@@ -112,6 +112,8 @@ $(function() {
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassdaisysp_1_1_dust_html"><div class="ttname"><a href="classdaisysp_1_1_dust.html">daisysp::Dust</a></div><div class="ttdoc">Dust Module.</div><div class="ttdef"><b>Definition:</b> dust.h:24</div></div>
+<div class="ttc" id="anamespacedaisysp_html"><div class="ttname"><a href="namespacedaisysp.html">daisysp</a></div><div class="ttdoc">FIR Filter implementation, generic and ARM CMSIS DSP based.</div><div class="ttdef"><b>Definition:</b> adenv.h:8</div></div>
+<div class="ttc" id="anamespacedaisysp_html_a74b876c19ad43dcddf78e89199ecc5ef"><div class="ttname"><a href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">daisysp::fclamp</a></div><div class="ttdeci">float fclamp(float in, float min, float max)</div><div class="ttdef"><b>Definition:</b> dsp.h:56</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

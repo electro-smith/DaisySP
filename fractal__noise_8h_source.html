@@ -76,7 +76,7 @@ $(function() {
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>daisysp</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacedaisysp.html">daisysp</a></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keywordtype">int</span> order&gt;</div>
 <div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_fractal_random_generator.html">   24</a></span>&#160;<span class="keyword">class </span><a class="code" href="classdaisysp_1_1_fractal_random_generator.html">FractalRandomGenerator</a></div>
@@ -114,9 +114,9 @@ $(function() {
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">return</span> sum;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_fractal_random_generator.html#a409eab6688c32db5b38e69b8f2ad8cb1">   66</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_fractal_random_generator.html#a409eab6688c32db5b38e69b8f2ad8cb1">SetFreq</a>(<span class="keywordtype">float</span> freq) { frequency_ = fclamp(freq, 0.f, sample_rate_); }</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_fractal_random_generator.html#a409eab6688c32db5b38e69b8f2ad8cb1">   66</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_fractal_random_generator.html#a409eab6688c32db5b38e69b8f2ad8cb1">SetFreq</a>(<span class="keywordtype">float</span> freq) { frequency_ = <a class="code" href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">fclamp</a>(freq, 0.f, sample_rate_); }</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_fractal_random_generator.html#a6cee28cdb1fc565477fb29ed239fe979">   71</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_fractal_random_generator.html#a6cee28cdb1fc565477fb29ed239fe979">SetColor</a>(<span class="keywordtype">float</span> color) { decay_ = fclamp(color, 0.f, 1.f); }</div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_fractal_random_generator.html#a6cee28cdb1fc565477fb29ed239fe979">   71</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_fractal_random_generator.html#a6cee28cdb1fc565477fb29ed239fe979">SetColor</a>(<span class="keywordtype">float</span> color) { decay_ = <a class="code" href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">fclamp</a>(color, 0.f, 1.f); }</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">float</span> sample_rate_;</div>
@@ -133,6 +133,8 @@ $(function() {
 <div class="ttc" id="aclassdaisysp_1_1_fractal_random_generator_html_a409eab6688c32db5b38e69b8f2ad8cb1"><div class="ttname"><a href="classdaisysp_1_1_fractal_random_generator.html#a409eab6688c32db5b38e69b8f2ad8cb1">daisysp::FractalRandomGenerator::SetFreq</a></div><div class="ttdeci">void SetFreq(float freq)</div><div class="ttdef"><b>Definition:</b> fractal_noise.h:66</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_fractal_random_generator_html_a6cee28cdb1fc565477fb29ed239fe979"><div class="ttname"><a href="classdaisysp_1_1_fractal_random_generator.html#a6cee28cdb1fc565477fb29ed239fe979">daisysp::FractalRandomGenerator::SetColor</a></div><div class="ttdeci">void SetColor(float color)</div><div class="ttdef"><b>Definition:</b> fractal_noise.h:71</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_fractal_random_generator_html_af74a71015d0e11f794e8d7a525ca76ee"><div class="ttname"><a href="classdaisysp_1_1_fractal_random_generator.html#af74a71015d0e11f794e8d7a525ca76ee">daisysp::FractalRandomGenerator::Init</a></div><div class="ttdeci">void Init(float sample_rate)</div><div class="ttdef"><b>Definition:</b> fractal_noise.h:33</div></div>
+<div class="ttc" id="anamespacedaisysp_html"><div class="ttname"><a href="namespacedaisysp.html">daisysp</a></div><div class="ttdoc">FIR Filter implementation, generic and ARM CMSIS DSP based.</div><div class="ttdef"><b>Definition:</b> adenv.h:8</div></div>
+<div class="ttc" id="anamespacedaisysp_html_a74b876c19ad43dcddf78e89199ecc5ef"><div class="ttname"><a href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">daisysp::fclamp</a></div><div class="ttdeci">float fclamp(float in, float min, float max)</div><div class="ttdef"><b>Definition:</b> dsp.h:56</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

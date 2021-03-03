@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['waveforms_525',['Waveforms',['../classdaisysp_1_1_bl_osc.html#abd190108d777a64e9aec2b5508a89b1a',1,'daisysp::BlOsc']]]
+  ['adenvsegment_573',['AdEnvSegment',['../namespacedaisysp.html#a0634cf6e0668bb0545f9d3ec79a0dd3d',1,'daisysp']]]
 ];

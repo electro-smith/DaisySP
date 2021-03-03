@@ -1,26 +1,7 @@
 var searchData=
 [
-  ['getamp_379',['GetAmp',['../classdaisysp_1_1_pluck.html#ad1b88c8d1a8ee3391b4a77cba33dfdf9',1,'daisysp::Pluck']]],
-  ['getattack_380',['GetAttack',['../classdaisysp_1_1_compressor.html#a1b1bff006e2d0664bfa00bbb2409713a',1,'daisysp::Compressor']]],
-  ['getaux_381',['GetAux',['../classdaisysp_1_1_modal_voice.html#aaa3d7ab101070694141d4abced4c8ba4',1,'daisysp::ModalVoice::GetAux()'],['../classdaisysp_1_1_string_voice.html#a23d33362eb983b48a06afab35b5be03f',1,'daisysp::StringVoice::GetAux()']]],
-  ['getbitcrushfactor_382',['GetBitcrushFactor',['../classdaisysp_1_1_decimator.html#a3a3397a764e5018ae75c76830e89e5e6',1,'daisysp::Decimator']]],
-  ['getcurrentsegment_383',['GetCurrentSegment',['../classdaisysp_1_1_ad_env.html#a5badc535373d34b7f72dfcb105c80104',1,'daisysp::AdEnv::GetCurrentSegment()'],['../classdaisysp_1_1_adsr.html#a89e6d1c659da95a870c3ff453b2e2838',1,'daisysp::Adsr::GetCurrentSegment()']]],
-  ['getcurve_384',['GetCurve',['../classdaisysp_1_1_cross_fade.html#aec8a2eefe04ad9bccab6481b7d03bfe5',1,'daisysp::CrossFade']]],
-  ['getdamp_385',['GetDamp',['../classdaisysp_1_1_pluck.html#a0a403dc9fb7cafb62177f74ea1836cbb',1,'daisysp::Pluck']]],
-  ['getdecay_386',['GetDecay',['../classdaisysp_1_1_pluck.html#a93b71c8b21385c023ff8b39e3c20b31d',1,'daisysp::Pluck']]],
-  ['getdownsamplefactor_387',['GetDownsampleFactor',['../classdaisysp_1_1_decimator.html#a9adfd7416c2357298538b4e04d7f037a',1,'daisysp::Decimator']]],
-  ['getfreq_388',['GetFreq',['../classdaisysp_1_1_pluck.html#a308e0e1af8e65fe711c2c719c7438ee4',1,'daisysp::Pluck::GetFreq()'],['../classdaisysp_1_1_metro.html#a0ad8f0d693673b464412221f89218709',1,'daisysp::Metro::GetFreq()'],['../classdaisysp_1_1_tone.html#aa2aaa42e5d6c89066e2bd9ed37a1acff',1,'daisysp::Tone::GetFreq()'],['../classdaisysp_1_1_a_tone.html#ae8bfd85e5f20977dead0e12ad884d6a1',1,'daisysp::ATone::GetFreq()'],['../classdaisysp_1_1_phasor.html#adb5da507312fe5b5f4342067a44789a9',1,'daisysp::Phasor::GetFreq()']]],
-  ['getgain_389',['GetGain',['../classdaisysp_1_1_compressor.html#a204af81e9ebaaf430c2b9d4639440599',1,'daisysp::Compressor']]],
-  ['gethtime_390',['GetHtime',['../classdaisysp_1_1_port.html#ad5f402b9c613975487a039cf0f42c1ce',1,'daisysp::Port']]],
-  ['getindex_391',['GetIndex',['../classdaisysp_1_1_fm2.html#a2b80f9662af7538bfec62ab4b45ab6b0',1,'daisysp::Fm2']]],
-  ['getleft_392',['GetLeft',['../classdaisysp_1_1_chorus.html#aceb9920f3c710fcf1094184830be05cb',1,'daisysp::Chorus']]],
-  ['getmakeup_393',['GetMakeup',['../classdaisysp_1_1_compressor.html#a8c833b63461f2aaaa86ed34e35343394',1,'daisysp::Compressor']]],
-  ['getmode_394',['GetMode',['../classdaisysp_1_1_pluck.html#a6817009ba135c6d4aa9fff9edef3b91c',1,'daisysp::Pluck']]],
-  ['getnoise_395',['GetNoise',['../classdaisysp_1_1_particle.html#a9579601e16a45b74211651ac73886ac4',1,'daisysp::Particle']]],
-  ['getpos_396',['GetPos',['../classdaisysp_1_1_cross_fade.html#a16cda819b5ef80c0b73743e0d15df3ca',1,'daisysp::CrossFade']]],
-  ['getratio_397',['GetRatio',['../classdaisysp_1_1_compressor.html#a045f3b6e43eff6534f983d6d162d58ae',1,'daisysp::Compressor']]],
-  ['getrelease_398',['GetRelease',['../classdaisysp_1_1_compressor.html#a31a25cca409fa27e18baa705674b07aa',1,'daisysp::Compressor']]],
-  ['getright_399',['GetRight',['../classdaisysp_1_1_chorus.html#aaa1be61c295d376a0e2bf4f90cb66906',1,'daisysp::Chorus']]],
-  ['getthreshold_400',['GetThreshold',['../classdaisysp_1_1_compressor.html#a5de29ca1a67b8b7994f52bebace517c1',1,'daisysp::Compressor']]],
-  ['getvalue_401',['GetValue',['../classdaisysp_1_1_ad_env.html#a66ac7b5f2537c74cc8cbe24314b171c6',1,'daisysp::AdEnv']]]
+  ['fastpower_410',['fastpower',['../namespacedaisysp.html#a207e7a0a645f2db54efb6945e1942ce3',1,'daisysp']]],
+  ['fclamp_411',['fclamp',['../namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef',1,'daisysp']]],
+  ['fmax_412',['fmax',['../namespacedaisysp.html#a9385ec4090ae8925d3e3794312db9396',1,'daisysp']]],
+  ['fonepole_413',['fonepole',['../namespacedaisysp.html#afc3a0874a07573c3149e0c053c11b8d7',1,'daisysp']]]
 ];

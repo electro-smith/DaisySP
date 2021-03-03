@@ -78,7 +78,7 @@ $(function() {
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;PhysicalModeling/pluck.h&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;Utility/dcblock.h&quot;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>daisysp</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacedaisysp.html">daisysp</a></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">size_t</span> num_voices&gt;</div>
 <div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_poly_pluck.html">   23</a></span>&#160;<span class="keyword">class </span><a class="code" href="classdaisysp_1_1_poly_pluck.html">PolyPluck</a></div>
@@ -112,7 +112,7 @@ $(function() {
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            plk_[active_voice_].<a class="code" href="classdaisysp_1_1_pluck.html#ae02415f83c27dd43fad37e091873d461">SetDecay</a>(p_decay_);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            plk_[active_voice_].<a class="code" href="classdaisysp_1_1_pluck.html#a0dc174a312ee4e07211edd98d953d8fe">SetAmp</a>(0.25f);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        }</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        plk_[active_voice_].<a class="code" href="classdaisysp_1_1_pluck.html#a6a515db657a3d4a2a04779c728ba56c4">SetFreq</a>(mtof(note));</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        plk_[active_voice_].<a class="code" href="classdaisysp_1_1_pluck.html#a6a515db657a3d4a2a04779c728ba56c4">SetFreq</a>(<a class="code" href="namespacedaisysp.html#a353be6c7e206ed974a25148e3f13dbab">mtof</a>(note));</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0; i &lt; num_voices; i++)</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        {</div>
@@ -151,6 +151,8 @@ $(function() {
 <div class="ttc" id="aclassdaisysp_1_1_poly_pluck_html_a3efd30bb37e52094ee8bb551e1241ad2"><div class="ttname"><a href="classdaisysp_1_1_poly_pluck.html#a3efd30bb37e52094ee8bb551e1241ad2">daisysp::PolyPluck::Process</a></div><div class="ttdeci">float Process(float &amp;trig, float note)</div><div class="ttdef"><b>Definition:</b> PolyPluck.h:50</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_poly_pluck_html_a5c778c8d497dec7ecc913c49e690ae17"><div class="ttname"><a href="classdaisysp_1_1_poly_pluck.html#a5c778c8d497dec7ecc913c49e690ae17">daisysp::PolyPluck::Init</a></div><div class="ttdeci">void Init(float sample_rate)</div><div class="ttdef"><b>Definition:</b> PolyPluck.h:29</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_poly_pluck_html_a5d40ba764db5d806b4abeb96f9952907"><div class="ttname"><a href="classdaisysp_1_1_poly_pluck.html#a5d40ba764db5d806b4abeb96f9952907">daisysp::PolyPluck::SetDecay</a></div><div class="ttdeci">void SetDecay(float p)</div><div class="ttdef"><b>Definition:</b> PolyPluck.h:78</div></div>
+<div class="ttc" id="anamespacedaisysp_html"><div class="ttname"><a href="namespacedaisysp.html">daisysp</a></div><div class="ttdoc">FIR Filter implementation, generic and ARM CMSIS DSP based.</div><div class="ttdef"><b>Definition:</b> adenv.h:8</div></div>
+<div class="ttc" id="anamespacedaisysp_html_a353be6c7e206ed974a25148e3f13dbab"><div class="ttname"><a href="namespacedaisysp.html#a353be6c7e206ed974a25148e3f13dbab">daisysp::mtof</a></div><div class="ttdeci">float mtof(float m)</div><div class="ttdef"><b>Definition:</b> dsp.h:123</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
