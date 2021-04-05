@@ -115,6 +115,21 @@ CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(SYNTHESIS_MOD_DIR)/$(SYNTHESIS_
 CPP_SOURCES += $(addsuffix .cpp, $(MODULE_DIR)/$(UTILITY_MOD_DIR)/$(UTILITY_MODULES))
 
 ######################################
+# OS
+######################################
+ifeq ($(OS),Windows_NT)
+	GCC_PATH = ../DaisyToolchain/windows/bin
+else
+    UNAME_S := $(shell uname -s)
+    ifeq ($(UNAME_S),Linux)
+		# May be needed later
+    endif
+    ifeq ($(UNAME_S),Darwin)
+		# Also may be needed later
+    endif
+endif
+
+######################################
 # building variables
 ######################################
 # debug build?
