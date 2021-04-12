@@ -27,7 +27,7 @@ else()
 endif()
 
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
-set(OBJECT_GEN_FLAGS "-mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -fno-builtin -fno-exceptions -DSTM32H750xx -Wall -Werror -ffunction-sections -fdata-sections -fomit-frame-pointer -finline-functions")
+set(OBJECT_GEN_FLAGS "-mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -fno-builtin -fno-exceptions -Wall -Werror -ffunction-sections -fdata-sections -fomit-frame-pointer -finline-functions")
 set(CMAKE_C_FLAGS   "${OBJECT_GEN_FLAGS} -std=gnu99 " CACHE INTERNAL "C Compiler options")
 set(CMAKE_CXX_FLAGS "${OBJECT_GEN_FLAGS} " CACHE INTERNAL "C++ Compiler options")
 set(CMAKE_ASM_FLAGS "${OBJECT_GEN_FLAGS} -x assembler-with-cpp " CACHE INTERNAL "ASM Compiler options")
@@ -45,6 +45,7 @@ set(CMAKE_EXE_LINKER_FLAGS "-Wl,--gc-sections --specs=nano.specs --specs=nosys.s
 # Options for DEBUG build
 # -Og   Enables optimizations that do not interfere with debugging.
 # -g    Produce debugging information in the operating system’s native format.
+add_compile_definitions(STM32H750xx)
 set(CMAKE_C_FLAGS_DEBUG "-Og -g" CACHE INTERNAL "C Compiler options for debug build type")
 set(CMAKE_CXX_FLAGS_DEBUG "-Og -g" CACHE INTERNAL "C++ Compiler options for debug build type")
 set(CMAKE_ASM_FLAGS_DEBUG "-g" CACHE INTERNAL "ASM Compiler options for debug build type")

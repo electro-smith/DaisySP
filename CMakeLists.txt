@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.14)
 
 project(DAISYSP VERSION 0.0.1)
 
-set(SOURCE_FILES 
+add_library(DaisySP STATIC 
 Source/Control/adenv.cpp
 Source/Control/adsr.cpp
 Source/Control/line.cpp
@@ -59,10 +59,6 @@ Source/Utility/jitter.cpp
 Source/Utility/metro.cpp
 Source/Utility/port.cpp
 )
-
-add_library(DaisySP STATIC 
-    ${SOURCE_FILES} 
-    )
 
 set_target_properties(DaisySP PROPERTIES PUBLIC
   CXX_STANDARD 14 
