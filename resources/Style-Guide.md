@@ -5,7 +5,6 @@
     - [underscore separators](#underscore-separators)
     - [tab size](#tab-size)
     - [allman braces](#allman-braces)
-    - [using const reference arguments\*](#using-const-references-for-arguments)
     - [constant names](#constant-names)
     - [trailing underscores for private member variables](#trailing-underscores-for-private-member-variables)
     - [inline markdown comments](#inline-markdown-comments)
@@ -52,8 +51,6 @@ float foo_;
 consts, whether class members or not, should be prefixed with, 'k' and use capital letters at the beginning of each word.
 
 For example, `float kConstantName = 1.542` 
-
-
 
 ### enums
 
@@ -127,22 +124,6 @@ void do_something() {
 this permits easier copy/paste when creating new modules, but also makes visual levels of indentation a little easier to see while working/reading code.
 
 When used with if statements this also makes it very easy to comment out different logic statements, or even remove them for testing without having to worry about moving braces around.
-
-### using const references for arguments
-
-```C++
-inline float Process(const float &in) { return DoSomething(in * 0.5f); }
-```
-
-When an argument can be expected to come from a stored value (variable, etc.) a const reference should be used.
-
-When it makes sense, pass values by reference, and to ensure that the implementation cannot change the value coming in, they should be passed in with the const qualifier. As a result any attempt to unintentionally change the input value will cause an error during compilation.
-
-Previously we had this rule primarily for setters, but on simple parameters its common to enter a value directly (with no memory address), which is not possible when passing by reference.
-
-Process() functions that operate on an input are a good example of when to use this.
-
-**This is a new rule, and there are several modules that don't follow it exactly right now.**
 
 
 ### inline markdown comments
