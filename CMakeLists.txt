@@ -1,4 +1,3 @@
-
 cmake_minimum_required(VERSION 3.14)
 
 project(DAISYSP VERSION 0.0.1)
@@ -66,10 +65,8 @@ set_target_properties(DaisySP PROPERTIES PUBLIC
   )
 
 target_include_directories(DaisySP PUBLIC
-  "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Source>"
-  "$<INSTALL_INTERFACE:Source>")
-
-target_include_directories(DaisySP PRIVATE
+  ${CMAKE_CURRENT_LIST_DIR}/Source
+  PRIVATE
   "Source"
   "Source/Control"
   "Source/Drums"
