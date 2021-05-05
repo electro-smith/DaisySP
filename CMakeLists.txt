@@ -24,6 +24,7 @@ Source/Effects/flanger.cpp
 Source/Effects/fold.cpp
 Source/Effects/overdrive.cpp
 Source/Effects/reverbsc.cpp
+Source/Effects/phaser.cpp
 Source/Effects/sampleratereducer.cpp
 Source/Effects/tremolo.cpp
 Source/Filters/allpass.cpp
@@ -59,10 +60,12 @@ Source/Utility/metro.cpp
 Source/Utility/port.cpp
 )
 
+
 set_target_properties(DaisySP PROPERTIES PUBLIC
   CXX_STANDARD 14 
   CXX_STANDARD_REQUIRED
   )
+
 
 target_include_directories(DaisySP PUBLIC
   ${CMAKE_CURRENT_LIST_DIR}/Source
