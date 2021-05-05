@@ -25,6 +25,7 @@ Source/Effects/flanger.cpp
 Source/Effects/fold.cpp
 Source/Effects/overdrive.cpp
 Source/Effects/reverbsc.cpp
+Source/Effects/phaser.cpp
 Source/Effects/sampleratereducer.cpp
 Source/Effects/tremolo.cpp
 Source/Filters/allpass.cpp
@@ -82,6 +83,7 @@ Source/Effects/flanger.h
 Source/Effects/fold.h
 Source/Effects/overdrive.h
 Source/Effects/reverbsc.h
+Source/Effects/phaser.h
 Source/Effects/pitchshifter.h
 Source/Effects/sampleratereducer.h
 Source/Effects/tremolo.h
