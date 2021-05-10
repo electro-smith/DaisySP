@@ -206,7 +206,7 @@ inline void TestFloat(float &x, float y = 0.f)
 {
     if(!std::isnormal(x) && x != 0)
     {
-#ifdef DEBUG
+#ifdef __arm__ && DEBUG
         asm("bkpt 255");
 #else
         x = y;
