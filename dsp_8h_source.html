@@ -235,7 +235,7 @@ $(function() {
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;{</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keywordflow">if</span>(!std::isnormal(x) &amp;&amp; x != 0)</div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    {</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="preprocessor">#if defined(__arm__) &amp;&amp; defined(DEBUG)</span></div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        <span class="keyword">asm</span>(<span class="stringliteral">&quot;bkpt 255&quot;</span>);</div>
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="preprocessor">#else</span></div>
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        x = y;</div>
