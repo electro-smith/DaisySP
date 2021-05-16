@@ -14,6 +14,13 @@ void Adsr::Init(float sample_rate, int blockSize)
     x_          = 0.0f;
 }
 
+void Adsr::Retrigger(bool hard)
+{
+    mode_ = ADSR_SEG_ATTACK;
+    if(hard)
+        x_ = 0.f;
+}
+
 void
 Adsr::SetTime(int seg, float time)
 {
