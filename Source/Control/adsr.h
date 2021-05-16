@@ -73,7 +73,7 @@ class Adsr
     float   sus_level_,
             seg_time_[ADSR_SEG_LAST]{0.f},
             seg_D0_[ADSR_SEG_LAST]{0.f},
-            a_, b_, y_, x_;
+            x_;
     int     sample_rate_;
     uint8_t mode_;
 };

@@ -6,15 +6,10 @@ using namespace daisysp;
 
 void Adsr::Init(float sample_rate, int blockSize)
 {
-    sus_                 = 0.7f;
+    sample_rate_ = sample_rate / blockSize;
     SetTime(ADSR_SEG_ATTACK,  0.1f);
     SetTime(ADSR_SEG_DECAY,   0.1f);
     SetTime(ADSR_SEG_RELEASE, 0.1f);
-    a_           = 0.0f;
-    b_           = 0.0f;
-    x_           = 0.0f;
-    y_           = 0.0f;
-    sample_rate_ = sample_rate / blockSize;
     sus_level_  = 0.7f;
     x_          = 0.0f;
 }
