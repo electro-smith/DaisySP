@@ -27,8 +27,13 @@ Adsr::SetTime(int seg, float time)
     if(seg_time_[seg] != time)
     {
         seg_time_[seg] = time;
-        float target = (seg == ADSR_SEG_ATTACK)? 0.5 : (1./M_E);
-        seg_D0_  [seg] = 1.f - expf(logf(target) / (time * sample_rate_));
+        if(time > 0.f)
+        {
+            float target = (seg == ADSR_SEG_ATTACK)? 0.5 : (1./M_E);
+            seg_D0_  [seg] = 1.f - expf(logf(target) / (time * sample_rate_));
+        }
+        else
+            seg_D0_  [seg] = 1.f; // instant change
     }
 }
 
