@@ -53,9 +53,13 @@ class Adsr
     */
     inline void SetTime(int seg, float time);
     /** Sustain level
-        \param sus_level - sets sustain level
+        \param sus_level - sets sustain level, 0...1.0
     */
-    inline void SetSustainLevel(float sus_level) { sus_ = sus_level; }
+    inline void SetSustainLevel(float sus_level)
+    {
+        sus_level = (sus_level < 0.f)? 0.f : (sus_level > 1.f)? 1.f : sus_level;
+        sus_level_ = sus_level;
+    }
     /** get the current envelope segment
         \return the segment of the envelope that the phase is currently located in.
     */
@@ -66,7 +70,7 @@ class Adsr
     inline bool IsRunning() const { return mode_ != ADSR_SEG_IDLE; }
 
   private:
-    float   sus_,
+    float   sus_level_,
             seg_time_[ADSR_SEG_LAST]{0.f},
             seg_D0_[ADSR_SEG_LAST]{0.f},
             a_, b_, y_, x_;

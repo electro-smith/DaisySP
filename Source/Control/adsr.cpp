@@ -15,6 +15,8 @@ void Adsr::Init(float sample_rate, int blockSize)
     x_           = 0.0f;
     y_           = 0.0f;
     sample_rate_ = sample_rate / blockSize;
+    sus_level_  = 0.7f;
+    x_          = 0.0f;
 }
 
 void
@@ -39,7 +41,7 @@ float Adsr::Process(bool gate)
         mode_ = ADSR_SEG_RELEASE;
 
     float D0(seg_D0_[mode_]);
-    float target = mode_ == ADSR_SEG_DECAY? sus_ : - 0.1f;
+    float target = mode_ == ADSR_SEG_DECAY? sus_level_ : - 0.1f;
     switch(mode_)
     {
         case ADSR_SEG_IDLE: out = 0.0f; break;
