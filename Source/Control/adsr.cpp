@@ -17,17 +17,28 @@ float Adsr::AdsrFilter()
 
 void Adsr::Init(float sample_rate, int blockSize)
 {
-    seg_time_[ADSR_SEG_ATTACK]  = 0.1f;
-    seg_time_[ADSR_SEG_DECAY]   = 0.1f;
-    sus_                        = 0.7f;
-    seg_time_[ADSR_SEG_RELEASE] = 0.1f;
-    //timer_ = 0;
+    sus_                 = 0.7f;
+    SetTime(ADSR_SEG_ATTACK,  0.1f);
+    SetTime(ADSR_SEG_DECAY,   0.1f);
+    SetTime(ADSR_SEG_RELEASE, 0.1f);
     a_           = 0.0f;
     b_           = 0.0f;
     x_           = 0.0f;
     y_           = 0.0f;
     sample_rate_ = sample_rate / blockSize;
 }
+
+void
+Adsr::SetTime(int seg, float time)
+{
+    if(seg_time_[seg] != time)
+    {
+        seg_time_[seg] = time;
+        float target = (seg == ADSR_SEG_ATTACK)? 0.5 : (1./M_E);
+        seg_D0_  [seg] = expf(logf(target) / (time * sample_rate_));
+    }
+}
+
 
 float Adsr::Process(bool gate)
 {

@@ -51,7 +51,7 @@ class Adsr
     /** Sets time
         Set time per segment in seconds
     */
-    inline void SetTime(int seg, float time) { seg_time_[seg] = time; }
+    inline void SetTime(int seg, float time);
     /** Sustain level
         \param sus_level - sets sustain level
     */
@@ -66,7 +66,10 @@ class Adsr
     inline bool IsRunning() const { return mode_ != ADSR_SEG_IDLE; }
 
   private:
-    float   sus_, seg_time_[ADSR_SEG_LAST], a_, b_, y_, x_;
+    float   sus_,
+            seg_time_[ADSR_SEG_LAST]{0.f},
+            seg_D0_[ADSR_SEG_LAST]{0.f},
+            a_, b_, y_, x_;
     int     sample_rate_;
     uint8_t mode_;
     float   Tau2Pole(float tau);
