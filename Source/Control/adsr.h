@@ -72,8 +72,6 @@ class Adsr
             a_, b_, y_, x_;
     int     sample_rate_;
     uint8_t mode_;
-    float   Tau2Pole(float tau);
-    float   AdsrFilter();
 };
 } // namespace daisysp
 #endif

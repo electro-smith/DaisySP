@@ -3,17 +3,6 @@
 
 using namespace daisysp;
 
-float Adsr::Tau2Pole(float tau)
-{
-    return expf(-1.0f / (tau * sample_rate_));
-}
-
-float Adsr::AdsrFilter()
-{
-    y_ = b_ * x_ + a_ * y_;
-    return y_;
-}
-
 
 void Adsr::Init(float sample_rate, int blockSize)
 {
