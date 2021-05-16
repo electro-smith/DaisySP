@@ -35,54 +35,45 @@ Adsr::SetTime(int seg, float time)
     {
         seg_time_[seg] = time;
         float target = (seg == ADSR_SEG_ATTACK)? 0.5 : (1./M_E);
-        seg_D0_  [seg] = expf(logf(target) / (time * sample_rate_));
+        seg_D0_  [seg] = 1.f - expf(logf(target) / (time * sample_rate_));
     }
 }
 
 
 float Adsr::Process(bool gate)
 {
-    float pole, out;
-    out = 0.0f;
+    float out = 0.0f;
 
     if(gate && mode_ != ADSR_SEG_DECAY)
-    {
         mode_ = ADSR_SEG_ATTACK;
-        //timer_ = 0;
-        pole      = Tau2Pole(seg_time_[ADSR_SEG_ATTACK] * 0.6f);
-        a_        = pole;
-        b_        = 1.0f - pole;
-    }
     else if(!gate && mode_ != ADSR_SEG_IDLE)
-    {
         mode_ = ADSR_SEG_RELEASE;
-        pole  = Tau2Pole(seg_time_[ADSR_SEG_RELEASE]);
-        a_    = pole;
-        b_    = 1.0f - pole;
-    }
 
-    x_    = (int)gate;
-
+    float D0(seg_D0_[mode_]);
+    float target = mode_ == ADSR_SEG_DECAY? sus_ : - 0.1f;
     switch(mode_)
     {
         case ADSR_SEG_IDLE: out = 0.0f; break;
         case ADSR_SEG_ATTACK:
-            out = AdsrFilter();
-
-            if(out > .99f)
+            x_ += D0 * (2.f - x_);
+            out = x_;
+            if(out > 1.f)
             {
+                x_  =
+                out = 1.f;
                 mode_ = ADSR_SEG_DECAY;
-                pole  = Tau2Pole(seg_time_[ADSR_SEG_DECAY]);
-                a_    = pole;
-                b_    = 1.0f - pole;
             }
             break;
         case ADSR_SEG_DECAY:
         case ADSR_SEG_RELEASE:
-            x_ *= sus_;
-            out = AdsrFilter();
-            if(out <= 0.01f)
+            x_ += D0 * (target - x_);
+            out = x_;
+            if(out <= 0.0f)
+            {
+                x_  =
+                out = 0.f;
                 mode_ = ADSR_SEG_IDLE;
+            }
         default: break;
     }
     return out;
