@@ -26,8 +26,6 @@ void Adsr::Init(float sample_rate, int blockSize)
     b_           = 0.0f;
     x_           = 0.0f;
     y_           = 0.0f;
-    prev_        = 0.0f;
-    atk_time_    = seg_time_[ADSR_SEG_ATTACK] * sample_rate;
     sample_rate_ = sample_rate / blockSize;
 }
 
@@ -41,7 +39,6 @@ float Adsr::Process(bool gate)
         mode_ = ADSR_SEG_ATTACK;
         //timer_ = 0;
         pole      = Tau2Pole(seg_time_[ADSR_SEG_ATTACK] * 0.6f);
-        atk_time_ = seg_time_[ADSR_SEG_ATTACK] * sample_rate_;
         a_        = pole;
         b_        = 1.0f - pole;
     }
@@ -54,7 +51,6 @@ float Adsr::Process(bool gate)
     }
 
     x_    = (int)gate;
-    prev_ = (int)gate;
 
     switch(mode_)
     {
