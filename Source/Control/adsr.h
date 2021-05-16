@@ -40,7 +40,7 @@ class Adsr
     /** Initializes the Adsr module.
         \param sample_rate - The sample rate of the audio engine being run. 
     */
-    void Init(float sample_rate);
+    void Init(float sample_rate, int blockSize = 1);
 
 
     /** Processes one sample through the filter and returns one sample.

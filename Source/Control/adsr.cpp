@@ -15,7 +15,7 @@ float Adsr::AdsrFilter()
 }
 
 
-void Adsr::Init(float sample_rate)
+void Adsr::Init(float sample_rate, int blockSize)
 {
     seg_time_[ADSR_SEG_ATTACK]  = 0.1f;
     seg_time_[ADSR_SEG_DECAY]   = 0.1f;
@@ -28,7 +28,7 @@ void Adsr::Init(float sample_rate)
     y_           = 0.0f;
     prev_        = 0.0f;
     atk_time_    = seg_time_[ADSR_SEG_ATTACK] * sample_rate;
-    sample_rate_ = sample_rate;
+    sample_rate_ = sample_rate / blockSize;
 }
 
 float Adsr::Process(bool gate)
