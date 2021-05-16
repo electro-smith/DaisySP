@@ -35,7 +35,7 @@ Ported from Soundpipe by Ben Sergentanis, May 2020
 class Adsr
 {
   public:
-    Adsr() {}
+    Adsr () {}
     ~Adsr() {}
     /** Initializes the Adsr module.
         \param sample_rate - The sample rate of the audio engine being run. 
@@ -49,9 +49,11 @@ class Adsr
     
     void  Retrigger(bool hard);
 
+    
     /** Processes one sample through the filter and returns one sample.
         \param gate - trigger the envelope, hold it to sustain 
     */
+    
     float Process(bool gate);
 
     /** Sets time
