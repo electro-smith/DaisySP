@@ -31,6 +31,8 @@ enum
 Original author(s) : Paul Batchelor
 
 Ported from Soundpipe by Ben Sergentanis, May 2020
+ 
+Remake by Steffan DIedrichsen, May 2021
 */
 class Adsr
 {
