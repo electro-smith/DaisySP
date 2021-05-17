@@ -59,7 +59,7 @@ class Adsr
     /** Sets time
         Set time per segment in seconds
     */
-    inline void SetTime(int seg, float time);
+    void SetTime(int seg, float time);
     /** Sustain level
         \param sus_level - sets sustain level, 0...1.0
     */
