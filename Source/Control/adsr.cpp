@@ -68,7 +68,7 @@ float Adsr::Process(bool gate)
         case ADSR_SEG_RELEASE:
             x_ += D0 * (target - x_);
             out = x_;
-            if(out <= 0.0f)
+            if(out < 0.0f)
             {
                 x_  =
                 out = 0.f;
