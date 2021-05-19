@@ -267,7 +267,17 @@ constexpr bool is_power2(uint32_t x)
 {
     return ((x - 1) & x) == 0;
 }
+
+/** Prior to C++14 constexpr functions were required to be a single return statement.
+ *  So this clause guards against that behavior to allow the library, and this function
+ *  to continue to work with C++11.
+ *  The function itself is not currently (12 May 2021) used within the library itself.
+ */
+#if __cplusplus <= 201103L
+inline uint32_t get_next_power2(uint32_t x)
+#else
 constexpr uint32_t get_next_power2(uint32_t x)
+#endif
 {
     x--;
     x |= x >> 1;
