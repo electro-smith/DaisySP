@@ -80,10 +80,9 @@ class Adsr
     inline bool IsRunning() const { return mode_ != ADSR_SEG_IDLE; }
 
   private:
-    float   sus_level_{0.f};
-    float   seg_time_[ADSR_SEG_LAST]{0.f};
-    float   seg_D0_[ADSR_SEG_LAST]{0.f},
-    float   x_{0.f};
+    float sus_level_{0.f};
+    float seg_time_[ADSR_SEG_LAST]{0.f};
+    float seg_D0_[ADSR_SEG_LAST]{0.f}, float x_{0.f};
     int     sample_rate_;
     uint8_t mode_;
 };
