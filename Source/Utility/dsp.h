@@ -274,7 +274,7 @@ constexpr bool is_power2(uint32_t x)
  *  The function itself is not currently (12 May 2021) used within the library itself.
  */
 #if __cplusplus <= 201103L
-uint32_t get_next_power2(uint32_t x)
+inline uint32_t get_next_power2(uint32_t x)
 #else
 constexpr uint32_t get_next_power2(uint32_t x)
 #endif
