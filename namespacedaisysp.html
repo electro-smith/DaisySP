@@ -366,9 +366,8 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>fastlog10f</b> (floa
 <tr class="memitem:af4f7221ac3615d43543a52b9f31e911e"><td class="memItemLeft" align="right" valign="top"><a id="af4f7221ac3615d43543a52b9f31e911e"></a>
 constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_power2</b> (uint32_t x)</td></tr>
 <tr class="separator:af4f7221ac3615d43543a52b9f31e911e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f756449f4854367d3f7bb58867feb01"><td class="memItemLeft" align="right" valign="top"><a id="a4f756449f4854367d3f7bb58867feb01"></a>
-constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_next_power2</b> (uint32_t x)</td></tr>
-<tr class="separator:a4f756449f4854367d3f7bb58867feb01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e100710b82fa96418a7f774e934c5fb"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedaisysp.html#a0e100710b82fa96418a7f774e934c5fb">get_next_power2</a> (uint32_t x)</td></tr>
+<tr class="separator:a0e100710b82fa96418a7f774e934c5fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>FIR Filter implementation, generic and ARM CMSIS DSP based. </p>
@@ -619,6 +618,33 @@ constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_nex
 </table>
 </div><div class="memdoc">
 <p>one pole lpf out is passed by reference, and must be retained between calls to properly filter the signal coeff can be calculated: coeff = 1.0 / (time * sample_rate) ; where time is in seconds </p>
+
+</div>
+</div>
+<a id="a0e100710b82fa96418a7f774e934c5fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e100710b82fa96418a7f774e934c5fb">&#9670;&nbsp;</a></span>get_next_power2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t daisysp::get_next_power2 </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Prior to C++14 constexpr functions were required to be a single return statement. So this clause guards against that behavior to allow the library, and this function to continue to work with C++11. The function itself is not currently (12 May 2021) used within the library itself. </p>
 
 </div>
 </div>
