@@ -18,7 +18,7 @@ void Adsr::Retrigger(bool hard)
 {
     mode_ = ADSR_SEG_ATTACK;
     if(hard)
-      x_ = 0.f;
+        x_ = 0.f;
 }
 
 void Adsr::SetTime(int seg, float time)
@@ -32,7 +32,7 @@ void Adsr::SetTime(int seg, float time)
             const float decayTarget  = logf(1. / M_E);
             float       target
                 = (seg == ADSR_SEG_ATTACK) ? attackTarget : decayTarget;
-            seg_D0_[seg] = 1.f - expf(target / (time * sample_rate_));            
+            seg_D0_[seg] = 1.f - expf(target / (time * sample_rate_));
         }
         else
             seg_D0_[seg] = 1.f; // instant change
@@ -50,7 +50,7 @@ float Adsr::Process(bool gate)
         mode_ = ADSR_SEG_RELEASE;
 
     float D0(seg_D0_[mode_]);
-    float target = mode_ == ADSR_SEG_DECAY ? sus_level_ : - 0.1f;
+    float target = mode_ == ADSR_SEG_DECAY ? sus_level_ : -0.1f;
     switch(mode_)
     {
         case ADSR_SEG_IDLE: out = 0.0f; break;
@@ -59,8 +59,8 @@ float Adsr::Process(bool gate)
             out = x_;
             if(out > 1.f)
             {
-                x_  = out = 1.f;
-                mode_     = ADSR_SEG_DECAY;
+                x_ = out = 1.f;
+                mode_    = ADSR_SEG_DECAY;
             }
             break;
         case ADSR_SEG_DECAY:
