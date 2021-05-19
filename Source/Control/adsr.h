@@ -37,7 +37,7 @@ Remake by Steffan DIedrichsen, May 2021
 class Adsr
 {
   public:
-    Adsr () {}
+    Adsr() {}
     ~Adsr() {}
     /** Initializes the Adsr module.
         \param sample_rate - The sample rate of the audio engine being run. 
@@ -49,7 +49,7 @@ class Adsr
      \param hard  resets the hosrory to zero, results in a click.
      */
     
-    void  Retrigger(bool hard);
+    void Retrigger(bool hard);
 
     
     /** Processes one sample through the filter and returns one sample.
@@ -67,7 +67,8 @@ class Adsr
     */
     inline void SetSustainLevel(float sus_level)
     {
-        sus_level = (sus_level < 0.f)? 0.f : (sus_level > 1.f)? 1.f : sus_level;
+        sus_level
+            = (sus_level < 0.f) ? 0.f : (sus_level > 1.f) ? 1.f : sus_level;
         sus_level_ = sus_level;
     }
     /** get the current envelope segment
@@ -80,10 +81,10 @@ class Adsr
     inline bool IsRunning() const { return mode_ != ADSR_SEG_IDLE; }
 
   private:
-    float   sus_level_,
-            seg_time_[ADSR_SEG_LAST]{0.f},
-            seg_D0_[ADSR_SEG_LAST]{0.f},
-            x_;
+    float   sus_level_{0.f};
+    float   seg_time_[ADSR_SEG_LAST]{0.f};
+    float   seg_D0_[ADSR_SEG_LAST]{0.f},
+    float   x_{0.f};
     int     sample_rate_;
     uint8_t mode_;
 };
