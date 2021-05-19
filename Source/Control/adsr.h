@@ -43,20 +43,15 @@ class Adsr
         \param sample_rate - The sample rate of the audio engine being run. 
     */
     void Init(float sample_rate, int blockSize = 1);
-
     /**
      \function Retrigger forces the envelope back to attack phase
      \param hard  resets the history to zero, results in a click.
      */
-    
     void Retrigger(bool hard);
-    
     /** Processes one sample through the filter and returns one sample.
         \param gate - trigger the envelope, hold it to sustain 
     */
-    
     float Process(bool gate);
-
     /** Sets time
         Set time per segment in seconds
     */
@@ -66,8 +61,9 @@ class Adsr
     */
     inline void SetSustainLevel(float sus_level)
     {
-        sus_level
-            = (sus_level < 0.f) ? 0.f : (sus_level > 1.f) ? 1.f : sus_level;
+        sus_level  = (sus_level < 0.f)   ? 0.f
+                     : (sus_level > 1.f) ? 1.f
+                                         : sus_level;
         sus_level_ = sus_level;
     }
     /** get the current envelope segment
@@ -80,10 +76,10 @@ class Adsr
     inline bool IsRunning() const { return mode_ != ADSR_SEG_IDLE; }
 
   private:
-    float sus_level_{0.f};
-    float x_{0.f};
-    float seg_time_[ADSR_SEG_LAST]{0.f};
-    float seg_D0_[ADSR_SEG_LAST]{0.f};
+    float   sus_level_{0.f};
+    float   x_{0.f};
+    float   seg_time_[ADSR_SEG_LAST]{0.f};
+    float   seg_D0_[ADSR_SEG_LAST]{0.f};
     int     sample_rate_;
     uint8_t mode_;
 };
