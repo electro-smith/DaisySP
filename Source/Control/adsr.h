@@ -46,11 +46,10 @@ class Adsr
 
     /**
      \function Retrigger forces the envelope back to attack phase
-     \param hard  resets the hosrory to zero, results in a click.
+     \param hard  resets the history to zero, results in a click.
      */
     
     void Retrigger(bool hard);
-
     
     /** Processes one sample through the filter and returns one sample.
         \param gate - trigger the envelope, hold it to sustain 
