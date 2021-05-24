@@ -6,12 +6,20 @@ using namespace daisysp;
 
 void Adsr::Init(float sample_rate, int blockSize)
 {
-    sample_rate_ = sample_rate / blockSize;
+    sample_rate_  = sample_rate / blockSize;
+    attackShape_  = -1.f;
+    attackTarget_ = 0.0f;
+    attackTime_   = -1.f;
+    decayTime_    = -1.f;
+    releaseTime_  = -1.f;
+    sus_level_    = 0.7f;
+    x_            = 0.0f;
+    gate_         = false;
+    mode_         = ADSR_SEG_IDLE;
+
     SetTime(ADSR_SEG_ATTACK, 0.1f);
     SetTime(ADSR_SEG_DECAY, 0.1f);
     SetTime(ADSR_SEG_RELEASE, 0.1f);
-    sus_level_ = 0.7f;
-    x_         = 0.0f;
 }
 
 void Adsr::Retrigger(bool hard)
@@ -23,19 +31,63 @@ void Adsr::Retrigger(bool hard)
 
 void Adsr::SetTime(int seg, float time)
 {
-    if(seg_time_[seg] != time)
+    switch(seg)
     {
-        seg_time_[seg] = time;
-        if(time > 0.f)
+        case ADSR_SEG_ATTACK: SetAttackTime(time, 0.0f); break;
+        case ADSR_SEG_DECAY:
         {
-            const float attackTarget = logf(0.5f);
-            const float decayTarget  = logf(1. / M_E);
-            float       target
-                = (seg == ADSR_SEG_ATTACK) ? attackTarget : decayTarget;
-            seg_D0_[seg] = 1.f - expf(target / (time * sample_rate_));
+            SetTimeConstant(time, decayTime_, decayD0_);
+        }
+        break;
+        case ADSR_SEG_RELEASE:
+        {
+            SetTimeConstant(time, releaseTime_, releaseD0_);
+        }
+        break;
+        default: return;
+    }
+}
+
+void Adsr::SetAttackTime(float timeInS, float shape)
+{
+    if((timeInS != attackTime_) || (shape != attackShape_))
+    {
+        attackTime_  = timeInS;
+        attackShape_ = shape;
+        if(timeInS > 0.f)
+        {
+            float x         = shape;
+            float target    = 9.f * powf(x, 10.f) + 0.3f * x + 1.01f;
+            attackTarget_   = target;
+            float logTarget = logf(1.f - (1.f / target)); // -1 for decay
+            attackD0_       = 1.f - expf(logTarget / (timeInS * sample_rate_));
         }
         else
-            seg_D0_[seg] = 1.f; // instant change
+            attackD0_ = 1.f; // instant change
+    }
+}
+void Adsr::SetDecayTime(float timeInS)
+{
+    SetTimeConstant(timeInS, decayTime_, decayD0_);
+}
+void Adsr::SetReleaseTime(float timeInS)
+{
+    SetTimeConstant(timeInS, releaseTime_, releaseD0_);
+}
+
+
+void Adsr::SetTimeConstant(float timeInS, float& time, float& coeff)
+{
+    if(timeInS != time)
+    {
+        time = timeInS;
+        if(time > 0.f)
+        {
+            const float target = logf(1. / M_E);
+            coeff              = 1.f - expf(target / (time * sample_rate_));
+        }
+        else
+            coeff = 1.f; // instant change
     }
 }
 
@@ -44,18 +96,24 @@ float Adsr::Process(bool gate)
 {
     float out = 0.0f;
 
-    if(gate && mode_ != ADSR_SEG_DECAY)
+    if(gate && !gate_) // rising edge
         mode_ = ADSR_SEG_ATTACK;
-    else if(!gate && mode_ != ADSR_SEG_IDLE)
+    else if(!gate && gate_) // falling edge
         mode_ = ADSR_SEG_RELEASE;
+    gate_ = gate;
 
-    float D0(seg_D0_[mode_]);
-    float target = mode_ == ADSR_SEG_DECAY ? sus_level_ : -0.1f;
+    float D0(attackD0_);
+    if(mode_ == ADSR_SEG_DECAY)
+        D0 = decayD0_;
+    else if(mode_ == ADSR_SEG_RELEASE)
+        D0 = releaseD0_;
+
+    float target = mode_ == ADSR_SEG_DECAY ? sus_level_ : -0.01f;
     switch(mode_)
     {
         case ADSR_SEG_IDLE: out = 0.0f; break;
         case ADSR_SEG_ATTACK:
-            x_ += D0 * (2.f - x_);
+            x_ += D0 * (attackTarget_ - x_);
             out = x_;
             if(out > 1.f)
             {

@@ -11,18 +11,14 @@ namespace daisysp
 - IDLE   = located at phase location 0, and not currently running
 - ATTACK  = First segment of envelope where phase moves from 0 to 1
 - DECAY   = Second segment of envelope where phase moves from 1 to SUSTAIN value
-- SUSTAIN = Third segment of envelope, stays at SUSTAIN level until GATE is released
 - RELEASE =     Fourth segment of envelop where phase moves from SUSTAIN to 0
-- LAST    =  Last segment, aka release
 */
 enum
 {
-    ADSR_SEG_IDLE,
-    ADSR_SEG_ATTACK,
-    ADSR_SEG_DECAY,
-    ADSR_SEG_SUSTAIN,
-    ADSR_SEG_RELEASE,
-    ADSR_SEG_LAST,
+    ADSR_SEG_IDLE    = 0,
+    ADSR_SEG_ATTACK  = 1,
+    ADSR_SEG_DECAY   = 2,
+    ADSR_SEG_RELEASE = 4
 };
 
 
@@ -56,13 +52,22 @@ class Adsr
         Set time per segment in seconds
     */
     void SetTime(int seg, float time);
+    void SetAttackTime(float timeInS, float shape = 0.0f);
+    void SetDecayTime(float timeInS);
+    void SetReleaseTime(float timeInS);
+
+  private:
+    void SetTimeConstant(float timeInS, float& time, float& coeff);
+
+  public:
     /** Sustain level
         \param sus_level - sets sustain level, 0...1.0
     */
     inline void SetSustainLevel(float sus_level)
     {
-        sus_level
-            = (sus_level < 0.f) ? 0.f : (sus_level > 1.f) ? 1.f : sus_level;
+        sus_level  = (sus_level <= 0.f)  ? -0.01f // forces envelope into idle
+                     : (sus_level > 1.f) ? 1.f
+                                         : sus_level;
         sus_level_ = sus_level;
     }
     /** get the current envelope segment
@@ -77,10 +82,17 @@ class Adsr
   private:
     float   sus_level_{0.f};
     float   x_{0.f};
-    float   seg_time_[ADSR_SEG_LAST]{0.f};
-    float   seg_D0_[ADSR_SEG_LAST]{0.f};
+    float   attackShape_{-1.f};
+    float   attackTarget_{0.0f};
+    float   attackTime_{-1.0f};
+    float   decayTime_{-1.0f};
+    float   releaseTime_{-1.0f};
+    float   attackD0_{0.f};
+    float   decayD0_{0.f};
+    float   releaseD0_{0.f};
     int     sample_rate_;
-    uint8_t mode_;
+    uint8_t mode_{ADSR_SEG_IDLE};
+    bool    gate_{false};
 };
 } // namespace daisysp
 #endif
