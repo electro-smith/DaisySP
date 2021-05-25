@@ -65,9 +65,8 @@ class Adsr
     */
     inline void SetSustainLevel(float sus_level)
     {
-        sus_level  = (sus_level <= 0.f)  ? -0.01f // forces envelope into idle
-                     : (sus_level > 1.f) ? 1.f
-                                         : sus_level;
+        sus_level = (sus_level <= 0.f) ? -0.01f // forces envelope into idle
+                                       : (sus_level > 1.f) ? 1.f : sus_level;
         sus_level_ = sus_level;
     }
     /** get the current envelope segment
