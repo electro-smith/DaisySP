@@ -288,15 +288,10 @@ Enumerations</h2></td></tr>
 , <a class="el" href="namespacedaisysp.html#a0634cf6e0668bb0545f9d3ec79a0dd3da166ca4c1c874718e3f44f1d480f40515">ADENV_SEG_LAST</a>
  }</td></tr>
 <tr class="separator:a0634cf6e0668bb0545f9d3ec79a0dd3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb83b81ac0a4a376e451e4e8cd13818e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
-&#160;&#160;<b>ADSR_SEG_IDLE</b>
-, <b>ADSR_SEG_ATTACK</b>
-, <b>ADSR_SEG_DECAY</b>
-, <b>ADSR_SEG_SUSTAIN</b>
-, <br />
-&#160;&#160;<b>ADSR_SEG_RELEASE</b>
-, <b>ADSR_SEG_LAST</b>
-<br />
+<tr class="memitem:acb83b81ac0a4a376e451e4e8cd13818e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <b>ADSR_SEG_IDLE</b> = 0
+, <b>ADSR_SEG_ATTACK</b> = 1
+, <b>ADSR_SEG_DECAY</b> = 2
+, <b>ADSR_SEG_RELEASE</b> = 4
  }</td></tr>
 <tr class="separator:acb83b81ac0a4a376e451e4e8cd13818e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f9e848831499f9d1efcfeadfc089de8"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
@@ -389,9 +384,7 @@ constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_power2</
 <li>IDLE = located at phase location 0, and not currently running</li>
 <li>ATTACK = First segment of envelope where phase moves from 0 to 1</li>
 <li>DECAY = Second segment of envelope where phase moves from 1 to SUSTAIN value</li>
-<li>SUSTAIN = Third segment of envelope, stays at SUSTAIN level until GATE is released</li>
-<li>RELEASE = Fourth segment of envelop where phase moves from SUSTAIN to 0</li>
-<li>LAST = Last segment, aka release </li>
+<li>RELEASE = Fourth segment of envelop where phase moves from SUSTAIN to 0 </li>
 </ul>
 
 </div>

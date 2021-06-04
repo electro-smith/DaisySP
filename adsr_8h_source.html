@@ -78,49 +78,67 @@ $(function() {
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacedaisysp.html">daisysp</a></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">enum</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    ADSR_SEG_IDLE,</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    ADSR_SEG_ATTACK,</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    ADSR_SEG_DECAY,</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    ADSR_SEG_SUSTAIN,</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    ADSR_SEG_RELEASE,</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    ADSR_SEG_LAST,</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;};</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_adsr.html">   35</a></span>&#160;<span class="keyword">class </span><a class="code" href="classdaisysp_1_1_adsr.html">Adsr</a></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="classdaisysp_1_1_adsr.html">Adsr</a>() {}</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    ~<a class="code" href="classdaisysp_1_1_adsr.html">Adsr</a>() {}</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_adsr.html#ac81563955aba09b79a24bdc86936ed85">Init</a>(<span class="keywordtype">float</span> sample_rate);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">float</span> <a class="code" href="classdaisysp_1_1_adsr.html#a61e064140e836b50a90a3cd36d9f012a">Process</a>(<span class="keywordtype">bool</span> gate);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_adsr.html#ae3d1f077e95bc6d26abfb0b1a7c2000c">   54</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_adsr.html#ae3d1f077e95bc6d26abfb0b1a7c2000c">SetTime</a>(<span class="keywordtype">int</span> seg, <span class="keywordtype">float</span> time) { seg_time_[seg] = time; }</div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_adsr.html#a03d67f09fcafd5bb838581dda42a9f0b">   58</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_adsr.html#a03d67f09fcafd5bb838581dda42a9f0b">SetSustainLevel</a>(<span class="keywordtype">float</span> sus_level) { sus_ = sus_level; }</div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_adsr.html#a89e6d1c659da95a870c3ff453b2e2838">   62</a></span>&#160;    <span class="keyword">inline</span> uint8_t <a class="code" href="classdaisysp_1_1_adsr.html#a89e6d1c659da95a870c3ff453b2e2838">GetCurrentSegment</a>() { <span class="keywordflow">return</span> mode_; }</div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_adsr.html#ad9c45a39a55cf52196ef09ccf5a7d559">   66</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="classdaisysp_1_1_adsr.html#ad9c45a39a55cf52196ef09ccf5a7d559">IsRunning</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> mode_ != ADSR_SEG_IDLE; }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">float</span>   sus_, seg_time_[ADSR_SEG_LAST], a_, b_, y_, x_, prev_, atk_time_;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">int</span>     sample_rate_;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    uint8_t mode_;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">float</span>   Tau2Pole(<span class="keywordtype">float</span> tau);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">float</span>   AdsrFilter();</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;};</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;} <span class="comment">// namespace daisysp</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassdaisysp_1_1_adsr_html"><div class="ttname"><a href="classdaisysp_1_1_adsr.html">daisysp::Adsr</a></div><div class="ttdef"><b>Definition:</b> adsr.h:36</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_adsr_html_a03d67f09fcafd5bb838581dda42a9f0b"><div class="ttname"><a href="classdaisysp_1_1_adsr.html#a03d67f09fcafd5bb838581dda42a9f0b">daisysp::Adsr::SetSustainLevel</a></div><div class="ttdeci">void SetSustainLevel(float sus_level)</div><div class="ttdef"><b>Definition:</b> adsr.h:58</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_adsr_html_a61e064140e836b50a90a3cd36d9f012a"><div class="ttname"><a href="classdaisysp_1_1_adsr.html#a61e064140e836b50a90a3cd36d9f012a">daisysp::Adsr::Process</a></div><div class="ttdeci">float Process(bool gate)</div><div class="ttdef"><b>Definition:</b> adsr.cpp:34</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_adsr_html_a89e6d1c659da95a870c3ff453b2e2838"><div class="ttname"><a href="classdaisysp_1_1_adsr.html#a89e6d1c659da95a870c3ff453b2e2838">daisysp::Adsr::GetCurrentSegment</a></div><div class="ttdeci">uint8_t GetCurrentSegment()</div><div class="ttdef"><b>Definition:</b> adsr.h:62</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_adsr_html_ac81563955aba09b79a24bdc86936ed85"><div class="ttname"><a href="classdaisysp_1_1_adsr.html#ac81563955aba09b79a24bdc86936ed85">daisysp::Adsr::Init</a></div><div class="ttdeci">void Init(float sample_rate)</div><div class="ttdef"><b>Definition:</b> adsr.cpp:18</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_adsr_html_ad9c45a39a55cf52196ef09ccf5a7d559"><div class="ttname"><a href="classdaisysp_1_1_adsr.html#ad9c45a39a55cf52196ef09ccf5a7d559">daisysp::Adsr::IsRunning</a></div><div class="ttdeci">bool IsRunning() const</div><div class="ttdef"><b>Definition:</b> adsr.h:66</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_adsr_html_ae3d1f077e95bc6d26abfb0b1a7c2000c"><div class="ttname"><a href="classdaisysp_1_1_adsr.html#ae3d1f077e95bc6d26abfb0b1a7c2000c">daisysp::Adsr::SetTime</a></div><div class="ttdeci">void SetTime(int seg, float time)</div><div class="ttdef"><b>Definition:</b> adsr.h:54</div></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">enum</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    ADSR_SEG_IDLE    = 0,</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    ADSR_SEG_ATTACK  = 1,</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    ADSR_SEG_DECAY   = 2,</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    ADSR_SEG_RELEASE = 4</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;};</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_adsr.html">   33</a></span>&#160;<span class="keyword">class </span><a class="code" href="classdaisysp_1_1_adsr.html">Adsr</a></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="classdaisysp_1_1_adsr.html">Adsr</a>() {}</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    ~<a class="code" href="classdaisysp_1_1_adsr.html">Adsr</a>() {}</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_adsr.html#a8e717f0d38806f8cdb7eacf9e17ece4f">Init</a>(<span class="keywordtype">float</span> sample_rate, <span class="keywordtype">int</span> blockSize = 1);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_adsr.html#ae36e5559dc41be95166737da03f5828f">Retrigger</a>(<span class="keywordtype">bool</span> hard);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">float</span> <a class="code" href="classdaisysp_1_1_adsr.html#a61e064140e836b50a90a3cd36d9f012a">Process</a>(<span class="keywordtype">bool</span> gate);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_adsr.html#af9fa2d5eeb8a4c1c998d6d6e3ae1128c">SetTime</a>(<span class="keywordtype">int</span> seg, <span class="keywordtype">float</span> time);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> SetAttackTime(<span class="keywordtype">float</span> timeInS, <span class="keywordtype">float</span> shape = 0.0f);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> SetDecayTime(<span class="keywordtype">float</span> timeInS);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span> SetReleaseTime(<span class="keywordtype">float</span> timeInS);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span> SetTimeConstant(<span class="keywordtype">float</span> timeInS, <span class="keywordtype">float</span>&amp; time, <span class="keywordtype">float</span>&amp; coeff);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_adsr.html#a03d67f09fcafd5bb838581dda42a9f0b">   66</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classdaisysp_1_1_adsr.html#a03d67f09fcafd5bb838581dda42a9f0b">SetSustainLevel</a>(<span class="keywordtype">float</span> sus_level)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        sus_level = (sus_level &lt;= 0.f) ? -0.01f <span class="comment">// forces envelope into idle</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                                       : (sus_level &gt; 1.f) ? 1.f : sus_level;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        sus_level_ = sus_level;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_adsr.html#a89e6d1c659da95a870c3ff453b2e2838">   75</a></span>&#160;    <span class="keyword">inline</span> uint8_t <a class="code" href="classdaisysp_1_1_adsr.html#a89e6d1c659da95a870c3ff453b2e2838">GetCurrentSegment</a>() { <span class="keywordflow">return</span> mode_; }</div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_adsr.html#ad9c45a39a55cf52196ef09ccf5a7d559">   79</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="classdaisysp_1_1_adsr.html#ad9c45a39a55cf52196ef09ccf5a7d559">IsRunning</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> mode_ != ADSR_SEG_IDLE; }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">float</span>   sus_level_{0.f};</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">float</span>   x_{0.f};</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">float</span>   attackShape_{-1.f};</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">float</span>   attackTarget_{0.0f};</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">float</span>   attackTime_{-1.0f};</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">float</span>   decayTime_{-1.0f};</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">float</span>   releaseTime_{-1.0f};</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">float</span>   attackD0_{0.f};</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">float</span>   decayD0_{0.f};</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">float</span>   releaseD0_{0.f};</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">int</span>     sample_rate_;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    uint8_t mode_{ADSR_SEG_IDLE};</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">bool</span>    gate_{<span class="keyword">false</span>};</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;};</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;} <span class="comment">// namespace daisysp</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclassdaisysp_1_1_adsr_html"><div class="ttname"><a href="classdaisysp_1_1_adsr.html">daisysp::Adsr</a></div><div class="ttdef"><b>Definition:</b> adsr.h:34</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_adsr_html_a03d67f09fcafd5bb838581dda42a9f0b"><div class="ttname"><a href="classdaisysp_1_1_adsr.html#a03d67f09fcafd5bb838581dda42a9f0b">daisysp::Adsr::SetSustainLevel</a></div><div class="ttdeci">void SetSustainLevel(float sus_level)</div><div class="ttdef"><b>Definition:</b> adsr.h:66</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_adsr_html_a61e064140e836b50a90a3cd36d9f012a"><div class="ttname"><a href="classdaisysp_1_1_adsr.html#a61e064140e836b50a90a3cd36d9f012a">daisysp::Adsr::Process</a></div><div class="ttdeci">float Process(bool gate)</div><div class="ttdef"><b>Definition:</b> adsr.cpp:95</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_adsr_html_a89e6d1c659da95a870c3ff453b2e2838"><div class="ttname"><a href="classdaisysp_1_1_adsr.html#a89e6d1c659da95a870c3ff453b2e2838">daisysp::Adsr::GetCurrentSegment</a></div><div class="ttdeci">uint8_t GetCurrentSegment()</div><div class="ttdef"><b>Definition:</b> adsr.h:75</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_adsr_html_a8e717f0d38806f8cdb7eacf9e17ece4f"><div class="ttname"><a href="classdaisysp_1_1_adsr.html#a8e717f0d38806f8cdb7eacf9e17ece4f">daisysp::Adsr::Init</a></div><div class="ttdeci">void Init(float sample_rate, int blockSize=1)</div><div class="ttdef"><b>Definition:</b> adsr.cpp:7</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_adsr_html_ad9c45a39a55cf52196ef09ccf5a7d559"><div class="ttname"><a href="classdaisysp_1_1_adsr.html#ad9c45a39a55cf52196ef09ccf5a7d559">daisysp::Adsr::IsRunning</a></div><div class="ttdeci">bool IsRunning() const</div><div class="ttdef"><b>Definition:</b> adsr.h:79</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_adsr_html_ae36e5559dc41be95166737da03f5828f"><div class="ttname"><a href="classdaisysp_1_1_adsr.html#ae36e5559dc41be95166737da03f5828f">daisysp::Adsr::Retrigger</a></div><div class="ttdeci">void Retrigger(bool hard)</div><div class="ttdef"><b>Definition:</b> adsr.cpp:25</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_adsr_html_af9fa2d5eeb8a4c1c998d6d6e3ae1128c"><div class="ttname"><a href="classdaisysp_1_1_adsr.html#af9fa2d5eeb8a4c1c998d6d6e3ae1128c">daisysp::Adsr::SetTime</a></div><div class="ttdeci">void SetTime(int seg, float time)</div><div class="ttdef"><b>Definition:</b> adsr.cpp:32</div></div>
 <div class="ttc" id="anamespacedaisysp_html"><div class="ttname"><a href="namespacedaisysp.html">daisysp</a></div><div class="ttdoc">FIR Filter implementation, generic and ARM CMSIS DSP based.</div><div class="ttdef"><b>Definition:</b> adenv.h:8</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
