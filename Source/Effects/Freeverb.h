@@ -10,11 +10,12 @@ namespace daisysp
 /** Tuning Specific settings -- should be configurable */
 /** Considering either making this a separate header or just a config struct that could be used as a template parameter */
 
-const int   kNumCombs     = 8;
-const int   kNumAllpass   = 4;
-const float kMuted        = 0;
-const float kFixedGain    = 0.015f;
-const float kScaleWet     = 3;
+const int   kNumCombs   = 8;
+const int   kNumAllpass = 4;
+const float kMuted      = 0;
+const float kFixedGain  = 0.015f;
+//const float kScaleWet     = 3;
+const float kScaleWet     = 4;
 const float kScaleDry     = 2;
 const float kScaledamp    = 0.4f;
 const float kScaleroom    = 0.28f;
@@ -28,35 +29,14 @@ const float kInitialmode  = 0;
 const float kFreezeMode   = 0.5f;
 const int   kStereoSpread = 23;
 
+constexpr float kTargetSr    = 96000.f;
+constexpr float kOriginalSr  = 44100.f;
+constexpr float kRetuneCoeff = (kTargetSr / kOriginalSr);
+
 // These values assume 44.1KHz sample rate
 // they will probably be OK for 48KHz sample rate
 // but would need scaling for 96KHz (or other) sample rates.
 // The values were obtained by listening tests.
-const int kCombTuningL1    = 1116;
-const int kCombTuningR1    = 1116 + kStereoSpread;
-const int kCombTuningL2    = 1188;
-const int kCombTuningR2    = 1188 + kStereoSpread;
-const int kCombTuningL3    = 1277;
-const int kCombTuningR3    = 1277 + kStereoSpread;
-const int kCombTuningL4    = 1356;
-const int kCombTuningR4    = 1356 + kStereoSpread;
-const int kCombTuningL5    = 1422;
-const int kCombTuningR5    = 1422 + kStereoSpread;
-const int kCombTuningL6    = 1491;
-const int kCombTuningR6    = 1491 + kStereoSpread;
-const int kCombTuningL7    = 1557;
-const int kCombTuningR7    = 1557 + kStereoSpread;
-const int kCombTuningL8    = 1617;
-const int kCombTuningR8    = 1617 + kStereoSpread;
-const int kAllpassTuningL1 = 556;
-const int kAllpassTuningR1 = 556 + kStereoSpread;
-const int kAllpassTuningL2 = 441;
-const int kAllpassTuningR2 = 441 + kStereoSpread;
-const int kAllpassTuningL3 = 341;
-const int kAllpassTuningR3 = 341 + kStereoSpread;
-const int kAllpassTuningL4 = 225;
-const int kAllpassTuningR4 = 225 + kStereoSpread;
-
 
 /** Freeverb Implementation 
   * based on original C++ sources from  Jezar at Dreampoint, June 2000 
@@ -145,6 +125,35 @@ class Freeverb
 
 
   private:
+    static constexpr int kCombTuningL1 = 1116 * kRetuneCoeff;
+    static constexpr int kCombTuningR1 = (1116 + kStereoSpread) * kRetuneCoeff;
+    static constexpr int kCombTuningL2 = 1188 * kRetuneCoeff;
+    static constexpr int kCombTuningR2 = (1188 + kStereoSpread) * kRetuneCoeff;
+    static constexpr int kCombTuningL3 = 1277 * kRetuneCoeff;
+    static constexpr int kCombTuningR3 = (1277 + kStereoSpread) * kRetuneCoeff;
+    static constexpr int kCombTuningL4 = 1356 * kRetuneCoeff;
+    static constexpr int kCombTuningR4 = (1356 + kStereoSpread) * kRetuneCoeff;
+    static constexpr int kCombTuningL5 = 1422 * kRetuneCoeff;
+    static constexpr int kCombTuningR5 = (1422 + kStereoSpread) * kRetuneCoeff;
+    static constexpr int kCombTuningL6 = 1491 * kRetuneCoeff;
+    static constexpr int kCombTuningR6 = (1491 + kStereoSpread) * kRetuneCoeff;
+    static constexpr int kCombTuningL7 = 1557 * kRetuneCoeff;
+    static constexpr int kCombTuningR7 = (1557 + kStereoSpread) * kRetuneCoeff;
+    static constexpr int kCombTuningL8 = 1617 * kRetuneCoeff;
+    static constexpr int kCombTuningR8 = (1617 + kStereoSpread) * kRetuneCoeff;
+    static constexpr int kAllpassTuningL1 = 556 * kRetuneCoeff;
+    static constexpr int kAllpassTuningR1
+        = (556 + kStereoSpread) * kRetuneCoeff;
+    static constexpr int kAllpassTuningL2 = 441 * kRetuneCoeff;
+    static constexpr int kAllpassTuningR2
+        = (441 + kStereoSpread) * kRetuneCoeff;
+    static constexpr int kAllpassTuningL3 = 341 * kRetuneCoeff;
+    static constexpr int kAllpassTuningR3
+        = (341 + kStereoSpread) * kRetuneCoeff;
+    static constexpr int kAllpassTuningL4 = 225 * kRetuneCoeff;
+    static constexpr int kAllpassTuningR4
+        = (225 + kStereoSpread) * kRetuneCoeff;
+
     void  Update();
     float gain_, roomsize_, roomsize1_;
     float damp_, damp1_;
