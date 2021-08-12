@@ -31,15 +31,15 @@ class Autowah
 
 
     /** sets wah
-        \param wah : set wah amount
+        \param wah : set wah amount, , 0...1.0
     */
     inline void SetWah(float wah) { wah_ = wah; }
     /** sets mix amount
-        \param drywet : set effect dry/wet
+        \param drywet : set effect dry/wet, 0...100.0
     */
     inline void SetDryWet(float drywet) { wet_dry_ = drywet; }
     /** sets wah level
-        \param level : set wah level
+        \param level : set wah level, 0...1.0
     */
     inline void SetLevel(float level) { level_ = level; }
 

@@ -25,7 +25,7 @@ class Fold
     void Init();
 
 
-    /** applies foldvoer distortion to input 
+    /** applies foldover distortion to input 
     */
     float Process(float in);
 

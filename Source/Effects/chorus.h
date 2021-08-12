@@ -46,7 +46,7 @@ class ChorusEngine
     void SetDelay(float delay);
 
     /** Set the delay time in ms.
-        \param ms Delay time in ms.
+        \param ms Delay time in ms, 0 to 50 ms.
     */
     void SetDelayMs(float ms);
 

@@ -33,7 +33,7 @@ class Decimator
     }
 
     /** Sets amount of bitcrushing 
-        Input range: 
+        Input range: 0...1.0
     */
     inline void SetBitcrushFactor(float bitcrush_factor)
     {
