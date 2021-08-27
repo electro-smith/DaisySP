@@ -30,11 +30,11 @@ class Bitcrush
 
 
     /** adjusts bitdepth
-        \param bitdepth : Sets bit depth.    
+        \param bitdepth : Sets bit depth, 0...16
     */
     inline void SetBitDepth(int bitdepth) { bit_depth_ = bitdepth; }
     /** adjusts the downsampling frequency
-        \param crushrate : Sets rate to downsample to.    
+        \param crushrate : Sets rate to downsample to, 0...SampleRate
     */
     inline void SetCrushRate(float crushrate) { crush_rate_ = crushrate; }
 

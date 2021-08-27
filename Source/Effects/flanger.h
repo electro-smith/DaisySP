@@ -49,7 +49,7 @@ class Flanger
     void SetDelay(float delay);
 
     /** Set the delay time in ms.
-        \param ms Delay time in ms.
+        \param ms Delay time in ms, .1 to 7 ms.
     */
     void SetDelayMs(float ms);
 
