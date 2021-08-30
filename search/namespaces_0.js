@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['daisysp_376',['daisysp',['../namespacedaisysp.html',1,'']]]
+  ['daisysp_0',['daisysp',['../namespacedaisysp.html',1,'']]]
 ];
