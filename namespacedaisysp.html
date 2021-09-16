@@ -309,6 +309,11 @@ Enumerations</h2></td></tr>
 , <b>PLUCK_LAST</b>
  }</td></tr>
 <tr class="separator:ae3b6ff37245c2f6850cd452b5cd8f4ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bf890e5a2079c011f202e530cb1d56b"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedaisysp.html#a2bf890e5a2079c011f202e530cb1d56b">Mapping</a> { <b>LINEAR</b>
+, <b>EXP</b>
+, <b>LOG</b>
+ }</td></tr>
+<tr class="separator:a2bf890e5a2079c011f202e530cb1d56b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -339,6 +344,8 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>fastlog10f</b> (floa
 <tr class="separator:a353be6c7e206ed974a25148e3f13dbab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc3a0874a07573c3149e0c053c11b8d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedaisysp.html#afc3a0874a07573c3149e0c053c11b8d7">fonepole</a> (float &amp;out, float in, float coeff)</td></tr>
 <tr class="separator:afc3a0874a07573c3149e0c053c11b8d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac62832d24f6f6df22fd8858645f4aeba"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedaisysp.html#ac62832d24f6f6df22fd8858645f4aeba">fmap</a> (float in, float min, float max, <a class="el" href="namespacedaisysp.html#a2bf890e5a2079c011f202e530cb1d56b">Mapping</a> curve=Mapping::LINEAR)</td></tr>
+<tr class="separator:ac62832d24f6f6df22fd8858645f4aeba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a726909b1a01b77ff0b65099c7e1298d9"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a726909b1a01b77ff0b65099c7e1298d9"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacedaisysp.html#a726909b1a01b77ff0b65099c7e1298d9">median</a> (T a, T b, T c)</td></tr>
 <tr class="separator:a726909b1a01b77ff0b65099c7e1298d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -453,6 +460,29 @@ constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_power2</
 
 </div>
 </div>
+<a id="a2bf890e5a2079c011f202e530cb1d56b" name="a2bf890e5a2079c011f202e530cb1d56b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bf890e5a2079c011f202e530cb1d56b">&#9670;&nbsp;</a></span>Mapping</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="namespacedaisysp.html#a2bf890e5a2079c011f202e530cb1d56b">daisysp::Mapping</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Curves to use with the fmap function </p>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a207e7a0a645f2db54efb6945e1942ce3" name="a207e7a0a645f2db54efb6945e1942ce3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a207e7a0a645f2db54efb6945e1942ce3">&#9670;&nbsp;</a></span>fastpower()</h2>
@@ -531,6 +561,72 @@ constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_power2</
 </table>
 </div><div class="memdoc">
 <p >quick fp clamp </p>
+
+</div>
+</div>
+<a id="ac62832d24f6f6df22fd8858645f4aeba" name="ac62832d24f6f6df22fd8858645f4aeba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac62832d24f6f6df22fd8858645f4aeba">&#9670;&nbsp;</a></span>fmap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float daisysp::fmap </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>max</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacedaisysp.html#a2bf890e5a2079c011f202e530cb1d56b">Mapping</a>&#160;</td>
+          <td class="paramname"><em>curve</em> = <code>Mapping::LINEAR</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Maps a float between a specified range, using a specified curve.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">in</td><td>a value between 0 to 1 that will be mapped to the new range. </td></tr>
+    <tr><td class="paramname">min</td><td>the new minimum value </td></tr>
+    <tr><td class="paramname">max</td><td>the new maxmimum value </td></tr>
+    <tr><td class="paramname">curve</td><td>a Mapping Value to adjust the response curve of the transformation defaults to Linear. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespacedaisysp.html#a2bf890e5a2079c011f202e530cb1d56b">Mapping</a></dd></dl>
+<p>When using the log curve min and max, must be greater than zero.</p>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">returns</td><td>the transformed float within the new range. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

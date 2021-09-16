@@ -9,11 +9,12 @@ var searchData=
   ['flanger_6',['Flanger',['../classdaisysp_1_1_flanger.html',1,'daisysp']]],
   ['flanger_2eh_7',['flanger.h',['../flanger_8h.html',1,'']]],
   ['fm2_8',['Fm2',['../classdaisysp_1_1_fm2.html',1,'daisysp']]],
-  ['fmax_9',['fmax',['../namespacedaisysp.html#a9385ec4090ae8925d3e3794312db9396',1,'daisysp']]],
-  ['fold_10',['Fold',['../classdaisysp_1_1_fold.html',1,'daisysp']]],
-  ['fonepole_11',['fonepole',['../namespacedaisysp.html#afc3a0874a07573c3149e0c053c11b8d7',1,'daisysp']]],
-  ['formantosc_2eh_12',['formantosc.h',['../formantosc_8h.html',1,'']]],
-  ['formantoscillator_13',['FormantOscillator',['../classdaisysp_1_1_formant_oscillator.html',1,'daisysp']]],
-  ['fractal_5fnoise_2eh_14',['fractal_noise.h',['../fractal__noise_8h.html',1,'']]],
-  ['fractalrandomgenerator_15',['FractalRandomGenerator',['../classdaisysp_1_1_fractal_random_generator.html',1,'daisysp']]]
+  ['fmap_9',['fmap',['../namespacedaisysp.html#ac62832d24f6f6df22fd8858645f4aeba',1,'daisysp']]],
+  ['fmax_10',['fmax',['../namespacedaisysp.html#a9385ec4090ae8925d3e3794312db9396',1,'daisysp']]],
+  ['fold_11',['Fold',['../classdaisysp_1_1_fold.html',1,'daisysp']]],
+  ['fonepole_12',['fonepole',['../namespacedaisysp.html#afc3a0874a07573c3149e0c053c11b8d7',1,'daisysp']]],
+  ['formantosc_2eh_13',['formantosc.h',['../formantosc_8h.html',1,'']]],
+  ['formantoscillator_14',['FormantOscillator',['../classdaisysp_1_1_formant_oscillator.html',1,'daisysp']]],
+  ['fractal_5fnoise_2eh_15',['fractal_noise.h',['../fractal__noise_8h.html',1,'']]],
+  ['fractalrandomgenerator_16',['FractalRandomGenerator',['../classdaisysp_1_1_fractal_random_generator.html',1,'daisysp']]]
 ];
