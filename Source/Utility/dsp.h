@@ -137,6 +137,43 @@ inline void fonepole(float &out, float in, float coeff)
     out += coeff * (in - out);
 }
 
+/** Curves to use with the fmap function */
+enum class Mapping
+{
+    LINEAR,
+    EXP,
+    LOG,
+};
+
+/** Maps a float between a specified range, using a specified curve. 
+ * 
+ *  \param in a value between 0 to 1 that will be mapped to the new range.
+ *  \param min the new minimum value
+ *  \param max the new maxmimum value
+ *  \param curve a Mapping Value to adjust the response curve of the transformation
+ *               defaults to Linear. @see Mapping
+ * 
+ *  When using the log curve min and max, must be greater than zero.
+ * 
+ *  \retval returns the transformed float within the new range.
+*/
+inline float
+fmap(float in, float min, float max, Mapping curve = Mapping::LINEAR)
+{
+    switch(curve)
+    {
+        case Mapping::EXP:
+            return fclamp(min + (in * in) * (max - min), min, max);
+        case Mapping::LOG:
+        {
+            const float a = 1.f / log10f(max / min);
+            return fclamp(min * powf(10, in / a), min, max);
+        }
+        case Mapping::LINEAR:
+        default: return fclamp(min + in * (max - min), min, max);
+    }
+}
+
 /** Simple 3-point median filter
 c/o stephen mccaul
 */
