@@ -162,12 +162,15 @@ fmap(float in, float min, float max, Mapping curve = Mapping::LINEAR)
 {
     switch(curve)
     {
-        case Mapping::LINEAR: return fclamp(min + in * (max - min), min, max);
         case Mapping::EXP:
             return fclamp(min + (in * in) * (max - min), min, max);
         case Mapping::LOG:
-            const float a = 1.f / log10f(max - min);
+        {
+            const float a = 1.f / log10f(max / min);
             return fclamp(min * powf(10, in / a), min, max);
+        }
+        case Mapping::LINEAR:
+        default: return fclamp(min + in * (max - min), min, max);
     }
 }
 
