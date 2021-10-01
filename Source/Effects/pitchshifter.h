@@ -51,8 +51,13 @@ class PitchShifter
   public:
     PitchShifter() {}
     ~PitchShifter() {}
-    /** Initialize pitch shifter */
-    void Init(float sr, bool quantize_semitones = true)
+
+
+    /** Initialize pitch shifter 
+     *  \param sr the expected samplerate in Hz of the audio engines
+     *  \param quantize_semitones locks transpositions to integer values (defaults to false)
+    */
+    void Init(float sr, bool quantize_semitones = false)
     {
         force_recalc_ = false;
         sr_           = sr;
