@@ -76,20 +76,30 @@ class PitchShifter
 
     /** process pitch shifter
     */
-    float Process(float &in)
+    float Process(float in)
     {
         float val, fade1, fade2;
         // First Process delay mod/crossfade
-        fade1 = phs_[0].Process();
-        fade2 = phs_[1].Process();
-        if(prev_phs_a_ > fade1)
+        fade1             = phs_[0].Process();
+        fade2             = phs_[1].Process();
+        bool recalc_a_fun = ((transpose_ >= 0.f) && (prev_phs_a_ > fade1))
+                            || ((transpose_ < 0.f) && prev_phs_a_ < fade1);
+        bool recalc_b_fun = ((transpose_ >= 0.f) && (prev_phs_b_ > fade2))
+                            || ((transpose_ < 0.f) && prev_phs_b_ < fade2);
+        // Randomly trigger mod recalc when tranpose is 0 so that the "fun"
+        // parameter still does something when not transposing
+        bool rand_retrig = (transpose_ >= -0.25f && transpose_ < 0.25f);
+        if(rand_retrig && fun_ > 0.f)
+            if(myrand() % 65536 < 4)
+                recalc_a_fun = recalc_b_fun = true;
+        if(recalc_a_fun)
         {
             mod_a_amt_ = fun_ * ((float)(myrand() % 255) / 255.0f)
                          * (del_size_ * 0.5f);
             mod_coeff_[0]
                 = 0.0002f + (((float)(myrand() % 255) / 255.0f) * 0.001f);
         }
-        if(prev_phs_b_ > fade2)
+        if(recalc_b_fun)
         {
             mod_b_amt_ = fun_ * ((float)(myrand() % 255) / 255.0f)
                          * (del_size_ * 0.5f);
@@ -116,9 +126,8 @@ class PitchShifter
         d_[0].Write(in);
         d_[1].Write(in);
         // Modulate Delay Lines
-        //mod_a_amt = mod_b_amt = 0.0f;
-        d_[0].SetDelay(mod_[0] + mod_a_amt_);
-        d_[1].SetDelay(mod_[1] + mod_b_amt_);
+        // d_[0].SetDelay(mod_[0] + mod_a_amt_);
+        // d_[1].SetDelay(mod_[1] + mod_b_amt_);
         d_[0].SetDelay(mod_[0] + slewed_mod_[0]);
         d_[1].SetDelay(mod_[1] + slewed_mod_[1]);
         val = 0.0f;
