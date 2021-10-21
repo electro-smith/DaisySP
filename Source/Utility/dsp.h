@@ -125,6 +125,14 @@ inline float mtof(float m)
     return powf(2, (m - 69.0f) / 12.0f) * 440.0f;
 }
 
+/** Denormalize small floats in place 
+  * Based on undernormalize macro by Jezar based on IS_DENORMAL macro by Jon Watte 
+  */
+inline void denormalize(float &sample)
+{
+    if(((*(unsigned int *)&sample) & 0x7f800000) == 0)
+        sample = 0.f;
+}
 
 /** one pole lpf
 out is passed by reference, and must be retained between

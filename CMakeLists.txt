@@ -22,6 +22,7 @@ Source/Effects/chorus.cpp
 Source/Effects/decimator.cpp
 Source/Effects/flanger.cpp
 Source/Effects/fold.cpp
+Source/Effects/Freeverb.cpp
 Source/Effects/overdrive.cpp
 Source/Effects/reverbsc.cpp
 Source/Effects/phaser.cpp
