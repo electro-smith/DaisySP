@@ -43,21 +43,10 @@ class Looper
         win_idx_    = 0;
     }
 
-    /** Handles reading/writing to the Buffer depending on the mode. 
-     ** 
-     ** Normal Mode: Input is added to the existing loop infinitely while recording 
-     ** 
-     ** Onetime Dub Mode: Recording starts at the first sample of the buffer and is added
-     **     to the existing buffer contents. Recording automatically stops after one full loop.
-     **
-     ** Replace Mode: input is written to the buffer while recording.
-     **
-     ** Frippertronics Mode: infinite looping recording with fixed decay on each loop.
-     ** 
-     ***/
+    /** Handles reading/writing to the Buffer depending on the mode. */
     float Process(const float &input)
     {
-        float sig;
+        float sig = 0.f;
         float inc;
         bool  hitloop = false;
         // Record forward at normal speed during the first loop no matter what.
@@ -216,7 +205,18 @@ class Looper
         mode_ = static_cast<Mode>(m);
     }
 
-    /** Sets the recording mode to the specified Mode. */
+    /** Sets the recording mode to the specified Mode. 
+     ** 
+     ** Normal Mode: Input is added to the existing loop infinitely while recording 
+     ** 
+     ** Onetime Dub Mode: Recording starts at the first sample of the buffer and is added
+     **     to the existing buffer contents. Recording automatically stops after one full loop.
+     **
+     ** Replace Mode: input is written to the buffer while recording.
+     **
+     ** Frippertronics Mode: infinite looping recording with fixed decay on each loop.
+     **
+    */
     inline void SetMode(Mode mode) { mode_ = mode; }
 
     /** Returns the specific recording mode that is currently set. */
