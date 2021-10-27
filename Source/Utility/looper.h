@@ -139,7 +139,9 @@ class Looper
                 break;
             default: break;
         }
-        near_beginning_ = state_ != State::EMPTY && !Recording() &&  pos_ < 4800 ? true : false;
+        near_beginning_ = state_ != State::EMPTY && !Recording() && pos_ < 4800
+                              ? true
+                              : false;
 
         return sig;
     }
@@ -266,4 +268,4 @@ class Looper
     bool     near_beginning_;
 };
 
-} // namespace twohp
+} // namespace daisysp
