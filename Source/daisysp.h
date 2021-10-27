@@ -90,10 +90,12 @@
 #include "Synthesis/zoscillator.h"
 
 /** Utility Modules */
+#include "Utility/buffer.h"
 #include "Utility/dcblock.h"
 #include "Utility/delayline.h"
 #include "Utility/dsp.h"
 #include "Utility/jitter.h"
+#include "Utility/looper.h"
 #include "Utility/maytrig.h"
 #include "Utility/metro.h"
 #include "Utility/port.h"

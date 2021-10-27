@@ -94,8 +94,10 @@ dcblock \
 jitter \
 metro \
 port 
+#buffer
 #delayline 
 #dsp 
+#looper
 #maytrig 
 #samplehold 
 #smooth_random
