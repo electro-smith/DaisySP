@@ -2,8 +2,6 @@
 #include "Buffer.h"
 #include <cmath>
 
-/** 5 Minute Buffer */
-
 namespace daisysp
 {
 template <size_t buffer_size>
@@ -15,6 +13,17 @@ class Looper
 
     typedef Buffer<buffer_size> BigBuff;
 
+
+    /** 
+     ** Normal Mode: Input is added to the existing loop infinitely while recording 
+     ** 
+     ** Onetime Dub Mode: Recording starts at the first sample of the buffer and is added
+     **     to the existing buffer contents. Recording automatically stops after one full loop.
+     **
+     ** Replace Mode: Audio in the buffer is replaced while recording is on.
+     **
+     ** Frippertronics Mode: infinite looping recording with fixed decay on each loop. The module acts like tape-delay set up.
+     */
     enum class Mode
     {
         NORMAL,
@@ -44,7 +53,7 @@ class Looper
     }
 
     /** Handles reading/writing to the Buffer depending on the mode. */
-    float Process(const float &input)
+    float Process(const float input)
     {
         float sig = 0.f;
         float inc;
@@ -153,17 +162,7 @@ class Looper
     /** Engages/Disengages the recording, depending on Mode.
      ** In all modes, the first time this is triggered a new loop will be started.
      ** The second trigger will set the loop size, and begin playback of the loop. 
-     ** 
-     ** In normal mode the record engage/disenage will happen immediatly.
-     ** 
-     ** In one-punch dub mode the record engage will queue and beginnning recording 
-     ** on the next loop, and automatically disengage after a full loop around.
-     ** 
-     ** In replace mode, the engage/disengage will happen immediatly and all audio 
-     ** in the buffer will be replaced while engaged.
-     ** 
-     ** In frippertronics mode this does nothing after the initial loop is set. In this mode
-     ** looping is always engaged and the module acts like tape-delay set up. */
+    */
     inline void TrigRecord()
     {
         switch(state_)
@@ -207,18 +206,7 @@ class Looper
         mode_ = static_cast<Mode>(m);
     }
 
-    /** Sets the recording mode to the specified Mode. 
-     ** 
-     ** Normal Mode: Input is added to the existing loop infinitely while recording 
-     ** 
-     ** Onetime Dub Mode: Recording starts at the first sample of the buffer and is added
-     **     to the existing buffer contents. Recording automatically stops after one full loop.
-     **
-     ** Replace Mode: input is written to the buffer while recording.
-     **
-     ** Frippertronics Mode: infinite looping recording with fixed decay on each loop.
-     **
-    */
+    /** Sets the recording mode to the specified Mode. */
     inline void SetMode(Mode mode) { mode_ = mode; }
 
     /** Returns the specific recording mode that is currently set. */
@@ -239,9 +227,8 @@ class Looper
     static constexpr float kFripDecayVal      = std::sin(PI_F / 4.f);
     static constexpr int   kNumModes          = 4;
     static constexpr int   kNumPlaybackSpeeds = 3;
-    //static constexpr int   kWindowSamps       = 480;
-    static constexpr int   kWindowSamps  = 1200;
-    static constexpr float kWindowFactor = (1.f / kWindowSamps);
+    static constexpr int   kWindowSamps       = 1200;
+    static constexpr float kWindowFactor      = (1.f / kWindowSamps);
 
     /** Private Member Functions */
     float GetIncrementSize()
@@ -253,7 +240,7 @@ class Looper
     }
 
     /** Linear to Constpower approximation for windowing*/
-    float WindowVal(float in) { return sin(PI_F * 0.5f * in); }
+    float WindowVal(float in) { return sin(HALFPI_F * in); }
 
     /** Private Member Variables */
     Mode     mode_;
