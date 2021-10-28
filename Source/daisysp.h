@@ -90,7 +90,6 @@
 #include "Synthesis/zoscillator.h"
 
 /** Utility Modules */
-#include "Utility/buffer.h"
 #include "Utility/dcblock.h"
 #include "Utility/delayline.h"
 #include "Utility/dsp.h"

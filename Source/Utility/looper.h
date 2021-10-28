@@ -1,18 +1,13 @@
 #pragma once
-#include "Buffer.h"
 #include <cmath>
 
 namespace daisysp
 {
-template <size_t buffer_size>
 class Looper
 {
   public:
     Looper() {}
     ~Looper() {}
-
-    typedef Buffer<buffer_size> BigBuff;
-
 
     /** 
      ** Normal Mode: Input is added to the existing loop infinitely while recording 
@@ -40,10 +35,12 @@ class Looper
         REC_DUB,
     };
 
-    void Init(BigBuff *mem)
+    void Init(float *mem, size_t size)
     {
+        buffer_size_ = size;
         buff_ = mem;
-        buff_->Init();
+
+        InitBuff();
         state_      = State::EMPTY;
         mode_       = Mode::NORMAL;
         half_speed_ = false;
@@ -68,12 +65,12 @@ class Looper
             case State::EMPTY: sig = 0.0f; break;
             case State::REC_FIRST:
                 sig = 0.f;
-                buff_->Write(pos_, input * win_);
+                Write(pos_, input * win_);
                 if(win_idx_ < kWindowSamps - 1)
                     win_idx_ += 1;
                 recsize_ = pos_;
                 pos_ += inc;
-                if(pos_ > buffer_size - 1)
+                if(pos_ > buffer_size_ - 1)
                 {
                     state_   = State::PLAYING;
                     recsize_ = pos_ - 1;
@@ -81,13 +78,13 @@ class Looper
                 }
                 break;
             case State::PLAYING:
-                sig = buff_->Read(pos_);
+                sig = Read(pos_);
                 /** This is a way of 'seamless looping'
 				 ** The first N samps after recording is done are recorded with the input faded out. 
 				 */
                 if(win_idx_ < kWindowSamps - 1)
                 {
-                    buff_->Write(pos_, sig + input * (1.f - win_));
+                    Write(pos_, sig + input * (1.f - win_));
                     win_idx_ += 1;
                 }
 
@@ -114,17 +111,17 @@ class Looper
                 }
                 break;
             case State::REC_DUB:
-                sig = buff_->Read(pos_);
+                sig = Read(pos_);
                 switch(mode_)
                 {
-                    case Mode::REPLACE: buff_->Write(pos_, input * win_); break;
+                    case Mode::REPLACE: Write(pos_, input * win_); break;
                     case Mode::FRIPPERTRONICS:
-                        buff_->Write(pos_,
+                        Write(pos_,
                                      (input * win_) + (sig * kFripDecayVal));
                         break;
                     case Mode::NORMAL:
                     case Mode::ONETIME_DUB:
-                    default: buff_->Write(pos_, (input * win_) + sig); break;
+                    default: Write(pos_, (input * win_) + sig); break;
                 }
                 if(win_idx_ < kWindowSamps - 1)
                     win_idx_ += 1;
@@ -239,13 +236,34 @@ class Looper
         return reverse_ ? -inc : inc;
     }
 
+    /** Initialize the buffer */
+    void InitBuff() { std::fill(&buff_[0], &buff_[buffer_size_ - 1], 0); }
+
+    /** Get a floating point sample from the buffer */
+    inline const float Read(size_t pos) const { return buff_[pos]; }
+
+    /** Reads from a specified point in the delay line using linear interpolation */
+    float ReadF(float pos)
+    {
+        float    a, b, frac;
+        uint32_t i_idx = static_cast<uint32_t>(pos);
+        frac           = pos - i_idx;
+        a              = buff_[i_idx];
+        b              = buff_[(i_idx + 1) % buffer_size_];
+        return a + (b - a) * frac;
+    }
+
+    /** Write to a known location in the buffer */
+    inline void Write(size_t pos, float val) { buff_[pos] = val; }
+
     /** Linear to Constpower approximation for windowing*/
     float WindowVal(float in) { return sin(HALFPI_F * in); }
 
     /** Private Member Variables */
     Mode     mode_;
     State    state_;
-    BigBuff *buff_;
+    float *buff_;
+    size_t buffer_size_;
     float    pos_, win_;
     size_t   win_idx_;
     bool     half_speed_;

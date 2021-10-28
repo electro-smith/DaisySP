@@ -94,7 +94,6 @@ dcblock \
 jitter \
 metro \
 port 
-#buffer
 #delayline 
 #dsp 
 #looper
