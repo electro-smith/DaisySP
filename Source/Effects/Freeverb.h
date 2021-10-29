@@ -14,8 +14,8 @@ const int   kNumCombs   = 8;
 const int   kNumAllpass = 4;
 const float kMuted      = 0;
 const float kFixedGain  = 0.015f;
-//const float kScaleWet     = 3;
-const float kScaleWet     = 4;
+const float kScaleWet     = 3;
+//const float kScaleWet     = 4;
 const float kScaleDry     = 2;
 const float kScaledamp    = 0.4f;
 const float kScaleroom    = 0.28f;
@@ -29,7 +29,7 @@ const float kInitialmode  = 0;
 const float kFreezeMode   = 0.5f;
 const int   kStereoSpread = 23;
 
-constexpr float kTargetSr    = 96000.f;
+constexpr float kTargetSr    = 48000.f;
 constexpr float kOriginalSr  = 44100.f;
 constexpr float kRetuneCoeff = (kTargetSr / kOriginalSr);
 
