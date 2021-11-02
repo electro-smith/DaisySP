@@ -1,5 +1,7 @@
 #pragma once
 #include <cmath>
+#include <algorithm>
+#include "dsp.h"
 
 namespace daisysp
 {
