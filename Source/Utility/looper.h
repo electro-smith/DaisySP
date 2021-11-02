@@ -40,7 +40,7 @@ class Looper
     void Init(float *mem, size_t size)
     {
         buffer_size_ = size;
-        buff_ = mem;
+        buff_        = mem;
 
         InitBuff();
         state_      = State::EMPTY;
@@ -118,8 +118,7 @@ class Looper
                 {
                     case Mode::REPLACE: Write(pos_, input * win_); break;
                     case Mode::FRIPPERTRONICS:
-                        Write(pos_,
-                                     (input * win_) + (sig * kFripDecayVal));
+                        Write(pos_, (input * win_) + (sig * kFripDecayVal));
                         break;
                     case Mode::NORMAL:
                     case Mode::ONETIME_DUB:
@@ -262,17 +261,17 @@ class Looper
     float WindowVal(float in) { return sin(HALFPI_F * in); }
 
     /** Private Member Variables */
-    Mode     mode_;
-    State    state_;
+    Mode   mode_;
+    State  state_;
     float *buff_;
     size_t buffer_size_;
-    float    pos_, win_;
-    size_t   win_idx_;
-    bool     half_speed_;
-    bool     reverse_;
-    size_t   recsize_;
-    bool     rec_queue_;
-    bool     near_beginning_;
+    float  pos_, win_;
+    size_t win_idx_;
+    bool   half_speed_;
+    bool   reverse_;
+    size_t recsize_;
+    bool   rec_queue_;
+    bool   near_beginning_;
 };
 
 } // namespace daisysp
