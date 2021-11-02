@@ -5,6 +5,16 @@
 
 namespace daisysp
 {
+/** Multimode audio looper
+* 
+* Modes are:
+*  - Normal
+*  - Onetime Dub
+*  - Replace
+*  - Frippertronics
+*
+* Read more about the looper modes in the mode enum documentation.
+*/
 class Looper
 {
   public:
