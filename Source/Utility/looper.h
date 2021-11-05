@@ -261,6 +261,17 @@ class Looper
     /** Linear to Constpower approximation for windowing*/
     float WindowVal(float in) { return sin(HALFPI_F * in); }
 
+    // Private Enums
+
+    /** Internal looper state */
+    enum class State
+    {
+        EMPTY,
+        REC_FIRST,
+        PLAYING,
+        REC_DUB,
+    };
+
     /** Private Member Variables */
     Mode   mode_;
     State  state_;
@@ -273,17 +284,6 @@ class Looper
     size_t recsize_;
     bool   rec_queue_;
     bool   near_beginning_;
-
-    // Private Enums
-
-    /** Internal looper state */
-    enum class State
-    {
-        EMPTY,
-        REC_FIRST,
-        PLAYING,
-        REC_DUB,
-    };
 };
 
 } // namespace daisysp
