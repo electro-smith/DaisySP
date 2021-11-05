@@ -1,5 +1,4 @@
 #pragma once
-#include <cmath>
 #include <algorithm>
 #include "dsp.h"
 
@@ -37,14 +36,6 @@ class Looper
         ONETIME_DUB,
         REPLACE,
         FRIPPERTRONICS,
-    };
-
-    enum class State
-    {
-        EMPTY,
-        REC_FIRST,
-        PLAYING,
-        REC_DUB,
     };
 
     void Init(float *mem, size_t size)
@@ -282,6 +273,17 @@ class Looper
     size_t recsize_;
     bool   rec_queue_;
     bool   near_beginning_;
+
+    // Private Enums
+
+    /** Internal looper state */
+    enum class State
+    {
+        EMPTY,
+        REC_FIRST,
+        PLAYING,
+        REC_DUB,
+    };
 };
 
 } // namespace daisysp
