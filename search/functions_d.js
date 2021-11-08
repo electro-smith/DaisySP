@@ -59,7 +59,7 @@ var searchData=
   ['setmakeup_56',['SetMakeup',['../classdaisysp_1_1_compressor.html#a5d2ece6530893345d15ed529687c1b86',1,'daisysp::Compressor']]],
   ['setmax_57',['SetMax',['../classdaisysp_1_1_ad_env.html#a87811d93ff36742546613b11e0d106f7',1,'daisysp::AdEnv']]],
   ['setmin_58',['SetMin',['../classdaisysp_1_1_ad_env.html#ae456396b30c81f919a3e2e0b7b7faa0c',1,'daisysp::AdEnv']]],
-  ['setmode_59',['SetMode',['../classdaisysp_1_1_pluck.html#a0459e512a7ffb11d60f4f06d1fa208e7',1,'daisysp::Pluck::SetMode()'],['../classdaisysp_1_1_z_oscillator.html#abc63de0106d558b86bdecaeba8df9363',1,'daisysp::ZOscillator::SetMode()']]],
+  ['setmode_59',['SetMode',['../classdaisysp_1_1_pluck.html#a0459e512a7ffb11d60f4f06d1fa208e7',1,'daisysp::Pluck::SetMode()'],['../classdaisysp_1_1_looper.html#a3acddef05c4ed2ca79315e5a14b12f48',1,'daisysp::Looper::SetMode()'],['../classdaisysp_1_1_z_oscillator.html#abc63de0106d558b86bdecaeba8df9363',1,'daisysp::ZOscillator::SetMode()']]],
   ['setnoisiness_60',['SetNoisiness',['../classdaisysp_1_1_hi_hat.html#a417142b98d9067bdbc1b889e6e54fac2',1,'daisysp::HiHat']]],
   ['setnonlinearity_61',['SetNonLinearity',['../classdaisysp_1_1_string.html#af48c75cf2a8428a9b98587d2882547d6',1,'daisysp::String']]],
   ['setpan_62',['SetPan',['../classdaisysp_1_1_chorus.html#ae22096f592ccc4022825b62fcf89828c',1,'daisysp::Chorus::SetPan(float panl, float panr)'],['../classdaisysp_1_1_chorus.html#a4ad7ce1332cfdc896bcf5a9c6476a378',1,'daisysp::Chorus::SetPan(float pan)']]],

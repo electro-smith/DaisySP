@@ -16,7 +16,7 @@ var searchData=
   ['getindex_13',['GetIndex',['../classdaisysp_1_1_fm2.html#a2b80f9662af7538bfec62ab4b45ab6b0',1,'daisysp::Fm2']]],
   ['getleft_14',['GetLeft',['../classdaisysp_1_1_chorus.html#aceb9920f3c710fcf1094184830be05cb',1,'daisysp::Chorus']]],
   ['getmakeup_15',['GetMakeup',['../classdaisysp_1_1_compressor.html#a8c833b63461f2aaaa86ed34e35343394',1,'daisysp::Compressor']]],
-  ['getmode_16',['GetMode',['../classdaisysp_1_1_pluck.html#a6817009ba135c6d4aa9fff9edef3b91c',1,'daisysp::Pluck']]],
+  ['getmode_16',['GetMode',['../classdaisysp_1_1_pluck.html#a6817009ba135c6d4aa9fff9edef3b91c',1,'daisysp::Pluck::GetMode()'],['../classdaisysp_1_1_looper.html#a67a34d654d4ed622d85de93568625ddc',1,'daisysp::Looper::GetMode()']]],
   ['getnoise_17',['GetNoise',['../classdaisysp_1_1_particle.html#a9579601e16a45b74211651ac73886ac4',1,'daisysp::Particle']]],
   ['getpos_18',['GetPos',['../classdaisysp_1_1_cross_fade.html#a16cda819b5ef80c0b73743e0d15df3ca',1,'daisysp::CrossFade']]],
   ['getratio_19',['GetRatio',['../classdaisysp_1_1_compressor.html#a045f3b6e43eff6534f983d6d162d58ae',1,'daisysp::Compressor']]],
