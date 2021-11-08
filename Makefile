@@ -96,6 +96,7 @@ metro \
 port 
 #delayline 
 #dsp 
+#looper
 #maytrig 
 #samplehold 
 #smooth_random
