@@ -223,7 +223,9 @@ class Looper
 
   private:
     /** Constants */
-    static constexpr float kFripDecayVal      = std::sin(PI_F / 4.f);
+
+    /** Decay value for frippertronics mode is sin(PI / 4) */
+    static constexpr float kFripDecayVal      = 0.7071067811865476f;
     static constexpr int   kNumModes          = 4;
     static constexpr int   kNumPlaybackSpeeds = 3;
     static constexpr int   kWindowSamps       = 1200;
