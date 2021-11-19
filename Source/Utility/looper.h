@@ -59,9 +59,9 @@ class Looper
         float inc;
         bool  hitloop = false;
         // Record forward at normal speed during the first loop no matter what.
-        inc  = state_ == State::EMPTY || state_ == State::REC_FIRST
-                   ? 1.f
-                   : GetIncrementSize();
+        inc = state_ == State::EMPTY || state_ == State::REC_FIRST
+                  ? 1.f
+                  : GetIncrementSize();
         win_ = WindowVal(win_idx_ * kWindowFactor);
         switch(state_)
         {
