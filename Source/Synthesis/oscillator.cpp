@@ -20,7 +20,7 @@ float Oscillator::Process()
             out = -1.0f * (((phase_ * TWO_PI_RECIP * 2.0f)) - 1.0f);
             break;
         case WAVE_RAMP: out = ((phase_ * TWO_PI_RECIP * 2.0f)) - 1.0f; break;
-        case WAVE_SQUARE: out = phase_ < PI_F ? (1.0f) : -1.0f; break;
+        case WAVE_SQUARE: out = phase_ < pw_ ? (1.0f) : -1.0f; break;
         case WAVE_POLYBLEP_TRI:
             t   = phase_ * TWO_PI_RECIP;
             out = phase_ < PI_F ? 1.0f : -1.0f;
