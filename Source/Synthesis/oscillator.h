@@ -72,12 +72,12 @@ class Oscillator
     inline void SetWaveform(const uint8_t wf)
     {
         waveform_ = wf < WAVE_LAST ? wf : WAVE_SIN;
-    }  
+    }
     /** Sets the pulse width for WAVE_SQUARE and WAVE_POLYBLEP_SQUARE (range 0 - 1)
      */
     inline void SetPw(const float pw)
     {
-        pw_ = fclamp(pw, 0.0f, 1.0f);
+        pw_     = fclamp(pw, 0.0f, 1.0f);
         pw_rad_ = pw_ * TWOPI_F;
     }
 
