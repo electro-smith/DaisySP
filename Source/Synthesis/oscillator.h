@@ -45,7 +45,8 @@ class Oscillator
         sr_recip_  = 1.0f / sample_rate;
         freq_      = 100.0f;
         amp_       = 0.5f;
-        pw_        = 0.5f * TWOPI_F;
+        pw_        = 0.5f;
+        pw_rad_    = pw_ * TWOPI_F;
         phase_     = 0.0f;
         phase_inc_ = CalcPhaseInc(freq_);
         waveform_  = WAVE_SIN;
@@ -76,7 +77,8 @@ class Oscillator
      */
     inline void SetPw(const float pw)
     {
-        pw_ = fclamp(pw, 0.0f, 1.0f) * TWOPI_F;
+        pw_ = fclamp(pw, 0.0f, 1.0f);
+        pw_rad_ = pw_ * TWOPI_F;
     }
 
     /** Returns true if cycle is at end of rise. Set during call to Process.
@@ -110,7 +112,7 @@ class Oscillator
   private:
     float   CalcPhaseInc(float f);
     uint8_t waveform_;
-    float   amp_, freq_, pw_;
+    float   amp_, freq_, pw_, pw_rad_;
     float   sr_, sr_recip_, phase_, phase_inc_;
     float   last_out_, last_freq_;
     bool    eor_, eoc_;
