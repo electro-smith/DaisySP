@@ -27,6 +27,7 @@ Source/Effects/reverbsc.cpp
 Source/Effects/phaser.cpp
 Source/Effects/sampleratereducer.cpp
 Source/Effects/tremolo.cpp
+Source/Effects/wavefolder.cpp
 Source/Filters/allpass.cpp
 Source/Filters/atone.cpp
 Source/Filters/biquad.cpp

@@ -40,7 +40,8 @@ overdrive \
 phaser \
 reverbsc \
 sampleratereducer \
-tremolo 
+tremolo \
+wavefolder
 #pitchshifter 
 
 FILTER_MOD_DIR = Filters
