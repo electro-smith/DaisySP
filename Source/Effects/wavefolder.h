@@ -3,6 +3,7 @@
 #define DSY_WAVEFOFOLDER_H
 
 #include <stdint.h>
+#include "Utility/dcblock.h"
 #ifdef __cplusplus
 
 namespace daisysp
@@ -27,13 +28,17 @@ class Wavefolder
     */
     float Process(float in);
     /** 
-        \param gain : set input gain, 
-        supports negative values for thru-zero
+        \param gain Set input gain.
+        Supports negative values for thru-zero
     */
     inline void SetGain(float gain) { gain_ = gain; }
+    /** 
+        \param offset Offset odded to input (pre-gain) for asymmetrical folding.
+    */
+    inline void SetOffset(float offset) { offset_ = offset; }
 
   private:
-    float gain_;
+    float gain_, offset_;
 };
 } // namespace daisysp
 #endif
