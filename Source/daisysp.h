@@ -47,6 +47,7 @@
 #include "Effects/pitchshifter.h"
 #include "Effects/sampleratereducer.h"
 #include "Effects/tremolo.h"
+#include "Effects/wavefolder.h"
 
 /** Filter Modules */
 #include "Filters/allpass.h"
