@@ -37,19 +37,31 @@ class Decimator
     */
     inline void SetBitcrushFactor(float bitcrush_factor)
     {
-        //            bitcrush_factor_ = bitcrush_factor;
+        bitcrush_factor_ = bitcrush_factor;
         bits_to_crush_ = (uint32_t)(bitcrush_factor * kMaxBitsToCrush);
+        bit_overflow_ = 2.0f - (bitcrush_factor_ * 16.0f) - (float)(bits_to_crush_);
     }
 
-    /** Sets the exact number of bits to crush
+    /** Sets the exact number of bits to crush and disables smooth crushing
         0-16 bits
     */
     inline void SetBitsToCrush(const uint8_t &bits)
     {
         bits_to_crush_ = bits <= kMaxBitsToCrush ? bits : kMaxBitsToCrush;
+        smooth_crushing_ = false;
     }
 
+    /** Sets the smooth crushing on or off
+        true/false
+    */
+    inline void SetSmoothCrushing(bool smooth_crushing)
+    {
+        smooth_crushing_ = smooth_crushing;
+    }
 
+    /** Returns current setting of smooth crushing
+    */
+    inline bool GetSmoothCrushing() { return smooth_crushing_; }
     /** Returns current setting of downsample
     */
     inline float GetDownsampleFactor() { return downsample_factor_; }
@@ -63,6 +75,8 @@ class Decimator
     uint32_t      bits_to_crush_;
     float         downsampled_, bitcrushed_;
     uint32_t      inc_, threshold_;
+    bool          smooth_crushing_;
+    float         bit_overflow_;
 };
 } // namespace daisysp
 #endif

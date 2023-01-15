@@ -10,6 +10,8 @@ void Decimator::Init()
     bitcrushed_        = 0.0f;
     inc_               = 0;
     threshold_         = 0;
+    smooth_crushing_   = false;
+    bit_overflow_      = 1.0f;
 }
 
 float Decimator::Process(float input)
@@ -23,10 +25,17 @@ float Decimator::Process(float input)
         inc_         = 0;
         downsampled_ = input;
     }
+
     //bitcrush
-    temp = (int32_t)(downsampled_ * 65536.0f);
+    float smoothing_temp = 1.0f;
+    if(smooth_crushing_)
+    {
+        smoothing_temp = bit_overflow_;
+    }
+    temp = (int32_t)(downsampled_ * 65536.0f * smoothing_temp);
     temp >>= bits_to_crush_; // shift off
     temp <<= bits_to_crush_; // move back with zeros
-    bitcrushed_ = (float)temp / 65536.0f;
+    bitcrushed_ = (float)temp / (65536.0f * smoothing_temp);
+
     return bitcrushed_;
 }
