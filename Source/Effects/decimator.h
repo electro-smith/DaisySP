@@ -68,6 +68,9 @@ class Decimator
     /** Returns current setting of bitcrush
     */
     inline float GetBitcrushFactor() { return bitcrush_factor_; }
+    /** Returns current bitcrush setting in bits
+    */
+    inline int GetBitsToCrush() { return bits_to_crush_; }
 
   private:
     const uint8_t kMaxBitsToCrush = 16;
