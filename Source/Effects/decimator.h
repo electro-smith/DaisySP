@@ -39,7 +39,7 @@ class Decimator
     {
         bitcrush_factor_ = bitcrush_factor;
         bits_to_crush_ = (uint32_t)(bitcrush_factor * kMaxBitsToCrush);
-        bit_overflow_ = 2.0f - (bitcrush_factor_ * 16.0f) - (float)(bits_to_crush_);
+        bit_overflow_ = 2.0f - (bitcrush_factor * 16.0f) + (float)(bits_to_crush_);
     }
 
     /** Sets the exact number of bits to crush and disables smooth crushing
