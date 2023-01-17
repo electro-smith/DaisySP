@@ -27,15 +27,18 @@ float Decimator::Process(float input)
     }
 
     //bitcrush
-    float smoothing_temp = 1.0f;
     if(smooth_crushing_)
     {
-        smoothing_temp = bit_overflow_;
+        temp = (int32_t)(downsampled_ * 65536.0f * bit_overflow_);
+        temp >>= bits_to_crush_ + 1; // shift off
+        temp <<= bits_to_crush_ + 1; // move back with zeros
+        bitcrushed_ = (float)temp / (65536.0f * bit_overflow_);
+    } else {
+        temp = (int32_t)(downsampled_ * 65536.0f);
+        temp >>= bits_to_crush_; // shift off
+        temp <<= bits_to_crush_; // move back with zeros
+        bitcrushed_ = (float)temp / 65536.0f;
     }
-    temp = (int32_t)(downsampled_ * 65536.0f * smoothing_temp);
-    temp >>= bits_to_crush_; // shift off
-    temp <<= bits_to_crush_; // move back with zeros
-    bitcrushed_ = (float)temp / (65536.0f * smoothing_temp);
 
     return bitcrushed_;
 }
