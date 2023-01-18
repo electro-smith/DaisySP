@@ -38,8 +38,9 @@ class Decimator
     inline void SetBitcrushFactor(float bitcrush_factor)
     {
         bitcrush_factor_ = bitcrush_factor;
-        bits_to_crush_ = (uint32_t)(bitcrush_factor * kMaxBitsToCrush);
-        bit_overflow_ = 2.0f - (bitcrush_factor * 16.0f) + (float)(bits_to_crush_);
+        bits_to_crush_   = (uint32_t)(bitcrush_factor * kMaxBitsToCrush);
+        bit_overflow_
+            = 2.0f - (bitcrush_factor * 16.0f) + (float)(bits_to_crush_);
     }
 
     /** Sets the exact number of bits to crush and disables smooth crushing
@@ -47,7 +48,7 @@ class Decimator
     */
     inline void SetBitsToCrush(const uint8_t &bits)
     {
-        bits_to_crush_ = bits <= kMaxBitsToCrush ? bits : kMaxBitsToCrush;
+        bits_to_crush_   = bits <= kMaxBitsToCrush ? bits : kMaxBitsToCrush;
         smooth_crushing_ = false;
     }
 
