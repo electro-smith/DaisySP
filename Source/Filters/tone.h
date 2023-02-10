@@ -29,7 +29,7 @@ class Tone
 
         \param freq - frequency value in Hz. Range: Any positive value.
     */
-    inline void SetFreq(float &freq)
+    inline void SetFreq(float freq)
     {
         freq_ = freq;
         CalculateCoefficients();
