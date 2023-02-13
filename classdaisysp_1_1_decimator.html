@@ -94,10 +94,16 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a7c65a49525331f32560f0bd80aa3f609"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a976298f886f85998e00d68ed79ebb272"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaisysp_1_1_decimator.html#a976298f886f85998e00d68ed79ebb272">SetBitsToCrush</a> (const uint8_t &amp;bits)</td></tr>
 <tr class="separator:a976298f886f85998e00d68ed79ebb272"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b221ec1998a31485a3a34b97e3f2d84"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaisysp_1_1_decimator.html#a0b221ec1998a31485a3a34b97e3f2d84">SetSmoothCrushing</a> (bool smooth_crushing)</td></tr>
+<tr class="separator:a0b221ec1998a31485a3a34b97e3f2d84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78665d3556dd227937a7468288f124ae"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaisysp_1_1_decimator.html#a78665d3556dd227937a7468288f124ae">GetSmoothCrushing</a> ()</td></tr>
+<tr class="separator:a78665d3556dd227937a7468288f124ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9adfd7416c2357298538b4e04d7f037a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaisysp_1_1_decimator.html#a9adfd7416c2357298538b4e04d7f037a">GetDownsampleFactor</a> ()</td></tr>
 <tr class="separator:a9adfd7416c2357298538b4e04d7f037a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a3397a764e5018ae75c76830e89e5e6"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaisysp_1_1_decimator.html#a3a3397a764e5018ae75c76830e89e5e6">GetBitcrushFactor</a> ()</td></tr>
 <tr class="separator:a3a3397a764e5018ae75c76830e89e5e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a3d806169cfbfaadd3ed76e59dd13e2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaisysp_1_1_decimator.html#a1a3d806169cfbfaadd3ed76e59dd13e2">GetBitsToCrush</a> ()</td></tr>
+<tr class="separator:a1a3d806169cfbfaadd3ed76e59dd13e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Performs downsampling and bitcrush effects </p>
@@ -128,6 +134,32 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a1a3d806169cfbfaadd3ed76e59dd13e2" name="a1a3d806169cfbfaadd3ed76e59dd13e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a3d806169cfbfaadd3ed76e59dd13e2">&#9670;&#160;</a></span>GetBitsToCrush()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int daisysp::Decimator::GetBitsToCrush </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns current bitcrush setting in bits </p>
+
+</div>
+</div>
 <a id="a9adfd7416c2357298538b4e04d7f037a" name="a9adfd7416c2357298538b4e04d7f037a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9adfd7416c2357298538b4e04d7f037a">&#9670;&#160;</a></span>GetDownsampleFactor()</h2>
 
@@ -151,6 +183,32 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Returns current setting of downsample </p>
+
+</div>
+</div>
+<a id="a78665d3556dd227937a7468288f124ae" name="a78665d3556dd227937a7468288f124ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78665d3556dd227937a7468288f124ae">&#9670;&#160;</a></span>GetSmoothCrushing()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool daisysp::Decimator::GetSmoothCrushing </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns current setting of smooth crushing </p>
 
 </div>
 </div>
@@ -241,7 +299,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Sets the exact number of bits to crush 0-16 bits </p>
+<p>Sets the exact number of bits to crush and disables smooth crushing 0-16 bits </p>
 
 </div>
 </div>
@@ -269,6 +327,33 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Sets amount of downsample Input range: </p>
+
+</div>
+</div>
+<a id="a0b221ec1998a31485a3a34b97e3f2d84" name="a0b221ec1998a31485a3a34b97e3f2d84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b221ec1998a31485a3a34b97e3f2d84">&#9670;&#160;</a></span>SetSmoothCrushing()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void daisysp::Decimator::SetSmoothCrushing </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>smooth_crushing</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Sets the smooth crushing on or off true/false </p>
 
 </div>
 </div>
