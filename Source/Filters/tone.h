@@ -23,13 +23,13 @@ class Tone
     /** Processes one sample through the filter and returns one sample.
         in - input signal 
     */
-    float Process(float &in);
+    float Process(float in);
 
     /** Sets the cutoff frequency or half-way point of the filter.
 
         \param freq - frequency value in Hz. Range: Any positive value.
     */
-    inline void SetFreq(float &freq)
+    inline void SetFreq(float freq)
     {
         freq_ = freq;
         CalculateCoefficients();
