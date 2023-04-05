@@ -60,6 +60,7 @@
 #include "Filters/svf.h"
 #include "Filters/tone.h"
 #include "Filters/fir.h"
+#include "Filters/soap.h"
 
 /** Noise Modules */
 #include "Noise/clockednoise.h"
