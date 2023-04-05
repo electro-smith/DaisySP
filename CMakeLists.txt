@@ -37,6 +37,7 @@ Source/Filters/moogladder.cpp
 Source/Filters/nlfilt.cpp
 Source/Filters/svf.cpp
 Source/Filters/tone.cpp
+Source/Filters/soap.cpp
 Source/Noise/clockednoise.cpp
 Source/Noise/grainlet.cpp
 Source/Noise/particle.cpp
