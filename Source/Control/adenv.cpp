@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <math.h>
 #include "adenv.h"
 
@@ -113,7 +114,15 @@ float AdEnv::Process()
         c_inc_ = (end - beg) / (1.0f - EXPF(curve_scalar_));
     }
 
-
+    if(c_inc_ >= 0)
+    {
+        c_inc_ = std::max(c_inc_, std::numeric_limits<float>::epsilon());
+    }
+    else
+    {
+        c_inc_ = std::min(c_inc_, -std::numeric_limits<float>::epsilon());
+    }
+ 
     // update output
     val = output_;
     inc = c_inc_;
