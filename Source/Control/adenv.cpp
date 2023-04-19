@@ -114,7 +114,7 @@ float AdEnv::Process()
         c_inc_ = (end - beg) / (1.0f - EXPF(curve_scalar_));
     }
 
-    if(c_inc_ >= 0)
+    if(c_inc_ >= 0.0f)
     {
         c_inc_ = std::max(c_inc_, std::numeric_limits<float>::epsilon());
     }
