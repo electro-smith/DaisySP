@@ -122,7 +122,7 @@ float AdEnv::Process()
     {
         c_inc_ = std::min(c_inc_, -std::numeric_limits<float>::epsilon());
     }
- 
+
     // update output
     val = output_;
     inc = c_inc_;
