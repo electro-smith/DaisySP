@@ -20,9 +20,9 @@ class Soap
         void Init(float sample_rate);
 
         /** 
-            Process the input signal, return the output.
+            Process the input signal, updating all of the outputs
         */
-        float Process(float in);
+        void Process(float in);
 
         /** 
             Sets the center frequency of the filter. 
@@ -33,6 +33,16 @@ class Soap
             Sets the low frequency threshold of the filter. 
         */
         void SetFilterBandwidth(float b);
+
+        /** Bandpass output
+            \return bandpass output of the filter
+        */
+        inline float Bandpass() { return out_bandpass_; }
+
+        /** Bandreject output
+            \return bandreject output of the filter
+        */
+        inline float Bandreject() { return out_bandreject_; }
     
     private:
         float soap_center_freq_;
@@ -42,7 +52,9 @@ class Soap
         float din_2_;
         float dout_1_;
         float dout_2_;
-        double all_output_;
+        float all_output_;
+        float out_bandpass_;
+        float out_bandreject_;
         float sr_;
 
 
