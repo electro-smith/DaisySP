@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <limits>
 #include <math.h>
 #include "adenv.h"
 
