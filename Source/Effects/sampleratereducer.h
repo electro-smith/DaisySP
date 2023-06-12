@@ -32,7 +32,7 @@ class SampleRateReducer
     float Process(float in);
 
     /** Set the new sample rate.
-        \param Works over 0-1. 1 is full quality, .5 is half sample rate, etc.
+        \param frequency over 0-1. 1 is full quality, .5 is half sample rate, etc.
     */
     void SetFreq(float frequency);
 
