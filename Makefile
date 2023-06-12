@@ -54,7 +54,8 @@ mode \
 moogladder \
 nlfilt \
 svf \
-tone 
+tone \
+soap 
 #fir
 
 NOISE_MOD_DIR = Noise
