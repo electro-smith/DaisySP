@@ -1,7 +1,7 @@
 #pragma once
 
-namespace daisysp {
-
+namespace daisysp
+{
 /** Second Order All Pass Filter
 
 This is from Tom Erbe's synth notes. The filter
