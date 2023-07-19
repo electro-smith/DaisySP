@@ -21,7 +21,7 @@ float Oscillator::Process()
             t   = phase_;
             out = phase_ < 0.5f ? 1.0f : -1.0f;
             out += Polyblep(phase_inc_, t);
-            out -= Polyblep(phase_inc_, fmodf(t + 0.5f, 1.0f));
+            out -= Polyblep(phase_inc_, fastmod1f(t + 0.5f));
             // Leaky Integrator:
             // y[n] = A + x[n] + (1 - A) * y[n-1]
             out       = phase_inc_ * out + (1.0f - phase_inc_) * last_out_;
@@ -38,7 +38,7 @@ float Oscillator::Process()
             t   = phase_;
             out = phase_ < pw_ ? 1.0f : -1.0f;
             out += Polyblep(phase_inc_, t);
-            out -= Polyblep(phase_inc_, fmodf(t + (1.0f - pw_), 1.0f));
+            out -= Polyblep(phase_inc_, fastmod1f(t + (1.0f - pw_)));
             out *= 0.707f; // ?
             break;
         default: out = 0.0f; break;
