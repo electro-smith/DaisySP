@@ -33,6 +33,9 @@ class WhiteNoise
         return (randseed_ * coeff_) * amp_;
     }
 
+    /** sets the seed (and corrects a seed of 0 to 1) */
+    inline void SetSeed(int32_t s) { randseed_ = s == 0 ? 1 : s; }
+
   private:
     static constexpr float coeff_ = 4.6566129e-010f;
     float                  amp_;
