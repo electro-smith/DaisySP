@@ -80,7 +80,7 @@ inline float fastroot(float f, int n)
     lp = (long *)(&f);
     l  = *lp;
     l -= 0x3F800000;
-    l >>= (n = 1);
+    l >>= (n - 1);
     l += 0x3F800000;
     *lp = l;
     return f;
