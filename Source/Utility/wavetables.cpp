@@ -1,4 +1,4 @@
-#include "wavetables.cpp"
+#include "wavetables.h"
 
 // hackish way to make it work for both mcu and computer
 #ifndef DSY_SDRAM_BSS
