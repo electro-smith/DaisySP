@@ -1,4 +1,7 @@
 #pragma once
+#ifndef DSY_WAVETABLEOSC_H
+#define DSY_WAVETABLEOSC_H
+
 #include "wavetables.h"
 
 namespace daisysp
@@ -134,3 +137,4 @@ class WavetableOsc
 };
 
 } // namespace daisysp
+#endif
