@@ -47,6 +47,7 @@ Source/PhysicalModeling/pluck.cpp
 Source/PhysicalModeling/resonator.cpp
 Source/PhysicalModeling/KarplusString.cpp
 Source/PhysicalModeling/stringvoice.cpp
+Source/Sampling/granularplayer.cpp
 Source/Synthesis/blosc.cpp
 Source/Synthesis/fm2.cpp
 Source/Synthesis/formantosc.cpp
