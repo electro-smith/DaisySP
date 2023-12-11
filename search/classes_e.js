@@ -3,7 +3,7 @@ var searchData=
   ['samplehold_0',['SampleHold',['../classdaisysp_1_1_sample_hold.html',1,'daisysp']]],
   ['sampleratereducer_1',['SampleRateReducer',['../classdaisysp_1_1_sample_rate_reducer.html',1,'daisysp']]],
   ['smoothrandomgenerator_2',['SmoothRandomGenerator',['../classdaisysp_1_1_smooth_random_generator.html',1,'daisysp']]],
-  ['soap_3',['Soap',['../class_soap.html',1,'']]],
+  ['soap_3',['Soap',['../classdaisysp_1_1_soap.html',1,'daisysp']]],
   ['squarenoise_4',['SquareNoise',['../classdaisysp_1_1_square_noise.html',1,'daisysp']]],
   ['string_5',['String',['../classdaisysp_1_1_string.html',1,'daisysp']]],
   ['stringvoice_6',['StringVoice',['../classdaisysp_1_1_string_voice.html',1,'daisysp']]],
