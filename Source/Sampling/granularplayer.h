@@ -68,12 +68,12 @@ class GranularPlayer
     float
         idxTransp_; // Adjusted Transposition value contribution to idx of first grain
     float
-        idxTransp2_; // Adjusted Transposition value contribution to idx of second grain
+          idxTransp2_; // Adjusted Transposition value contribution to idx of second grain
     float idxSpeed_; // Adjusted Speed value contribution to idx of first grain
     float
-        idxSpeed2_; // Adjusted Speed value contribution to idx of second grain
-    float sig_;     // Output of first grain
-    float sig2_;    // Output of second grain
+          idxSpeed2_; // Adjusted Speed value contribution to idx of second grain
+    float sig_;       // Output of first grain
+    float sig2_;      // Output of second grain
 
     uint32_t idx_;  // Index of first grain
     uint32_t idx2_; // Index of second grain
