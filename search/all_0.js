@@ -13,8 +13,9 @@ var searchData=
   ['analogbassdrum_2eh_10',['analogbassdrum.h',['../analogbassdrum_8h.html',1,'']]],
   ['analogsnaredrum_11',['AnalogSnareDrum',['../classdaisysp_1_1_analog_snare_drum.html',1,'daisysp']]],
   ['analogsnaredrum_2eh_12',['analogsnaredrum.h',['../analogsnaredrum_8h.html',1,'']]],
-  ['apply_13',['Apply',['../classdaisysp_1_1_compressor.html#a0f75f6a1d127db30cdbccec09254f997',1,'daisysp::Compressor']]],
-  ['atone_14',['ATone',['../classdaisysp_1_1_a_tone.html',1,'daisysp']]],
-  ['automakeup_15',['AutoMakeup',['../classdaisysp_1_1_compressor.html#a0bf3732454e2ccc80c0ab4772a68ef38',1,'daisysp::Compressor']]],
-  ['autowah_16',['Autowah',['../classdaisysp_1_1_autowah.html',1,'daisysp']]]
+  ['applications_13',['Applications',['../index.html#autotoc_md0',1,'']]],
+  ['apply_14',['Apply',['../classdaisysp_1_1_compressor.html#a0f75f6a1d127db30cdbccec09254f997',1,'daisysp::Compressor']]],
+  ['atone_15',['ATone',['../classdaisysp_1_1_a_tone.html',1,'daisysp']]],
+  ['automakeup_16',['AutoMakeup',['../classdaisysp_1_1_compressor.html#a0bf3732454e2ccc80c0ab4772a68ef38',1,'daisysp::Compressor']]],
+  ['autowah_17',['Autowah',['../classdaisysp_1_1_autowah.html',1,'daisysp']]]
 ];
