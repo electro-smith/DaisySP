@@ -79,6 +79,9 @@
 #include "PhysicalModeling/KarplusString.h"
 #include "PhysicalModeling/stringvoice.h"
 
+/** Sampling Modules */
+#include "Sampling/granularplayer.h"
+
 /** Synthesis Modules */
 #include "Synthesis/blosc.h"
 #include "Synthesis/fm2.h"
