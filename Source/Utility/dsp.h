@@ -86,6 +86,14 @@ inline float fastroot(float f, int n)
     return f;
 }
 
+/** Significantly more efficient than fmodf(x, 1.0f) for calculating
+ *  the decimal part of a floating point value.
+ */
+inline float fastmod1f(float x)
+{
+    return x - static_cast<int>(x);
+}
+
 /** From http://openaudio.blogspot.com/2017/02/faster-log10-and-pow.html
 No approximation, pow10f(x) gives a 90% speed increase over powf(10.f, x)
 */
@@ -145,16 +153,16 @@ enum class Mapping
     LOG,
 };
 
-/** Maps a float between a specified range, using a specified curve. 
- * 
+/** Maps a float between a specified range, using a specified curve.
+ *
  *  \param in a value between 0 to 1 that will be mapped to the new range.
  *  \param min the new minimum value
  *  \param max the new maxmimum value
  *  \param curve a Mapping Value to adjust the response curve of the transformation
  *               defaults to Linear. @see Mapping
- * 
+ *
  *  When using the log curve min and max, must be greater than zero.
- * 
+ *
  *  \retval returns the transformed float within the new range.
 */
 inline float
@@ -233,11 +241,11 @@ inline float SoftClip(float x)
         return SoftLimit(x);
 }
 
-/** Quick check for Invalid float values (NaN, Inf, out of range) 
- ** \param x value passed by reference, replaced by y if invalid. 
- ** \param y value to replace x if invalidity is found. 
- ** 
- ** When DEBUG is true in the build, this will halt 
+/** Quick check for Invalid float values (NaN, Inf, out of range)
+ ** \param x value passed by reference, replaced by y if invalid.
+ ** \param y value to replace x if invalidity is found.
+ **
+ ** When DEBUG is true in the build, this will halt
  ** execution for tracing the reason for the invalidity. */
 inline void TestFloat(float &x, float y = 0.f)
 {
