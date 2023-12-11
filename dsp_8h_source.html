@@ -157,7 +157,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    lp = (<span class="keywordtype">long</span> *)(&amp;f);</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    l  = *lp;</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    l -= 0x3F800000;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    l &gt;&gt;= (n = 1);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    l &gt;&gt;= (n - 1);</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    l += 0x3F800000;</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    *lp = l;</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordflow">return</span> f;</div>
