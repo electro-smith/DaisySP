@@ -3,6 +3,8 @@
 
 #define PI 3.141592653589793
 
+using namespace daisysp;
+
 void Soap::Init(float sample_rate)
 {
     soap_center_freq_ = 400.0;

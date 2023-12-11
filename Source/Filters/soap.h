@@ -1,5 +1,7 @@
 #pragma once
 
+namespace daisysp
+{
 /** Second Order All Pass Filter
 
 This is from Tom Erbe's synth notes. The filter
@@ -18,18 +20,18 @@ class Soap
         */
     void Init(float sample_rate);
 
-    /** 
+    /**
             Process the input signal, updating all of the outputs
         */
     void Process(float in);
 
-    /** 
-            Sets the center frequency of the filter. 
+    /**
+            Sets the center frequency of the filter.
         */
     void SetCenterFreq(float f);
 
-    /** 
-            Sets the low frequency threshold of the filter. 
+    /**
+            Sets the low frequency threshold of the filter.
         */
     void SetFilterBandwidth(float b);
 
@@ -56,3 +58,5 @@ class Soap
     float out_bandreject_;
     float sr_;
 };
+
+} // namespace daisysp
