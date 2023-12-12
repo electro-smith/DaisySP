@@ -80,10 +80,10 @@ struct WaveTable
     std::vector<WaveBuffer *> buffers;
 };
 
-template<typename RealType>
-using FFTFunction = void (*)(int, RealType*, RealType*);
+template <typename RealType>
+using FFTFunction = void (*)(int, RealType *, RealType *);
 
-template<typename T, FFTFunction<T> fft_func>
+template <typename T, FFTFunction<T> fft_func>
 class Tables
 {
     static WaveTable Square;
@@ -304,7 +304,8 @@ class Tables
         return 0;
     }
 
-    static void fft(int numSamples, T *ar, T *ai) {
+    static void fft(int numSamples, T *ar, T *ai)
+    {
         fft_func(numSamples, ar, ai);
     }
 
