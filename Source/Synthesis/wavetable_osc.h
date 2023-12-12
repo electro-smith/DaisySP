@@ -3,7 +3,6 @@
 
 namespace daisysp
 {
-
 /**
  * @brief Wave table oscillator
  *

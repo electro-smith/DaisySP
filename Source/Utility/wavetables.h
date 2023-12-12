@@ -7,7 +7,6 @@
 
 namespace daisysp
 {
-
 // NOTE: Using (size + 1) to fix the computational complexity with table wrapping
 // i.e. data[i], data[i +1] where i == size
 struct WaveBuffer
@@ -206,8 +205,8 @@ struct Tables
     // all wavetables necessary for full-bandwidth operation, based on one table per octave,
     // and returns the number of tables.
     static void fillTables(WaveTable *table,
-                           float     *freqWaveRe,
-                           float     *freqWaveIm,
+                           float *    freqWaveRe,
+                           float *    freqWaveIm,
                            int const  numSamples,
                            int        maxHarmonic)
     {
@@ -278,7 +277,7 @@ struct Tables
         return scale;
     }
 
-    static int AddWaveTable(WaveBuffer  *buff,
+    static int AddWaveTable(WaveBuffer * buff,
                             int          len,
                             float const *waveTableIn,
                             float        scale,
