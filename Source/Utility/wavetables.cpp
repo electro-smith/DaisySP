@@ -7,14 +7,22 @@
 
 namespace daisysp
 {
-bool Tables::generated = false;
 
-WaveBuffer DSY_SDRAM_BSS Tables::buffer_pool[40];
-uint8_t                  Tables::num_buffers = 0;
+template<typename T, FFTFunction<T> fft> 
+bool Tables<T, fft>::generated = false;
 
-WaveTable Tables::Sine;
-WaveTable Tables::Square;
-WaveTable Tables::Tri;
-WaveTable Tables::Saw;
+template<typename T, FFTFunction<T> fft>
+WaveBuffer DSY_SDRAM_BSS Tables<T, fft>::buffer_pool[40];
+template<typename T, FFTFunction<T> fft>
+uint8_t                  Tables<T, fft>::num_buffers = 0;
+
+template<typename T, FFTFunction<T> fft>
+WaveTable Tables<T, fft>::Sine;
+template<typename T, FFTFunction<T> fft>
+WaveTable Tables<T, fft>::Square;
+template<typename T, FFTFunction<T> fft>
+WaveTable Tables<T, fft>::Tri;
+template<typename T, FFTFunction<T> fft>
+WaveTable Tables<T, fft>::Saw;
 
 } // namespace daisysp
