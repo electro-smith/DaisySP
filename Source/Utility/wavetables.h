@@ -1,4 +1,7 @@
 #pragma once
+#ifndef DSY_WAVETABLES_H
+#define DSY_WAVETABLES_H
+
 #include <math.h>
 #include <array>
 #include <vector>
@@ -387,3 +390,4 @@ struct Tables
 };
 
 } // namespace daisysp
+#endif
