@@ -1,8 +1,11 @@
 #pragma once
+#ifndef DSY_WAVETABLES_H
+#define DSY_WAVETABLES_H
+
 #include <math.h>
 #include <array>
 #include <vector>
-
+#include <functional>
 #include "dsp.h"
 
 namespace daisysp
@@ -77,7 +80,11 @@ struct WaveTable
     std::vector<WaveBuffer *> buffers;
 };
 
-struct Tables
+template<typename RealType>
+using FFTFunction = void (*)(int, RealType*, RealType*);
+
+template<typename T, FFTFunction<T> fft_func>
+class Tables
 {
     static WaveTable Square;
     static WaveTable Sine;
@@ -297,6 +304,10 @@ struct Tables
         return 0;
     }
 
+    static void fft(int numSamples, T *ar, T *ai) {
+        fft_func(numSamples, ar, ai);
+    }
+
     /*
     in-place complex fft
     
@@ -307,7 +318,7 @@ struct Tables
     Computer Science Dept. 
     Princeton University 08544          
     */
-    static void fft(int numSamples, float *ar, float *ai)
+    static void cooley_tukey_fft(int numSamples, float *ar, float *ai)
     {
         int   i, j, k, L;           /* indexes */
         int   M, TEMP, LE, LE1, ip; /* M = log N */
@@ -387,3 +398,4 @@ struct Tables
 };
 
 } // namespace daisysp
+#endif
