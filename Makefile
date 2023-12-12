@@ -93,7 +93,8 @@ UTILITY_MODULES = \
 dcblock \
 jitter \
 metro \
-port 
+port \
+wavetables
 #delayline 
 #dsp 
 #looper

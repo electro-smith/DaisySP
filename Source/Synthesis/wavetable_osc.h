@@ -2,11 +2,11 @@
 #ifndef DSY_WAVETABLEOSC_H
 #define DSY_WAVETABLEOSC_H
 
-#include "wavetables.h"
+#include "Utility/wavetables.h"
+
 
 namespace daisysp
 {
-
 /**
  * @brief Wave table oscillator
  *
@@ -15,7 +15,7 @@ namespace daisysp
 class WavetableOsc
 {
   public:
-    enum
+    enum Waveform
     {
         WAVE_SIN,
         WAVE_TRI,
@@ -33,13 +33,14 @@ class WavetableOsc
         SetAmp(0.7f);
     }
 
-    void SetWaveform(const uint8_t wf)
+    void SetWaveform(const Waveform wf)
     {
         switch(wf)
         {
-            case WAVE_TRI: SetWaveTable(&Tables::Tri); break;
-            case WAVE_SAW: SetWaveTable(&Tables::Saw); break;
-            case WAVE_SQUARE: SetWaveTable(&Tables::Square); break;
+            case Waveform::WAVE_SIN: SetWaveTable(&Tables::Sine); break;
+            case Waveform::WAVE_TRI: SetWaveTable(&Tables::Tri); break;
+            case Waveform::WAVE_SAW: SetWaveTable(&Tables::Saw); break;
+            case Waveform::WAVE_SQUARE: SetWaveTable(&Tables::Square); break;
             default: SetWaveTable(&Tables::Sine);
         }
     }
