@@ -10,8 +10,7 @@ CONTROL_MOD_DIR = Control
 CONTROL_MODULES = \
 adenv \
 adsr \
-line \
-phasor
+phasor \
 
 DRUM_MOD_DIR = Drums
 DRUM_MODULES = \
@@ -19,67 +18,47 @@ analogbassdrum \
 analogsnaredrum \
 hihat \
 synthbassdrum \
-synthsnaredrum
+synthsnaredrum \
 
 DYNAMICS_MOD_DIR = Dynamics
 DYNAMICS_MODULES = \
-balance \
 compressor \
 crossfade \
-limiter 
+limiter \
 
 EFFECTS_MOD_DIR = Effects
 EFFECTS_MODULES = \
 autowah \
-bitcrush \
 chorus \
 decimator \
 flanger \
-fold \
 overdrive \
 phaser \
-reverbsc \
 sampleratereducer \
 tremolo \
-wavefolder
-#pitchshifter 
+wavefolder \
 
 FILTER_MOD_DIR = Filters
 FILTER_MODULES = \
-allpass \
-atone \
-biquad \
-comb \
-mode \
-moogladder \
-nlfilt \
 svf \
-tone \
-soap 
-#fir
+soap \
 
 NOISE_MOD_DIR = Noise
 NOISE_MODULES = \
 clockednoise \
 grainlet \
-particle 
-#dust 
-#fractal_noise 
-#whitenoise
+particle \
 
 PHYSICAL_MODELING_MOD_DIR = PhysicalModeling
 PHYSICAL_MODELING_MODULES = \
 drip \
-modalvoice \
-pluck \
 KarplusString \
+modalvoice \
 resonator \
-stringvoice 
-#PolyPluck 
 
 SAMPLING_MOD_DIR = Sampling
 SAMPLING_MODULES = \
-granularplayer \
+granularplayer
 
 SYNTHESIS_MOD_DIR = Synthesis
 SYNTHESIS_MODULES = \
@@ -91,21 +70,12 @@ oscillatorbank \
 variablesawosc \
 variableshapeosc \
 vosim \
-zoscillator 
-#harmonic_osc 
+zoscillator \
 
 UTILITY_MOD_DIR = Utility
 UTILITY_MODULES = \
 dcblock \
-jitter \
 metro \
-port 
-#delayline 
-#dsp 
-#looper
-#maytrig 
-#samplehold 
-#smooth_random
 
 ######################################
 # source
@@ -201,7 +171,6 @@ C_INCLUDES = \
 -I$(MODULE_DIR)/$(FILTER_MOD_DIR) \
 -I$(MODULE_DIR)/$(NOISE_MOD_DIR) \
 -I$(MODULE_DIR)/$(PHYSICAL_MODELING_MOD_DIR) \
--I$(MODULE_DIR)/$(SAMPLING_MOD_DIR) \
 -I$(MODULE_DIR)/$(SYNTHESIS_MOD_DIR) \
 -I$(MODULE_DIR)/$(UTILITY_MOD_DIR) 
 

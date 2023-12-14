@@ -18,7 +18,6 @@
 /** Control Modules */
 #include "Control/adenv.h"
 #include "Control/adsr.h"
-#include "Control/line.h"
 #include "Control/phasor.h"
 
 /** Drum Modules */
@@ -29,36 +28,25 @@
 #include "Drums/synthsnaredrum.h"
 
 /** Dynamics Modules */
-#include "Dynamics/balance.h"
 #include "Dynamics/compressor.h"
 #include "Dynamics/crossfade.h"
 #include "Dynamics/limiter.h"
 
 /** Effects Modules */
 #include "Effects/autowah.h"
-#include "Effects/bitcrush.h"
 #include "Effects/chorus.h"
 #include "Effects/decimator.h"
 #include "Effects/flanger.h"
-#include "Effects/fold.h"
 #include "Effects/overdrive.h"
-#include "Effects/reverbsc.h"
-#include "Effects/phaser.h"
 #include "Effects/pitchshifter.h"
+#include "Effects/phaser.h"
 #include "Effects/sampleratereducer.h"
 #include "Effects/tremolo.h"
 #include "Effects/wavefolder.h"
 
 /** Filter Modules */
-#include "Filters/allpass.h"
-#include "Filters/atone.h"
-#include "Filters/biquad.h"
-#include "Filters/comb.h"
-#include "Filters/mode.h"
-#include "Filters/moogladder.h"
-#include "Filters/nlfilt.h"
+#include "Filters/onepole.h"
 #include "Filters/svf.h"
-#include "Filters/tone.h"
 #include "Filters/fir.h"
 #include "Filters/soap.h"
 
@@ -72,12 +60,9 @@
 
 /** Physical Modeling Modules */
 #include "PhysicalModeling/drip.h"
-#include "PhysicalModeling/modalvoice.h"
-#include "PhysicalModeling/pluck.h"
-#include "PhysicalModeling/PolyPluck.h"
-#include "PhysicalModeling/resonator.h"
 #include "PhysicalModeling/KarplusString.h"
-#include "PhysicalModeling/stringvoice.h"
+#include "PhysicalModeling/modalvoice.h"
+#include "PhysicalModeling/resonator.h"
 
 /** Sampling Modules */
 #include "Sampling/granularplayer.h"
@@ -98,12 +83,15 @@
 #include "Utility/dcblock.h"
 #include "Utility/delayline.h"
 #include "Utility/dsp.h"
-#include "Utility/jitter.h"
 #include "Utility/looper.h"
 #include "Utility/maytrig.h"
 #include "Utility/metro.h"
-#include "Utility/port.h"
 #include "Utility/samplehold.h"
 #include "Utility/smooth_random.h"
+
+/** LGPL Modules */
+#ifdef USE_DAISYSP_LGPL
+#include "daisysp-lgpl.h"
+#endif
 
 #endif
