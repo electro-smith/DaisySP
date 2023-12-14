@@ -7,8 +7,7 @@
 #include "Dynamics/crossfade.h"
 #include "Utility/dcblock.h"
 #include "Utility/delayline.h"
-#include "Filters/svf.h"
-#include "Filters/tone.h"
+#include "Filters/onepole.h"
 
 #ifdef __cplusplus
 
@@ -84,7 +83,7 @@ class String
 
     float sample_rate_;
 
-    Tone iir_damping_filter_;
+    OnePole iir_damping_filter_;
 
     DcBlock dc_blocker_;
 
