@@ -83,8 +83,8 @@ class Looper
             case State::PLAYING:
                 sig = Read(pos_);
                 /** This is a way of 'seamless looping'
-				 ** The first N samps after recording is done are recorded with the input faded out. 
-				 */
+                 ** The first N samps after recording is done are recorded with the input faded out. 
+                 */
                 if(win_idx_ < kWindowSamps - 1)
                 {
                     Write(pos_, sig + input * (1.f - win_));
