@@ -55,6 +55,7 @@ drip \
 KarplusString \
 modalvoice \
 resonator \
+stringvoice \
 
 SAMPLING_MOD_DIR = Sampling
 SAMPLING_MODULES = \

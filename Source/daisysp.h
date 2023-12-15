@@ -63,6 +63,7 @@
 #include "PhysicalModeling/KarplusString.h"
 #include "PhysicalModeling/modalvoice.h"
 #include "PhysicalModeling/resonator.h"
+#include "PhysicalModeling/stringvoice.h"
 
 /** Sampling Modules */
 #include "Sampling/granularplayer.h"
