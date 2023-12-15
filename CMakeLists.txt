@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.14)
 
 project(DAISYSP VERSION 0.0.1)
 
-add_library(DaisySP STATIC 
+add_library(DaisySP STATIC
 Source/Control/adenv.cpp
 Source/Control/adsr.cpp
 Source/Control/line.cpp
@@ -63,12 +63,15 @@ Source/Utility/metro.cpp
 Source/Utility/port.cpp
 )
 
+IF (WIN32)
+  target_compile_definitions(DaisySP PUBLIC _USE_MATH_DEFINES)
+ENDIF()
+
 
 set_target_properties(DaisySP PROPERTIES PUBLIC
-  CXX_STANDARD 14 
+  CXX_STANDARD 14
   CXX_STANDARD_REQUIRED
   )
-
 
 target_include_directories(DaisySP PUBLIC
   ${CMAKE_CURRENT_LIST_DIR}/Source
