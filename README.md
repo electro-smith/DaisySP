@@ -52,14 +52,37 @@
 
 ## Features
 
+- [**Control Signal Generators**](https://github.com/electro-smith/DaisySP/tree/master/Control/) AD and ADSR Envelopes, Phasor
+- [**Drum Synthesis**](https://github.com/electro-smith/DaisySP/tree/master/Drums/) Analog/Synth Bass/Snare Drum Models, HiHat
+- [**Dynamics Processors**](https://github.com/electro-smith/DaisySP/tree/master/Source/Dynamics) Crossfade, Compressor, Limiter
+- [**Effects Processors:**](https://github.com/electro-smith/DaisySP/tree/master/Source/Effects) Phaser, Wavefolder, Decimate, Overdrive
+- [**Filters:**](https://github.com/electro-smith/DaisySP/tree/master/Source/Filters) One pole Lowpass and Highpass, FIR, SOAP
+- [**Noise Generators**](https://github.com/electro-smith/DaisySP/tree/master/Source/Noise/) Clocked Noise, Dust, Fractal Noise, Particle Noise, Whitenoise
+- [**Physical Modeling Synthesis**](https://github.com/electro-smith/DaisySP/tree/master/Source/PhysicalModeling/) Karplus Strong, Resonators, Modal Synthesis
+- [**Sampling Engines**](https://github.com/electro-smith/DaisySP/tree/master/Source/Sampling/) Granular Player
 - [**Synthesis Methods:**](https://github.com/electro-smith/DaisySP/tree/master/Source/Synthesis) Subtractive, Physical Modeling, FM
-- [**Filters:**](https://github.com/electro-smith/DaisySP/tree/master/Source/Filters) Biquad, State-Variable, Modal, Comb
-- [**Effects Processors:**](https://github.com/electro-smith/DaisySP/tree/master/Source/Effects) Reverb, Delay, Decimate, Compressor
-- [**Utilities:**](https://github.com/electro-smith/DaisySP/tree/master/Source/Utility) Math Functions, Signal Conditioning, Aleatoric Generators
+- [**Utilities:**](https://github.com/electro-smith/DaisySP/tree/master/Source/Utility) Math Functions, Signal Conditioning, Aleatoric Generators, Looper, DCBlocker
 
 ## Code Example
 
-![example code photo](https://raw.githubusercontent.com/electro-smith/daisysp/master/resources/assets/code_example.PNG)
+```cpp
+#include "daisysp.h"
+
+static daisysp::MoogLadder flt;
+static daisysp::Oscillator osc, lfo;
+float saw, freq, output;
+
+for(size_t i = 0; i < size; i++)
+{
+  freq = lfo.Process();
+  saw = osc.Process();
+
+  flt.SetFreq(freq);
+  output = flt.Process(saw);
+
+  out[i] = output;
+}
+```
 
 ## Getting Started
 
@@ -72,8 +95,8 @@
 
 Connect with other users and developers:
 
-- Join the [Daisy Forum](https://forum.electro-smith.com/)
 - Chat on the [Daisy Discord Server](https://discord.gg/ByHBnMtQTR)
+- Join the [Daisy Forum](https://forum.electro-smith.com/)
 
 ## Contributing
 
