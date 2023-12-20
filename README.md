@@ -1,47 +1,16 @@
-<p align="center">
-  <img width=15% src="https://raw.githubusercontent.com/electro-smith/daisysp/master/resources/assets/banner.png">
-</p>
-<h1 align="center"> DaisySP </h11>
-<h3 align="center">A Powerful, Open Source DSP Library in C++</h3>
-<br>
+<h1>
+  <img width=3% src="https://raw.githubusercontent.com/electro-smith/daisysp/master/resources/assets/banner.png">
+  DaisySP • A Powerful, Open Source DSP Library in C++
+</h1>
 
-<!--CI Badges-->
-<p align="center">
-    <a href="https://github.com/electro-smith/DaisySP/actions?query=workflow%3ABuild">
-      <img src="https://github.com/electro-smith/DaisySP/workflows/Build/badge.svg" alt="Build Badge">
-    </a>
-    <a href="https://github.com/electro-smith/DaisySP/actions?query=workflow%3AStyle">
-      <img src="https://github.com/electro-smith/DaisySP/workflows/Style/badge.svg">
-    </a>
-    <a href="https://electro-smith.github.io/DaisySP/index.html">
-      <img src="https://github.com/electro-smith/DaisySP/workflows/Documentation/badge.svg">
-    </a>
-</p>
+[![Build Badge](https://github.com/electro-smith/DaisySP/workflows/Build/badge.svg)](https://github.com/electro-smith/DaisySP/actions?query=workflow%3ABuild)
+[![Style Badge](https://github.com/electro-smith/DaisySP/workflows/Style/badge.svg)](https://github.com/electro-smith/DaisySP/actions?query=workflow%3AStyle)
+[![Documentation Badge](https://github.com/electro-smith/DaisySP/workflows/Documentation/badge.svg)](https://electro-smith.github.io/DaisySP/index.html)
+[![Discord](https://img.shields.io/discord/1037767234803740694?logo=discord&label=Discord)](https://discord.gg/ByHBnMtQTR)
+[![Forum Badge](https://img.shields.io/badge/chat-daisy%20forum-orange)](https://forum.electro-smith.com/)
+[![License Badge](https://img.shields.io/badge/license-MIT-yellow)](https://opensource.org/licenses/MIT)
 
-<!-- Non-CI Badges -->
-<p align="center">
-  <a href="https://opensource.org/licenses/MIT">
-    <img src="https://img.shields.io/badge/license-MIT-yellow">
-  </a>
-  <a href="https://discord.gg/ByHBnMtQTR">
-      <img src="https://img.shields.io/badge/join-us%20on%20discord-gray.svg?longCache=true&logo=discord&colorB=purple">
-  </a>
-  <a href="https://forum.electro-smith.com/">
-    <img src="https://img.shields.io/badge/chat-daisy%20forum-orange">
-  </a>
-</p>
-
-<p align="center">
-  <a href="#applications">Applications</a> •
-  <a href="#features">Features</a> •
-  <a href="https://github.com/electro-smith/DaisyExamples">Examples</a> •
-  <a href="#getting-started">Getting Started</a> •
-  <a href="#community">Community</a> •
-  <a href="#contributing">Contributing</a> •
-  <a href="#license">License</a>
-</p>
-
-<br/>
+> DaisySP is an open-source DSP (Digital Signal Processing) library that provides a comprehensive collection of modular components for creating audio software across various contexts, facilitating the development of high-quality and customizable audio applications.
 
 ## Applications
 
@@ -108,7 +77,7 @@ Here are some ways that you can get involved:
 - Port existing DSP modules from other open source projects (MIT). See issues labeled "port"
 - Fix problems with existing modules. See issues labeled "bug" and/or "polish"
 
-Before working on code, please check out our [Contribution Guidelines](https://github.com/electro-smith/DaisyWiki/wiki/6.-Contribution-Guidelines) and [Style Guide.](https://github.com/electro-smith/DaisySP/blob/master/doc/style_guide.pdf)
+Before working on code, please check out our [Style Guide.](https://github.com/electro-smith/DaisySP/blob/master/doc/style_guide.pdf)
 
 ## License
 
