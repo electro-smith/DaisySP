@@ -96,15 +96,41 @@ Applications</h2>
 <h2><a class="anchor" id="autotoc_md1"></a>
 Features</h2>
 <ul>
+<li><a href="https://github.com/electro-smith/DaisySP/tree/master/Control/"><b>Control Signal Generators</b></a> AD and ADSR Envelopes, Phasor</li>
+<li><a href="https://github.com/electro-smith/DaisySP/tree/master/Drums/"><b>Drum Synthesis</b></a> Analog/Synth Bass/Snare Drum Models, HiHat</li>
+<li><a href="https://github.com/electro-smith/DaisySP/tree/master/Source/Dynamics"><b>Dynamics Processors</b></a> Crossfade, Compressor, Limiter</li>
+<li><a href="https://github.com/electro-smith/DaisySP/tree/master/Source/Effects"><b>Effects Processors:</b></a> Phaser, Wavefolder, Decimate, Overdrive</li>
+<li><a href="https://github.com/electro-smith/DaisySP/tree/master/Source/Filters"><b>Filters:</b></a> One pole Lowpass and Highpass, FIR, SOAP</li>
+<li><a href="https://github.com/electro-smith/DaisySP/tree/master/Source/Noise/"><b>Noise Generators</b></a> Clocked Noise, Dust, Fractal Noise, Particle Noise, Whitenoise</li>
+<li><a href="https://github.com/electro-smith/DaisySP/tree/master/Source/PhysicalModeling/"><b>Physical Modeling Synthesis</b></a> Karplus Strong, Resonators, Modal Synthesis</li>
+<li><a href="https://github.com/electro-smith/DaisySP/tree/master/Source/Sampling/"><b>Sampling Engines</b></a> Granular Player</li>
 <li><a href="https://github.com/electro-smith/DaisySP/tree/master/Source/Synthesis"><b>Synthesis Methods:</b></a> Subtractive, Physical Modeling, FM</li>
-<li><a href="https://github.com/electro-smith/DaisySP/tree/master/Source/Filters"><b>Filters:</b></a> Biquad, State-Variable, Modal, Comb</li>
-<li><a href="https://github.com/electro-smith/DaisySP/tree/master/Source/Effects"><b>Effects Processors:</b></a> Reverb, Delay, Decimate, Compressor</li>
-<li><a href="https://github.com/electro-smith/DaisySP/tree/master/Source/Utility"><b>Utilities:</b></a> Math Functions, Signal Conditioning, Aleatoric Generators</li>
+<li><a href="https://github.com/electro-smith/DaisySP/tree/master/Source/Utility"><b>Utilities:</b></a> Math Functions, Signal Conditioning, Aleatoric Generators, Looper, DCBlocker</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md2"></a>
 Code Example</h2>
-<p><img src="https://raw.githubusercontent.com/electro-smith/daisysp/master/resources/assets/code_example.PNG" alt="example code photo" class="inline"/></p>
-<h2><a class="anchor" id="autotoc_md3"></a>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;daisysp.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classdaisysp_1_1_moog_ladder.html">daisysp::MoogLadder</a> flt;</div>
+<div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classdaisysp_1_1_oscillator.html">daisysp::Oscillator</a> osc, lfo;</div>
+<div class="line"><span class="keywordtype">float</span> saw, freq, output;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0; i &lt; size; i++)</div>
+<div class="line">{</div>
+<div class="line">  freq = lfo.<a class="code hl_function" href="classdaisysp_1_1_oscillator.html#a932b95808f003f697d54abe90a9c1c73">Process</a>();</div>
+<div class="line">  saw = osc.<a class="code hl_function" href="classdaisysp_1_1_oscillator.html#a932b95808f003f697d54abe90a9c1c73">Process</a>();</div>
+<div class="line"> </div>
+<div class="line">  flt.<a class="code hl_function" href="classdaisysp_1_1_moog_ladder.html#a1be3a97d1d55afd9bf33d4e80477db4c">SetFreq</a>(freq);</div>
+<div class="line">  output = flt.<a class="code hl_function" href="classdaisysp_1_1_moog_ladder.html#a1bf4e2471514d240f7940b2366110a77">Process</a>(saw);</div>
+<div class="line"> </div>
+<div class="line">  out[i] = output;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassdaisysp_1_1_moog_ladder_html"><div class="ttname"><a href="classdaisysp_1_1_moog_ladder.html">daisysp::MoogLadder</a></div><div class="ttdef"><b>Definition</b> moogladder.h:18</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_moog_ladder_html_a1be3a97d1d55afd9bf33d4e80477db4c"><div class="ttname"><a href="classdaisysp_1_1_moog_ladder.html#a1be3a97d1d55afd9bf33d4e80477db4c">daisysp::MoogLadder::SetFreq</a></div><div class="ttdeci">void SetFreq(float freq)</div><div class="ttdef"><b>Definition</b> moogladder.h:37</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_moog_ladder_html_a1bf4e2471514d240f7940b2366110a77"><div class="ttname"><a href="classdaisysp_1_1_moog_ladder.html#a1bf4e2471514d240f7940b2366110a77">daisysp::MoogLadder::Process</a></div><div class="ttdeci">float Process(float in)</div><div class="ttdef"><b>Definition</b> moogladder.cpp:43</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_oscillator_html"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html">daisysp::Oscillator</a></div><div class="ttdef"><b>Definition</b> oscillator.h:13</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_oscillator_html_a932b95808f003f697d54abe90a9c1c73"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html#a932b95808f003f697d54abe90a9c1c73">daisysp::Oscillator::Process</a></div><div class="ttdeci">float Process()</div><div class="ttdef"><b>Definition</b> oscillator.cpp:7</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md3"></a>
 Getting Started</h2>
 <ul>
 <li>Get the source: <code>git clone <a href="https://github.com/electro-smith/DaisySP">https://github.com/electro-smith/DaisySP</a></code></li>
@@ -116,8 +142,8 @@ Getting Started</h2>
 Community</h2>
 <p>Connect with other users and developers:</p>
 <ul>
-<li>Join the <a href="https://forum.electro-smith.com/">Daisy Forum</a></li>
 <li>Chat on the <a href="https://discord.gg/ByHBnMtQTR">Daisy Discord Server</a></li>
+<li>Join the <a href="https://forum.electro-smith.com/">Daisy Forum</a></li>
 </ul>
 <h2><a class="anchor" id="autotoc_md5"></a>
 Contributing</h2>
