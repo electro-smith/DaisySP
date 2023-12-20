@@ -8,7 +8,7 @@
 <!--CI Badges-->
 <p align="center">
     <a href="https://github.com/electro-smith/DaisySP/actions?query=workflow%3ABuild">
-      <img src="https://github.com/electro-smith/DaisySP/workflows/Build/badge.svg">
+      <img src="https://github.com/electro-smith/DaisySP/workflows/Build/badge.svg" alt="Build Badge">
     </a>
     <a href="https://github.com/electro-smith/DaisySP/actions?query=workflow%3AStyle">
       <img src="https://github.com/electro-smith/DaisySP/workflows/Style/badge.svg">
@@ -52,8 +52,8 @@
 
 ## Features
 
-- [**Control Signal Generators**](https://github.com/electro-smith/DaisySP/tree/master/Control/) AD and ADSR Envelopes, Phasor
-- [**Drum Synthesis**](https://github.com/electro-smith/DaisySP/tree/master/Drums/) Analog/Synth Bass/Snare Drum Models, HiHat
+- [**Control Signal Generators**](https://github.com/electro-smith/DaisySP/tree/master/Source/Control/) AD and ADSR Envelopes, Phasor
+- [**Drum Synthesis**](https://github.com/electro-smith/DaisySP/tree/master/Source/Drums/) Analog/Synth Bass/Snare Drum Models, HiHat
 - [**Dynamics Processors**](https://github.com/electro-smith/DaisySP/tree/master/Source/Dynamics) Crossfade, Compressor, Limiter
 - [**Effects Processors:**](https://github.com/electro-smith/DaisySP/tree/master/Source/Effects) Phaser, Wavefolder, Decimate, Overdrive
 - [**Filters:**](https://github.com/electro-smith/DaisySP/tree/master/Source/Filters) One pole Lowpass and Highpass, FIR, SOAP
