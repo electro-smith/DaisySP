@@ -72,21 +72,21 @@ $(function() {
   <div class="headertitle"><div class="title">DaisySP </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md__r_e_a_d_m_e"></a> </p><h1><img src="https://raw.githubusercontent.com/electro-smith/daisysp/master/resources/assets/banner.png" alt="" width="3%" class="inline"/> DaisySP • A Powerful, Open Source DSP Library in C++ </h1>
-<p><a href="https://github.com/electro-smith/DaisySP/actions?query=workflow%3ABuild"><img src="https://github.com/electro-smith/DaisySP/workflows/Build/badge.svg" alt="Build Badge" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/electro-smith/DaisySP/actions?query=workflow%3AStyle"><img src="https://github.com/electro-smith/DaisySP/workflows/Style/badge.svg" alt="Style Badge" style="pointer-events: none;" class="inline"/></a> <a href="https://electro-smith.github.io/DaisySP/index.html"><img src="https://github.com/electro-smith/DaisySP/workflows/Documentation/badge.svg" alt="Documentation Badge" style="pointer-events: none;" class="inline"/></a> <a href="https://discord.gg/ByHBnMtQTR"><img src="https://img.shields.io/discord/1037767234803740694?logo=discord&amp;label=Discord" alt="Discord" class="inline"/></a> <a href="https://forum.electro-smith.com/"><img src="https://img.shields.io/badge/chat-daisy%20forum-orange" alt="Forum Badge" class="inline"/></a> <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-yellow" alt="License Badge" class="inline"/></a></p>
-<blockquote class="doxtable">
+<div class="textblock"><p><a class="anchor" id="md__r_e_a_d_m_e"></a> </p><div align="center"> <img src="https://raw.githubusercontent.com/electro-smith/daisysp/master/resources/assets/banner.png" alt="" width="15%" class="inline"/></div><div align="center"></div><h1><a class="anchor" id="autotoc_md0"></a>
+DaisySP • A Powerful, Open Source DSP Library in C++</h1>
+<div align="center"></div><div align="center"><a href="https://github.com/electro-smith/DaisySP/actions?query=workflow%3ABuild"><img src="https://github.com/electro-smith/DaisySP/workflows/Build/badge.svg" alt="Build Badge" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/electro-smith/DaisySP/actions?query=workflow%3AStyle"><img src="https://github.com/electro-smith/DaisySP/workflows/Style/badge.svg" alt="Style Badge" style="pointer-events: none;" class="inline"/></a> <a href="https://electro-smith.github.io/DaisySP/index.html"><img src="https://github.com/electro-smith/DaisySP/workflows/Documentation/badge.svg" alt="Documentation Badge" style="pointer-events: none;" class="inline"/></a> <a href="https://discord.gg/ByHBnMtQTR"><img src="https://img.shields.io/discord/1037767234803740694?logo=discord&amp;label=Discord" alt="Discord" class="inline"/></a> <a href="https://forum.electro-smith.com/"><img src="https://img.shields.io/badge/chat-daisy%20forum-orange" alt="Forum Badge" class="inline"/></a> <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-yellow" alt="License Badge" class="inline"/></a></div><div align="center"><blockquote class="doxtable">
 <p>&zwj;DaisySP is an open-source DSP (Digital Signal Processing) library that provides a comprehensive collection of modular components for creating audio software across various contexts, facilitating the development of high-quality and customizable audio applications. </p>
 </blockquote>
-<h2><a class="anchor" id="autotoc_md0"></a>
-Applications</h2>
+</div><h2><a class="anchor" id="autotoc_md1"></a>
+📱 Applications</h2>
 <ul>
 <li>Embedded hardware using the <a href="https://www.electro-smith.com/daisy">Daisy Audio Platform</a></li>
 <li>Audio plug-ins (VST, AU, <a href="https://github.com/electro-smith/Daisy-Juce-Example">JUCE</a>)</li>
 <li>Mobile apps (iOS, Android)</li>
 <li><a href="https://vcvrack.com/">VCV Rack</a> modules</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md1"></a>
-Features</h2>
+<h2><a class="anchor" id="autotoc_md2"></a>
+✨ Features</h2>
 <ul>
 <li><a href="https://github.com/electro-smith/DaisySP/tree/master/Source/Control/"><b>Control Signal Generators</b></a> AD and ADSR Envelopes, Phasor</li>
 <li><a href="https://github.com/electro-smith/DaisySP/tree/master/Source/Drums/"><b>Drum Synthesis</b></a> Analog/Synth Bass/Snare Drum Models, HiHat</li>
@@ -99,11 +99,19 @@ Features</h2>
 <li><a href="https://github.com/electro-smith/DaisySP/tree/master/Source/Synthesis"><b>Synthesis Methods:</b></a> Subtractive, Physical Modeling, FM</li>
 <li><a href="https://github.com/electro-smith/DaisySP/tree/master/Source/Utility"><b>Utilities:</b></a> Math Functions, Signal Conditioning, Aleatoric Generators, Looper, DCBlocker</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md2"></a>
-Code Example</h2>
+<h2><a class="anchor" id="autotoc_md3"></a>
+🚀 Getting Started</h2>
+<ul>
+<li>Get the source: <code>git clone <a href="https://github.com/electro-smith/DaisySP">https://github.com/electro-smith/DaisySP</a></code></li>
+<li>Navigate to the DaisySP repo: <code>cd DaisySP</code></li>
+<li>Build the library: <code>make</code></li>
+<li>Make some noise with the <a href="https://github.com/electro-smith/DaisyExamples">example programs!</a></li>
+</ul>
+<h2><a class="anchor" id="autotoc_md4"></a>
+👨‍💻 Code Example</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;daisysp.h&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classdaisysp_1_1_moog_ladder.html">daisysp::MoogLadder</a> flt;</div>
+<div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">daisysp::OnePole</a> flt;</div>
 <div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classdaisysp_1_1_oscillator.html">daisysp::Oscillator</a> osc, lfo;</div>
 <div class="line"><span class="keywordtype">float</span> saw, freq, output;</div>
 <div class="line"> </div>
@@ -112,33 +120,29 @@ Code Example</h2>
 <div class="line">  freq = lfo.<a class="code hl_function" href="classdaisysp_1_1_oscillator.html#a932b95808f003f697d54abe90a9c1c73">Process</a>();</div>
 <div class="line">  saw = osc.<a class="code hl_function" href="classdaisysp_1_1_oscillator.html#a932b95808f003f697d54abe90a9c1c73">Process</a>();</div>
 <div class="line"> </div>
-<div class="line">  flt.<a class="code hl_function" href="classdaisysp_1_1_moog_ladder.html#a1be3a97d1d55afd9bf33d4e80477db4c">SetFreq</a>(freq);</div>
-<div class="line">  output = flt.<a class="code hl_function" href="classdaisysp_1_1_moog_ladder.html#a1bf4e2471514d240f7940b2366110a77">Process</a>(saw);</div>
+<div class="line">  flt.SetFrequency(freq);</div>
+<div class="line">  output = flt.Process(saw);</div>
 <div class="line"> </div>
 <div class="line">  out[i] = output;</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassdaisysp_1_1_moog_ladder_html"><div class="ttname"><a href="classdaisysp_1_1_moog_ladder.html">daisysp::MoogLadder</a></div><div class="ttdef"><b>Definition</b> moogladder.h:18</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_moog_ladder_html_a1be3a97d1d55afd9bf33d4e80477db4c"><div class="ttname"><a href="classdaisysp_1_1_moog_ladder.html#a1be3a97d1d55afd9bf33d4e80477db4c">daisysp::MoogLadder::SetFreq</a></div><div class="ttdeci">void SetFreq(float freq)</div><div class="ttdef"><b>Definition</b> moogladder.h:37</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_moog_ladder_html_a1bf4e2471514d240f7940b2366110a77"><div class="ttname"><a href="classdaisysp_1_1_moog_ladder.html#a1bf4e2471514d240f7940b2366110a77">daisysp::MoogLadder::Process</a></div><div class="ttdeci">float Process(float in)</div><div class="ttdef"><b>Definition</b> moogladder.cpp:43</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_delay_line_html"><div class="ttname"><a href="classdaisysp_1_1_delay_line.html">daisysp::DelayLine</a></div><div class="ttdef"><b>Definition</b> delayline.h:21</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_oscillator_html"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html">daisysp::Oscillator</a></div><div class="ttdef"><b>Definition</b> oscillator.h:13</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_oscillator_html_a932b95808f003f697d54abe90a9c1c73"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html#a932b95808f003f697d54abe90a9c1c73">daisysp::Oscillator::Process</a></div><div class="ttdeci">float Process()</div><div class="ttdef"><b>Definition</b> oscillator.cpp:7</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md3"></a>
-Getting Started</h2>
-<ul>
-<li>Get the source: <code>git clone <a href="https://github.com/electro-smith/DaisySP">https://github.com/electro-smith/DaisySP</a></code></li>
-<li>Navigate to the DaisySP repo: <code>cd DaisySP</code></li>
-<li>Build the library: <code>make</code></li>
-<li>Make some noise with the <a href="https://github.com/electro-smith/DaisyExamples">example programs!</a></li>
-</ul>
-<h2><a class="anchor" id="autotoc_md4"></a>
-Community</h2>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md5"></a>
+❤️ Community</h2>
 <p>Connect with other users and developers:</p>
 <ul>
 <li>Chat on the <a href="https://discord.gg/ByHBnMtQTR">Daisy Discord Server</a></li>
 <li>Join the <a href="https://forum.electro-smith.com/">Daisy Forum</a></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md5"></a>
-Contributing</h2>
+<h2><a class="anchor" id="autotoc_md6"></a>
+🏆 Contributors</h2>
+<p>Thank you to all of the awesome people who have given their time and effort to this project!</p>
+<p><br  />
+ <a href="https://github.com/electro-smith/DaisySP/graphs/contributors"><img src="https://contrib.rocks/image?repo=electro-smith/DaisySP" alt="" class="inline"/> </a></p>
+<p>Made with <a href="https://contrib.rocks">contrib.rocks</a>.</p>
+<h2><a class="anchor" id="autotoc_md7"></a>
+✍️ Contributing</h2>
 <p>Here are some ways that you can get involved:</p>
 <ul>
 <li>Proof read the <a href="https://electro-smith.github.io/DaisySP/index.html">documentation</a> and suggest improvements</li>
@@ -148,8 +152,8 @@ Contributing</h2>
 <li>Fix problems with existing modules. See issues labeled "bug" and/or "polish"</li>
 </ul>
 <p>Before working on code, please check out our <a href="https://github.com/electro-smith/DaisySP/blob/master/doc/style_guide.pdf">Style Guide.</a></p>
-<h2><a class="anchor" id="autotoc_md6"></a>
-License</h2>
+<h2><a class="anchor" id="autotoc_md8"></a>
+⚠️ License</h2>
 <p>DaisySP uses the MIT license.</p>
 <p>It can be used in both closed source and commercial projects, and does not provide a warranty of any kind.</p>
 <p>For the full license, read the <a href="https://github.com/electro-smith/DaisySP/blob/master/LICENSE">LICENSE</a> file in the root directory. </p>

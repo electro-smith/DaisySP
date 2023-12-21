@@ -3,7 +3,7 @@ var searchData=
   ['fastmod1f_0',['fastmod1f',['../namespacedaisysp.html#a5f0b00de38b7377a333a03d6052662ea',1,'daisysp']]],
   ['fastpower_1',['fastpower',['../namespacedaisysp.html#a207e7a0a645f2db54efb6945e1942ce3',1,'daisysp']]],
   ['fclamp_2',['fclamp',['../namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef',1,'daisysp']]],
-  ['features_3',['Features',['../index.html#autotoc_md1',1,'']]],
+  ['features_3',['✨ Features',['../index.html#autotoc_md2',1,'']]],
   ['filter_5fstate_4',['filter_state',['../structdaisysp_1_1_reverb_sc_dl.html#a1e105681e8cdd379740b55183085f49d',1,'daisysp::ReverbScDl']]],
   ['firfilterimplgeneric_5',['FIRFilterImplGeneric',['../classdaisysp_1_1_f_i_r_filter_impl_generic.html',1,'daisysp']]],
   ['firmemory_6',['FIRMemory',['../structdaisysp_1_1_f_i_r_memory.html',1,'daisysp']]],

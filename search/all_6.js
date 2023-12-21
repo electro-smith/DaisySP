@@ -25,7 +25,7 @@ var searchData=
   ['getright_22',['GetRight',['../classdaisysp_1_1_chorus.html#aaa1be61c295d376a0e2bf4f90cb66906',1,'daisysp::Chorus']]],
   ['getsmoothcrushing_23',['GetSmoothCrushing',['../classdaisysp_1_1_decimator.html#a78665d3556dd227937a7468288f124ae',1,'daisysp::Decimator']]],
   ['getthreshold_24',['GetThreshold',['../classdaisysp_1_1_compressor.html#a5de29ca1a67b8b7994f52bebace517c1',1,'daisysp::Compressor']]],
-  ['getting_20started_25',['Getting Started',['../index.html#autotoc_md3',1,'']]],
+  ['getting_20started_25',['🚀 Getting Started',['../index.html#autotoc_md3',1,'']]],
   ['getvalue_26',['GetValue',['../classdaisysp_1_1_ad_env.html#a66ac7b5f2537c74cc8cbe24314b171c6',1,'daisysp::AdEnv']]],
   ['grainlet_2eh_27',['grainlet.h',['../grainlet_8h.html',1,'']]],
   ['grainletoscillator_28',['GrainletOscillator',['../classdaisysp_1_1_grainlet_oscillator.html',1,'daisysp']]],
