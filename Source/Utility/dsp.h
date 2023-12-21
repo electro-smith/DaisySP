@@ -1,3 +1,11 @@
+/*
+Copyright (c) 2020 Electrosmith, Corp, Emilie Gillet
+
+Use of this source code is governed by an MIT-style
+license that can be found in the LICENSE file or at
+https://opensource.org/licenses/MIT.
+*/
+
 /** Helpful defines, functions, and other utilities for use in/with daisysp modules.
 */
 #pragma once
