@@ -28,7 +28,6 @@
 #include "Drums/synthsnaredrum.h"
 
 /** Dynamics Modules */
-#include "Dynamics/compressor.h"
 #include "Dynamics/crossfade.h"
 #include "Dynamics/limiter.h"
 
@@ -69,7 +68,6 @@
 #include "Sampling/granularplayer.h"
 
 /** Synthesis Modules */
-#include "Synthesis/blosc.h"
 #include "Synthesis/fm2.h"
 #include "Synthesis/formantosc.h"
 #include "Synthesis/harmonic_osc.h"

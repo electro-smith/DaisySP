@@ -11,7 +11,6 @@ Source/Drums/analogsnaredrum.cpp
 Source/Drums/hihat.cpp
 Source/Drums/synthbassdrum.cpp
 Source/Drums/synthsnaredrum.cpp
-Source/Dynamics/compressor.cpp
 Source/Dynamics/crossfade.cpp
 Source/Dynamics/limiter.cpp
 Source/Effects/autowah.cpp
@@ -34,7 +33,6 @@ Source/PhysicalModeling/resonator.cpp
 Source/PhysicalModeling/KarplusString.cpp
 Source/PhysicalModeling/stringvoice.cpp
 Source/Sampling/granularplayer.cpp
-Source/Synthesis/blosc.cpp
 Source/Synthesis/fm2.cpp
 Source/Synthesis/formantosc.cpp
 Source/Synthesis/oscillator.cpp

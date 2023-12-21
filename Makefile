@@ -22,7 +22,6 @@ synthsnaredrum \
 
 DYNAMICS_MOD_DIR = Dynamics
 DYNAMICS_MODULES = \
-compressor \
 crossfade \
 limiter \
 
@@ -63,7 +62,6 @@ granularplayer
 
 SYNTHESIS_MOD_DIR = Synthesis
 SYNTHESIS_MODULES = \
-blosc \
 fm2 \
 formantosc \
 oscillator \
