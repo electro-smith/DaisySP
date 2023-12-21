@@ -25,7 +25,7 @@
 
 - [**Control Signal Generators**](https://github.com/electro-smith/DaisySP/tree/master/Source/Control/) AD and ADSR Envelopes, Phasor
 - [**Drum Synthesis**](https://github.com/electro-smith/DaisySP/tree/master/Source/Drums/) Analog/Synth Bass/Snare Drum Models, HiHat
-- [**Dynamics Processors**](https://github.com/electro-smith/DaisySP/tree/master/Source/Dynamics) Crossfade, Compressor, Limiter
+- [**Dynamics Processors**](https://github.com/electro-smith/DaisySP/tree/master/Source/Dynamics) Crossfade, Limiter
 - [**Effects Processors:**](https://github.com/electro-smith/DaisySP/tree/master/Source/Effects) Phaser, Wavefolder, Decimate, Overdrive
 - [**Filters:**](https://github.com/electro-smith/DaisySP/tree/master/Source/Filters) One pole Lowpass and Highpass, FIR, SOAP
 - [**Noise Generators**](https://github.com/electro-smith/DaisySP/tree/master/Source/Noise/) Clocked Noise, Dust, Fractal Noise, Particle Noise, Whitenoise
