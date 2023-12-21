@@ -1,7 +1,7 @@
-<h1>
-  <img width=3% src="https://raw.githubusercontent.com/electro-smith/daisysp/master/resources/assets/banner.png">
-  DaisySP • A Powerful, Open Source DSP Library in C++
-</h1>
+<div align=center>
+<img width=15% src="https://raw.githubusercontent.com/electro-smith/daisysp/master/resources/assets/banner.png">
+
+# DaisySP • A Powerful, Open Source DSP Library in C++
 
 [![Build Badge](https://github.com/electro-smith/DaisySP/workflows/Build/badge.svg)](https://github.com/electro-smith/DaisySP/actions?query=workflow%3ABuild)
 [![Style Badge](https://github.com/electro-smith/DaisySP/workflows/Style/badge.svg)](https://github.com/electro-smith/DaisySP/actions?query=workflow%3AStyle)
@@ -12,14 +12,16 @@
 
 > DaisySP is an open-source DSP (Digital Signal Processing) library that provides a comprehensive collection of modular components for creating audio software across various contexts, facilitating the development of high-quality and customizable audio applications.
 
-## Applications
+</div>
+
+## 📱 Applications 
 
 - Embedded hardware using the [Daisy Audio Platform](https://www.electro-smith.com/daisy)
 - Audio plug-ins (VST, AU, [JUCE](https://github.com/electro-smith/Daisy-Juce-Example))
 - Mobile apps (iOS, Android)
 - [VCV Rack](https://vcvrack.com/) modules
 
-## Features
+## ✨ Features
 
 - [**Control Signal Generators**](https://github.com/electro-smith/DaisySP/tree/master/Source/Control/) AD and ADSR Envelopes, Phasor
 - [**Drum Synthesis**](https://github.com/electro-smith/DaisySP/tree/master/Source/Drums/) Analog/Synth Bass/Snare Drum Models, HiHat
@@ -32,12 +34,19 @@
 - [**Synthesis Methods:**](https://github.com/electro-smith/DaisySP/tree/master/Source/Synthesis) Subtractive, Physical Modeling, FM
 - [**Utilities:**](https://github.com/electro-smith/DaisySP/tree/master/Source/Utility) Math Functions, Signal Conditioning, Aleatoric Generators, Looper, DCBlocker
 
-## Code Example
+## 🚀 Getting Started
+
+- Get the source: `git clone https://github.com/electro-smith/DaisySP`
+- Navigate to the DaisySP repo: `cd DaisySP`
+- Build the library: `make`
+- Make some noise with the [example programs!](https://github.com/electro-smith/DaisyExamples)
+
+## 👨‍💻 Code Example
 
 ```cpp
 #include "daisysp.h"
 
-static daisysp::MoogLadder flt;
+static daisysp::OnePole flt;
 static daisysp::Oscillator osc, lfo;
 float saw, freq, output;
 
@@ -46,28 +55,32 @@ for(size_t i = 0; i < size; i++)
   freq = lfo.Process();
   saw = osc.Process();
 
-  flt.SetFreq(freq);
+  flt.SetFrequency(freq);
   output = flt.Process(saw);
 
   out[i] = output;
 }
 ```
 
-## Getting Started
-
-- Get the source: `git clone https://github.com/electro-smith/DaisySP`
-- Navigate to the DaisySP repo: `cd DaisySP`
-- Build the library: `make`
-- Make some noise with the [example programs!](https://github.com/electro-smith/DaisyExamples)
-
-## Community
+## ❤️ Community
 
 Connect with other users and developers:
 
 - Chat on the [Daisy Discord Server](https://discord.gg/ByHBnMtQTR)
 - Join the [Daisy Forum](https://forum.electro-smith.com/)
 
-## Contributing
+## 🏆 Contributors
+
+Thank you to all of the awesome people who have given their time and effort to this project!
+
+<br>
+<a href="https://github.com/electro-smith/DaisySP/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=electro-smith/DaisySP" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
+
+## ✍️ Contributing
 
 Here are some ways that you can get involved:
 
@@ -79,7 +92,7 @@ Here are some ways that you can get involved:
 
 Before working on code, please check out our [Style Guide.](https://github.com/electro-smith/DaisySP/blob/master/doc/style_guide.pdf)
 
-## License
+## ⚠️ License
 
 DaisySP uses the MIT license.
 
