@@ -7,6 +7,7 @@
 
 #include <math.h>
 #include "Synthesis/oscillator.h"
+#include "Filters/svf.h"
 
 /** @file tremolo.h */
 
@@ -29,7 +30,7 @@ class Tremolo
     */
     void Init(float sample_rate);
 
-    /** 
+    /**
      \param in Input sample.
      \return Next floating point sample.
     */
@@ -49,11 +50,15 @@ class Tremolo
         \param depth Works 0-1.
     */
     void SetDepth(float depth);
+    
+    void SetPw(float pw);
 
 
   private:
     float      sample_rate_, dc_os_;
     Oscillator osc_;
+    Svf svf_;
+
 };
 } // namespace daisysp
 #endif

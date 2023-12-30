@@ -10,11 +10,14 @@ void Tremolo::Init(float sample_rate)
     osc_.Init(sample_rate_);
     SetDepth(1.f);
     SetFreq(1.f);
+    svf_.Init(sample_rate_);
+    svf_.SetFreq(150.f);
 }
 
 float Tremolo::Process(float in)
 {
-    float modsig = dc_os_ + osc_.Process();
+    svf_.Process(osc_.Process()); //added to hpf square, ramp, and saw waves
+    float modsig = dc_os_ + svf_.Low(); //OG: float modsig = dc_os_ + osc_.Process(); 
     return in * modsig;
 }
 
@@ -33,4 +36,8 @@ void Tremolo::SetDepth(float depth)
     depth *= .5f;
     osc_.SetAmp(depth);
     dc_os_ = 1.f - depth;
+}
+void Tremolo::SetPw(const float pw)
+{
+    osc_.SetPw(pw);
 }
