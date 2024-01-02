@@ -106,6 +106,7 @@ OPT = -O3
 
 # Build path
 BUILD_DIR = build
+DAISYSP_LGPL_DIR = DaisySP-LGPL
 
 #######################################
 # binaries
@@ -191,7 +192,7 @@ CPPFLAGS += \
 -finline-functions 
 
 # default action: build all
-all: $(BUILD_DIR)/$(TARGET).a 
+all: $(BUILD_DIR)/$(TARGET).a lgpl
 
 #######################################
 # build the library
@@ -219,13 +220,21 @@ $(BUILD_DIR)/$(TARGET).a: $(OBJECTS) Makefile
 	$(AR) rcs $@ $(OBJECTS)
 
 $(BUILD_DIR):
-	mkdir $@        
+	mkdir $@
+
+# build the lgpl submodule if it exists
+lgpl:
+	@if [ -f $(DAISYSP_LGPL_DIR)/Makefile ]; then\
+		make -C $(DAISYSP_LGPL_DIR); \
+		echo "Building DaisySP-LGPL";\
+	fi
 
 #######################################
 # clean up
 #######################################
 clean:
 	-rm -fR $(BUILD_DIR)
+	-rm -fR $(DAISYSP_LGPL_DIR)/build
 #######################################
 
 # dependencies
