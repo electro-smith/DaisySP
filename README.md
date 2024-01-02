@@ -1,7 +1,7 @@
 <div align=center>
 <img width=15% src="https://raw.githubusercontent.com/electro-smith/daisysp/master/resources/assets/banner.png">
 
-# DaisySP • A Powerful, Open Source DSP Library in C++
+# DaisySP • A Powerful DSP Library in C++
 
 [![Build Badge](https://github.com/electro-smith/DaisySP/workflows/Build/badge.svg)](https://github.com/electro-smith/DaisySP/actions?query=workflow%3ABuild)
 [![Style Badge](https://github.com/electro-smith/DaisySP/workflows/Style/badge.svg)](https://github.com/electro-smith/DaisySP/actions?query=workflow%3AStyle)
