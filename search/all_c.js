@@ -6,7 +6,7 @@ var searchData=
   ['metro_3',['Metro',['../classdaisysp_1_1_metro.html',1,'daisysp']]],
   ['modalvoice_4',['ModalVoice',['../classdaisysp_1_1_modal_voice.html',1,'daisysp']]],
   ['modalvoice_2eh_5',['modalvoice.h',['../modalvoice_8h.html',1,'']]],
-  ['mode_6',['mode',['../classdaisysp_1_1_mode.html',1,'daisysp::Mode'],['../classdaisysp_1_1_looper.html#a2ba445f474ae158a2f54f1140f75d848',1,'daisysp::Looper::Mode']]],
+  ['mode_6',['Mode',['../classdaisysp_1_1_mode.html',1,'daisysp::Mode'],['../classdaisysp_1_1_looper.html#a2ba445f474ae158a2f54f1140f75d848',1,'daisysp::Looper::Mode']]],
   ['moogladder_7',['MoogLadder',['../classdaisysp_1_1_moog_ladder.html',1,'daisysp']]],
   ['mtof_8',['mtof',['../namespacedaisysp.html#a353be6c7e206ed974a25148e3f13dbab',1,'daisysp']]]
 ];

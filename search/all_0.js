@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['a_20powerful_20open_20source_20dsp_20library_20in_20c_0',['DaisySP • A Powerful, Open Source DSP Library in C++',['../index.html#autotoc_md0',1,'']]],
+  ['a_20powerful_20dsp_20library_20in_20c_0',['DaisySP • A Powerful DSP Library in C++',['../index.html#autotoc_md0',1,'']]],
   ['adenv_1',['AdEnv',['../classdaisysp_1_1_ad_env.html',1,'daisysp']]],
   ['adenv_5fseg_5fattack_2',['ADENV_SEG_ATTACK',['../namespacedaisysp.html#a0634cf6e0668bb0545f9d3ec79a0dd3dadafb53f0bacebac55b22bae75a3cee8c',1,'daisysp']]],
   ['adenv_5fseg_5fdecay_3',['ADENV_SEG_DECAY',['../namespacedaisysp.html#a0634cf6e0668bb0545f9d3ec79a0dd3da363c77ba21416cb8d0400263775038f5',1,'daisysp']]],
