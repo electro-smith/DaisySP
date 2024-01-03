@@ -92,6 +92,7 @@
 #include "Synthesis/variablesawosc.h"
 #include "Synthesis/variableshapeosc.h"
 #include "Synthesis/vosim.h"
+#include "Synthesis/wavetable_osc.h"
 #include "Synthesis/zoscillator.h"
 
 /** Utility Modules */

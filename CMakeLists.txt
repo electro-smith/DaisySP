@@ -61,6 +61,7 @@ Source/Utility/dcblock.cpp
 Source/Utility/jitter.cpp
 Source/Utility/metro.cpp
 Source/Utility/port.cpp
+Source/Utility/wavetables.cpp
 )
 
 
