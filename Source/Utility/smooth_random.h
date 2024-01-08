@@ -1,3 +1,11 @@
+/*
+Copyright (c) 2020 Electrosmith, Corp, Emilie Gillet
+
+Use of this source code is governed by an MIT-style
+license that can be found in the LICENSE file or at
+https://opensource.org/licenses/MIT.
+*/
+
 #pragma once
 #ifndef DSY_SMOOTHRANDOM_H
 #define DSY_SMOOTHRANDOM_H

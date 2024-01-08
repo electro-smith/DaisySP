@@ -30,7 +30,7 @@ void String::Reset()
 {
     string_.Reset();
     stretch_.Reset();
-    iir_damping_filter_.Init(sample_rate_);
+    iir_damping_filter_.Init();
 
     dc_blocker_.Init(sample_rate_);
 
@@ -110,8 +110,8 @@ float String::ProcessInternal(const float in)
         damping_cutoff += to_infinite * (128.0f - damping_cutoff);
     }
 
-    float temp_f = damping_f * sample_rate_;
-    iir_damping_filter_.SetFreq(temp_f);
+    float temp_f = damping_f;
+    iir_damping_filter_.SetFrequency(temp_f);
 
     float ratio                = powf(2.f, damping_cutoff * kOneTwelfth);
     float damping_compensation = 1.f - 2.f * atanf(1.f / ratio) / (TWOPI_F);

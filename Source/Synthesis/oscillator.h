@@ -1,3 +1,11 @@
+/*
+Copyright (c) 2020 Electrosmith, Corp
+
+Use of this source code is governed by an MIT-style
+license that can be found in the LICENSE file or at
+https://opensource.org/licenses/MIT.
+*/
+
 #pragma once
 #ifndef DSY_OSCILLATOR_H
 #define DSY_OSCILLATOR_H

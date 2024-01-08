@@ -1,3 +1,11 @@
+/*
+Copyright (c) 2020 Electrosmith, Corp, Emilie Gillet
+
+Use of this source code is governed by an MIT-style
+license that can be found in the LICENSE file or at
+https://opensource.org/licenses/MIT.
+*/
+
 #pragma once
 #ifndef DSY_STRING_H
 #define DSY_STRING_H
@@ -7,8 +15,7 @@
 #include "Dynamics/crossfade.h"
 #include "Utility/dcblock.h"
 #include "Utility/delayline.h"
-#include "Filters/svf.h"
-#include "Filters/tone.h"
+#include "Filters/onepole.h"
 
 #ifdef __cplusplus
 
@@ -84,7 +91,7 @@ class String
 
     float sample_rate_;
 
-    Tone iir_damping_filter_;
+    OnePole iir_damping_filter_;
 
     DcBlock dc_blocker_;
 

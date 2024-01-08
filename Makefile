@@ -10,8 +10,7 @@ CONTROL_MOD_DIR = Control
 CONTROL_MODULES = \
 adenv \
 adsr \
-line \
-phasor
+phasor \
 
 DRUM_MOD_DIR = Drums
 DRUM_MODULES = \
@@ -19,71 +18,50 @@ analogbassdrum \
 analogsnaredrum \
 hihat \
 synthbassdrum \
-synthsnaredrum
+synthsnaredrum \
 
 DYNAMICS_MOD_DIR = Dynamics
 DYNAMICS_MODULES = \
-balance \
-compressor \
 crossfade \
-limiter 
+limiter \
 
 EFFECTS_MOD_DIR = Effects
 EFFECTS_MODULES = \
 autowah \
-bitcrush \
 chorus \
 decimator \
 flanger \
-fold \
 overdrive \
 phaser \
-reverbsc \
 sampleratereducer \
 tremolo \
-wavefolder
-#pitchshifter 
+wavefolder \
 
 FILTER_MOD_DIR = Filters
 FILTER_MODULES = \
-allpass \
-atone \
-biquad \
-comb \
-mode \
-moogladder \
-nlfilt \
 svf \
-tone \
-soap 
-#fir
+soap \
 
 NOISE_MOD_DIR = Noise
 NOISE_MODULES = \
 clockednoise \
 grainlet \
-particle 
-#dust 
-#fractal_noise 
-#whitenoise
+particle \
 
 PHYSICAL_MODELING_MOD_DIR = PhysicalModeling
 PHYSICAL_MODELING_MODULES = \
 drip \
-modalvoice \
-pluck \
 KarplusString \
+modalvoice \
 resonator \
-stringvoice 
-#PolyPluck 
+stringvoice \
 
 SAMPLING_MOD_DIR = Sampling
 SAMPLING_MODULES = \
-granularplayer \
+granularplayer
 
 SYNTHESIS_MOD_DIR = Synthesis
 SYNTHESIS_MODULES = \
-blosc \
 fm2 \
 formantosc \
 oscillator \
@@ -91,21 +69,12 @@ oscillatorbank \
 variablesawosc \
 variableshapeosc \
 vosim \
-zoscillator 
-#harmonic_osc 
+zoscillator \
 
 UTILITY_MOD_DIR = Utility
 UTILITY_MODULES = \
 dcblock \
-jitter \
 metro \
-port 
-#delayline 
-#dsp 
-#looper
-#maytrig 
-#samplehold 
-#smooth_random
 
 ######################################
 # source
@@ -137,6 +106,7 @@ OPT = -O3
 
 # Build path
 BUILD_DIR = build
+DAISYSP_LGPL_DIR = DaisySP-LGPL
 
 #######################################
 # binaries
@@ -201,7 +171,6 @@ C_INCLUDES = \
 -I$(MODULE_DIR)/$(FILTER_MOD_DIR) \
 -I$(MODULE_DIR)/$(NOISE_MOD_DIR) \
 -I$(MODULE_DIR)/$(PHYSICAL_MODELING_MOD_DIR) \
--I$(MODULE_DIR)/$(SAMPLING_MOD_DIR) \
 -I$(MODULE_DIR)/$(SYNTHESIS_MOD_DIR) \
 -I$(MODULE_DIR)/$(UTILITY_MOD_DIR) 
 
@@ -223,7 +192,7 @@ CPPFLAGS += \
 -finline-functions 
 
 # default action: build all
-all: $(BUILD_DIR)/$(TARGET).a 
+all: $(BUILD_DIR)/$(TARGET).a lgpl
 
 #######################################
 # build the library
@@ -251,13 +220,21 @@ $(BUILD_DIR)/$(TARGET).a: $(OBJECTS) Makefile
 	$(AR) rcs $@ $(OBJECTS)
 
 $(BUILD_DIR):
-	mkdir $@        
+	mkdir $@
+
+# build the lgpl submodule if it exists
+lgpl:
+	@if [ -f $(DAISYSP_LGPL_DIR)/Makefile ]; then\
+		make -C $(DAISYSP_LGPL_DIR); \
+		echo "Building DaisySP-LGPL";\
+	fi
 
 #######################################
 # clean up
 #######################################
 clean:
 	-rm -fR $(BUILD_DIR)
+	-rm -fR $(DAISYSP_LGPL_DIR)/build
 #######################################
 
 # dependencies

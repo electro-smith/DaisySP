@@ -1,3 +1,11 @@
+/*
+Copyright (c) 2020 Electrosmith, Corp
+
+Use of this source code is governed by an MIT-style
+license that can be found in the LICENSE file or at
+https://opensource.org/licenses/MIT.
+*/
+
 #pragma once
 #include <algorithm>
 #include "dsp.h"
@@ -83,8 +91,8 @@ class Looper
             case State::PLAYING:
                 sig = Read(pos_);
                 /** This is a way of 'seamless looping'
-				 ** The first N samps after recording is done are recorded with the input faded out. 
-				 */
+                 ** The first N samps after recording is done are recorded with the input faded out. 
+                 */
                 if(win_idx_ < kWindowSamps - 1)
                 {
                     Write(pos_, sig + input * (1.f - win_));
