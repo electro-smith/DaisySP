@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['👨‍💻_20code_20example_0',['👨‍💻 Code Example',['../index.html#autotoc_md4',1,'']]]
+  ['📱_20applications_0',['📱 Applications',['../index.html#autotoc_md1',1,'']]]
 ];

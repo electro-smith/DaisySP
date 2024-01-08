@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['❤️_20community_0',['❤️ Community',['../index.html#autotoc_md5',1,'']]]
+  ['🏆_20contributors_0',['🏆 Contributors',['../index.html#autotoc_md6',1,'']]]
 ];

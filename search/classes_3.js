@@ -1,12 +1,10 @@
 var searchData=
 [
-  ['dcblock_0',['DcBlock',['../classdaisysp_1_1_dc_block.html',1,'daisysp']]],
-  ['decimator_1',['Decimator',['../classdaisysp_1_1_decimator.html',1,'daisysp']]],
-  ['delayline_2',['DelayLine',['../classdaisysp_1_1_delay_line.html',1,'daisysp']]],
-  ['delayline_3c_20float_2c_2016384_20_3e_3',['DelayLine&lt; float, 16384 &gt;',['../classdaisysp_1_1_delay_line.html',1,'daisysp']]],
-  ['delayline_3c_20float_2c_20kdelaylength_20_3e_4',['DelayLine&lt; float, kDelayLength &gt;',['../classdaisysp_1_1_delay_line.html',1,'daisysp']]],
-  ['delayline_3c_20float_2c_20kdelaylinesize_20_3e_5',['DelayLine&lt; float, kDelayLineSize &gt;',['../classdaisysp_1_1_delay_line.html',1,'daisysp']]],
-  ['delayline_3c_20float_2c_20kdelaylinesize_2f4_20_3e_6',['DelayLine&lt; float, kDelayLineSize/4 &gt;',['../classdaisysp_1_1_delay_line.html',1,'daisysp']]],
-  ['drip_7',['Drip',['../classdaisysp_1_1_drip.html',1,'daisysp']]],
-  ['dust_8',['Dust',['../classdaisysp_1_1_dust.html',1,'daisysp']]]
+  ['firfilterimplgeneric_0',['FIRFilterImplGeneric',['../classdaisysp_1_1_f_i_r_filter_impl_generic.html',1,'daisysp']]],
+  ['firmemory_1',['FIRMemory',['../structdaisysp_1_1_f_i_r_memory.html',1,'daisysp']]],
+  ['firmemory_3c_200_2c_200_20_3e_2',['FIRMemory&lt; 0, 0 &gt;',['../structdaisysp_1_1_f_i_r_memory_3_010_00_010_01_4.html',1,'daisysp']]],
+  ['flanger_3',['Flanger',['../classdaisysp_1_1_flanger.html',1,'daisysp']]],
+  ['fm2_4',['Fm2',['../classdaisysp_1_1_fm2.html',1,'daisysp']]],
+  ['formantoscillator_5',['FormantOscillator',['../classdaisysp_1_1_formant_oscillator.html',1,'daisysp']]],
+  ['fractalrandomgenerator_6',['FractalRandomGenerator',['../classdaisysp_1_1_fractal_random_generator.html',1,'daisysp']]]
 ];

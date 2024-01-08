@@ -83,112 +83,120 @@ $(function() { codefold.init(0); });
   <div class="headertitle"><div class="title">oscillator.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#ifndef DSY_OSCILLATOR_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#define DSY_OSCILLATOR_H</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;Utility/dsp.h&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacedaisysp.html">daisysp</a></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>{</div>
-<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_oscillator.html">   12</a></span><span class="keyword">class </span><a class="code hl_class" href="classdaisysp_1_1_oscillator.html">Oscillator</a></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>  <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <a class="code hl_class" href="classdaisysp_1_1_oscillator.html">Oscillator</a>() {}</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <a class="code hl_class" href="classdaisysp_1_1_oscillator.html">~Oscillator</a>() {}</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">enum</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    {</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        WAVE_SIN,</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        WAVE_TRI,</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        WAVE_SAW,</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        WAVE_RAMP,</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        WAVE_SQUARE,</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        WAVE_POLYBLEP_TRI,</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        WAVE_POLYBLEP_SAW,</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        WAVE_POLYBLEP_SQUARE,</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        WAVE_LAST,</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    };</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="foldopen" id="foldopen00042" data-start="{" data-end="}">
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_oscillator.html#a13cbe5861a018c8ac8aa2c88f52b2afb">   42</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator.html#a13cbe5861a018c8ac8aa2c88f52b2afb">Init</a>(<span class="keywordtype">float</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">sample_rate</a>)</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    {</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        sr_        = <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">sample_rate</a>;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        sr_recip_  = 1.0f / <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">sample_rate</a>;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        freq_      = 100.0f;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        amp_       = 0.5f;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        pw_        = 0.5f;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        phase_     = 0.0f;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        phase_inc_ = CalcPhaseInc(freq_);</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        waveform_  = WAVE_SIN;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        eoc_       = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        eor_       = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    }</div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">Copyright (c) 2020 Electrosmith, Corp</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"></span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">Use of this source code is governed by an MIT-style</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">license that can be found in the LICENSE file or at</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">https://opensource.org/licenses/MIT.</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">*/</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#ifndef DSY_OSCILLATOR_H</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#define DSY_OSCILLATOR_H</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;Utility/dsp.h&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacedaisysp.html">daisysp</a></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
+<div class="foldopen" id="foldopen00020" data-start="{" data-end="};">
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_oscillator.html">   20</a></span><span class="keyword">class </span><a class="code hl_class" href="classdaisysp_1_1_oscillator.html">Oscillator</a></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <a class="code hl_class" href="classdaisysp_1_1_oscillator.html">Oscillator</a>() {}</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_class" href="classdaisysp_1_1_oscillator.html">~Oscillator</a>() {}</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">enum</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        WAVE_SIN,</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        WAVE_TRI,</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        WAVE_SAW,</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        WAVE_RAMP,</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        WAVE_SQUARE,</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        WAVE_POLYBLEP_TRI,</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        WAVE_POLYBLEP_SAW,</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        WAVE_POLYBLEP_SQUARE,</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        WAVE_LAST,</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    };</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="foldopen" id="foldopen00050" data-start="{" data-end="}">
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_oscillator.html#a13cbe5861a018c8ac8aa2c88f52b2afb">   50</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator.html#a13cbe5861a018c8ac8aa2c88f52b2afb">Init</a>(<span class="keywordtype">float</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">sample_rate</a>)</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        sr_        = <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">sample_rate</a>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        sr_recip_  = 1.0f / <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">sample_rate</a>;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        freq_      = 100.0f;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        amp_       = 0.5f;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        pw_        = 0.5f;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        phase_     = 0.0f;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        phase_inc_ = CalcPhaseInc(freq_);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        waveform_  = WAVE_SIN;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        eoc_       = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        eor_       = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    }</div>
 </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="foldopen" id="foldopen00059" data-start="{" data-end="}">
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_oscillator.html#a769da8528017a99e6f6c653e258d2c81">   59</a></span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator.html#a769da8528017a99e6f6c653e258d2c81">SetFreq</a>(<span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">f</a>)</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    {</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        freq_      = <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">f</a>;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        phase_inc_ = CalcPhaseInc(<a class="code hl_class" href="classdaisysp_1_1_delay_line.html">f</a>);</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    }</div>
-</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_oscillator.html#aed6238575aba5b4fb2468002e008dd5a">   68</a></span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator.html#aed6238575aba5b4fb2468002e008dd5a">SetAmp</a>(<span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">a</a>) { amp_ = <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">a</a>; }</div>
-<div class="foldopen" id="foldopen00071" data-start="{" data-end="}">
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_oscillator.html#a563be5480c4e9487414513e3d15d0498">   71</a></span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator.html#a563be5480c4e9487414513e3d15d0498">SetWaveform</a>(<span class="keyword">const</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">uint8_t</a> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">wf</a>)</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    {</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        waveform_ = <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">wf</a> &lt; WAVE_LAST ? <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">wf</a> : WAVE_SIN;</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    }</div>
+<div class="foldopen" id="foldopen00067" data-start="{" data-end="}">
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_oscillator.html#a769da8528017a99e6f6c653e258d2c81">   67</a></span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator.html#a769da8528017a99e6f6c653e258d2c81">SetFreq</a>(<span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">f</a>)</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        freq_      = <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">f</a>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        phase_inc_ = CalcPhaseInc(<a class="code hl_class" href="classdaisysp_1_1_delay_line.html">f</a>);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    }</div>
 </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_oscillator.html#ab3d2acfa9937422c73eae99049457e64">   77</a></span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator.html#ab3d2acfa9937422c73eae99049457e64">SetPw</a>(<span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">pw</a>) { pw_ = <a class="code hl_function" href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">fclamp</a>(<a class="code hl_class" href="classdaisysp_1_1_delay_line.html">pw</a>, 0.0f, 1.0f); }</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_oscillator.html#a0e8286ef2aca2e023f2ad0f7869fed76">   81</a></span>    <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator.html#a0e8286ef2aca2e023f2ad0f7869fed76">IsEOR</a>() { <span class="keywordflow">return</span> eor_; }</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_oscillator.html#a5bdfebc82098cd1f4f9a4036c9f48568">   85</a></span>    <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator.html#a5bdfebc82098cd1f4f9a4036c9f48568">IsEOC</a>() { <span class="keywordflow">return</span> eoc_; }</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_oscillator.html#aed6238575aba5b4fb2468002e008dd5a">   76</a></span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator.html#aed6238575aba5b4fb2468002e008dd5a">SetAmp</a>(<span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">a</a>) { amp_ = <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">a</a>; }</div>
+<div class="foldopen" id="foldopen00079" data-start="{" data-end="}">
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_oscillator.html#a563be5480c4e9487414513e3d15d0498">   79</a></span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator.html#a563be5480c4e9487414513e3d15d0498">SetWaveform</a>(<span class="keyword">const</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">uint8_t</a> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">wf</a>)</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    {</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        waveform_ = <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">wf</a> &lt; WAVE_LAST ? <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">wf</a> : WAVE_SIN;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    }</div>
+</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_oscillator.html#ab3d2acfa9937422c73eae99049457e64">   85</a></span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator.html#ab3d2acfa9937422c73eae99049457e64">SetPw</a>(<span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">pw</a>) { pw_ = <a class="code hl_function" href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">fclamp</a>(<a class="code hl_class" href="classdaisysp_1_1_delay_line.html">pw</a>, 0.0f, 1.0f); }</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_oscillator.html#a5473a13e4211f64f169a0aed8d028c50">   89</a></span>    <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator.html#a5473a13e4211f64f169a0aed8d028c50">IsRising</a>() { <span class="keywordflow">return</span> phase_ &lt; 0.5f; }</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_oscillator.html#a0e8286ef2aca2e023f2ad0f7869fed76">   89</a></span>    <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator.html#a0e8286ef2aca2e023f2ad0f7869fed76">IsEOR</a>() { <span class="keywordflow">return</span> eor_; }</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_oscillator.html#ab9a32df3fdd94e185408dda2bbf5237f">   93</a></span>    <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator.html#ab9a32df3fdd94e185408dda2bbf5237f">IsFalling</a>() { <span class="keywordflow">return</span> phase_ &gt;= 0.5f; }</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_oscillator.html#a5bdfebc82098cd1f4f9a4036c9f48568">   93</a></span>    <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator.html#a5bdfebc82098cd1f4f9a4036c9f48568">IsEOC</a>() { <span class="keywordflow">return</span> eoc_; }</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordtype">float</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator.html#a932b95808f003f697d54abe90a9c1c73">Process</a>();</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_oscillator.html#a5473a13e4211f64f169a0aed8d028c50">   97</a></span>    <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator.html#a5473a13e4211f64f169a0aed8d028c50">IsRising</a>() { <span class="keywordflow">return</span> phase_ &lt; 0.5f; }</div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_oscillator.html#a544fe59ddd47b7798ef15fc5672d3cb5">  102</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator.html#a544fe59ddd47b7798ef15fc5672d3cb5">PhaseAdd</a>(<span class="keywordtype">float</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">_phase</a>) { phase_ += <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">_phase</a>; }</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_oscillator.html#a7e15e57ee6ade915737273329c9216ff">  105</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator.html#a7e15e57ee6ade915737273329c9216ff">Reset</a>(<span class="keywordtype">float</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">_phase</a> = 0.0f) { phase_ = <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">_phase</a>; }</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_oscillator.html#ab9a32df3fdd94e185408dda2bbf5237f">  101</a></span>    <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator.html#ab9a32df3fdd94e185408dda2bbf5237f">IsFalling</a>() { <span class="keywordflow">return</span> phase_ &gt;= 0.5f; }</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordtype">float</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator.html#a932b95808f003f697d54abe90a9c1c73">Process</a>();</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordtype">float</span>   CalcPhaseInc(<span class="keywordtype">float</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">f</a>);</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">uint8_t</a> waveform_;</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordtype">float</span>   amp_, freq_, pw_;</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keywordtype">float</span>   sr_, sr_recip_, phase_, phase_inc_;</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordtype">float</span>   last_out_, last_freq_;</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordtype">bool</span>    eor_, eoc_;</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>};</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_oscillator.html#a544fe59ddd47b7798ef15fc5672d3cb5">  110</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator.html#a544fe59ddd47b7798ef15fc5672d3cb5">PhaseAdd</a>(<span class="keywordtype">float</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">_phase</a>) { phase_ += <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">_phase</a>; }</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_oscillator.html#a7e15e57ee6ade915737273329c9216ff">  113</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator.html#a7e15e57ee6ade915737273329c9216ff">Reset</a>(<span class="keywordtype">float</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">_phase</a> = 0.0f) { phase_ = <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">_phase</a>; }</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>  <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="keywordtype">float</span>   CalcPhaseInc(<span class="keywordtype">float</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">f</a>);</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">uint8_t</a> waveform_;</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordtype">float</span>   amp_, freq_, pw_;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keywordtype">float</span>   sr_, sr_recip_, phase_, phase_inc_;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordtype">float</span>   last_out_, last_freq_;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keywordtype">bool</span>    eor_, eoc_;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>};</div>
 </div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>} <span class="comment">// namespace daisysp</span></div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassdaisysp_1_1_delay_line_html"><div class="ttname"><a href="classdaisysp_1_1_delay_line.html">daisysp::DelayLine</a></div><div class="ttdef"><b>Definition</b> delayline.h:21</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_oscillator_html"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html">daisysp::Oscillator</a></div><div class="ttdef"><b>Definition</b> oscillator.h:13</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_oscillator_html_a0e8286ef2aca2e023f2ad0f7869fed76"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html#a0e8286ef2aca2e023f2ad0f7869fed76">daisysp::Oscillator::IsEOR</a></div><div class="ttdeci">bool IsEOR()</div><div class="ttdef"><b>Definition</b> oscillator.h:81</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_oscillator_html_a13cbe5861a018c8ac8aa2c88f52b2afb"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html#a13cbe5861a018c8ac8aa2c88f52b2afb">daisysp::Oscillator::Init</a></div><div class="ttdeci">void Init(float sample_rate)</div><div class="ttdef"><b>Definition</b> oscillator.h:42</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_oscillator_html_a544fe59ddd47b7798ef15fc5672d3cb5"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html#a544fe59ddd47b7798ef15fc5672d3cb5">daisysp::Oscillator::PhaseAdd</a></div><div class="ttdeci">void PhaseAdd(float _phase)</div><div class="ttdef"><b>Definition</b> oscillator.h:102</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_oscillator_html_a5473a13e4211f64f169a0aed8d028c50"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html#a5473a13e4211f64f169a0aed8d028c50">daisysp::Oscillator::IsRising</a></div><div class="ttdeci">bool IsRising()</div><div class="ttdef"><b>Definition</b> oscillator.h:89</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_oscillator_html_a563be5480c4e9487414513e3d15d0498"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html#a563be5480c4e9487414513e3d15d0498">daisysp::Oscillator::SetWaveform</a></div><div class="ttdeci">void SetWaveform(const uint8_t wf)</div><div class="ttdef"><b>Definition</b> oscillator.h:71</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_oscillator_html_a5bdfebc82098cd1f4f9a4036c9f48568"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html#a5bdfebc82098cd1f4f9a4036c9f48568">daisysp::Oscillator::IsEOC</a></div><div class="ttdeci">bool IsEOC()</div><div class="ttdef"><b>Definition</b> oscillator.h:85</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_oscillator_html_a769da8528017a99e6f6c653e258d2c81"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html#a769da8528017a99e6f6c653e258d2c81">daisysp::Oscillator::SetFreq</a></div><div class="ttdeci">void SetFreq(const float f)</div><div class="ttdef"><b>Definition</b> oscillator.h:59</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_oscillator_html_a7e15e57ee6ade915737273329c9216ff"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html#a7e15e57ee6ade915737273329c9216ff">daisysp::Oscillator::Reset</a></div><div class="ttdeci">void Reset(float _phase=0.0f)</div><div class="ttdef"><b>Definition</b> oscillator.h:105</div></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>} <span class="comment">// namespace daisysp</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclassdaisysp_1_1_delay_line_html"><div class="ttname"><a href="classdaisysp_1_1_delay_line.html">daisysp::DelayLine</a></div><div class="ttdef"><b>Definition</b> delayline.h:29</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_oscillator_html"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html">daisysp::Oscillator</a></div><div class="ttdef"><b>Definition</b> oscillator.h:21</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_oscillator_html_a0e8286ef2aca2e023f2ad0f7869fed76"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html#a0e8286ef2aca2e023f2ad0f7869fed76">daisysp::Oscillator::IsEOR</a></div><div class="ttdeci">bool IsEOR()</div><div class="ttdef"><b>Definition</b> oscillator.h:89</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_oscillator_html_a13cbe5861a018c8ac8aa2c88f52b2afb"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html#a13cbe5861a018c8ac8aa2c88f52b2afb">daisysp::Oscillator::Init</a></div><div class="ttdeci">void Init(float sample_rate)</div><div class="ttdef"><b>Definition</b> oscillator.h:50</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_oscillator_html_a544fe59ddd47b7798ef15fc5672d3cb5"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html#a544fe59ddd47b7798ef15fc5672d3cb5">daisysp::Oscillator::PhaseAdd</a></div><div class="ttdeci">void PhaseAdd(float _phase)</div><div class="ttdef"><b>Definition</b> oscillator.h:110</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_oscillator_html_a5473a13e4211f64f169a0aed8d028c50"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html#a5473a13e4211f64f169a0aed8d028c50">daisysp::Oscillator::IsRising</a></div><div class="ttdeci">bool IsRising()</div><div class="ttdef"><b>Definition</b> oscillator.h:97</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_oscillator_html_a563be5480c4e9487414513e3d15d0498"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html#a563be5480c4e9487414513e3d15d0498">daisysp::Oscillator::SetWaveform</a></div><div class="ttdeci">void SetWaveform(const uint8_t wf)</div><div class="ttdef"><b>Definition</b> oscillator.h:79</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_oscillator_html_a5bdfebc82098cd1f4f9a4036c9f48568"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html#a5bdfebc82098cd1f4f9a4036c9f48568">daisysp::Oscillator::IsEOC</a></div><div class="ttdeci">bool IsEOC()</div><div class="ttdef"><b>Definition</b> oscillator.h:93</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_oscillator_html_a769da8528017a99e6f6c653e258d2c81"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html#a769da8528017a99e6f6c653e258d2c81">daisysp::Oscillator::SetFreq</a></div><div class="ttdeci">void SetFreq(const float f)</div><div class="ttdef"><b>Definition</b> oscillator.h:67</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_oscillator_html_a7e15e57ee6ade915737273329c9216ff"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html#a7e15e57ee6ade915737273329c9216ff">daisysp::Oscillator::Reset</a></div><div class="ttdeci">void Reset(float _phase=0.0f)</div><div class="ttdef"><b>Definition</b> oscillator.h:113</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_oscillator_html_a932b95808f003f697d54abe90a9c1c73"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html#a932b95808f003f697d54abe90a9c1c73">daisysp::Oscillator::Process</a></div><div class="ttdeci">float Process()</div><div class="ttdef"><b>Definition</b> oscillator.cpp:7</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_oscillator_html_ab3d2acfa9937422c73eae99049457e64"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html#ab3d2acfa9937422c73eae99049457e64">daisysp::Oscillator::SetPw</a></div><div class="ttdeci">void SetPw(const float pw)</div><div class="ttdef"><b>Definition</b> oscillator.h:77</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_oscillator_html_ab9a32df3fdd94e185408dda2bbf5237f"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html#ab9a32df3fdd94e185408dda2bbf5237f">daisysp::Oscillator::IsFalling</a></div><div class="ttdeci">bool IsFalling()</div><div class="ttdef"><b>Definition</b> oscillator.h:93</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_oscillator_html_aed6238575aba5b4fb2468002e008dd5a"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html#aed6238575aba5b4fb2468002e008dd5a">daisysp::Oscillator::SetAmp</a></div><div class="ttdeci">void SetAmp(const float a)</div><div class="ttdef"><b>Definition</b> oscillator.h:68</div></div>
-<div class="ttc" id="anamespacedaisysp_html"><div class="ttname"><a href="namespacedaisysp.html">daisysp</a></div><div class="ttdoc">FIR Filter implementation, generic and ARM CMSIS DSP based.</div><div class="ttdef"><b>Definition</b> adenv.h:8</div></div>
-<div class="ttc" id="anamespacedaisysp_html_a74b876c19ad43dcddf78e89199ecc5ef"><div class="ttname"><a href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">daisysp::fclamp</a></div><div class="ttdeci">float fclamp(float in, float min, float max)</div><div class="ttdef"><b>Definition</b> dsp.h:56</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_oscillator_html_ab3d2acfa9937422c73eae99049457e64"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html#ab3d2acfa9937422c73eae99049457e64">daisysp::Oscillator::SetPw</a></div><div class="ttdeci">void SetPw(const float pw)</div><div class="ttdef"><b>Definition</b> oscillator.h:85</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_oscillator_html_ab9a32df3fdd94e185408dda2bbf5237f"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html#ab9a32df3fdd94e185408dda2bbf5237f">daisysp::Oscillator::IsFalling</a></div><div class="ttdeci">bool IsFalling()</div><div class="ttdef"><b>Definition</b> oscillator.h:101</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_oscillator_html_aed6238575aba5b4fb2468002e008dd5a"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html#aed6238575aba5b4fb2468002e008dd5a">daisysp::Oscillator::SetAmp</a></div><div class="ttdeci">void SetAmp(const float a)</div><div class="ttdef"><b>Definition</b> oscillator.h:76</div></div>
+<div class="ttc" id="anamespacedaisysp_html"><div class="ttname"><a href="namespacedaisysp.html">daisysp</a></div><div class="ttdoc">FIR Filter implementation, generic and ARM CMSIS DSP based.</div><div class="ttdef"><b>Definition</b> adenv.h:16</div></div>
+<div class="ttc" id="anamespacedaisysp_html_a74b876c19ad43dcddf78e89199ecc5ef"><div class="ttname"><a href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">daisysp::fclamp</a></div><div class="ttdeci">float fclamp(float in, float min, float max)</div><div class="ttdef"><b>Definition</b> dsp.h:64</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

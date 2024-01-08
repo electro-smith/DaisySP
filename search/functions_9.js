@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['median_0',['median',['../namespacedaisysp.html#a726909b1a01b77ff0b65099c7e1298d9',1,'daisysp']]],
-  ['mtof_1',['mtof',['../namespacedaisysp.html#a353be6c7e206ed974a25148e3f13dbab',1,'daisysp']]]
+  ['nextblepsample_0',['NextBlepSample',['../namespacedaisysp.html#ac0603ebc575fdb61fe84185ba61226df',1,'daisysp']]],
+  ['nextintegratedblepsample_1',['NextIntegratedBlepSample',['../namespacedaisysp.html#a7652b10e090527e3830f89ade7bd2e20',1,'daisysp']]],
+  ['notch_2',['Notch',['../classdaisysp_1_1_svf.html#ac21096bb09e2e01eb223986cbb293a49',1,'daisysp::Svf']]]
 ];

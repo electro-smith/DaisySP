@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['harmonicoscillator_0',['HarmonicOscillator',['../classdaisysp_1_1_harmonic_oscillator.html',1,'daisysp']]],
-  ['hihat_1',['HiHat',['../classdaisysp_1_1_hi_hat.html',1,'daisysp']]]
+  ['limiter_0',['Limiter',['../classdaisysp_1_1_limiter.html',1,'daisysp']]],
+  ['linearvca_1',['LinearVCA',['../classdaisysp_1_1_linear_v_c_a.html',1,'daisysp']]],
+  ['looper_2',['Looper',['../classdaisysp_1_1_looper.html',1,'daisysp']]]
 ];

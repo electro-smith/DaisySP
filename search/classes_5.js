@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['grainletoscillator_0',['GrainletOscillator',['../classdaisysp_1_1_grainlet_oscillator.html',1,'daisysp']]],
-  ['granularplayer_1',['GranularPlayer',['../classdaisysp_1_1_granular_player.html',1,'daisysp']]]
+  ['harmonicoscillator_0',['HarmonicOscillator',['../classdaisysp_1_1_harmonic_oscillator.html',1,'daisysp']]],
+  ['hihat_1',['HiHat',['../classdaisysp_1_1_hi_hat.html',1,'daisysp']]]
 ];

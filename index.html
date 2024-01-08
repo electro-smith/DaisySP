@@ -113,7 +113,7 @@ $(function() {
 👨‍💻 Code Example</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;daisysp.h&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">daisysp::OnePole</a> flt;</div>
+<div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classdaisysp_1_1_one_pole.html">daisysp::OnePole</a> flt;</div>
 <div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classdaisysp_1_1_oscillator.html">daisysp::Oscillator</a> osc, lfo;</div>
 <div class="line"><span class="keywordtype">float</span> saw, freq, output;</div>
 <div class="line"> </div>
@@ -122,13 +122,15 @@ $(function() {
 <div class="line">  freq = lfo.<a class="code hl_function" href="classdaisysp_1_1_oscillator.html#a932b95808f003f697d54abe90a9c1c73">Process</a>();</div>
 <div class="line">  saw = osc.<a class="code hl_function" href="classdaisysp_1_1_oscillator.html#a932b95808f003f697d54abe90a9c1c73">Process</a>();</div>
 <div class="line"> </div>
-<div class="line">  flt.SetFrequency(freq);</div>
-<div class="line">  output = flt.Process(saw);</div>
+<div class="line">  flt.<a class="code hl_function" href="classdaisysp_1_1_one_pole.html#ae00f613f1953f006409b27cbe825feb2">SetFrequency</a>(freq);</div>
+<div class="line">  output = flt.<a class="code hl_function" href="classdaisysp_1_1_one_pole.html#a2a303a5105f9977a01e2af6f27efb2c2">Process</a>(saw);</div>
 <div class="line"> </div>
 <div class="line">  out[i] = output;</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassdaisysp_1_1_delay_line_html"><div class="ttname"><a href="classdaisysp_1_1_delay_line.html">daisysp::DelayLine</a></div><div class="ttdef"><b>Definition</b> delayline.h:21</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_oscillator_html"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html">daisysp::Oscillator</a></div><div class="ttdef"><b>Definition</b> oscillator.h:13</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_one_pole_html"><div class="ttname"><a href="classdaisysp_1_1_one_pole.html">daisysp::OnePole</a></div><div class="ttdoc">One Pole Lowpass / Highpass Filter.</div><div class="ttdef"><b>Definition</b> onepole.h:27</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_one_pole_html_a2a303a5105f9977a01e2af6f27efb2c2"><div class="ttname"><a href="classdaisysp_1_1_one_pole.html#a2a303a5105f9977a01e2af6f27efb2c2">daisysp::OnePole::Process</a></div><div class="ttdeci">float Process(float in)</div><div class="ttdef"><b>Definition</b> onepole.h:73</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_one_pole_html_ae00f613f1953f006409b27cbe825feb2"><div class="ttname"><a href="classdaisysp_1_1_one_pole.html#ae00f613f1953f006409b27cbe825feb2">daisysp::OnePole::SetFrequency</a></div><div class="ttdeci">void SetFrequency(float freq)</div><div class="ttdef"><b>Definition</b> onepole.h:56</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_oscillator_html"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html">daisysp::Oscillator</a></div><div class="ttdef"><b>Definition</b> oscillator.h:21</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_oscillator_html_a932b95808f003f697d54abe90a9c1c73"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html#a932b95808f003f697d54abe90a9c1c73">daisysp::Oscillator::Process</a></div><div class="ttdeci">float Process()</div><div class="ttdef"><b>Definition</b> oscillator.cpp:7</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md5"></a>
 ❤️ Community</h2>

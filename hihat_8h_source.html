@@ -83,250 +83,258 @@ $(function() { codefold.init(0); });
   <div class="headertitle"><div class="title">hihat.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="hihat_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#ifndef DSY_HIHAT_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#define DSY_HIHAT_H</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;Filters/svf.h&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;Synthesis/oscillator.h&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacedaisysp.html">daisysp</a></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
-<div class="foldopen" id="foldopen00024" data-start="{" data-end="};">
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_square_noise.html">   24</a></span><span class="keyword">class </span><a class="code hl_class" href="classdaisysp_1_1_square_noise.html">SquareNoise</a></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>{</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <a class="code hl_class" href="classdaisysp_1_1_square_noise.html">SquareNoise</a>() {}</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <a class="code hl_class" href="classdaisysp_1_1_square_noise.html">~SquareNoise</a>() {}</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">void</span> Init(<span class="keywordtype">float</span> sample_rate);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordtype">float</span> Process(<span class="keywordtype">float</span> f0);</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    uint32_t phase_[6];</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>};</div>
-</div>
+<a href="hihat_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">Copyright (c) 2020 Electrosmith, Corp, Emilie Gillet</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"></span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">Use of this source code is governed by an MIT-style</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">license that can be found in the LICENSE file or at</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">https://opensource.org/licenses/MIT.</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">*/</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#ifndef DSY_HIHAT_H</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#define DSY_HIHAT_H</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;Filters/svf.h&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;Synthesis/oscillator.h&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacedaisysp.html">daisysp</a></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
+<div class="foldopen" id="foldopen00032" data-start="{" data-end="};">
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_square_noise.html">   32</a></span><span class="keyword">class </span><a class="code hl_class" href="classdaisysp_1_1_square_noise.html">SquareNoise</a></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>{</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <a class="code hl_class" href="classdaisysp_1_1_square_noise.html">SquareNoise</a>() {}</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <a class="code hl_class" href="classdaisysp_1_1_square_noise.html">~SquareNoise</a>() {}</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="foldopen" id="foldopen00046" data-start="{" data-end="};">
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_ring_mod_noise.html">   46</a></span><span class="keyword">class </span><a class="code hl_class" href="classdaisysp_1_1_ring_mod_noise.html">RingModNoise</a></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>{</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <a class="code hl_class" href="classdaisysp_1_1_ring_mod_noise.html">RingModNoise</a>() {}</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <a class="code hl_class" href="classdaisysp_1_1_ring_mod_noise.html">~RingModNoise</a>() {}</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">void</span> Init(<span class="keywordtype">float</span> sample_rate);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">float</span> Process(<span class="keywordtype">float</span> f0);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">float</span>      ProcessPair(<a class="code hl_class" href="classdaisysp_1_1_oscillator.html">Oscillator</a>* osc, <span class="keywordtype">float</span> f1, <span class="keywordtype">float</span> f2);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <a class="code hl_class" href="classdaisysp_1_1_oscillator.html">Oscillator</a> oscillator_[6];</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> Init(<span class="keywordtype">float</span> sample_rate);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">float</span> Process(<span class="keywordtype">float</span> f0);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>  <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    uint32_t phase_[6];</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>};</div>
+</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="foldopen" id="foldopen00054" data-start="{" data-end="};">
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_ring_mod_noise.html">   54</a></span><span class="keyword">class </span><a class="code hl_class" href="classdaisysp_1_1_ring_mod_noise.html">RingModNoise</a></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>{</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <a class="code hl_class" href="classdaisysp_1_1_ring_mod_noise.html">RingModNoise</a>() {}</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <a class="code hl_class" href="classdaisysp_1_1_ring_mod_noise.html">~RingModNoise</a>() {}</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordtype">float</span> sample_rate_;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>};</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordtype">void</span> Init(<span class="keywordtype">float</span> sample_rate);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">float</span> Process(<span class="keywordtype">float</span> f0);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">float</span>      ProcessPair(<a class="code hl_class" href="classdaisysp_1_1_oscillator.html">Oscillator</a>* osc, <span class="keywordtype">float</span> f1, <span class="keywordtype">float</span> f2);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <a class="code hl_class" href="classdaisysp_1_1_oscillator.html">Oscillator</a> oscillator_[6];</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordtype">float</span> sample_rate_;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>};</div>
 </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="foldopen" id="foldopen00071" data-start="{" data-end="};">
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_swing_v_c_a.html">   71</a></span><span class="keyword">class </span><a class="code hl_class" href="classdaisysp_1_1_swing_v_c_a.html">SwingVCA</a></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>{</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>  <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordtype">float</span> operator()(<span class="keywordtype">float</span> s, <span class="keywordtype">float</span> gain)</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    {</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        s *= s &gt; 0.0f ? 10.0f : 0.1f;</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        s = s / (1.0f + fabsf(s));</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keywordflow">return</span> (s + 1.0f) * gain;</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    }</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>};</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="foldopen" id="foldopen00079" data-start="{" data-end="};">
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_swing_v_c_a.html">   79</a></span><span class="keyword">class </span><a class="code hl_class" href="classdaisysp_1_1_swing_v_c_a.html">SwingVCA</a></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>{</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>  <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordtype">float</span> operator()(<span class="keywordtype">float</span> s, <span class="keywordtype">float</span> gain)</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    {</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        s *= s &gt; 0.0f ? 10.0f : 0.1f;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        s = s / (1.0f + fabsf(s));</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="keywordflow">return</span> (s + 1.0f) * gain;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    }</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>};</div>
 </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="foldopen" id="foldopen00090" data-start="{" data-end="};">
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_linear_v_c_a.html">   90</a></span><span class="keyword">class </span><a class="code hl_class" href="classdaisysp_1_1_linear_v_c_a.html">LinearVCA</a></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>{</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>  <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordtype">float</span> operator()(<span class="keywordtype">float</span> s, <span class="keywordtype">float</span> gain) { <span class="keywordflow">return</span> s * gain; }</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>};</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="foldopen" id="foldopen00098" data-start="{" data-end="};">
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_linear_v_c_a.html">   98</a></span><span class="keyword">class </span><a class="code hl_class" href="classdaisysp_1_1_linear_v_c_a.html">LinearVCA</a></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>{</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordtype">float</span> operator()(<span class="keywordtype">float</span> s, <span class="keywordtype">float</span> gain) { <span class="keywordflow">return</span> s * gain; }</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>};</div>
 </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> MetallicNoiseSource = <a class="code hl_class" href="classdaisysp_1_1_square_noise.html">SquareNoise</a>,</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>          <span class="keyword">typename</span> VCA                 = <a class="code hl_class" href="classdaisysp_1_1_linear_v_c_a.html">LinearVCA</a>,</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>          <span class="keywordtype">bool</span> resonance               = <span class="keyword">true</span>&gt;</div>
-<div class="foldopen" id="foldopen00109" data-start="{" data-end="};">
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_hi_hat.html">  109</a></span><span class="keyword">class </span><a class="code hl_class" href="classdaisysp_1_1_hi_hat.html">HiHat</a></div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>{</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>  <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <a class="code hl_class" href="classdaisysp_1_1_hi_hat.html">HiHat</a>() {}</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <a class="code hl_class" href="classdaisysp_1_1_hi_hat.html">~HiHat</a>() {}</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
-<div class="foldopen" id="foldopen00118" data-start="{" data-end="}">
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_hi_hat.html#adece1523660d3cdc4a5e30d984f9b63b">  118</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#adece1523660d3cdc4a5e30d984f9b63b">Init</a>(<span class="keywordtype">float</span> sample_rate)</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    {</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        sample_rate_ = sample_rate;</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        trig_ = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        envelope_     = 0.0f;</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        noise_clock_  = 0.0f;</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        noise_sample_ = 0.0f;</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        sustain_gain_ = 0.0f;</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#af59896aa8f95b913dad194b60684a94d">SetFreq</a>(3000.f);</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#a9b79a381c43aa9a68f5dda4a7aad7ca2">SetTone</a>(.5f);</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#ad2d05ba5d665007e851cdb91bff7e57c">SetDecay</a>(.2f);</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#a417142b98d9067bdbc1b889e6e54fac2">SetNoisiness</a>(.8f);</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#a26ec219bd240c2ba7e127c40301d8ae7">SetAccent</a>(.8f);</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#ac67041f11b580caa5527705817859bd2">SetSustain</a>(<span class="keyword">false</span>);</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        metallic_noise_.Init(sample_rate_);</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        noise_coloration_svf_.<a class="code hl_function" href="classdaisysp_1_1_svf.html#a7661f2b15aec66b4722f0d7d949dca9f">Init</a>(sample_rate_);</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        hpf_.<a class="code hl_function" href="classdaisysp_1_1_svf.html#a7661f2b15aec66b4722f0d7d949dca9f">Init</a>(sample_rate_);</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    }</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> MetallicNoiseSource = <a class="code hl_class" href="classdaisysp_1_1_square_noise.html">SquareNoise</a>,</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>          <span class="keyword">typename</span> VCA                 = <a class="code hl_class" href="classdaisysp_1_1_linear_v_c_a.html">LinearVCA</a>,</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>          <span class="keywordtype">bool</span> resonance               = <span class="keyword">true</span>&gt;</div>
+<div class="foldopen" id="foldopen00117" data-start="{" data-end="};">
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_hi_hat.html">  117</a></span><span class="keyword">class </span><a class="code hl_class" href="classdaisysp_1_1_hi_hat.html">HiHat</a></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>{</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>  <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <a class="code hl_class" href="classdaisysp_1_1_hi_hat.html">HiHat</a>() {}</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <a class="code hl_class" href="classdaisysp_1_1_hi_hat.html">~HiHat</a>() {}</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="foldopen" id="foldopen00126" data-start="{" data-end="}">
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_hi_hat.html#adece1523660d3cdc4a5e30d984f9b63b">  126</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#adece1523660d3cdc4a5e30d984f9b63b">Init</a>(<span class="keywordtype">float</span> sample_rate)</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    {</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        sample_rate_ = sample_rate;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        trig_ = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        envelope_     = 0.0f;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        noise_clock_  = 0.0f;</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        noise_sample_ = 0.0f;</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        sustain_gain_ = 0.0f;</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#af59896aa8f95b913dad194b60684a94d">SetFreq</a>(3000.f);</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#a9b79a381c43aa9a68f5dda4a7aad7ca2">SetTone</a>(.5f);</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#ad2d05ba5d665007e851cdb91bff7e57c">SetDecay</a>(.2f);</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#a417142b98d9067bdbc1b889e6e54fac2">SetNoisiness</a>(.8f);</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#a26ec219bd240c2ba7e127c40301d8ae7">SetAccent</a>(.8f);</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#ac67041f11b580caa5527705817859bd2">SetSustain</a>(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        metallic_noise_.Init(sample_rate_);</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        noise_coloration_svf_.<a class="code hl_function" href="classdaisysp_1_1_svf.html#a7661f2b15aec66b4722f0d7d949dca9f">Init</a>(sample_rate_);</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        hpf_.<a class="code hl_function" href="classdaisysp_1_1_svf.html#a7661f2b15aec66b4722f0d7d949dca9f">Init</a>(sample_rate_);</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    }</div>
 </div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
-<div class="foldopen" id="foldopen00144" data-start="{" data-end="}">
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_hi_hat.html#a390305d09396231126e85e154a60992a">  144</a></span>    <span class="keywordtype">float</span> <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#a390305d09396231126e85e154a60992a">Process</a>(<span class="keywordtype">bool</span> trigger = <span class="keyword">false</span>)</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    {</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> envelope_decay</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>            = 1.0f - 0.003f * SemitonesToRatio(-decay_ * 84.0f);</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> cut_decay</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>            = 1.0f - 0.0025f * SemitonesToRatio(-decay_ * 36.0f);</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        <span class="keywordflow">if</span>(trigger || trig_)</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        {</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>            trig_ = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>            envelope_</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>                = (1.5f + 0.5f * (1.0f - decay_)) * (0.3f + 0.7f * accent_);</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        }</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
+<div class="foldopen" id="foldopen00152" data-start="{" data-end="}">
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_hi_hat.html#a390305d09396231126e85e154a60992a">  152</a></span>    <span class="keywordtype">float</span> <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#a390305d09396231126e85e154a60992a">Process</a>(<span class="keywordtype">bool</span> trigger = <span class="keyword">false</span>)</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    {</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> envelope_decay</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>            = 1.0f - 0.003f * SemitonesToRatio(-decay_ * 84.0f);</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> cut_decay</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>            = 1.0f - 0.0025f * SemitonesToRatio(-decay_ * 36.0f);</div>
 <div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        <span class="comment">// Process the metallic noise.</span></div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        <span class="keywordtype">float</span> out = metallic_noise_.Process(2.0f * f0_);</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        <span class="comment">// Apply BPF on the metallic noise.</span></div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        <span class="keywordtype">float</span> cutoff = 150.0f / sample_rate_ * SemitonesToRatio(tone_ * 72.0f);</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        cutoff = <a class="code hl_function" href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">fclamp</a>(cutoff, 0.0f, 16000.0f / sample_rate_);</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        <span class="keywordflow">if</span>(trigger || trig_)</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        {</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>            trig_ = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>            envelope_</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>                = (1.5f + 0.5f * (1.0f - decay_)) * (0.3f + 0.7f * accent_);</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        }</div>
 <div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        noise_coloration_svf_.<a class="code hl_function" href="classdaisysp_1_1_svf.html#aa33ba83743431cb02c5fe7bc59b84864">SetFreq</a>(cutoff * sample_rate_);</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        noise_coloration_svf_.<a class="code hl_function" href="classdaisysp_1_1_svf.html#a749f835414468ba02300874cdf27bae9">SetRes</a>(resonance ? 3.0f + 6.0f * tone_ : 1.0f);</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        noise_coloration_svf_.<a class="code hl_function" href="classdaisysp_1_1_svf.html#a47548c9b0be0818c98f41a00632df840">Process</a>(out);</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        out = noise_coloration_svf_.<a class="code hl_function" href="classdaisysp_1_1_svf.html#a2d70a3aeac18acbd4f17d321fd79bf46">Band</a>();</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        <span class="comment">// This is not at all part of the 808 circuit! But to add more variety, we</span></div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        <span class="comment">// add a variable amount of clocked noise to the output of the 6 schmitt</span></div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        <span class="comment">// trigger oscillators.</span></div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        <span class="keywordtype">float</span> noise_f = f0_ * (16.0f + 16.0f * (1.0f - noisiness_));</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        noise_f       = <a class="code hl_function" href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">fclamp</a>(noise_f, 0.0f, 0.5f);</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        noise_clock_ += noise_f;</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        <span class="keywordflow">if</span>(noise_clock_ &gt;= 1.0f)</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        {</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>            noise_clock_ -= 1.0f;</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>            noise_sample_ = rand() * kRandFrac - 0.5f;</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        }</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        out += noisiness_ * (noise_sample_ - out);</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        <span class="comment">// Process the metallic noise.</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        <span class="keywordtype">float</span> out = metallic_noise_.Process(2.0f * f0_);</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        <span class="comment">// Apply BPF on the metallic noise.</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        <span class="keywordtype">float</span> cutoff = 150.0f / sample_rate_ * SemitonesToRatio(tone_ * 72.0f);</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        cutoff = <a class="code hl_function" href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">fclamp</a>(cutoff, 0.0f, 16000.0f / sample_rate_);</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        noise_coloration_svf_.<a class="code hl_function" href="classdaisysp_1_1_svf.html#aa33ba83743431cb02c5fe7bc59b84864">SetFreq</a>(cutoff * sample_rate_);</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        noise_coloration_svf_.<a class="code hl_function" href="classdaisysp_1_1_svf.html#a749f835414468ba02300874cdf27bae9">SetRes</a>(resonance ? 3.0f + 6.0f * tone_ : 1.0f);</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        noise_coloration_svf_.<a class="code hl_function" href="classdaisysp_1_1_svf.html#a47548c9b0be0818c98f41a00632df840">Process</a>(out);</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        out = noise_coloration_svf_.<a class="code hl_function" href="classdaisysp_1_1_svf.html#a2d70a3aeac18acbd4f17d321fd79bf46">Band</a>();</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        <span class="comment">// This is not at all part of the 808 circuit! But to add more variety, we</span></div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        <span class="comment">// add a variable amount of clocked noise to the output of the 6 schmitt</span></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        <span class="comment">// trigger oscillators.</span></div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        <span class="keywordtype">float</span> noise_f = f0_ * (16.0f + 16.0f * (1.0f - noisiness_));</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        noise_f       = <a class="code hl_function" href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">fclamp</a>(noise_f, 0.0f, 0.5f);</div>
 <div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        <span class="comment">// Apply VCA.</span></div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        sustain_gain_ = accent_ * decay_;</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        VCA vca;</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        envelope_ *= envelope_ &gt; 0.5f ? envelope_decay : cut_decay;</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        out = vca(out, sustain_ ? sustain_gain_ : envelope_);</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span> </div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        hpf_.<a class="code hl_function" href="classdaisysp_1_1_svf.html#aa33ba83743431cb02c5fe7bc59b84864">SetFreq</a>(cutoff * sample_rate_);</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        hpf_.<a class="code hl_function" href="classdaisysp_1_1_svf.html#a749f835414468ba02300874cdf27bae9">SetRes</a>(.5f);</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        hpf_.<a class="code hl_function" href="classdaisysp_1_1_svf.html#a47548c9b0be0818c98f41a00632df840">Process</a>(out);</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        out = hpf_.<a class="code hl_function" href="classdaisysp_1_1_svf.html#a77691a23c400bde9ad49702213e5f7af">High</a>();</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        <span class="keywordflow">return</span> out;</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    }</div>
-</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        noise_clock_ += noise_f;</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        <span class="keywordflow">if</span>(noise_clock_ &gt;= 1.0f)</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        {</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>            noise_clock_ -= 1.0f;</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>            noise_sample_ = rand() * kRandFrac - 0.5f;</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        }</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        out += noisiness_ * (noise_sample_ - out);</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span> </div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        <span class="comment">// Apply VCA.</span></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        sustain_gain_ = accent_ * decay_;</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        VCA vca;</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        envelope_ *= envelope_ &gt; 0.5f ? envelope_decay : cut_decay;</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>        out = vca(out, sustain_ ? sustain_gain_ : envelope_);</div>
 <div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_hi_hat.html#aef844d9701a65df9da4a3cb0794cc560">  203</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#aef844d9701a65df9da4a3cb0794cc560">Trig</a>() { trig_ = <span class="keyword">true</span>; }</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span> </div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_hi_hat.html#ac67041f11b580caa5527705817859bd2">  208</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#ac67041f11b580caa5527705817859bd2">SetSustain</a>(<span class="keywordtype">bool</span> sustain) { sustain_ = sustain; }</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        hpf_.<a class="code hl_function" href="classdaisysp_1_1_svf.html#aa33ba83743431cb02c5fe7bc59b84864">SetFreq</a>(cutoff * sample_rate_);</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        hpf_.<a class="code hl_function" href="classdaisysp_1_1_svf.html#a749f835414468ba02300874cdf27bae9">SetRes</a>(.5f);</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        hpf_.<a class="code hl_function" href="classdaisysp_1_1_svf.html#a47548c9b0be0818c98f41a00632df840">Process</a>(out);</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        out = hpf_.<a class="code hl_function" href="classdaisysp_1_1_svf.html#a77691a23c400bde9ad49702213e5f7af">High</a>();</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span> </div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        <span class="keywordflow">return</span> out;</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    }</div>
+</div>
 <div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_hi_hat.html#a26ec219bd240c2ba7e127c40301d8ae7">  213</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#a26ec219bd240c2ba7e127c40301d8ae7">SetAccent</a>(<span class="keywordtype">float</span> accent) { accent_ = <a class="code hl_function" href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">fclamp</a>(accent, 0.f, 1.f); }</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span> </div>
-<div class="foldopen" id="foldopen00218" data-start="{" data-end="}">
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_hi_hat.html#af59896aa8f95b913dad194b60684a94d">  218</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#af59896aa8f95b913dad194b60684a94d">SetFreq</a>(<span class="keywordtype">float</span> f0)</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    {</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        f0 /= sample_rate_;</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        f0_ = <a class="code hl_function" href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">fclamp</a>(f0, 0.f, 1.f);</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    }</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_hi_hat.html#aef844d9701a65df9da4a3cb0794cc560">  211</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#aef844d9701a65df9da4a3cb0794cc560">Trig</a>() { trig_ = <span class="keyword">true</span>; }</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_hi_hat.html#ac67041f11b580caa5527705817859bd2">  216</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#ac67041f11b580caa5527705817859bd2">SetSustain</a>(<span class="keywordtype">bool</span> sustain) { sustain_ = sustain; }</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span> </div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_hi_hat.html#a26ec219bd240c2ba7e127c40301d8ae7">  221</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#a26ec219bd240c2ba7e127c40301d8ae7">SetAccent</a>(<span class="keywordtype">float</span> accent) { accent_ = <a class="code hl_function" href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">fclamp</a>(accent, 0.f, 1.f); }</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span> </div>
+<div class="foldopen" id="foldopen00226" data-start="{" data-end="}">
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_hi_hat.html#af59896aa8f95b913dad194b60684a94d">  226</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#af59896aa8f95b913dad194b60684a94d">SetFreq</a>(<span class="keywordtype">float</span> f0)</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    {</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>        f0 /= sample_rate_;</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        f0_ = <a class="code hl_function" href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">fclamp</a>(f0, 0.f, 1.f);</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    }</div>
 </div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_hi_hat.html#a9b79a381c43aa9a68f5dda4a7aad7ca2">  227</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#a9b79a381c43aa9a68f5dda4a7aad7ca2">SetTone</a>(<span class="keywordtype">float</span> tone) { tone_ = <a class="code hl_function" href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">fclamp</a>(tone, 0.f, 1.f); }</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span> </div>
-<div class="foldopen" id="foldopen00232" data-start="{" data-end="}">
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_hi_hat.html#ad2d05ba5d665007e851cdb91bff7e57c">  232</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#ad2d05ba5d665007e851cdb91bff7e57c">SetDecay</a>(<span class="keywordtype">float</span> decay)</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    {</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        decay_ = <a class="code hl_function" href="namespacedaisysp.html#a9385ec4090ae8925d3e3794312db9396">fmax</a>(decay, 0.f);</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        decay_ *= 1.7;</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>        decay_ -= 1.2;</div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    }</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span> </div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_hi_hat.html#a9b79a381c43aa9a68f5dda4a7aad7ca2">  235</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#a9b79a381c43aa9a68f5dda4a7aad7ca2">SetTone</a>(<span class="keywordtype">float</span> tone) { tone_ = <a class="code hl_function" href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">fclamp</a>(tone, 0.f, 1.f); }</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span> </div>
+<div class="foldopen" id="foldopen00240" data-start="{" data-end="}">
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_hi_hat.html#ad2d05ba5d665007e851cdb91bff7e57c">  240</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#ad2d05ba5d665007e851cdb91bff7e57c">SetDecay</a>(<span class="keywordtype">float</span> decay)</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    {</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        decay_ = <a class="code hl_function" href="namespacedaisysp.html#a9385ec4090ae8925d3e3794312db9396">fmax</a>(decay, 0.f);</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        decay_ *= 1.7;</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        decay_ -= 1.2;</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    }</div>
 </div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
-<div class="foldopen" id="foldopen00242" data-start="{" data-end="}">
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_hi_hat.html#a417142b98d9067bdbc1b889e6e54fac2">  242</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#a417142b98d9067bdbc1b889e6e54fac2">SetNoisiness</a>(<span class="keywordtype">float</span> noisiness)</div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    {</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        noisiness_ = <a class="code hl_function" href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">fclamp</a>(noisiness, 0.f, 1.f);</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        noisiness_ *= noisiness_;</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    }</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span> </div>
+<div class="foldopen" id="foldopen00250" data-start="{" data-end="}">
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_hi_hat.html#a417142b98d9067bdbc1b889e6e54fac2">  250</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_hi_hat.html#a417142b98d9067bdbc1b889e6e54fac2">SetNoisiness</a>(<span class="keywordtype">float</span> noisiness)</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>    {</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>        noisiness_ = <a class="code hl_function" href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">fclamp</a>(noisiness, 0.f, 1.f);</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>        noisiness_ *= noisiness_;</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>    }</div>
 </div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span> </div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span> </div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>  <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    <span class="keywordtype">float</span> sample_rate_;</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span> </div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    <span class="keywordtype">float</span> accent_, f0_, tone_, decay_, noisiness_;</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>    <span class="keywordtype">bool</span>  sustain_;</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>    <span class="keywordtype">bool</span>  trig_;</div>
 <div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span> </div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    <span class="keywordtype">float</span> SemitonesToRatio(<span class="keywordtype">float</span> in) { <span class="keywordflow">return</span> powf(2.f, in * kOneTwelfth); }</div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span> </div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    <span class="keywordtype">float</span> envelope_;</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>    <span class="keywordtype">float</span> noise_clock_;</div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>    <span class="keywordtype">float</span> noise_sample_;</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    <span class="keywordtype">float</span> sustain_gain_;</div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span> </div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>    MetallicNoiseSource metallic_noise_;</div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    Svf                 noise_coloration_svf_;</div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>    Svf                 hpf_;</div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>};</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span> </div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>  <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    <span class="keywordtype">float</span> sample_rate_;</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span> </div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>    <span class="keywordtype">float</span> accent_, f0_, tone_, decay_, noisiness_;</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    <span class="keywordtype">bool</span>  sustain_;</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>    <span class="keywordtype">bool</span>  trig_;</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span> </div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    <span class="keywordtype">float</span> SemitonesToRatio(<span class="keywordtype">float</span> in) { <span class="keywordflow">return</span> powf(2.f, in * kOneTwelfth); }</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span> </div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>    <span class="keywordtype">float</span> envelope_;</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    <span class="keywordtype">float</span> noise_clock_;</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>    <span class="keywordtype">float</span> noise_sample_;</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>    <span class="keywordtype">float</span> sustain_gain_;</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span> </div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>    MetallicNoiseSource metallic_noise_;</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    Svf                 noise_coloration_svf_;</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>    Svf                 hpf_;</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>};</div>
 </div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>} <span class="comment">// namespace daisysp</span></div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassdaisysp_1_1_hi_hat_html"><div class="ttname"><a href="classdaisysp_1_1_hi_hat.html">daisysp::HiHat</a></div><div class="ttdoc">808 HH, with a few extra parameters to push things to the CY territory...</div><div class="ttdef"><b>Definition</b> hihat.h:110</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_hi_hat_html_a26ec219bd240c2ba7e127c40301d8ae7"><div class="ttname"><a href="classdaisysp_1_1_hi_hat.html#a26ec219bd240c2ba7e127c40301d8ae7">daisysp::HiHat::SetAccent</a></div><div class="ttdeci">void SetAccent(float accent)</div><div class="ttdef"><b>Definition</b> hihat.h:213</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_hi_hat_html_a390305d09396231126e85e154a60992a"><div class="ttname"><a href="classdaisysp_1_1_hi_hat.html#a390305d09396231126e85e154a60992a">daisysp::HiHat::Process</a></div><div class="ttdeci">float Process(bool trigger=false)</div><div class="ttdef"><b>Definition</b> hihat.h:144</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_hi_hat_html_a417142b98d9067bdbc1b889e6e54fac2"><div class="ttname"><a href="classdaisysp_1_1_hi_hat.html#a417142b98d9067bdbc1b889e6e54fac2">daisysp::HiHat::SetNoisiness</a></div><div class="ttdeci">void SetNoisiness(float noisiness)</div><div class="ttdef"><b>Definition</b> hihat.h:242</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_hi_hat_html_a9b79a381c43aa9a68f5dda4a7aad7ca2"><div class="ttname"><a href="classdaisysp_1_1_hi_hat.html#a9b79a381c43aa9a68f5dda4a7aad7ca2">daisysp::HiHat::SetTone</a></div><div class="ttdeci">void SetTone(float tone)</div><div class="ttdef"><b>Definition</b> hihat.h:227</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_hi_hat_html_ac67041f11b580caa5527705817859bd2"><div class="ttname"><a href="classdaisysp_1_1_hi_hat.html#ac67041f11b580caa5527705817859bd2">daisysp::HiHat::SetSustain</a></div><div class="ttdeci">void SetSustain(bool sustain)</div><div class="ttdef"><b>Definition</b> hihat.h:208</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_hi_hat_html_ad2d05ba5d665007e851cdb91bff7e57c"><div class="ttname"><a href="classdaisysp_1_1_hi_hat.html#ad2d05ba5d665007e851cdb91bff7e57c">daisysp::HiHat::SetDecay</a></div><div class="ttdeci">void SetDecay(float decay)</div><div class="ttdef"><b>Definition</b> hihat.h:232</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_hi_hat_html_adece1523660d3cdc4a5e30d984f9b63b"><div class="ttname"><a href="classdaisysp_1_1_hi_hat.html#adece1523660d3cdc4a5e30d984f9b63b">daisysp::HiHat::Init</a></div><div class="ttdeci">void Init(float sample_rate)</div><div class="ttdef"><b>Definition</b> hihat.h:118</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_hi_hat_html_aef844d9701a65df9da4a3cb0794cc560"><div class="ttname"><a href="classdaisysp_1_1_hi_hat.html#aef844d9701a65df9da4a3cb0794cc560">daisysp::HiHat::Trig</a></div><div class="ttdeci">void Trig()</div><div class="ttdef"><b>Definition</b> hihat.h:203</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_hi_hat_html_af59896aa8f95b913dad194b60684a94d"><div class="ttname"><a href="classdaisysp_1_1_hi_hat.html#af59896aa8f95b913dad194b60684a94d">daisysp::HiHat::SetFreq</a></div><div class="ttdeci">void SetFreq(float f0)</div><div class="ttdef"><b>Definition</b> hihat.h:218</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_linear_v_c_a_html"><div class="ttname"><a href="classdaisysp_1_1_linear_v_c_a.html">daisysp::LinearVCA</a></div><div class="ttdoc">Linear type VCA.</div><div class="ttdef"><b>Definition</b> hihat.h:91</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_oscillator_html"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html">daisysp::Oscillator</a></div><div class="ttdef"><b>Definition</b> oscillator.h:13</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_ring_mod_noise_html"><div class="ttname"><a href="classdaisysp_1_1_ring_mod_noise.html">daisysp::RingModNoise</a></div><div class="ttdoc">Ring mod style metallic noise generator.</div><div class="ttdef"><b>Definition</b> hihat.h:47</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_square_noise_html"><div class="ttname"><a href="classdaisysp_1_1_square_noise.html">daisysp::SquareNoise</a></div><div class="ttdoc">808 style &quot;metallic noise&quot; with 6 square oscillators.</div><div class="ttdef"><b>Definition</b> hihat.h:25</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_svf_html_a2d70a3aeac18acbd4f17d321fd79bf46"><div class="ttname"><a href="classdaisysp_1_1_svf.html#a2d70a3aeac18acbd4f17d321fd79bf46">daisysp::Svf::Band</a></div><div class="ttdeci">float Band()</div><div class="ttdef"><b>Definition</b> svf.h:60</div></div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>} <span class="comment">// namespace daisysp</span></div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclassdaisysp_1_1_hi_hat_html"><div class="ttname"><a href="classdaisysp_1_1_hi_hat.html">daisysp::HiHat</a></div><div class="ttdoc">808 HH, with a few extra parameters to push things to the CY territory...</div><div class="ttdef"><b>Definition</b> hihat.h:118</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_hi_hat_html_a26ec219bd240c2ba7e127c40301d8ae7"><div class="ttname"><a href="classdaisysp_1_1_hi_hat.html#a26ec219bd240c2ba7e127c40301d8ae7">daisysp::HiHat::SetAccent</a></div><div class="ttdeci">void SetAccent(float accent)</div><div class="ttdef"><b>Definition</b> hihat.h:221</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_hi_hat_html_a390305d09396231126e85e154a60992a"><div class="ttname"><a href="classdaisysp_1_1_hi_hat.html#a390305d09396231126e85e154a60992a">daisysp::HiHat::Process</a></div><div class="ttdeci">float Process(bool trigger=false)</div><div class="ttdef"><b>Definition</b> hihat.h:152</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_hi_hat_html_a417142b98d9067bdbc1b889e6e54fac2"><div class="ttname"><a href="classdaisysp_1_1_hi_hat.html#a417142b98d9067bdbc1b889e6e54fac2">daisysp::HiHat::SetNoisiness</a></div><div class="ttdeci">void SetNoisiness(float noisiness)</div><div class="ttdef"><b>Definition</b> hihat.h:250</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_hi_hat_html_a9b79a381c43aa9a68f5dda4a7aad7ca2"><div class="ttname"><a href="classdaisysp_1_1_hi_hat.html#a9b79a381c43aa9a68f5dda4a7aad7ca2">daisysp::HiHat::SetTone</a></div><div class="ttdeci">void SetTone(float tone)</div><div class="ttdef"><b>Definition</b> hihat.h:235</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_hi_hat_html_ac67041f11b580caa5527705817859bd2"><div class="ttname"><a href="classdaisysp_1_1_hi_hat.html#ac67041f11b580caa5527705817859bd2">daisysp::HiHat::SetSustain</a></div><div class="ttdeci">void SetSustain(bool sustain)</div><div class="ttdef"><b>Definition</b> hihat.h:216</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_hi_hat_html_ad2d05ba5d665007e851cdb91bff7e57c"><div class="ttname"><a href="classdaisysp_1_1_hi_hat.html#ad2d05ba5d665007e851cdb91bff7e57c">daisysp::HiHat::SetDecay</a></div><div class="ttdeci">void SetDecay(float decay)</div><div class="ttdef"><b>Definition</b> hihat.h:240</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_hi_hat_html_adece1523660d3cdc4a5e30d984f9b63b"><div class="ttname"><a href="classdaisysp_1_1_hi_hat.html#adece1523660d3cdc4a5e30d984f9b63b">daisysp::HiHat::Init</a></div><div class="ttdeci">void Init(float sample_rate)</div><div class="ttdef"><b>Definition</b> hihat.h:126</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_hi_hat_html_aef844d9701a65df9da4a3cb0794cc560"><div class="ttname"><a href="classdaisysp_1_1_hi_hat.html#aef844d9701a65df9da4a3cb0794cc560">daisysp::HiHat::Trig</a></div><div class="ttdeci">void Trig()</div><div class="ttdef"><b>Definition</b> hihat.h:211</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_hi_hat_html_af59896aa8f95b913dad194b60684a94d"><div class="ttname"><a href="classdaisysp_1_1_hi_hat.html#af59896aa8f95b913dad194b60684a94d">daisysp::HiHat::SetFreq</a></div><div class="ttdeci">void SetFreq(float f0)</div><div class="ttdef"><b>Definition</b> hihat.h:226</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_linear_v_c_a_html"><div class="ttname"><a href="classdaisysp_1_1_linear_v_c_a.html">daisysp::LinearVCA</a></div><div class="ttdoc">Linear type VCA.</div><div class="ttdef"><b>Definition</b> hihat.h:99</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_oscillator_html"><div class="ttname"><a href="classdaisysp_1_1_oscillator.html">daisysp::Oscillator</a></div><div class="ttdef"><b>Definition</b> oscillator.h:21</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_ring_mod_noise_html"><div class="ttname"><a href="classdaisysp_1_1_ring_mod_noise.html">daisysp::RingModNoise</a></div><div class="ttdoc">Ring mod style metallic noise generator.</div><div class="ttdef"><b>Definition</b> hihat.h:55</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_square_noise_html"><div class="ttname"><a href="classdaisysp_1_1_square_noise.html">daisysp::SquareNoise</a></div><div class="ttdoc">808 style &quot;metallic noise&quot; with 6 square oscillators.</div><div class="ttdef"><b>Definition</b> hihat.h:33</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_svf_html_a2d70a3aeac18acbd4f17d321fd79bf46"><div class="ttname"><a href="classdaisysp_1_1_svf.html#a2d70a3aeac18acbd4f17d321fd79bf46">daisysp::Svf::Band</a></div><div class="ttdeci">float Band()</div><div class="ttdef"><b>Definition</b> svf.h:68</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_svf_html_a47548c9b0be0818c98f41a00632df840"><div class="ttname"><a href="classdaisysp_1_1_svf.html#a47548c9b0be0818c98f41a00632df840">daisysp::Svf::Process</a></div><div class="ttdeci">void Process(float in)</div><div class="ttdef"><b>Definition</b> svf.cpp:31</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_svf_html_a749f835414468ba02300874cdf27bae9"><div class="ttname"><a href="classdaisysp_1_1_svf.html#a749f835414468ba02300874cdf27bae9">daisysp::Svf::SetRes</a></div><div class="ttdeci">void SetRes(float r)</div><div class="ttdef"><b>Definition</b> svf.cpp:71</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_svf_html_a7661f2b15aec66b4722f0d7d949dca9f"><div class="ttname"><a href="classdaisysp_1_1_svf.html#a7661f2b15aec66b4722f0d7d949dca9f">daisysp::Svf::Init</a></div><div class="ttdeci">void Init(float sample_rate)</div><div class="ttdef"><b>Definition</b> svf.cpp:8</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_svf_html_a77691a23c400bde9ad49702213e5f7af"><div class="ttname"><a href="classdaisysp_1_1_svf.html#a77691a23c400bde9ad49702213e5f7af">daisysp::Svf::High</a></div><div class="ttdeci">float High()</div><div class="ttdef"><b>Definition</b> svf.h:56</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_svf_html_a77691a23c400bde9ad49702213e5f7af"><div class="ttname"><a href="classdaisysp_1_1_svf.html#a77691a23c400bde9ad49702213e5f7af">daisysp::Svf::High</a></div><div class="ttdeci">float High()</div><div class="ttdef"><b>Definition</b> svf.h:64</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_svf_html_aa33ba83743431cb02c5fe7bc59b84864"><div class="ttname"><a href="classdaisysp_1_1_svf.html#aa33ba83743431cb02c5fe7bc59b84864">daisysp::Svf::SetFreq</a></div><div class="ttdeci">void SetFreq(float f)</div><div class="ttdef"><b>Definition</b> svf.cpp:58</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_swing_v_c_a_html"><div class="ttname"><a href="classdaisysp_1_1_swing_v_c_a.html">daisysp::SwingVCA</a></div><div class="ttdoc">Swing type VCA.</div><div class="ttdef"><b>Definition</b> hihat.h:72</div></div>
-<div class="ttc" id="anamespacedaisysp_html"><div class="ttname"><a href="namespacedaisysp.html">daisysp</a></div><div class="ttdoc">FIR Filter implementation, generic and ARM CMSIS DSP based.</div><div class="ttdef"><b>Definition</b> adenv.h:8</div></div>
-<div class="ttc" id="anamespacedaisysp_html_a74b876c19ad43dcddf78e89199ecc5ef"><div class="ttname"><a href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">daisysp::fclamp</a></div><div class="ttdeci">float fclamp(float in, float min, float max)</div><div class="ttdef"><b>Definition</b> dsp.h:56</div></div>
-<div class="ttc" id="anamespacedaisysp_html_a9385ec4090ae8925d3e3794312db9396"><div class="ttname"><a href="namespacedaisysp.html#a9385ec4090ae8925d3e3794312db9396">daisysp::fmax</a></div><div class="ttdeci">float fmax(float a, float b)</div><div class="ttdef"><b>Definition</b> dsp.h:32</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_swing_v_c_a_html"><div class="ttname"><a href="classdaisysp_1_1_swing_v_c_a.html">daisysp::SwingVCA</a></div><div class="ttdoc">Swing type VCA.</div><div class="ttdef"><b>Definition</b> hihat.h:80</div></div>
+<div class="ttc" id="anamespacedaisysp_html"><div class="ttname"><a href="namespacedaisysp.html">daisysp</a></div><div class="ttdoc">FIR Filter implementation, generic and ARM CMSIS DSP based.</div><div class="ttdef"><b>Definition</b> adenv.h:16</div></div>
+<div class="ttc" id="anamespacedaisysp_html_a74b876c19ad43dcddf78e89199ecc5ef"><div class="ttname"><a href="namespacedaisysp.html#a74b876c19ad43dcddf78e89199ecc5ef">daisysp::fclamp</a></div><div class="ttdeci">float fclamp(float in, float min, float max)</div><div class="ttdef"><b>Definition</b> dsp.h:64</div></div>
+<div class="ttc" id="anamespacedaisysp_html_a9385ec4090ae8925d3e3794312db9396"><div class="ttname"><a href="namespacedaisysp.html#a9385ec4090ae8925d3e3794312db9396">daisysp::fmax</a></div><div class="ttdeci">float fmax(float a, float b)</div><div class="ttdef"><b>Definition</b> dsp.h:40</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

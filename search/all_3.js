@@ -14,7 +14,6 @@ var searchData=
   ['drip_11',['Drip',['../classdaisysp_1_1_drip.html',1,'daisysp']]],
   ['drip_2eh_12',['drip.h',['../drip_8h.html',1,'']]],
   ['dsp_20library_20in_20c_13',['DaisySP • A Powerful DSP Library in C++',['../index.html#autotoc_md0',1,'']]],
-  ['dummy_14',['dummy',['../structdaisysp_1_1_reverb_sc_dl.html#af62b09d8102efc7e02995cca24e89013',1,'daisysp::ReverbScDl']]],
-  ['dust_15',['Dust',['../classdaisysp_1_1_dust.html',1,'daisysp']]],
-  ['dust_2eh_16',['dust.h',['../dust_8h.html',1,'']]]
+  ['dust_14',['Dust',['../classdaisysp_1_1_dust.html',1,'daisysp']]],
+  ['dust_2eh_15',['dust.h',['../dust_8h.html',1,'']]]
 ];

@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['balance_0',['Balance',['../classdaisysp_1_1_balance.html',1,'daisysp']]],
-  ['biquad_1',['Biquad',['../classdaisysp_1_1_biquad.html',1,'daisysp']]],
-  ['bitcrush_2',['Bitcrush',['../classdaisysp_1_1_bitcrush.html',1,'daisysp']]],
-  ['blosc_3',['BlOsc',['../classdaisysp_1_1_bl_osc.html',1,'daisysp']]]
+  ['chorus_0',['Chorus',['../classdaisysp_1_1_chorus.html',1,'daisysp']]],
+  ['chorusengine_1',['ChorusEngine',['../classdaisysp_1_1_chorus_engine.html',1,'daisysp']]],
+  ['clockednoise_2',['ClockedNoise',['../classdaisysp_1_1_clocked_noise.html',1,'daisysp']]],
+  ['crossfade_3',['CrossFade',['../classdaisysp_1_1_cross_fade.html',1,'daisysp']]]
 ];

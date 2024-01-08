@@ -1,11 +1,11 @@
 var searchData=
 [
-  ['library_20in_20c_0',['DaisySP • A Powerful DSP Library in C++',['../index.html#autotoc_md0',1,'']]],
-  ['license_1',['⚠️ License',['../index.html#autotoc_md8',1,'']]],
-  ['limiter_2',['Limiter',['../classdaisysp_1_1_limiter.html',1,'daisysp']]],
-  ['line_3',['Line',['../classdaisysp_1_1_line.html',1,'daisysp']]],
-  ['linearvca_4',['LinearVCA',['../classdaisysp_1_1_linear_v_c_a.html',1,'daisysp']]],
-  ['list_5',['Todo List',['../todo.html',1,'']]],
-  ['looper_6',['Looper',['../classdaisysp_1_1_looper.html',1,'daisysp']]],
-  ['low_7',['Low',['../classdaisysp_1_1_svf.html#a3fbe38989b49fba12a3a7a37f291b33c',1,'daisysp::Svf']]]
+  ['mapping_0',['Mapping',['../namespacedaisysp.html#a2bf890e5a2079c011f202e530cb1d56b',1,'daisysp']]],
+  ['maytrig_1',['Maytrig',['../classdaisysp_1_1_maytrig.html',1,'daisysp']]],
+  ['median_2',['median',['../namespacedaisysp.html#a726909b1a01b77ff0b65099c7e1298d9',1,'daisysp']]],
+  ['metro_3',['Metro',['../classdaisysp_1_1_metro.html',1,'daisysp']]],
+  ['modalvoice_4',['ModalVoice',['../classdaisysp_1_1_modal_voice.html',1,'daisysp']]],
+  ['modalvoice_2eh_5',['modalvoice.h',['../modalvoice_8h.html',1,'']]],
+  ['mode_6',['Mode',['../classdaisysp_1_1_looper.html#a2ba445f474ae158a2f54f1140f75d848',1,'daisysp::Looper']]],
+  ['mtof_7',['mtof',['../namespacedaisysp.html#a353be6c7e206ed974a25148e3f13dbab',1,'daisysp']]]
 ];

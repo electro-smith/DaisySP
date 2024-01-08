@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['zoscillator_0',['ZOscillator',['../classdaisysp_1_1_z_oscillator.html',1,'daisysp']]],
-  ['zoscillator_2eh_1',['zoscillator.h',['../zoscillator_8h.html',1,'']]]
+  ['•_20a_20powerful_20dsp_20library_20in_20c_0',['DaisySP • A Powerful DSP Library in C++',['../index.html#autotoc_md0',1,'']]]
 ];

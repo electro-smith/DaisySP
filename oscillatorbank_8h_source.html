@@ -83,67 +83,75 @@ $(function() { codefold.init(0); });
   <div class="headertitle"><div class="title">oscillatorbank.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="oscillatorbank_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#ifndef DSY_OSCILLATORBANK_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#define DSY_OSCILLATORBANK_H</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacedaisysp.html">daisysp</a></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
-<div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_oscillator_bank.html">   22</a></span><span class="keyword">class </span><a class="code hl_class" href="classdaisysp_1_1_oscillator_bank.html">OscillatorBank</a></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>  <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_class" href="classdaisysp_1_1_oscillator_bank.html">OscillatorBank</a>() {}</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_class" href="classdaisysp_1_1_oscillator_bank.html">~OscillatorBank</a>() {}</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator_bank.html#ad575603470f4d36fbb9c0a8d6579b96a">Init</a>(<span class="keywordtype">float</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">sample_rate</a>);</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">float</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator_bank.html#a87ec2181fbb736e9172e1f8acce762d8">Process</a>();</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator_bank.html#aadb24e57edcc638d816272678e91fead">SetFreq</a>(<span class="keywordtype">float</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">freq</a>);</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator_bank.html#aa0642cb0ecc082e5787d21f0801188c1">SetAmplitudes</a>(<span class="keyword">const</span> <span class="keywordtype">float</span>* <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">amplitudes</a>);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator_bank.html#a95a2c7f849296877edd365b6de2d6c00">SetSingleAmp</a>(<span class="keywordtype">float</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">amp</a>, <span class="keywordtype">int</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">idx</a>);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator_bank.html#a068e508c8c6231504a88c54a8ea5e179">SetGain</a>(<span class="keywordtype">float</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">gain</a>);</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="comment">// Oscillator state.</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordtype">float</span> phase_;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordtype">float</span> next_sample_;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">int</span>   segment_;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordtype">float</span> gain_;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordtype">float</span> registration_[7];</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">float</span> unshifted_registration_[7];</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordtype">float</span> frequency_;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordtype">float</span> saw_8_gain_;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordtype">float</span> saw_4_gain_;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">float</span> saw_2_gain_;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordtype">float</span> saw_1_gain_;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordtype">float</span> sample_rate_;</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordtype">bool</span>  recalc_, recalc_gain_;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordtype">bool</span> cmp(<span class="keywordtype">float</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">a</a>, <span class="keywordtype">float</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">b</a>) { <span class="keywordflow">return</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">fabsf</a>(<a class="code hl_class" href="classdaisysp_1_1_delay_line.html">a</a> - <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">b</a>) &gt; .0000001; }</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>};</div>
+<a href="oscillatorbank_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">Copyright (c) 2020 Electrosmith, Corp, Emilie Gillet</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"></span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">Use of this source code is governed by an MIT-style</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">license that can be found in the LICENSE file or at</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">https://opensource.org/licenses/MIT.</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">*/</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#ifndef DSY_OSCILLATORBANK_H</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#define DSY_OSCILLATORBANK_H</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacedaisysp.html">daisysp</a></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
+<div class="foldopen" id="foldopen00030" data-start="{" data-end="};">
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classdaisysp_1_1_oscillator_bank.html">   30</a></span><span class="keyword">class </span><a class="code hl_class" href="classdaisysp_1_1_oscillator_bank.html">OscillatorBank</a></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>{</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <a class="code hl_class" href="classdaisysp_1_1_oscillator_bank.html">OscillatorBank</a>() {}</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_class" href="classdaisysp_1_1_oscillator_bank.html">~OscillatorBank</a>() {}</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator_bank.html#ad575603470f4d36fbb9c0a8d6579b96a">Init</a>(<span class="keywordtype">float</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">sample_rate</a>);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">float</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator_bank.html#a87ec2181fbb736e9172e1f8acce762d8">Process</a>();</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator_bank.html#aadb24e57edcc638d816272678e91fead">SetFreq</a>(<span class="keywordtype">float</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">freq</a>);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator_bank.html#aa0642cb0ecc082e5787d21f0801188c1">SetAmplitudes</a>(<span class="keyword">const</span> <span class="keywordtype">float</span>* <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">amplitudes</a>);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator_bank.html#a95a2c7f849296877edd365b6de2d6c00">SetSingleAmp</a>(<span class="keywordtype">float</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">amp</a>, <span class="keywordtype">int</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">idx</a>);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classdaisysp_1_1_oscillator_bank.html#a068e508c8c6231504a88c54a8ea5e179">SetGain</a>(<span class="keywordtype">float</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">gain</a>);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="comment">// Oscillator state.</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordtype">float</span> phase_;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordtype">float</span> next_sample_;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">int</span>   segment_;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordtype">float</span> gain_;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordtype">float</span> registration_[7];</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordtype">float</span> unshifted_registration_[7];</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordtype">float</span> frequency_;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordtype">float</span> saw_8_gain_;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordtype">float</span> saw_4_gain_;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordtype">float</span> saw_2_gain_;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordtype">float</span> saw_1_gain_;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordtype">float</span> sample_rate_;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordtype">bool</span>  recalc_, recalc_gain_;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordtype">bool</span> cmp(<span class="keywordtype">float</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">a</a>, <span class="keywordtype">float</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">b</a>) { <span class="keywordflow">return</span> <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">fabsf</a>(<a class="code hl_class" href="classdaisysp_1_1_delay_line.html">a</a> - <a class="code hl_class" href="classdaisysp_1_1_delay_line.html">b</a>) &gt; .0000001; }</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>};</div>
 </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>} <span class="comment">// namespace daisysp</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassdaisysp_1_1_delay_line_html"><div class="ttname"><a href="classdaisysp_1_1_delay_line.html">daisysp::DelayLine</a></div><div class="ttdef"><b>Definition</b> delayline.h:21</div></div>
-<div class="ttc" id="aclassdaisysp_1_1_oscillator_bank_html"><div class="ttname"><a href="classdaisysp_1_1_oscillator_bank.html">daisysp::OscillatorBank</a></div><div class="ttdoc">Oscillator Bank module.</div><div class="ttdef"><b>Definition</b> oscillatorbank.h:23</div></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>} <span class="comment">// namespace daisysp</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclassdaisysp_1_1_delay_line_html"><div class="ttname"><a href="classdaisysp_1_1_delay_line.html">daisysp::DelayLine</a></div><div class="ttdef"><b>Definition</b> delayline.h:29</div></div>
+<div class="ttc" id="aclassdaisysp_1_1_oscillator_bank_html"><div class="ttname"><a href="classdaisysp_1_1_oscillator_bank.html">daisysp::OscillatorBank</a></div><div class="ttdoc">Oscillator Bank module.</div><div class="ttdef"><b>Definition</b> oscillatorbank.h:31</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_oscillator_bank_html_a068e508c8c6231504a88c54a8ea5e179"><div class="ttname"><a href="classdaisysp_1_1_oscillator_bank.html#a068e508c8c6231504a88c54a8ea5e179">daisysp::OscillatorBank::SetGain</a></div><div class="ttdeci">void SetGain(float gain)</div><div class="ttdef"><b>Definition</b> oscillatorbank.cpp:141</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_oscillator_bank_html_a87ec2181fbb736e9172e1f8acce762d8"><div class="ttname"><a href="classdaisysp_1_1_oscillator_bank.html#a87ec2181fbb736e9172e1f8acce762d8">daisysp::OscillatorBank::Process</a></div><div class="ttdeci">float Process()</div><div class="ttdef"><b>Definition</b> oscillatorbank.cpp:33</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_oscillator_bank_html_a95a2c7f849296877edd365b6de2d6c00"><div class="ttname"><a href="classdaisysp_1_1_oscillator_bank.html#a95a2c7f849296877edd365b6de2d6c00">daisysp::OscillatorBank::SetSingleAmp</a></div><div class="ttdeci">void SetSingleAmp(float amp, int idx)</div><div class="ttdef"><b>Definition</b> oscillatorbank.cpp:131</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_oscillator_bank_html_aa0642cb0ecc082e5787d21f0801188c1"><div class="ttname"><a href="classdaisysp_1_1_oscillator_bank.html#aa0642cb0ecc082e5787d21f0801188c1">daisysp::OscillatorBank::SetAmplitudes</a></div><div class="ttdeci">void SetAmplitudes(const float *amplitudes)</div><div class="ttdef"><b>Definition</b> oscillatorbank.cpp:122</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_oscillator_bank_html_aadb24e57edcc638d816272678e91fead"><div class="ttname"><a href="classdaisysp_1_1_oscillator_bank.html#aadb24e57edcc638d816272678e91fead">daisysp::OscillatorBank::SetFreq</a></div><div class="ttdeci">void SetFreq(float freq)</div><div class="ttdef"><b>Definition</b> oscillatorbank.cpp:114</div></div>
 <div class="ttc" id="aclassdaisysp_1_1_oscillator_bank_html_ad575603470f4d36fbb9c0a8d6579b96a"><div class="ttname"><a href="classdaisysp_1_1_oscillator_bank.html#ad575603470f4d36fbb9c0a8d6579b96a">daisysp::OscillatorBank::Init</a></div><div class="ttdeci">void Init(float sample_rate)</div><div class="ttdef"><b>Definition</b> oscillatorbank.cpp:7</div></div>
-<div class="ttc" id="anamespacedaisysp_html"><div class="ttname"><a href="namespacedaisysp.html">daisysp</a></div><div class="ttdoc">FIR Filter implementation, generic and ARM CMSIS DSP based.</div><div class="ttdef"><b>Definition</b> adenv.h:8</div></div>
+<div class="ttc" id="anamespacedaisysp_html"><div class="ttname"><a href="namespacedaisysp.html">daisysp</a></div><div class="ttdoc">FIR Filter implementation, generic and ARM CMSIS DSP based.</div><div class="ttdef"><b>Definition</b> adenv.h:16</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['low_0',['Low',['../classdaisysp_1_1_svf.html#a3fbe38989b49fba12a3a7a37f291b33c',1,'daisysp::Svf']]]
+  ['median_0',['median',['../namespacedaisysp.html#a726909b1a01b77ff0b65099c7e1298d9',1,'daisysp']]],
+  ['mtof_1',['mtof',['../namespacedaisysp.html#a353be6c7e206ed974a25148e3f13dbab',1,'daisysp']]]
 ];
