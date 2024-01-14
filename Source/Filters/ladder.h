@@ -47,7 +47,6 @@
 
 namespace daisysp
 {
-
 /**
  * 4-pole ladder filter model with selectable filter type (LP/BP/HP 12 or 24 dB/oct),
  * drive, passband gain compensation, and stable self-oscillation.
