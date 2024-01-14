@@ -3,7 +3,7 @@ TARGET = libdaisysp
 MODULE_DIR = Source
 
 # Each Module Directory is listed below with it's modules.
-# Header only modules are listed commented out 
+# Header only modules are listed commented out
 # below the others.
 
 CONTROL_MOD_DIR = Control
@@ -39,6 +39,7 @@ wavefolder \
 
 FILTER_MOD_DIR = Filters
 FILTER_MODULES = \
+ladder \
 svf \
 soap \
 
@@ -156,11 +157,11 @@ MCU = $(CPU) -mthumb $(FPU) $(FLOAT-ABI)
 
 # macros for gcc
 # AS defines
-AS_DEFS = 
+AS_DEFS =
 
 # C defines
 C_DEFS =  \
--DSTM32H750xx 
+-DSTM32H750xx
 
 C_INCLUDES = \
 -I$(MODULE_DIR) \
@@ -172,7 +173,7 @@ C_INCLUDES = \
 -I$(MODULE_DIR)/$(NOISE_MOD_DIR) \
 -I$(MODULE_DIR)/$(PHYSICAL_MODELING_MOD_DIR) \
 -I$(MODULE_DIR)/$(SYNTHESIS_MOD_DIR) \
--I$(MODULE_DIR)/$(UTILITY_MOD_DIR) 
+-I$(MODULE_DIR)/$(UTILITY_MOD_DIR)
 
 # compile gcc flags
 ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
@@ -189,7 +190,7 @@ CFLAGS += -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"
 CPPFLAGS = $(CFLAGS)
 CPPFLAGS += \
 -fno-exceptions \
--finline-functions 
+-finline-functions
 
 # default action: build all
 all: $(BUILD_DIR)/$(TARGET).a lgpl

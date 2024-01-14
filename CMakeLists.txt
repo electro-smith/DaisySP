@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.14)
 
 project(DAISYSP VERSION 0.0.1)
 
-add_library(DaisySP STATIC 
+add_library(DaisySP STATIC
 Source/Control/adenv.cpp
 Source/Control/adsr.cpp
 Source/Control/phasor.cpp
@@ -22,6 +22,7 @@ Source/Effects/phaser.cpp
 Source/Effects/sampleratereducer.cpp
 Source/Effects/tremolo.cpp
 Source/Effects/wavefolder.cpp
+Source/Filters/ladder.cpp
 Source/Filters/svf.cpp
 Source/Filters/soap.cpp
 Source/Noise/clockednoise.cpp
@@ -47,7 +48,7 @@ Source/Utility/metro.cpp
 
 
 set_target_properties(DaisySP PROPERTIES PUBLIC
-  CXX_STANDARD 14 
+  CXX_STANDARD 14
   CXX_STANDARD_REQUIRED
   )
 

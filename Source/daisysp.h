@@ -44,6 +44,7 @@
 #include "Effects/wavefolder.h"
 
 /** Filter Modules */
+#include "Filters/ladder.h"
 #include "Filters/onepole.h"
 #include "Filters/svf.h"
 #include "Filters/fir.h"
