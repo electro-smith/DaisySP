@@ -29,6 +29,16 @@ enum AdEnvSegment
     ADENV_SEG_LAST,
 };
 
+enum ReTriggerType
+{
+  /** Value for no retrigger requested **/
+  NONE = 0,
+  /** Restarts the envelope, starting at zero output level **/
+  RESTART,
+  /** Restarts the envelope, starting at the current output level **/
+  RETRIGGER,
+};
+
 /** Trigger-able envelope with adjustable min/max, and independent per-segment time control.
 
     \author shensley
@@ -61,7 +71,8 @@ class AdEnv
     float Process();
 
     /** Starts or retriggers the envelope.*/
-    inline void Trigger() { trigger_ = 1; }
+    inline void Trigger() { trigger_ = RETRIGGER; }
+    inline void Trigger(bool hard) { trigger_ = hard ? RESTART : RETRIGGER; }
     /** Sets the length of time (in seconds) for a specific segment. */
     inline void SetTime(uint8_t seg, float time) { segment_time_[seg] = time; }
     /** Sets the amount of curve applied. A positve value will create a log
