@@ -29,16 +29,6 @@ enum AdEnvSegment
     ADENV_SEG_LAST,
 };
 
-enum ReTriggerType
-{
-  /** Value for no retrigger requested **/
-  NONE = 0,
-  /** Restarts the envelope, starting at zero output level **/
-  RESTART,
-  /** Restarts the envelope, starting at the current output level **/
-  RETRIGGER,
-};
-
 /** Trigger-able envelope with adjustable min/max, and independent per-segment time control.
 
     \author shensley
@@ -70,9 +60,19 @@ class AdEnv
     */
     float Process();
 
-    /** Starts or retriggers the envelope.*/
-    inline void Trigger() { trigger_ = RETRIGGER; }
-    inline void Trigger(bool hard) { trigger_ = hard ? RESTART : RETRIGGER; }
+    /** Starts or retriggers the envelope. Default is a non-hard retrigger.*/
+    inline void Trigger()
+    {
+        trigger_      = true;
+        hard_trigger_ = false;
+    }
+    /** Starts or retriggers the envelope. If hard is true the envelope re-starts
+        from 0, if hard is false it starts from the current envelope value. */
+    inline void Trigger(bool hard)
+    {
+        trigger_      = true;
+        hard_trigger_ = hard;
+    }
     /** Sets the length of time (in seconds) for a specific segment. */
     inline void SetTime(uint8_t seg, float time) { segment_time_[seg] = time; }
     /** Sets the amount of curve applied. A positve value will create a log
@@ -103,7 +103,7 @@ class AdEnv
     float    sample_rate_, min_, max_, output_, curve_scalar_;
     float    c_inc_, curve_x_, retrig_val_;
     uint32_t phase_;
-    uint8_t  trigger_;
+    uint8_t  trigger_, hard_trigger_;
 };
 
 } // namespace daisysp
