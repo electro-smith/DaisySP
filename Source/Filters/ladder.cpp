@@ -70,7 +70,7 @@ void LadderFilter::Init(float sample_rate)
 
 float LadderFilter::Process(float in)
 {
-    float input  = in * drive_;
+    float input  = in * drive_scaled_;
     float total  = 0.0f;
     float interp = 0.0f;
     for(size_t os = 0; os < kInterpolation; os++)
