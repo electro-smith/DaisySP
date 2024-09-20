@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['daisysp_0',['daisysp',['../namespacedaisysp.html',1,'']]],
-  ['daisysp_1',['DaisySP',['../index.html',1,'']]],
+  ['daisysp_0',['DaisySP',['../index.html',1,'']]],
+  ['daisysp_1',['daisysp',['../namespacedaisysp.html',1,'']]],
   ['daisysp_20•_20a_20powerful_20dsp_20library_20in_20c_2',['DaisySP • A Powerful DSP Library in C++',['../index.html#autotoc_md0',1,'']]],
   ['dcblock_3',['DcBlock',['../classdaisysp_1_1_dc_block.html',1,'daisysp']]],
   ['decimator_4',['Decimator',['../classdaisysp_1_1_decimator.html',1,'daisysp']]],
