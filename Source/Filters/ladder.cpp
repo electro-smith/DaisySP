@@ -25,7 +25,7 @@
 // Huovilainen New Moog (HNM) model as per CMJ jun 2006
 // Richard van Hoesel, v. 1.03, Feb. 14 2021
 // v1.7 (Infrasonic/Daisy) add configurable filter mode
-// v1.6 (Infrasonic/Daisy) removes polyphase FIR, uses 2x linear
+// v1.6 (Infrasonic/Daisy) removes polyphase FIR, uses 4x linear
 //      oversampling for performance reasons
 // v1.5 adds polyphase FIR or Linear interpolation
 // v1.4 FC extended to 18.7kHz, max res to 1.8, 4x oversampling,
@@ -70,20 +70,19 @@ void LadderFilter::Init(float sample_rate)
 
 float LadderFilter::Process(float in)
 {
-    float input  = in * drive_;
+    float input  = in * drive_scaled_;
     float total  = 0.0f;
     float interp = 0.0f;
     for(size_t os = 0; os < kInterpolation; os++)
     {
-        float u = (interp * oldinput_ + (1.0f - interp) * input)
-                  - (z1_[3] - pbg_ * input) * K_ * Qadjust_;
+        float in_interp = (interp * oldinput_ + (1.0f - interp) * input);
+        float u      = in_interp - (z1_[3] - pbg_ * in_interp) * K_ * Qadjust_;
         u            = fast_tanh(u);
         float stage1 = LPF(u, 0);
         float stage2 = LPF(stage1, 1);
         float stage3 = LPF(stage2, 2);
         float stage4 = LPF(stage3, 3);
-        total += weightedSumForCurrentMode(
-                     {input, stage1, stage2, stage3, stage4})
+        total += weightedSumForCurrentMode({u, stage1, stage2, stage3, stage4})
                  * kInterpolationRecip;
         interp += kInterpolationRecip;
     }
