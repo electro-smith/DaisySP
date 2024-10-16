@@ -229,8 +229,8 @@ class Looper
 
     inline bool IsNearBeginning() { return near_beginning_; }
 
-    float  GetPos() const { return pos_; }
-    size_t GetRecSize() const { return recsize_; }
+    inline float  GetPos() { return pos_; }
+    inline size_t GetRecSize() { return recsize_; }
 
   private:
     /** Constants */
