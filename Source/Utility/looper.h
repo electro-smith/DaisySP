@@ -13,7 +13,7 @@ https://opensource.org/licenses/MIT.
 namespace daisysp
 {
 /** Multimode audio looper
-* 
+*
 * Modes are:
 *  - Normal
 *  - Onetime Dub
@@ -28,9 +28,9 @@ class Looper
     Looper() {}
     ~Looper() {}
 
-    /** 
-     ** Normal Mode: Input is added to the existing loop infinitely while recording 
-     ** 
+    /**
+     ** Normal Mode: Input is added to the existing loop infinitely while recording
+     **
      ** Onetime Dub Mode: Recording starts at the first sample of the buffer and is added
      **     to the existing buffer contents. Recording automatically stops after one full loop.
      **
@@ -91,7 +91,7 @@ class Looper
             case State::PLAYING:
                 sig = Read(pos_);
                 /** This is a way of 'seamless looping'
-                 ** The first N samps after recording is done are recorded with the input faded out. 
+                 ** The first N samps after recording is done are recorded with the input faded out.
                  */
                 if(win_idx_ < kWindowSamps - 1)
                 {
@@ -162,13 +162,13 @@ class Looper
         return sig;
     }
 
-    /** Effectively erases the buffer 
+    /** Effectively erases the buffer
      ** Note: This does not actually change what is in the buffer  */
     inline void Clear() { state_ = State::EMPTY; }
 
     /** Engages/Disengages the recording, depending on Mode.
      ** In all modes, the first time this is triggered a new loop will be started.
-     ** The second trigger will set the loop size, and begin playback of the loop. 
+     ** The second trigger will set the loop size, and begin playback of the loop.
     */
     inline void TrigRecord()
     {
@@ -227,10 +227,10 @@ class Looper
     inline void SetHalfSpeed(bool state) { half_speed_ = state; }
     inline bool GetHalfSpeed() const { return half_speed_; }
 
-    inline bool IsNearBeginning() { return near_beginning_; }
+    inline bool IsNearBeginning() const { return near_beginning_; }
 
-    inline float  GetPos() { return pos_; }
-    inline size_t GetRecSize() { return recsize_; }
+    inline float GetPos() const { return pos_; }
+    inline size_t GetRecSize() const { return recsize_; }
 
   private:
     /** Constants */
