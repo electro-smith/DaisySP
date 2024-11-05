@@ -73,7 +73,11 @@ class Looper
         win_ = WindowVal(win_idx_ * kWindowFactor);
         switch(state_)
         {
-            case State::EMPTY: sig = 0.0f; break;
+            case State::EMPTY:
+                sig      = 0.0f;
+                pos_     = 0;
+                recsize_ = 0;
+                break;
             case State::REC_FIRST:
                 sig = 0.f;
                 Write(pos_, input * win_);
