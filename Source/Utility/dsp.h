@@ -99,7 +99,7 @@ inline float fastroot(float f, int n)
  */
 inline float fastmod1f(float x)
 {
-    return x - static_cast<int>(x);
+    return x - floorf(x);
 }
 
 /** From http://openaudio.blogspot.com/2017/02/faster-log10-and-pow.html
