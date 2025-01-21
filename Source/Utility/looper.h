@@ -58,6 +58,8 @@ class Looper
         reverse_    = false;
         rec_queue_  = false;
         win_idx_    = 0;
+
+        increment_size = 1.0;
     }
 
     /** Handles reading/writing to the Buffer depending on the mode. */
@@ -233,6 +235,18 @@ class Looper
 
     inline bool IsNearBeginning() const { return near_beginning_; }
 
+    inline float GetIncrementSize() const
+    {
+        float inc = increment_size;
+
+        if(half_speed_)
+            inc *= 0.5f;
+
+        return reverse_ ? -inc : inc;
+    }
+
+    void SetIncrementSize(float increment) { increment_size = increment; }
+
     inline float GetPos() const { return pos_; }
     inline size_t GetRecSize() const { return recsize_; }
 
@@ -247,13 +261,6 @@ class Looper
     static constexpr float kWindowFactor      = (1.f / kWindowSamps);
 
     /** Private Member Functions */
-    float GetIncrementSize()
-    {
-        float inc = 1.f;
-        if(half_speed_)
-            inc = 0.5f;
-        return reverse_ ? -inc : inc;
-    }
 
     /** Initialize the buffer */
     void InitBuff() { std::fill(&buff_[0], &buff_[buffer_size_ - 1], 0); }
@@ -301,6 +308,7 @@ class Looper
     size_t recsize_;
     bool   rec_queue_;
     bool   near_beginning_;
+    float  increment_size;
 };
 
 } // namespace daisysp
