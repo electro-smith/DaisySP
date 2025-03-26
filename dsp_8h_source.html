@@ -183,7 +183,7 @@ $(function(){ initResizable(false); });
 <div class="foldopen" id="foldopen00100" data-start="{" data-end="}">
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="namespacedaisysp.html#a5f0b00de38b7377a333a03d6052662ea">  100</a></span><span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code hl_function" href="namespacedaisysp.html#a5f0b00de38b7377a333a03d6052662ea">fastmod1f</a>(<span class="keywordtype">float</span> x)</div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>{</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordflow">return</span> x - <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(x);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordflow">return</span> x - floorf(x);</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>}</div>
 </div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span></div>
