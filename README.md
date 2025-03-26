@@ -90,8 +90,6 @@ Here are some ways that you can get involved:
 - Port existing DSP modules from other open source projects (MIT). See issues labeled "port"
 - Fix problems with existing modules. See issues labeled "bug" and/or "polish"
 
-Before working on code, please check out our [Style Guide.](https://github.com/electro-smith/DaisySP/blob/master/doc/style_guide.pdf)
-
 ## ⚠️ License
 
 DaisySP uses the MIT license.
