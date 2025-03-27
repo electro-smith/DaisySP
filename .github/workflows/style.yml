@@ -1,19 +1,18 @@
 name: Style
 
-on: 
+on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: DoozyX/clang-format-lint-action@v0.11
-      with:
-        source: 'Source'
-        extensions: 'h,cpp'
-        clangFormatVersion: 10
-
+      - uses: actions/checkout@v2
+      - uses: DoozyX/clang-format-lint-action@v0.18.2
+        with:
+          source: "Source"
+          extensions: "h,cpp"
+          clangFormatVersion: 10

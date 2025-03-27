@@ -5,7 +5,7 @@
 
 [![Build Badge](https://github.com/electro-smith/DaisySP/workflows/Build/badge.svg)](https://github.com/electro-smith/DaisySP/actions?query=workflow%3ABuild)
 [![Style Badge](https://github.com/electro-smith/DaisySP/workflows/Style/badge.svg)](https://github.com/electro-smith/DaisySP/actions?query=workflow%3AStyle)
-[![Documentation Badge](https://github.com/electro-smith/DaisySP/workflows/Documentation/badge.svg)](https://electro-smith.github.io/DaisySP/index.html)
+[![Documentation Badge](https://github.com/electro-smith/DaisySP/workflows/Documentation/badge.svg)](https://daisy.audio/software/)
 [![Discord](https://img.shields.io/discord/1037767234803740694?logo=discord&label=Discord)](https://discord.gg/ByHBnMtQTR)
 [![Forum Badge](https://img.shields.io/badge/chat-daisy%20forum-orange)](https://forum.electro-smith.com/)
 [![License Badge](https://img.shields.io/badge/license-MIT-yellow)](https://opensource.org/licenses/MIT)
@@ -84,13 +84,11 @@ Made with [contrib.rocks](https://contrib.rocks).
 
 Here are some ways that you can get involved:
 
-- Proof read the [documentation](https://electro-smith.github.io/DaisySP/index.html) and suggest improvements
+- Proof read the [documentation](https://daisy.audio/software/) and suggest improvements
 - Test existing functionality and make [issues](https://github.com/electro-smith/DaisySP/issues)
 - Make new DSP modules. See issues labeled "feature"
 - Port existing DSP modules from other open source projects (MIT). See issues labeled "port"
 - Fix problems with existing modules. See issues labeled "bug" and/or "polish"
-
-Before working on code, please check out our [Style Guide.](https://github.com/electro-smith/DaisySP/blob/master/doc/style_guide.pdf)
 
 ## ⚠️ License
 
