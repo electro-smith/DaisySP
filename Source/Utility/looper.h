@@ -13,7 +13,7 @@ https://opensource.org/licenses/MIT.
 namespace daisysp
 {
 /** Multimode audio looper
-* 
+*
 * Modes are:
 *  - Normal
 *  - Onetime Dub
@@ -28,9 +28,9 @@ class Looper
     Looper() {}
     ~Looper() {}
 
-    /** 
-     ** Normal Mode: Input is added to the existing loop infinitely while recording 
-     ** 
+    /**
+     ** Normal Mode: Input is added to the existing loop infinitely while recording
+     **
      ** Onetime Dub Mode: Recording starts at the first sample of the buffer and is added
      **     to the existing buffer contents. Recording automatically stops after one full loop.
      **
@@ -58,6 +58,8 @@ class Looper
         reverse_    = false;
         rec_queue_  = false;
         win_idx_    = 0;
+
+        increment_size = 1.0;
     }
 
     /** Handles reading/writing to the Buffer depending on the mode. */
@@ -73,7 +75,11 @@ class Looper
         win_ = WindowVal(win_idx_ * kWindowFactor);
         switch(state_)
         {
-            case State::EMPTY: sig = 0.0f; break;
+            case State::EMPTY:
+                sig      = 0.0f;
+                pos_     = 0;
+                recsize_ = 0;
+                break;
             case State::REC_FIRST:
                 sig = 0.f;
                 Write(pos_, input * win_);
@@ -91,7 +97,7 @@ class Looper
             case State::PLAYING:
                 sig = Read(pos_);
                 /** This is a way of 'seamless looping'
-                 ** The first N samps after recording is done are recorded with the input faded out. 
+                 ** The first N samps after recording is done are recorded with the input faded out.
                  */
                 if(win_idx_ < kWindowSamps - 1)
                 {
@@ -162,13 +168,13 @@ class Looper
         return sig;
     }
 
-    /** Effectively erases the buffer 
+    /** Effectively erases the buffer
      ** Note: This does not actually change what is in the buffer  */
     inline void Clear() { state_ = State::EMPTY; }
 
     /** Engages/Disengages the recording, depending on Mode.
      ** In all modes, the first time this is triggered a new loop will be started.
-     ** The second trigger will set the loop size, and begin playback of the loop. 
+     ** The second trigger will set the loop size, and begin playback of the loop.
     */
     inline void TrigRecord()
     {
@@ -227,7 +233,22 @@ class Looper
     inline void SetHalfSpeed(bool state) { half_speed_ = state; }
     inline bool GetHalfSpeed() const { return half_speed_; }
 
-    inline bool IsNearBeginning() { return near_beginning_; }
+    inline bool IsNearBeginning() const { return near_beginning_; }
+
+    inline float GetIncrementSize() const
+    {
+        float inc = increment_size;
+
+        if(half_speed_)
+            inc *= 0.5f;
+
+        return reverse_ ? -inc : inc;
+    }
+
+    void SetIncrementSize(float increment) { increment_size = increment; }
+
+    inline float  GetPos() const { return pos_; }
+    inline size_t GetRecSize() const { return recsize_; }
 
   private:
     /** Constants */
@@ -240,13 +261,6 @@ class Looper
     static constexpr float kWindowFactor      = (1.f / kWindowSamps);
 
     /** Private Member Functions */
-    float GetIncrementSize()
-    {
-        float inc = 1.f;
-        if(half_speed_)
-            inc = 0.5f;
-        return reverse_ ? -inc : inc;
-    }
 
     /** Initialize the buffer */
     void InitBuff() { std::fill(&buff_[0], &buff_[buffer_size_ - 1], 0); }
@@ -294,6 +308,7 @@ class Looper
     size_t recsize_;
     bool   rec_queue_;
     bool   near_beginning_;
+    float  increment_size;
 };
 
 } // namespace daisysp
